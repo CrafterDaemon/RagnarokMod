@@ -1,0 +1,5 @@
+displayName = RagnarokMod
+author = CrafterDaemon
+version = 1.0
+modReferences = ThoriumMod, CalamityMod
+sortAfter = ThoriumMod, CalamityMod

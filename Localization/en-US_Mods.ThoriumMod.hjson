@@ -1,0 +1,535 @@
+Buffs: {
+	AssassinPotionBuff: {
+		DisplayName: Assassin
+		Description: Out of combat rogue attacks will crit for x4 damage
+	}
+
+	DeepFreezeCoatingBuff: {
+		DisplayName: Rogue Weapon Imbue : Deep Freeze
+		Description: Rogue damage has a chance to significantly hinder the hit enemies movement
+	}
+
+	ExplosiveCoatingBuff: {
+		DisplayName: Rogue Weapon Imbue : Explosive
+		Description: Rogue damage has a chance to burst, setting nearby enemies on fire
+	}
+
+	GorgonCoatingBuff: {
+		DisplayName: Rogue Weapon Imbue : Gorgon Blood
+		Description: Rogue damage has a chance to petrify hit enemies
+	}
+
+	LichSetBuff: {
+		DisplayName: Soul Harvest
+		Description: Your movement and rogue attack speed are greatly enhanced
+	}
+
+	MyceliumVeins: {
+		DisplayName: Mycelium Veins
+		Description: Rogue attack speed increased by 10%
+	}
+
+	NinjaBuff: {
+		DisplayName: Sleight of Hand
+		Description: Rogue weapon velocity, speed, and critical strike chance increased
+	}
+
+	SporeCoatingBuff: {
+		DisplayName: Rogue Weapon Imbue : Spores
+		Description: Rogue damage has a chance to infect enemies with mycelium
+	}
+
+	LastStandBuff: {
+		DisplayName: Last Stand
+		Description: Rogue weapon speed & damage increased by 30%, but at a price...
+	}
+
+	ThrowingSpeed: {
+		DisplayName: Rogue's Speed
+		Description: Your rogue attack speed has been increased by 15%
+	}
+
+	ToxicCoatingBuff: {
+		DisplayName: Rogue Weapon Imbue : Toxic
+		Description: Rogue damage has a chance to poison hit enemies
+	}
+
+	TrueStrike: {
+		DisplayName: True Strike
+		Description: Your damage has a 100% chance to critically strike
+	}
+}
+
+Items: {
+	FlightMail: {
+		DisplayName: Flight Mail
+		Tooltip:
+			'''
+			'The sky is your playing field'
+			10% increased rogue damage
+			'''
+	}
+
+	FlightMask: {
+		DisplayName: Flight Hat
+		Tooltip:
+			'''
+			'The sky is your playing field'
+			5% increased rogue damage
+			6% increased rogue critical strike chance
+			'''
+	}
+
+	TopazRing: {
+		DisplayName: Topaz Ring
+		Tooltip: Increases rogue damage by 1
+	}
+
+	BronzeBreastplate: {
+		DisplayName: Bronze Breastplate
+		Tooltip: 20% increased rogue damage
+	}
+
+	BronzeGreaves: {
+		DisplayName: Bronze Greaves
+		Tooltip:
+			'''
+			10% increased rogue speed
+			10% increased movement speed
+			'''
+	}
+
+	BronzeHelmet: {
+		DisplayName: Bronze Helmet
+		Tooltip:
+			'''
+			10% increased rogue critical strike chance
+			10% increased rogue weapon velocity
+			'''
+	}
+
+	DeepFreezeCoatingItem: {
+		DisplayName: Deep Freeze Coating
+		Tooltip: Rogue attacks will have a chance to significantly hinder the hit enemies movement
+	}
+
+	ExplosiveCoatingItem: {
+		DisplayName: Explosive Coating
+		Tooltip: Rogue attacks will have a chance to burst, causing nearby enemies to melt
+	}
+
+	GorgonCoatingItem: {
+		DisplayName: Gorgon Coating
+		Tooltip: Rogue attacks will have a chance to petrify enemies
+	}
+
+	SporeCoatingItem: {
+		DisplayName: Spore Coating
+		Tooltip: Rogue attacks will have a chance to infect enemies with mycelium
+	}
+
+	ToxicCoatingItem: {
+		DisplayName: Toxic Coating
+		Tooltip: Rogue attacks will have a chance to poison enemies
+	}
+
+	PlagueLordFlask: {
+		DisplayName: Plague Lord's Flask
+		Tooltip:
+			'''
+			10% increased rogue damage
+			10% increased rogue weapon velocity
+			10% increased rogue weapon speed
+			Using a rogue item has a 20% chance to unleash two Blight Daggers
+			Blight Daggers home in on enemies and apply a highly contagious disease
+			'''
+	}
+
+	ShinobiSigil: {
+		DisplayName: Shinobi Sigil
+		Tooltip:
+			'''
+			6% increased rogue critical strike chance
+			Dealing two consecutive rogue attack critical strikes will discharge dark lightning and increase rogue attack speed briefly
+			'''
+	}
+
+	TideTurnerBreastplate: {
+		DisplayName: Tide Turner's Depth-Guard
+		Tooltip:
+			'''
+			15% increased melee & rogue damage
+			10% increased melee & rogue weapon speed
+			16% increased melee & rogue weapon critical strike chance
+			'''
+	}
+
+	TideTurnerGreaves: {
+		DisplayName: Tide Turner's Depth-Walkers
+		Tooltip:
+			'''
+			10% increased melee & rogue damage
+			20% increased melee knockback & rogue weapon velocity
+			30% increased movement speed
+			'''
+	}
+
+	TideTurnersGaze: {
+		DisplayName: Tide Turner's Depth-Crown
+		Tooltip:
+			'''
+			'Unleash aquatic wrath upon your foes'
+			40% increased rogue damage
+			50% chance not to consume rogue items
+			Increases your maximum technique points by 2
+			Rogue damage briefly increases the damage the enemy takes by 10%
+			Produces a floating globule every 1 second
+			Every globule makes your next attack a mini-crit, if it does not crit
+			'''
+	}
+
+	LichCarapace: {
+		DisplayName: Lich's Carapace
+		Tooltip:
+			'''
+			'Embrace death...'
+			20% increased rogue damage
+			30% increased rogue weapon velocity
+			'''
+	}
+
+	LichCowl: {
+		DisplayName: Lich's Cowl
+		Tooltip:
+			'''
+			'Embrace death...'
+			10% increased rogue damage
+			33% chance not to consume rogue items
+			Increases your maximum technique points by 2
+			'''
+	}
+
+	LichTalon: {
+		DisplayName: Lich's Talons
+		Tooltip:
+			'''
+			'Embrace death...'
+			15% increased rogue damage
+			15% increased rogue critical strike chance
+			'''
+	}
+
+	AncientHallowedGuise: {
+		DisplayName: Ancient Hallowed Guise
+		Tooltip:
+			'''
+			20% increased rogue damage
+			8% increased rogue weapon speed and critical strike chance
+			'''
+	}
+
+	NinjaRack: {
+		DisplayName: Ninja Rack
+		Tooltip: Increases various rogue stats when interacted with
+	}
+
+	SandStoneGreaves: {
+		DisplayName: Sandstone Greaves
+		Tooltip:
+			'''
+			'Enveloped by desert winds'
+			3% increased movement speed
+			5% increased rogue damage
+			'''
+	}
+
+	SandStoneHelmet: {
+		DisplayName: Sandstone Helmet
+		Tooltip:
+			'''
+			'Enveloped by desert winds'
+			2% increased movement speed
+			5% increased rogue damage
+			'''
+	}
+
+	SandstoneIngot: {
+		DisplayName: Sandstone Ingot
+		Tooltip: "'Dry and brittle, but it'll work'"
+	}
+
+	SandStoneMail: {
+		DisplayName: Sandstone Mail
+		Tooltip:
+			'''
+			'Enveloped by desert winds'
+			5% increased movement speed
+			5% increased rogue damage
+			'''
+	}
+
+	AssassinPotion: {
+		DisplayName: Assassin Potion
+		Tooltip: Your first rogue attack when out of combat will crit for x4 damage
+	}
+
+	BoneGrip: {
+		DisplayName: Bone Grip
+		Tooltip:
+			'''
+			Picking up rogue ammunition has a 33% chance to duplicate it and increase your rogue attack speed
+			This effect can only trigger once every half-second while out of combat
+			'''
+	}
+
+	Canteen: {
+		DisplayName: Canteen
+		Tooltip: Non-consumable rogue weapons will take 40% longer to exhaust you
+	}
+
+	CaptainsPoniard: {
+		DisplayName: Captain's Poignard
+		Tooltip: Striking enemies that are close to you increases your rogue attack speed briefly
+	}
+
+	FungusGuard: {
+		DisplayName: Fungus Guard
+		Tooltip:
+			'''
+			12% increased rogue damage
+			5% increased rogue weapon speed
+			'''
+	}
+
+	FungusHat: {
+		DisplayName: Fungus Cap
+		Tooltip:
+			'''
+			8% increased rogue damage
+			33% chance not to consume rogue items
+			Increases your maximum technique points by 1
+			'''
+	}
+
+	FungusLeggings: {
+		DisplayName: Fungus Leggings
+		Tooltip:
+			'''
+			10% increased rogue damage
+			5% increased rogue weapon critical strike chance
+			'''
+	}
+
+	MagnetoGrip: {
+		DisplayName: Magneto Grip
+		Tooltip:
+			'''
+			Increases pickup range of rogue items on the ground
+			Picking up a rogue item has a 33% chance to duplicate it and increase your rogue attack speed
+			This effect can only trigger once every half-second while out of combat
+			'''
+	}
+
+	MermaidCanteen: {
+		DisplayName: Mermaid's Canteen
+		Tooltip:
+			'''
+			Non-consumable rogue weapons will take 60% longer to exhaust you
+			Non-consumable rogue weapons will deal up to 15% more damage the less exhausted you are
+			'''
+	}
+
+	NinjaEmblem: {
+		DisplayName: Multiclasser's Emblem
+		Tooltip: 5% increase to all damage
+	}
+
+	OlympicTorch: {
+		DisplayName: Olympic Torch
+		Tooltip:
+			'''
+			Rogue damage increases your movement speed by 1% up to 25%
+			Rogue damage increases your rogue attack speed by 0.4% up to 10%
+			These effects will fade after 3 seconds of not dealing rogue damage
+			'''
+	}
+
+	PaddedGrip: {
+		DisplayName: Padded Grip
+		Tooltip:
+			'''
+			Picking up a rogue item has a 25% chance to duplicate it
+			This effect can only trigger once every half-second while out of combat
+			'''
+	}
+
+	PiratesPurse: {
+		DisplayName: Pirate's Purse
+		Tooltip:
+			'''
+			Enemies killed by your rogue damage release a spread of damaging coins
+			Enemies damaged by the coins are gouged and drop more money on death
+			'''
+	}
+
+	PlagueDoctorsGarb: {
+		DisplayName: Plague Doctor's Garb
+		Tooltip:
+			'''
+			'What nasty concoction could you be brewing?'
+			14% increased rogue damage
+			10% increased rogue weapon velocity
+			'''
+	}
+
+	PlagueDoctorsLeggings: {
+		DisplayName: Plague Doctor's Leggings
+		Tooltip:
+			'''
+			'What nasty concoction could you be brewing?'
+			14% increased rogue damage
+			10% increased rogue weapon critical strike chance
+			'''
+	}
+
+	PlagueDoctorsMask: {
+		DisplayName: Plague Doctor's Mask
+		Tooltip:
+			'''
+			'What nasty concoction could you be brewing?'
+			12% increased rogue damage
+			33% chance not to consume rogue items
+			Increases your maximum technique points by 1
+			'''
+	}
+
+	ShadeMasterGarb: {
+		DisplayName: Shade Master's Garb
+		Tooltip:
+			'''
+			'Live in the shadows and strike with precision'
+			15% increased rogue damage
+			10% increased rogue weapon speed
+			30% increased rogue weapon velocity
+			'''
+	}
+
+	ShadeMasterMask: {
+		DisplayName: Shade Master's Mask
+		Tooltip:
+			'''
+			'Live in the shadows and strike with precision'
+			20% increased rogue damage
+			33% chance not to consume rogue items
+			Increases your maximum technique points by 2
+			'''
+	}
+
+	ShadeMasterTreads: {
+		DisplayName: Shade Master's Treads
+		Tooltip:
+			'''
+			'Live in the shadows and strike with precision'
+			20% increased rogue damage
+			20% increased rogue weapon critical strike chance
+			15% increased movement speed
+			'''
+	}
+
+	TechniqueBlankScroll: {
+		DisplayName: Blank Technique Scroll
+		Tooltip:
+			'''
+			'Used in the crafting of unique technique abilities'
+			After activating a technique, deal rogue damage to charge technique points
+			Technique points decay over time if damage is not continually dealt
+			Press the '{$Keybinds.ThrowingTechnique.DisplayName}' key to use your active technique's ability
+			'''
+	}
+
+	ThiefsWallet: {
+		DisplayName: Thief's Wallet
+		Tooltip: Enemies killed by your rogue damage drop up to 2 additional silver coins
+	}
+
+	ThrowingGuide: {
+		DisplayName: Rogue 101
+		Tooltip: 15% of your rogue damage is duplicated
+	}
+
+	ThrowingGuideVolume2: {
+		DisplayName: Rogue 101 : Volume II
+		Tooltip:
+			'''
+			10% increased rogue damage
+			20% of your rogue damage is duplicated
+			'''
+	}
+
+	ThrowingGuideVolume3: {
+		DisplayName: Rogue 101 : Volume III
+		Tooltip:
+			'''
+			10% increased rogue damage
+			10% increased rogue weapon velocity
+			25% of your rogue damage is duplicated
+			'''
+	}
+
+	WhiteDwarfGreaves: {
+		DisplayName: White Dwarf Greaves
+		Tooltip:
+			'''
+			20% increased rogue damage
+			20% increased rogue weapon critical strike chance
+			20% increased movement speed
+			'''
+	}
+
+	WhiteDwarfGuard: {
+		DisplayName: White Dwarf Guard
+		Tooltip:
+			'''
+			15% increased rogue damage
+			15% increased rogue weapon speed
+			30% increased rogue weapon velocity
+			'''
+	}
+
+	WhiteDwarfMask: {
+		DisplayName: White Dwarf Mask
+		Tooltip:
+			'''
+			25% increased rogue damage
+			33% chance not to consume rogue items
+			Increases your maximum technique points by 2
+			'''
+	}
+
+	Wreath: {
+		DisplayName: Wreath
+		Tooltip:
+			'''
+			10% increased rogue velocity
+			10% increased movement speed while holding a rogue item
+			'''
+	}
+}
+
+Keybinds.ThrowingTechnique.DisplayName: Rogue Technique
+
+ThrowerTechniques: {
+	UseToEnable: Sets your active technique on use | Deal rogue damage to build points
+	UseToDisable: Technique Active | Use again to disable | Deal rogue damage to build points
+
+	LastStand: {
+		DisplayName: Last Stand
+		Description:
+			'''
+			Automatically triggers when you take fatal damage, granting you {0} {^0:second;seconds} of invulnerability
+			While invulnerable, you gain {1}% rogue speed & damage but die at the end of the duration
+			'''
+	}
+}
+
+Configs.ThoriumConfigClient.Headers.ThrowerOptions: Rogue Options

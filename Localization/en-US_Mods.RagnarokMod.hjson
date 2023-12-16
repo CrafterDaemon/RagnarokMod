@@ -1,0 +1,67 @@
+Items: {
+	BladeOfRagnarok: {
+		DisplayName: Blade Of Ragnarok
+		Tooltip: An sword forged from the fires of the great calamity, Ragnarok
+	}
+
+	DrumStick: {
+		DisplayName: Drum Stick
+		Tooltip: ""
+	}
+
+	AuricTeslaFrilledHelmet: {
+		DisplayName: Auric Tesla Frilled Helmet
+		Tooltip:
+			'''
+			20% increased symphonic damage, critical strike chance, and wind instrument homing speed
+			5% increased movement speed
+			30% increased inspiration regeneration
+			+15 max inspiration
+			+2 string instrument projectile bounces
+			'''
+		SetBonus:
+			'''
+			Tarragon, Bloodflare, God Slayer, and Rhapsodist armor effects
+			Pressing the 'Armor Ability' key will trigger both Rhapsodist armor abilities
+			'''
+	}
+
+	BlazingDrumBeat: {
+		DisplayName: Blazing Drum Beat
+		Tooltip: ""
+	}
+
+	NinjaEmblem: {
+		DisplayName: Ninja Emblem
+		Tooltip: ""
+	}
+}
+
+Projectiles: {
+	NoProj.DisplayName: No Proj
+	BlazingDrumBeatFireSlash.DisplayName: Blazing Drum Beat Fire Slash
+}
+
+od: {
+	Items: {
+		AuricTeslaFrilledHelmet: {
+			DisplayName: Auric Tesla Frilled Helmet
+			Tooltip: ""
+		}
+
+		BlazingDrumBeat: {
+			DisplayName: Blazing Drum Beat
+			Tooltip: ""
+		}
+
+		DrumStick: {
+			DisplayName: Drum Stick
+			Tooltip: ""
+		}
+	}
+
+	Projectiles: {
+		BlazingDrumBeatFireSlash.DisplayName: Blazing Drum Beat Fire Slash
+		NoProj.DisplayName: No Proj
+	}
+}
