@@ -20,7 +20,7 @@ using CalamityMod.Buffs.StatDebuffs;
 using ThoriumMod.Buffs.Bard;
 using RagnarokMod.Utils;
 
-namespace RagnarokMod.Items
+namespace RagnarokMod.Items.BardItems
 {
     [AutoloadEquip(EquipType.Head)]
     public class AuricTeslaFrilledHelmet : BardItem
@@ -35,7 +35,7 @@ namespace RagnarokMod.Items
 
         public override void SetStaticDefaults()
         {
-            ArmorIDs.Head.Sets.PreventBeardDraw[((ModItem)this).Item.headSlot] = true;
+            ArmorIDs.Head.Sets.PreventBeardDraw[this.Item.headSlot] = true;
         }
         public override void SetBardDefaults()
         {
@@ -71,7 +71,7 @@ namespace RagnarokMod.Items
 
 
 
-            if (modPlayer.godSlayerDashHotKeyPressed || (player.dashDelay != 0 && modPlayer.LastUsedDashID == GodslayerArmorDash.ID))
+            if (modPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && modPlayer.LastUsedDashID == GodslayerArmorDash.ID)
                 modPlayer.DeferredDashID = GodslayerArmorDash.ID;
         }
 
@@ -82,10 +82,10 @@ namespace RagnarokMod.Items
             player.moveSpeed += 0.05f;
             ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
             thoriumPlayer.bardResourceMax2 += 15;
-            player.GetAttackSpeed((DamageClass)(object)ThoriumDamageBase<BardDamage>.Instance) += (float)Damage / 100f;
+            player.GetAttackSpeed((DamageClass)(object)ThoriumDamageBase<BardDamage>.Instance) += Damage / 100f;
             player.GetCritChance((DamageClass)(object)ThoriumDamageBase<BardDamage>.Instance) += Crit;
-            thoriumPlayer.inspirationRegenBonus += (float)InspirationRegen / 100f;
-            thoriumPlayer.bardHomingSpeedBonus += (float)WindHomingSpeed / 100f;
+            thoriumPlayer.inspirationRegenBonus += InspirationRegen / 100f;
+            thoriumPlayer.bardHomingSpeedBonus += WindHomingSpeed / 100f;
             thoriumPlayer.bardBounceBonus += 2;
             thoriumPlayer.armInspirator = true;
         }
