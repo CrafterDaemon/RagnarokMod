@@ -22,6 +22,7 @@ using RagnarokMod.Utils;
 
 namespace RagnarokMod.Items.BardItems
 {
+    //I love auric tesla armor
     [AutoloadEquip(EquipType.Head)]
     public class AuricTeslaFrilledHelmet : BardItem
     {

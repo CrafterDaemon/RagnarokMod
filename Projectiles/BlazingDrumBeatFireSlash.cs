@@ -9,6 +9,7 @@ using ThoriumMod.Projectiles.Bard;
 
 namespace RagnarokMod.Projectiles
 {
+    //Calamity Fire Slash, with 100% less scythe.
     public class BlazingDrumBeatFireSlash : BardProjectile, ILocalizedModType
     {
         public override void SetStaticDefaults()

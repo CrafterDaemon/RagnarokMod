@@ -1,9 +1,4 @@
 Items: {
-	BladeOfRagnarok: {
-		DisplayName: Blade Of Ragnarok
-		Tooltip: An sword forged from the fires of the great calamity, Ragnarok
-	}
-
 	DrumStick: {
 		DisplayName: Drum Stick
 		Tooltip: ""
@@ -31,15 +26,46 @@ Items: {
 		Tooltip: ""
 	}
 
-	NinjaEmblem: {
-		DisplayName: Ninja Emblem
-		Tooltip: ""
+	StormFeather: {
+		DisplayName: Storm Feather
+		Tooltip: A feather fallen from the Grand Thunder Bird, it crackles with lightning.
+	}
+
+	StrangeAlienMotherBoard: {
+		DisplayName: Strange Alien Mother Board
+		Tooltip: The motherboard from the Star Scouter. This technology is beyond your knowlege
+	}
+
+	BelchingSaxophoneOverride: {
+		DisplayName: Belching Saxophone
+		Tooltip:
+			'''
+			Fires an array of dirty reeds, music notes, and sulphuric bubbles
+			Doot
+			'''
+	}
+
+	AnahitasArpeggioOverride: {
+		DisplayName: Anahitas Arpeggio
+		Tooltip: Casts slow-moving treble clefs that confuse enemies
+	}
+
+	FaceMelterOverride: {
+		DisplayName: Face Melter
+		Tooltip:
+			'''
+			Fires music notes
+			Press <right> to summon an amplifier that shoots towards your mouse
+			'WOOO!! FAAAAAAANTASYY WORLDDDDD!'
+			'''
 	}
 }
 
 Projectiles: {
-	NoProj.DisplayName: No Proj
+	NoProj.DisplayName: No Projectile
 	BlazingDrumBeatFireSlash.DisplayName: Blazing Drum Beat Fire Slash
+	MelterAmp.DisplayName: Melter Amp
+	MelterAmpOverride.DisplayName: Melter Amp Override
 }
 
 od: {

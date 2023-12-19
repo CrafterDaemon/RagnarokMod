@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Terraria.ID;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace RagnarokMod.Items.Materials
@@ -11,7 +8,12 @@ namespace RagnarokMod.Items.Materials
     {
         public override void SetDefaults()
         {
-
+            Item.width = 10;
+            Item.height = 10;
+            Item.scale = 0.75f;
+            Item.maxStack = 9999;
+            Item.value = Item.sellPrice(silver: 1);
+            Item.rare = ItemRarityID.Blue;
         }
     }
 }

@@ -10,6 +10,7 @@ using CalamityMod.Items.Materials;
 namespace RagnarokMod.Items.BardItems;
 public class DrumStick : BardItem
 {
+    //bonk bonk bonk bonk
     public override BardInstrumentType InstrumentType => BardInstrumentType.Percussion;
 
     public override void SetStaticDefaults()

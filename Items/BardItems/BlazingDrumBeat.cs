@@ -10,6 +10,7 @@ using RagnarokMod.Projectiles;
 namespace RagnarokMod.Items.BardItems;
 public class BlazingDrumBeat : BardItem
 {
+    //flame slash go whoosh
     public override BardInstrumentType InstrumentType => BardInstrumentType.Percussion;
 
     public override void SetStaticDefaults()

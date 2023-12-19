@@ -12,6 +12,7 @@ namespace RagnarokMod.Projectiles
 {
     public class NoProj : BardProjectile
     {
+        //It's literally called NoProjectile, what'd you expect?
         public override BardInstrumentType InstrumentType => BardInstrumentType.Other;
 
         public override void SetBardDefaults()
