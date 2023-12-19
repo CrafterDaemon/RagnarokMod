@@ -1,0 +1,39 @@
+﻿Bard
+Crappy Mic, Damage scales with sound fx volume setting, Post-Providence
+Calamity Bell Bard Weapon(s?)
+God Slayer Bard Helmet
+Tarragon Bard Helmet
+Blood Flare Bard Helmet
+Silva Bard Helmet
+post ml inspiration upgrades
+
+Healer
+God Slayer Healer Helmet
+Silva Healer Helmet
+Blood Flare Healer Helmet
+Tarragon Healer Helmet
+Auric Tesla Healer Helmet
+
+Thrower
+Merge Thrower and Rogue classes to mitigate redundancy - done
+
+Summoner
+Draedon's Digital Cheerleader Summon:
+The digital cheerleader counts as a sentry summon, and only one can exist at a time (per player)
+Gives buffs to you and nearby allies depending on class.
+Bard: +2 seconds empowerment duration
+Healer: 5% more healing, and 5% more radiant damage
+Melee: 2.5% Damage Reduction and 10% melee attack speed
+Mage: 5% Magic damage and mana regen
+Ranger: 5% crit chance and 20% crit damage
+Summoner: +1 minion slot and 10% summon damage 
+Recipe: Strange Alien Motherboard (1), Strange Alien Tech (5), Draedon Power Cells (15), Astral Bars (10), Stardust (5)
+
+Merge boss progressions
+
+add thorium pillar fragments to Astrum Deus loot table
+add material "Strange Alien Motherboard" dropped from Star Scouter
+
+Buff Primordials / Abbysion to calamity post moon lord but pre Providence levels
+
+Make auric tesla armor require Primordial armor to craft, and give Auric tesla armor the Primordial armor set abilities
