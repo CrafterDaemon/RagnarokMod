@@ -1,0 +1,6 @@
+C:\Users\daemo\Documents\My Games\Terraria\tModLoader\ModSources\RagnarokMod\obj\Debug\net6.0\RagnarokMod.csproj.AssemblyReference.cache
+C:\Users\daemo\Documents\My Games\Terraria\tModLoader\ModSources\RagnarokMod\obj\Debug\net6.0\RagnarokMod.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\daemo\Documents\My Games\Terraria\tModLoader\ModSources\RagnarokMod\obj\Debug\net6.0\RagnarokMod.AssemblyInfoInputs.cache
+C:\Users\daemo\Documents\My Games\Terraria\tModLoader\ModSources\RagnarokMod\obj\Debug\net6.0\RagnarokMod.AssemblyInfo.cs
+C:\Users\daemo\Documents\My Games\Terraria\tModLoader\ModSources\RagnarokMod\obj\Debug\net6.0\RagnarokMod.csproj.CoreCompileInputs.cache
+C:\Users\daemo\Documents\My Games\Terraria\tModLoader\ModSources\RagnarokMod\obj\Debug\net6.0\RagnarokMod.sourcelink.json

@@ -33,14 +33,14 @@ namespace RagnarokMod.Common.GlobalItems
         public override void AddRecipes()
         {
             //initialize the recipe fetcher
-            GetRecipe finder = new GetRecipe();
+            GetRecipe finder = new();
             //go locate FaceMelter recipe
             finder.LookFor(ModContent.ItemType<FaceMelter>(), 1);
 
             //Disable original face melter recipe
             foreach (Recipe item in finder.Search())
             {
-                RecipeHelper helper = new RecipeHelper(item);
+                RecipeHelper helper = new(item);
                 helper.Disable();
             }
 
@@ -48,7 +48,7 @@ namespace RagnarokMod.Common.GlobalItems
             finder.LookFor(ModContent.ItemType<AngelTreads>(), 1);
             foreach (Recipe item in finder.Search())
             {
-                RecipeHelper helper = new RecipeHelper(item);
+                RecipeHelper helper = new(item);
                 helper.Remove(ItemID.TerrasparkBoots);
                 helper.Add(ModContent.ItemType<TerrariumParticleSprinters>(), 1);
             }
@@ -57,13 +57,13 @@ namespace RagnarokMod.Common.GlobalItems
             finder.LookFor(ItemID.Leather, 1);
             foreach (Recipe item in finder.Search())
             {
-                RecipeHelper helper = new RecipeHelper(item);
+                RecipeHelper helper = new(item);
                 helper.Disable();
             }
             //replacement recipes
-            SimpleRecipeHandler handler = new SimpleRecipeHandler();
-            handler.SimpleRecipe(ItemID.Leather, ItemID.RottenChunk, 5, TileID.WorkBenches);
-            handler.SimpleRecipe(ItemID.Leather, ItemID.Vertebrae, 5, TileID.WorkBenches);
+            SimpleRecipeHandler handler = new();
+            handler.SimpleRecipe(ItemID.Leather, ItemID.RottenChunk, 2, TileID.WorkBenches);
+            handler.SimpleRecipe(ItemID.Leather, ItemID.Vertebrae, 2, TileID.WorkBenches);
             //thorium potions
             handler.SimpleRecipe(ModContent.ItemType<AquaPotion>(), ItemID.BottledWater, 1, ModContent.ItemType<BloodOrb>(), 10, TileID.AlchemyTable);
             handler.SimpleRecipe(ModContent.ItemType<ArcanePotion>(), ItemID.BottledWater, 1, ModContent.ItemType<BloodOrb>(), 10, TileID.AlchemyTable);

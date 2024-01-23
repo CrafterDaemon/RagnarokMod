@@ -1,15 +1,12 @@
-﻿
-
-using Terraria.GameContent.ItemDropRules;
-using Terraria.ID;
+﻿using Terraria.GameContent.ItemDropRules;
 using Terraria;
 using Terraria.ModLoader;
-using System.Linq;
 using ThoriumMod.Items.BossTheGrandThunderBird;
 using RagnarokMod.Items.Materials;
 using ThoriumMod.Items.BossStarScouter;
-using ThoriumMod.Items.Sandstone;
-using ThoriumMod.NPCs.BossTheGrandThunderBird;
+using ThoriumMod.Items.BossGraniteEnergyStorm;
+using ThoriumMod.Items.BossBuriedChampion;
+using ThoriumMod.Items.BossBoreanStrider;
 
 namespace RagnarokMod.Common.GlobalItems
 {
@@ -25,6 +22,18 @@ namespace RagnarokMod.Common.GlobalItems
             if (item.type == ModContent.ItemType<StarScouterTreasureBag>())
             {
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<StrangeAlienMotherBoard>()));
+            }
+            if (item.type == ModContent.ItemType<GraniteEnergyStormTreasureBag>())
+            {
+                itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<EmpoweredGranite>(), 1, 1, 10));
+            }
+            if (item.type == ModContent.ItemType<BuriedChampionTreasureBag>())
+            {
+                itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<EnchantedMarble>(), 1, 1, 10));
+            }
+            if (item.type == ModContent.ItemType<BoreanStriderTreasureBag>())
+            {
+                itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<StriderFang>(), 1, 1, 10));
             }
         }
     }

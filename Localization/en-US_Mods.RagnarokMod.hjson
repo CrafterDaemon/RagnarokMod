@@ -59,6 +59,21 @@ Items: {
 			'WOOO!! FAAAAAAANTASYY WORLDDDDD!'
 			'''
 	}
+
+	EmpoweredGranite: {
+		DisplayName: Empowered Granite
+		Tooltip: ""
+	}
+
+	EnchantedMarble: {
+		DisplayName: Enchanted Marble
+		Tooltip: ""
+	}
+
+	StriderFang: {
+		DisplayName: Strider Fang
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
