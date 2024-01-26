@@ -24,7 +24,7 @@ namespace RagnarokMod.Items.BardItems
 {
     //I love auric tesla armor
     [AutoloadEquip(EquipType.Head)]
-    public class TarragonCowl : BardItem
+    public class AuricTeslaFrilledHelmet : BardItem
     {
         public static readonly int Damage = 20;
 

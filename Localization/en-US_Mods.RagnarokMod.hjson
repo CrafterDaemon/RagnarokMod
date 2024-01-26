@@ -74,6 +74,11 @@ Items: {
 		DisplayName: Strider Fang
 		Tooltip: ""
 	}
+
+	TarragonCowl: {
+		DisplayName: Tarragon Cowl
+		Tooltip: ""
+	}
 }
 
 Projectiles: {

@@ -20,25 +20,18 @@ using CalamityMod.Buffs.StatDebuffs;
 using ThoriumMod.Buffs.Bard;
 using RagnarokMod.Utils;
 
-namespace RagnarokMod.Items.BardItems
+namespace RagnarokMod.Items.HealerItems
 {
-    //I love auric tesla armor
     [AutoloadEquip(EquipType.Head)]
-    public class AuricTeslaFrilledHelmet : BardItem
+    public class TarragonCowl : ModItem
     {
-        public static readonly int Damage = 20;
-
-        public static readonly int Crit = 10;
-
-        public static readonly int InspirationRegen = 30;
-
-        public static readonly int WindHomingSpeed = 20;
+        
 
         public override void SetStaticDefaults()
         {
             ArmorIDs.Head.Sets.PreventBeardDraw[this.Item.headSlot] = true;
         }
-        public override void SetBardDefaults()
+        public override void SetDefaults()
         {
             Item.width = 18;
             Item.height = 18;
@@ -83,10 +76,6 @@ namespace RagnarokMod.Items.BardItems
             player.moveSpeed += 0.05f;
             ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
             thoriumPlayer.bardResourceMax2 += 15;
-            player.GetAttackSpeed((DamageClass)(object)ThoriumDamageBase<BardDamage>.Instance) += Damage / 100f;
-            player.GetCritChance((DamageClass)(object)ThoriumDamageBase<BardDamage>.Instance) += Crit;
-            thoriumPlayer.inspirationRegenBonus += InspirationRegen / 100f;
-            thoriumPlayer.bardHomingSpeedBonus += WindHomingSpeed / 100f;
             thoriumPlayer.bardBounceBonus += 2;
             thoriumPlayer.armInspirator = true;
         }
@@ -95,9 +84,8 @@ namespace RagnarokMod.Items.BardItems
         {
             CreateRecipe().
                 AddIngredient<SoloistHat>().
-                AddIngredient<InspiratorsHelmet>().
                 AddIngredient<AuricBar>(12).
-                AddTile<CosmicAnvil>().
+                AddTile(TileID.LunarCraftingStation).
                 Register();
         }
     }
