@@ -8,24 +8,18 @@
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
-    <AdditionalFiles Remove="ToDo.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <None Remove="Items\AuricTeslaFrilledHelmet.png" />
     <None Remove="Items\AuricTeslaFrilledHelmet_Head.png" />
+    <None Remove="Items\BardItems\hi_to_anyone_reading_this.png" />
+    <None Remove="Items\BardItems\TarragonShroud.png" />
     <None Remove="Items\BlazingDrunBeat.png" />
     <None Remove="Localization\en-US_Mods.ThoriumMod.hjson" />
     <None Remove="Projectiles\NoProj.png" />
-    <None Remove="ToDo.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="ToDo.txt" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="tModLoader.CodeAssist" Version="0.1.*" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Items\HealerItems\" />
     <Folder Include="Items\SummonerItems\" />
   </ItemGroup>
   <ItemGroup>

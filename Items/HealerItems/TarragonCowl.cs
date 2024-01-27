@@ -19,6 +19,7 @@ using Terraria.ID;
 using CalamityMod.Buffs.StatDebuffs;
 using ThoriumMod.Buffs.Bard;
 using RagnarokMod.Utils;
+using CalamityMod.Items.Armor.Tarragon;
 
 namespace RagnarokMod.Items.HealerItems
 {
@@ -42,7 +43,7 @@ namespace RagnarokMod.Items.HealerItems
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
         {
-            return body.type == ModContent.ItemType<AuricTeslaBodyArmor>() && legs.type == ModContent.ItemType<AuricTeslaCuisses>();
+            return body.type == ModContent.ItemType<TarragonBreastplate>() && legs.type == ModContent.ItemType<TarragonLeggings>();
         }
 
         public override void ArmorSetShadows(Player player)
@@ -55,9 +56,6 @@ namespace RagnarokMod.Items.HealerItems
             player.setBonus = this.GetLocalizedValue("SetBonus");
             var modPlayer = player.Calamity();
             modPlayer.tarraSet = true;
-            modPlayer.bloodflareSet = true;
-            modPlayer.godSlayer = true;
-            modPlayer.auricSet = true;
             player.thorns += 3f;
             player.ignoreWater = true;
             player.crimsonRegen = true;
