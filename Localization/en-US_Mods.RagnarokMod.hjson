@@ -79,6 +79,33 @@ Items: {
 		DisplayName: Tarragon Cowl
 		Tooltip: ""
 	}
+	
+	VictideHeadHealer: {
+		DisplayName: Victide Hood
+		Tooltip: 5% increased radiant damage but 5% decreased non-radiant damage
+		SetBonus:
+			'''
+			Enemies are less likely to target you
+			+3 life regen and 10% increased radiant but 10% decreased non-radiant damage while submerged in liquid
+			When using any weapon you have a 10% chance to throw a returning seashell projectile
+			This seashell does true damage and does not benefit from any damage class
+			Provides increased underwater mobility and slightly reduces breath loss in the abyss
+			'''
+	}
+
+	VictideHeadBard: {
+		DisplayName: Victide Hat
+		Tooltip: 5% increased symphonic damage
+		SetBonus:
+			'''
+			Enemies are less likely to target you
+			+3 life regen and 10% increased symphonic while submerged in liquid
+			When using any weapon you have a 10% chance to throw a returning seashell projectile
+			This seashell does true damage and does not benefit from any damage class
+			Provides increased underwater mobility and slightly reduces breath loss in the abyss
+			'''
+	}
+	
 }
 
 Projectiles: {
