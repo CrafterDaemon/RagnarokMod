@@ -1,90 +1,93 @@
-﻿using CalamityMod.Items.Materials;
-using CalamityMod.Rarities;
-using CalamityMod.Tiles.Furniture.CraftingStations;
+﻿using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 using Terraria;
+using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using CalamityMod.Items.Armor.Auric;
-using CalamityMod.CalPlayer.Dashes;
+using RagnarokMod;
+using RagnarokMod.Utils;
+using RagnarokMod.Projectiles;
 using CalamityMod;
 using CalamityMod.Items;
+using CalamityMod.Items.Armor;
+using CalamityMod.Items.Materials;
+using CalamityMod.CalPlayer;
+using CalamityMod.Items.Materials;
+using CalamityMod.Rarities;
 using ThoriumMod;
 using ThoriumMod.Items;
 using ThoriumMod.Utilities;
-using ThoriumMod.Items.BossThePrimordials.Rhapsodist;
-using System;
-using ThoriumMod.Empowerments;
-using Microsoft.Xna.Framework;
-using Terraria.ID;
-using CalamityMod.Buffs.StatDebuffs;
-using ThoriumMod.Buffs.Bard;
-using RagnarokMod.Utils;
-using CalamityMod.Items.Armor.Tarragon;
 
 namespace RagnarokMod.Items.HealerItems
 {
     [AutoloadEquip(EquipType.Head)]
-    public class TarragonCowl : ModItem
-    {
-        
-
+	public class TarragonCowl : ThoriumItem
+	{
+		private readonly Mod calamity = ModLoader.GetMod("CalamityMod");
         public override void SetStaticDefaults()
         {
-            ArmorIDs.Head.Sets.PreventBeardDraw[this.Item.headSlot] = true;
+			ArmorIDs.Head.Sets.PreventBeardDraw[base.Item.headSlot] = true;
         }
+
         public override void SetDefaults()
         {
             Item.width = 18;
             Item.height = 18;
-            Item.value = CalamityGlobalItem.Rarity15BuyPrice;
-            Item.defense = 34; //132
-            Item.rare = ModContent.RarityType<Violet>();
+            Item.value = CalamityGlobalItem.Rarity12BuyPrice;
+			Item.defense = 19;
+            Item.rare = ModContent.RarityType<Turquoise>();
+            
         }
-
-        public override bool IsArmorSet(Item head, Item body, Item legs)
+		
+		 public override bool IsArmorSet(Item head, Item body, Item legs)
         {
-            return body.type == ModContent.ItemType<TarragonBreastplate>() && legs.type == ModContent.ItemType<TarragonLeggings>();
+			calamity.TryFind<ModItem>("TarragonBreastplate", out ModItem tarragonb);
+			calamity.TryFind<ModItem>("TarragonLeggings", out ModItem tarragonl);
+			return (body.type == tarragonb.Type) && (legs.type == tarragonl.Type);
         }
-
-        public override void ArmorSetShadows(Player player)
-        {
-            player.armorEffectDrawOutlines = true;
-        }
+		
+		public override void ArmorSetShadows(Player player)
+		{
+			player.armorEffectDrawShadowSubtle = true;
+			player.armorEffectDrawOutlines = true;
+		}
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = this.GetLocalizedValue("SetBonus");
-            var modPlayer = player.Calamity();
-            modPlayer.tarraSet = true;
-            player.thorns += 3f;
-            player.ignoreWater = true;
-            player.crimsonRegen = true;
-            player.GetRagnarokModPlayer().auricBardSet = true;
-
-
-
-            if (modPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && modPlayer.LastUsedDashID == GodslayerArmorDash.ID)
-                modPlayer.DeferredDashID = GodslayerArmorDash.ID;
+			
+			player.setBonus = "Increased heart pickup range\nEnemies have a chance to drop extra hearts on death\nA Guardian healer will assist you in healing your allies\nHeals ally life equal to your bonus healing + 5 health\nand grants them the Guardian Healers Blessing for 20 seconds";
+			CalamityPlayer calamityPlayer = player.Calamity();
+			calamityPlayer.tarraSet = true;
+			player.GetRagnarokModPlayer().tarraHealer = true;
+			if (Main.myPlayer == player.whoAmI)
+			{
+				int type = ModContent.ProjectileType<GuardianHealer>();
+				if (player.whoAmI == Main.myPlayer && player.ownedProjectileCounts[type] < 1)
+				{
+					Projectile.NewProjectile(player.GetSource_FromThis("tarraHealer"), player.Center, Vector2.Zero, type, 0, 0f, player.whoAmI, 0f, 0f, 0f);
+				}
+			}
         }
 
         public override void UpdateEquip(Player player)
         {
-            var modPlayer = player.Calamity();
-            modPlayer.auricBoost = true;
-            player.moveSpeed += 0.05f;
-            ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
-            thoriumPlayer.bardResourceMax2 += 15;
-            thoriumPlayer.bardBounceBonus += 2;
-            thoriumPlayer.armInspirator = true;
+			player.endurance+=0.05f;
+			ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
+		    player.GetDamage(DamageClass.Generic) -= 0.6f;
+			player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) += 1.1f;
+			thoriumPlayer.healBonus += 8;
+			player.GetCritChance(ThoriumDamageBase<HealerDamage>.Instance) += 25f;
+			player.statManaMax2 += 100;
+			player.manaCost *= 0.85f;
+			
         }
-
         public override void AddRecipes()
         {
-            CreateRecipe().
-                AddIngredient<SoloistHat>().
-                AddIngredient<AuricBar>(12).
-                AddTile(TileID.LunarCraftingStation).
-                Register();
+			Recipe recipe = Recipe.Create(Item.type);
+			recipe.AddIngredient(ModContent.ItemType<UelibloomBar>(), 7);
+			recipe.AddIngredient(ModContent.ItemType<DivineGeode>(), 6);
+			recipe.AddTile(TileID.LunarCraftingStation);
+			recipe.Register();
         }
     }
 }

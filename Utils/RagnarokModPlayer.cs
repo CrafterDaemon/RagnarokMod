@@ -17,6 +17,7 @@ namespace RagnarokMod.Utils
     {
         //this is most likely only gonna be for armor set abilities.
         public bool auricBardSet = false;
+		public bool tarraHealer = false;
 
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
@@ -39,5 +40,11 @@ namespace RagnarokMod.Utils
 
             }
         }
+		
+		
+		public override void ResetEffects()
+		{
+				this.tarraHealer = false;
+		}
     }
 }

@@ -1,3 +1,10 @@
+Buffs: {
+	GuardianHealerBeamBuff: {
+		DisplayName: Guardian Healers Blessing
+		Description: Addtional 10% damage reduction and 5 lifeRecovery for 20 seconds
+	}
+}
+
 Items: {
 	DrumStick: {
 		DisplayName: Drum Stick
@@ -77,6 +84,19 @@ Items: {
 
 	TarragonCowl: {
 		DisplayName: Tarragon Cowl
+		Tooltip:
+			'''
+			5% increased damage reduction
+			60% decreased non-radiant damage
+			50% increased radiant damage and 25% increased criticial radiant strike chance
+			Bonus healing increased by 8
+			100 additional mana
+			Mana usage reduced by 15%
+			'''
+	}
+
+	TarragonHat: {
+		DisplayName: Tarragon Hat
 		Tooltip: ""
 	}
 
@@ -110,11 +130,6 @@ Items: {
 		DisplayName: Equivalent Exchange
 		Tooltip: ""
 	}
-
-	MarbleScythe: {
-		DisplayName: Marble Scythe
-		Tooltip: ""
-	}
 }
 
 Projectiles: {
@@ -122,7 +137,8 @@ Projectiles: {
 	BlazingDrumBeatFireSlash.DisplayName: Blazing Drum Beat Fire Slash
 	MelterAmp.DisplayName: Melter Amp
 	MelterAmpOverride.DisplayName: Melter Amp Override
-	MarbleScythePro.DisplayName: Marble Scythe Pro
+	GuardianHealer.DisplayName: Guardian Healer
+	GuardianHealerBeam.DisplayName: Guardian Healer Beam
 }
 
 od: {

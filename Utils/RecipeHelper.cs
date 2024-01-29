@@ -44,22 +44,6 @@ namespace RagnarokMod.Utils
             }
             return recipelist;
         }
-
-        public List<Recipe> SearchByIngredient()
-        {
-            //locate the recipe
-            List<Recipe> recipelist = new List<Recipe>();
-
-            foreach (Recipe recipe in Recipes)
-            {
-                if (recipe.HasIngredient(Result))
-                {
-                    recipe.ReplaceResult(recipe.createItem.type, Stack);
-                    recipelist.Add(recipe);
-                }
-            }
-            return recipelist;
-        }
     }
 
     internal class RecipeHelper
