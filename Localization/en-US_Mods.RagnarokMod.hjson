@@ -79,7 +79,7 @@ Items: {
 		DisplayName: Tarragon Cowl
 		Tooltip: ""
 	}
-	
+
 	VictideHeadHealer: {
 		DisplayName: Victide Hood
 		Tooltip: 5% increased radiant damage but 5% decreased non-radiant damage
@@ -105,7 +105,11 @@ Items: {
 			Provides increased underwater mobility and slightly reduces breath loss in the abyss
 			'''
 	}
-	
+
+	EquivalentExchange: {
+		DisplayName: Equivalent Exchange
+		Tooltip: ""
+	}
 }
 
 Projectiles: {

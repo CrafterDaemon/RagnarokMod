@@ -7,6 +7,8 @@ using ThoriumMod.Items.BossStarScouter;
 using ThoriumMod.Items.BossGraniteEnergyStorm;
 using ThoriumMod.Items.BossBuriedChampion;
 using ThoriumMod.Items.BossBoreanStrider;
+using CalamityMod.Items.TreasureBags;
+using RagnarokMod.Items.HealerItems;
 
 namespace RagnarokMod.Common.GlobalItems
 {
@@ -34,6 +36,10 @@ namespace RagnarokMod.Common.GlobalItems
             if (item.type == ModContent.ItemType<BoreanStriderTreasureBag>())
             {
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<StriderFang>(), 1, 1, 10));
+            }
+            if (item.type == ModContent.ItemType<PerforatorBag>())
+            {
+                itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<EquivalentExchange>(), 3));
             }
         }
     }

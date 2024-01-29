@@ -1,4 +1,5 @@
 ﻿using CalamityMod.Items.Accessories;
+using CalamityMod.Items.Accessories.Wings;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Systems;
@@ -44,12 +45,35 @@ namespace RagnarokMod.Common.GlobalItems
                 helper.Disable();
             }
 
-            //Replace Terraspark Boots in Angel Treads with Terrarium Particle Sprinters
-            finder.LookFor(ModContent.ItemType<AngelTreads>(), 1);
+            foreach (Recipe item in finder.SearchByIngredient())
+            {
+                RecipeHelper helper = new(item);
+                helper.Remove(ModContent.ItemType<FaceMelter>());
+                helper.Add(ModContent.ItemType<FaceMelterOverride>(), 1);
+            }
+            foreach (Recipe item in finder.SearchByIngredient())
+            {
+                RecipeHelper helper = new(item);
+                helper.Remove(ModContent.ItemType<AnahitasArpeggio>());
+                helper.Add(ModContent.ItemType<AnahitasArpeggioOverride>(), 1);
+            }
+            foreach (Recipe item in finder.SearchByIngredient())
+            {
+                RecipeHelper helper = new(item);
+                helper.Remove(ModContent.ItemType<BelchingSaxophone>());
+                helper.Add(ModContent.ItemType<BelchingSaxophoneOverride>(), 1);
+            }
+
+            finder.LookFor(ModContent.ItemType<TerrariumParticleSprinters>(), 1);
             foreach (Recipe item in finder.Search())
             {
                 RecipeHelper helper = new(item);
                 helper.Remove(ItemID.TerrasparkBoots);
+            }
+            finder.LookFor(ModContent.ItemType<TracersCelestial>(), 1);
+            foreach (Recipe item in finder.Search())
+            {
+                RecipeHelper helper = new(item);
                 helper.Add(ModContent.ItemType<TerrariumParticleSprinters>(), 1);
             }
 

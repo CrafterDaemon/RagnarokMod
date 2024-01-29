@@ -11,6 +11,8 @@ using Ragnarok.Items;
 using ThoriumMod.NPCs.BossGraniteEnergyStorm;
 using ThoriumMod.NPCs.BossBuriedChampion;
 using ThoriumMod.NPCs.BossBoreanStrider;
+using CalamityMod.NPCs.Perforator;
+using RagnarokMod.Items.HealerItems;
 
 namespace RagnarokMod.Common.GlobalNPCs
 {
@@ -43,6 +45,10 @@ namespace RagnarokMod.Common.GlobalNPCs
             if (npc.type == ModContent.NPCType<BoreanStrider>())
             {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<StriderFang>(), 1, 1, 4));
+            }
+            if (npc.type == ModContent.NPCType<PerforatorHive>())
+            {
+                npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<EquivalentExchange>(), 3, -1));
             }
         }
     }
