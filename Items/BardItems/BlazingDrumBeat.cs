@@ -5,7 +5,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 using CalamityMod.Items.Materials;
-using RagnarokMod.Projectiles;
+using RagnarokMod.Projectiles.BardPro;
 
 namespace RagnarokMod.Items.BardItems;
 public class BlazingDrumBeat : BardItem
