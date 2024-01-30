@@ -45,19 +45,19 @@ namespace RagnarokMod.Common.GlobalItems
                 helper.Disable();
             }
 
-            foreach (Recipe item in finder.SearchByIngredient())
+            foreach (Recipe item in finder.Search())
             {
                 RecipeHelper helper = new(item);
                 helper.Remove(ModContent.ItemType<FaceMelter>());
                 helper.Add(ModContent.ItemType<FaceMelterOverride>(), 1);
             }
-            foreach (Recipe item in finder.SearchByIngredient())
+            foreach (Recipe item in finder.Search())
             {
                 RecipeHelper helper = new(item);
                 helper.Remove(ModContent.ItemType<AnahitasArpeggio>());
                 helper.Add(ModContent.ItemType<AnahitasArpeggioOverride>(), 1);
             }
-            foreach (Recipe item in finder.SearchByIngredient())
+            foreach (Recipe item in finder.Search())
             {
                 RecipeHelper helper = new(item);
                 helper.Remove(ModContent.ItemType<BelchingSaxophone>());

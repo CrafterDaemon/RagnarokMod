@@ -130,6 +130,21 @@ Items: {
 		DisplayName: Equivalent Exchange
 		Tooltip: ""
 	}
+
+	ProfanedScythe: {
+		Tooltip: ""
+		DisplayName: Profaned Scythe
+	}
+
+	MarbleScythe: {
+		Tooltip: ""
+		DisplayName: Marble Scythe
+	}
+
+	ScoriaDualscythe: {
+		Tooltip: ""
+		DisplayName: Scoria Dualscythe
+	}
 }
 
 Projectiles: {
@@ -139,6 +154,9 @@ Projectiles: {
 	MelterAmpOverride.DisplayName: Melter Amp Override
 	GuardianHealer.DisplayName: Guardian Healer
 	GuardianHealerBeam.DisplayName: Guardian Healer Beam
+	ProfanedScythePro.DisplayName: Profaned Scythe Pro
+	MarbleScythePro.DisplayName: Marble Scythe Pro
+	ScoriaDualscythePro.DisplayName: Scoria Dualscythe Pro
 }
 
 od: {

@@ -20,7 +20,7 @@ using RagnarokMod.Projectiles.HealerPro;
 
 namespace RagnarokMod.Items.HealerItems
 {
-    public class ProfanedScythe : ScytheItem
+    public class ScoriaDualscythe : ScytheItem
     {
         public override void SetStaticDefaults()
         {
@@ -32,11 +32,11 @@ namespace RagnarokMod.Items.HealerItems
             SetDefaultsToScythe();
             base.Item.damage = 464;
             scytheSoulCharge = 3;
-            base.Item.width = 86;
-            base.Item.height = 90;
+            base.Item.width = 114;
+            base.Item.height = 116;
             base.Item.value = Item.sellPrice(0, 28, 0);
             base.Item.rare = ModContent.RarityType<Turquoise>();
-            base.Item.shoot = ModContent.ProjectileType<ProfanedScythePro>();
+            base.Item.shoot = ModContent.ProjectileType<ScoriaDualscythePro>();
         }
     }
 }
