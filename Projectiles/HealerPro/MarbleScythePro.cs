@@ -1,11 +1,15 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CalamityMod.Items.Critters;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Terraria.ID;
+using Terraria.GameContent;
 using ThoriumMod;
 using ThoriumMod.Projectiles.Scythe;
+using CalamityMod.Items.Weapons.Melee;
 
 namespace RagnarokMod.Projectiles.HealerPro
 {

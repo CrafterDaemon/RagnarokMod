@@ -145,6 +145,11 @@ Items: {
 		Tooltip: ""
 		DisplayName: Scoria Dualscythe
 	}
+
+	MarbleClaymore: {
+		DisplayName: Marble Claymore
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -157,6 +162,7 @@ Projectiles: {
 	ProfanedScythePro.DisplayName: Profaned Scythe Pro
 	MarbleScythePro.DisplayName: Marble Scythe Pro
 	ScoriaDualscythePro.DisplayName: Scoria Dualscythe Pro
+	MarbleStar.DisplayName: Marble Star
 }
 
 od: {
