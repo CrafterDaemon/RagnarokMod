@@ -145,11 +145,6 @@ Items: {
 		Tooltip: ""
 		DisplayName: Scoria Dualscythe
 	}
-
-	AstralScythe: {
-		DisplayName: Astral Scythe
-		Tooltip: ""
-	}
 }
 
 Projectiles: {
@@ -162,8 +157,6 @@ Projectiles: {
 	ProfanedScythePro.DisplayName: Profaned Scythe Pro
 	MarbleScythePro.DisplayName: Marble Scythe Pro
 	ScoriaDualscythePro.DisplayName: Scoria Dualscythe Pro
-	AstralScythePro.DisplayName: Astral Scythe Pro
-	AstralScytheStarPro.DisplayName: Astral Scythe Star Pro
 }
 
 od: {

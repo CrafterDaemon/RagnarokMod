@@ -11,6 +11,11 @@ using Terraria.ID;
 using RagnarokMod.Items.Materials;
 using RagnarokMod.Projectiles.HealerPro;
 using ThoriumMod;
+using CalamityMod;
+using Terraria.Audio;
+using Terraria.DataStructures;
+using Microsoft.Xna.Framework;
+using CalamityMod.Projectiles.Magic;
 
 namespace RagnarokMod.Items.HealerItems
 {
@@ -47,6 +52,7 @@ namespace RagnarokMod.Items.HealerItems
             base.Item.rare = ItemRarityID.Orange;
             base.Item.shoot = ModContent.ProjectileType<MarbleScythePro>();
         }
+
 
         public override void AddRecipes()
         {
