@@ -18,7 +18,8 @@ namespace RagnarokMod.Utils
         //this is most likely only gonna be for armor set abilities.
         public bool auricBardSet = false;
 		public bool tarraHealer = false;
-
+		public bool tarraBard = false;
+		
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
             if (ThoriumHotkeySystem.ArmorKey.JustPressed)
@@ -41,10 +42,21 @@ namespace RagnarokMod.Utils
             }
         }
 		
+		public override void PostUpdateMiscEffects() 
+		{
+			if (tarraBard) 
+			{
+				ThoriumPlayer thoriumPlayer = ThoriumMod.Utilities.PlayerHelper.GetThoriumPlayer(base.Player);
+				thoriumPlayer.setOrnate = true;
+				thoriumPlayer.bardBuffDuration = (short)(thoriumPlayer.bardBuffDuration * 1.5);
+			}
+		}
+		
 		
 		public override void ResetEffects()
 		{
 				this.tarraHealer = false;
+				this.tarraBard = false;
 		}
     }
 }
