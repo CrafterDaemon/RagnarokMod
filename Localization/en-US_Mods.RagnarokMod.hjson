@@ -10,6 +10,40 @@ Items: {
 		DisplayName: Drum Stick
 		Tooltip: ""
 	}
+	
+	AerospecBard: {
+		DisplayName: Aerospec Bard Gear
+		Tooltip:
+			'''
+			5% increased playing and inspiration regeneration speed
+			+2 second to empowerment duration
+			'''
+		SetBonus:
+			'''
+			Taking over 25 damage in one hit will cause a spread of homing feathers to fall
+			Allows you to fall more quickly and disables fall damage
+			6% increased symphonic damage
+			7% increased movement speed
+			'''
+	}
+
+	AerospecHealer: {
+		DisplayName: Aerospec Healer Gear
+		Tooltip:
+			'''
+			20% decreased non-radiant damage
+			20% increased radiant damage
+			+20 maximum mana 
+			'''
+		SetBonus:
+			'''
+			Taking over 25 damage in one hit will cause a spread of homing feathers to fall
+			Allows you to fall more quickly and disables fall damage
+			Healing speels heal an additional 2 life
+			10% increased movement speed
+			'''
+	}
+	
 
 	AuricTeslaFrilledHelmet: {
 		DisplayName: Auric Tesla Frilled Helmet
