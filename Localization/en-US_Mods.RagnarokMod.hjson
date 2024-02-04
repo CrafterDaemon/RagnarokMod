@@ -95,9 +95,17 @@ Items: {
 			'''
 	}
 
-	TarragonHat: {
-		DisplayName: Tarragon Hat
-		Tooltip: ""
+	TarragonShroud: {
+		DisplayName: Tarragon Shroud
+		Tooltip:
+			'''
+			5% increased damage reduction
+			30% increased symphonic damage and 25% increased criticial symphonic strike chance
+			20% increased playing speed
+			Greatly increased inspiration regen
+			+15% chance for inspiration notes to drop from enemies
+			+5 maximum inspiration
+			'''
 	}
 
 	VictideHeadHealer: {
