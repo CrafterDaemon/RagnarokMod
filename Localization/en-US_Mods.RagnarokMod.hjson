@@ -111,6 +111,43 @@ Items: {
 		Tooltip: ""
 	}
 
+    StatigelHeadBard: {
+		DisplayName: Statigel Hat
+		Tooltip:
+			'''
+			10% increased symphonic damage
+			7% increased symphonic critical strike chance
+			'''
+		SetBonus:
+			'''
+			When you take over 100 damage in one hit you become immune to damage for an extended period of time
+			Grants an extra jump and increased jump height
+			12% increased jump speed
+			+10% inspiration note drop chance
+			+5% inspiration regeneration rate
+			Symphonic empowerments last 2 seconds longer
+			'''
+	}
+
+	StatigelHeadHealer: {
+		DisplayName: Statigel Hood
+		Tooltip:
+			'''
+			10% decreased non-radiant damage
+			10% increased radiant damage
+			7% increased radiant critical strike chance
+			'''
+		SetBonus:
+			'''
+			When you take over 100 damage in one hit you become immune to damage for an extended period of time
+			Grants an extra jump and increased jump height
+			12% increased jump speed
+			Healing spells heal an additional 2 life
+			+20 max mana
+			5% decreased mana usage
+			'''
+	}
+
 	StriderFang: {
 		DisplayName: Strider Fang
 		Tooltip: ""
