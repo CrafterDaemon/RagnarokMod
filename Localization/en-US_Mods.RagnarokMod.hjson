@@ -10,6 +10,40 @@ Items: {
 		DisplayName: Drum Stick
 		Tooltip: ""
 	}
+	
+	AerospecBard: {
+		DisplayName: Aerospec Bard Gear
+		Tooltip:
+			'''
+			5% increased playing and inspiration regeneration speed
+			+2 second to empowerment duration
+			'''
+		SetBonus:
+			'''
+			Taking over 25 damage in one hit will cause a spread of homing feathers to fall
+			Allows you to fall more quickly and disables fall damage
+			6% increased symphonic damage
+			7% increased movement speed
+			'''
+	}
+
+	AerospecHealer: {
+		DisplayName: Aerospec Healer Gear
+		Tooltip:
+			'''
+			20% decreased non-radiant damage
+			20% increased radiant damage
+			+20 maximum mana 
+			'''
+		SetBonus:
+			'''
+			Taking over 25 damage in one hit will cause a spread of homing feathers to fall
+			Allows you to fall more quickly and disables fall damage
+			Healing speels heal an additional 2 life
+			10% increased movement speed
+			'''
+	}
+	
 
 	AuricTeslaFrilledHelmet: {
 		DisplayName: Auric Tesla Frilled Helmet
@@ -77,6 +111,43 @@ Items: {
 		Tooltip: ""
 	}
 
+    StatigelHeadBard: {
+		DisplayName: Statigel Hat
+		Tooltip:
+			'''
+			10% increased symphonic damage
+			7% increased symphonic critical strike chance
+			'''
+		SetBonus:
+			'''
+			When you take over 100 damage in one hit you become immune to damage for an extended period of time
+			Grants an extra jump and increased jump height
+			12% increased jump speed
+			+10% inspiration note drop chance
+			+5% inspiration regeneration rate
+			Symphonic empowerments last 2 seconds longer
+			'''
+	}
+
+	StatigelHeadHealer: {
+		DisplayName: Statigel Hood
+		Tooltip:
+			'''
+			10% decreased non-radiant damage
+			10% increased radiant damage
+			7% increased radiant critical strike chance
+			'''
+		SetBonus:
+			'''
+			When you take over 100 damage in one hit you become immune to damage for an extended period of time
+			Grants an extra jump and increased jump height
+			12% increased jump speed
+			Healing spells heal an additional 2 life
+			+20 max mana
+			5% decreased mana usage
+			'''
+	}
+
 	StriderFang: {
 		DisplayName: Strider Fang
 		Tooltip: ""
@@ -95,9 +166,17 @@ Items: {
 			'''
 	}
 
-	TarragonHat: {
-		DisplayName: Tarragon Hat
-		Tooltip: ""
+	TarragonShroud: {
+		DisplayName: Tarragon Shroud
+		Tooltip:
+			'''
+			5% increased damage reduction
+			30% increased symphonic damage and 25% increased criticial symphonic strike chance
+			20% increased playing speed
+			Greatly increased inspiration regen
+			+15% chance for inspiration notes to drop from enemies
+			+5 maximum inspiration
+			'''
 	}
 
 	VictideHeadHealer: {

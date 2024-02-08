@@ -95,10 +95,8 @@ namespace RagnarokMod.Common.GlobalProjectiles
 		
 		public override void ModifyHitPlayer (Projectile projectile, Player target, ref Player.HurtModifiers modifier) 
 		{
-			
 			float currentDamageModifier = modifier.IncomingDamageMultiplier.Value;
 			float desiredDamageModifier;
-			
 			if(CalamityGamemodeCheck.isDeath) 
 			{
 				desiredDamageModifier = currentDamageModifier +  0.35f;
@@ -111,11 +109,10 @@ namespace RagnarokMod.Common.GlobalProjectiles
 			{
 				return;
 			}	
-			
-			if (thorium_projectile_list.Contains(projectile.ModProjectile.Name)) 
+			if (thorium_projectile_list.Contains(projectile.Name)) 
 			{
 				modifier.IncomingDamageMultiplier *= desiredDamageModifier / currentDamageModifier;
-			}		
+			}
 		}
 	}
 }
