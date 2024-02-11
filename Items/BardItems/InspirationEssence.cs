@@ -4,17 +4,13 @@ using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using CalamityMod;
-using CalamityMod.Items;
-using CalamityMod.Items.Armor.Victide;
-using CalamityMod.Items.Materials;
-using CalamityMod.CalPlayer;
-using CalamityMod.Items.Materials;
-using CalamityMod.Rarities;
-using CalamityMod.CalPlayer;
 using ThoriumMod;
 using ThoriumMod.Items;
 using ThoriumMod.Utilities;
+using ThoriumMod.Items.BardItems;
+using ThoriumMod.Items.BossThePrimordials.Aqua;
+using ThoriumMod.Items.BossThePrimordials.Slag;
+using ThoriumMod.Items.BossThePrimordials.Omni;
 using RagnarokMod;
 
 namespace RagnarokMod.Items.BardItems

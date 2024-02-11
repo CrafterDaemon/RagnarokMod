@@ -11,8 +11,12 @@ using Ragnarok.Items;
 using ThoriumMod.NPCs.BossGraniteEnergyStorm;
 using ThoriumMod.NPCs.BossBuriedChampion;
 using ThoriumMod.NPCs.BossBoreanStrider;
+using ThoriumMod.Items.BardItems;
+using ThoriumMod.Items.HealerItems;
+using ThoriumMod.Items.ThrownItems;
 using CalamityMod.NPCs.Perforator;
 using RagnarokMod.Items.HealerItems;
+using CalamityMod.NPCs.AstrumDeus;
 
 namespace RagnarokMod.Common.GlobalNPCs
 {
@@ -50,6 +54,13 @@ namespace RagnarokMod.Common.GlobalNPCs
             {
                 npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<EquivalentExchange>(), 3, -1));
             }
+			if (npc.type == ModContent.NPCType<AstrumDeusHead>()) 
+			{
+				LeadingConditionRule lastWorm = npcLoot.DefineConditionalDropSet((DropAttemptInfo info) => !AstrumDeusHead.ShouldNotDropThings(info.npc));
+				lastWorm.Add(DropHelper.NormalVsExpertQuantity(ModContent.ItemType<CelestialFragment>(), 1, 16, 24, 20, 32), false);
+				lastWorm.Add(DropHelper.NormalVsExpertQuantity(ModContent.ItemType<ShootingStarFragment>(), 1, 16, 24, 20, 32), false);
+				lastWorm.Add(DropHelper.NormalVsExpertQuantity(ModContent.ItemType<WhiteDwarfFragment>(), 1, 16, 24, 20, 32), false);
+			}
         }
     }
 }

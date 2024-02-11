@@ -10,9 +10,9 @@ Items: {
 		DisplayName: Drum Stick
 		Tooltip: ""
 	}
-	
+
 	AerospecBard: {
-		DisplayName: Aerospec Bard Gear
+		DisplayName: Aerospec Shovel Hat
 		Tooltip:
 			'''
 			5% increased playing and inspiration regeneration speed
@@ -28,7 +28,7 @@ Items: {
 	}
 
 	AerospecHealer: {
-		DisplayName: Aerospec Healer Gear
+		DisplayName: Aerospec Hood
 		Tooltip:
 			'''
 			20% decreased non-radiant damage
@@ -43,7 +43,6 @@ Items: {
 			10% increased movement speed
 			'''
 	}
-	
 
 	AuricTeslaFrilledHelmet: {
 		DisplayName: Auric Tesla Frilled Helmet
@@ -111,7 +110,7 @@ Items: {
 		Tooltip: ""
 	}
 
-    StatigelHeadBard: {
+	StatigelHeadBard: {
 		DisplayName: Statigel Hat
 		Tooltip:
 			'''
@@ -224,6 +223,18 @@ Items: {
 		Tooltip: ""
 		DisplayName: Scoria Dualscythe
 	}
+
+	InspirationEssence.DisplayName: Inspiration Essence
+
+	AstralScythe: {
+		DisplayName: Astral Scythe
+		Tooltip: ""
+	}
+
+	MarbleClaymore: {
+		DisplayName: Marble Claymore
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -236,6 +247,9 @@ Projectiles: {
 	ProfanedScythePro.DisplayName: Profaned Scythe Pro
 	MarbleScythePro.DisplayName: Marble Scythe Pro
 	ScoriaDualscythePro.DisplayName: Scoria Dualscythe Pro
+	AstralScythePro.DisplayName: Astral Scythe Pro
+	AstralScytheStarPro.DisplayName: Astral Scythe Star Pro
+	MarbleStar.DisplayName: Marble Star
 }
 
 od: {
