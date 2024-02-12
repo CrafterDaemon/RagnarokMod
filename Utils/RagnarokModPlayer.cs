@@ -11,6 +11,7 @@ using System;
 using ThoriumMod;
 using ThoriumMod.Utilities;
 using RagnarokMod.Buffs;
+using RagnarokMod.Items.BardItems;
 
 namespace RagnarokMod.Utils
 {
@@ -21,6 +22,7 @@ namespace RagnarokMod.Utils
 		public bool tarraHealer = false;
 		public bool tarraBard = false;
 		public bool daedalusHealer = false;
+		public bool daedalusBard = false;
 		
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
@@ -41,13 +43,22 @@ namespace RagnarokMod.Utils
                     }
                 }
 				
-				if (daedalusHealer && !base.Player.HasBuff(ModContent.BuffType<AntarcticReinforcementDebuff>()) && base.Player.CheckMana(100, true, false)) 
+				if (daedalusHealer && !base.Player.HasBuff(ModContent.BuffType<AntarcticExhaustionDebuff>()) && base.Player.CheckMana(100, true, false)) 
 				{
+					SoundEngine.PlaySound(ThoriumSounds.PassbySurge, (Vector2?)null, (SoundUpdateCallback)null);
 					ThoriumPlayer thoriumPlayer = ThoriumMod.Utilities.PlayerHelper.GetThoriumPlayer(base.Player);
-					this.Player.AddBuff(ModContent.BuffType<AntarcticReinforcementDebuff>(), 3600, true, false);
+					this.Player.AddBuff(ModContent.BuffType<AntarcticExhaustionDebuff>(), 3600, true, false);
 					this.Player.AddBuff(ModContent.BuffType<AntarcticReinforcementBuff>(), 900, true, false);
 					thoriumPlayer.shieldHealth += 50;
 					this.Player.statLife += 50;
+				}
+				
+				if(daedalusBard && !base.Player.HasBuff(ModContent.BuffType<AntarcticExhaustionDebuff>()) && BardItem.ConsumeInspiration(((ModPlayer)this).Player, 12)) 
+				{
+					SoundEngine.PlaySound(ThoriumSounds.PassbySurge, (Vector2?)null, (SoundUpdateCallback)null);
+					ModContent.GetInstance<DaedalusHeadBard>().NetApplyEmpowerments(base.Player, 0);	
+					this.Player.AddBuff(ModContent.BuffType<AntarcticExhaustionDebuff>(), 3600, true, false);
+					this.Player.AddBuff(ModContent.BuffType<AntarcticCreativityBuff>(), 900, true, false);
 				}
             }
         }
@@ -67,6 +78,7 @@ namespace RagnarokMod.Utils
 				this.tarraHealer = false;
 				this.tarraBard = false;
 				this.daedalusHealer = false;
+				this.daedalusBard = false;
 		}
     }
 }

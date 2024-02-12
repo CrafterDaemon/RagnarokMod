@@ -1,13 +1,19 @@
 Buffs: {
-	AntarcticReinforcementBuff: {
-		DisplayName: Antarctic Reinforcement
-		Description: +8 defense, you healing spell will heal for an additiona 2 life
+	AntarcticCreativityBuff: {
+		DisplayName: Antarctic Creativity
+		Description: +15% inspiration regeneration rate and +10% increased symphonic playing speed
 	}
 
-	AntarcticReinforcementDebuff: {
-		DisplayName: Antarctic Exhaustion
-		Description: You can not reinforce again
+	AntarcticReinforcementBuff: {
+		DisplayName: Antarctic Reinforcement
+		Description: +8 defense, you healing spells will heal for an additional 2 life
 	}
+
+	AntarcticExhaustionDebuff: {
+		DisplayName: Antarctic Exhaustion
+		Description: You can not buff again
+	}
+
 	GuardianHealerBeamBuff: {
 		DisplayName: Guardian Healers Blessing
 		Description: Addtional 10% damage reduction and 5 lifeRecovery for 20 seconds
@@ -74,7 +80,24 @@ Items: {
 		DisplayName: Blazing Drum Beat
 		Tooltip: ""
 	}
-	
+
+	DaedalusHeadBard: {
+		DisplayName: Daedalus Head Bard
+		Tooltip:
+			'''
+			12% increased symphonic damage and 5% increased symphonic critical strike chance
+			+2 max inspiration
+			'''
+		SetBonus:
+			'''
+			+10% increased inspiration regeneration speed
+			Pressing the 'Armor Ability' key will grant you and your allies attack speed and damage I for 15 seconds
+			You also will be granted the Antarctic Creativity Buff
+			While buffed you will be granted +15% inspiration speed and 10% increased symphonic playing speed
+			Costs 12 inspiration
+			'''
+	}
+
 	DaedalusHeadHealer: {
 		DisplayName: Daedalus Head Healer
 		Tooltip:
@@ -89,6 +112,7 @@ Items: {
 			Healing speels heal an additional 3 life
 			Pressing the 'Armor Ability' key will shield you for 50 life and grants you the Antarctic Reinforcement buff for 15 seconds
 			While buffed you will be granted +8 defense and your healing spells will heal for an additional 2 life
+			Costs 100 mana
 			'''
 	}
 
