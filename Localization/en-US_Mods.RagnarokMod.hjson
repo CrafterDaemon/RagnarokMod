@@ -1,4 +1,13 @@
 Buffs: {
+	AntarcticReinforcementBuff: {
+		DisplayName: Antarctic Reinforcement
+		Description: +8 defense, you healing spell will heal for an additiona 2 life
+	}
+
+	AntarcticReinforcementDebuff: {
+		DisplayName: Antarctic Exhaustion
+		Description: You can not reinforce again
+	}
 	GuardianHealerBeamBuff: {
 		DisplayName: Guardian Healers Blessing
 		Description: Addtional 10% damage reduction and 5 lifeRecovery for 20 seconds
@@ -64,6 +73,23 @@ Items: {
 	BlazingDrumBeat: {
 		DisplayName: Blazing Drum Beat
 		Tooltip: ""
+	}
+	
+	DaedalusHeadHealer: {
+		DisplayName: Daedalus Head Healer
+		Tooltip:
+			'''
+			10% reduced mana usage
+			15% decreased non-radiant damage
+			15% increased radiant damage and 7% increased radiant critical strike chance
+			+40 maximum mana
+			'''
+		SetBonus:
+			'''
+			Healing speels heal an additional 3 life
+			Pressing the 'Armor Ability' key will shield you for 50 life and grants you the Antarctic Reinforcement buff for 15 seconds
+			While buffed you will be granted +8 defense and your healing spells will heal for an additional 2 life
+			'''
 	}
 
 	StormFeather: {

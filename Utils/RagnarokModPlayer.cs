@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework;
 using System;
 using ThoriumMod;
 using ThoriumMod.Utilities;
+using RagnarokMod.Buffs;
 
 namespace RagnarokMod.Utils
 {
@@ -19,6 +20,7 @@ namespace RagnarokMod.Utils
         public bool auricBardSet = false;
 		public bool tarraHealer = false;
 		public bool tarraBard = false;
+		public bool daedalusHealer = false;
 		
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
@@ -38,7 +40,15 @@ namespace RagnarokMod.Utils
                         obj4.velocity = -offset3 * 0.075f;
                     }
                 }
-
+				
+				if (daedalusHealer && !base.Player.HasBuff(ModContent.BuffType<AntarcticReinforcementDebuff>()) && base.Player.CheckMana(100, true, false)) 
+				{
+					ThoriumPlayer thoriumPlayer = ThoriumMod.Utilities.PlayerHelper.GetThoriumPlayer(base.Player);
+					this.Player.AddBuff(ModContent.BuffType<AntarcticReinforcementDebuff>(), 3600, true, false);
+					this.Player.AddBuff(ModContent.BuffType<AntarcticReinforcementBuff>(), 900, true, false);
+					thoriumPlayer.shieldHealth += 50;
+					this.Player.statLife += 50;
+				}
             }
         }
 		
@@ -52,11 +62,11 @@ namespace RagnarokMod.Utils
 			}
 		}
 		
-		
 		public override void ResetEffects()
 		{
 				this.tarraHealer = false;
 				this.tarraBard = false;
+				this.daedalusHealer = false;
 		}
     }
 }
