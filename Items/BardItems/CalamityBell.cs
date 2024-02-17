@@ -32,7 +32,7 @@ namespace RagnarokMod.Items.BardItems
 		public override void SafeSetBardDefaults()
 		{
 			Item.damage = 115;
-			base.InspirationCost = 4;
+			base.InspirationCost = 3;
 			base.Item.width = 40;
 			base.Item.height = 40;
 			base.Item.useTime = 50;
@@ -63,10 +63,10 @@ namespace RagnarokMod.Items.BardItems
 		
 		public override void SafeBardShoot(int success, int level, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
-			float bardHit = 1f + (float)success * 0.015f;
+			float bardHit = 1f + (float)success * 0.02f;
 			if(success >= 15) 
 			{
-				Projectile.NewProjectile(source, position, velocity * bardHit, ModContent.ProjectileType<CalamityBellPro2>(), (int)(damage * 1.2f) , knockback, player.whoAmI, (float)(level - 1), 0f, 0f);
+				Projectile.NewProjectile(source, position, velocity * bardHit, ModContent.ProjectileType<CalamityBellPro2>(), (int)(damage * 1.3f) , knockback, player.whoAmI, (float)(level - 1), 0f, 0f);
 			}
 			else 
 			{

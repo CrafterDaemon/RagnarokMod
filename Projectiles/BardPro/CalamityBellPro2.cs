@@ -9,6 +9,7 @@ using Terraria.ModLoader;
 using ThoriumMod.Projectiles.Bard;
 using ThoriumMod;
 using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.NPCs.CalClone;
 
 namespace RagnarokMod.Projectiles.BardPro
 {
@@ -47,11 +48,13 @@ namespace RagnarokMod.Projectiles.BardPro
 		
 		public override void BardOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
-			target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 300, false);
+			target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 240, false);
+			if(target.type == ModContent.NPCType<CalamitasClone>() || target.type == ModContent.NPCType<Cataclysm>() || target.type == ModContent.NPCType<Catastrophe>()) 
+			{
+				damageDone = (int)(damageDone * 1.5f);
+			}
 		}
 
-
-		
 		public override Color? GetAlpha(Color lightColor)
 		{
 			return new Color?(Color.White * (0.25f + 0.01f * (float)base.Projectile.timeLeft));
@@ -60,8 +63,6 @@ namespace RagnarokMod.Projectiles.BardPro
 
 		public override void AI()
 		{
-			
-			base.Projectile.velocity *= 0.99f;
 			int dustType = 90;
 			int numDusts = 3;
 			for (int k = 0; k < numDusts; k++)

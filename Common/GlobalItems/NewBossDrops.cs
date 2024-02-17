@@ -45,7 +45,7 @@ namespace RagnarokMod.Common.GlobalItems
             }
 			if (item.type == ModContent.ItemType<CalamitasCloneBag>())
             {
-                itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<EquivalentExchange>(), 3));
+                itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<CalamityBell>(), 3));
             }
         }
     }
