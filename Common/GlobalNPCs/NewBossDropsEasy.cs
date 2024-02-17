@@ -16,7 +16,9 @@ using ThoriumMod.Items.HealerItems;
 using ThoriumMod.Items.ThrownItems;
 using CalamityMod.NPCs.Perforator;
 using RagnarokMod.Items.HealerItems;
+using RagnarokMod.Items.BardItems;
 using CalamityMod.NPCs.AstrumDeus;
+using CalamityMod.NPCs.CalClone;
 
 namespace RagnarokMod.Common.GlobalNPCs
 {
@@ -52,8 +54,12 @@ namespace RagnarokMod.Common.GlobalNPCs
             }
             if (npc.type == ModContent.NPCType<PerforatorHive>())
             {
-                npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<EquivalentExchange>(), 3, -1));
+                npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<EquivalentExchange>(), 4, 3));
             }
+			if(npc.type == ModContent.NPCType<CalamitasClone>())
+			{
+				npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<CalamityBell>(), 4, 3));
+			}
 			if (npc.type == ModContent.NPCType<AstrumDeusHead>()) 
 			{
 				LeadingConditionRule lastWorm = npcLoot.DefineConditionalDropSet((DropAttemptInfo info) => !AstrumDeusHead.ShouldNotDropThings(info.npc));

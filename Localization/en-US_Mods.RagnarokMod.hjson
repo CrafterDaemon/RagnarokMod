@@ -81,6 +81,19 @@ Items: {
 		Tooltip: ""
 	}
 
+	CalamityBell: {
+		DisplayName: Calamity Bell
+		Tooltip:
+			'''
+			Allows you to rhythmically ring a bell
+			The projectile will grow in speed and damage on successive timed hits and later
+			upgrade into a bigger projectile
+			This projectile will deal 120% damage
+			Also afflicts enemies with Brimstone Flames for 5 seconds
+			Mistiming hits cost 4 inspiration
+			'''
+	}
+
 	DaedalusHeadBard: {
 		DisplayName: Daedalus Head Bard
 		Tooltip:
@@ -285,6 +298,11 @@ Items: {
 		DisplayName: Marble Claymore
 		Tooltip: ""
 	}
+
+	GodSlayerHeadBard: {
+		DisplayName: God Slayer Head Bard
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -300,6 +318,8 @@ Projectiles: {
 	AstralScythePro.DisplayName: Astral Scythe Pro
 	AstralScytheStarPro.DisplayName: Astral Scythe Star Pro
 	MarbleStar.DisplayName: Marble Star
+	CalamityBellPro.DisplayName: Calamity Bell Pro
+	CalamityBellPro2.DisplayName: Calamity Bell Pro2
 }
 
 od: {

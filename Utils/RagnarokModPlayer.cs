@@ -23,6 +23,7 @@ namespace RagnarokMod.Utils
 		public bool tarraBard = false;
 		public bool daedalusHealer = false;
 		public bool daedalusBard = false;
+		public bool godslayerBard = false;
 		
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
@@ -73,12 +74,34 @@ namespace RagnarokMod.Utils
 			}
 		}
 		
+		public override void PostUpdateEquips() 
+		{
+			if (base.Player.HeldItem.type == ModContent.ItemType<CalamityBell>()) 
+			{
+				InstrumentRotationModifier(0.60f);
+			}	
+		}
+		
+		public void InstrumentRotationModifier(float modifier) 
+		{
+			ThoriumPlayer thoriumPlayer = ThoriumMod.Utilities.PlayerHelper.GetThoriumPlayer(base.Player);
+			if (!thoriumPlayer.bardBigInstrumentRotationShift) 
+				{
+					thoriumPlayer.bardBigInstrumentRotation -= (1f - modifier) * thoriumPlayer.bardBigInstrumentRotationSpeed;
+				}
+				else
+				{
+					thoriumPlayer.bardBigInstrumentRotation += (1f - modifier) * thoriumPlayer.bardBigInstrumentRotationSpeed;
+				}
+		}
+		
 		public override void ResetEffects()
 		{
 				this.tarraHealer = false;
 				this.tarraBard = false;
 				this.daedalusHealer = false;
 				this.daedalusBard = false;
+				this.godslayerBard = false;
 		}
     }
 }
