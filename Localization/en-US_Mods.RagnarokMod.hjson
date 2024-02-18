@@ -18,6 +18,11 @@ Buffs: {
 		DisplayName: Guardian Healers Blessing
 		Description: Addtional 10% damage reduction and 5 lifeRecovery for 20 seconds
 	}
+
+	UniversalBlessing: {
+		Description: Mods.RagnarokMod.Buffs.UniversalBlessing.Description
+		DisplayName: Universal Blessing
+	}
 }
 
 Items: {
@@ -128,6 +133,22 @@ Items: {
 			Pressing the 'Armor Ability' key will shield you for 50 life and grants you the Antarctic Reinforcement buff for 15 seconds
 			While buffed you will be granted +8 defense and your healing spells will heal for an additional 2 life
 			Costs 100 mana
+			'''
+	}
+
+	GodSlayerHeadBard: {
+		DisplayName: God Slayer Head Bard
+		Tooltip:
+			'''
+			12% increased symphonic damage and critical strike chance
+			15% increased inspiration regeneration
+			+6 max inspiration
+			+15% chance for inspiration notes to drop from enemies
+			'''
+		SetBonus:
+			'''
+			While you are holding an instrument you will apply random empowerments
+			Empowerments are more powerful and controllable while holding instruments of the Devourer or it's servants
 			'''
 	}
 
@@ -298,11 +319,6 @@ Items: {
 
 	MarbleClaymore: {
 		DisplayName: Marble Claymore
-		Tooltip: ""
-	}
-
-	GodSlayerHeadBard: {
-		DisplayName: God Slayer Head Bard
 		Tooltip: ""
 	}
 }

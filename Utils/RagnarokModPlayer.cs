@@ -8,10 +8,15 @@ using ThoriumMod.Items;
 using ThoriumMod.Sounds;
 using Microsoft.Xna.Framework;
 using System;
+using System.Collections.Generic;
 using ThoriumMod;
 using ThoriumMod.Utilities;
+using ThoriumMod.Empowerments;
 using RagnarokMod.Buffs;
 using RagnarokMod.Items.BardItems;
+using CalamityMod.Cooldowns;
+using CalamityMod;
+using CalamityMod.CalPlayer;
 
 namespace RagnarokMod.Utils
 {
@@ -24,7 +29,9 @@ namespace RagnarokMod.Utils
 		public bool daedalusHealer = false;
 		public bool daedalusBard = false;
 		public bool godslayerBard = false;
-		
+		public int godslayerBardcurrentemp = 0;
+		public int godslayerBardcurrentemplevel = 0;
+			
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
             if (ThoriumHotkeySystem.ArmorKey.JustPressed)
@@ -72,8 +79,21 @@ namespace RagnarokMod.Utils
 				thoriumPlayer.setOrnate = true;
 				thoriumPlayer.bardBuffDuration = (short)(thoriumPlayer.bardBuffDuration * 1.5);
 			}
+			if(godslayerBard &&  base.Player.HeldItem.DamageType == ThoriumDamageBase<BardDamage>.Instance) 
+			{
+				Random rnd = new Random();
+				int num = rnd.Next(240);
+				if(num == 0) 
+				{
+					godslayerBardcurrentemp = rnd.Next(1,18);
+					godslayerBardcurrentemplevel = rnd.Next(1,4);
+					ModContent.GetInstance<GodSlayerHeadBard>().NetApplyEmpowerments(((ModPlayer)this).Player, 0);
+					godslayerBardcurrentemp = 0;
+					godslayerBardcurrentemplevel = 0;
+				}	
+			} 
 		}
-		
+
 		public override void PostUpdateEquips() 
 		{
 			if (base.Player.HeldItem.type == ModContent.ItemType<CalamityBell>()) 

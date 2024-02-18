@@ -25,7 +25,7 @@ namespace RagnarokMod.Items.BardItems
 
 		public override void SafeSetStaticDefaults()
 		{
-			this.Empowerments.AddInfo<LifeRegeneration>(1, 0);
+			this.Empowerments.AddInfo<MovementSpeed>(1, 0);
 			this.Empowerments.AddInfo<FlightTime>(1, 0);
 		}
 
