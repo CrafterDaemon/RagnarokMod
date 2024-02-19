@@ -43,7 +43,7 @@ namespace RagnarokMod.Items.BardItems
             Item.width = 18;
             Item.height = 18;
             Item.value = CalamityGlobalItem.Rarity15BuyPrice;
-            Item.defense = 34; //132
+            Item.defense = 30; //132
             Item.rare = ModContent.RarityType<Violet>();
         }
 
@@ -69,9 +69,10 @@ namespace RagnarokMod.Items.BardItems
             player.ignoreWater = true;
             player.crimsonRegen = true;
             player.GetRagnarokModPlayer().auricBardSet = true;
-
-
-
+		    player.GetRagnarokModPlayer().tarraBard = true;
+			player.GetRagnarokModPlayer().godslayerBard = true;
+			player.GetRagnarokModPlayer().bloodflareBard  = true;
+	
             if (modPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && modPlayer.LastUsedDashID == GodslayerArmorDash.ID)
                 modPlayer.DeferredDashID = GodslayerArmorDash.ID;
         }
@@ -81,6 +82,7 @@ namespace RagnarokMod.Items.BardItems
             var modPlayer = player.Calamity();
             modPlayer.auricBoost = true;
             player.moveSpeed += 0.05f;
+			
             ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
             thoriumPlayer.bardResourceMax2 += 15;
             player.GetAttackSpeed((DamageClass)(object)ThoriumDamageBase<BardDamage>.Instance) += Damage / 100f;
@@ -96,6 +98,9 @@ namespace RagnarokMod.Items.BardItems
             CreateRecipe().
                 AddIngredient<SoloistHat>().
                 AddIngredient<InspiratorsHelmet>().
+				AddIngredient<GodSlayerHeadBard>().
+				AddIngredient<BloodflareHeadBard>().
+				AddIngredient<TarragonShroud>().
                 AddIngredient<AuricBar>(12).
                 AddTile<CosmicAnvil>().
                 Register();

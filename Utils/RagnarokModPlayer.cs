@@ -3,7 +3,9 @@ using Terraria;
 using Terraria.GameInput;
 using Terraria.ModLoader;
 using ThoriumMod.Buffs.Bard;
+using ThoriumMod.Buffs.Healer;
 using ThoriumMod.Items.BossThePrimordials.Rhapsodist;
+using ThoriumMod.Items.BossThePrimordials.Dream;
 using ThoriumMod.Items;
 using ThoriumMod.Sounds;
 using Microsoft.Xna.Framework;
@@ -26,6 +28,7 @@ namespace RagnarokMod.Utils
     {
         //this is most likely only gonna be for armor set abilities.
         public bool auricBardSet = false;
+		public bool auricHealerSet = false;
 		public bool tarraHealer = false;
 		public bool tarraBard = false;
 		public bool daedalusHealer = false;
@@ -46,7 +49,7 @@ namespace RagnarokMod.Utils
 		{
 			if(bloodflareHealer) 
 			{
-				RemoveBloodFlareBloodlustPoints(5);
+				RemoveBloodFlareBloodlustPoints(10);
 			}
 		}	
 	
@@ -59,7 +62,7 @@ namespace RagnarokMod.Utils
                     SoundEngine.PlaySound(ThoriumSounds.PassbySurge, (Vector2?)null, (SoundUpdateCallback)null);
                     ((ModPlayer)this).Player.AddBuff(ModContent.BuffType<SoloistsHatSetBuff>(), 600, true, false);
                     ModContent.GetInstance<InspiratorsHelmet>().NetApplyEmpowerments(((ModPlayer)this).Player, 0);
-                    ((ModPlayer)this).Player.AddBuff(ModContent.BuffType<CreativeBlock>(), 1800, true, false);
+                    ((ModPlayer)this).Player.AddBuff(ModContent.BuffType<CreativeBlock>(), 2400, true, false);
                     for (int l = 0; l < 5; l++)
                     {
                         Vector2 offset3 = new Vector2(Main.rand.Next(-50, 51), Main.rand.Next(-50, 51));
@@ -68,6 +71,22 @@ namespace RagnarokMod.Utils
                         obj4.velocity = -offset3 * 0.075f;
                     }
                 }
+				
+				if(auricHealerSet && !base.Player.HasBuff(ModContent.BuffType<DreamWeaversHoodDebuff>()) && base.Player.CheckMana(200, true, false)) 
+				{
+					base.Player.AddBuff(ModContent.BuffType<DreamWeaversHoodDreamBuff>(), 600, true, false);
+					base.Player.AddBuff(ModContent.BuffType<DreamWeaversMaskBuff>(), 900, true, false);
+					base.Player.AddBuff(ModContent.BuffType<DreamWeaversHoodDebuff>(), 3660, true, false);
+					SoundEngine.PlaySound(ThoriumSounds.PassbySurge, (Vector2?)null, (SoundUpdateCallback)null);
+					for (int n = 0; n < 20; n++)
+					{
+						Dust.NewDustDirect(base.Player.position, base.Player.width, base.Player.height, 173, (float)Main.rand.Next(-8, 9), (float)Main.rand.Next(-8, 9), 0, default(Color), 2f).noGravity = true;
+					}
+					for (int k2 = 0; k2 < 10; k2++)
+					{
+						Dust.NewDustDirect(base.Player.position, base.Player.width, base.Player.height, 65, (float)Main.rand.Next(-8, 9), (float)Main.rand.Next(-8, 9), 0, default(Color), 1.4f).noGravity = true;
+					}
+				}
 				
 				if (daedalusHealer && !base.Player.HasBuff(ModContent.BuffType<AntarcticExhaustionDebuff>()) && base.Player.CheckMana(100, true, false)) 
 				{
@@ -289,6 +308,8 @@ namespace RagnarokMod.Utils
 				this.silvaHealer = false;
 				this.bloodflareHealer = false;
 				this.bloodflareBard = false;
+				this.auricBardSet = false;
+		        this.auricHealerSet = false;
 		}
     }
 }

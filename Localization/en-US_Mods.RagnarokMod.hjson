@@ -80,6 +80,24 @@ Items: {
 			Pressing the 'Armor Ability' key will trigger both Rhapsodist armor abilities
 			'''
 	}
+	
+	AuricTeslaHealerHead: {
+		DisplayName: Auric Tesla Healer Helmet
+		Tooltip:
+			'''
+			70% increased radiant damage but 70% decreased non-radiant damage
+			25% increased radiant critical strike chance
+			5% increased movement speed
+			25% decreased mana usage
+		    Healing spells heal an additional 11 life
+			+100 maximum mana
+			'''
+		SetBonus:
+			'''
+			Tarragon, Bloodflare, Silva, and Dreamweaver armor effects
+			Pressing the 'Armor Ability' key will trigger both Dreamweaver armor abilities
+			'''
+	}
 
 	BlazingDrumBeat: {
 		DisplayName: Blazing Drum Beat
@@ -382,6 +400,7 @@ Items: {
 		DisplayName: Marble Claymore
 		Tooltip: ""
 	}
+
 }
 
 Projectiles: {
