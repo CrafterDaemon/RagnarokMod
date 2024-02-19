@@ -86,6 +86,48 @@ Items: {
 		Tooltip: ""
 	}
 
+	BloodflareHeadBard: {
+		DisplayName: Bloodflare Hat
+		Tooltip:
+			'''
+			20% increased symphonic damage and 12% increased symphonic critical strike chance
+			+15% increased inspiration regeneration and +6 maximum inspiration
+			+15% chance for inspiration notes to drop from enemies
+			'''
+		SetBonus:
+			'''
+			Doing symphonic damage will heal your for 1 life and applies Burning Blood on enemies
+			While damaging enemies you will generate a blood lust, 1 point per hit
+			Upon reaching 50 points: Consumes all your points and applies Blood Lust for 15 seconds
+			While buffed you will heal for 2 life per hit, Burning blood will last for 8 seconds
+			Applies empowerments Attack Damage, Attack Speed, Life Regeneration and Movement Speed IV
+			You can not generate points for 30 seconds after the buff is applied
+			You will lose 10 points when getting hit
+			'''
+	}
+
+	BloodflareHeadHealer: {
+		DisplayName: Bloodflare Hood
+		Tooltip:
+			'''
+			20% reduced mana usage
+			70% decreased non-radiant damage and 50% increased radiant damage
+			20% increased radiant critical strike chance
+			Healing spells will heal for an additional 7 life
+			+60 maximum mana
+			'''
+		SetBonus:
+			'''
+			Doing radiant damage will heal your for 1 life and applies Burning Blood on enemies
+			While damaging enemies you will generate a blood lust, 1 point per hit
+			Upon reaching 50 points: Consumes all your points and applies Blood lust for 15 seconds
+			While buffed you will heal for 2 life per hit, healing spells will heal for 4 additional life,
+			25% increased radiant damage and 30% increased movement speed, Burning blood will last for 8 seconds
+			You can not generate points for 30 seconds after the buff is applied
+			You will lose 10 points when getting hit
+			'''
+	}
+
 	CalamityBell: {
 		DisplayName: Calamity Bell
 		Tooltip:
@@ -140,15 +182,34 @@ Items: {
 		DisplayName: God Slayer Head Bard
 		Tooltip:
 			'''
-			12% increased symphonic damage and critical strike chance
+			25% increased symphonic damage and 15% increased symphonic critical strike chance
 			15% increased inspiration regeneration
-			+6 max inspiration
+			+7 max inspiration
 			+15% chance for inspiration notes to drop from enemies
 			'''
 		SetBonus:
 			'''
 			While you are holding an instrument you will apply random empowerments
 			Empowerments are more powerful and controllable while holding instruments of the Devourer or it's servants
+			'''
+	}
+
+	SilvaHeadHealer: {
+		DisplayName: Silva Hood
+		Tooltip:
+			'''
+			25% reduced mana usage
+			70% decreased non-radiant damage and 55% increased radiant damage
+			20% increased radiant critical strike chance
+			Healing spells will heal for an additional 9 life
+			+80 maximum mana
+			'''
+		SetBonus:
+			'''
+			Your healing spells will increased the life recovery and life recovery rate of your allies
+			Healed allies will be granted 50 more maximum health
+			Occasionally you will be blessed by heals or life shields.
+			Will trigger more frequently on low health
 			'''
 	}
 
@@ -244,9 +305,9 @@ Items: {
 			'''
 			5% increased damage reduction
 			60% decreased non-radiant damage
-			50% increased radiant damage and 25% increased criticial radiant strike chance
-			Bonus healing increased by 8
-			100 additional mana
+			40% increased radiant damage and 15% increased criticial radiant strike chance
+			Bonus healing increased by 6
+			60 additional mana
 			Mana usage reduced by 15%
 			'''
 	}
@@ -256,11 +317,11 @@ Items: {
 		Tooltip:
 			'''
 			5% increased damage reduction
-			30% increased symphonic damage and 25% increased criticial symphonic strike chance
-			20% increased playing speed
+			20% increased symphonic damage and 15% increased criticial symphonic strike chance
+			15% increased playing speed
 			Greatly increased inspiration regen
 			+15% chance for inspiration notes to drop from enemies
-			+5 maximum inspiration
+			+4 maximum inspiration
 			'''
 	}
 

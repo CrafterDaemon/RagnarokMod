@@ -29,10 +29,10 @@ namespace RagnarokMod.Items
         public override void SetBardDefaults()
         {
             InspirationCost = 1;
-            Item.damage = 165;
+            Item.damage = 180;
             Item.width = 56;
             Item.height = 50;
-            Item.useTime = 5;
+            Item.useTime = 6;
             Item.useAnimation = 10;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;

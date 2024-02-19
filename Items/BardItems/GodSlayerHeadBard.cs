@@ -128,8 +128,8 @@ namespace RagnarokMod.Items.BardItems
 		public override void UpdateEquip(Player player)
 		{
 			ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
-			player.GetDamage(ThoriumDamageBase<BardDamage>.Instance) += 0.12f;
-			player.GetCritChance(ThoriumDamageBase<BardDamage>.Instance) += 12f;
+			player.GetDamage(ThoriumDamageBase<BardDamage>.Instance) += 0.25f;
+			player.GetCritChance(ThoriumDamageBase<BardDamage>.Instance) += 15f;
 			thoriumPlayer.inspirationRegenBonus += 0.15f;
 			thoriumPlayer.bardResourceMax2 += 6;
 			thoriumPlayer.bardResourceDropBoost += 0.15f;	
