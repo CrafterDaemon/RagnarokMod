@@ -27,7 +27,7 @@ namespace RagnarokMod.Common.GlobalItems
 					item.defense = 2;
 				}	
 			} 
-			/*
+			
 			else if (item.damage > 0) 
 			{	
 				if (item.type == thorium.Find<ModItem>("ThunderTalon").Type) 
@@ -487,7 +487,7 @@ namespace RagnarokMod.Common.GlobalItems
 					item.damage=300;
 				}
 			}	
-			*/
+			
 			else 
 			{
 				return;
