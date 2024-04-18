@@ -35,7 +35,7 @@ namespace RagnarokMod.Projectiles.HealerPro
             Projectile.Size = new Vector2(120f);
             dustOffset = new Vector2(-33f, 6f);
             dustCount = 4;
-            dustType = 236;
+            dustType = 303;
         }
     }
 }

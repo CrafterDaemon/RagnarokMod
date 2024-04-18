@@ -48,7 +48,7 @@ namespace Ragnarok.Projectiles
                     Projectile.active = false;
                     return;
                 }
-                if (!player.ActiveItem().CountsAsClass<BardDamage>() || player.ActiveItem().shoot != ModContent.ProjectileType<MelterNote1>())
+                if (!player.ActiveItem().CountsAsClass<BardDamage>())
                 {
                     Projectile.active = false;
                     return;

@@ -19,36 +19,37 @@ using System;
 
 namespace RagnarokMod.Items.BardItems
 {
-	public class CalamityBell : BigInstrumentItemBase
+	public class CalamityBell : BardItem
 	{
 		public override BardInstrumentType InstrumentType => BardInstrumentType.Percussion;
-
-		public override void SafeSetStaticDefaults()
+		
+		public override void SetStaticDefaults()
 		{
-			this.Empowerments.AddInfo<MovementSpeed>(1, 0);
-			this.Empowerments.AddInfo<FlightTime>(1, 0);
-		}
+			this.Empowerments.AddInfo<MovementSpeed>(2, 0);
+			this.Empowerments.AddInfo<FlightTime>(2, 0);
+            this.Empowerments.AddInfo<JumpHeight>(2, 0);
+        }
 
-		public override void SafeSetBardDefaults()
+		public override void SetBardDefaults()
 		{
-			Item.damage = 115;
+			Item.damage = 165;
 			base.InspirationCost = 3;
 			base.Item.width = 40;
 			base.Item.height = 40;
-			base.Item.useTime = 50;
-			base.Item.useAnimation = 50;
-			base.Item.useStyle = 1;
+			base.Item.useTime = 25;
+			base.Item.useAnimation = 25;
+			base.Item.useStyle = ItemUseStyleID.Swing;
 			base.Item.noMelee = true;
 			base.Item.autoReuse = true;
 			base.Item.knockBack = 2f;
 			Item.value = CalamityGlobalItem.Rarity7BuyPrice;
-			Item.rare = 7;
+			Item.rare = ItemRarityID.Lime;
 			Item.UseSound = Sounds.RagnarokModSounds.calamitybell;
 			base.Item.shoot = ModContent.ProjectileType<CalamityBellPro>();
 			base.Item.shootSpeed = 11f;
 
 		}
-	
+	/*
 		public override void Shoot_OnSuccess(Player player)
 		{
 			int numDusts = 40;
@@ -74,6 +75,6 @@ namespace RagnarokMod.Items.BardItems
 			}
 			
 		}
-					
+		*/			
 	}
 }

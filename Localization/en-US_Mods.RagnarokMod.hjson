@@ -152,12 +152,7 @@ Items: {
 			'''
 			Allows you to rhythmically ring a bell
 			Hit enemies are afflicted by Brimstone Flames for 2 seconds
-			The projectile will grow in speed and damage on successive timed hits and later
-			upgrade into a bigger projectile
-			This projectile will deal 130% damage
-			Brimstone Flames will last for 4 seconds
 			50% more damage against Calamitas Clone and her brothers
-			Mistiming hits cost 3 inspiration
 			'''
 	}
 
