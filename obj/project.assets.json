@@ -31,26 +31,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\daemo\\.nuget\\packages\\": {}
+    "/Users/ryan/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\daemo\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\RagnarokMod\\RagnarokMod.csproj",
+      "projectUniqueName": "/Users/ryan/Library/Application Support/Terraria/tModLoader/ModSources/RagnarokMod/RagnarokMod.csproj",
       "projectName": "RagnarokMod",
-      "projectPath": "C:\\Users\\daemo\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\RagnarokMod\\RagnarokMod.csproj",
-      "packagesPath": "C:\\Users\\daemo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\daemo\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\RagnarokMod\\obj\\",
+      "projectPath": "/Users/ryan/Library/Application Support/Terraria/tModLoader/ModSources/RagnarokMod/RagnarokMod.csproj",
+      "packagesPath": "/Users/ryan/.nuget/packages/",
+      "outputPath": "/Users/ryan/Library/Application Support/Terraria/tModLoader/ModSources/RagnarokMod/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\daemo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/ryan/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -90,7 +88,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.101/RuntimeIdentifierGraph.json"
       }
     }
   }

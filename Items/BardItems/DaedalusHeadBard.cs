@@ -13,7 +13,6 @@ using ThoriumMod.Items.BardItems;
 using ThoriumMod.Utilities;
 using Terraria;
 using Terraria.ModLoader;
-using ThoriumMod.Utilities;
 
 namespace RagnarokMod.Items.BardItems
 {

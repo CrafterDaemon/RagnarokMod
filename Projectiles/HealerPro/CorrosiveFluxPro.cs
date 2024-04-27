@@ -4,25 +4,30 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
 using ThoriumMod;
+using CalamityMod.Items;
+using CalamityMod.Buffs.StatDebuffs;
 
 namespace RagnarokMod.Projectiles.HealerPro
 {
-    public class AstralScytheStarPro : ModProjectile, ILocalizedModType
+    public class CorrosiveFluxPro : ModProjectile, ILocalizedModType
     {
         public override void SetDefaults()
         {
-            Projectile.width = 34;
-            Projectile.height = 34;
+            Projectile.width = 32;
+            Projectile.height = 32;
             Projectile.friendly = true;
             Projectile.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
             Projectile.tileCollide = false;
-            Projectile.penetrate = -1;
-            Projectile.extraUpdates = 2;
-            Projectile.timeLeft = 500;
+            Projectile.penetrate = 1;
+            Projectile.timeLeft = 200;
+            Projectile.alpha = 180;
             Projectile.ignoreWater = true;
+            
         }
         public override void AI() {
-			Projectile.rotation += 20;
-        }
+			Projectile.velocity *= 0.975f;
+            Projectile.alpha -= 8;
+		}
+       
     }
 }

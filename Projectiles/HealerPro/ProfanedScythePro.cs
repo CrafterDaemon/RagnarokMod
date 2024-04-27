@@ -17,10 +17,13 @@ namespace RagnarokMod.Projectiles.HealerPro
 
         public override void SafeSetDefaults()
         {
-            base.Projectile.Size = new Vector2(160f);
+            base.Projectile.Size = new Vector2(258, 338);
             dustOffset = new Vector2(-35f, 7f);
             dustCount = 4;
-            dustType = 236;
+            dustType = 87;
+            base.rotationSpeed = 0.25f;
+            Projectile.light = 1f;
+            fadeOutSpeed = 30;
         }
     }
 }

@@ -12,7 +12,7 @@ using ThoriumMod.Projectiles.Scythe;
 
 namespace RagnarokMod.Projectiles.HealerPro
 {
-    public class AstralScythePro : ScythePro
+    public class WindReaverPro : ScythePro
     {
         public override void SafeSetStaticDefaults()
         {
@@ -35,7 +35,7 @@ namespace RagnarokMod.Projectiles.HealerPro
             fadeOutSpeed = 30;
             rotationSpeed = 0.25f;
             scytheCount = 2;
-            Projectile.Size = new Vector2(148f);
+            Projectile.Size = new Vector2(120f);
             
         }
     }
