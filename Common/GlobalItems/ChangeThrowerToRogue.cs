@@ -16,7 +16,7 @@ namespace RagnarokMod.Common.GlobalItems
             ThoriumItem thisThoriumItem = getThoriumItem(item);
             if (thisThoriumItem != null)
             {
-                return thisThoriumItem.isThrower == true;
+                return thisThoriumItem.isThrower;
             }
             else return false;
         }

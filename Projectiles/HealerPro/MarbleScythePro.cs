@@ -36,8 +36,8 @@ namespace RagnarokMod.Projectiles.HealerPro
             fadeOutSpeed = 30;
             rotationSpeed = 0.25f;
             scytheCount = 2;
-            Projectile.Size = new Vector2(126f);
-            dustOffset = new Vector2(-28f, 6f);
+            Projectile.Size = new Vector2(96f);
+            dustOffset = new Vector2(-10f, 5f);
             dustCount = 4;
             dustType = 236;
         }

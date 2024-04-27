@@ -13,6 +13,7 @@ using ThoriumMod.Items;
 using CalamityMod.Items;
 using CalamityMod;
 using Ragnarok.Projectiles;
+using ThoriumMod.Items.BardItems;
 
 namespace RagnarokMod.Items
 {

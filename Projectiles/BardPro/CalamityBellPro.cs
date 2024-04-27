@@ -80,7 +80,7 @@ namespace RagnarokMod.Projectiles.BardPro
 		{
 			for (int j = 0; j < 10; j++)
 			{
-				Dust.NewDustDirect(base.Projectile.position, base.Projectile.width, base.Projectile.height, 90, (float)Main.rand.Next(-4, 5), (float)Main.rand.Next(-4, 5), 0, default(Color), 1.25f).noGravity = true;
+				Dust.NewDustDirect(base.Projectile.position, base.Projectile.width, base.Projectile.height, DustID.GemRuby, (float)Main.rand.Next(-4, 5), (float)Main.rand.Next(-4, 5), 0, default(Color), 1.25f).noGravity = true;
 			}
 		}
 	}

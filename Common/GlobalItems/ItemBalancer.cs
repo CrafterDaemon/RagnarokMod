@@ -44,7 +44,7 @@ namespace RagnarokMod.Common.GlobalItems
 				}
 				else if (item.type == thorium.Find<ModItem>("LifeQuartzClaymore").Type)
 				{	
-					item.damage = 20;
+					item.damage = 15;
 				}
 			}
 			/*

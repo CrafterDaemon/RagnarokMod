@@ -5,6 +5,7 @@ using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Systems;
 using Ragnarok.Items;
 using RagnarokMod.Items;
+using RagnarokMod.Items.BardItems;
 using RagnarokMod.Utils;
 using System;
 using System.Collections.Generic;
@@ -33,37 +34,39 @@ namespace RagnarokMod.Common.GlobalItems
         }
         public override void AddRecipes()
         {
+            ModContent.GetInstance<FaceMelter>().CreateRecipe()
+                .AddIngredient<FaceMelterOverride>(1)
+                .AddCondition(Condition.InGraveyard)
+                .AddTile(TileID.Anvils)
+                .Register();
+            ModContent.GetInstance<FaceMelterOverride>().CreateRecipe()
+                .AddIngredient<FaceMelter>(1)
+                .AddCondition(Condition.InGraveyard)
+                .AddTile(TileID.Anvils)
+                .Register();
+            ModContent.GetInstance<AnahitasArpeggio>().CreateRecipe()
+                .AddIngredient<AnahitasArpeggioOverride>(1)
+                .AddCondition(Condition.InGraveyard)
+                .AddTile(TileID.Anvils)
+                .Register();
+            ModContent.GetInstance<AnahitasArpeggioOverride>().CreateRecipe()
+                .AddIngredient<AnahitasArpeggio>(1)
+                .AddCondition(Condition.InGraveyard)
+                .AddTile(TileID.Anvils)
+                .Register();
+            ModContent.GetInstance<BelchingSaxophone>().CreateRecipe()
+                .AddIngredient<BelchingSaxophoneOverride>(1)
+                .AddCondition(Condition.InGraveyard)
+                .AddTile(TileID.Anvils)
+                .Register();
+            ModContent.GetInstance<BelchingSaxophoneOverride>().CreateRecipe()
+                .AddIngredient<BelchingSaxophone>(1)
+                .AddCondition(Condition.InGraveyard)
+                .AddTile(TileID.Anvils)
+                .Register();
+
             //initialize the recipe fetcher
             GetRecipe finder = new();
-            //go locate FaceMelter recipe
-            finder.LookFor(ModContent.ItemType<FaceMelter>(), 1);
-
-            //Disable original face melter recipe
-            foreach (Recipe item in finder.Search())
-            {
-                RecipeHelper helper = new(item);
-                helper.Disable();
-            }
-
-            foreach (Recipe item in finder.Search())
-            {
-                RecipeHelper helper = new(item);
-                helper.Remove(ModContent.ItemType<FaceMelter>());
-                helper.Add(ModContent.ItemType<FaceMelterOverride>(), 1);
-            }
-            foreach (Recipe item in finder.Search())
-            {
-                RecipeHelper helper = new(item);
-                helper.Remove(ModContent.ItemType<AnahitasArpeggio>());
-                helper.Add(ModContent.ItemType<AnahitasArpeggioOverride>(), 1);
-            }
-            foreach (Recipe item in finder.Search())
-            {
-                RecipeHelper helper = new(item);
-                helper.Remove(ModContent.ItemType<BelchingSaxophone>());
-                helper.Add(ModContent.ItemType<BelchingSaxophoneOverride>(), 1);
-            }
-
             finder.LookFor(ModContent.ItemType<TerrariumParticleSprinters>(), 1);
             foreach (Recipe item in finder.Search())
             {
@@ -108,19 +111,6 @@ namespace RagnarokMod.Common.GlobalItems
         }
         public override void UpdateInventory(Item item, Player player)
         {
-            //no non-bard instruments
-            if (item.ModItem is FaceMelter)
-            {
-                item.SetDefaults(ModContent.ItemType<FaceMelterOverride>());
-            }
-            if (item.ModItem is BelchingSaxophone)
-            {
-                item.SetDefaults(ModContent.ItemType<BelchingSaxophoneOverride>());
-            }
-            if (item.ModItem is AnahitasArpeggio)
-            {
-                item.SetDefaults(ModContent.ItemType<AnahitasArpeggioOverride>());
-            }
         }
 
     }
