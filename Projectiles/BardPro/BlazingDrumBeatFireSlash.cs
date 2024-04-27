@@ -48,7 +48,6 @@ namespace RagnarokMod.Projectiles.BardPro
                 if (Projectile.ai[1] == 5)
                 {
                     Projectile.friendly = true;
-                    SoundEngine.PlaySound(RagnarokModSounds.bonk, Projectile.Center);
                 }
             }
             if (Projectile.ai[1] >= 11)
@@ -98,7 +97,7 @@ namespace RagnarokMod.Projectiles.BardPro
             Rectangle frameRectangle = new Rectangle(Projectile.frame / 5 * width, Projectile.frame % 5 * height, width, height);
 
             Texture2D scytheTexture = ModContent.Request<Texture2D>(Texture).Value;
-            Texture2D glowTexture = ModContent.Request<Texture2D>("RagnarokMod/Projectiles/BlazingDrumBeatFireSlash_Glow").Value;
+            Texture2D glowTexture = ModContent.Request<Texture2D>("RagnarokMod/Projectiles/BardPro/BlazingDrumBeatFireSlash_Glow").Value;
 
             Main.spriteBatch.Draw(scytheTexture,
                                   drawCenter - Main.screenPosition,

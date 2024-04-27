@@ -395,6 +395,11 @@ Items: {
 		DisplayName: Marble Claymore
 		Tooltip: ""
 	}
+
+	RadioMic: {
+		DisplayName: Radio Mic
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -412,6 +417,7 @@ Projectiles: {
 	MarbleStar.DisplayName: Marble Star
 	CalamityBellPro.DisplayName: Calamity Bell Pro
 	CalamityBellPro2.DisplayName: Calamity Bell Pro2
+	TendrilStrike.DisplayName: Tendril Strike
 }
 
 od: {

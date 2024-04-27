@@ -6,26 +6,31 @@ using Terraria.ModLoader;
 using Terraria.ID;
 using CalamityMod.Items.Materials;
 using RagnarokMod.Projectiles.BardPro;
+using ThoriumMod.Items.BardItems;
+using Terraria.DataStructures;
+using Microsoft.Xna.Framework;
+using RagnarokMod.Projectiles;
+using ThoriumMod.Utilities;
 
 namespace RagnarokMod.Items.BardItems;
-public class BlazingDrumBeat : BardItem
+public class BlazingDrumBeat : BigInstrumentItemBase
 {
     //flame slash go whoosh
     public override BardInstrumentType InstrumentType => BardInstrumentType.Percussion;
 
-    public override void SetStaticDefaults()
+    public override void SafeSetStaticDefaults()
     {
         Empowerments.AddInfo<MovementSpeed>(4);
     }
 
-    public override void SetBardDefaults()
+    public override void SafeSetBardDefaults()
     {
-        Item.damage = 650;
-        InspirationCost = 4;
+        Item.damage = 300;
+        InspirationCost = 0;
         Item.width = 25;
         Item.height = 30;
-        Item.useTime = 40;
-        Item.useAnimation = 40;
+        Item.useTime = 20;
+        Item.useAnimation = 20;
         Item.autoReuse = true;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.noMelee = false;
@@ -35,6 +40,22 @@ public class BlazingDrumBeat : BardItem
         Item.UseSound = Sounds.RagnarokModSounds.bonk;
         Item.shoot = ModContent.ProjectileType<BlazingDrumBeatFireSlash>();
         Item.shootSpeed = 10f;
+
+    }
+    public override void SafeBardShoot(int success, int level, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+    {
+        ThoriumPlayer thoriumplayer = player.GetThoriumPlayer();
+        float bardHit = 1f + (float)success * 0.02f;
+        if (success != 0)
+        {
+            Projectile.NewProjectile(source, position, velocity * bardHit, type, (int)(damage * 1.3f), knockback, player.whoAmI, (float)(level - 1), 0f, 0f);
+            thoriumplayer.bardResource += 4;
+        }
+        else
+        {
+            Projectile.NewProjectile(source, position, velocity * bardHit, ModContent.ProjectileType<NoProj>(), damage, knockback, player.whoAmI, (float)(level - 1), 0f, 0f);
+            thoriumplayer.bardResource -= 4;
+        }
 
     }
     public override void AddRecipes()
