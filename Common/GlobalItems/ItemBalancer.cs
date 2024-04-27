@@ -27,7 +27,27 @@ namespace RagnarokMod.Common.GlobalItems
 					item.defense = 2;
 				}	
 			} 
-			
+			else if (item.damage > 0) 
+			{	
+				if (item.type == thorium.Find<ModItem>("LifeAndDeath").Type) 
+				{
+					item.damage = 120;
+				}	
+				if (item.type == thorium.Find<ModItem>("DarkScythe").Type) 
+				{
+					item.damage = 16;
+				}
+				
+				if (item.type == thorium.Find<ModItem>("CrimsonScythe").Type) 
+				{
+					item.damage = 16;
+				}
+				else if (item.type == thorium.Find<ModItem>("LifeQuartzClaymore").Type)
+				{	
+					item.damage = 15;
+				}
+			}
+			/*
 			else if (item.damage > 0) 
 			{	
 				if (item.type == thorium.Find<ModItem>("ThunderTalon").Type) 
@@ -487,7 +507,8 @@ namespace RagnarokMod.Common.GlobalItems
 					item.damage=300;
 				}
 			}	
-			
+			*/
+
 			else 
 			{
 				return;

@@ -24,10 +24,10 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="CalamityMod">
-      <HintPath>..\CalamityMod.dll</HintPath>
+      <HintPath>..\ModAssemblies\ThoriumMod.dll</HintPath>
     </Reference>
     <Reference Include="ThoriumMod">
-      <HintPath>..\ThoriumMod.dll</HintPath>
+      <HintPath>..\ModAssemblies\CalamityMod.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

@@ -13,9 +13,7 @@ using CalamityMod.Items;
 using CalamityMod.Items.Armor;
 using CalamityMod.Items.Materials;
 using CalamityMod.CalPlayer;
-using CalamityMod.Items.Materials;
 using CalamityMod.Rarities;
-using RagnarokMod.Items.Materials;
 using RagnarokMod.Projectiles.HealerPro;
 
 namespace RagnarokMod.Items.HealerItems

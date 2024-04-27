@@ -395,9 +395,19 @@ Items: {
 		DisplayName: Marble Claymore
 		Tooltip: ""
 	}
+<<<<<<< HEAD
 
 	RadioMic: {
 		DisplayName: Radio Mic
+=======
+	CorrosiveFlux: {
+		DisplayName: Corrosive Flux
+		Tooltip: ""
+	}
+
+	WindReaver: {
+		DisplayName: Wind Reaver
+>>>>>>> 19718a984acd8db3856dc65376b0e8e9202985ac
 		Tooltip: ""
 	}
 }
@@ -417,7 +427,13 @@ Projectiles: {
 	MarbleStar.DisplayName: Marble Star
 	CalamityBellPro.DisplayName: Calamity Bell Pro
 	CalamityBellPro2.DisplayName: Calamity Bell Pro2
+<<<<<<< HEAD
 	TendrilStrike.DisplayName: Tendril Strike
+=======
+	CorrosiveFluxPro.DisplayName: Corrosive Flux Pro
+	WindReaverPro.DisplayName: Wind Reaver Pro
+	WindSlashPro.DisplayName: Wind Slash Pro
+>>>>>>> 19718a984acd8db3856dc65376b0e8e9202985ac
 }
 
 od: {
