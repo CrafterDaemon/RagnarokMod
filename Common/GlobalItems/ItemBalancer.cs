@@ -6,6 +6,8 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using CalamityMod;
 using ThoriumMod;
+using ThoriumMod.Items;
+using System;
 
 namespace RagnarokMod.Common.GlobalItems
 {
@@ -14,9 +16,211 @@ namespace RagnarokMod.Common.GlobalItems
 		private static bool print_message=true;
 		private static Mod thorium = ModLoader.GetMod("ThoriumMod");
 		private static Mod calamity = ModLoader.GetMod("CalamityMod");
+	
+		private static Dictionary<string,int> thorium_melee_and_other_damage_tweak = new Dictionary<string,int>
+		{
+			{"IceLance", 14}, 
+			{"ColdFront", 16},
+			{"BentZombieArm", 16},
+			{"Fork", 16},
+			{"fSandStoneSpear", 16},
+			{"CoralPolearm", 15},
+			{"ThoriumSpear", 17},
+			{"Scorpain", 14},
+			{"RedHourglass", 16},
+			{"ThoriumBoomerang", 20},
+			{"HarpyTalon", 18},
+			{"Aerial", 17},
+			{"ThunderTalon", 15},
+			{"CoralSlasher", 13},
+			{"IceBreaker", 8},
+			{"dSandStoneScimtar", 16},
+			{"Spoon", 21},
+			{"SteelBlade", 18},
+			{"TheSnowball", 9},
+			{"ThoriumBlade", 18},
+			{"TrackersSkinningBlade", 19},
+			{"WhirlpoolSaber", 20},
+			{"DrenchedDirk", 21},
+			{"Knife", 22},
+			{"Whip", 24},
+			{"BloomingBlade", 26},
+			{"PearlPike", 26},
+			{"PollenPike", 26},
+			{"EnergyStormPartisan", 28},
+			{"GorgonsEye", 27},
+			{"Heartstriker", 28},
+			{"Illustrious", 28},
+			{"BatWing", 29},
+			{"Bellerose", 29},
+			{"Sanguine", 31},
+			{"eDarksteelBroadSword", 32},
+			{"Moonlight", 32},
+			{"Nocturnal", 32},
+			{"BackStabber", 34},
+			{"ChampionSwiftBlade", 35},
+			{"GiantGlowstick", 34},
+			{"GraniteReflector", 35},
+			{"GrimFlayer", 35},
+			{"RifleSpear", 35},
+			{"Blitzzard", 37},
+			{"ToothOfTheConsumer", 37},
+			{"FleshSkewer", 38},
+			{"Saba", 39},
+			{"BloodDrinker", 40},
+			{"DragonTalon", 40},
+			{"HellishHalberd", 41},
+			{"DragonTooth", 41},
+			{"Rapier", 41},
+			{"MeleeThorHammer", 41},
+			{"DurasteelBlade", 43},
+			{"PoseidonCharge", 44},
+			{"Arthropod", 46},
+			{"GoldenLocks", 46},
+			{"ValadiumSlicer", 46},
+			{"ValadiumSpear", 46},
+			{"DoomFireAxe", 48},
+			{"LodeStoneClaymore", 48},
+			{"Schmelze", 48},
+			{"Scalper", 51},
+			{"MyceliumWhip", 52}
+		};
+		
+		private static Dictionary<string,int> thorium_throwing_damage_tweak = new Dictionary<string,int> 
+		{
+			{"gSandStoneThrowingKnife", 13},
+			{"StoneThrowingSpear", 10},
+			{"CactusNeedle", 9},
+			{"CoralCaltrop", 11},
+			{"IronTomahawk", 12},
+			{"IcyCaltrop", 12},
+			{"LeadTomahawk", 14},
+			{"ShinobiSlicer", 11},
+			{"DemoniteTomahawk", 16},
+			{"CrimtaneTomahawk", 17},
+			{"LastingPliers", 12},
+			{"SeveredHand", 14},
+			{"GelGlove", 16},
+			{"SteelBattleAxe", 16},
+			{"BloomingShuriken", 18},
+			{"HarpiesBarrage", 18},
+			{"MeteoriteClusterBomb", 18},
+			{"ObsidianStriker", 18},
+			{"PhaseChopper", 18},
+			{"ThoriumDagger", 19},
+			{"BaseballBat", 21},
+			{"DraculaFang", 20},
+			{"EnchantedKnife",20},
+			{"GoblinWarSpear",20},
+			{"NaiadShiv",20},
+			{"SeedBomb",20},
+			{"StarfishSlicer",20},
+			{"SpikyCaltrop",20},
+			{"Bolas",21},
+			{"WackWrench",21},
+			{"AquaiteKnife",22},
+			{"ArcaneAnelace",22},
+			{"GraniteThrowingAxe",22},
+			{"SpikeBomb",22},
+			{"BlackDagger",22},
+			{"BronzeThrowing",24},
+			{"FungalPopper",24},
+			{"Embowelment",26},
+			{"MoltenKnife",26},
+			{"Chum",28},
+			{"LightAnguish",28},
+			{"Kunai",30},
+			{"GaussFlinger",31},
+			{"TheCryoFang",31},
+			{"MorelGrenade",32},
+			{"CorrupterBalloon",33},
+			{"CrystalBalloon",33},
+			{"EvisceratingClaw",33},
+			{"FesteringBalloon",33},
+			{"GasContainer",33},
+			{"RocketFist",33},
+			{"CaptainsPoniard",34},
+			{"AphrodisiacVial",35},
+			{"CombustionFlask",35},
+			{"CorrosionBeaker",35},
+			{"NitrogenVial",35},
+			{"ChampionsGodHand",36},
+			{"VenomKunai",36},
+			{"CobaltThrowingSpear",37},
+			{"DurasteelJavelin",37},
+			{"HotPot",37},
+			{"LegionOrnament",37},
+			{"AxeBlade",38},
+			{"ClockWorkBomb",38},
+			{"PalladiumThrowingSpear",39},
+			{"HellRoller",40},
+			{"AdamantiteGlaive",41},
+			{"Carnwennan",41},
+			{"TrueEmbowelment",41},
+			{"ValadiumBattleAxe",41},
+			{"LodestoneJavelin",43},
+			{"RiftTearer",43},
+			{"TitaniumGlaive",43},
+			{"TrueLightAnguish",43},
+			{"SparkTaser",45},
+			{"TrueCarnwennan",45},
+			{"TitanJavelin",48},
+			{"ChlorophyteTomahawk",52},
+			{"ShadowTippedJavelin",52},
+			{"MagicCard",53},
+			{"StalkersSnippers",54},
+			{"Omniwrench",56},
+			{"SoulCleaver",58},
+			{"VoltHatchet",58},
+			{"ShadowPurgeCaltrop",59},
+			{"SwampSpike",59},
+			{"SoftServeSunderer",60},
+			{"BudBomb",63},
+			{"HadronCollider",63},
+			{"TerraKnife",63},
+			{"SoulBomb",67},
+			{"LihzahrdKukri",69},
+			{"PlasmaVial",69},
+			{"Soulslasher",69},
+			{"BugenkaiShuriken",73},
+			{"CosmicDagger",76},
+			{"ShadeKunai",78},
+			{"Witchblade",80},
+			{"DragonFang",81},
+			{"Brinefang",86},
+			{"ProximityMine",91},
+			{"StarEater",95},
+			{"TerrariumRippleKnife",95},
+			{"ElectroRebounder",97},
+			{"WhiteDwarfKunai",104},
+			{"ShadeKusarigama",108},
+			{"FireAxe",129},
+			{"TidalWave",145},
+			{"DeitysTrefork",215},
+			{"AngelsEnd",300}
+		};
+		
+		private static Dictionary<string,int> thorium_healer_damage_tweak = new Dictionary<string,int>
+		{
+			{"LifeQuartzClaymore",15},
+			{"LifeAndDeath", 120},
+			{"DarkScythe",16},
+			{"CrimsonScythe", 16}
+		};
+		
+		private static Dictionary<string,int> thorium_bard_damage_tweak = new Dictionary<string,int>
+		{
+			{"Didgeridoo", 15}
+		};
+		
+		private static Dictionary<string,int> thorium_summon_damage_tweak = new Dictionary<string,int>
+		{
+			{"PrehistoricAmberStaff", 14}
+		};
+	
 		public override void SetDefaults(Item item)
         {
-			if(item.defense > 0) 
+			if(item.defense > 0)
 			{
 				if (item.type == thorium.Find<ModItem>("SandStoneMail").Type) 
 				{
@@ -29,491 +233,74 @@ namespace RagnarokMod.Common.GlobalItems
 			} 
 			else if (item.damage > 0) 
 			{	
-				if (item.type == thorium.Find<ModItem>("LifeAndDeath").Type) 
+				//Summon
+				if(item.DamageType == DamageClass.Summon) 
 				{
-					item.damage = 120;
-				}	
-				if (item.type == thorium.Find<ModItem>("DarkScythe").Type) 
+					foreach (var compareditem in thorium_summon_damage_tweak) 
+					{
+						if ( item.type == thorium.Find<ModItem>(compareditem.Key).Type) 
+						{
+							item.damage = compareditem.Value;
+							break;
+						}
+					}
+				}
+				//Healer
+				else if(item.DamageType == ThoriumDamageBase<HealerDamage>.Instance) 
 				{
-					item.damage = 16;
+					foreach (var compareditem in thorium_healer_damage_tweak) 
+					{
+						if ( item.type == thorium.Find<ModItem>(compareditem.Key).Type) 
+						{
+							item.damage = compareditem.Value;
+							break;
+						}
+					}
+				}
+				//Bard
+				else if(item.DamageType == ThoriumDamageBase<BardDamage>.Instance) 
+				{
+					foreach (var compareditem in thorium_bard_damage_tweak) 
+					{
+						if ( item.type == thorium.Find<ModItem>(compareditem.Key).Type) 
+						{
+							item.damage = compareditem.Value;
+							break;
+						}
+					}
+				}
+				//Throwing
+				else if(item.DamageType == DamageClass.Throwing) 
+				{
+					foreach (var compareditem in thorium_throwing_damage_tweak) 
+					{
+						if ( item.type == thorium.Find<ModItem>(compareditem.Key).Type) 
+						{
+							item.damage = compareditem.Value;
+							break;
+						}
+					}
+				}
+				//Melee or anything else
+				else 
+				{
+					foreach (var compareditem in thorium_melee_and_other_damage_tweak) 
+					{
+						if ( item.type == thorium.Find<ModItem>(compareditem.Key).Type) 
+						{
+							item.damage = compareditem.Value;
+							break;
+						}
+					}
 				}
 				
-				if (item.type == thorium.Find<ModItem>("CrimsonScythe").Type) 
-				{
-					item.damage = 16;
-				}
-				else if (item.type == thorium.Find<ModItem>("LifeQuartzClaymore").Type)
-				{	
-					item.damage = 15;
-				}
-			}
-			/*
-			else if (item.damage > 0) 
-			{	
-				if (item.type == thorium.Find<ModItem>("ThunderTalon").Type) 
-				{
-					item.damage = 14;
-				}
-				else if (item.type == thorium.Find<ModItem>("Didgeridoo").Type) 
-				{
-					item.damage = 15;
-				}
-				else if (item.type == thorium.Find<ModItem>("LifeQuartzClaymore").Type)
-				{	
-					item.damage = 14;
-				}			
-				else if (item.type == thorium.Find<ModItem>("PrehistoricAmberStaff").Type)
-				{
-					item.damage= 14;
-				}
-				else if (item.type == thorium.Find<ModItem>("gSandStoneThrowingKnife").Type)
-				{
-					item.damage= 13;
-				}	
-				else if (item.type == thorium.Find<ModItem>("StoneThrowingSpear").Type)
-				{
-					item.damage= 10;
-				}
-				else if (item.type == thorium.Find<ModItem>("CactusNeedle").Type)
-				{		
-					item.damage= 9;
-				}
-				else if (item.type == thorium.Find<ModItem>("CoralCaltrop").Type)
-				{
-					item.damage= 11;
-				}
-				else if (item.type == thorium.Find<ModItem>("IronTomahawk").Type)
-				{
-					item.damage= 12;
-				}
-				else if (item.type == thorium.Find<ModItem>("IcyCaltrop").Type)
-				{
-					item.damage= 12;
-				}
-				else if (item.type == thorium.Find<ModItem>("LeadTomahawk").Type)
-				{	
-					item.damage= 14;
-				}
-				else if (item.type == thorium.Find<ModItem>("ShinobiSlicer").Type)
-				{	
-					item.damage= 11;
-				}
-				else if (item.type == thorium.Find<ModItem>("DemoniteTomahawk").Type)
-				{	
-					item.damage= 16;
-				}
-				else if (item.type == thorium.Find<ModItem>("CrimtaneTomahawk").Type)
-				{	
-					item.damage= 17;
-				}
-				else if (item.type == thorium.Find<ModItem>("LastingPliers").Type)
-				{	
-					item.damage= 12;
-				}
-				else if (item.type == thorium.Find<ModItem>("SeveredHand").Type)
-				{	
-					item.damage= 14;
-				}
-				else if (item.type == thorium.Find<ModItem>("GelGlove").Type)
-				{	
-					item.damage= 16;
-				}
-				else if (item.type == thorium.Find<ModItem>("SteelBattleAxe").Type)
-				{	
-					item.damage= 16;
-				}
-				else if (item.type == thorium.Find<ModItem>("BloomingShuriken").Type)
-				{	
-					item.damage= 18;
-				}
-				else if (item.type == thorium.Find<ModItem>("HarpiesBarrage").Type)
-				{	
-					item.damage= 18;
-				}
-				else if (item.type == thorium.Find<ModItem>("MeteoriteClusterBomb").Type)
-				{	
-					item.damage= 18;
-				}
-				else if (item.type == thorium.Find<ModItem>("ObsidianStriker").Type)
-				{	
-					item.damage= 18;
-				}
-				else if (item.type == thorium.Find<ModItem>("PhaseChopper").Type)
-				{	
-					item.damage= 18;
-				}
-				else if (item.type == thorium.Find<ModItem>("ThoriumDagger").Type)
-				{	
-					item.damage= 19;
-				}
-				else if (item.type == thorium.Find<ModItem>("BaseballBat").Type)
-				{	
-					item.damage= 21;
-				}
-				else if (item.type == thorium.Find<ModItem>("DraculaFang").Type)
-				{	
-					item.damage= 20;
-				}
-				else if (item.type == thorium.Find<ModItem>("EnchantedKnife").Type)
-				{
-					item.damage=20;
-				}
-				else if (item.type == thorium.Find<ModItem>("GoblinWarSpear").Type)
-				{
-					item.damage=20;
-				}
-				else if (item.type == thorium.Find<ModItem>("NaiadShiv").Type)
-				{
-					item.damage=20;
-				}
-				else if (item.type == thorium.Find<ModItem>("SeedBomb").Type)
-				{
-					item.damage=20;
-				}
-				else if (item.type == thorium.Find<ModItem>("StarfishSlicer").Type)
-				{
-					item.damage=20;
-				}
-				else if (item.type == thorium.Find<ModItem>("SpikyCaltrop").Type)
-				{
-					item.damage=20;
-				}
-				else if (item.type == thorium.Find<ModItem>("Bolas").Type)
-				{
-					item.damage=21;
-				}
-				else if (item.type == thorium.Find<ModItem>("WackWrench").Type)
-				{
-					item.damage=21;
-				}
-				else if (item.type == thorium.Find<ModItem>("AquaiteKnife").Type)
-				{
-					item.damage=22;
-				}
-				else if (item.type == thorium.Find<ModItem>("ArcaneAnelace").Type)
-				{
-					item.damage=22;
-				}
-				else if (item.type == thorium.Find<ModItem>("GraniteThrowingAxe").Type)
-				{
-					item.damage=22;
-				}
-				else if (item.type == thorium.Find<ModItem>("SpikeBomb").Type)
-				{
-					item.damage=22;
-				}
-				else if (item.type == thorium.Find<ModItem>("BlackDagger").Type)
-				{
-					item.damage=22;
-				}
-				else if (item.type == thorium.Find<ModItem>("BronzeThrowing").Type)
-				{
-					item.damage=24;
-				}
-				else if (item.type == thorium.Find<ModItem>("FungalPopper").Type)
-				{
-					item.damage=24;
-				}
-				else if (item.type == thorium.Find<ModItem>("Embowelment").Type)
-				{
-					item.damage=26;
-				}
-				else if (item.type == thorium.Find<ModItem>("MoltenKnife").Type)
-				{
-					item.damage=26;
-				}
-				else if (item.type == thorium.Find<ModItem>("Chum").Type)
-				{
-					item.damage=28;
-				}
-				else if (item.type == thorium.Find<ModItem>("LightAnguish").Type)
-				{
-					item.damage=28;
-				}
-				else if (item.type == thorium.Find<ModItem>("Kunai").Type)
-				{
-					item.damage=30;
-				}
-				else if (item.type == thorium.Find<ModItem>("GaussFlinger").Type)
-				{
-					item.damage=31;
-				}
-				else if (item.type == thorium.Find<ModItem>("TheCryoFang").Type)
-				{
-					item.damage=31;
-				}
-				else if (item.type == thorium.Find<ModItem>("MorelGrenade").Type)
-				{
-					item.damage=32;
-				}
-				else if (item.type == thorium.Find<ModItem>("CorrupterBalloon").Type)
-				{
-					item.damage=33;
-				}
-				else if (item.type == thorium.Find<ModItem>("CrystalBalloon").Type)
-				{
-					item.damage=33;
-				}
-				else if (item.type == thorium.Find<ModItem>("EvisceratingClaw").Type)
-				{
-					item.damage=33;
-				}
-				else if (item.type == thorium.Find<ModItem>("FesteringBalloon").Type)
-				{
-					item.damage=33;
-				}
-				else if (item.type == thorium.Find<ModItem>("GasContainer").Type)
-				{
-					item.damage=33;
-				}
-				else if (item.type == thorium.Find<ModItem>("RocketFist").Type)
-				{
-					item.damage=33;
-				}
-				else if (item.type == thorium.Find<ModItem>("CaptainsPoniard").Type)
-				{
-					item.damage=34;
-				}
-				else if (item.type == thorium.Find<ModItem>("AphrodisiacVial").Type)
-				{
-					item.damage=35;
-				}
-				else if (item.type == thorium.Find<ModItem>("CombustionFlask").Type)
-				{
-					item.damage=35;
-				}
-				else if (item.type == thorium.Find<ModItem>("CorrosionBeaker").Type)
-				{
-					item.damage=35;
-				}
-				else if (item.type == thorium.Find<ModItem>("NitrogenVial").Type)
-				{
-					item.damage=35;
-				}
-				else if (item.type == thorium.Find<ModItem>("ChampionsGodHand").Type)
-				{
-					item.damage=36;
-				}
-				else if (item.type == thorium.Find<ModItem>("VenomKunai").Type)
-				{
-					item.damage=36;
-				}
-				else if (item.type == thorium.Find<ModItem>("CobaltThrowingSpear").Type)
-				{
-					item.damage=37;
-				}
-				else if (item.type == thorium.Find<ModItem>("DurasteelJavelin").Type)
-				{
-					item.damage=37;
-				}
-				else if (item.type == thorium.Find<ModItem>("HotPot").Type)
-				{
-					item.damage=37;
-				}
-				else if (item.type == thorium.Find<ModItem>("LegionOrnament").Type)
-				{
-					item.damage=37;
-				}
-				else if (item.type == thorium.Find<ModItem>("AxeBlade").Type)
-				{
-					item.damage=38;
-				}
-				else if (item.type == thorium.Find<ModItem>("ClockWorkBomb").Type)
-				{
-					item.damage=38;
-				}
-				else if (item.type == thorium.Find<ModItem>("PalladiumThrowingSpear").Type)
-				{
-					item.damage=39;
-				}
-				else if (item.type == thorium.Find<ModItem>("HellRoller").Type)
-				{
-					item.damage=40;
-				}
-				else if (item.type == thorium.Find<ModItem>("AdamantiteGlaive").Type)
-				{
-					item.damage=41;
-				}
-				else if (item.type == thorium.Find<ModItem>("Carnwennan").Type)
-				{
-					item.damage=41;
-				}
-				else if (item.type == thorium.Find<ModItem>("TrueEmbowelment").Type)
-				{
-					item.damage=41;
-				}
-				else if (item.type == thorium.Find<ModItem>("ValadiumBattleAxe").Type)
-				{
-					item.damage=41;
-				}
-				else if (item.type == thorium.Find<ModItem>("LodestoneJavelin").Type)
-				{
-					item.damage=43;
-				}
-				else if (item.type == thorium.Find<ModItem>("RiftTearer").Type)
-				{
-					item.damage=43;
-				}
-				else if (item.type == thorium.Find<ModItem>("TitaniumGlaive").Type)
-				{
-					item.damage=43;
-				}
-				else if (item.type == thorium.Find<ModItem>("TrueLightAnguish").Type)
-				{
-					item.damage=43;
-				}
-				else if (item.type == thorium.Find<ModItem>("SparkTaser").Type)
-				{
-					item.damage=45;
-				}
-				else if (item.type == thorium.Find<ModItem>("TrueCarnwennan").Type)
-				{
-					item.damage=45;
-				}
-				else if (item.type == thorium.Find<ModItem>("TitanJavelin").Type)
-				{
-					item.damage=48;
-				}
-				else if (item.type == thorium.Find<ModItem>("ChlorophyteTomahawk").Type)
-				{
-					item.damage=52;
-				}
-				else if (item.type == thorium.Find<ModItem>("ShadowTippedJavelin").Type)
-				{
-					item.damage=52;
-				}
-				else if (item.type == thorium.Find<ModItem>("MagicCard").Type)
-				{
-					item.damage=53;
-				}
-				else if (item.type == thorium.Find<ModItem>("StalkersSnippers").Type)
-				{
-					item.damage=54;
-				}
-				else if (item.type == thorium.Find<ModItem>("Omniwrench").Type)
-				{
-					item.damage=56;
-				}
-				else if (item.type == thorium.Find<ModItem>("SoulCleaver").Type)
-				{
-					item.damage=58;
-				}
-				else if (item.type == thorium.Find<ModItem>("VoltHatchet").Type)
-				{
-					item.damage=58;
-				}
-				else if (item.type == thorium.Find<ModItem>("ShadowPurgeCaltrop").Type)
-				{
-					item.damage=59;
-				}
-				else if (item.type == thorium.Find<ModItem>("SwampSpike").Type)
-				{
-					item.damage=59;
-				}
-				else if (item.type == thorium.Find<ModItem>("SoftServeSunderer").Type)
-				{
-					item.damage=60;
-				}
-				else if (item.type == thorium.Find<ModItem>("BudBomb").Type)
-				{
-					item.damage=63;
-				}
-				else if (item.type == thorium.Find<ModItem>("HadronCollider").Type)
-				{
-					item.damage=63;
-				}
-				else if (item.type == thorium.Find<ModItem>("TerraKnife").Type)
-				{
-					item.damage=63;
-				}
-				else if (item.type == thorium.Find<ModItem>("SoulBomb").Type)
-				{
-					item.damage=67;
-				}
-				else if (item.type == thorium.Find<ModItem>("LihzahrdKukri").Type)
-				{
-					item.damage=69;
-				}
-				else if (item.type == thorium.Find<ModItem>("PlasmaVial").Type)
-				{
-					item.damage=69;
-				}
-				else if (item.type == thorium.Find<ModItem>("Soulslasher").Type)
-				{
-					item.damage=69;
-				}
-				else if (item.type == thorium.Find<ModItem>("BugenkaiShuriken").Type)
-				{
-					item.damage=73;
-				}
-				else if (item.type == thorium.Find<ModItem>("CosmicDagger").Type)
-				{
-					item.damage=76;
-				}
-				else if (item.type == thorium.Find<ModItem>("ShadeKunai").Type)
-				{
-					item.damage=78;
-				}
-				else if (item.type == thorium.Find<ModItem>("Witchblade").Type)
-				{
-					item.damage=80;
-				}
-				else if (item.type == thorium.Find<ModItem>("DragonFang").Type)
-				{
-					item.damage=81;
-				}
-				else if (item.type == thorium.Find<ModItem>("Brinefang").Type)
-				{
-					item.damage=86;
-				}
-				else if (item.type == thorium.Find<ModItem>("ProximityMine").Type)
-				{
-					item.damage=91;
-				}
-				else if (item.type == thorium.Find<ModItem>("StarEater").Type)
-				{
-					item.damage=95;
-				}
-				else if (item.type == thorium.Find<ModItem>("TerrariumRippleKnife").Type)
-				{
-					item.damage=95;
-				}
-				else if (item.type == thorium.Find<ModItem>("ElectroRebounder").Type)
-				{
-					item.damage=97;
-				}
-				else if (item.type == thorium.Find<ModItem>("WhiteDwarfKunai").Type)
-				{
-					item.damage=104;
-				}
-				else if (item.type == thorium.Find<ModItem>("ShadeKusarigama").Type)
-				{
-					item.damage=108;
-				}
-				else if (item.type == thorium.Find<ModItem>("FireAxe").Type)
-				{
-					item.damage=129;
-				}
-				else if (item.type == thorium.Find<ModItem>("TidalWave").Type)
-				{
-					item.damage=145;
-				}
-				else if (item.type == thorium.Find<ModItem>("DeitysTrefork").Type)
-				{
-					item.damage=215;
-				}
-				else if (item.type == thorium.Find<ModItem>("AngelsEnd").Type)
-				{
-					item.damage=300;
-				}
+				// Apply some other tweaks
 			}	
-			*/
-
 			else 
 			{
 				return;
 			}
-        }
+			
+		}
 	}
-	
 }
