@@ -395,11 +395,16 @@ Items: {
 		DisplayName: Marble Claymore
 		Tooltip: ""
 	}
-<<<<<<< HEAD
 
 	RadioMic: {
 		DisplayName: Radio Mic
-=======
+		Tooltip:
+			'''
+			The microphone of a long-dead demon. 
+			Singing into it allows the user to create shadowy tendrils that strike nearby enemies.
+			'''
+	}
+
 	CorrosiveFlux: {
 		DisplayName: Corrosive Flux
 		Tooltip: ""
@@ -407,33 +412,29 @@ Items: {
 
 	WindReaver: {
 		DisplayName: Wind Reaver
->>>>>>> 19718a984acd8db3856dc65376b0e8e9202985ac
 		Tooltip: ""
 	}
+
+	Tooltip: ""
 }
 
 Projectiles: {
-	NoProj.DisplayName: No Projectile
-	BlazingDrumBeatFireSlash.DisplayName: Blazing Drum Beat Fire Slash
-	MelterAmp.DisplayName: Melter Amp
 	MelterAmpOverride.DisplayName: Melter Amp Override
-	GuardianHealer.DisplayName: Guardian Healer
-	GuardianHealerBeam.DisplayName: Guardian Healer Beam
-	ProfanedScythePro.DisplayName: Profaned Scythe Pro
-	MarbleScythePro.DisplayName: Marble Scythe Pro
-	ScoriaDualscythePro.DisplayName: Scoria Dualscythe Pro
-	AstralScythePro.DisplayName: Astral Scythe Pro
-	AstralScytheStarPro.DisplayName: Astral Scythe Star Pro
-	MarbleStar.DisplayName: Marble Star
+	BlazingDrumBeatFireSlash.DisplayName: Blazing Drum Beat Fire Slash
 	CalamityBellPro.DisplayName: Calamity Bell Pro
 	CalamityBellPro2.DisplayName: Calamity Bell Pro2
-<<<<<<< HEAD
 	TendrilStrike.DisplayName: Tendril Strike
-=======
+	GuardianHealer.DisplayName: Guardian Healer
+	GuardianHealerBeam.DisplayName: Guardian Healer Beam
+	AstralScythePro.DisplayName: Astral Scythe Pro
+	AstralScytheStarPro.DisplayName: Astral Scythe Star Pro
 	CorrosiveFluxPro.DisplayName: Corrosive Flux Pro
+	MarbleScythePro.DisplayName: Marble Scythe Pro
+	ProfanedScythePro.DisplayName: Profaned Scythe Pro
+	ScoriaDualscythePro.DisplayName: Scoria Dualscythe Pro
 	WindReaverPro.DisplayName: Wind Reaver Pro
 	WindSlashPro.DisplayName: Wind Slash Pro
->>>>>>> 19718a984acd8db3856dc65376b0e8e9202985ac
+	NoProj.DisplayName: No Proj
 }
 
 od: {
@@ -458,4 +459,14 @@ od: {
 		BlazingDrumBeatFireSlash.DisplayName: Blazing Drum Beat Fire Slash
 		NoProj.DisplayName: No Proj
 	}
+}
+
+CorrosiveFlux: {
+	DisplayName: Corrosive Flux
+	Tooltip: ""
+}
+
+WindReaver: {
+	DisplayName: Wind Reaver
+	Tooltip: ""
 }

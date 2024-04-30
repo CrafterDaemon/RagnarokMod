@@ -60,7 +60,7 @@ namespace RagnarokMod.Items.BardItems
 				dust.scale = 1.65f;
 				dust.noGravity = true;
 			}
-		}
+		}hi
 		
 		public override void SafeBardShoot(int success, int level, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
