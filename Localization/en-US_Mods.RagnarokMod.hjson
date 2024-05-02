@@ -416,6 +416,11 @@ Items: {
 	}
 
 	Tooltip: ""
+
+	SquirrelScarf: {
+		DisplayName: Squirrel Scarf
+		Tooltip: ""
+	}
 }
 
 Projectiles: {

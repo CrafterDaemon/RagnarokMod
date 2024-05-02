@@ -12,7 +12,7 @@ namespace RagnarokMod.Items.Materials
             Item.height = 10;
             Item.scale = 0.33f;
             Item.maxStack = 9999;
-            Item.value = Item.sellPrice(silver: 10);
+            Item.value = Item.sellPrice(gold: 10);
             Item.rare = ItemRarityID.Orange;
         }
     }

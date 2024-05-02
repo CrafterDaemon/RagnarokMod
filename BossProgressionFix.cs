@@ -92,7 +92,25 @@ namespace RagnarokMod
             foreach (Recipe item in getter.Search())
             {
                 RecipeHelper helper = new(item);
-                helper.Add(ModContent.ItemType<StriderFang>(),5);
+                helper.Add(ModContent.ItemType<StriderFang>(), 5);
+            }
+            getter.LookFor(ItemID.MechanicalEye, 1);
+            foreach (Recipe item in getter.Search())
+            {
+                RecipeHelper helper = new(item);
+                helper.Add(ModContent.ItemType<StrangeAlienMotherBoard>(), 1);
+            }
+            getter.LookFor(ItemID.MechanicalSkull, 1);
+            foreach (Recipe item in getter.Search())
+            {
+                RecipeHelper helper = new(item);
+                helper.Add(ModContent.ItemType<StrangeAlienMotherBoard>(), 1);
+            }
+            getter.LookFor(ItemID.MechanicalWorm, 1);
+            foreach (Recipe item in getter.Search())
+            {
+                RecipeHelper helper = new(item);
+                helper.Add(ModContent.ItemType<StrangeAlienMotherBoard>(), 1);
             }
         }
 
