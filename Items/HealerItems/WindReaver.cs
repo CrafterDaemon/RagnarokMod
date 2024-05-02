@@ -11,11 +11,13 @@ using Microsoft.Xna.Framework;
 using ThoriumMod.Items.HealerItems;
 using ThoriumMod.Projectiles.Scythe;
 using CalamityMod;
+
 using CalamityMod.Items;
 using CalamityMod.Items.Armor;
 using CalamityMod.Items.Materials;
 using CalamityMod.CalPlayer;
 using CalamityMod.Rarities;
+using CalamityMod.Items.Placeables;
 using RagnarokMod.Items.Materials;
 using RagnarokMod.Projectiles.HealerPro;
 using System.Diagnostics.Metrics;
@@ -59,5 +61,13 @@ namespace RagnarokMod.Items.HealerItems
 			return false;
         
 		}
+        public override void AddRecipes()
+        {
+            Recipe recipe = CreateRecipe();
+            recipe.AddIngredient(ItemID.SunplateBlock, 8);
+			recipe.AddIngredient(ModContent.ItemType<AerialiteBar>(), 10);
+            recipe.AddTile(TileID.Anvils);
+            recipe.Register();
+        }
     }
 }

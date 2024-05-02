@@ -417,8 +417,18 @@ Items: {
 
 	Tooltip: ""
 
+<<<<<<< HEAD
 	SquirrelScarf: {
 		DisplayName: Squirrel Scarf
+=======
+	Prisma: {
+		DisplayName: Prisma
+		Tooltip: ""
+	}
+
+	Fractal: {
+		DisplayName: Fractal
+>>>>>>> c279e60aec42c155f03dacf373cbdac08c4880e0
 		Tooltip: ""
 	}
 }
@@ -440,6 +450,10 @@ Projectiles: {
 	WindReaverPro.DisplayName: Wind Reaver Pro
 	WindSlashPro.DisplayName: Wind Slash Pro
 	NoProj.DisplayName: No Proj
+	PrismaPro1.DisplayName: Prisma Pro1
+	PrismaPro2.DisplayName: Prisma Pro2
+	FractalPro1.DisplayName: Fractal Pro1
+	FractalPro2.DisplayName: Fractal Pro2
 }
 
 od: {
