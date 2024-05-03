@@ -150,7 +150,6 @@ Items: {
 		DisplayName: Calamity Bell
 		Tooltip:
 			'''
-			Allows you to rhythmically ring a bell
 			Hit enemies are afflicted by Brimstone Flames for 2 seconds
 			50% more damage against Calamitas Clone and her brothers
 			'''
@@ -257,6 +256,15 @@ Items: {
 			Fires music notes
 			Press <right> to summon an amplifier that shoots towards your mouse
 			'WOOO!! FAAAAAAANTASYY WORLDDDDD!'
+			'''
+	}
+
+	TerrariansLastKnifeOverride: {
+		DisplayName: Terrarian´s Last Knife
+		Tooltip:
+			'''
+			Rapidly swings a large, life-siphoning knife
+			Right click to unleash a massive torrent of blood at the cost of life
 			'''
 	}
 
@@ -396,79 +404,27 @@ Items: {
 		Tooltip: ""
 	}
 
-	RadioMic: {
-		DisplayName: Radio Mic
-		Tooltip:
-			'''
-			The microphone of a long-dead demon. 
-			Singing into it allows the user to create shadowy tendrils that strike nearby enemies.
-			'''
-	}
-
-	CorrosiveFlux: {
-		DisplayName: Corrosive Flux
-		Tooltip: ""
-	}
-
-	WindReaver: {
-		DisplayName: Wind Reaver
-		Tooltip: ""
-	}
-
-	Tooltip: ""
-
-	SquirrelScarf: {
-		DisplayName: Squirrel Scarf
-		Tooltip: ""
-	}
-
-	Prisma: {
-		DisplayName: Prisma
-		Tooltip: ""
-	}
-
-	Fractal: {
-		DisplayName: Fractal
-		Tooltip: ""
-	}
-
-	VoidseerPearl: {
-		DisplayName: Voidseer Pearl
-		Tooltip: ""
-	}
-
-	QueenJelly: {
-		DisplayName: Queen Jelly
-		Tooltip: ""
-	}
-
-	NewLichRequirement: {
-		DisplayName: New Lich Requirement
+	TerrariansLastKnife: {
+		DisplayName: Terrarians Last Knife
 		Tooltip: ""
 	}
 }
 
 Projectiles: {
-	MelterAmpOverride.DisplayName: Melter Amp Override
+	NoProj.DisplayName: No Projectile
 	BlazingDrumBeatFireSlash.DisplayName: Blazing Drum Beat Fire Slash
-	CalamityBellPro.DisplayName: Calamity Bell Pro
-	CalamityBellPro2.DisplayName: Calamity Bell Pro2
-	TendrilStrike.DisplayName: Tendril Strike
+	MelterAmp.DisplayName: Melter Amp
+	MelterAmpOverride.DisplayName: Melter Amp Override
 	GuardianHealer.DisplayName: Guardian Healer
 	GuardianHealerBeam.DisplayName: Guardian Healer Beam
+	ProfanedScythePro.DisplayName: Profaned Scythe Pro
+	MarbleScythePro.DisplayName: Marble Scythe Pro
+	ScoriaDualscythePro.DisplayName: Scoria Dualscythe Pro
 	AstralScythePro.DisplayName: Astral Scythe Pro
 	AstralScytheStarPro.DisplayName: Astral Scythe Star Pro
-	CorrosiveFluxPro.DisplayName: Corrosive Flux Pro
-	MarbleScythePro.DisplayName: Marble Scythe Pro
-	ProfanedScythePro.DisplayName: Profaned Scythe Pro
-	ScoriaDualscythePro.DisplayName: Scoria Dualscythe Pro
-	WindReaverPro.DisplayName: Wind Reaver Pro
-	WindSlashPro.DisplayName: Wind Slash Pro
-	NoProj.DisplayName: No Proj
-	PrismaPro1.DisplayName: Prisma Pro1
-	PrismaPro2.DisplayName: Prisma Pro2
-	FractalPro1.DisplayName: Fractal Pro1
-	FractalPro2.DisplayName: Fractal Pro2
+	MarbleStar.DisplayName: Marble Star
+	CalamityBellPro.DisplayName: Calamity Bell Pro
+	CalamityBellPro2.DisplayName: Calamity Bell Pro2
 }
 
 od: {
@@ -493,14 +449,4 @@ od: {
 		BlazingDrumBeatFireSlash.DisplayName: Blazing Drum Beat Fire Slash
 		NoProj.DisplayName: No Proj
 	}
-}
-
-CorrosiveFlux: {
-	DisplayName: Corrosive Flux
-	Tooltip: ""
-}
-
-WindReaver: {
-	DisplayName: Wind Reaver
-	Tooltip: ""
 }
