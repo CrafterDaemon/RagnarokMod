@@ -417,10 +417,11 @@ Items: {
 
 	Tooltip: ""
 
-<<<<<<< HEAD
 	SquirrelScarf: {
 		DisplayName: Squirrel Scarf
-=======
+		Tooltip: ""
+	}
+
 	Prisma: {
 		DisplayName: Prisma
 		Tooltip: ""
@@ -428,7 +429,21 @@ Items: {
 
 	Fractal: {
 		DisplayName: Fractal
->>>>>>> c279e60aec42c155f03dacf373cbdac08c4880e0
+		Tooltip: ""
+	}
+
+	VoidseerPearl: {
+		DisplayName: Voidseer Pearl
+		Tooltip: ""
+	}
+
+	QueenJelly: {
+		DisplayName: Queen Jelly
+		Tooltip: ""
+	}
+
+	NewLichRequirement: {
+		DisplayName: New Lich Requirement
 		Tooltip: ""
 	}
 }

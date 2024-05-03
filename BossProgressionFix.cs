@@ -1,14 +1,24 @@
 ﻿using CalamityMod.Items.Materials;
 using CalamityMod.Items.SummonItems;
+using Mono.Cecil.Cil;
+using MonoMod.Cil;
 using RagnarokMod.Items.Materials;
 using RagnarokMod.Utils;
+using System;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using ThoriumMod.Items.BossBuriedChampion;
+using ThoriumMod.Items.BossGraniteEnergyStorm;
 using ThoriumMod.Items.BossQueenJellyfish;
 using ThoriumMod.Items.BossStarScouter;
 using ThoriumMod.Items.BossTheGrandThunderBird;
+using ThoriumMod.Items.BossViscount;
+using ThoriumMod.Items.Bronze;
+using ThoriumMod.Items.Granite;
 using ThoriumMod.Items.NPCItems;
+using ThoriumMod.Tiles;
 
 namespace RagnarokMod
 {
@@ -47,7 +57,7 @@ namespace RagnarokMod
             foreach (Recipe item in getter.Search())
             {
                 RecipeHelper helper = new(item);
-                helper.Add(ModContent.ItemType<PearlShard>(),1);
+                helper.Add(ModContent.ItemType<PearlShard>(), 1);
             }
             getter.LookFor(ModContent.ItemType<DesertMedallion>(), 1);
             foreach (Recipe item in getter.Search())
@@ -61,7 +71,48 @@ namespace RagnarokMod
                 RecipeHelper helper = new(item);
                 helper.Add(ModContent.ItemType<StormFeather>(), 3);
                 helper.Add(ModContent.ItemType<PearlShard>(), 1);
+                helper.Add(ModContent.ItemType<QueenJelly>(), 3);
             }
+            getter.LookFor(ModContent.ItemType<UnstableCore>(), 1);
+            foreach (Recipe item in getter.Search())
+            {
+                RecipeHelper helper = new(item);
+                helper.Disable();
+            }
+            Recipe.Create(ModContent.ItemType<UnstableCore>())
+                .AddIngredient(ItemID.GraniteBlock, 25)
+                .AddIngredient<GraniteEnergyCore>(4)
+                .AddIngredient<BloodSample>(5)
+                .AddIngredient<DraculaFang>(100)
+                .AddTile(TileID.Anvils)
+                .Register();
+            Recipe.Create(ModContent.ItemType<UnstableCore>())
+                .AddIngredient(ItemID.GraniteBlock, 25)
+                .AddIngredient<GraniteEnergyCore>(4)
+                .AddIngredient<RottenMatter>(5)
+                .AddIngredient<DraculaFang>(100)
+                .AddTile(TileID.Anvils)
+                .Register();
+            getter.LookFor(ModContent.ItemType<AncientBlade>(), 1);
+            foreach (Recipe item in getter.Search())
+            {
+                RecipeHelper helper = new(item);
+                helper.Disable();
+            }
+            Recipe.Create(ModContent.ItemType<AncientBlade>())
+                .AddIngredient(ItemID.MarbleBlock, 25)
+                .AddIngredient<BronzeAlloyFragments>(4)
+                .AddIngredient<BloodSample>(5)
+                .AddIngredient<DraculaFang>(100)
+                .AddTile(TileID.Anvils)
+                .Register();
+            Recipe.Create(ModContent.ItemType<AncientBlade>())
+                .AddIngredient(ItemID.MarbleBlock, 25)
+                .AddIngredient<BronzeAlloyFragments>(4)
+                .AddIngredient<RottenMatter>(5)
+                .AddIngredient<DraculaFang>(100)
+                .AddTile(TileID.Anvils)
+                .Register();
             getter.LookFor(ModContent.ItemType<OverloadedSludge>(), 1);
             foreach (Recipe item in getter.Search())
             {
@@ -111,6 +162,24 @@ namespace RagnarokMod
             {
                 RecipeHelper helper = new(item);
                 helper.Add(ModContent.ItemType<StrangeAlienMotherBoard>(), 1);
+            }
+            getter.LookFor(ModContent.ItemType<CharredIdol>(), 1);
+            foreach (Recipe item in getter.Search())
+            {
+                RecipeHelper helper = new(item);
+                helper.Add(ModContent.ItemType<VoidseerPearl>(), 1);
+            }
+            getter.LookFor(ModContent.ItemType<Seafood>(), 1);
+            foreach (Recipe item in getter.Search())
+            {
+                RecipeHelper helper = new(item);
+                helper.Add(ModContent.ItemType<QueenJelly>(), 5);
+            }
+            getter.LookFor(ModContent.ItemType<EyeofDesolation>(), 1);
+            foreach (Recipe item in getter.Search())
+            {
+                RecipeHelper helper = new(item);
+                helper.Add(ModContent.ItemType<VoidseerPearl>(),1);
             }
         }
 

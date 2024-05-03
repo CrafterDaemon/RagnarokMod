@@ -11,6 +11,8 @@ using CalamityMod.Items.TreasureBags;
 using RagnarokMod.Items.HealerItems;
 using RagnarokMod.Items.BardItems;
 using CalamityMod.NPCs.CalClone;
+using ThoriumMod.Items.BossFallenBeholder;
+using ThoriumMod.Items.BossQueenJellyfish;
 
 namespace RagnarokMod.Common.GlobalItems
 {
@@ -22,6 +24,10 @@ namespace RagnarokMod.Common.GlobalItems
             if (item.type == ModContent.ItemType<TheGrandThunderBirdTreasureBag>())
             {
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<StormFeather>(), 1, 1, 4));
+            }
+            if (item.type == ModContent.ItemType<QueenJellyfishTreasureBag>())
+            {
+                itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<QueenJelly>(), 1, 4, 16));
             }
             if (item.type == ModContent.ItemType<StarScouterTreasureBag>())
             {
@@ -43,9 +49,13 @@ namespace RagnarokMod.Common.GlobalItems
             {
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<EquivalentExchange>(), 3));
             }
-			if (item.type == ModContent.ItemType<CalamitasCloneBag>())
+            if (item.type == ModContent.ItemType<CalamitasCloneBag>())
             {
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<CalamityBell>(), 3));
+            }
+            if (item.type == ModContent.ItemType<FallenBeholderTreasureBag>()) 
+            {
+                itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<VoidseerPearl>()));
             }
         }
     }

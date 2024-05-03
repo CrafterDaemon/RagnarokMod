@@ -8,9 +8,8 @@ namespace RagnarokMod.Items.Materials
     {
         public override void SetDefaults()
         {
-            Item.width = 10;
-            Item.height = 10;
-            Item.scale = 0.33f;
+            Item.width = 64;
+            Item.height = 64;
             Item.maxStack = 9999;
             Item.value = Item.sellPrice(gold: 10);
             Item.rare = ItemRarityID.Orange;

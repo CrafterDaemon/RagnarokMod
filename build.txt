@@ -3,3 +3,4 @@ author = CrafterDaemon & The Ragnarok Team
 version = 1.3
 modReferences = ThoriumMod, CalamityMod
 sortAfter = ThoriumMod, CalamityMod
+dllReferences = MMHOOK_ThoriumMod
