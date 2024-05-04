@@ -8,7 +8,7 @@ using ThoriumMod.Items.BossGraniteEnergyStorm;
 using ThoriumMod.Items.BossBuriedChampion;
 using ThoriumMod.Items.BossBoreanStrider;
 using CalamityMod.Items.TreasureBags;
-using RagnarokMod.Items.HealerItems;
+using RagnarokMod.Items.HealerItems.Other;
 using RagnarokMod.Items.BardItems;
 using CalamityMod.NPCs.CalClone;
 using ThoriumMod.Items.BossFallenBeholder;
