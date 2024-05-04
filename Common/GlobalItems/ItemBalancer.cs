@@ -8,6 +8,7 @@ using CalamityMod;
 using ThoriumMod;
 using ThoriumMod.Items;
 using System;
+using RagnarokMod.Projectiles.TweakedProjectiles;
 
 namespace RagnarokMod.Common.GlobalItems
 {
@@ -357,7 +358,8 @@ namespace RagnarokMod.Common.GlobalItems
 		
 		private static Dictionary<string,int> thorium_bard_damage_tweak = new Dictionary<string,int>
 		{
-			{"Didgeridoo", 15}
+			{"Didgeridoo", 15},
+			{"BlackMIDI", 170}
 		};
 		
 		private static Dictionary<string,int> thorium_ranged_damage_tweak = new Dictionary<string,int>
@@ -486,6 +488,11 @@ namespace RagnarokMod.Common.GlobalItems
 							item.damage = compareditem.Value;
 							break;
 						}
+					}
+					
+					if( item.type == thorium.Find<ModItem>("BlackMIDI").Type) 
+					{
+						item.shoot = ModContent.ProjectileType<BlackMIDIProOverride>();
 					}
 				}
 				//Throwing
