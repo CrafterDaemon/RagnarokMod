@@ -539,6 +539,16 @@ Items: {
 		DisplayName: New Lich Requirement
 		Tooltip: ""
 	}
+
+	Steampipes: {
+		DisplayName: Steampipes
+		Tooltip: ""
+	}
+
+	ElysianSong: {
+		DisplayName: Elysian Song
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -562,4 +572,47 @@ Projectiles: {
 	WindReaverPro.DisplayName: Wind Reaver Pro
 	WindSlashPro.DisplayName: Wind Slash Pro
 	NoProj.DisplayName: No Proj
+<<<<<<< HEAD
+=======
+	PrismaPro1.DisplayName: Prisma Pro1
+	PrismaPro2.DisplayName: Prisma Pro2
+	FractalPro1.DisplayName: Fractal Pro1
+	FractalPro2.DisplayName: Fractal Pro2
+	SteampipesPro.DisplayName: Steampipes Pro
+	ElysianSongPro.DisplayName: Elysian Song Pro
+}
+
+od: {
+	Items: {
+		AuricTeslaFrilledHelmet: {
+			DisplayName: Auric Tesla Frilled Helmet
+			Tooltip: ""
+		}
+
+		BlazingDrumBeat: {
+			DisplayName: Blazing Drum Beat
+			Tooltip: ""
+		}
+
+		DrumStick: {
+			DisplayName: Drum Stick
+			Tooltip: ""
+		}
+	}
+
+	Projectiles: {
+		BlazingDrumBeatFireSlash.DisplayName: Blazing Drum Beat Fire Slash
+		NoProj.DisplayName: No Proj
+	}
+}
+
+CorrosiveFlux: {
+	DisplayName: Corrosive Flux
+	Tooltip: ""
+}
+
+WindReaver: {
+	DisplayName: Wind Reaver
+	Tooltip: ""
+>>>>>>> 2bbdf80 (elysian song and steampipes + crafting recipes)
 }

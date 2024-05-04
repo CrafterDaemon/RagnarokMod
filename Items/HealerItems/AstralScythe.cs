@@ -65,5 +65,12 @@ namespace RagnarokMod.Items.HealerItems
     
 			return false;
 		}
+        public override void AddRecipes()
+        {
+            Recipe recipe = CreateRecipe();
+			recipe.AddIngredient(ModContent.ItemType<AstralBar>(), 10);
+            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.Register();
+        }
     }
 }

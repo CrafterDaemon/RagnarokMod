@@ -36,5 +36,12 @@ namespace RagnarokMod.Items.HealerItems
             base.Item.rare = ModContent.RarityType<Turquoise>();
             base.Item.shoot = ModContent.ProjectileType<ScoriaDualscythePro>();
         }
+        public override void AddRecipes()
+        {
+            Recipe recipe = CreateRecipe();
+			recipe.AddIngredient(ModContent.ItemType<ScoriaBar>(), 10);
+            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.Register();
+        }
     }
 }
