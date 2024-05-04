@@ -17,6 +17,106 @@ namespace RagnarokMod.Common.GlobalItems
 		private static Mod thorium = ModLoader.GetMod("ThoriumMod");
 		private static Mod calamity = ModLoader.GetMod("CalamityMod");
 	
+	
+		private static List<string> pointblankshots = new List<string> {
+			"FrostFury",
+			"eSandStoneBow",
+			"TalonBurst",
+			"SteelBow",
+			"ThoriumBow",
+			"YewWoodBow",
+			"FeatherFoe",
+			"GrassStringBow",
+			"BloomingBow",
+			"StreamSting",
+			"EternalNight",
+			"ChampionsTrifectaShot",
+			"CometCrossfire",
+			"CupidString",
+			"NagaRecurve",
+			"FleshBow",
+			"CinderString",
+			"GlacialSting",
+			"LodeStoneBow",
+			"ValadiumBow",
+			"ShusWrath",
+			"DestroyersRage",
+			"TitanBow",
+			"DecayingSorrow",
+			"DemonBloodBow",
+			"ShadowFlareBow",
+			"TheBlackBow",
+			"TerrariumLongbow",
+			"gDarkSteelCrossBow",
+			"DurasteelRepeater",
+			"DemonBloodCrossBow",
+			"IllumiteShotbow",
+			"YewWoodFlintlock",
+			"HarpyPelter",
+			"BuccaneerBlunderBuss",
+			"SharkStorm",
+			"GuanoGunner",
+			"Slugger",
+			"HellfireMinigun",
+			"EnergyStormBolter",
+			"HitScanner",
+			"SpudBomber",
+			"AquaPelter",
+			"Trapper",
+			"Webgun",
+			"GoblinWarpipe",
+			"ManHacker",
+			"SSDevastator",
+			"Shockbuster",
+			"TommyGun",
+			"BulletStorm",
+			"MicroLauncher",
+			"Obliterator",
+			"PalladiumSubmachineGun",
+			"TheZapper",
+			"ElephantGun",
+			"FreezeRay",
+			"ChargedSplasher",
+			"CobaltPopper",
+			"DragonsGaze",
+			"BloodBelcher",
+			"RangedThorHammer",
+			"MythrilPelter",
+			"Trigun",
+			"ArmorBane",
+			"Funggat",
+			"LodeStoneQuickDraw",
+			"Scorn",
+			"ValadiumFoeBlaster",
+			"OrichalcumPelter",
+			"UmbraBlaster",
+			"TranquilizerGun",
+			"VegaPhaser",
+			"BeetleBlaster",
+			"OgreSnotGun",
+			"SpiritBreaker",
+			"TitaniumRifle",
+			"MineralLauncher",
+			"SpineBuster",
+			"Teslanator",
+			"HandCannon",
+			"IllumiteBlaster",
+			"IllumiteBarrage",
+			"AdamantiteCarbine",
+			"MyceliumGattlingGun",
+			"PhantomArmCannon",
+			"DreadLauncher",
+			"RejectsBlowpipe",
+			"TrenchSpitter",
+			"TerrariumPulseRifle",
+			"LittleRed",
+			"OmniCannon",
+			"EmperorsWill",
+			"DMR",
+			"WyrmDecimator",
+			"NovaRifle"
+		};
+	
 		private static Dictionary<string,int> thorium_melee_and_other_damage_tweak = new Dictionary<string,int>
 		{
 			{"IceLance", 14}, 
@@ -83,7 +183,54 @@ namespace RagnarokMod.Common.GlobalItems
 			{"LodeStoneClaymore", 48},
 			{"Schmelze", 48},
 			{"Scalper", 51},
-			{"MyceliumWhip", 52}
+			{"MyceliumWhip", 52},
+			{"Executioner", 53},
+			{"EyeoftheDestroyer", 55},
+			{"IllumiteSpear", 55},
+			{"MidasGavel", 55},
+			{"TitanBoomerang", 55},
+			{"DreadFork", 57},
+			{"Glacier", 57},
+			{"SparkingJellyBall", 28},
+			{"TheBlackBlade", 57},
+			{"TitanSword", 59},
+			{"IllumiteBlade", 66},
+			{"ShipsHelm", 66},
+			{"BloodyHighClaws", 68},
+			{"StarTrail", 35},
+			{"DreadRazor", 73},
+			{"Spearmint", 78},
+			{"ClimbersIceAxe", 80},
+			{"SoulReaver", 82},
+			{"TheWhirlpool", 84},
+			{"DemonBloodSpear", 89},
+			{"GolemsGaze", 92},
+			{"SoulRender", 93},
+			{"TheJuggernaut", 48},
+			{"QuakeGauntlet", 97},
+			{"DemonBloodSword", 99},
+			{"FleshMace", 52},
+			{"PrimesFury", 104},
+			{"SolScorchedSlab", 108},
+			{"BoneFlayerTail", 55},
+			{"EbonyTail", 55},
+			{"TheSeaMine", 55},
+			{"TerrariumHyperDisc", 119},
+			{"LodeStoneBreaker", 64},
+			{"SteamFlail", 64},
+			{"MantisShrimpPunch", 132},
+			{"TerrariumSaber", 132},
+			{"EclipseFang", 138},
+			{"TerrariumSpear",138},
+			{"LivewireCrasher", 77},
+			{"BloodGlory", 154},
+			{"WyvernSlayer", 154},
+			{"Skadoosh", 173},
+			{"LingeringWill", 235},
+			{"EssenceofFlame", 265},
+			{"SevenSeasDevastator", 275}, // No change
+			{"OceansJudgement", 325}, // No change
+			{"TerrariansLastKnife", 1} // Replaced by the overriden variant, therefore nerfed to 1 damage to be still obtainable for Fargos
 		};
 		
 		private static Dictionary<string,int> thorium_throwing_damage_tweak = new Dictionary<string,int> 
@@ -213,13 +360,85 @@ namespace RagnarokMod.Common.GlobalItems
 			{"Didgeridoo", 15}
 		};
 		
+		private static Dictionary<string,int> thorium_ranged_damage_tweak = new Dictionary<string,int>
+		{
+			{"YewWoodFlintlock", 14},
+			{"HellfireMinigun", 8},
+			{"CobaltPopper", 28},
+			{"TitaniumRifle", 43},
+			{"RangedThorHammer", 30},
+			{"PalladiumSubmachineGun", 25},
+			{"MythrilPelter", 33},
+			{"OrichalcumPelter", 35},
+			{"AdamantiteCarbine", 54}
+			
+		};
+		
 		private static Dictionary<string,int> thorium_summon_damage_tweak = new Dictionary<string,int>
 		{
-			{"PrehistoricAmberStaff", 14}
+			{"SeahorseWand", 8},
+			{"LivingWoodAcorn", 12},
+			{"StormHatchlingStaff", 13},
+			{"RosySlimeStaff", 13},
+			{"ButterflyStaff",13},
+			{"PrehistoricAmberStaff", 15},
+			{"ArsenalStaff", 16},
+			{"MeteorHeadStaff", 17},
+			{"YarnBall", 18},
+			{"EnchantedCane", 20},
+			{"ViscountCane", 19},
+			{"TabooWand", 23},
+			{"MantisCane", 27},
+			{"SteamgunnerController", 18},
+			{"IceFairyStaff", 25}, 
+			{"LadyLight",25},
+			{"BloodFeasterStaff", 30},
+			{"DraconicMagmaStaff", 29},
+			{"CrimsonHoundStaff", 31},
+			{"CorruptlingStaff", 32},
+			{"MastersLibram", 34},
+			{"HailBomber", 37},
+			{"TheBlackCane", 40},
+			{"BlobhornCoralStaff", 33},
+			{"ValkyrieBlade", 43},
+			{"BeholderStaff", 50},
+			{"EyeofOdin", 50},
+			{"CorrodlingStaff", 64},
+			{"TerrariumEnigmaStaff", 69},
+			{"BloodyPaganStaff", 83},
+			{"NebulaReflection", 143},
+			{"EmberStaff", 250},
+			{"AntlionStaff", 16},
+			{"BleedingHeartStaff", 14},
+			{"CreepingVineStaff", 17},
+			{"DevourerStaff", 18},
+			{"SpittingFish", 20},
+			{"NanoClamCane", 23},
+			{"WeedEater", 24},
+			{"BoulderProbeStaff", 25},
+			{"StrangeSkull", 32},
+			{"TotemCaller", 35},
+			{"InfernalAnimator", 36},
+			{"DistressCaller", 36},
+			{"StrongestLink", 39},
+			{"FungalCane", 32},
+			{"VoidLance", 46},
+			{"TheIncubator", 48},
+			{"RudeWand",55},
+			{"MortarStaff",62},
+			{"AeonStaff", 63},
+			{"VoltModule",85},
+			{"PrometheanStaff", 100}, // no change
+			{"RodofFlocking", 20},
+			{"StellarRod", 46},
+			{"StellarSystem", 57},
+			{"PhantomWand", 55},
+			{"ShadowOrbStaff", 104}
 		};
 	
 		public override void SetDefaults(Item item)
         {
+			// Armor
 			if(item.defense > 0)
 			{
 				if (item.type == thorium.Find<ModItem>("SandStoneMail").Type) 
@@ -281,6 +500,28 @@ namespace RagnarokMod.Common.GlobalItems
 						}
 					}
 				}
+				//Ranged
+				else if(item.DamageType == DamageClass.Ranged) 
+				{
+					foreach (var compareditem in thorium_ranged_damage_tweak) 
+					{
+						if ( item.type == thorium.Find<ModItem>(compareditem.Key).Type) 
+						{
+							item.damage = compareditem.Value;
+							break;
+						}
+					}
+					
+					//AddPointBlankShots
+					foreach (string weaponname in pointblankshots ) 
+					{
+						if ( item.type == thorium.Find<ModItem>(weaponname).Type) 
+						{	
+							item.Calamity().canFirePointBlankShots = true;
+							break;
+						}
+					}
+				}
 				//Melee or anything else
 				else 
 				{
@@ -295,12 +536,12 @@ namespace RagnarokMod.Common.GlobalItems
 				}
 				
 				// Apply some other tweaks
+				
 			}	
 			else 
 			{
 				return;
 			}
-			
 		}
 	}
 }

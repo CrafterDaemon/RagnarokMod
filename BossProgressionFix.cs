@@ -192,18 +192,8 @@ namespace RagnarokMod
             foreach (Recipe item in getter.Search())
             {
                 RecipeHelper helper = new(item);
-                helper.Add(ModContent.ItemType<CursedCloth>(), 50);
-                helper.Add(ModContent.ItemType<FleshyGeode>(), 5);
                 helper.Add(ModContent.ItemType<EldritchShellFragment>(), 3);
                 helper.Add(ModContent.ItemType<AshesofCalamity>(), 10);
-            }
-            getter.LookFor(ModContent.ItemType<ProfanedShard>(), 1);
-            foreach (Recipe item in getter.Search())
-            {
-                RecipeHelper helper = new(item);
-                helper.Add(ModContent.ItemType<InfernoEssence>(), 5);
-                helper.Add(ModContent.ItemType<OceanEssence>(), 5);
-                helper.Add(ModContent.ItemType<DeathEssence>(), 5);
             }
             getter.LookFor(ModContent.ItemType<RuneofKos>(), 1);
             foreach (Recipe item in getter.Search())
