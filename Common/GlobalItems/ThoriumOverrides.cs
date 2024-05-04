@@ -5,7 +5,6 @@ using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Systems;
 using Ragnarok.Items;
 using RagnarokMod.Items;
-using RagnarokMod.Items.TweakedItems;
 using RagnarokMod.Items.BardItems;
 using RagnarokMod.Utils;
 using System;
