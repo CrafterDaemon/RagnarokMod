@@ -105,6 +105,7 @@ namespace RagnarokMod.Common.GlobalItems
         {
             item.damage = 280;
             item.shootSpeed = 16f;
+			item.scale = 1.7f;
         }
 
         public void Tileswitcher( Recipe recipe ,int tileold, int tilenew) 

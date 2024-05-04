@@ -230,8 +230,7 @@ namespace RagnarokMod.Common.GlobalItems
 			{"LingeringWill", 235},
 			{"EssenceofFlame", 265},
 			{"SevenSeasDevastator", 275}, // No change
-			{"OceansJudgement", 325}, // No change
-			{"TerrariansLastKnife", 1} // Replaced by the overriden variant, therefore nerfed to 1 damage to be still obtainable for Fargos
+			{"OceansJudgement", 325} // No change
 		};
 		
 		private static Dictionary<string,int> thorium_throwing_damage_tweak = new Dictionary<string,int> 
