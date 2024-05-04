@@ -26,6 +26,9 @@
     <Reference Include="CalamityMod">
       <HintPath>..\CalamityMod.dll</HintPath>
     </Reference>
+    <Reference Include="MMHOOK_ThoriumMod">
+      <HintPath>lib\MMHOOK_ThoriumMod.dll</HintPath>
+    </Reference>
     <Reference Include="ThoriumMod">
       <HintPath>..\ThoriumMod.dll</HintPath>
     </Reference>

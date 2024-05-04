@@ -1,5 +1,7 @@
-﻿using CalamityMod.Items.Materials;
+﻿using CalamityMod;
+using CalamityMod.Items.Materials;
 using CalamityMod.Items.SummonItems;
+using CalamityMod.Items.TreasureBags.MiscGrabBags;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using RagnarokMod.Items.Materials;
@@ -11,9 +13,14 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using ThoriumMod.Items.BossBuriedChampion;
 using ThoriumMod.Items.BossGraniteEnergyStorm;
+using ThoriumMod.Items.BossLich;
 using ThoriumMod.Items.BossQueenJellyfish;
 using ThoriumMod.Items.BossStarScouter;
 using ThoriumMod.Items.BossTheGrandThunderBird;
+using ThoriumMod.Items.BossThePrimordials;
+using ThoriumMod.Items.BossThePrimordials.Aqua;
+using ThoriumMod.Items.BossThePrimordials.Omni;
+using ThoriumMod.Items.BossThePrimordials.Slag;
 using ThoriumMod.Items.BossViscount;
 using ThoriumMod.Items.Bronze;
 using ThoriumMod.Items.Granite;
@@ -53,12 +60,6 @@ namespace RagnarokMod
                 .AddTile(TileID.Anvils)
                 .Register();
 
-            getter.LookFor(ModContent.ItemType<JellyfishResonator>(), 1);
-            foreach (Recipe item in getter.Search())
-            {
-                RecipeHelper helper = new(item);
-                helper.Add(ModContent.ItemType<PearlShard>(), 1);
-            }
             getter.LookFor(ModContent.ItemType<DesertMedallion>(), 1);
             foreach (Recipe item in getter.Search())
             {
@@ -179,8 +180,44 @@ namespace RagnarokMod
             foreach (Recipe item in getter.Search())
             {
                 RecipeHelper helper = new(item);
-                helper.Add(ModContent.ItemType<VoidseerPearl>(),1);
+                helper.Add(ModContent.ItemType<VoidseerPearl>(), 1);
             }
+            getter.LookFor(ModContent.ItemType<DeathWhistle>(), 1);
+            foreach (Recipe item in getter.Search())
+            {
+                RecipeHelper helper = new(item);
+                helper.Add(ModContent.ItemType<CursedCloth>(), 50);
+            }
+            getter.LookFor(ModContent.ItemType<DoomSayersCoin>(), 1);
+            foreach (Recipe item in getter.Search())
+            {
+                RecipeHelper helper = new(item);
+                helper.Add(ModContent.ItemType<CursedCloth>(), 50);
+                helper.Add(ModContent.ItemType<FleshyGeode>(), 5);
+                helper.Add(ModContent.ItemType<EldritchShellFragment>(), 3);
+                helper.Add(ModContent.ItemType<AshesofCalamity>(), 10);
+            }
+            getter.LookFor(ModContent.ItemType<ProfanedShard>(), 1);
+            foreach (Recipe item in getter.Search())
+            {
+                RecipeHelper helper = new(item);
+                helper.Add(ModContent.ItemType<InfernoEssence>(), 5);
+                helper.Add(ModContent.ItemType<OceanEssence>(), 5);
+                helper.Add(ModContent.ItemType<DeathEssence>(), 5);
+            }
+            getter.LookFor(ModContent.ItemType<RuneofKos>(), 1);
+            foreach (Recipe item in getter.Search())
+            {
+                RecipeHelper helper = new(item);
+                helper.Disable();
+            }
+            Recipe.Create(ModContent.ItemType<RuneofKos>())
+                .AddIngredient(ModContent.ItemType<DivineGeode>(), 50)
+                .AddIngredient(ModContent.ItemType<InfernoEssence>(), 10)
+                .AddIngredient(ModContent.ItemType<OceanEssence>(), 10)
+                .AddIngredient(ModContent.ItemType<DeathEssence>(), 10)
+                .AddTile(TileID.LunarCraftingStation)
+                .Register();
         }
 
         public override void PostAddRecipes()

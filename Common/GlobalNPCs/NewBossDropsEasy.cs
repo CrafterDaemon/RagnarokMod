@@ -21,6 +21,9 @@ using CalamityMod.NPCs.AstrumDeus;
 using CalamityMod.NPCs.CalClone;
 using ThoriumMod.NPCs.BossFallenBeholder;
 using ThoriumMod.NPCs.BossQueenJellyfish;
+using ThoriumMod.NPCs.BossForgottenOne;
+using CalamityMod.NPCs.Providence;
+using CalamityMod.Items.SummonItems;
 
 namespace RagnarokMod.Common.GlobalNPCs
 {
@@ -35,7 +38,7 @@ namespace RagnarokMod.Common.GlobalNPCs
             }
             if (npc.type == ModContent.NPCType<QueenJellyfish>() && Condition.InClassicMode.IsMet())
             {
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<QueenJelly>(),1,4,16));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<QueenJelly>(), 1, 4, 16));
             }
             if (npc.type == ModContent.NPCType<StarScouter>() && Condition.InClassicMode.IsMet())
             {
@@ -66,17 +69,38 @@ namespace RagnarokMod.Common.GlobalNPCs
             {
                 npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<EquivalentExchange>(), 4, 3));
             }
-			if(npc.type == ModContent.NPCType<CalamitasClone>() && Condition.InClassicMode.IsMet())
-			{
-				npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<CalamityBell>(), 4, 3));
-			}
-			if (npc.type == ModContent.NPCType<AstrumDeusHead>()) 
-			{
-				LeadingConditionRule lastWorm = npcLoot.DefineConditionalDropSet((DropAttemptInfo info) => !AstrumDeusHead.ShouldNotDropThings(info.npc));
-				lastWorm.Add(DropHelper.NormalVsExpertQuantity(ModContent.ItemType<CelestialFragment>(), 1, 16, 24, 20, 32), false);
-				lastWorm.Add(DropHelper.NormalVsExpertQuantity(ModContent.ItemType<ShootingStarFragment>(), 1, 16, 24, 20, 32), false);
-				lastWorm.Add(DropHelper.NormalVsExpertQuantity(ModContent.ItemType<WhiteDwarfFragment>(), 1, 16, 24, 20, 32), false);
-			}
+            if (npc.type == ModContent.NPCType<CalamitasClone>() && Condition.InClassicMode.IsMet())
+            {
+                npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<CalamityBell>(), 4, 3));
+            }
+            if (npc.type == ModContent.NPCType<ForgottenOne>() && Condition.InClassicMode.IsMet())
+            {
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<EldritchShellFragment>(), 1, 1, 3));
+            }
+            if (npc.type == ModContent.NPCType<AstrumDeusHead>())
+            {
+                LeadingConditionRule lastWorm = npcLoot.DefineConditionalDropSet((DropAttemptInfo info) => !AstrumDeusHead.ShouldNotDropThings(info.npc));
+                lastWorm.Add(DropHelper.NormalVsExpertQuantity(ModContent.ItemType<CelestialFragment>(), 1, 16, 24, 20, 32), false);
+                lastWorm.Add(DropHelper.NormalVsExpertQuantity(ModContent.ItemType<ShootingStarFragment>(), 1, 16, 24, 20, 32), false);
+                lastWorm.Add(DropHelper.NormalVsExpertQuantity(ModContent.ItemType<WhiteDwarfFragment>(), 1, 16, 24, 20, 32), false);
+            }
+            if (npc.type == ModContent.NPCType<Providence>())
+            {
+                IItemDropRule itemDrop = ItemDropRule.Common(ModContent.ItemType<RuneofKos>());
+                bool waitingForChange = true;
+                while (waitingForChange && DownedBossSystem.downedProvidence)
+                {
+                    foreach (var item in npcLoot.Get())
+                    {
+                        if (item == itemDrop) 
+                        { 
+                            npcLoot.Remove(item);
+                            waitingForChange = false; 
+                            break;
+                        }
+                    }
+                }
+            }
         }
     }
 }

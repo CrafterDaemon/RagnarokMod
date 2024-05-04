@@ -28,7 +28,7 @@ Buffs: {
 Items: {
 	DrumStick: {
 		DisplayName: Drum Stick
-		Tooltip: ""
+		Tooltip: "Your enemies are your drums."
 	}
 
 	AerospecBard: {
@@ -101,7 +101,12 @@ Items: {
 
 	BlazingDrumBeat: {
 		DisplayName: Blazing Drum Beat
-		Tooltip: ""
+		Tooltip: 
+		'''
+		Chaining two or more successes 
+		will let out a large flaming slash, 
+		inflicting all enemies in range with Holy Inferno.
+		'''
 	}
 
 	BloodflareHeadBard: {
@@ -262,12 +267,12 @@ Items: {
 
 	EmpoweredGranite: {
 		DisplayName: Empowered Granite
-		Tooltip: ""
+		Tooltip: "Granite block charged full of energy from the Granite Energy Storm."
 	}
 
 	EnchantedMarble: {
 		DisplayName: Enchanted Marble
-		Tooltip: ""
+		Tooltip: "Special marble, imbued with ancient holy magic."
 	}
 
 	StatigelHeadBard: {
@@ -309,7 +314,7 @@ Items: {
 
 	StriderFang: {
 		DisplayName: Strider Fang
-		Tooltip: ""
+		Tooltip: "An icy fang straight from the Borean Strider's mouth."
 	}
 
 	TarragonCowl: {
@@ -366,21 +371,25 @@ Items: {
 
 	EquivalentExchange: {
 		DisplayName: Equivalent Exchange
-		Tooltip: ""
+		Tooltip: 
+		'''
+		You must follow the law of equivalent exchange.
+		You can only get out equal to what you put in.
+		'''
 	}
 
 	ProfanedScythe: {
-		Tooltip: ""
+		Tooltip: "A holy inferno of a scythe."
 		DisplayName: Profaned Scythe
 	}
 
 	MarbleScythe: {
-		Tooltip: ""
+		Tooltip: "The magic marble imbues the scythe head with extra radiance."
 		DisplayName: Marble Scythe
 	}
 
 	ScoriaDualscythe: {
-		Tooltip: ""
+		Tooltip: "The scoria allows you to spin the scythe much faster by constantly expelling steam."
 		DisplayName: Scoria Dualscythe
 	}
 
@@ -388,12 +397,7 @@ Items: {
 
 	AstralScythe: {
 		DisplayName: Astral Scythe
-		Tooltip: ""
-	}
-
-	MarbleClaymore: {
-		DisplayName: Marble Claymore
-		Tooltip: ""
+		Tooltip: "Use the infection among the stars to rain hell upon your foes!"
 	}
 
 	RadioMic: {
@@ -407,44 +411,59 @@ Items: {
 
 	CorrosiveFlux: {
 		DisplayName: Corrosive Flux
-		Tooltip: ""
+		Tooltip: "Fire 3 acidic bubbles to melt your enemies."
 	}
 
 	WindReaver: {
 		DisplayName: Wind Reaver
-		Tooltip: ""
+		Tooltip: "Spinning this scythe will create a flying cloud slash"
 	}
 
 	Tooltip: ""
 
 	SquirrelScarf: {
 		DisplayName: Squirrel Scarf
-		Tooltip: ""
+		Tooltip: "debug, not for actual gameplay. +999 Sentry Slots"
 	}
 
 	Prisma: {
 		DisplayName: Prisma
-		Tooltip: ""
+		Tooltip: "Fire a holy water sea star, that shatters into 5 spikes"
 	}
 
 	Fractal: {
 		DisplayName: Fractal
-		Tooltip: ""
+		Tooltip: "Fire a star of holy magic that constantly fires 5 crystal spikes."
 	}
 
 	VoidseerPearl: {
 		DisplayName: Voidseer Pearl
-		Tooltip: ""
+		Tooltip: 
+		'''
+		They say beauty is in the eye of the beholder.
+		I don't think they meant that literally.
+		'''
 	}
 
 	QueenJelly: {
 		DisplayName: Queen Jelly
-		Tooltip: ""
+		Tooltip: 
+		'''
+		A delicious jellyfish jelly.
+		One could say it makes the tastiest sandwich in the sea.
+		Heals 50 hp.
+		Grants Plenty Satisfied
+		'''
 	}
 
 	NewLichRequirement: {
 		DisplayName: New Lich Requirement
-		Tooltip: ""
+		Tooltip: "you're uhhhh... not supposed to see this."
+	}
+
+	EldritchShellFragment: {
+		DisplayName: Eldritch Shell Fragment
+		Tooltip: "An enchanted shard from the prison of an ancient god."
 	}
 }
 

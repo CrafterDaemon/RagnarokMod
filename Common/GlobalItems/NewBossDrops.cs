@@ -13,6 +13,7 @@ using RagnarokMod.Items.BardItems;
 using CalamityMod.NPCs.CalClone;
 using ThoriumMod.Items.BossFallenBeholder;
 using ThoriumMod.Items.BossQueenJellyfish;
+using ThoriumMod.Items.BossForgottenOne;
 
 namespace RagnarokMod.Common.GlobalItems
 {
@@ -56,6 +57,10 @@ namespace RagnarokMod.Common.GlobalItems
             if (item.type == ModContent.ItemType<FallenBeholderTreasureBag>()) 
             {
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<VoidseerPearl>()));
+            }
+            if (item.type == ModContent.ItemType<ForgottenOneTreasureBag>())
+            {
+                itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<EldritchShellFragment>(),1,1,3));
             }
         }
     }
