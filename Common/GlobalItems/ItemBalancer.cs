@@ -6,9 +6,6 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using CalamityMod;
 using ThoriumMod;
-using ThoriumMod.Items;
-using System;
-using RagnarokMod.Projectiles.TweakedProjectiles;
 
 namespace RagnarokMod.Common.GlobalItems
 {
@@ -487,11 +484,6 @@ namespace RagnarokMod.Common.GlobalItems
 							item.damage = compareditem.Value;
 							break;
 						}
-					}
-					
-					if( item.type == thorium.Find<ModItem>("BlackMIDI").Type) 
-					{
-						item.shoot = ModContent.ProjectileType<BlackMIDIProOverride>();
 					}
 				}
 				//Throwing

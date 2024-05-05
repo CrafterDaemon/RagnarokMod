@@ -2,6 +2,7 @@
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using System;
+using Terraria.DataStructures;
 using Terraria.ModLoader;
 
 namespace RagnarokMod.ILEditing
@@ -18,6 +19,7 @@ namespace RagnarokMod.ILEditing
                 {
                     IL.ThoriumMod.Items.Donate.TerrariansLastKnife.OnHitNPC += NewLifestealMath;
                     IL.ThoriumMod.Tiles.AncientPhylactery.RightClick += HavocPhylactory;
+                    IL.ThoriumMod.Projectiles.Bard.BlackMIDIPro.BardOnHitNPC += BlackMidiTweak;
                     loadCaught = true;
                     break;
                 }
@@ -29,6 +31,7 @@ namespace RagnarokMod.ILEditing
             {
                 IL.ThoriumMod.Items.Donate.TerrariansLastKnife.OnHitNPC -= NewLifestealMath;
                 IL.ThoriumMod.Tiles.AncientPhylactery.RightClick -= HavocPhylactory;
+                IL.ThoriumMod.Projectiles.Bard.BlackMIDIPro.BardOnHitNPC -= BlackMidiTweak;
             }
         }
         private void HavocPhylactory(ILContext il)
@@ -61,6 +64,19 @@ namespace RagnarokMod.ILEditing
             c.Emit(OpCodes.Ldc_R8, 0.5);
             c.Emit(OpCodes.Call, typeof(Math).GetMethod("Pow"));
             c.Emit(OpCodes.Conv_I4);
+        }
+
+        private void BlackMidiTweak(ILContext il)
+        {
+            var c = new ILCursor(il);
+
+            if(!c.TryGotoNext(MoveType.After, i => i.MatchConvI4())){
+                return;
+            }
+
+            c.Emit(OpCodes.Pop);
+            c.Emit(OpCodes.Ldarg, 3);
+            c.EmitDelegate<Func<int, int>>(damageDone => (int)Math.Sqrt((double)(damageDone / 20)));
         }
     }
 }

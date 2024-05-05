@@ -562,4 +562,5 @@ Projectiles: {
 	WindReaverPro.DisplayName: Wind Reaver Pro
 	WindSlashPro.DisplayName: Wind Slash Pro
 	NoProj.DisplayName: No Proj
+	BlackMIDIProOverride.DisplayName: Black M I D I Pro Override
 }
