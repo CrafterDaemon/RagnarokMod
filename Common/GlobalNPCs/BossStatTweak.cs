@@ -6,8 +6,10 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using RagnarokMod.Utils;
 using CalamityMod;
+using CalamityMod.NPCs;
 using ThoriumMod;
 using ThoriumMod.NPCs;
+
 
 namespace RagnarokMod.Common.GlobalNPCs
 {
@@ -63,6 +65,40 @@ namespace RagnarokMod.Common.GlobalNPCs
 	     	{"BurstingMaggot" ,1.35f}
 		};
 		
+		private static List<string> thorium_defense_damage_npcs = new List<string> {
+			"TheGrandThunderBirdv2",
+			"Viscount",
+			"QueenJelly",
+			"GraniteEnergyStorm",
+			"TheBuriedWarrior",
+			"ThePrimeScouter",
+			"BoreanStrider",
+			"BoreanStriderPopped",
+			"FallenDeathBeholder",
+			"FallenDeathBeholder2",
+			"Lich", 
+			"LichHeadless", 
+			"Abyssion",
+			"AbyssionCracked",
+			"AbyssionReleased",
+			"Omnicide",
+			"RealityBreaker",
+			"SlagFury",
+			"Aquaius", 
+			"GraniteEnergy",
+			"EncroachingEnergy",
+			"EnergyStormConduit",
+			"TheBuriedWarrior1",
+			"TheBuriedWarrior2",
+			"ThousandSoulPhalactry",
+			"AbyssalSpawn",
+			"AquaiusBubble",
+			"CorpseBloom",
+			"Illusionist",
+			"IllusionistDecoy",
+			"PatchWerk", 
+		};
+		
 		public override void ModifyHitPlayer (NPC npc, Player target, ref Player.HurtModifiers modifier) 
 		{
 			float currentDamageModifier = modifier.IncomingDamageMultiplier.Value;
@@ -113,12 +149,23 @@ namespace RagnarokMod.Common.GlobalNPCs
 				TotalDamageModifier = 1.2;
 			} 
 			
+			// Apply health modifiers
 			foreach (var boss in thorium_bosses_base_health_modifier) 
 			{
 				if ( npc.type == thorium.Find<ModNPC>(boss.Key).Type ) 
 				{
 					npc.life = npc.lifeMax = (int)((npc.lifeMax * TotalHPModifier * boss.Value) * (1 + CalamityHPBoost));
-					return;
+					break;
+				}
+			}
+			
+			// Check which npcs should apply defense damage
+			foreach (var boss in thorium_defense_damage_npcs) 
+			{
+				if ( npc.type == thorium.Find<ModNPC>(boss).Type ) 
+				{
+					// Applying Defense Damage
+					npc.Calamity().canBreakPlayerDefense = true;
 				}
 			}
 		}	

@@ -573,6 +573,7 @@ Projectiles: {
 	WindSlashPro.DisplayName: Wind Slash Pro
 	NoProj.DisplayName: No Proj
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 	PrismaPro1.DisplayName: Prisma Pro1
 	PrismaPro2.DisplayName: Prisma Pro2
@@ -615,4 +616,7 @@ WindReaver: {
 	DisplayName: Wind Reaver
 	Tooltip: ""
 >>>>>>> 2bbdf80 (elysian song and steampipes + crafting recipes)
+=======
+	BlackMIDIProOverride.DisplayName: Black M I D I Pro Override
+>>>>>>> origin/HEAD
 }

@@ -6,8 +6,6 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using CalamityMod;
 using ThoriumMod;
-using ThoriumMod.Items;
-using System;
 
 namespace RagnarokMod.Common.GlobalItems
 {
@@ -229,8 +227,7 @@ namespace RagnarokMod.Common.GlobalItems
 			{"LingeringWill", 235},
 			{"EssenceofFlame", 265},
 			{"SevenSeasDevastator", 275}, // No change
-			{"OceansJudgement", 325}, // No change
-			{"TerrariansLastKnife", 1} // Replaced by the overriden variant, therefore nerfed to 1 damage to be still obtainable for Fargos
+			{"OceansJudgement", 325} // No change
 		};
 		
 		private static Dictionary<string,int> thorium_throwing_damage_tweak = new Dictionary<string,int> 
@@ -357,7 +354,8 @@ namespace RagnarokMod.Common.GlobalItems
 		
 		private static Dictionary<string,int> thorium_bard_damage_tweak = new Dictionary<string,int>
 		{
-			{"Didgeridoo", 15}
+			{"Didgeridoo", 15},
+			{"BlackMIDI", 170}
 		};
 		
 		private static Dictionary<string,int> thorium_ranged_damage_tweak = new Dictionary<string,int>

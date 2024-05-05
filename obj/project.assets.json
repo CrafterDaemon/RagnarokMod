@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    "net6.0": {
+    "net8.0": {
       "tModLoader.CodeAssist/0.1.5": {
         "type": "package"
       }
@@ -26,36 +26,34 @@
     }
   },
   "projectFileDependencyGroups": {
-    "net6.0": [
+    "net8.0": [
       "tModLoader.CodeAssist >= 0.1.*"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\daemo\\.nuget\\packages\\": {}
+    "/Users/ryan/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\daemo\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\RagnarokMod\\RagnarokMod.csproj",
+      "projectUniqueName": "/Users/ryan/Library/Application Support/Terraria/tModLoader/ModSources/RagnarokMod/RagnarokMod.csproj",
       "projectName": "RagnarokMod",
-      "projectPath": "C:\\Users\\daemo\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\RagnarokMod\\RagnarokMod.csproj",
-      "packagesPath": "C:\\Users\\daemo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\daemo\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\RagnarokMod\\obj\\",
+      "projectPath": "/Users/ryan/Library/Application Support/Terraria/tModLoader/ModSources/RagnarokMod/RagnarokMod.csproj",
+      "packagesPath": "/Users/ryan/.nuget/packages/",
+      "outputPath": "/Users/ryan/Library/Application Support/Terraria/tModLoader/ModSources/RagnarokMod/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\daemo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/ryan/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
-        "net6.0"
+        "net8.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "projectReferences": {}
         }
       },
@@ -66,8 +64,8 @@
       }
     },
     "frameworks": {
-      "net6.0": {
-        "targetAlias": "net6.0",
+      "net8.0": {
+        "targetAlias": "net8.0",
         "dependencies": {
           "tModLoader.CodeAssist": {
             "target": "Package",
@@ -90,8 +88,16 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file /Users/ryan/Library/Application Support/Terraria/tModLoader/ModSources/RagnarokMod/obj/project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

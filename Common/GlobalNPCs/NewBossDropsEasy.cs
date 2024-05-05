@@ -15,7 +15,7 @@ using ThoriumMod.Items.BardItems;
 using ThoriumMod.Items.HealerItems;
 using ThoriumMod.Items.ThrownItems;
 using CalamityMod.NPCs.Perforator;
-using RagnarokMod.Items.HealerItems;
+using RagnarokMod.Items.HealerItems.Other;
 using RagnarokMod.Items.BardItems;
 using CalamityMod.NPCs.AstrumDeus;
 using CalamityMod.NPCs.CalClone;
