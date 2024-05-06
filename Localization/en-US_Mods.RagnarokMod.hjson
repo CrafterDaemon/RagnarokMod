@@ -563,4 +563,5 @@ Projectiles: {
 	WindSlashPro.DisplayName: Wind Slash Pro
 	NoProj.DisplayName: No Proj
 	BlackMIDIProOverride.DisplayName: Black M I D I Pro Override
+	FractalOrb.DisplayName: Fractal Orb
 }

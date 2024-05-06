@@ -33,21 +33,22 @@ namespace RagnarokMod.Items.HealerItems.Other
 		public override void SetDefaults()
 		{
 			base.Item.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
-			base.Item.damage = 68;
+			base.Item.damage = 24;
 			this.isHealer = true;
 			this.healDisplay = true;
 			base.Item.width = 60;
 			base.Item.mana = 12;
 			base.Item.height = 66;
-			base.Item.useTime = 24;
-			base.Item.useAnimation = 24;
+			base.Item.useTime = 48;
+			base.Item.useAnimation = 48;
+			base.Item.autoReuse = true;
 			base.Item.useStyle = 5;
 			base.Item.noMelee = true;
 			base.Item.value = Item.sellPrice(0, 1, 0, 0);
 			base.Item.rare = 2;
 			base.Item.UseSound = new SoundStyle?(SoundID.Item8);
-			base.Item.shoot = ModContent.ProjectileType<FractalPro1>();
-			base.Item.shootSpeed = 5f;
+			base.Item.shoot = ModContent.ProjectileType<FractalOrb>();
+			base.Item.shootSpeed = 6f;
 		}
 		public override void AddRecipes()
         {

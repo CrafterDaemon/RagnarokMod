@@ -36,7 +36,7 @@ namespace RagnarokMod.Items.HealerItems.Scythes
                 counter = 0;
                 Vector2 velocity2 = player.Center - Main.MouseWorld;
                 Vector2 vel = velocity2.SafeNormalize(Vector2.UnitX);
-                float multiplier = -14f;
+                float multiplier = -20f;
 
                 Projectile.NewProjectileDirect(source, position, vel * multiplier, ModContent.ProjectileType<WindSlashPro>(), damage, knockback, player.whoAmI);
             }

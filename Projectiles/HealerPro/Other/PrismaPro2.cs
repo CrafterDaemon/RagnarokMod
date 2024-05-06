@@ -11,6 +11,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
 {
     public class PrismaPro2 : ModProjectile, ILocalizedModType
     {
+        private int timer = 0;
         public override void SetDefaults()
         {
             Projectile.width = 16;
@@ -23,7 +24,14 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
             Projectile.ignoreWater = true;
             
         }
-        public override void AI() {
+        public override void AI()
+        {
+            timer++;
+            if (timer == 4)
+            {
+                timer = 0;
+                Dust.NewDust(Projectile.Center, 0, 0, 323);
+            }
             Projectile.rotation = Projectile.velocity.ToRotation();
         }
     }
