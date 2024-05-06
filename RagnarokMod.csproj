@@ -15,8 +15,6 @@
     <None Remove="Projectiles\NoProj.png" />
   </ItemGroup>
   <ItemGroup>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Items\SummonerItems\" />
   </ItemGroup>
   <ItemGroup>
@@ -24,7 +22,7 @@
       <HintPath>..\CalamityMod.dll</HintPath>
     </Reference>
     <Reference Include="MMHOOK_ThoriumMod">
-      <HintPath>lib\MMHOOK_ThoriumMod.dll</HintPath>
+      <HintPath>..\ModAssemblies\MMHOOK_ThoriumMod.dll</HintPath>
     </Reference>
     <Reference Include="ThoriumMod">
       <HintPath>..\ThoriumMod.dll</HintPath>

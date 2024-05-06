@@ -5,6 +5,7 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using ThoriumMod.Items.HealerItems;
 using RagnarokMod.Projectiles.HealerPro.Scythes;
+using CalamityMod.Items.Materials;
 
 namespace RagnarokMod.Items.HealerItems.Scythes
 {
@@ -52,5 +53,12 @@ namespace RagnarokMod.Items.HealerItems.Scythes
     
 			return false;
 		}
+        public override void AddRecipes()
+        {
+            Recipe recipe = CreateRecipe();
+			recipe.AddIngredient(ModContent.ItemType<AstralBar>(), 10);
+            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.Register();
+        }
     }
 }

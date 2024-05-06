@@ -3,6 +3,8 @@ using Terraria;
 using ThoriumMod.Items.HealerItems;
 using CalamityMod.Rarities;
 using RagnarokMod.Projectiles.HealerPro.Scythes;
+using CalamityMod.Items.Materials;
+using Terraria.ID;
 
 namespace RagnarokMod.Items.HealerItems.Scythes
 {
@@ -23,6 +25,13 @@ namespace RagnarokMod.Items.HealerItems.Scythes
             base.Item.value = Item.sellPrice(0, 28, 0);
             base.Item.rare = ModContent.RarityType<Turquoise>();
             base.Item.shoot = ModContent.ProjectileType<ScoriaDualscythePro>();
+        }
+        public override void AddRecipes()
+        {
+            Recipe recipe = CreateRecipe();
+			recipe.AddIngredient(ModContent.ItemType<ScoriaBar>(), 10);
+            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.Register();
         }
     }
 }
