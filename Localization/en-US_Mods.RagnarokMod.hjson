@@ -364,6 +364,38 @@ Items: {
 			'''
 	}
 
+	NightfallenHelmet: {
+		DisplayName: Nightfallen Helmet
+		Tooltip:
+			'''
+			35% decreased non-radiant damage
+			35% increased radiant damage and 16% increased criticial radiant strike chance
+			Healing spells will heal an additional 1 life
+			Maximum mana increased by 60
+			'''
+	}
+
+	NightfallenBreastplate: {
+		DisplayName: Nightfallen Breastplate
+		Tooltip:
+			'''
+			45% decreased non-radiant damage
+			45% increased radiant damage and 12% increased criticial radiant strike chance
+			Healing spells will heal an additional 2 life
+			'''
+	}
+
+	NightfallenGreaves: {
+		DisplayName: Nightfallen Greaves
+		Tooltip:
+			'''
+			35% decreased non-radiant damage
+			35% increased radiant damage and 8% increased criticial radiant strike chance
+			20% decreased mana cost
+			Healing spells will heal an additional 1 life
+			'''
+	}
+
 	VictideHeadBard: {
 		DisplayName: Victide Hat
 		Tooltip: 5% increased symphonic damage
@@ -549,9 +581,10 @@ Items: {
 		DisplayName: Elysian Song
 		Tooltip: ""
 	}
+
 	JellySlicer: {
 		DisplayName: Jelly Slicer
-		Tooltip: "Shoots a bouncing slime projectile when swung"
+		Tooltip: Shoots a bouncing slime projectile when swung
 	}
 }
 
@@ -579,6 +612,8 @@ Projectiles: {
 	SteampipesPro.DisplayName: Steampipes Pro
 	ElysianSongPro.DisplayName: Elysian Song Pro
 	FractalOrb.DisplayName: Fractal Orb
+	GelScythePro1.DisplayName: Gel Scythe Pro1
+	GelScythePro2.DisplayName: Gel Scythe Pro2
 }
 
 od: {
