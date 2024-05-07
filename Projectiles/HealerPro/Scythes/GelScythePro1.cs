@@ -1,5 +1,4 @@
-﻿using CalamityMod.Dusts;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +12,7 @@ using ThoriumMod.Projectiles.Scythe;
 
 namespace RagnarokMod.Projectiles.HealerPro.Scythes
 {
-    public class AstralScythePro : ScythePro2
+    public class GelScythePro1 : ScythePro
     {
         public override void SafeSetStaticDefaults()
         {
@@ -36,13 +35,8 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             fadeOutSpeed = 30;
             rotationSpeed = 0.25f;
             scytheCount = 2;
-            Projectile.Size = new Vector2(222f,210f);
-
-            dustOffset = new Vector2(0f,30f);
-            dustCount = 4;
-            dustType = ModContent.DustType<AstralBlue>();
-            dustType2 = ModContent.DustType<AstralOrange>();
-
+            Projectile.Size = new Vector2(92f, 84f);
+            
         }
     }
 }

@@ -364,6 +364,38 @@ Items: {
 			'''
 	}
 
+	NightfallenHelmet: {
+		DisplayName: Nightfallen Helmet
+		Tooltip:
+			'''
+			35% decreased non-radiant damage
+			35% increased radiant damage and 16% increased criticial radiant strike chance
+			Healing spells will heal an additional 1 life
+			Maximum mana increased by 60
+			'''
+	}
+
+	NightfallenBreastplate: {
+		DisplayName: Nightfallen Breastplate
+		Tooltip:
+			'''
+			45% decreased non-radiant damage
+			45% increased radiant damage and 12% increased criticial radiant strike chance
+			Healing spells will heal an additional 2 life
+			'''
+	}
+
+	NightfallenGreaves: {
+		DisplayName: Nightfallen Greaves
+		Tooltip:
+			'''
+			35% decreased non-radiant damage
+			35% increased radiant damage and 8% increased criticial radiant strike chance
+			20% decreased mana cost
+			Healing spells will heal an additional 1 life
+			'''
+	}
+
 	VictideHeadBard: {
 		DisplayName: Victide Hat
 		Tooltip: 5% increased symphonic damage
@@ -403,8 +435,8 @@ Items: {
 
 	InspirationEssence.DisplayName: Inspiration Essence
 
-	AstralScythe: {
-		DisplayName: Astral Scythe
+	AstralRipper: {
+		DisplayName: Astral Ripper
 		Tooltip: Use the infection among the stars to rain hell upon your foes!
 	}
 
@@ -494,8 +526,6 @@ Items: {
 		ProfanedScythePro.DisplayName: Profaned Scythe Pro
 		MarbleScythePro.DisplayName: Marble Scythe Pro
 		ScoriaDualscythePro.DisplayName: Scoria Dualscythe Pro
-		AstralScythePro.DisplayName: Astral Scythe Pro
-		AstralScytheStarPro.DisplayName: Astral Scythe Star Pro
 		MarbleStar.DisplayName: Marble Star
 		CalamityBellPro.DisplayName: Calamity Bell Pro
 		CalamityBellPro2.DisplayName: Calamity Bell Pro2
@@ -559,6 +589,11 @@ Items: {
 			Once at maximum speed, It will launch itself into the nearest enemy and explode for a massive area of effect.
 			'''
 	}
+
+	JellySlicer: {
+		DisplayName: Jelly Slicer
+		Tooltip: Shoots a bouncing slime projectile when swung
+	}
 }
 
 Projectiles: {
@@ -569,8 +604,6 @@ Projectiles: {
 	TendrilStrike.DisplayName: Tendril Strike
 	GuardianHealer.DisplayName: Guardian Healer
 	GuardianHealerBeam.DisplayName: Guardian Healer Beam
-	AstralScythePro.DisplayName: Astral Scythe Pro
-	AstralScytheStarPro.DisplayName: Astral Scythe Star Pro
 	CorrosiveFluxPro.DisplayName: Corrosive Flux Pro
 	FractalPro1.DisplayName: Fractal Pro1
 	FractalPro2.DisplayName: Fractal Pro2
@@ -588,6 +621,10 @@ Projectiles: {
 	ExecutionerMark05Pro.DisplayName: Executioner Mark05 Pro
 	ExecutionerMark05ThrowPro.DisplayName: Executioner Mark05 Throw Pro
 	WapBamBoom.DisplayName: Wap Bam Boom
+	GelScythePro1.DisplayName: Gel Scythe Pro1
+	GelScythePro2.DisplayName: Gel Scythe Pro2
+	AstralRipperPro.DisplayName: Astral Ripper Pro
+	AstralRipperStarPro.DisplayName: Astral Ripper Star Pro
 }
 
 od: {
