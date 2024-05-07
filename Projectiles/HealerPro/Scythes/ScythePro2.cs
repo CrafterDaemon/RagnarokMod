@@ -23,6 +23,8 @@ public abstract class ScythePro2 : ThoriumProjectile
 
     public int dustType2 = -1;
 
+    public int doubleDustCounter = 0;
+
     public Vector2 dustOffset = Vector2.Zero;
 
     public bool CanGiveScytheCharge
@@ -198,12 +200,14 @@ public abstract class ScythePro2 : ThoriumProjectile
                     ModifyDust(dust, position, i);
                 }
             }
-            else if (num3again != -1)
+            if (num3again != -1)
             {
                 for (int j = 0; j < num; j++)
                 {
-                    if (j % 2 == 0)
+                    doubleDustCounter++;
+                    if (doubleDustCounter == 2)
                     {
+                        doubleDustCounter = 0;
                         Dust dust = Dust.NewDustPerfect(position, num3, Vector2.Zero);
                         dust.noGravity = true;
                         dust.noLight = true;
@@ -211,10 +215,10 @@ public abstract class ScythePro2 : ThoriumProjectile
                     }
                     else
                     {
-                        Dust dust = Dust.NewDustPerfect(position, num3again, Vector2.Zero);
-                        dust.noGravity = true;
-                        dust.noLight = true;
-                        ModifyDust(dust, position, i);
+                        Dust dust2 = Dust.NewDustPerfect(position, num3again, Vector2.Zero);
+                        dust2.noGravity = true;
+                        dust2.noLight = true;
+                        ModifyDust(dust2, position, i);
                     }
                 }
             } 

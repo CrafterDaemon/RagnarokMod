@@ -549,6 +549,16 @@ Items: {
 		DisplayName: Elysian Song
 		Tooltip: ""
 	}
+
+	ExecutionerMark05: {
+		DisplayName: The Executioner: Mark 05
+		Tooltip:
+			'''
+			The core of XM-05 Thanatos rebuilt as a scythe.
+			It starts slow, but will continuously build speed.
+			Once at maximum speed, It will launch itself into the nearest enemy and explode for a massive area of effect.
+			'''
+	}
 }
 
 Projectiles: {
@@ -575,6 +585,9 @@ Projectiles: {
 	SteampipesPro.DisplayName: Steampipes Pro
 	ElysianSongPro.DisplayName: Elysian Song Pro
 	FractalOrb.DisplayName: Fractal Orb
+	ExecutionerMark05Pro.DisplayName: Executioner Mark05 Pro
+	ExecutionerMark05ThrowPro.DisplayName: Executioner Mark05 Throw Pro
+	WapBamBoom.DisplayName: Wap Bam Boom
 }
 
 od: {
