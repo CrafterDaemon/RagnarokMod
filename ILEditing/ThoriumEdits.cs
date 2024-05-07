@@ -20,6 +20,7 @@ namespace RagnarokMod.ILEditing
                     IL.ThoriumMod.Items.Donate.TerrariansLastKnife.OnHitNPC += NewLifestealMath;
                     IL.ThoriumMod.Tiles.AncientPhylactery.RightClick += HavocPhylactory;
                     IL.ThoriumMod.Projectiles.Bard.BlackMIDIPro.BardOnHitNPC += BlackMidiTweak;
+                    IL.ThoriumMod.Buffs.Bard.SoloistsHatSetBuff.Update += SoloistSetNerf;
                     loadCaught = true;
                     break;
                 }
@@ -32,6 +33,7 @@ namespace RagnarokMod.ILEditing
                 IL.ThoriumMod.Items.Donate.TerrariansLastKnife.OnHitNPC -= NewLifestealMath;
                 IL.ThoriumMod.Tiles.AncientPhylactery.RightClick -= HavocPhylactory;
                 IL.ThoriumMod.Projectiles.Bard.BlackMIDIPro.BardOnHitNPC -= BlackMidiTweak;
+                IL.ThoriumMod.Buffs.Bard.SoloistsHatSetBuff.Update -= SoloistSetNerf;
             }
         }
         private void HavocPhylactory(ILContext il)
@@ -70,13 +72,35 @@ namespace RagnarokMod.ILEditing
         {
             var c = new ILCursor(il);
 
-            if(!c.TryGotoNext(MoveType.After, i => i.MatchConvI4())){
+            if (!c.TryGotoNext(MoveType.After, i => i.MatchConvI4()))
+            {
                 return;
             }
 
             c.Emit(OpCodes.Pop);
             c.Emit(OpCodes.Ldarg, 3);
             c.EmitDelegate<Func<int, int>>(damageDone => (int)Math.Sqrt((double)(damageDone / 20)));
+        }
+
+        private void SoloistSetNerf(ILContext il)
+        {
+            var c = new ILCursor(il);
+
+            if (!c.TryGotoNext(MoveType.After, i => i.MatchLdcR4(0.35f)))
+            {
+                return;
+            }
+
+            c.Emit(OpCodes.Pop);
+            c.Emit(OpCodes.Ldc_R4, 0.15f);
+
+            if (!c.TryGotoNext(MoveType.After, i => i.MatchLdcR4(0.75f)))
+            {
+                return;
+            }
+
+            c.Emit(OpCodes.Pop);
+            c.Emit(OpCodes.Ldc_R4, 0.3f);
         }
     }
 }
