@@ -114,9 +114,10 @@ namespace RagnarokMod.Utils
 			{
 				ThoriumPlayer thoriumPlayer = ThoriumMod.Utilities.PlayerHelper.GetThoriumPlayer(base.Player);
 				thoriumPlayer.setOrnate = true;
-				thoriumPlayer.bardBuffDuration = (short)(thoriumPlayer.bardBuffDuration * 1.5);
+				thoriumPlayer.bardBuffDurationX *= 1.5f;
+				thoriumPlayer.bardBuffDurationXDisplay *= 1.5f;
 			}
-			if(godslayerBard &&  base.Player.HeldItem.DamageType == ThoriumDamageBase<BardDamage>.Instance) 
+			if (godslayerBard &&  base.Player.HeldItem.DamageType == ThoriumDamageBase<BardDamage>.Instance) 
 			{
 				Random rnd = new Random();
 				int num = rnd.Next(180);
