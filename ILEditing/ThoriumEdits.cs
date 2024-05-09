@@ -27,6 +27,7 @@ namespace RagnarokMod.ILEditing
                     IL.ThoriumMod.Tiles.AncientPhylactery.RightClick += HavocPhylactory;
                     IL.ThoriumMod.Projectiles.Bard.BlackMIDIPro.BardOnHitNPC += BlackMidiTweak;
                     IL.ThoriumMod.Buffs.Bard.SoloistsHatSetBuff.Update += SoloistSetNerf;
+					IL.ThoriumMod.Items.BossThePrimordials.Rhapsodist.InspiratorsHelmet.ModifyEmpowerment += RhapsodistSetNerf;
                     IL.ThoriumMod.ThoriumPlayer.PostUpdateEquips += removeBardResourceCaps;
                     ZZZtoLoadAfterThoirumEditsBardWheel.GetMaxInsp(maxInsp);
                     loadCaught = true;
@@ -42,6 +43,7 @@ namespace RagnarokMod.ILEditing
                 IL.ThoriumMod.Tiles.AncientPhylactery.RightClick -= HavocPhylactory;
                 IL.ThoriumMod.Projectiles.Bard.BlackMIDIPro.BardOnHitNPC -= BlackMidiTweak;
                 IL.ThoriumMod.Buffs.Bard.SoloistsHatSetBuff.Update -= SoloistSetNerf;
+				IL.ThoriumMod.Items.BossThePrimordials.Rhapsodist.InspiratorsHelmet.ModifyEmpowerment -= RhapsodistSetNerf;
                 IL.ThoriumMod.ThoriumPlayer.PostUpdateEquips -= removeBardResourceCaps;
             }
         }
@@ -110,6 +112,19 @@ namespace RagnarokMod.ILEditing
 
             c.Emit(OpCodes.Pop);
             c.Emit(OpCodes.Ldc_R4, 0.3f);
+        }
+		
+		private void RhapsodistSetNerf(ILContext il)
+        {
+            var c = new ILCursor(il);
+
+
+            if (!c.TryGotoNext(MoveType.After, i => i.MatchLdcR4(600)))
+            {
+                return;
+            }
+            c.Emit(OpCodes.Pop);
+            c.Emit(OpCodes.Ldc_R4, 300);
         }
 
         private void removeBardResourceCaps(ILContext il)
