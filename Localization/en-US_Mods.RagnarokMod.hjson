@@ -594,6 +594,11 @@ Items: {
 		DisplayName: Jelly Slicer
 		Tooltip: Shoots a bouncing slime projectile when swung
 	}
+
+	Splattercannon: {
+		DisplayName: Splattercannon
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -625,6 +630,8 @@ Projectiles: {
 	GelScythePro2.DisplayName: Gel Scythe Pro2
 	AstralRipperPro.DisplayName: Astral Ripper Pro
 	AstralRipperStarPro.DisplayName: Astral Ripper Star Pro
+	Splattershot.DisplayName: Splattershot
+	BloodOrb.DisplayName: Blood Orb
 }
 
 od: {

@@ -1,7 +1,11 @@
 ﻿using CalamityMod.Items.Materials;
+using IL.ThoriumMod;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
+using MonoMod.RuntimeDetour;
+using MonoMod.RuntimeDetour.HookGen;
 using System;
+using System.Reflection;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
 
@@ -10,6 +14,8 @@ namespace RagnarokMod.ILEditing
     public class ThoriumEdits : ModSystem
     {
         private static Mod Thorium => ModLoader.GetMod("ThoriumMod");
+
+        public int maxInsp = 50;
         public override void OnModLoad()
         {
             bool loadCaught = false;
@@ -21,6 +27,8 @@ namespace RagnarokMod.ILEditing
                     IL.ThoriumMod.Tiles.AncientPhylactery.RightClick += HavocPhylactory;
                     IL.ThoriumMod.Projectiles.Bard.BlackMIDIPro.BardOnHitNPC += BlackMidiTweak;
                     IL.ThoriumMod.Buffs.Bard.SoloistsHatSetBuff.Update += SoloistSetNerf;
+                    IL.ThoriumMod.ThoriumPlayer.PostUpdateEquips += removeBardResourceCaps;
+                    ZZZtoLoadAfterThoirumEditsBardWheel.GetMaxInsp(maxInsp);
                     loadCaught = true;
                     break;
                 }
@@ -34,6 +42,7 @@ namespace RagnarokMod.ILEditing
                 IL.ThoriumMod.Tiles.AncientPhylactery.RightClick -= HavocPhylactory;
                 IL.ThoriumMod.Projectiles.Bard.BlackMIDIPro.BardOnHitNPC -= BlackMidiTweak;
                 IL.ThoriumMod.Buffs.Bard.SoloistsHatSetBuff.Update -= SoloistSetNerf;
+                IL.ThoriumMod.ThoriumPlayer.PostUpdateEquips -= removeBardResourceCaps;
             }
         }
         private void HavocPhylactory(ILContext il)
@@ -101,6 +110,39 @@ namespace RagnarokMod.ILEditing
 
             c.Emit(OpCodes.Pop);
             c.Emit(OpCodes.Ldc_R4, 0.3f);
+        }
+
+        private void removeBardResourceCaps(ILContext il)
+        {
+            var c = new ILCursor(il);
+
+            for (int i = 0; i < 8; i++)
+            {
+                if (!c.TryGotoNext(MoveType.After, i => i.MatchLdcI4(40)))
+                {
+                    return;
+                }
+            }
+            c.Emit(OpCodes.Pop);
+            c.Emit(OpCodes.Ldc_I4, maxInsp);
+            if (!c.TryGotoNext(MoveType.After, i => i.MatchLdcI4(40)))
+            {
+                return;
+            }
+            c.Emit(OpCodes.Pop);
+            c.Emit(OpCodes.Ldc_I4, maxInsp);
+            if (!c.TryGotoNext(MoveType.After, i => i.MatchLdcI4(60)))
+            {
+                return;
+            }
+            c.Emit(OpCodes.Pop);
+            c.Emit(OpCodes.Ldc_I4, maxInsp + 20);
+            if (!c.TryGotoNext(MoveType.After, i => i.MatchLdcI4(60)))
+            {
+                return;
+            }
+            c.Emit(OpCodes.Pop);
+            c.Emit(OpCodes.Ldc_I4, maxInsp + 20);
         }
     }
 }
