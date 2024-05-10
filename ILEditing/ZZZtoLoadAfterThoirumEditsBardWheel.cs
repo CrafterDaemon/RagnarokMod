@@ -27,7 +27,6 @@ namespace RagnarokMod.ILEditing
         {
             while (!CaughtInspChange)
             {
-                Console.WriteLine("looping...");
                 if (maxInsp != 0)
                 {
                     foreach (Type type in ThoriumAssembly.GetTypes())
@@ -35,27 +34,10 @@ namespace RagnarokMod.ILEditing
                         if (type.Name == "BardWheel")
                         {
                             bardwheel = type;
-                            if (bardwheel != null)
-                            {
-                                Console.WriteLine("BardWheel class caught!");
-                            }
-                            else
-                            {
-                                Console.WriteLine("Failed to catch BardWheel!");
-                            }
                         }
                     }
                     drawself = bardwheel.GetMethod("DrawSelf", BindingFlags.NonPublic | BindingFlags.Instance);
-                    if (drawself != null)
-                    {
-                        _hook = new ILHook(drawself, updateBardWheel);
-                        Console.WriteLine("DrawSelf method caught!");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Failed to catch Drawself!");
-                    }
-
+                    _hook = new ILHook(drawself, updateBardWheel);
 
                     CaughtInspChange = true;
                 }
@@ -73,13 +55,11 @@ namespace RagnarokMod.ILEditing
 
             c.Emit(OpCodes.Pop);
             c.Emit(OpCodes.Ldc_I4, maxInsp);
-            Console.WriteLine("Method edited successfully?");
         }
 
         public static void GetMaxInsp(int insp)
         {
             maxInsp = insp;
-            Console.WriteLine("MaxInsp Caught!");
         }
     }
 }
