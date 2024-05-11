@@ -119,13 +119,12 @@ Items: {
 			'''
 		SetBonus:
 			'''
-			Doing symphonic damage will heal your for 1 life and applies Burning Blood on enemies
-			While damaging enemies you will generate a blood lust, 1 point per hit
-			Upon reaching 50 points: Consumes all your points and applies Blood Lust for 15 seconds
-			While buffed you will heal for 2 life per hit, Burning blood will last for 8 seconds
-			Applies empowerments Attack Damage, Attack Speed, Life Regeneration and Movement Speed IV
-			You can not generate points for 30 seconds after the buff is applied
-			You will lose 10 points when getting hit
+			Doing symphonic damage will apply Burning Blood on enemies
+			You will build a blood lust, 2 points for every second for a maximum of 150 points
+			Upon reaching 100 points: 15% increased symphonic damage and strike chance, 20% increased movement speed
+			empowerments will be prolonged for an additional 3 seconds and 10% faster inspiration regen
+			Additionally you get healed for a small fraction of your dealt damage
+			You will lose 25 points upon getting hit
 			'''
 	}
 
@@ -141,13 +140,12 @@ Items: {
 			'''
 		SetBonus:
 			'''
-			Doing radiant damage will heal your for 1 life and applies Burning Blood on enemies
-			While damaging enemies you will generate a blood lust, 1 point per hit
-			Upon reaching 50 points: Consumes all your points and applies Blood lust for 15 seconds
-			While buffed you will heal for 2 life per hit, healing spells will heal for 4 additional life,
-			25% increased radiant damage and 30% increased movement speed, Burning blood will last for 8 seconds
-			You can not generate points for 30 seconds after the buff is applied
-			You will lose 10 points when getting hit
+			Doing radiant damage will apply Burning Blood on enemies
+			You will build a blood lust, 2 points for every second for a maximum of 150 points
+			Upon reaching 100 points: 20% increased radiant damage and strike chance, 25% increased movement speed
+			your healing spells will for an additional 2 health and mana usage is reduced by an additional 10%
+			Additionally you get healed for a small fraction of your dealt damage
+			You will lose 25 points upon getting hit
 			'''
 	}
 
@@ -156,7 +154,6 @@ Items: {
 		Tooltip:
 			'''
 			Hit enemies are afflicted by Brimstone Flames for 2 seconds
-			50% more damage against Calamitas Clone and her brothers
 			'''
 	}
 
@@ -207,7 +204,6 @@ Items: {
 		SetBonus:
 			'''
 			While you are holding an instrument you will apply random empowerments
-			Empowerments are more powerful and controllable while holding instruments of the Devourer or it's servants
 			'''
 	}
 

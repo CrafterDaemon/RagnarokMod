@@ -1,5 +1,6 @@
 ﻿using Terraria.Audio;
 using Terraria;
+using Terraria.ID;
 using Terraria.GameInput;
 using Terraria.ModLoader;
 using ThoriumMod.Buffs.Bard;
@@ -40,16 +41,14 @@ namespace RagnarokMod.Utils
 		public int godslayerBardcurrentemp = 0;
 		public int godslayerBardcurrentemplevel = 0;
 		private int bloodflarebloodlust = 0;
-		private int bloodlusttimer = 0;
-		private int bloodlustcooldown = 0;
-		private const int maxbloodlustpoints = 50;
-		private int bloodflarebardhitcount = 0;
+		private int bloodflarepointtimer = 0;
+		private const int maxbloodlustpoints = 150;
 			
 		public override void OnHurt(Player.HurtInfo info) 
 		{
-			if(bloodflareHealer) 
+			if(bloodflareHealer || bloodflareBard) 
 			{
-				RemoveBloodFlareBloodlustPoints(10);
+				RemoveBloodFlareBloodlustPoints(25);
 			}
 		}	
 	
@@ -168,28 +167,53 @@ namespace RagnarokMod.Utils
 				}
 			}
 			
-			if(bloodlustcooldown > 0) 
-			{
-				bloodlustcooldown--;
-			}
 			
 			if(bloodflareHealer) 
 			{
-				if(bloodlusttimer > 0) 
-				{
-					bloodlusttimer--;
-					base.Player.moveSpeed += 0.3f;
-					ThoriumPlayer thoriumPlayer = ThoriumMod.Utilities.PlayerHelper.GetThoriumPlayer(base.Player);
-					thoriumPlayer.healBonus += 4;
-					base.Player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) += 0.25f;
-				} 
+				
+					if(bloodflarepointtimer == 0) 
+					{
+						bloodflarepointtimer = 30;
+						AddBloodFlareBloodlustPoints(1);
+					}
+					else 
+					{
+						bloodflarepointtimer--;
+					}
+					
+					if(bloodflarebloodlust >= 100) 
+					{
+						base.Player.moveSpeed += 0.25f;
+						ThoriumPlayer thoriumPlayer = ThoriumMod.Utilities.PlayerHelper.GetThoriumPlayer(base.Player);
+						thoriumPlayer.healBonus += 4;
+						base.Player.manaCost *= 0.90f;
+						base.Player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) += 0.20f;
+						base.Player.GetCritChance(ThoriumDamageBase<HealerDamage>.Instance) += 20f;
+					}
+					
+					
 			}
 			if(bloodflareBard) 
 			{
-				if(bloodlusttimer > 0) 
+				if(bloodflarepointtimer == 0) 
 				{
-					bloodlusttimer--;
-				} 
+					bloodflarepointtimer = 30;
+					AddBloodFlareBloodlustPoints(1);
+				}
+				else 
+				{
+					bloodflarepointtimer--;
+				}
+				
+				if(bloodflarebloodlust >= 100) 
+					{
+						base.Player.moveSpeed += 0.2f;
+						ThoriumPlayer thoriumPlayer = ThoriumMod.Utilities.PlayerHelper.GetThoriumPlayer(base.Player);
+						thoriumPlayer.inspirationRegenBonus += 0.1f;
+						base.Player.GetDamage(ThoriumDamageBase<BardDamage>.Instance) += 0.15f;
+						base.Player.GetCritChance(ThoriumDamageBase<BardDamage>.Instance) += 15f;
+						thoriumPlayer.bardBuffDuration += 180;
+					}
 			}
 				
 		}
@@ -219,13 +243,11 @@ namespace RagnarokMod.Utils
 		{
 			if (this.bloodflareHealer && projectile.DamageType == ThoriumDamageBase<HealerDamage>.Instance)
 			{
-				ApplyBloodFlareOnHit(target);
-				AddBloodFlareBloodlustPoints(1);	
+				ApplyBloodFlareOnHit(target, damageDone);	
 			}
 			if (this.bloodflareBard && projectile.DamageType == ThoriumDamageBase<BardDamage>.Instance)
 			{
-				ApplyBloodFlareOnHit(target);
-				AddBloodFlareBloodlustPoints(1);
+				ApplyBloodFlareOnHit(target, damageDone);
 			}
 		}
 		
@@ -233,28 +255,21 @@ namespace RagnarokMod.Utils
 		{
 			if (this.bloodflareHealer && item.DamageType == ThoriumDamageBase<HealerDamage>.Instance)
 			{
-				ApplyBloodFlareOnHit(target);
-				AddBloodFlareBloodlustPoints(1);	
+				ApplyBloodFlareOnHit(target, damageDone);	
 			}
 			if (this.bloodflareBard && item.DamageType == ThoriumDamageBase<BardDamage>.Instance)
 			{
-				ApplyBloodFlareOnHit(target);
-				AddBloodFlareBloodlustPoints(1);
+				ApplyBloodFlareOnHit(target, damageDone);
 			}
 		}
 		
-		public void ApplyBloodFlareOnHit(NPC target) 
+		public void ApplyBloodFlareOnHit(NPC target, int damageDone) 
 		{
-			if(bloodlusttimer > 0)
-			{
-				target.AddBuff(ModContent.BuffType<BurningBlood>(), 480, false);
-				this.Player.Heal(2);
-			}
-			else 
-			{
 				target.AddBuff(ModContent.BuffType<BurningBlood>(), 240, false);
-				this.Player.Heal(1);
-			}
+				if (bloodflarebloodlust > 100) 
+				{
+					this.Player.Heal((int)Math.Sqrt(damageDone / 100));
+				}	
 		}
 		
 		public void RemoveBloodFlareBloodlustPoints(int points) 
@@ -271,12 +286,6 @@ namespace RagnarokMod.Utils
 		
 		public void AddBloodFlareBloodlustPoints(int points) 
 		{
-			if(bloodlustcooldown != 0) 
-			{
-				return;
-			}
-			else 
-			{
 				if (bloodflarebloodlust + points <= maxbloodlustpoints) 
 				{
 					bloodflarebloodlust += points;
@@ -284,23 +293,20 @@ namespace RagnarokMod.Utils
 				else 
 				{
 					bloodflarebloodlust = maxbloodlustpoints;
-				}
-				if(bloodflarebloodlust >= maxbloodlustpoints) 
+				}	
+				
+				if(bloodflarebloodlust == 100) 
 				{
-					SoundEngine.PlaySound(ThoriumSounds.PassbySurge, (Vector2?)null, (SoundUpdateCallback)null);
-					bloodlusttimer = 900;
-					bloodlustcooldown = 1800;
-					bloodflarebloodlust = 0;
-					if(bloodflareBard) 
-					{
-						ModContent.GetInstance<BloodflareHeadBard>().NetApplyEmpowerments(((ModPlayer)this).Player, 0);
-					}
-				} 
-			}	
+					 SoundEngine.PlaySound(SoundID.NPCHit13, (Vector2?)null, (SoundUpdateCallback)null);
+				}
 		}
 		
 		public override void ResetEffects()
 		{
+				if(this.tarraBard == false  && this.tarraHealer == false) 
+				{
+					bloodflarebloodlust = 0;
+				}
 				this.tarraHealer = false;
 				this.tarraBard = false;
 				this.daedalusHealer = false;
