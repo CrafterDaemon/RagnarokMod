@@ -151,10 +151,7 @@ Items: {
 
 	CalamityBell: {
 		DisplayName: Calamity Bell
-		Tooltip:
-			'''
-			Hit enemies are afflicted by Brimstone Flames for 2 seconds
-			'''
+		Tooltip: Hit enemies are afflicted by Brimstone Flames for 2 seconds
 	}
 
 	DaedalusHeadBard: {
@@ -201,10 +198,7 @@ Items: {
 			+7 max inspiration
 			+15% chance for inspiration notes to drop from enemies
 			'''
-		SetBonus:
-			'''
-			While you are holding an instrument you will apply random empowerments
-			'''
+		SetBonus: While you are holding an instrument you will apply random empowerments
 	}
 
 	SilvaHeadHealer: {

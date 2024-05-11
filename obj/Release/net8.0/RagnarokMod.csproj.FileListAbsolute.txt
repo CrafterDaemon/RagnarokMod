@@ -174,3 +174,4 @@ C:\Users\daemo\Documents\My Games\Terraria\tModLoader\ModSources\RagnarokMod\obj
 C:\Users\daemo\Documents\My Games\Terraria\tModLoader\ModSources\RagnarokMod\obj\Release\net8.0\refint\RagnarokMod.dll
 C:\Users\daemo\Documents\My Games\Terraria\tModLoader\ModSources\RagnarokMod\obj\Release\net8.0\RagnarokMod.pdb
 C:\Users\daemo\Documents\My Games\Terraria\tModLoader\ModSources\RagnarokMod\obj\Release\net8.0\ref\RagnarokMod.dll
+C:\Users\daemo\Documents\My Games\Terraria\tModLoader\ModSources\RagnarokMod\bin\Release\net8.0\MMHOOK_CalamityMod.dll

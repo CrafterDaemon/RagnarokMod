@@ -15,36 +15,44 @@ namespace RagnarokMod.ILEditing
 {
     public class CalamityEdits : ModSystem
     {
-		private static Mod Calamity => ModLoader.GetMod("CalamityMod");
-
+		private static Mod ModCalamity = ModLoader.GetMod("CalamityMod");
+        private static Assembly calamityAssembly = ModCalamity.GetType().Assembly;
+        private static Type calPlayer = null;
+        private static MethodInfo updateRogueStealth = null;
+        private static ILHook _hook = null;
+        private static bool loaded = false;
 
         public override void OnModLoad()
         {
-            bool loadCaught = false;
-            while (!loadCaught)
+            while (!loaded)
             {
-                if (Calamity != null)
+                foreach (Type type in calamityAssembly.GetTypes())
                 {
-					// Does not work and breaks the function
-					//IL.CalamityMod.CalPlayer.CalamityPlayer.UpdateRogueStealth += RogueUseTimeFix;
-					
-					
-                    loadCaught = true;
-                    break;
-                }	
+                    if (type.Name == "CalamityPlayer")
+                    {
+                        calPlayer = type;
+                        Console.WriteLine("Caught Class!");
+                    }
+                    if (calPlayer != null)
+                    {
+                        updateRogueStealth = calPlayer.GetMethod("UpdateRogueStealth", BindingFlags.Public | BindingFlags.IgnoreReturn | BindingFlags.Instance);
+                        Console.WriteLine("Caught Method!");
+                        if (updateRogueStealth != null)
+                        {
+                            _hook = new ILHook(updateRogueStealth, RogueUseTimeFix);
+                            loaded = true;
+                            break;
+                        }
+                    }
+                }
             }
         }
-        public override void OnModUnload()
-        {
-            if (Calamity != null)
-            {
-				//IL.CalamityMod.CalPlayer.CalamityPlayer.UpdateRogueStealth -= RogueUseTimeFix;
-            }
-        }
+
    
 		private void RogueUseTimeFix(ILContext il)
-		{
-			var c = new ILCursor(il);
+        {
+            Console.WriteLine("Hooked!");
+            var c = new ILCursor(il);
 			 if (!c.TryGotoNext(MoveType.After, i => i.MatchLdcR4(0f)))
             {
                 return;
@@ -52,7 +60,6 @@ namespace RagnarokMod.ILEditing
             c.Emit(OpCodes.Pop);
             c.Emit(OpCodes.Ldc_R4, 20f);
 			
-			/*
 			if (!c.TryGotoNext(MoveType.After, i =>
 			i.OpCode == OpCodes.Ldfld && i.Operand.ToString().Contains("animationCheck") ||
 			i.OpCode == OpCodes.Ldsfld && i.Operand.ToString().Contains("animationCheck")))
@@ -63,7 +70,6 @@ namespace RagnarokMod.ILEditing
 
 			// Now that we're after the likely allocation, insert Main.NewText(animationCheck) call
 			c.Emit(OpCodes.Call, "Main::NewText");
-			*/	
 		}
 	}
 }
