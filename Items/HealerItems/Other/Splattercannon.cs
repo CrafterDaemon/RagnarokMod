@@ -45,7 +45,7 @@ namespace RagnarokMod.Items.HealerItems.Other
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.knockBack = 4f;
-            Item.value = CalamityGlobalItem.Rarity12BuyPrice;
+            Item.value = 090320;
             Item.rare = ModContent.RarityType<Turquoise>();
             Item.shootSpeed = 5f;
             Item.shoot = ModContent.ProjectileType<Splattershot>();
@@ -66,7 +66,17 @@ namespace RagnarokMod.Items.HealerItems.Other
             {
                 if (NumProjectiles < 24)
                 {
-                    NumProjectiles += 4;
+                    if (player.statLife <= 0)
+                    {
+                        PlayerDeathReason pdr = PlayerDeathReason.ByCustomReason(player.name.ToString() + " was converted into ammunition.");
+                        player.KillMe(pdr, 1000.0, 0, false);
+                        return false;
+                    }
+                    else
+                    {
+                        NumProjectiles += 4;
+                        return false;
+                    }
                 }
                 return false;
             }
@@ -83,7 +93,7 @@ namespace RagnarokMod.Items.HealerItems.Other
                 }
                 if (player.statLife <= 0)
                 {
-                    PlayerDeathReason pdr = PlayerDeathReason.ByCustomReason(player.name.ToString() + " was converted into ammunition.");
+                    PlayerDeathReason pdr = PlayerDeathReason.ByCustomReason(player.name.ToString() + " was could not handle the recoil.");
                     player.KillMe(pdr, 1000.0, 0, false);
                     return false;
                 }
@@ -133,12 +143,9 @@ namespace RagnarokMod.Items.HealerItems.Other
         {
             player.ChangeDir(Math.Sign((player.Calamity().mouseWorld - player.Center).X));
             float itemRotation = player.compositeFrontArm.rotation + MathHelper.PiOver2 * player.gravDir;
-
-            Vector2 itemPosition;
             Vector2 itemSize = new Vector2(60, 40);
-            Vector2 itemOrigin;
-            itemOrigin = new Vector2(-35, 1);
-            itemPosition = player.MountedCenter - itemOrigin;
+            Vector2 itemOrigin = new Vector2(0, 5);
+            Vector2 itemPosition = player.MountedCenter + (itemRotation.ToRotationVector2() * 40);
 
             CalamityUtils.CleanHoldStyle(player, itemRotation, itemPosition, itemSize, itemOrigin);
         }
@@ -146,12 +153,9 @@ namespace RagnarokMod.Items.HealerItems.Other
         public override void HoldStyle(Player player, Rectangle heldItemFrame)
         {
             float itemRotation = player.compositeFrontArm.rotation + MathHelper.PiOver2 * player.gravDir;
-
-            Vector2 itemPosition;
             Vector2 itemSize = new Vector2(60, 40);
-            Vector2 itemOrigin;
-            itemOrigin = new Vector2(-35, 1);
-            itemPosition = player.MountedCenter - itemOrigin;
+            Vector2 itemOrigin = new Vector2(0, 5);
+            Vector2 itemPosition = player.MountedCenter + (itemRotation.ToRotationVector2() * 40);
 
             CalamityUtils.CleanHoldStyle(player, itemRotation, itemPosition, itemSize, itemOrigin);
         }

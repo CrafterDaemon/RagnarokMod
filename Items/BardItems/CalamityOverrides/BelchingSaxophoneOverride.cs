@@ -15,7 +15,7 @@ namespace Ragnarok.Items
 {
     public class BelchingSaxophoneOverride : BardItem, ILocalizedModType
     {
-        //belching sax as a bard instrument
+        //belching sax as a bard instrument, had to be rewritten iniherriting from BardItem, same with the other overrides.
         public override string Texture => "CalamityMod/Items/Weapons/Magic/BelchingSaxophone";
         public override BardInstrumentType InstrumentType => BardInstrumentType.Wind;
 
@@ -39,7 +39,7 @@ namespace Ragnarok.Items
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.knockBack = 2f;
-            Item.value = CalamityGlobalItem.Rarity5BuyPrice;
+            Item.value = 3500;
             Item.rare = ItemRarityID.Pink;
             Item.autoReuse = true;
             Item.shoot = ModContent.ProjectileType<AcidicReed>();

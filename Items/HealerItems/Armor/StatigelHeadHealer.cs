@@ -28,7 +28,7 @@ namespace RagnarokMod.Items.HealerItems.Armor
         {
             Item.width = 18;
             Item.height = 18;
-            Item.value = CalamityGlobalItem.RarityLightRedBuyPrice;
+            Item.value = 100000;
 			Item.rare = 4;
 			Item.defense = 5;
         }

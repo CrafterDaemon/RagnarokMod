@@ -29,7 +29,7 @@ namespace RagnarokMod.Items.BardItems
         {
             Item.width = 18;
             Item.height = 18;
-            Item.value = CalamityGlobalItem.RarityLightRedBuyPrice;
+            Item.value = 5405;
 			Item.rare = 4;
 			Item.defense = 5;
         }

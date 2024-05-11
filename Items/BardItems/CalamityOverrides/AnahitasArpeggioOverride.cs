@@ -34,7 +34,7 @@ namespace RagnarokMod.Items
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.knockBack = 6.5f;
-            Item.value = CalamityGlobalItem.Rarity7BuyPrice;
+            Item.value = 75255;
             Item.rare = ItemRarityID.Lime;
             Item.autoReuse = true;
             Item.shoot = ModContent.ProjectileType<AnahitasArpeggioNote>();

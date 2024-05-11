@@ -44,7 +44,7 @@ namespace RagnarokMod.Items.BardItems
 			base.Item.noMelee = true;
 			base.Item.autoReuse = true;
 			base.Item.knockBack = 2f;
-			Item.value = CalamityGlobalItem.Rarity7BuyPrice;
+			Item.value = 241115;
 			Item.rare = ItemRarityID.Lime;
 			base.Item.shoot = ModContent.ProjectileType<SteampipesPro>();
 			base.Item.shootSpeed = 13f;
