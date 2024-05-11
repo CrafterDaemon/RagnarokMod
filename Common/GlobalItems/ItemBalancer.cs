@@ -332,8 +332,8 @@ namespace RagnarokMod.Common.GlobalItems
 			{"Witchblade",80},
 			{"DragonFang",81},
 			{"Brinefang",86},
+			{"StarEater",88},
 			{"ProximityMine",91},
-			{"StarEater",95},
 			{"TerrariumRippleKnife",95},
 			{"ElectroRebounder",97},
 			{"WhiteDwarfKunai",104},
@@ -347,15 +347,18 @@ namespace RagnarokMod.Common.GlobalItems
 		private static Dictionary<string,int> thorium_healer_damage_tweak = new Dictionary<string,int>
 		{
 			{"LifeQuartzClaymore",15},
-			{"LifeAndDeath", 120},
+			{"LifeAndDeath", 95},
 			{"DarkScythe",16},
 			{"CrimsonScythe", 16}
 		};
 		
 		private static Dictionary<string,int> thorium_bard_damage_tweak = new Dictionary<string,int>
 		{
-			{"Didgeridoo", 15},
-			{"BlackMIDI", 170}
+			{"JingleBells", 85},
+			{"BlackMIDI", 150},
+			{"ShootingStarBlastGuitar", 160},
+			{"TheSet", 290},
+			{"EdgeofImagination", 165}
 		};
 		
 		private static Dictionary<string,int> thorium_ranged_damage_tweak = new Dictionary<string,int>
@@ -447,6 +450,42 @@ namespace RagnarokMod.Common.GlobalItems
 				{
 					item.defense = 2;
 				}	
+				else if(item.type == thorium.Find<ModItem>("TideTurnerBreastplate").Type) 
+				{
+					item.defense = 35;
+				}
+				else if(item.type == thorium.Find<ModItem>("TideTurnerGreaves").Type) 
+				{
+					item.defense = 31;
+				}
+				else if(item.type == thorium.Find<ModItem>("TideTurnerHelmet").Type) 
+				{
+					item.defense = 32;
+				}
+				else if(item.type == thorium.Find<ModItem>("AssassinsGuard").Type) 
+				{
+					item.defense = 29;
+				}
+				else if(item.type == thorium.Find<ModItem>("AssassinsWalkers").Type) 
+				{
+					item.defense = 29;
+				}
+				else if(item.type == thorium.Find<ModItem>("RhapsodistBoots").Type) 
+				{
+					item.defense = 27;
+				}
+				else if(item.type == thorium.Find<ModItem>("RhapsodistChestWoofer").Type) 
+				{
+					item.defense = 27;
+				}
+				else if(item.type == thorium.Find<ModItem>("PyromancerTabard").Type) 
+				{
+					item.defense = 27;
+				}
+				else if(item.type == thorium.Find<ModItem>("PyromancerLeggings").Type) 
+				{
+					item.defense = 24;
+				}
 			} 
 			else if (item.damage > 0) 
 			{	

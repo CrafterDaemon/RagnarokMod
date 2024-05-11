@@ -33,7 +33,7 @@ namespace RagnarokMod.Items.BardItems
             Item.height = 12;
             Item.value = 212121;
             Item.rare = ModContent.RarityType<Turquoise>();
-            Item.defense = 11;
+            Item.defense = 13;
         }
 
         public override void UpdateArmorSet(Player player)

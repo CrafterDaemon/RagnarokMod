@@ -32,9 +32,9 @@ namespace RagnarokMod.Items.BardItems
             this.Item.rare = 11;
         }
 
-        public virtual void AddRecipes()
+        public override void AddRecipes()
         {
-            Recipe recipe = this.CreateRecipe(1);
+            Recipe recipe = Recipe.Create(Item.type);
             recipe.AddIngredient(ModContent.ItemType<OceanEssence>(), 1);
             recipe.AddIngredient(ModContent.ItemType<DeathEssence>(), 1);
             recipe.AddIngredient(ModContent.ItemType<InfernoEssence>(), 1);

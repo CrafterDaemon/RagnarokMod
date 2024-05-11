@@ -11,6 +11,7 @@ using CalamityMod;
 using CalamityMod.Items;
 using CalamityMod.Rarities;
 using RagnarokMod.Projectiles.BardPro;
+using CalamityMod.Items.Materials;
 using RagnarokMod.Sounds;
 using ThoriumMod.Items.BardItems;
 using Microsoft.Xna.Framework;
@@ -46,6 +47,15 @@ namespace RagnarokMod.Items.BardItems
             Item.UseSound = SoundID.DD2_BookStaffCast;
             base.Item.shoot = ModContent.ProjectileType<ElysianSongPro>();
             base.Item.shootSpeed = 15f;
+
+        }
+		
+		public override void AddRecipes()
+        {
+			Recipe recipe = Recipe.Create(Item.type);
+			recipe.AddIngredient(ModContent.ItemType<UelibloomBar>(), 12);
+			recipe.AddTile(TileID.LunarCraftingStation);
+			recipe.Register();
 
         }
     }

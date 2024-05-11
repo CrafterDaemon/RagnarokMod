@@ -1,12 +1,18 @@
 ﻿using Terraria.ModLoader;
 using Terraria;
+using Terraria.DataStructures;
 using ThoriumMod.Items.HealerItems;
 using CalamityMod.Rarities;
 using RagnarokMod.Projectiles.HealerPro.Scythes;
+using RagnarokMod.Items.HealerItems.Scythes;
 using CalamityMod.Items.Materials;
 using Terraria.ID;
-using Terraria.DataStructures;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using ThoriumMod.Items.Terrarium;
+using ThoriumMod.Items.BossThePrimordials.Dream;
+using ThoriumMod.Items.Titan;
+using CalamityMod.Tiles.Furniture.CraftingStations;
 
 namespace RagnarokMod.Items.HealerItems.Scythes
 {
@@ -36,8 +42,12 @@ namespace RagnarokMod.Items.HealerItems.Scythes
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<ScoriaBar>(), 10);
-            recipe.AddTile(TileID.MythrilAnvil);
+			recipe.AddIngredient(ModContent.ItemType<MiracleMatter>(), 1);
+            recipe.AddIngredient(ModContent.ItemType<ProfanedScythe>(), 1);
+			recipe.AddIngredient(ModContent.ItemType<TerrariumHolyScythe>(), 1);
+			recipe.AddIngredient(ModContent.ItemType<RealitySlasher>(), 1);
+			recipe.AddIngredient(ModContent.ItemType<TitanScythe>(), 1);
+            recipe.AddTile<DraedonsForge>();
             recipe.Register();
         }
     }

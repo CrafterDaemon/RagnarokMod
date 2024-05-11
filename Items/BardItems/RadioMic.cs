@@ -10,9 +10,11 @@ using Terraria.DataStructures;
 using CalamityMod;
 using CalamityMod.Items;
 using CalamityMod.Rarities;
+using CalamityMod.Items.Materials;
 using RagnarokMod.Projectiles.BardPro;
 using RagnarokMod.Sounds;
 using ThoriumMod.Items.BardItems;
+using ThoriumMod.Items.Donate;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -49,5 +51,15 @@ namespace RagnarokMod.Items.BardItems
             base.Item.shootSpeed = 10f;
 
         }
+		
+		public override void AddRecipes()
+		{
+			Recipe recipe = Recipe.Create(Item.type);
+			recipe.AddIngredient(ModContent.ItemType<IdolsMicrophone>(), 1);
+			recipe.AddIngredient(ModContent.ItemType<RuinousSoul>(), 2);
+			recipe.AddIngredient(ModContent.ItemType<DarkPlasma>(), 1);
+			recipe.AddTile(412);
+			recipe.Register();
+		}
     }
 }
