@@ -14,15 +14,16 @@ namespace RagnarokMod.Projectiles
 {
 	public class GuardianHealer : ModProjectile
 	{
-		public override void SetStaticDefaults()
+        public override string Texture => "CalamityMod/NPCs/ProfanedGuardians/ProfanedGuardianHealer";
+        public override void SetStaticDefaults()
 		{
 			Main.projFrames[base.Projectile.type] = 10;
 		}
 
 		public override void SetDefaults()
 		{
-			base.Projectile.width = 57;
-			base.Projectile.height = 39;
+			base.Projectile.width = 228;
+			base.Projectile.height = 164;
 			base.Projectile.aiStyle = -1;
 			base.Projectile.tileCollide = false;
 			base.Projectile.ignoreWater = true;
@@ -32,9 +33,11 @@ namespace RagnarokMod.Projectiles
 
 		public override void PostDraw(Color lightColor)
 		{
-			ProjectileExtras.DrawLikeVanilla(base.Projectile, Color.White * base.Projectile.Opacity, ModContent.Request<Texture2D>(this.Texture + "_Effect").Value, default(Vector2), 
+			ProjectileExtras.DrawLikeVanilla(base.Projectile, Color.White * base.Projectile.Opacity, ModContent.Request<Texture2D>(this.Texture + "Glow").Value, default(Vector2),
 			null, default(Vector2), 0f, 0f);
-		}
+            ProjectileExtras.DrawLikeVanilla(base.Projectile, Color.White * base.Projectile.Opacity, ModContent.Request<Texture2D>(this.Texture + "Glow2").Value, default(Vector2),
+            null, default(Vector2), 0f, 0f);
+        }
 
 		public override void AI()
 		{
@@ -49,8 +52,8 @@ namespace RagnarokMod.Projectiles
 			Projectile projectile = base.Projectile;
 			projectile.position.Y = projectile.position.Y + (float)this.yOffset;
 			base.Projectile.gfxOffY = player.gfxOffY;
-			base.Projectile.direction = player.direction;
-			base.Projectile.spriteDirection = player.direction;
+			base.Projectile.direction = -player.direction;
+			base.Projectile.spriteDirection = -player.direction;
 			if (!this.shift)
 			{
 				base.Projectile.alpha += 2;
@@ -111,6 +114,6 @@ namespace RagnarokMod.Projectiles
 
 		public bool shift;
 
-		public int yOffset = -46;
+		public int yOffset = -146;
 	}
 }
