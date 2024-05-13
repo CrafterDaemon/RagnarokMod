@@ -589,6 +589,15 @@ Items: {
 		DisplayName: Splattercannon
 		Tooltip: ""
 	}
+
+	ProfanedBell: {
+		DisplayName: Profaned Bell
+		Tooltip:
+			'''
+			Shoots small holy blasts
+			Hit enemies are afflicted by Holy Flames for 3 seconds
+			'''
+	}
 }
 
 Projectiles: {
@@ -622,6 +631,8 @@ Projectiles: {
 	AstralRipperStarPro.DisplayName: Astral Ripper Star Pro
 	Splattershot.DisplayName: Splattershot
 	BloodOrb.DisplayName: Blood Orb
+	ProfaneBellBlast.DisplayName: Profane Bell Blast
+	ProfanedBellBlast.DisplayName: Profaned Bell Blast
 }
 
 od: {

@@ -54,6 +54,10 @@ namespace RagnarokMod.Common.GlobalItems
             {
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<CalamityBell>(), 3));
             }
+			if (item.type == ModContent.ItemType<ProvidenceBag>())
+            {
+                itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<ProfanedBell>(), 3));
+            }
             if (item.type == ModContent.ItemType<FallenBeholderTreasureBag>()) 
             {
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<VoidseerPearl>()));

@@ -14,6 +14,7 @@ using RagnarokMod.Projectiles.BardPro;
 using CalamityMod.Items.Materials;
 using RagnarokMod.Sounds;
 using ThoriumMod.Items.BardItems;
+using ThoriumMod.Sounds;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -31,7 +32,7 @@ namespace RagnarokMod.Items.BardItems
 
         public override void SetBardDefaults()
         {
-            Item.damage = 260;
+            Item.damage = 285;
             base.InspirationCost = 2;
             base.Item.width = 84;
             base.Item.height = 50;
@@ -44,7 +45,7 @@ namespace RagnarokMod.Items.BardItems
             base.Item.knockBack = 20f;
             Item.value = 15000;
             Item.rare = ModContent.RarityType<Turquoise>();
-            Item.UseSound = SoundID.DD2_BookStaffCast;
+            base.Item.UseSound = new SoundStyle?(ThoriumSounds.Trumpet_Sound);
             base.Item.shoot = ModContent.ProjectileType<ElysianSongPro>();
             base.Item.shootSpeed = 15f;
 

@@ -86,6 +86,13 @@ namespace RagnarokMod.Common.GlobalNPCs
             }
             if (npc.type == ModContent.NPCType<Providence>())
             {
+				// Add new Drops
+				if(!Main.expertMode) 
+				{
+					npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ProfanedBell>(), 1, 1, 4));
+				}
+				
+				// Remove Rune of Kos
                 IItemDropRule itemDrop = ItemDropRule.Common(ModContent.ItemType<RuneofKos>());
                 bool waitingForChange = true;
                 while (waitingForChange && DownedBossSystem.downedProvidence)
