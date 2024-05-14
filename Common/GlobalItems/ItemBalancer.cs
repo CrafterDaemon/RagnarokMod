@@ -166,9 +166,9 @@ namespace RagnarokMod.Common.GlobalItems
 			{"FleshSkewer", 38},
 			{"Saba", 39},
 			{"BloodDrinker", 40},
-			{"DragonTalon", 40},
+			{"DragonTalon", 42},
 			{"HellishHalberd", 41},
-			{"DragonTooth", 41},
+			{"DragonTooth", 42},
 			{"Rapier", 41},
 			{"MeleeThorHammer", 41},
 			{"DurasteelBlade", 43},
@@ -355,8 +355,9 @@ namespace RagnarokMod.Common.GlobalItems
 		private static Dictionary<string,int> thorium_bard_damage_tweak = new Dictionary<string,int>
 		{
 			{"JingleBells", 85},
+			{"DragonsWail", 35},
 			{"BlackMIDI", 150},
-			{"ShootingStarBlastGuitar", 160},
+			{"ShootingStarBlastGuitar", 150},
 			{"TheSet", 290},
 			{"EdgeofImagination", 165}
 		};
@@ -371,7 +372,8 @@ namespace RagnarokMod.Common.GlobalItems
 			{"PalladiumSubmachineGun", 25},
 			{"MythrilPelter", 33},
 			{"OrichalcumPelter", 35},
-			{"AdamantiteCarbine", 54}
+			{"AdamantiteCarbine", 54},
+			{"DragonsGaze", 31}
 			
 		};
 		
@@ -437,55 +439,58 @@ namespace RagnarokMod.Common.GlobalItems
 			{"ShadowOrbStaff", 104}
 		};
 	
+	
+		private static Dictionary<string,int> thorium_magic_damage_tweak = new Dictionary<string,int>
+		{
+			{"IceCube", 8},
+			{"Charm", 12},
+			{"Confuse", 12},
+			{"Dissolve", 12},
+			{"Freeze", 12},
+			{"Ignite", 12},
+			{"Pierce", 12},
+			{"Poison", 12},
+			{"Siphon", 12},
+			{"Stun", 12},
+			{"MagickStaff", 14},
+			{"OpalStaff", 17 },
+			{"AquamarineStaff", 18},
+			{"ThoriumStaff", 13},
+			{"MagicThorHammer", 34},
+			{"DragonsBreath", 32}
+		};
+			
+		private static Dictionary<string,int> thorium_armor_defense_tweak = new Dictionary<string,int>
+		{
+			{"SandStoneMail", 4},
+			{"SandStoneHelmet", 2},
+			{"TideTurnerBreastplate", 35}, 
+			{"TideTurnerGreaves", 31},
+			{"TideTurnerHelmet", 32}, 
+			{"AssassinsGuard", 29}, 
+			{"AssassinsWalkers",29}, 
+			{"RhapsodistBoots", 27}, 
+			{"RhapsodistChestWoofer", 27},
+			{"PyromancerTabard", 27},
+			{"PyromancerLeggings", 24},
+			{"DragonMask", 11},
+			{"DragonGreaves", 12},
+			{"DragonBreastplate", 15}	
+		};
+		
 		public override void SetDefaults(Item item)
         {
 			// Armor
 			if(item.defense > 0)
 			{
-				if (item.type == thorium.Find<ModItem>("SandStoneMail").Type) 
-				{
-					item.defense = 4;
-				}	
-				else if (item.type == thorium.Find<ModItem>("SandStoneHelmet").Type) 
-				{
-					item.defense = 2;
-				}	
-				else if(item.type == thorium.Find<ModItem>("TideTurnerBreastplate").Type) 
-				{
-					item.defense = 35;
-				}
-				else if(item.type == thorium.Find<ModItem>("TideTurnerGreaves").Type) 
-				{
-					item.defense = 31;
-				}
-				else if(item.type == thorium.Find<ModItem>("TideTurnerHelmet").Type) 
-				{
-					item.defense = 32;
-				}
-				else if(item.type == thorium.Find<ModItem>("AssassinsGuard").Type) 
-				{
-					item.defense = 29;
-				}
-				else if(item.type == thorium.Find<ModItem>("AssassinsWalkers").Type) 
-				{
-					item.defense = 29;
-				}
-				else if(item.type == thorium.Find<ModItem>("RhapsodistBoots").Type) 
-				{
-					item.defense = 27;
-				}
-				else if(item.type == thorium.Find<ModItem>("RhapsodistChestWoofer").Type) 
-				{
-					item.defense = 27;
-				}
-				else if(item.type == thorium.Find<ModItem>("PyromancerTabard").Type) 
-				{
-					item.defense = 27;
-				}
-				else if(item.type == thorium.Find<ModItem>("PyromancerLeggings").Type) 
-				{
-					item.defense = 24;
-				}
+				foreach (var compareditem in thorium_armor_defense_tweak) 
+					{
+						if ( item.type == thorium.Find<ModItem>(compareditem.Key).Type) 
+						{
+							item.defense = compareditem.Value;
+							break;
+						}
+					}
 			} 
 			else if (item.damage > 0) 
 			{	
@@ -555,6 +560,18 @@ namespace RagnarokMod.Common.GlobalItems
 						if ( item.type == thorium.Find<ModItem>(weaponname).Type) 
 						{	
 							item.Calamity().canFirePointBlankShots = true;
+							break;
+						}
+					}
+				}
+				// Magic
+				else if(item.DamageType == DamageClass.Magic) 
+				{
+					foreach (var compareditem in thorium_magic_damage_tweak) 
+					{
+						if ( item.type == thorium.Find<ModItem>(compareditem.Key).Type) 
+						{
+							item.damage = compareditem.Value;
 							break;
 						}
 					}
