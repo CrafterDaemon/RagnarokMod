@@ -43,6 +43,8 @@ namespace RagnarokMod.Utils
 		private int bloodflarebloodlust = 0;
 		private int bloodflarepointtimer = 0;
 		private const int maxbloodlustpoints = 150;
+		
+		private int outputcounter = 0;
 			
 		public override void OnHurt(Player.HurtInfo info) 
 		{
@@ -215,8 +217,49 @@ namespace RagnarokMod.Utils
 						thoriumPlayer.bardBuffDuration += 180;
 					}
 			}
+			
+			this.ApplyRogueUseTimeFix();
 				
 		}
+		
+		private void ApplyRogueUseTimeFix() 
+		{
+			var calamityPlayer = base.Player.Calamity();
+			Item it = base.Player.ActiveItem();
+            if (!calamityPlayer.wearingRogueArmor || it.useAnimation == it.useTime)
+			{
+				return;
+			}
+			
+			bool flag = it.damage > 0;
+			bool hasHitboxes = !it.noMelee || it.shoot > 0;
+			bool flag2 = it.pick > 0;
+			bool isAxe = it.axe > 0;
+			bool isHammer = it.hammer > 0;
+			bool isPlaced = it.createTile != -1;
+			bool isChannelable = it.channel;
+			bool hasNonWeaponFunction = flag2 || isAxe || isHammer || isPlaced || isChannelable;
+			bool playerUsingWeapon = flag && hasHitboxes && !hasNonWeaponFunction;
+			if ((it.IsAir || !it.CountsAsClass<RogueDamageClass>()) && calamityPlayer.GemTechSet && calamityPlayer.GemTechState.IsRedGemActive)
+			{
+				return;
+			}
+			
+			float attackSpeed = base.Player.GetAttackSpeed<RogueDamageClass>() * base.Player.GetAttackSpeed(DamageClass.Throwing) * base.Player.GetAttackSpeed(DamageClass.Generic);
+			int adjustedUseTime = (int)(it.useTime / attackSpeed);
+			
+			bool animationCheck = (base.Player.itemTime == adjustedUseTime );
+			if (!calamityPlayer.stealthStrikeThisFrame && animationCheck)
+			{
+				if (calamityPlayer.StealthStrikeAvailable())
+				{
+					calamityPlayer.ConsumeStealthByAttacking();
+					return;
+				}
+				calamityPlayer.rogueStealth = 0f;
+			}
+		}
+		
 
 		public override void PostUpdateEquips() 
 		{
