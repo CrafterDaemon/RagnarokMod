@@ -15,6 +15,7 @@ namespace RagnarokMod.ILEditing
 {
     public class CalamityEdits : ModSystem
     {
+		/*
 		private static Mod ModCalamity = ModLoader.GetMod("CalamityMod");
         private static Assembly calamityAssembly = ModCalamity.GetType().Assembly;
         private static Type calPlayer = null;
@@ -47,6 +48,7 @@ namespace RagnarokMod.ILEditing
                 }
             }
         }
+		
 
    
 		private void RogueUseTimeFix(ILContext il)
@@ -71,5 +73,6 @@ namespace RagnarokMod.ILEditing
 			// Now that we're after the likely allocation, insert Main.NewText(animationCheck) call
 			c.Emit(OpCodes.Call, "Main::NewText");
 		}
+		*/
 	}
 }

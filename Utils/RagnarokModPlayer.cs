@@ -27,6 +27,9 @@ namespace RagnarokMod.Utils
 {
     public class RagnarokModPlayer : ModPlayer
     {
+		
+		private static Mod thorium = ModLoader.GetMod("ThoriumMod");
+		private static Mod calamity = ModLoader.GetMod("CalamityMod");
         //this is most likely only gonna be for armor set abilities.
         public bool auricBardSet = false;
 		public bool auricHealerSet = false;
@@ -43,9 +46,7 @@ namespace RagnarokMod.Utils
 		private int bloodflarebloodlust = 0;
 		private int bloodflarepointtimer = 0;
 		private const int maxbloodlustpoints = 150;
-		
-		private int outputcounter = 0;
-			
+	
 		public override void OnHurt(Player.HurtInfo info) 
 		{
 			if(bloodflareHealer || bloodflareBard) 
@@ -218,6 +219,7 @@ namespace RagnarokMod.Utils
 					}
 			}
 			
+			
 			this.ApplyRogueUseTimeFix();
 				
 		}
@@ -260,14 +262,83 @@ namespace RagnarokMod.Utils
 			}
 		}
 		
-
+		
 		public override void PostUpdateEquips() 
 		{
-			if (base.Player.HeldItem.type == ModContent.ItemType<CalamityBell>()) 
-			{
-				InstrumentRotationModifier(0.60f);
-			}	
+			if(base.Player.armor[0].type == thorium.Find<ModItem>("SandStoneHelmet").Type 
+		   && base.Player.armor[1].type == thorium.Find<ModItem>("SandStoneMail").Type 
+		   && base.Player.armor[2].type == thorium.Find<ModItem>("SandStoneGreaves").Type) 
+		   {
+			   AddStealth(60);
+		   }
+		   else if(base.Player.armor[0].type == thorium.Find<ModItem>("FlightMask").Type 
+		   && base.Player.armor[1].type == thorium.Find<ModItem>("FlightMail").Type 
+		   && base.Player.armor[2].type == thorium.Find<ModItem>("FlightBoots").Type)
+		   {
+			   AddStealth(70);
+		   }
+		   else if(base.Player.armor[0].type == thorium.Find<ModItem>("BronzeHelmet").Type 
+		   && base.Player.armor[1].type == thorium.Find<ModItem>("BronzeBreastplate").Type 
+		   && base.Player.armor[2].type == thorium.Find<ModItem>("BronzeGreaves").Type)
+		   {
+			   AddStealth(85);
+		   }
+		   else if(base.Player.armor[0].type == thorium.Find<ModItem>("PlagueDoctorsMask").Type 
+		   && base.Player.armor[1].type == thorium.Find<ModItem>("PlagueDoctorsGarb").Type 
+		   && base.Player.armor[2].type == thorium.Find<ModItem>("PlagueDoctorsLeggings").Type)
+		   {
+			   AddStealth(100);
+		   }
+		   else if(base.Player.armor[0].type == thorium.Find<ModItem>("FungusHat").Type 
+		   && base.Player.armor[1].type == thorium.Find<ModItem>("FungusGuard").Type 
+		   && base.Player.armor[2].type == thorium.Find<ModItem>("FungusLeggings").Type)
+		   {
+			   AddStealth(105);
+		   }
+		   else if( (base.Player.armor[0].type == thorium.Find<ModItem>("HallowedGuise").Type 
+		   || base.Player.armor[0].type == thorium.Find<ModItem>("AncientHallowedGuise").Type)
+		   && (base.Player.armor[1].type == 551 || base.Player.armor[1].type == 4900)
+		   && (base.Player.armor[2].type == 552 || base.Player.armor[2].type == 4901) )
+		   {
+			   AddStealth(110);
+		   }
+		   else if(base.Player.armor[0].type == thorium.Find<ModItem>("LichCowl").Type 
+		   && base.Player.armor[1].type == thorium.Find<ModItem>("LichCarapace").Type 
+		   && base.Player.armor[2].type == thorium.Find<ModItem>("LichTalon").Type)
+		   {
+			   AddStealth(110);
+		   }
+		   else if(base.Player.armor[0].type == thorium.Find<ModItem>("ShadeMasterMask").Type 
+		   && base.Player.armor[1].type == thorium.Find<ModItem>("ShadeMasterGarb").Type 
+		   && base.Player.armor[2].type == thorium.Find<ModItem>("ShadeMasterTreads").Type)
+		   {
+			   AddStealth(110);
+		   }
+		    else if(base.Player.armor[0].type == thorium.Find<ModItem>("WhiteDwarfMask").Type 
+		   && base.Player.armor[1].type == thorium.Find<ModItem>("WhiteDwarfGuard").Type 
+		   && base.Player.armor[2].type == thorium.Find<ModItem>("WhiteDwarfGreaves").Type)
+		   {
+			   AddStealth(115);
+		   }
+		     else if(base.Player.armor[0].type == thorium.Find<ModItem>("TideTurnersGaze").Type 
+		   && base.Player.armor[1].type == thorium.Find<ModItem>("TideTurnerBreastplate").Type 
+		   && base.Player.armor[2].type == thorium.Find<ModItem>("TideTurnerGreaves").Type)
+		   {
+			   AddStealth(120);
+		   }
+		   
 		}
+		
+		
+		
+		public void AddStealth(int stealth) 
+		{
+		   CalamityPlayer calamityPlayer = base.Player.Calamity();
+		   calamityPlayer.rogueStealthMax += ((float)stealth / 100);
+		   base.Player.Calamity().wearingRogueArmor = true;
+		   base.Player.setBonus = base.Player.setBonus + "\n+" + stealth + " maximum stealth";
+		}
+			
 		
 		public void InstrumentRotationModifier(float modifier) 
 		{
