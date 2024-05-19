@@ -5,6 +5,7 @@ using Terraria.GameInput;
 using Terraria.ModLoader;
 using ThoriumMod.Buffs.Bard;
 using ThoriumMod.Buffs.Healer;
+using ThoriumMod.Buffs.Thrower;
 using ThoriumMod.Items.BossThePrimordials.Rhapsodist;
 using ThoriumMod.Items.BossThePrimordials.Dream;
 using ThoriumMod.Items;
@@ -109,6 +110,29 @@ namespace RagnarokMod.Utils
 				}
             }
         }
+		
+		
+		public override void PreUpdateBuffs()
+		{
+			
+			if (base.Player.HasBuff(ModContent.BuffType<LastStandBuff>()))
+			{
+				int bufftypeindex = -100;
+				for( int i = 0; i < base.Player.buffType.Length; i++) 
+				{
+					if(base.Player.buffType[i] == ModContent.BuffType<LastStandBuff>()) 
+					{
+						bufftypeindex = i;
+					}
+				}
+				if(base.Player.buffTime[bufftypeindex] > 480 && bufftypeindex != -100) 
+				{
+					base.Player.buffTime[bufftypeindex] = 480;
+				}
+			}
+			
+		}
+		
 		
 		public override void PostUpdateMiscEffects() 
 		{

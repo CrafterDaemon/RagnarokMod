@@ -531,7 +531,7 @@ ThrowerTechniques: {
 		DisplayName: Last Stand
 		Description:
 			'''
-			Automatically triggers when you take fatal damage, granting you {0} {^0:second;seconds} of invulnerability
+			Automatically triggers when you take fatal damage, granting you 8 seconds of invulnerability
 			While invulnerable, you gain {1}% rogue speed & damage but die at the end of the duration
 			'''
 	}
