@@ -9,21 +9,19 @@ using Terraria.ModLoader;
 using ThoriumMod.Projectiles.Bard;
 using ThoriumMod;
 using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Projectiles.Boss;
-
 namespace RagnarokMod.Projectiles.BardPro
 {
-	public class ProfanedBellBlast : BardProjectile
+	public class AuricDamruFlareBomb : BardProjectile
 	{
 		public override void SetStaticDefaults()
 		{
-			Main.projFrames[Projectile.type] = 4;
+			Main.projFrames[base.Projectile.type] = 5;
 		}
 		
 		public override void SetBardDefaults()
 		{
-			base.Projectile.width = 72;
-			base.Projectile.height = 196;
+			base.Projectile.width = 64;
+			base.Projectile.height = 66;
 			base.Projectile.penetrate = 1;
 			base.Projectile.friendly = true;
 			base.Projectile.tileCollide = true;
@@ -31,13 +29,8 @@ namespace RagnarokMod.Projectiles.BardPro
 			Projectile.DamageType = ThoriumDamageBase<BardDamage>.Instance;
 		}
 
-		public override void BardOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+		public override void AI()
 		{
-			target.AddBuff(ModContent.BuffType<HolyFlames>(), 180, false);
-		}
-		public override void AI() 
-		{
-		
 			if (++Projectile.frameCounter >= 5) 
 			{
 				Projectile.frameCounter = 0;
@@ -46,15 +39,8 @@ namespace RagnarokMod.Projectiles.BardPro
            
 			}
 			Projectile.rotation = Projectile.velocity.ToRotation();
-		
 		}
-		
-		public override void ModifyDamageHitbox(ref Rectangle hitbox)
-		{
-					hitbox.Inflate(-30, -70);
-		}
-		
-		
+
 		public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough, ref Vector2 hitboxCenterFrac)
 		{
 			width = 25;
@@ -62,8 +48,13 @@ namespace RagnarokMod.Projectiles.BardPro
 			return true;
 		}
 		
-		
-		  public override bool PreDraw(ref Color lightColor) {
+		public override void ModifyDamageHitbox(ref Rectangle hitbox)
+		{
+					hitbox.Inflate(-10, -5);
+		}
+
+
+		public override bool PreDraw(ref Color lightColor) {
 			// SpriteEffects helps to flip texture horizontally and vertically
 			SpriteEffects spriteEffects = SpriteEffects.None;
 			if (Projectile.spriteDirection == -1)
@@ -104,17 +95,18 @@ namespace RagnarokMod.Projectiles.BardPro
 			// It's important to return false, otherwise we also draw the original texture.
 			return false;
 		}
-		
+
 		
 		public override void OnKill(int timeLeft)
 		{
-			SoundEngine.PlaySound(HolyBlast.ImpactSound, new Vector2?(base.Projectile.Center), null);
-			Projectile.NewProjectile(base.Projectile.GetSource_FromThis(null), base.Projectile.Center, Vector2.Zero, ModContent.ProjectileType<BellBlastBoom>(), (int)((float)base.Projectile.damage * 0.75f), 1f, base.Projectile.owner, 0f, 0f, 0f);
+			SoundEngine.PlaySound(SoundID.Item14, new Vector2?(base.Projectile.Center), null);
+			Projectile.NewProjectile(base.Projectile.GetSource_FromThis(null), base.Projectile.Center, Vector2.Zero, ModContent.ProjectileType<AuricDamruFlareBombBoom>(), (int)((float)base.Projectile.damage * 0.75f), 1f, base.Projectile.owner, 0f, 0f, 0f);
 			for (int j = 0; j < 10; j++)
 			{
-				Dust.NewDustDirect(base.Projectile.position, base.Projectile.width, base.Projectile.height, DustID.GemTopaz, (float)Main.rand.Next(-4, 5), (float)Main.rand.Next(-4, 5), 0, default(Color), 1.25f).noGravity = true;
+				Dust.NewDustDirect(base.Projectile.position, base.Projectile.width, base.Projectile.height, DustID.Torch, (float)Main.rand.Next(-4, 5), (float)Main.rand.Next(-4, 5), 0, default(Color), 1.25f).noGravity = true;
 			}
+			
 		}
-		
+	
 	}
 }

@@ -13,7 +13,7 @@ using CalamityMod.Projectiles.Boss;
 
 namespace RagnarokMod.Projectiles.BardPro
 {
-	public class BellBlastBoom : BardProjectile
+	public class AuricDamruFlareBombBoom : BardProjectile
 	{
 		public override void SetBardDefaults()
 		{
@@ -28,7 +28,7 @@ namespace RagnarokMod.Projectiles.BardPro
 		
 		public override void BardOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
-			target.AddBuff(ModContent.BuffType<HolyFlames>(), 180, false);
+			target.AddBuff(ModContent.BuffType<Dragonfire>(), 180, false);
 			
 		}
 		

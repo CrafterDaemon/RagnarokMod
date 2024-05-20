@@ -598,6 +598,16 @@ Items: {
 			Hit enemies are afflicted by Holy Flames for 3 seconds
 			'''
 	}
+
+	AuricDamru: {
+		DisplayName: Auric Damru
+		Tooltip: 
+		'''
+		Bangs the bongos, dealing damage to all nearby enemies
+		Right click to shoot a Flare Bomb
+		Flare Bombs apply Dragon Fire on enemies for 3 seconds
+		'''
+	}
 }
 
 Projectiles: {
@@ -633,6 +643,10 @@ Projectiles: {
 	BloodOrb.DisplayName: Blood Orb
 	ProfaneBellBlast.DisplayName: Profane Bell Blast
 	ProfanedBellBlast.DisplayName: Profaned Bell Blast
+	BellBlastBoom.DisplayName: Bell Blast Boom
+	AuricDamruShock.DisplayName: Auric Damru Shock
+	AuricDamruFlareBombBoom.DisplayName: Auric Damru Flare Bomb Boom
+	AuricDamruFlareBomb.DisplayName: Auric Damru Flare Bomb
 }
 
 od: {
