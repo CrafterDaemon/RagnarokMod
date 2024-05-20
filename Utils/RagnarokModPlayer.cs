@@ -197,7 +197,6 @@ namespace RagnarokMod.Utils
 			
 			if(bloodflareHealer) 
 			{
-				
 					if(bloodflarepointtimer == 0) 
 					{
 						bloodflarepointtimer = 30;
@@ -207,18 +206,14 @@ namespace RagnarokMod.Utils
 					{
 						bloodflarepointtimer--;
 					}
-					
 					if(bloodflarebloodlust >= 100) 
 					{
-						base.Player.moveSpeed += 0.25f;
+						base.Player.moveSpeed += 0.2f;
 						ThoriumPlayer thoriumPlayer = ThoriumMod.Utilities.PlayerHelper.GetThoriumPlayer(base.Player);
-						thoriumPlayer.healBonus += 4;
-						base.Player.manaCost *= 0.90f;
+						thoriumPlayer.healBonus += 3;
 						base.Player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) += 0.20f;
 						base.Player.GetCritChance(ThoriumDamageBase<HealerDamage>.Instance) += 20f;
-					}
-					
-					
+					}	
 			}
 			if(bloodflareBard) 
 			{
@@ -234,11 +229,11 @@ namespace RagnarokMod.Utils
 				
 				if(bloodflarebloodlust >= 100) 
 					{
-						base.Player.moveSpeed += 0.2f;
+						base.Player.moveSpeed += 0.25f;
 						ThoriumPlayer thoriumPlayer = ThoriumMod.Utilities.PlayerHelper.GetThoriumPlayer(base.Player);
 						thoriumPlayer.inspirationRegenBonus += 0.1f;
-						base.Player.GetDamage(ThoriumDamageBase<BardDamage>.Instance) += 0.15f;
-						base.Player.GetCritChance(ThoriumDamageBase<BardDamage>.Instance) += 15f;
+						base.Player.GetDamage(ThoriumDamageBase<BardDamage>.Instance) += 0.20f;
+						base.Player.GetCritChance(ThoriumDamageBase<BardDamage>.Instance) += 20f;
 						thoriumPlayer.bardBuffDuration += 180;
 					}
 			}
@@ -404,7 +399,7 @@ namespace RagnarokMod.Utils
 		public void ApplyBloodFlareOnHit(NPC target, int damageDone) 
 		{
 				target.AddBuff(ModContent.BuffType<BurningBlood>(), 240, false);
-				if (bloodflarebloodlust > 100) 
+				if (bloodflarebloodlust > 100 && this.bloodflareHealer) 
 				{
 					this.Player.Heal((int)Math.Sqrt(damageDone / 100));
 				}	
