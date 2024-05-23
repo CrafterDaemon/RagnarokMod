@@ -9,13 +9,14 @@ using ThoriumMod.Utilities;
 using RagnarokMod.Utils;
 using ThoriumMod.Projectiles.Healer;
 using ThoriumMod.Projectiles;
+using Terraria.GameContent;
 
 namespace RagnarokMod.Projectiles
 {
 	public class GuardianHealer : ModProjectile
 	{
-        public override string Texture => "CalamityMod/NPCs/ProfanedGuardians/ProfanedGuardianHealer";
-        public override void SetStaticDefaults()
+		public override string Texture => "CalamityMod/NPCs/ProfanedGuardians/ProfanedGuardianHealer";
+		public override void SetStaticDefaults()
 		{
 			Main.projFrames[base.Projectile.type] = 10;
 		}
@@ -29,14 +30,35 @@ namespace RagnarokMod.Projectiles
 			base.Projectile.ignoreWater = true;
 			base.Projectile.timeLeft = 7200;
 			base.Projectile.netImportant = true;
+			base.Projectile.scale = 0.5f;
 		}
 
 		public override void PostDraw(Color lightColor)
 		{
-			ProjectileExtras.DrawLikeVanilla(base.Projectile, Color.White * base.Projectile.Opacity, ModContent.Request<Texture2D>(this.Texture + "Glow").Value, default(Vector2),
-			null, default(Vector2), 0f, 0f);
-            ProjectileExtras.DrawLikeVanilla(base.Projectile, Color.White * base.Projectile.Opacity, ModContent.Request<Texture2D>(this.Texture + "Glow2").Value, default(Vector2),
-            null, default(Vector2), 0f, 0f);
+			SpriteEffects spriteEffects = SpriteEffects.None;
+			if (Projectile.spriteDirection == -1)
+				spriteEffects = SpriteEffects.FlipHorizontally;
+			Texture2D texture = ModContent.Request<Texture2D>(this.Texture + "Glow").Value;
+			int frameHeight = texture.Height / Main.projFrames[Type];
+			int startY = frameHeight * Projectile.frame;
+			Rectangle sourceRectangle = new Rectangle(0, startY, texture.Width, frameHeight);
+			Vector2 origin = sourceRectangle.Size() / 2f;
+			float offsetX = 0f;
+			origin.X = (float)(Projectile.spriteDirection == 1 ? sourceRectangle.Width - offsetX : offsetX);
+			Color drawColor = Projectile.GetAlpha(lightColor);
+			Main.EntitySpriteDraw(texture,
+				Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY),
+				sourceRectangle, drawColor, Projectile.rotation, origin, Projectile.scale, spriteEffects, 0);
+
+            texture = ModContent.Request<Texture2D>(this.Texture + "Glow2").Value;
+            frameHeight = texture.Height / Main.projFrames[Type];
+            startY = frameHeight * Projectile.frame;
+            sourceRectangle = new Rectangle(0, startY, texture.Width, frameHeight);
+            origin = sourceRectangle.Size() / 2f;
+            origin.X = (float)(Projectile.spriteDirection == 1 ? sourceRectangle.Width - offsetX : offsetX);
+            Main.EntitySpriteDraw(texture,
+                Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY),
+                sourceRectangle, drawColor, Projectile.rotation, origin, Projectile.scale, spriteEffects, 0);
         }
 
 		public override void AI()
@@ -115,5 +137,25 @@ namespace RagnarokMod.Projectiles
 		public bool shift;
 
 		public int yOffset = -146;
-	}
+
+
+        public override bool PreDraw(ref Color lightColor)
+        {
+            SpriteEffects spriteEffects = SpriteEffects.None;
+            if (Projectile.spriteDirection == -1)
+                spriteEffects = SpriteEffects.FlipHorizontally;
+            Texture2D texture = TextureAssets.Projectile[Type].Value;
+            int frameHeight = texture.Height / Main.projFrames[Type];
+            int startY = frameHeight * Projectile.frame;
+            Rectangle sourceRectangle = new Rectangle(0, startY, texture.Width, frameHeight);
+            Vector2 origin = sourceRectangle.Size() / 2f;
+            float offsetX = 0f;
+            origin.X = (float)(Projectile.spriteDirection == 1 ? sourceRectangle.Width - offsetX : offsetX);
+            Color drawColor = Projectile.GetAlpha(lightColor);
+            Main.EntitySpriteDraw(texture,
+                Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY),
+                sourceRectangle, drawColor, Projectile.rotation, origin, Projectile.scale, spriteEffects, 0);
+            return false;
+        }
+    }
 }

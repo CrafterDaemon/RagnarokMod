@@ -46,7 +46,7 @@ namespace RagnarokMod.Items.BardItems
             base.Item.knockBack = 20f;
             Item.value = 30000;
             Item.rare = ModContent.RarityType<CalamityRed>();
-            Item.UseSound = SoundID.DD2_BookStaffCast;
+            Item.UseSound = RagnarokModSounds.RadioDemon;
             base.Item.shoot = ModContent.ProjectileType<TendrilStrike>();
             base.Item.shootSpeed = 10f;
 

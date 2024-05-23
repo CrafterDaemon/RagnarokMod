@@ -24,6 +24,7 @@ using ThoriumMod.NPCs.BossQueenJellyfish;
 using ThoriumMod.NPCs.BossForgottenOne;
 using CalamityMod.NPCs.Providence;
 using CalamityMod.Items.SummonItems;
+using RagnarokMod.Common.Configs;
 
 namespace RagnarokMod.Common.GlobalNPCs
 {
@@ -84,26 +85,29 @@ namespace RagnarokMod.Common.GlobalNPCs
                 lastWorm.Add(DropHelper.NormalVsExpertQuantity(ModContent.ItemType<ShootingStarFragment>(), 1, 16, 24, 20, 32), false);
                 lastWorm.Add(DropHelper.NormalVsExpertQuantity(ModContent.ItemType<WhiteDwarfFragment>(), 1, 16, 24, 20, 32), false);
             }
-            if (npc.type == ModContent.NPCType<Providence>())
+            if (ModContent.GetInstance<BossProgressionConfig>().RuneOfKos)
             {
-				// Add new Drops
-				if(!Main.expertMode) 
-				{
-					npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ProfanedBell>(), 1, 1, 4));
-				}
-				
-				// Remove Rune of Kos
-                IItemDropRule itemDrop = ItemDropRule.Common(ModContent.ItemType<RuneofKos>());
-                bool waitingForChange = true;
-                while (waitingForChange && DownedBossSystem.downedProvidence)
+                if (npc.type == ModContent.NPCType<Providence>())
                 {
-                    foreach (var item in npcLoot.Get())
+                    // Add new Drops
+                    if (!Main.expertMode)
                     {
-                        if (item == itemDrop) 
-                        { 
-                            npcLoot.Remove(item);
-                            waitingForChange = false; 
-                            break;
+                        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ProfanedBell>(), 1, 1, 4));
+                    }
+
+                    // Remove Rune of Kos
+                    IItemDropRule itemDrop = ItemDropRule.Common(ModContent.ItemType<RuneofKos>());
+                    bool waitingForChange = true;
+                    while (waitingForChange && DownedBossSystem.downedProvidence)
+                    {
+                        foreach (var item in npcLoot.Get())
+                        {
+                            if (item == itemDrop)
+                            {
+                                npcLoot.Remove(item);
+                                waitingForChange = false;
+                                break;
+                            }
                         }
                     }
                 }

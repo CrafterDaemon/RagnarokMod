@@ -90,11 +90,11 @@ namespace RagnarokMod.Projectiles.BardPro
         }
         public override bool PreDraw(ref Color lightColor)
         {
-            int width = 918 / 3;
-            int height = 1990 / 5;
+            int width = 296 / 4;
+            int height = 276 / 2;
 
             Vector2 drawCenter = Projectile.Center;
-            Rectangle frameRectangle = new Rectangle(Projectile.frame / 5 * width, Projectile.frame % 5 * height, width, height);
+            Rectangle frameRectangle = new Rectangle(Projectile.frame / 2 * width, Projectile.frame % 2 * height, width, height);
 
             Texture2D scytheTexture = ModContent.Request<Texture2D>(Texture).Value;
             Texture2D glowTexture = ModContent.Request<Texture2D>("RagnarokMod/Projectiles/BardPro/BlazingDrumBeatFireSlash_Glow").Value;

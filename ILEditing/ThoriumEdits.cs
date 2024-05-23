@@ -4,6 +4,7 @@ using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using MonoMod.RuntimeDetour;
 using MonoMod.RuntimeDetour.HookGen;
+using RagnarokMod.Common.Configs;
 using System;
 using System.Reflection;
 using Terraria.DataStructures;
@@ -49,16 +50,19 @@ namespace RagnarokMod.ILEditing
         }
         private void HavocPhylactory(ILContext il)
         {
-            var c = new ILCursor(il);
-
-            if (!c.TryGotoNext(i => i.MatchLdcI4(1725)))
+            if (ModContent.GetInstance<BossProgressionConfig>().Lich)
             {
-                return;
-            }
+                var c = new ILCursor(il);
 
-            c.Index++;
-            c.Emit(OpCodes.Pop);
-            c.Emit(OpCodes.Ldc_I4, ModContent.ItemType<EssenceofHavoc>());
+                if (!c.TryGotoNext(i => i.MatchLdcI4(1725)))
+                {
+                    return;
+                }
+
+                c.Index++;
+                c.Emit(OpCodes.Pop);
+                c.Emit(OpCodes.Ldc_I4, ModContent.ItemType<EssenceofHavoc>());
+            }
         }
         private void NewLifestealMath(ILContext il)
         {

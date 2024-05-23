@@ -1,15 +1,4 @@
-using CalamityMod.Items.Materials;
-using IL.CalamityMod;
-using Mono.Cecil.Cil;
-using MonoMod.Cil;
-using MonoMod.RuntimeDetour;
-using MonoMod.RuntimeDetour.HookGen;
-using System;
-using System.Reflection;
-using Terraria.DataStructures;
 using Terraria.ModLoader;
-using Terraria;
-using Terraria.ID;
 
 namespace RagnarokMod.ILEditing
 {

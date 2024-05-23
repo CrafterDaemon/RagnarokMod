@@ -1,6 +1,6 @@
 displayName = Ragnarok
 author = CrafterDaemon & The Ragnarok Team
-version = 1.3
+version = 1.4
 modReferences = ThoriumMod, CalamityMod
 sortAfter = ThoriumMod, CalamityMod
-dllReferences = MMHOOK_ThoriumMod, MMHOOK_CalamityMod
+dllReferences = MMHOOK_ThoriumMod

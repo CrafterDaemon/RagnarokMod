@@ -82,7 +82,7 @@ Items: {
 	}
 
 	AuricTeslaHealerHead: {
-		DisplayName: Auric Tesla Healer Helmet
+		DisplayName: Auric Tesla Irradiant Visage
 		Tooltip:
 			'''
 			70% increased radiant damage but 70% decreased non-radiant damage
@@ -100,7 +100,7 @@ Items: {
 	}
 
 	BlazingDrumBeat: {
-		DisplayName: Blazing Drum Beat
+		DisplayName: Emblazoned Drum Stick
 		Tooltip:
 			'''
 			Chaining two or more successes 
@@ -128,7 +128,7 @@ Items: {
 	}
 
 	BloodflareHeadHealer: {
-		DisplayName: Bloodflare Hood
+		DisplayName: Bloodflare Grim Visage
 		Tooltip:
 			'''
 			20% reduced mana usage
@@ -189,7 +189,7 @@ Items: {
 	}
 
 	GodSlayerHeadBard: {
-		DisplayName: God Slayer Antenna Helmet
+		DisplayName: God Slayer Tricorn Helm
 		Tooltip:
 			'''
 			25% increased symphonic damage and 15% increased symphonic critical strike chance
@@ -253,15 +253,6 @@ Items: {
 			'''
 	}
 
-	TerrariansLastKnifeOverride: {
-		DisplayName: Terrarian´s Last Knife
-		Tooltip:
-			'''
-			Rapidly swings a large, life-siphoning knife
-			Right click to unleash a massive torrent of blood at the cost of life
-			'''
-	}
-
 	EmpoweredGranite: {
 		DisplayName: Empowered Granite
 		Tooltip: Granite block charged full of energy from the Granite Energy Storm.
@@ -291,7 +282,7 @@ Items: {
 	}
 
 	StatigelHeadHealer: {
-		DisplayName: Statigel Hood
+		DisplayName: Statigel Headpiece
 		Tooltip:
 			'''
 			10% decreased non-radiant damage
@@ -341,7 +332,7 @@ Items: {
 	}
 
 	VictideHeadHealer: {
-		DisplayName: Victide Hood
+		DisplayName: Victide Sponge Hood
 		Tooltip: 5% increased radiant damage but 5% decreased non-radiant damage
 		SetBonus:
 			'''
@@ -386,7 +377,7 @@ Items: {
 	}
 
 	VictideHeadBard: {
-		DisplayName: Victide Hat
+		DisplayName: Victide Hatanemone
 		Tooltip: 5% increased symphonic damage
 		SetBonus:
 			'''
@@ -440,15 +431,13 @@ Items: {
 
 	CorrosiveFlux: {
 		DisplayName: Corrosive Flux
-		Tooltip: ""
+		Tooltip: Fires 3 toxic bubbles.
 	}
 
 	WindReaver: {
 		DisplayName: Wind Reaver
-		Tooltip: ""
+		Tooltip: A scythe made of aerospec, releases an occasional wind slice.
 	}
-
-	Tooltip: ""
 
 	SquirrelScarf: {
 		DisplayName: Squirrel Scarf
@@ -462,7 +451,7 @@ Items: {
 
 	Fractal: {
 		DisplayName: Fractal
-		Tooltip: Fire a star of holy magic that constantly fires 5 crystal spikes.
+		Tooltip: Fire a ball of holy magic that splits, and splits, and splits.
 	}
 
 	VoidseerPearl: {
@@ -472,101 +461,27 @@ Items: {
 			They say beauty is in the eye of the beholder.
 			I don't think they meant that literally.
 			'''
-
-		MarbleClaymore: {
-			DisplayName: Marble Claymore
-			Tooltip: ""
-		}
-
-		TerrariansLastKnife: {
-			DisplayName: Terrarians Last Knife
-			Tooltip: ""
-		}
-
-		QueenJelly: {
-			DisplayName: Queen Jelly
-			Tooltip:
-				'''
-				A delicious jellyfish jelly.
-				One could say it makes the tastiest sandwich in the sea.
-				Heals 50 hp.
-				Grants Plenty Satisfied
-				'''
-		}
-
-		NewLichRequirement: {
-			DisplayName: New Lich Requirement
-			Tooltip: you're uhhhh... not supposed to see this.
-		}
-
-		EldritchShellFragment: {
-			DisplayName: Eldritch Shell Fragment
-			Tooltip: An enchanted shard from the prison of an ancient god.
-		}
-	}
-
-	Projectiles: {
-		NoProj.DisplayName: No Projectile
-		BlazingDrumBeatFireSlash.DisplayName: Blazing Drum Beat Fire Slash
-		MelterAmp.DisplayName: Melter Amp
-		MelterAmpOverride.DisplayName: Melter Amp Override
-		GuardianHealer.DisplayName: Guardian Healer
-		GuardianHealerBeam.DisplayName: Guardian Healer Beam
-		ProfanedScythePro.DisplayName: Profaned Scythe Pro
-		MarbleScythePro.DisplayName: Marble Scythe Pro
-		ScoriaDualscythePro.DisplayName: Scoria Dualscythe Pro
-		MarbleStar.DisplayName: Marble Star
-		CalamityBellPro.DisplayName: Calamity Bell Pro
-		CalamityBellPro2.DisplayName: Calamity Bell Pro2
-	}
-
-	od: {
-		Items: {
-			AuricTeslaFrilledHelmet: {
-				DisplayName: Auric Tesla Frilled Helmet
-				Tooltip: ""
-			}
-
-			BlazingDrumBeat: {
-				DisplayName: Blazing Drum Beat
-				Tooltip: ""
-			}
-
-			DrumStick: {
-				DisplayName: Drum Stick
-				Tooltip: ""
-			}
-		}
-
-		Projectiles: {
-			BlazingDrumBeatFireSlash.DisplayName: Blazing Drum Beat Fire Slash
-			NoProj.DisplayName: No Proj
-		}
 	}
 
 	QueenJelly: {
-		Tooltip: ""
 		DisplayName: Queen Jelly
-	}
-
-	EldritchShellFragment: {
-		Tooltip: ""
-		DisplayName: Eldritch Shell Fragment
-	}
-
-	NewLichRequirement: {
-		DisplayName: New Lich Requirement
-		Tooltip: ""
+		Tooltip:
+			'''
+			A delicious jellyfish jelly.
+			One could say it makes the tastiest sandwich in the sea.
+			Heals 50 hp.
+			Grants Plenty Satisfied
+			'''
 	}
 
 	Steampipes: {
 		DisplayName: Steampipes
-		Tooltip: ""
+		Tooltip: Steam-Powered Bagpipes!
 	}
 
 	ElysianSong: {
 		DisplayName: Elysian Song
-		Tooltip: ""
+		Tooltip: So close to an angel's trumpet, yet so far...
 	}
 
 	ExecutionerMark05: {
@@ -586,14 +501,23 @@ Items: {
 
 	Splattercannon: {
 		DisplayName: Splattercannon
-		Tooltip: ""
+		Tooltip:
+			'''
+			Right-Click to add 4 rounds into the chamber
+			Can hold a maximum of 24 rounds in the chamber
+			Left-Click to release all rounds at once
+			Hits have a chance to release homing healing blood splatters
+			Shots have increased chance to release blood splatters on enemy kill
+			Bonus healing is only 50% effective while held
+			BLOOD IS FUEL.
+			'''
 	}
 
 	ProfanedBell: {
 		DisplayName: Profaned Bell
 		Tooltip:
 			'''
-			Shoots small holy blasts
+			Shoots holy flame blasts
 			Hit enemies are afflicted by Holy Flames for 3 seconds
 			'''
 	}
@@ -605,7 +529,18 @@ Items: {
 			Bangs the bongos, dealing damage to all nearby enemies
 			Right click to shoot a Flare Bomb
 			Flare Bombs apply Dragon Fire on enemies for 3 seconds
+			(Credit to Aeolus)
 			'''
+	}
+
+	NewLichRequirement: {
+		DisplayName: New Lich Requirement
+		Tooltip: you're uhhhh... not supposed to see this.
+	}
+
+	EldritchShellFragment: {
+		DisplayName: Eldritch Shell Fragment
+		Tooltip: An enchanted shard from the prison of an ancient god.
 	}
 }
 
@@ -648,36 +583,94 @@ Projectiles: {
 	AuricDamruFlareBomb.DisplayName: Auric Damru Flare Bomb
 }
 
-od: {
-	Items: {
-		AuricTeslaFrilledHelmet: {
-			DisplayName: Auric Tesla Frilled Helmet
-			Tooltip: ""
+Configs: {
+	BossProgressionConfig: {
+		DisplayName: Boss Progression Config
+		Headers.BossProgressionChanges: Boss Progression Changes Header
+
+		GrandFlareGun: {
+			Label: Grand Thunder Bird Recipe Change
+			Tooltip: Changes Grand Flare Gun and Storm Flare to require Stormlion Mandibles rather than Vulture Feathers. Defaults to True
 		}
 
-		BlazingDrumBeat: {
-			DisplayName: Blazing Drum Beat
-			Tooltip: ""
+		DesertMedallion: {
+			Label: Desert Scourge Recipe Change
+			Tooltip: Changes Desert Medallion to use Storm Feathers from the Grand Thunder Bird. Defaults to True
 		}
 
-		DrumStick: {
-			DisplayName: Drum Stick
-			Tooltip: ""
+		DecapoditaSprout: {
+			Label: Crabulon Recipe Change
+			Tooltip: Changes Decapodita Sprout to use Pearl Shards, Storm Feathers, and Queen Jelly. Defaults to True
+		}
+
+		MarbleGranite: {
+			Label: Granite Energy Core and Buried Champion Recipe Changes
+			Tooltip: Changes Ancient Blade and Unstable Core to require Rotten Matter/Blood Samples and Dracula Fangs. Defaults to True
+		}
+
+		OverloadedSludge: {
+			Label: Slime God Recipe Change
+			Tooltip: Changes Overloaded Sludge to use Enchanted Marble and Empowered Granite. Defaults to True
+		}
+
+		StarCaller: {
+			Label: Star Scouter Recipe Change
+			Tooltip: Changes Star Caller to use Rotten Matter/Blood Samples. Defaults to True
+		}
+
+		CryoKey: {
+			Label: Cryogen Recipe Change
+			Tooltip: Changes Cryo Key to use Strider Fangs. Defaults to True
+		}
+
+		MechBosses: {
+			Label: Mech Bosses Recipe Change
+			Tooltip: Changes Mechanical Eye, Worm, and Skull to each require a Strange Alien Motherboard. Defaults to True
+		}
+
+		Lich: {
+			Label: Lich Summon Change
+			Tooltip: Changes the Ancient Phylactory to require Essence of Havoc to summon the Lich rather than pumpkins. Defaults to True
+		}
+
+		CharredIdol: {
+			Label: Brimstone Elemental Recipe Change
+			Tooltip: Changes Charred Idol to require a Voidseer's Pearl. Defaults to true
+		}
+
+		Seafood: {
+			Label: Aquatic Scourge Recipe Change
+			Tooltip: Changes Seafood to require Queen Jelly. Defaults to True
+		}
+
+		EyeOfDesolation: {
+			Label: Calamitas Clone Recipe Change
+			Tooltip: Changes Eye of Desolation to require Voidseer's Pearl. Defaults to True
+		}
+
+		DeathWhistle: {
+			Label: Ravager Recipe Change
+			Tooltip: Changes Death Whistle to require Cursed Cloth. Defaults to True
+		}
+
+		DoomSayerCoin: {
+			Label: Primordials Recipe Change
+			Tooltip: Changes Doom Sayer's Coin to require Eldritch Shell Fragments and Ashes of Calamity. Defaults to True
+		}
+
+		RuneOfKos: {
+			Label: Providence Spawning Changes
+			Tooltip: Changes Rune Of Kos Recipe to require Divine Geodes and Primordials Essences, and makes it no longer drop from Providence. Defaults to True
 		}
 	}
 
-	Projectiles: {
-		BlazingDrumBeatFireSlash.DisplayName: Blazing Drum Beat Fire Slash
-		NoProj.DisplayName: No Proj
+	OtherConfig: {
+		DisplayName: Other Config
+		Headers.Other: Other Header
+
+		wip: {
+			Label: wip
+			Tooltip: ""
+		}
 	}
-}
-
-CorrosiveFlux: {
-	DisplayName: Corrosive Flux
-	Tooltip: ""
-}
-
-WindReaver: {
-	DisplayName: Wind Reaver
-	Tooltip: ""
 }

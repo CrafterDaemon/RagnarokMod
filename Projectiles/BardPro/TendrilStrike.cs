@@ -74,8 +74,8 @@ namespace RagnarokMod.Projectiles.BardPro
         }
         public override bool PreDraw(ref Color lightColor)
         {
-            int sheetwidth = 384;
-            int sheethight = 192;
+            int sheetwidth = 366;
+            int sheethight = 204;
             int frames = 3;
             int width = sheetwidth / frames;
             int height = sheethight / frames;

@@ -16,6 +16,7 @@ using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using CalamityMod.Items;
 using RagnarokMod.Projectiles.BardPro;
+using CalamityMod;
 
 namespace RagnarokMod.Items.BardItems
 {
@@ -61,8 +62,9 @@ namespace RagnarokMod.Items.BardItems
 			base.Item.shoot = ModContent.ProjectileType<AuricDamruShock>();
 			base.Item.shootSpeed = 0f;
 			base.Item.autoReuse = true;
+			Item.Calamity().donorItem = true;
 		}
-		
+
 		public override bool CanPlayInstrument(Player player)
 		{
             if (player.altFunctionUse == 2)

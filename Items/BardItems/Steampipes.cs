@@ -48,8 +48,9 @@ namespace RagnarokMod.Items.BardItems
 			Item.rare = ItemRarityID.Lime;
 			base.Item.shoot = ModContent.ProjectileType<SteampipesPro>();
 			base.Item.shootSpeed = 13f;
+			base.Item.UseSound = RagnarokModSounds.Steampipes;
 
-		}	
+		}
 		public override void AddRecipes()
         {
 			Recipe recipe = Recipe.Create(Item.type);
