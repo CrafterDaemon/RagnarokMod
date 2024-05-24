@@ -1,1 +1,45 @@
-Ragnarok. A great calamity in norse mythology, Is now a mod that allows Thorium and Calamity to be used together with minimal issues. Combines Thrower and Rogue into one class, and adds post moonlord content for thorium classes to keep pace with Calamity.
+Ragnarok. A great calamity in norse mythology, Is now a mod that allows Thorium and Calamity to be used together with minimal issues. 
+Adds more content for Thorium classes, Merges Thrower + Rogue, and creates a more coherent experience throughout all stages of the game.
+
+After such a long wait...
+[b]Update 1.4 is FINALLY RELEASED![/b]
+This large update changes many things, so here is a list of notable changes:
+[list]
+[*]Added 50+ items, including the Splattercannon, Nightfallen armor, and Radio Mic
+[*]Added many new helmets for existing armor sets for bard and healer
+[*]All thorium bosses gain damage and health boosts for Revengance and Death mode
+[*]Many thorium items have had balancing changes to be on par with calamity
+[*]Valadium items can now be crafted at the anvil instead of orichalchum/mythril anvils
+[*]Added defense damage to all bosses contact damage, add defense damage to various boss projectiles
+[*]Increased Bard Inspiration cap to 50
+[*]Thorium Armors now generate stealth
+[*]Fixed many bugs
+[*]Added bonus thrower technique points to Calamity Rogue armors
+[*]Merged both mods' boss progression (configurable)
+[*]Much more we forgot to document / i cannot rememeber
+[/list]
+
+[b]Item Jam[/b]
+We are hosting an Item Jam in celebration of 10,000 Subscribers on Steam and 100 Discord Members!
+Submit your item ideas for a chance for it to be added Ragnarok, and even win a little money!
+All submissions are to be submitted through either #ragnarok-suggestions or #create-ticket-here in our discord server!
+https://discord.com/invite/UBAQwtKCbf
+All of our favorite ideas will be added to Ragnarok, and there are 5 categories in which you can win a prize!
+[list]
+[*]Category One - Best Accessory, $10
+[*]Category Two - Most Well-Written, $10
+[*]Category Three - Best Calamity Inspired Item, $10
+[*]Category Four - Best External Reference, $10
+[*]Category Five - Best Original Item, $10
+[/list]
+
+Item Jam Concludes June 30th.
+
+Join the official discord for help with bugs/glitches or to hang out with the community!
+https://discord.com/invite/UBAQwtKCbf
+
+Any donations are greatly appreciated! (get some cool perks too)
+https://www.patreon.com/devteamragnarok/membership
+
+Public Github
+https://github.com/CrafterDaemon/RagnarokMod
