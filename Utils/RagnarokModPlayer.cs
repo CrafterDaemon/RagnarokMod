@@ -254,7 +254,7 @@ namespace RagnarokMod.Utils
 						effectivecoinvalue += (long)(Math.Pow( 100, base.Player.inventory[i].type - 71) * base.Player.inventory[i].stack);
 					}
 				}
-				float damagemodifier = (float)Math.Pow(((float)(effectivecoinvalue / 10000000)), 0.2) / 10;
+				float damagemodifier = (float)Math.Pow(((float)effectivecoinvalue / 10000000), 0.2) / 10;
 				base.Player.GetDamage(DamageClass.Generic) += damagemodifier;	
 			}
 			
