@@ -31,7 +31,11 @@ namespace RagnarokMod.Utils
 		
 		private static Mod thorium = ModLoader.GetMod("ThoriumMod");
 		private static Mod calamity = ModLoader.GetMod("CalamityMod");
+		
+		private static int debugcounter = 0;
+		
         //this is most likely only gonna be for armor set abilities.
+		public bool batpoop = false;
         public bool auricBardSet = false;
 		public bool auricHealerSet = false;
 		public bool tarraHealer = false;
@@ -238,8 +242,36 @@ namespace RagnarokMod.Utils
 					}
 			}
 			
+			if(batpoop) 
+			{
+				long effectivecoinvalue = 0;
+				// for every possible coin the 4 coin slots
+				for(int i = 50; i < 54; i++) 
+				{
+					// is it a coin?
+					if(base.Player.inventory[i].type >= 71 && base.Player.inventory[i].type <= 74) 
+					{
+						effectivecoinvalue += (int)(Math.Pow( 100, base.Player.inventory[i].type - 71) * base.Player.inventory[i].stack);
+					}
+				}
+				float damagemodifier = (float)Math.Pow(((float)effectivecoinvalue / 10000000), 0.2) / 10;
+				base.Player.GetDamage(DamageClass.Generic) += damagemodifier;	
+			}
 			
 			this.ApplyRogueUseTimeFix();
+			
+			// The debugcounter
+			if(debugcounter >= 59) 
+			{
+				debugcounter = 0;
+			} 
+			else
+			{
+				debugcounter++;
+			}
+			
+			
+			
 				
 		}
 		
@@ -345,7 +377,6 @@ namespace RagnarokMod.Utils
 		   {
 			   AddStealth(120);
 		   }
-		   
 		}
 		
 		
@@ -450,6 +481,7 @@ namespace RagnarokMod.Utils
 				this.bloodflareBard = false;
 				this.auricBardSet = false;
 		        this.auricHealerSet = false;
+				this.batpoop = false;
 		}
     }
 }

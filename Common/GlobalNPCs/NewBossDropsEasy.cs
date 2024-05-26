@@ -22,9 +22,13 @@ using CalamityMod.NPCs.CalClone;
 using ThoriumMod.NPCs.BossFallenBeholder;
 using ThoriumMod.NPCs.BossQueenJellyfish;
 using ThoriumMod.NPCs.BossForgottenOne;
+using ThoriumMod.NPCs.BossViscount;
 using CalamityMod.NPCs.Providence;
 using CalamityMod.Items.SummonItems;
+using CalamityMod.World;
 using RagnarokMod.Common.Configs;
+using RagnarokMod.Utils;
+using RagnarokMod.Items.RevItems;
 
 namespace RagnarokMod.Common.GlobalNPCs
 {
@@ -36,6 +40,10 @@ namespace RagnarokMod.Common.GlobalNPCs
             if (npc.type == ModContent.NPCType<TheGrandThunderBird>() && !Main.expertMode)
             {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<StormFeather>()));
+            }
+			 if (npc.type == ModContent.NPCType<Viscount>())
+            {
+				npcLoot.AddIf(() => CalamityWorld.revenge, ModContent.ItemType<GoldenBatPoop>(), 1, 1, 1, true, null);
             }
             if (npc.type == ModContent.NPCType<QueenJellyfish>() && !Main.expertMode)
             {

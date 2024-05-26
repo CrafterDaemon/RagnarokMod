@@ -10,10 +10,13 @@ using ThoriumMod.Items.BossBoreanStrider;
 using CalamityMod.Items.TreasureBags;
 using RagnarokMod.Items.HealerItems.Other;
 using RagnarokMod.Items.BardItems;
+using RagnarokMod.Items.RevItems;
+using RagnarokMod.Utils;
 using CalamityMod.NPCs.CalClone;
 using ThoriumMod.Items.BossFallenBeholder;
 using ThoriumMod.Items.BossQueenJellyfish;
 using ThoriumMod.Items.BossForgottenOne;
+using ThoriumMod.Items.BossViscount;
 
 namespace RagnarokMod.Common.GlobalItems
 {

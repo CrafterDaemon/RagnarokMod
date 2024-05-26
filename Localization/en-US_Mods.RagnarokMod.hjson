@@ -542,6 +542,41 @@ Items: {
 		DisplayName: Eldritch Shell Fragment
 		Tooltip: An enchanted shard from the prison of an ancient god.
 	}
+
+	SigilOfACruelWorld: {
+		DisplayName: Sigil of a Cruel World
+		Tooltip:
+			'''
+			Increases symphonic damage by 15%
+			Increases symphonic playing speed by 8%
+			Increases inspiration regeneration rate by 8%
+			Increases maximum inspiration by 3
+			'''
+	}
+
+	UniversalHeadset: {
+		Tooltip:
+			'''
+			Increases symphonic damage by 20%
+			Increases symphonic critical strike chance by 7%
+			Increases symphonic playing speed by 10%
+			Increases inspiration regeneration rate by 10%
+			Increases maximum inspiration by 5
+			Each unique empowerment you have increases movement speed by 2% and playing speed by 1%
+			'''
+		DisplayName: Universal Headset
+	}
+
+	GoldenBatPoop: {
+		DisplayName: Golden Bat Poop
+		Tooltip:
+			'''
+			"I was wrong. You're not greedy... you're batshit insane!"
+			+30% coins from enemies
+			Increases damage based on held coins (coinslots only)
+			Revengeance drop
+			'''
+	}
 }
 
 Projectiles: {
