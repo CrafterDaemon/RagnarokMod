@@ -17,7 +17,7 @@ namespace RagnarokMod.Common.ModSystems
 		public override void PostSetupContent() 
 		{
 			ModLoader.TryGetMod("ThoriumRework", out Mod ThoriumRework);
-			if(ThoriumRework == null) 
+			if(ThoriumRework != null) 
 			{
 				return;
 			}
