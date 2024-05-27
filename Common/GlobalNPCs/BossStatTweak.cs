@@ -311,7 +311,7 @@ namespace RagnarokMod.Common.GlobalNPCs
 		public override void ApplyDifficultyAndPlayerScaling(NPC npc, int numPlayers, float balance, float bossAdjustment)
 		{
 			ModLoader.TryGetMod("ThoriumRework", out Mod ThoriumRework);
-			if(ThoriumRework == null) 
+			if(ThoriumRework != null) 
 			{
 				return;
 			}
