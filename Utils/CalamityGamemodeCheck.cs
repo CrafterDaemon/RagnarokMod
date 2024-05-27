@@ -24,5 +24,15 @@ namespace RagnarokMod.Utils
                 return false;
             }
         }
+		
+		public static bool isBossrush
+        {
+            get {
+                if(ModLoader.TryGetMod("CalamityMod", out Mod Calamity)) {
+                    return (bool)Calamity.Call("GetDifficultyActive", "bossrush");
+                }
+                return false;
+            }
+        }
     }
 }

@@ -93,16 +93,19 @@ namespace RagnarokMod.Common.GlobalNPCs
                 lastWorm.Add(DropHelper.NormalVsExpertQuantity(ModContent.ItemType<ShootingStarFragment>(), 1, 16, 24, 20, 32), false);
                 lastWorm.Add(DropHelper.NormalVsExpertQuantity(ModContent.ItemType<WhiteDwarfFragment>(), 1, 16, 24, 20, 32), false);
             }
+			if (npc.type == ModContent.NPCType<Providence>())
+			{
+				 // Add new Drops
+                    if (!Main.expertMode)
+                    {
+						npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<ProfanedBell>(), 4, 3));
+                    }
+			}
             if (ModContent.GetInstance<BossProgressionConfig>().RuneOfKos)
             {
                 if (npc.type == ModContent.NPCType<Providence>())
                 {
-                    // Add new Drops
-                    if (!Main.expertMode)
-                    {
-                        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ProfanedBell>(), 1, 1, 4));
-                    }
-
+               
                     // Remove Rune of Kos
                     IItemDropRule itemDrop = ItemDropRule.Common(ModContent.ItemType<RuneofKos>());
                     bool waitingForChange = true;
