@@ -43,7 +43,7 @@ namespace RagnarokMod.Common.GlobalNPCs
             }
 			 if (npc.type == ModContent.NPCType<Viscount>())
             {
-				npcLoot.AddIf(() => CalamityWorld.revenge, ModContent.ItemType<GoldenBatPoop>(), 1, 1, 1, true, null);
+				npcLoot.AddIf(() => CalamityWorld.revenge, ModContent.ItemType<GoldenBatDroppings>(), 1, 1, 1, true, null);
             }
             if (npc.type == ModContent.NPCType<QueenJellyfish>() && !Main.expertMode)
             {
@@ -76,11 +76,15 @@ namespace RagnarokMod.Common.GlobalNPCs
             }
             if (npc.type == ModContent.NPCType<PerforatorHive>() && !Main.expertMode)
             {
-                npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<EquivalentExchange>(), 4, 3));
+                npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<EquivalentExchange>(), 4, 0));
             }
             if (npc.type == ModContent.NPCType<CalamitasClone>() && !Main.expertMode)
             {
-                npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<CalamityBell>(), 4, 3));
+                npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<CalamityBell>(), 4, 0));
+            }
+            if (npc.type == ModContent.NPCType<Providence>() && !Main.expertMode)
+            {
+                npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<ProfanedBell>(), 4, 0));
             }
             if (npc.type == ModContent.NPCType<ForgottenOne>() && !Main.expertMode)
             {
@@ -93,14 +97,6 @@ namespace RagnarokMod.Common.GlobalNPCs
                 lastWorm.Add(DropHelper.NormalVsExpertQuantity(ModContent.ItemType<ShootingStarFragment>(), 1, 16, 24, 20, 32), false);
                 lastWorm.Add(DropHelper.NormalVsExpertQuantity(ModContent.ItemType<WhiteDwarfFragment>(), 1, 16, 24, 20, 32), false);
             }
-			if (npc.type == ModContent.NPCType<Providence>())
-			{
-				 // Add new Drops
-                    if (!Main.expertMode)
-                    {
-						npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<ProfanedBell>(), 4, 3));
-                    }
-			}
             if (ModContent.GetInstance<BossProgressionConfig>().RuneOfKos)
             {
                 if (npc.type == ModContent.NPCType<Providence>())

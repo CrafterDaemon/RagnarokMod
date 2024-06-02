@@ -79,9 +79,8 @@ namespace RagnarokMod
                 foreach (Recipe item in getter.Search())
                 {
                     RecipeHelper helper = new(item);
-                    helper.Add(ModContent.ItemType<StormFeather>(), 3);
-                    helper.Add(ModContent.ItemType<PearlShard>(), 1);
-                    helper.Add(ModContent.ItemType<QueenJelly>(), 3);
+                    helper.Add(ModContent.ItemType<StormFeather>(), 1);
+                    helper.Add(ModContent.ItemType<PearlShard>(), 8);
                 }
             }
 

@@ -567,11 +567,11 @@ Items: {
 		DisplayName: Universal Headset
 	}
 
-	GoldenBatPoop: {
-		DisplayName: Golden Bat Poop
+	GoldenBatDroppings: {
+		DisplayName: Golden Bat Droppings
 		Tooltip:
 			'''
-			"I was wrong. You're not greedy... you're batshit insane!"
+			"You're not crazy... you're batshit insane!"
 			+30% coins from enemies
 			Increases damage based on held coins (coinslots only)
 			Revengeance drop

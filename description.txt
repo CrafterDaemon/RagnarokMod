@@ -1,6 +1,18 @@
 Ragnarok. A great calamity in norse mythology, Is now a mod that allows Thorium and Calamity to be used together with minimal issues. 
 Adds more content for Thorium classes, Merges Thrower + Rogue, and creates a more coherent experience throughout all stages of the game.
 
+Update 1.4.1 Changelog
+[list]
+[*] Nightfallen armor now gives radiant damage rather than removing it
+[*] Removed Queen Jelly from Decapodita Sprout recipe
+[*] Thorium bosses are now automatically added to bossrush with appropriate scaling, unless Thorium Bosses Reworked is installed.
+[*] Calamity Multiplayer Health Scalar is now applied to Thorium bosses as well
+[*] Added Sigil of a Cruel World
+[*] Added Golden Bat Droppings
+[*] Added Universal Headset
+[/list]
+
+[h1] ANNOUNCEMENT [/h1]
 After such a long wait...
 [b]Update 1.4 is FINALLY RELEASED![/b]
 This large update changes many things, so here is a list of notable changes:
