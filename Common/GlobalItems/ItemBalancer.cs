@@ -464,9 +464,9 @@ namespace RagnarokMod.Common.GlobalItems
 		{
 			{"SandStoneMail", 4},
 			{"SandStoneHelmet", 2},
-			{"TideTurnerBreastplate", 35}, 
-			{"TideTurnerGreaves", 31},
-			{"TideTurnerHelmet", 32}, 
+			{"TideTurnerBreastplate", 26}, 
+			{"TideTurnerGreaves", 25},
+			{"TideTurnerHelmet", 27}, 
 			{"AssassinsGuard", 29}, 
 			{"AssassinsWalkers",29}, 
 			{"RhapsodistBoots", 27}, 

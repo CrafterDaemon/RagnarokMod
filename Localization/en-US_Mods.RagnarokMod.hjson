@@ -577,6 +577,16 @@ Items: {
 			Revengeance drop
 			'''
 	}
+
+	VerdurantBloom: {
+		DisplayName: Verdurant Bloom
+		Tooltip: ""
+	}
+
+	CosmicInjector: {
+		DisplayName: Cosmic Injector
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -616,6 +626,11 @@ Projectiles: {
 	AuricDamruShock.DisplayName: Auric Damru Shock
 	AuricDamruFlareBombBoom.DisplayName: Auric Damru Flare Bomb Boom
 	AuricDamruFlareBomb.DisplayName: Auric Damru Flare Bomb
+	VerdurantBloomPro.DisplayName: Verdurant Bloom Pro
+	VerdurantBloomPro2.DisplayName: Verdurant Bloom Pro2
+	VerdurantBloomPro3.DisplayName: Verdurant Bloom Pro3
+	CosmicInjectorPro1.DisplayName: Cosmic Injector Pro1
+	CosmicInjectorPro2.DisplayName: Cosmic Injector Pro2
 }
 
 Configs: {
