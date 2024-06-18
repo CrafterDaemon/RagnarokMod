@@ -587,6 +587,11 @@ Items: {
 		DisplayName: Cosmic Injector
 		Tooltip: ""
 	}
+
+	Korobeiniki: {
+		DisplayName: Korobeiniki
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -631,6 +636,13 @@ Projectiles: {
 	VerdurantBloomPro3.DisplayName: Verdurant Bloom Pro3
 	CosmicInjectorPro1.DisplayName: Cosmic Injector Pro1
 	CosmicInjectorPro2.DisplayName: Cosmic Injector Pro2
+	KorobeinikiPro1.DisplayName: Korobeiniki Pro1
+	KorobeinikiPro2.DisplayName: Korobeiniki Pro2
+	KorobeinikiPro3.DisplayName: Korobeiniki Pro3
+	KorobeinikiPro4.DisplayName: Korobeiniki Pro4
+	KorobeinikiPro5.DisplayName: Korobeiniki Pro5
+	KorobeinikiPro6.DisplayName: Korobeiniki Pro6
+	KorobeinikiPro7.DisplayName: Korobeiniki Pro7
 }
 
 Configs: {
