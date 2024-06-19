@@ -34,7 +34,7 @@ namespace RagnarokMod.Items.BardItems
 
         public override void SetBardDefaults()
         {
-            Item.damage = 505;
+            Item.damage = 705;
             base.InspirationCost = 1;
             base.Item.width = 31;
             base.Item.height = 16;
@@ -54,25 +54,29 @@ namespace RagnarokMod.Items.BardItems
 
         }
 		public override bool BardShoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) {
-            float num = velocity.Length();
-            float fallspeedmult = 200;
-            float projSpeed = num;
-            float x = Main.MouseWorld.X + Main.rand.NextFloat(0f - 100f, 100f);
-            float y = Main.MouseWorld.Y - 850f;
-                
-            Vector2 vector = new Vector2(x, y); 
-            Vector2 vel = Main.MouseWorld - vector;
-            vel.X += Main.rand.NextFloat(0f - 130f, 130f);
-            vel.Y += Main.rand.NextFloat(0f - 260f, 260f);
-            float n = vel.Length();
-            n = projSpeed/n;
-            vel.X *= n;
-            vel.Y *= n*fallspeedmult;
-            int type2 = Main.rand.Next(new int[] { type, ModContent.ProjectileType<KorobeinikiPro2>(), ModContent.ProjectileType<KorobeinikiPro3>(), ModContent.ProjectileType<KorobeinikiPro4>(), ModContent.ProjectileType<KorobeinikiPro5>(), ModContent.ProjectileType<KorobeinikiPro6>(), ModContent.ProjectileType<KorobeinikiPro7>() });
-            Projectile.NewProjectileDirect(source, vector, vel, type2, damage, knockback, player.whoAmI);
             
-    
+            for (int i = 0; i < fr3; i++) {
+            
+                float num = velocity.Length();
+                float fallspeedmult = 300;
+                float projSpeed = num;
+                float x = Main.MouseWorld.X + Main.rand.NextFloat(0f - 50f, 50f);
+                float y = Main.MouseWorld.Y - 850f + (i*20f);
+                
+                Vector2 vector = new Vector2(x, y); 
+                Vector2 vel = Main.MouseWorld - vector;
+                vel.X += Main.rand.NextFloat(0f - 130f, 130f);
+                vel.Y += Main.rand.NextFloat(0f - 260f, 260f);
+                float n = vel.Length();
+                n = projSpeed/n;
+                vel.X *= n;
+                vel.Y *= n*fallspeedmult;
+                int type2 = Main.rand.Next(new int[] { type, ModContent.ProjectileType<KorobeinikiPro2>(), ModContent.ProjectileType<KorobeinikiPro3>(), ModContent.ProjectileType<KorobeinikiPro4>(), ModContent.ProjectileType<KorobeinikiPro5>(), ModContent.ProjectileType<KorobeinikiPro6>(), ModContent.ProjectileType<KorobeinikiPro7>() });
+                Projectile.NewProjectileDirect(source, vector, vel, type2, damage, knockback, player.whoAmI);
+            
+            }
 			return false;
+
 		}
 		public override void AddRecipes()
         {

@@ -29,7 +29,7 @@ namespace RagnarokMod.Projectiles.BardPro
             Projectile.friendly = true;
             Projectile.DamageType = ThoriumDamageBase<BardDamage>.Instance;
             Projectile.tileCollide = false;
-            Projectile.penetrate = 5;
+            Projectile.penetrate = 1;
             Projectile.timeLeft = 200;
             Projectile.ignoreWater = true;
             
