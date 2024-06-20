@@ -55,7 +55,7 @@ namespace RagnarokMod.Items.BardItems
         }
 		public override bool BardShoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) {
             
-            for (int i = 0; i < fr3; i++) {
+            for (int i = 0; i < 3; i++) {
             
                 float num = velocity.Length();
                 float fallspeedmult = 300;
