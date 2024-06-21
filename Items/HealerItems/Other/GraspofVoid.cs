@@ -18,6 +18,7 @@ using RagnarokMod.Projectiles.HealerPro.Other;
 using CalamityMod.Items.Placeables;
 using CalamityMod;
 using CalamityMod.Buffs.StatDebuffs;
+using CalamityMod.Rarities;
 
 namespace RagnarokMod.Items.HealerItems.Other
 {
@@ -32,22 +33,24 @@ namespace RagnarokMod.Items.HealerItems.Other
 		public override void SetDefaults()
 		{
 			base.Item.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
-			base.Item.damage = 320;
+			base.Item.damage = 420;
 			this.isHealer = true;
 			this.healDisplay = true;
+			this.radiantLifeCost = 4;
 			base.Item.width = 44;
 			base.Item.mana = 12;
 			base.Item.height = 58;
 			base.Item.scale = 1.2f;
-			base.Item.useTime = 24;
-			base.Item.useAnimation = 24;
+			base.Item.useTime = 20;
+			base.Item.useAnimation = 20;
 			base.Item.useStyle = 5;
 			base.Item.noMelee = true;
+			base.Item.autoReuse = true;
 			base.Item.value = Item.sellPrice(0, 1, 0, 0);
-			base.Item.rare = 2;
+			base.Item.rare = ModContent.RarityType<PureGreen>();
 			base.Item.UseSound = new SoundStyle?(SoundID.Item8);
-			base.Item.shoot = ModContent.ProjectileType<PrismaPro1>();
-			base.Item.shootSpeed = 12f;
+			base.Item.shoot = ModContent.ProjectileType<GraspofVoidPro1>();
+			base.Item.shootSpeed = 20f;
 		}
 		public override void AddRecipes()
         {

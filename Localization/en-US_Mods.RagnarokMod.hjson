@@ -592,6 +592,11 @@ Items: {
 		DisplayName: Korobeiniki
 		Tooltip: ""
 	}
+
+	GraspofVoid: {
+		DisplayName: Graspof Void
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -643,6 +648,8 @@ Projectiles: {
 	KorobeinikiPro5.DisplayName: Korobeiniki Pro5
 	KorobeinikiPro6.DisplayName: Korobeiniki Pro6
 	KorobeinikiPro7.DisplayName: Korobeiniki Pro7
+	GraspofVoidPro1.DisplayName: Graspof Void Pro1
+	GraspofVoidPro2.DisplayName: Graspof Void Pro2
 }
 
 Configs: {
