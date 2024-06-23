@@ -306,54 +306,5 @@ namespace RagnarokMod.Common.GlobalNPCs
 				}
 			}
 		}	
-		
-		// Apply Multiplayer scalar
-		public override void ApplyDifficultyAndPlayerScaling(NPC npc, int numPlayers, float balance, float bossAdjustment)
-		{
-			ModLoader.TryGetMod("ThoriumRework", out Mod ThoriumRework);
-			if(ThoriumRework != null) 
-			{
-				return;
-			}
-			
-			if (Main.netMode == 0 || numPlayers <= 1)
-			{
-				return;
-			}
-			ModLoader.TryGetMod("ThoriumMod", out Mod thorium);
-			foreach (var boss in thorium_bosses_base_health_modifier) 
-			{
-				if ( npc.type == thorium.Find<ModNPC>(boss.Key).Type ) 
-				{
-					double scalar;
-					switch (numPlayers)
-					{
-						case 1:
-						scalar = 1.0;
-						break;
-						case 2:
-						scalar = 0.9;
-						break;
-						case 3:
-						scalar = 0.82;
-						break;
-						case 4:
-						scalar = 0.76;
-						break;
-						case 5:
-						scalar = 0.71;
-						break;
-						case 6:
-						scalar = 0.67;
-						break;
-						default:
-						scalar = 0.64;
-						break;
-					}
-					npc.lifeMax = (int)Math.Round((double)npc.lifeMax * scalar);
-					return;
-				}
-			}	
-		}
 	}
 }
