@@ -67,14 +67,14 @@ namespace RagnarokMod.Common.GlobalNPCs
 		
 		private static Dictionary<string,float> thorium_bosses_bossrush_health_modifier = new Dictionary<string,float>
 		{
-			{"TheGrandThunderBirdv2", 130f},
+			{"TheGrandThunderBirdv2", 135f},
 			{"Viscount", 85f},
 			{"QueenJelly", 95f},
-			{"GraniteEnergyStorm", 70f},
-			{"TheBuriedWarrior", 70f},
-			{"ThePrimeScouter", 70f},
-			{"BoreanStrider", 50f},
-			{"BoreanStriderPopped", 50f},
+			{"GraniteEnergyStorm", 65f},
+			{"TheBuriedWarrior", 65f},
+			{"ThePrimeScouter", 65f},
+			{"BoreanStrider", 45f},
+			{"BoreanStriderPopped", 45f},
 			{"FallenDeathBeholder", 45f},
 			{"FallenDeathBeholder2", 45f},
 			{"Lich", 27f},
@@ -91,19 +91,19 @@ namespace RagnarokMod.Common.GlobalNPCs
 			{"ZealousJelly", 110f},
 			{"DistractJelly", 110f},
 			{"SpittingJelly", 110f},
-			{"GraniteEnergy", 70f},
-			{"EncroachingEnergy", 70f},
-			{"EnergyStormConduit", 70f},
-			{"PyroCore", 70f},
-			{"CryoCore", 70f},
-			{"BioCore", 70f},
+			{"GraniteEnergy", 80f},
+			{"EncroachingEnergy", 80f},
+			{"EnergyStormConduit", 80f},
+			{"PyroCore", 85f},
+			{"CryoCore", 85f},
+			{"BioCore", 85f},
 			{"BoreanMyte1", 60f},
 			{"BoreanHopper", 60f},
 			{"EnemyBeholder", 60f},
 			{"ThousandSoulPhalactry", 35f},
-			{"AbyssalSpawn", 15f},
-			{"AquaiusBubble", 10f},
-			{"LucidBubble", 10f}
+			{"AbyssalSpawn", 20f},
+			{"AquaiusBubble", 12f},
+			{"LucidBubble", 12f}
 		};
 		
 		private static Dictionary<string,float> thorium_bosses_bossrush_damage_modifier = new Dictionary<string,float>
@@ -181,6 +181,42 @@ namespace RagnarokMod.Common.GlobalNPCs
 			"IllusionistDecoy",
 			"PatchWerk", 
 		};
+		
+		
+		private static Dictionary<string,float> thorium_npcs_dr = new Dictionary<string,float>
+		{
+			{"Viscount", 0.05f},
+			{"QueenJelly", 0.05f},
+			{"GraniteEnergyStorm", 0.05f},
+			{"TheBuriedWarrior", 0.05f},
+			{"ThePrimeScouter", 0.1f},
+			{"BoreanStrider", 0.15f},
+			{"BoreanStriderPopped", 0.05f},
+			{"FallenDeathBeholder", 0.05f},
+			{"FallenDeathBeholder2", 0.1f},
+			{"Lich", 0.15f},
+			{"LichHeadless", 0.1f},
+			{"Abyssion", 0.3f},
+			{"AbyssionCracked", 0.2f},
+			{"AbyssionReleased", 0.1f},
+			{"Omnicide", 0.25f},
+			{"RealityBreaker", 0.25f},
+			{"SlagFury", 0.2f},
+			{"Aquaius", 0.2f},
+			{"DistractJelly", 0.1f},
+			{"GraniteEnergy", 0.05f},
+			{"EncroachingEnergy", 0.05f},
+			{"EnergyStormConduit", 0.05f},
+			{"PyroCore", 0.1f},
+			{"CryoCore", 0.1f},
+			{"BioCore", 0.1f},
+			{"ThousandSoulPhalactry", 0.1f},
+			{"AbyssalSpawn", 0.15f},
+			{"AquaiusBubble", 0.1f},
+			{"LucidBubble", 0.15f}
+		};
+		
+		
 		
 		public override void ModifyHitPlayer (NPC npc, Player target, ref Player.HurtModifiers modifier) 
 		{
@@ -303,6 +339,16 @@ namespace RagnarokMod.Common.GlobalNPCs
 				{
 					// Applying Defense Damage
 					npc.Calamity().canBreakPlayerDefense = true;
+				}
+			}
+			
+			//Check which npcs should be granted damage reduction
+			foreach (var boss in thorium_npcs_dr) 
+			{
+				if ( npc.type == thorium.Find<ModNPC>(boss.Key).Type ) 
+				{
+					// Applying Damage Reduction
+					npc.DR_NERD(boss.Value, null, null, null, null);
 				}
 			}
 		}	

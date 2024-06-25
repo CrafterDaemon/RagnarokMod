@@ -590,7 +590,12 @@ namespace RagnarokMod.Common.GlobalItems
 				}
 				
 				// Apply some other tweaks
-				
+				if(item.type == thorium.Find<ModItem>("TerrariansLastKnife").Type) 
+				{
+					item.damage = 280;
+					item.shootSpeed = 16f;
+					item.scale = 1.7f;
+				}
 			}	
 			else 
 			{

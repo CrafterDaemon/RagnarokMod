@@ -23,21 +23,24 @@ using ThoriumMod.Items.Donate;
 using ThoriumMod.Items.Terrarium;
 using ThoriumMod.Items.ThrownItems;
 using ThoriumMod.Items.Valadium;
+using ThoriumMod.Items.BossTheGrandThunderBird;
+using ThoriumMod.Items.BossQueenJellyfish;
+using ThoriumMod.Items.BossGraniteEnergyStorm;
+using ThoriumMod.Items.BossBuriedChampion;
+using ThoriumMod.Items.BossStarScouter;
+using ThoriumMod.Items.BossBoreanStrider;
+using ThoriumMod.Items.BossFallenBeholder;
+using ThoriumMod.Items.BossForgottenOne;
+using ThoriumMod.Items.BossThePrimordials;
 using ThoriumMod.Utilities;
 
 namespace RagnarokMod.Common.GlobalItems
 {
     public class ThoriumOverrides : GlobalItem
     {
-        public override bool AppliesToEntity(Item item, bool lateInstantiation)
-        {
-            return item.ModItem is TerrariansLastKnife;
-        }
         public override void AddRecipes()
         {
-
             GetRecipe finder = new();
-
 
             finder.LookFor(ModContent.ItemType<ValadiumAxe>(), 1);
             foreach (Recipe item in finder.Search())
@@ -103,9 +106,12 @@ namespace RagnarokMod.Common.GlobalItems
 
         public override void SetDefaults(Item item)
         {
-            item.damage = 280;
-            item.shootSpeed = 16f;
-			item.scale = 1.7f;
+            if (item.type == ModContent.ItemType<StormFlare>() || item.type == ModContent.ItemType<JellyfishResonator>() || item.type == ModContent.ItemType<UnstableCore>() ||
+			item.type == ModContent.ItemType<AncientBlade>() || item.type == ModContent.ItemType<StarCaller>() || item.type == ModContent.ItemType<StriderTear>() ||
+			item.type == ModContent.ItemType<VoidLens>() || item.type == ModContent.ItemType<AbyssalShadow2>() || item.type == ModContent.ItemType<DoomSayersCoin>())
+			{
+				item.consumable = false;
+			}
         }
 
         public void Tileswitcher( Recipe recipe ,int tileold, int tilenew) 
