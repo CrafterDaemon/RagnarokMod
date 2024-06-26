@@ -3020,6 +3020,12 @@
             <br/> Defaults to <see langword="false"/>.
             </summary>
         </member>
+        <member name="F:Terraria.ID.GoreID.Sets.LiquidDroplet">
+            <summary>
+            If <see langword="true"/>, this gore will behave as a dripping liquid droplet. Useful for gore used in <see cref="M:Terraria.ModLoader.ModWaterStyle.GetDropletGore"/>.
+            <br/> Defaults to <see langword="false"/>.
+            </summary>
+        </member>
         <member name="F:Terraria.ID.GoreID.Sets.PaintedFallingLeaf">
             <summary>
             If <see langword="true"/> for a given gore type (<see cref="F:Terraria.Gore.type"/>), then that gore has columns in its sprite corresponding to the amount of tile paints, and Gore.Frame.CurrentColumn will be set to tile.TileColor on spawn if it's coming from a tree via wind effects.
@@ -3774,7 +3780,13 @@
         <member name="F:Terraria.ID.ItemID.Sets.PreHardmodeLikeBossBag">
             <summary>
             Set for pre-hardmode boss bags, except it also contains the Queen Slime's Boss Bag. Affects the way dev armor drops function, making it only drop in special world seeds.
-            <br/> Don't forget to use the <see cref="F:Terraria.ID.ItemID.Sets.BossBag"/> set in conjuction with this one.
+            <br/> Don't forget to use the <see cref="F:Terraria.ID.ItemID.Sets.BossBag"/> set in conjunction with this one.
+            </summary>
+        </member>
+        <member name="F:Terraria.ID.ItemID.Sets.DuplicationMenuToolsFilter">
+            <summary> Indicates that an item is to be filtered under the "Tools" filter in Journey Mode's duplication menu.
+            <br/> Useful for manually setting an item to be filtered under the "Tools" filter, if your item does not meet the automatic criteria for the "Tools" filter.
+            <br/> See the code of <see cref="M:Terraria.GameContent.Creative.ItemFilters.Tools.FitsFilter(Terraria.Item)"/> to check if your item meets the automatic criteria.
             </summary>
         </member>
         <member name="F:Terraria.ID.ItemID.Sets.CatchingTool">
@@ -6710,6 +6722,17 @@
         <member name="F:Terraria.ID.TileID.Sets.HasOutlines">
             <summary>
             Indicates that this tile has an outline texture to be drawn to indicate that it is interactable. If set to true for a modded tile, <see cref="P:Terraria.ModLoader.ModTile.HighlightTexture"/> will be used to autoload the highlight texture and must exist for the mod to load.
+            <para/> Defaults to <see langword="false"/>.
+            </summary>
+        </member>
+        <member name="F:Terraria.ID.TileID.Sets.GeneralPlacementTiles">
+            <summary>
+            Indicates if a tile is eligible to be replaced during world generation. Tiles indicated to not be valid for general placement will prevent the placement of various micro biomes such as hives, campsites, enchanted sword shrines, and minecart tracks.
+            <para/> Vanilla tiles set to false in this set include Chests, Life Crystals, various Dungeon Bricks, Lihzahrd Bricks, Ebonsand, Ebonstone, Crimstone, Shadow Orbs, Hive, Mushroom Grass, Sandstone Brick, and others. The effect of these tiles being in this set means that micro biomes will not overlap with the dungeon, pyramid, temple, corruption/crimson biomes, glowing mushroom biomes, and other important placed tiles such as chests and life crystals.
+            <para/> Modders should set this to false for any tile that could potentially be placed during world generation where this effect is desired. In conjunction with <see cref="M:Terraria.WorldBuilding.StructureMap.AddProtectedStructure(Microsoft.Xna.Framework.Rectangle,System.Int32)"/>, this will help ensure that interesting world generation features do not overlap. This is especially useful for terrain tiles that would be placed into the world that wouldn't be well served by adding rectangular areas to protect using <c>AddProtectedStructure</c>.
+            <para/> This effect is cooperative and is reliant on world generation code that checks this set, such as how <see cref="M:Terraria.WorldBuilding.StructureMap.CanPlace(Microsoft.Xna.Framework.Rectangle,System.Int32)"/> will check this set and the protected structures by default.
+            <para/> The <see href="https://github.com/tModLoader/tModLoader/wiki/World-Generation">World Generation wiki page</see> teaches more about this subject.
+            <para/> Defaults to <c>true</c>.
             </summary>
         </member>
         <member name="F:Terraria.ID.TileID.Sets.AvoidedByNPCs">
@@ -6792,10 +6815,16 @@
             </summary>
         </member>
         <member name="F:Terraria.ID.TileID.Sets.DisableSmartCursor">
-            <summary> Whether or not the smart cursor function is disabled when the cursor hovers above this tile. </summary>
+            <summary>
+            Whether or not the smart cursor function is disabled when the cursor hovers above this tile. Used by tiles frequently right click interacted with to help prevent accidental tile placement when the player accidentally left clicks on it with smart cursor enabled, such as doors and containers. 
+            <para/> Defaults to <see langword="false"/>.
+            </summary>
         </member>
         <member name="F:Terraria.ID.TileID.Sets.DisableSmartInteract">
-            <summary> Whether or not the smart tile interaction function is disabled when the cursor hovers above this tile. </summary>
+            <summary>
+            Whether or not the smart tile interaction function is disabled when the cursor hovers above this tile. Used by tiles interactable by right click that do not use smart interact, such as torches and candles.
+            <para/> Defaults to <see langword="false"/>.
+            </summary>
         </member>
         <member name="F:Terraria.ID.TileID.Sets.IsValidSpawnPoint">
             <summary> Whether or not this tile is a valid spawn point. </summary>
@@ -7131,7 +7160,7 @@
             - <see cref="M:Terraria.NPC.DropItemInstanced(Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2,System.Int32,System.Int32,System.Boolean)"/><br/>
             - <see cref="M:Terraria.GameContent.ItemDropRules.CommonCode.DropItemLocalPerClientAndSetNPCMoneyTo0(Terraria.NPC,System.Int32,System.Int32,System.Boolean)"/><br/>
             - <see cref="F:Terraria.ID.MessageID.InstancedItem"/><br/>
-            Defaults to false.<br/>
+            Defaults to <see langword="false"/>.<br/>
             </summary>
         </member>
         <member name="F:Terraria.Item.type">
@@ -7470,8 +7499,9 @@
             Used for assigning a non-default price to an item in shops.<br/>
             Can be used with <see cref="F:Terraria.Item.shopSpecialCurrency"/> to assign a price in terms of a custom currency instead of coins.<br/>
             To get the raw price of an item, use <see cref="M:Terraria.Item.GetStoreValue"/>.<br/>
-            To get the price of an item after discounts, use <see cref="M:Terraria.Player.GetItemExpectedPrice(Terraria.Item,System.Int64@,System.Int64@)"/>.<br/>
-            Defaults to <see langword="null"/>.<br/>
+            To get the price of an item after discounts, use <see cref="M:Terraria.Player.GetItemExpectedPrice(Terraria.Item,System.Int64@,System.Int64@)"/>.
+            <para/> Be careful of setting a custom price far below the normal <see cref="F:Terraria.Item.value"/>, it could result in an infinite money exploit.
+            <para/> Defaults to <see langword="null"/>.
             </summary>
         </member>
         <member name="F:Terraria.Item.DD2Summon">
@@ -8224,7 +8254,7 @@
             <summary> Gets the display name of the provided npc type (<see cref="F:Terraria.NPC.type"/>) as a <see cref="T:Terraria.Localization.LocalizedText"/>. </summary>
         </member>
         <member name="M:Terraria.Lang.GetItemName(System.Int32)">
-            <summary> Gets the display name of the provided item type (<see cref="F:Terraria.Item.type"/>) as a <see cref="T:Terraria.Localization.LocalizedText"/>. </summary>
+            <summary> Gets the display name of the provided item type (<see cref="F:Terraria.Item.type"/>) as a <see cref="T:Terraria.Localization.LocalizedText"/>. <para/> Note that modded item entries are not retrievable until after mod loading is complete. </summary>
         </member>
         <member name="M:Terraria.Lang.GetItemNameValue(System.Int32)">
             <summary> Gets the display name of the provided item type (<see cref="F:Terraria.Item.type"/>) as a string. </summary>
@@ -8254,6 +8284,20 @@
         </member>
         <member name="M:Terraria.Lang.GetProjectileName(System.Int32)">
             <summary> Gets the display name of the provided projectile type (<see cref="F:Terraria.Projectile.type"/>) as a <see cref="T:Terraria.Localization.LocalizedText"/>. </summary>
+        </member>
+        <member name="T:Terraria.Lighting">
+            <summary>
+            This class manages lighting in the game world. Lighting is calculated and tracked at tile coordinates within the users game view. The most common use of this class is to use GetColor methods to retrieve the light values at a location for drawing a specific entity. Another common usage is adding light to the game world using the AddLight methods.
+            </summary>
+        </member>
+        <member name="M:Terraria.Lighting.GetSubLight(Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Gets the lighting color at the specified World coordinate location. The value is calculated through bilinear interpolation of the nearby tile coordinates.
+            <LightingGetColor>
+		<para /> Lighting is tracked at Tile Coordinate granularity (<see href="https://github.com/tModLoader/tModLoader/wiki/Coordinates">Coordinates wiki page</see>). Typically the center of an entity, converted to tile coordinates, is used to query the lighting color at the entity's location. That color is then used to draw the entity.
+		<para /> Lighting values in-between tile coordinates can be interpolated using <see cref="M:Terraria.Lighting.GetSubLight(Microsoft.Xna.Framework.Vector2)" />, but usually the lighting values at the tile coordinates closest to the center of an entity are sufficient. There are many more GetColorX methods for more advanced situations, if needed. If drawing a really large sprite, one might consider splitting up the drawing to allow sections of the sprite to be drawn at different light values.
+	</LightingGetColor>
+            </summary>
         </member>
         <member name="M:Terraria.Lighting.AddLight(Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector3)">
             <summary>
@@ -8286,6 +8330,30 @@
             <param name="g"></param>
             <param name="b"></param>
         </member>
+        <member name="M:Terraria.Lighting.GetColor(Microsoft.Xna.Framework.Point)">
+            <summary> <inheritdoc cref="M:Terraria.Lighting.GetColor(System.Int32,System.Int32)"/> </summary>
+        </member>
+        <member name="M:Terraria.Lighting.GetColor(Microsoft.Xna.Framework.Point,Microsoft.Xna.Framework.Color)">
+            <summary>
+            Gets the lighting color at the specified Tile coordinate location, then multiplies it by the provided Color.
+            <LightingGetColor>
+		<para /> Lighting is tracked at Tile Coordinate granularity (<see href="https://github.com/tModLoader/tModLoader/wiki/Coordinates">Coordinates wiki page</see>). Typically the center of an entity, converted to tile coordinates, is used to query the lighting color at the entity's location. That color is then used to draw the entity.
+		<para /> Lighting values in-between tile coordinates can be interpolated using <see cref="M:Terraria.Lighting.GetSubLight(Microsoft.Xna.Framework.Vector2)" />, but usually the lighting values at the tile coordinates closest to the center of an entity are sufficient. There are many more GetColorX methods for more advanced situations, if needed. If drawing a really large sprite, one might consider splitting up the drawing to allow sections of the sprite to be drawn at different light values.
+	</LightingGetColor>
+            </summary>
+        </member>
+        <member name="M:Terraria.Lighting.GetColor(System.Int32,System.Int32,Microsoft.Xna.Framework.Color)">
+            <summary> <inheritdoc cref="M:Terraria.Lighting.GetColor(Microsoft.Xna.Framework.Point,Microsoft.Xna.Framework.Color)"/> </summary>
+        </member>
+        <member name="M:Terraria.Lighting.GetColor(System.Int32,System.Int32)">
+            <summary>
+            Gets the lighting color at the specified Tile coordinate location.
+            <LightingGetColor>
+		<para /> Lighting is tracked at Tile Coordinate granularity (<see href="https://github.com/tModLoader/tModLoader/wiki/Coordinates">Coordinates wiki page</see>). Typically the center of an entity, converted to tile coordinates, is used to query the lighting color at the entity's location. That color is then used to draw the entity.
+		<para /> Lighting values in-between tile coordinates can be interpolated using <see cref="M:Terraria.Lighting.GetSubLight(Microsoft.Xna.Framework.Vector2)" />, but usually the lighting values at the tile coordinates closest to the center of an entity are sufficient. There are many more GetColorX methods for more advanced situations, if needed. If drawing a really large sprite, one might consider splitting up the drawing to allow sections of the sprite to be drawn at different light values.
+	</LightingGetColor>
+            </summary>
+        </member>
         <member name="T:Terraria.Localization.Language">
             <summary>
             Contains methods to access or retrieve localization values. The <see href="https://github.com/tModLoader/tModLoader/wiki/Localization">Localization Guide</see> teaches more about localization.
@@ -8299,7 +8367,7 @@
         <member name="M:Terraria.Localization.Language.GetText(System.String)">
             <summary>
             Retrieves a LocalizedText object for a specified localization key. The actual text value can be retrieved from LocalizedText by accessing the <see cref="P:Terraria.Localization.LocalizedText.Value"/> property or by using the <see cref="M:Terraria.Localization.Language.GetTextValue(System.String)"/> method directly.<br/><br/>
-            Using LocalizedText instead of string is prefered when the value is stored. If the user switches languages or if resource packs or mods change text, the LocalizedText will automatically receive the new value. In turn, mods using those LocalizedText will also start displaying the updated values.<br/><br/>
+            Using LocalizedText instead of string is preferred when the value is stored. If the user switches languages or if resource packs or mods change text, the LocalizedText will automatically receive the new value. In turn, mods using those LocalizedText will also start displaying the updated values.<br/><br/>
             
             </summary>
             <param name="key"></param>
@@ -8465,25 +8533,25 @@
         <member name="F:Terraria.Main.persistentBuff">
             <summary>
             Allows status effects for which this is set to true to persist after the afflicted player's death.<br/>
-            Defaults to false; all vanilla flask effects have their entries here set to true.<br/>
+            Defaults to <see langword="false"/>; all vanilla flask effects have their entries here set to true.<br/>
             </summary>
         </member>
         <member name="F:Terraria.Main.vanityPet">
             <summary>
             Categorizes status effects for which this is set to true as being from vanity pets, preventing them from overlapping with other vanity pet status effects.<br/>
-            Defaults to false; all vanilla vanity pets have their entries here set to true.<br/>
+            Defaults to <see langword="false"/>; all vanilla vanity pets have their entries here set to true.<br/>
             </summary>
         </member>
         <member name="F:Terraria.Main.lightPet">
             <summary>
             Categorizes status effects for which this is set to true as being tied to a light pet, preventing them from overlapping with other light pet status effects.<br/>
-            Defaults to false; all vanilla light pets have their entries here set to true.<br/>
+            Defaults to <see langword="false"/>; all vanilla light pets have their entries here set to true.<br/>
             </summary>
         </member>
         <member name="F:Terraria.Main.meleeBuff">
             <summary>
             Categorizes status effects for which this is set to true as being from flasks, preventing them from overlapping with other flask status effects.<br/>
-            Defaults to false; all vanilla flask effects have their entries here set to true.<br/>
+            Defaults to <see langword="false"/>; all vanilla flask effects have their entries here set to true.<br/>
             </summary>
         </member>
         <member name="F:Terraria.Main.debuff">
@@ -8585,6 +8653,7 @@
         <member name="F:Terraria.Main.tileAxe">
             <summary>
             If true for the given tile type, tiles of the type are mined using an axe instead of pickaxe.
+            <para/> Defaults to <see langword="false"/>.
             </summary>
         </member>
         <member name="F:Terraria.Main.tileWaterDeath">
@@ -8595,6 +8664,7 @@
         <member name="F:Terraria.Main.tileLavaDeath">
             <summary>
             If true for the given tile type, tiles of the type will be destroyed if in contact with lava. <see cref="P:Terraria.ObjectData.TileObjectData.LavaDeath"/> supersedes this if a <see cref="T:Terraria.ObjectData.TileObjectData"/> is available. Use <see cref="F:Terraria.Main.tileObsidianKill"/> instead if the tile should only be killed by obsidian forming over it.
+            <para/> Defaults to <see langword="false"/>.
             </summary>
         </member>
         <member name="F:Terraria.Main.tileTable">
@@ -8637,6 +8707,7 @@
         <member name="F:Terraria.Main.tileObsidianKill">
             <summary>
             If true for the given tile type, tiles of the type will be destroyed if obsidian would generate at it's location because of lava and water mixing. Automatically set to true if <see cref="F:Terraria.Main.tileLavaDeath"/> is true. Many tiles are immune to lava but break if obsidian kills it, such as Statues and Anvils.
+            <para/> Defaults to <see langword="false"/>.
             </summary>
         </member>
         <member name="F:Terraria.Main.tileFrameImportant">
@@ -12235,7 +12306,7 @@
             <summary>
             Called after SetDefaults for NPCs with a negative <see cref="F:Terraria.NPC.netID"/><br/>
             This hook is required because <see cref="M:Terraria.NPC.SetDefaultsFromNetId(System.Int32,Terraria.NPCSpawnParams)"/> only sets <see cref="F:Terraria.NPC.netID"/> after SetDefaults<br/>
-            Remember that <see cref="F:Terraria.NPC.type"/> does not support negative numbers and AppliesToEntity cannot distinguish between NPCs with the same type but differet netID<br/>
+            Remember that <see cref="F:Terraria.NPC.type"/> does not support negative numbers and AppliesToEntity cannot distinguish between NPCs with the same type but different netID<br/>
             </summary>
         </member>
         <member name="M:Terraria.ModLoader.GlobalNPC.OnSpawn(Terraria.NPC,Terraria.DataStructures.IEntitySource)">
@@ -14819,7 +14890,9 @@
         </member>
         <member name="M:Terraria.ModLoader.ModBlockType.CanPlace(System.Int32,System.Int32)">
             <summary>
-            Allows you to stop this tile/wall from being placed at the given coordinates. Return false to stop the tile/wall from being placed. Returns true by default.
+            Allows you to stop this tile/wall from being placed at the given coordinates. This method is called on the local client.
+            <para/> For tiles this is also checked during block replacement, but <see cref="M:Terraria.ModLoader.ModTile.CanReplace(System.Int32,System.Int32,System.Int32)"/> should be used for replace-specific logic.
+            <para/> Return false to stop the tile/wall from being placed. Returns true by default.
             </summary>
             <param name="i">The x position in tile coordinates.</param>
             <param name="j">The y position in tile coordinates.</param>
@@ -16371,7 +16444,9 @@
         </member>
         <member name="M:Terraria.ModLoader.ModItem.CanEquipAccessory(Terraria.Player,System.Int32,System.Boolean)">
             <summary>
-            Allows you to disallow the player from equipping this accessory. Return false to disallow equipping this accessory. Returns true by default.
+            Allows you to disallow the player from equipping this accessory. Return false to disallow equipping this accessory.
+            <para/> Do not use this to check for mutually exclusive accessories being equipped, that check is only possible via <see cref="M:Terraria.ModLoader.ModItem.CanAccessoryBeEquippedWith(Terraria.Item,Terraria.Item,Terraria.Player)"/>
+            <para/> Returns <see langword="true"/> by default.
             </summary>
             <param name="player">The player.</param>
             <param name="slot">The inventory slot that the item is attempting to occupy.</param>
@@ -16381,6 +16456,7 @@
             <summary>
             Allows you to prevent similar accessories from being equipped multiple times. For example, vanilla Wings.
             Return false to have the currently equipped item swapped with the incoming item - ie both can't be equipped at same time.
+            <para/> This method exists because manually checking <see cref="F:Terraria.Player.armor"/> in <see cref="M:Terraria.ModLoader.ModItem.CanEquipAccessory(Terraria.Player,System.Int32,System.Boolean)"/> will not correctly account for modded accessory slots.
             </summary>
         </member>
         <member name="M:Terraria.ModLoader.ModItem.ExtractinatorUse(System.Int32,System.Int32@,System.Int32@)">
@@ -19887,6 +19963,7 @@
         <member name="M:Terraria.ModLoader.ModTile.SetSpriteEffects(System.Int32,System.Int32,Microsoft.Xna.Framework.Graphics.SpriteEffects@)">
             <summary>
             Allows you to determine whether or not the tile will draw itself flipped in the world.
+            <para/> If flipping, consider setting <see cref="P:Terraria.ObjectData.TileObjectData.DrawFlipHorizontal"/> or <see cref="P:Terraria.ObjectData.TileObjectData.DrawFlipVertical"/> as well to ensure that the tile placement preview is also flipped.
             </summary>
             <param name="i">The x position in tile coordinates.</param>
             <param name="j">The y position in tile coordinates.</param>
@@ -20365,7 +20442,7 @@
         </member>
         <member name="M:Terraria.ModLoader.ModWaterStyle.GetDropletGore">
             <summary>
-            The ID of the gore that represents droplets of water falling down from a block.
+            The ID of the gore that represents droplets of water falling down from a block. Return <see cref="F:Terraria.ID.GoreID.WaterDrip"/> (or another existing droplet gore) or make a custom ModGore that uses <see cref="F:Terraria.ID.GoreID.Sets.LiquidDroplet"/>.
             </summary>
         </member>
         <member name="M:Terraria.ModLoader.ModWaterStyle.LightColorMultiplier(System.Single@,System.Single@,System.Single@)">
@@ -21369,12 +21446,14 @@
             <summary>
             <paramref name="typeOrder"/> dictates the order specific explanations are shown:
             <br/> 1: Download, 2: Switch Version, 3: Enable, 4: Disable, 5: Config Change
+            <para/> <paramref name="mod"/> is internal name, <paramref name="localMod"/> might be null for mods that need to be downloaded.
             </summary>
         </member>
         <member name="M:Terraria.ModLoader.UI.ReloadRequiredExplanation.#ctor(System.Int32,System.String,Terraria.ModLoader.Core.LocalMod,System.String)">
             <summary>
             <paramref name="typeOrder"/> dictates the order specific explanations are shown:
             <br/> 1: Download, 2: Switch Version, 3: Enable, 4: Disable, 5: Config Change
+            <para/> <paramref name="mod"/> is internal name, <paramref name="localMod"/> might be null for mods that need to be downloaded.
             </summary>
         </member>
         <member name="T:Terraria.ModLoader.Utilities.SpawnCondition">
@@ -24122,6 +24201,16 @@
             When used in conjunction with <see cref="F:Terraria.Projectile.usesIDStaticNPCImmunity"/>, determines how many ticks must pass before any projectile of the same type can deal damage again to the same npc. This must be assigned a suitable value if usesIDStaticNPCImmunity is true.
             </summary>
         </member>
+        <member name="P:Terraria.Projectile.Opacity">
+            <summary>
+            Derived from <see cref="F:Terraria.Projectile.alpha"/>, except it ranges from 0f to 1f and is inverted. 0 is transparent and 1 is fully opaque. Using this instead of alpha might make more sense when doing graphics calculations.
+            </summary>
+        </member>
+        <member name="P:Terraria.Projectile.MaxUpdates">
+            <summary>
+            Derived from <see cref="F:Terraria.Projectile.extraUpdates"/>, except 1 is added to arrive at the total number of updates to be run. Using this instead of extraUpdates might make code more readable.
+            </summary>
+        </member>
         <member name="M:Terraria.Projectile.NewProjectile(Terraria.DataStructures.IEntitySource,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2,System.Int32,System.Int32,System.Single,System.Int32,System.Single,System.Single,System.Single)">
             <summary>
             <inheritdoc cref="M:Terraria.Projectile.NewProjectile(Terraria.DataStructures.IEntitySource,System.Single,System.Single,System.Single,System.Single,System.Int32,System.Int32,System.Single,System.Int32,System.Single,System.Single,System.Single)"/>
@@ -25186,6 +25275,114 @@
             <param name="r"></param>
             <returns></returns>
         </member>
+        <member name="M:Terraria.Utils.ToWorldCoordinates(Microsoft.Xna.Framework.Point,System.Single,System.Single)">
+            <summary> <ToWorldCoordinates>
+		Converts from Tile coordinates to World coordinates.
+		<para /> If this overload has <c>autoAddX</c> and <c>autoAddY</c> parameters, those parameters default to 8, meaning that they can be omitted and the resulting world coordinate will be in the center of the tile. Zeros can be used to get the world coordinate of the top left corner instead.
+		<para /> If this overload has a <c>autoAddXY</c> parameter, that will be added to the resulting world coordinate. <c>new Vector2(8)</c> can be used to get thw world coordinate in the center of the tile. <c>Vector2.Zero</c> can be used to get the world coordinate of the top left corner instead.
+		<para /> <CoordinateConversionNote>
+		<para /> By convention, Tile coordinates should be represented by represented using <see cref="T:Microsoft.Xna.Framework.Point" /> or <see cref="T:Terraria.DataStructures.Point16" /> and World coordinates should be represented using <see cref="T:Microsoft.Xna.Framework.Vector2" />. This convention is not always followed, so naming variables appropriately is highly recommended.
+		<para /> Please read the <see href="https://github.com/tModLoader/tModLoader/wiki/Coordinates">Coordinates wiki page</see> for more information.
+	</CoordinateConversionNote> 
+	</ToWorldCoordinates> </summary>
+        </member>
+        <member name="M:Terraria.Utils.ToWorldCoordinates(Terraria.DataStructures.Point16,System.Single,System.Single)">
+            <summary> <ToWorldCoordinates>
+		Converts from Tile coordinates to World coordinates.
+		<para /> If this overload has <c>autoAddX</c> and <c>autoAddY</c> parameters, those parameters default to 8, meaning that they can be omitted and the resulting world coordinate will be in the center of the tile. Zeros can be used to get the world coordinate of the top left corner instead.
+		<para /> If this overload has a <c>autoAddXY</c> parameter, that will be added to the resulting world coordinate. <c>new Vector2(8)</c> can be used to get thw world coordinate in the center of the tile. <c>Vector2.Zero</c> can be used to get the world coordinate of the top left corner instead.
+		<para /> <CoordinateConversionNote>
+		<para /> By convention, Tile coordinates should be represented by represented using <see cref="T:Microsoft.Xna.Framework.Point" /> or <see cref="T:Terraria.DataStructures.Point16" /> and World coordinates should be represented using <see cref="T:Microsoft.Xna.Framework.Vector2" />. This convention is not always followed, so naming variables appropriately is highly recommended.
+		<para /> Please read the <see href="https://github.com/tModLoader/tModLoader/wiki/Coordinates">Coordinates wiki page</see> for more information.
+	</CoordinateConversionNote> 
+	</ToWorldCoordinates> </summary>
+        </member>
+        <member name="M:Terraria.Utils.ToTileCoordinates16(Microsoft.Xna.Framework.Vector2)">
+            <summary> <ToTileCoordinates>
+		Converts from World coordinates to Tile coordinates.
+		<para /> The Tile coordinate returned will be the coordinate of the Tile that would contain the World Coordinate. Be sure to plan out which world coordinate to use when dealing with entities, sometimes the logic might be better suited to use the Center of the entity vs the Position.
+		<para /> <CoordinateConversionNote>
+		<para /> By convention, Tile coordinates should be represented by represented using <see cref="T:Microsoft.Xna.Framework.Point" /> or <see cref="T:Terraria.DataStructures.Point16" /> and World coordinates should be represented using <see cref="T:Microsoft.Xna.Framework.Vector2" />. This convention is not always followed, so naming variables appropriately is highly recommended.
+		<para /> Please read the <see href="https://github.com/tModLoader/tModLoader/wiki/Coordinates">Coordinates wiki page</see> for more information.
+	</CoordinateConversionNote> 
+	</ToTileCoordinates> </summary>
+        </member>
+        <member name="M:Terraria.Utils.ToTileCoordinates(Microsoft.Xna.Framework.Vector2)">
+            <summary> <ToTileCoordinates>
+		Converts from World coordinates to Tile coordinates.
+		<para /> The Tile coordinate returned will be the coordinate of the Tile that would contain the World Coordinate. Be sure to plan out which world coordinate to use when dealing with entities, sometimes the logic might be better suited to use the Center of the entity vs the Position.
+		<para /> <CoordinateConversionNote>
+		<para /> By convention, Tile coordinates should be represented by represented using <see cref="T:Microsoft.Xna.Framework.Point" /> or <see cref="T:Terraria.DataStructures.Point16" /> and World coordinates should be represented using <see cref="T:Microsoft.Xna.Framework.Vector2" />. This convention is not always followed, so naming variables appropriately is highly recommended.
+		<para /> Please read the <see href="https://github.com/tModLoader/tModLoader/wiki/Coordinates">Coordinates wiki page</see> for more information.
+	</CoordinateConversionNote> 
+	</ToTileCoordinates> </summary>
+        </member>
+        <member name="M:Terraria.Utils.SafeNormalize(Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            <inheritdoc cref="M:Microsoft.Xna.Framework.Vector2.Normalize"/>
+            <para/> If this Vector2 can't be normalized, either because it is a 0 length vector or has not a number values, <paramref name="defaultValue"/> will be returned instead as a fallback. It will not be normalized so using <see cref="P:Microsoft.Xna.Framework.Vector2.UnitX"/> or <see cref="P:Microsoft.Xna.Framework.Vector2.UnitY"/> is appropriate. <see cref="P:Microsoft.Xna.Framework.Vector2.Zero"/> can also be appropriate if the surrounding logic expects it.
+            <para/> Using SafeNormalize instead of Normalize avoids many difficult to anticipate issues that would cause bugs. 
+            </summary>
+        </member>
+        <member name="M:Terraria.Utils.ClosestPointOnLine(Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)">
+            <summary> Returns the closest point on a line segment from <paramref name="A"/> to <paramref name="B"/> to another point <paramref name="P"/>. The resulting point will be on the line and not extend past A or B. </summary>
+        </member>
+        <member name="M:Terraria.Utils.WithinRange(Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2,System.Single)">
+            <summary> Returns true if the <paramref name="Target"/> is within <paramref name="MaxRange"/> world coordinate units of <paramref name="Origin"/>. </summary>
+        </member>
+        <member name="M:Terraria.Utils.ToDirectionInt(System.Boolean)">
+            <summary> Converts a bool to 1 if true, -1 if false. Suitable for working with <see cref="F:Terraria.Entity.direction"/> and <see cref="F:Terraria.Projectile.spriteDirection"/>, or anything else related to geometry.</summary>
+        </member>
+        <member name="M:Terraria.Utils.ToInt(System.Boolean)">
+            <summary> Converts a bool to 1 if true, 0 if false. </summary>
+        </member>
+        <member name="M:Terraria.Utils.ToWorldCoordinates(Microsoft.Xna.Framework.Point,Microsoft.Xna.Framework.Vector2)">
+            <summary> <ToWorldCoordinates>
+		Converts from Tile coordinates to World coordinates.
+		<para /> If this overload has <c>autoAddX</c> and <c>autoAddY</c> parameters, those parameters default to 8, meaning that they can be omitted and the resulting world coordinate will be in the center of the tile. Zeros can be used to get the world coordinate of the top left corner instead.
+		<para /> If this overload has a <c>autoAddXY</c> parameter, that will be added to the resulting world coordinate. <c>new Vector2(8)</c> can be used to get thw world coordinate in the center of the tile. <c>Vector2.Zero</c> can be used to get the world coordinate of the top left corner instead.
+		<para /> <CoordinateConversionNote>
+		<para /> By convention, Tile coordinates should be represented by represented using <see cref="T:Microsoft.Xna.Framework.Point" /> or <see cref="T:Terraria.DataStructures.Point16" /> and World coordinates should be represented using <see cref="T:Microsoft.Xna.Framework.Vector2" />. This convention is not always followed, so naming variables appropriately is highly recommended.
+		<para /> Please read the <see href="https://github.com/tModLoader/tModLoader/wiki/Coordinates">Coordinates wiki page</see> for more information.
+	</CoordinateConversionNote> 
+	</ToWorldCoordinates> </summary>
+        </member>
+        <member name="M:Terraria.Utils.ToWorldCoordinates(Terraria.DataStructures.Point16,Microsoft.Xna.Framework.Vector2)">
+            <summary> <ToWorldCoordinates>
+		Converts from Tile coordinates to World coordinates.
+		<para /> If this overload has <c>autoAddX</c> and <c>autoAddY</c> parameters, those parameters default to 8, meaning that they can be omitted and the resulting world coordinate will be in the center of the tile. Zeros can be used to get the world coordinate of the top left corner instead.
+		<para /> If this overload has a <c>autoAddXY</c> parameter, that will be added to the resulting world coordinate. <c>new Vector2(8)</c> can be used to get thw world coordinate in the center of the tile. <c>Vector2.Zero</c> can be used to get the world coordinate of the top left corner instead.
+		<para /> <CoordinateConversionNote>
+		<para /> By convention, Tile coordinates should be represented by represented using <see cref="T:Microsoft.Xna.Framework.Point" /> or <see cref="T:Terraria.DataStructures.Point16" /> and World coordinates should be represented using <see cref="T:Microsoft.Xna.Framework.Vector2" />. This convention is not always followed, so naming variables appropriately is highly recommended.
+		<para /> Please read the <see href="https://github.com/tModLoader/tModLoader/wiki/Coordinates">Coordinates wiki page</see> for more information.
+	</CoordinateConversionNote> 
+	</ToWorldCoordinates> </summary>
+        </member>
+        <member name="M:Terraria.Utils.ToWorldCoordinates(Microsoft.Xna.Framework.Vector2,System.Single,System.Single)">
+            <summary> <ToWorldCoordinates>
+		Converts from Tile coordinates to World coordinates.
+		<para /> If this overload has <c>autoAddX</c> and <c>autoAddY</c> parameters, those parameters default to 8, meaning that they can be omitted and the resulting world coordinate will be in the center of the tile. Zeros can be used to get the world coordinate of the top left corner instead.
+		<para /> If this overload has a <c>autoAddXY</c> parameter, that will be added to the resulting world coordinate. <c>new Vector2(8)</c> can be used to get thw world coordinate in the center of the tile. <c>Vector2.Zero</c> can be used to get the world coordinate of the top left corner instead.
+		<para /> <CoordinateConversionNote>
+		<para /> By convention, Tile coordinates should be represented by represented using <see cref="T:Microsoft.Xna.Framework.Point" /> or <see cref="T:Terraria.DataStructures.Point16" /> and World coordinates should be represented using <see cref="T:Microsoft.Xna.Framework.Vector2" />. This convention is not always followed, so naming variables appropriately is highly recommended.
+		<para /> Please read the <see href="https://github.com/tModLoader/tModLoader/wiki/Coordinates">Coordinates wiki page</see> for more information.
+	</CoordinateConversionNote> 
+	</ToWorldCoordinates> </summary>
+        </member>
+        <member name="M:Terraria.Utils.ToWorldCoordinates(Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)">
+            <summary> <ToWorldCoordinates>
+		Converts from Tile coordinates to World coordinates.
+		<para /> If this overload has <c>autoAddX</c> and <c>autoAddY</c> parameters, those parameters default to 8, meaning that they can be omitted and the resulting world coordinate will be in the center of the tile. Zeros can be used to get the world coordinate of the top left corner instead.
+		<para /> If this overload has a <c>autoAddXY</c> parameter, that will be added to the resulting world coordinate. <c>new Vector2(8)</c> can be used to get thw world coordinate in the center of the tile. <c>Vector2.Zero</c> can be used to get the world coordinate of the top left corner instead.
+		<para /> <CoordinateConversionNote>
+		<para /> By convention, Tile coordinates should be represented by represented using <see cref="T:Microsoft.Xna.Framework.Point" /> or <see cref="T:Terraria.DataStructures.Point16" /> and World coordinates should be represented using <see cref="T:Microsoft.Xna.Framework.Vector2" />. This convention is not always followed, so naming variables appropriately is highly recommended.
+		<para /> Please read the <see href="https://github.com/tModLoader/tModLoader/wiki/Coordinates">Coordinates wiki page</see> for more information.
+	</CoordinateConversionNote> 
+	</ToWorldCoordinates> </summary>
+        </member>
+        <member name="M:Terraria.Utils.ToPoint16(Microsoft.Xna.Framework.Vector2)">
+            <summary> Converts this Vector2 to a Point16, resulting in X and Y values rounded towards 0. If the intention is to convert to Tile coordinates from World coordinates, use <see cref="M:Terraria.Utils.ToTileCoordinates16(Microsoft.Xna.Framework.Vector2)"/> instead. </summary>
+        </member>
         <member name="M:Terraria.Utils.Next``1(Terraria.Utilities.UnifiedRandom,``0[])">
             <summary>
             Returns a random element from the provided array.
@@ -25278,6 +25475,9 @@
             <param name="width"></param>
             <param name="height"></param>
         </member>
+        <member name="F:Terraria.WorldBuilding.GenVars.structures">
+            <inheritdoc cref="T:Terraria.WorldBuilding.StructureMap"/>
+        </member>
         <member name="F:Terraria.WorldBuilding.GenVars.statueList">
             <summary>
             Statue options for natural world generation placement. Each Point16 corresponds to a tile type and tile style pair.
@@ -25286,6 +25486,33 @@
         <member name="F:Terraria.WorldBuilding.GenVars.StatuesWithTraps">
             <summary>
             Statues in this list will be generated with a connecting wire terminating in a pressure plate tile. The values in this list correspond to the indexes of the statue options within <see cref="F:Terraria.WorldBuilding.GenVars.statueList"/>. Make sure to also set <see cref="F:Terraria.ID.TileID.Sets.IsAMechanism"/> for the tile type, otherwise the trap and wires will be removed during the "Remove Broken Traps" world generation step.
+            </summary>
+        </member>
+        <member name="T:Terraria.WorldBuilding.StructureMap">
+            <summary>
+            Used during world generation to track and check important world generation features to prevent overlap. Access this via <see cref="F:Terraria.WorldBuilding.GenVars.structures"/>.
+            <para/> The <see cref="M:Terraria.WorldBuilding.StructureMap.AddProtectedStructure(Microsoft.Xna.Framework.Rectangle,System.Int32)"/> method is used to indicate an area of the world to be protected from other world generation code.
+            <para/> The <see cref="M:Terraria.WorldBuilding.StructureMap.CanPlace(Microsoft.Xna.Framework.Rectangle,System.Int32)"/> method will check if the designated area is free from protected structures as well as any tiles that are not <see cref="F:Terraria.ID.TileID.Sets.GeneralPlacementTiles"/>. This is used to find an area that is unused.
+            <para/> It is up to modders to properly use StructureMap to both mark areas as occupied by structures and check for areas free of existing structures.
+            <para/> The <see href="https://github.com/tModLoader/tModLoader/wiki/World-Generation#structuremap">Structure Map section of the World Generation wiki page</see> has more information and useful visualizations.
+            </summary>
+        </member>
+        <member name="M:Terraria.WorldBuilding.StructureMap.CanPlace(Microsoft.Xna.Framework.Rectangle,System.Int32)">
+            <summary>
+            Checks if the provided tile coordinate <paramref name="area"/> padded by the <paramref name="padding"/> is free from protected structures and tiles that are not <see cref="F:Terraria.ID.TileID.Sets.GeneralPlacementTiles"/>. Use this to find a suitable place for placing a structure feature free from any existing structures or protected tile, then use <see cref="M:Terraria.WorldBuilding.StructureMap.AddProtectedStructure(Microsoft.Xna.Framework.Rectangle,System.Int32)"/> after placing a structure.
+            </summary>
+        </member>
+        <member name="M:Terraria.WorldBuilding.StructureMap.CanPlace(Microsoft.Xna.Framework.Rectangle,System.Boolean[],System.Int32)">
+            <summary>
+            Similar to <see cref="M:Terraria.WorldBuilding.StructureMap.CanPlace(Microsoft.Xna.Framework.Rectangle,System.Int32)"/>, except instead of using <see cref="F:Terraria.ID.TileID.Sets.GeneralPlacementTiles"/> the set of valid tiles to overwrite are passed in. Typically this is used with a copy of <c>GeneralPlacementTiles</c> that is changed slightly to allow or disallow some specific tiles.
+            </summary>
+        </member>
+        <member name="M:Terraria.WorldBuilding.StructureMap.AddStructure(Microsoft.Xna.Framework.Rectangle,System.Int32)">
+            <summary> Unused, use <see cref="M:Terraria.WorldBuilding.StructureMap.AddProtectedStructure(Microsoft.Xna.Framework.Rectangle,System.Int32)"/> instead. </summary>
+        </member>
+        <member name="M:Terraria.WorldBuilding.StructureMap.AddProtectedStructure(Microsoft.Xna.Framework.Rectangle,System.Int32)">
+            <summary>
+            Adds an area of the world to the protected structures listing to be protected from other world generation code. Use this after placing a structure if you do not wish other world generation code to overlap with it.
             </summary>
         </member>
         <member name="P:Terraria.WorldGen.genRand">
@@ -25424,6 +25651,12 @@
             <summary>
             Places small splotches of the specified tile starting at the designated coordinates. This should only be used early in world generation code. <see cref="M:Terraria.WorldGen.OreRunner(System.Int32,System.Int32,System.Double,System.Int32,System.UInt16)"/> is a safer version that can be used anytime without corrupting tiles.
             <para/> More detailed information and a video guide can be found on the <see href="https://github.com/tModLoader/tModLoader/wiki/World-Generation#terrariaworldgen-public-static-void-tilerunnerint-i-int-j-double-strength-int-steps-int-type-bool-addtile--false-float-speedx--0f-float-speedy--0f-bool-noychange--false-bool-override--true">World Generation wiki page</see>
+            </summary>
+        </member>
+        <member name="M:Terraria.WorldSections.TileLoaded(System.Int32,System.Int32)">
+            <summary>
+            Checks if the tile at the specified tile coordinate has been loaded for this client in a multiplayer game session. In multiplayer, sections of tiles are sent when the player visits them, so much of the map will not be loaded for a client. until visited.
+            <para/> Modders may need to check this for client code that could potentially access unloaded tiles. 
             </summary>
         </member>
         <member name="M:UwUPnP.Gateway.GetGenericPortMappingEntry(System.Int32)">

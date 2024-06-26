@@ -17,12 +17,12 @@ using ThoriumMod;
 using ThoriumMod.Utilities;
 using ThoriumMod.Empowerments;
 using RagnarokMod.Buffs;
-using RagnarokMod.Items.BardItems;
 using RagnarokMod.Items.HealerItems;
 using CalamityMod.Cooldowns;
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.CalPlayer;
+using RagnarokMod.Items.BardItems.Armor;
 
 namespace RagnarokMod.Utils
 {

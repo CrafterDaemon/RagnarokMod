@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "4UANLqdMJFM=",
+  "dgSpecHash": "xJZiMEWEj/BYGVtUcLyUGI67JLRScsBU1qn+3AMA1NyMlZIgTMqW7GrfqpdRqQY2JhY179xO+s1z+LS6+qbgSQ==",
   "success": true,
-  "projectFilePath": "/Users/ryan/Library/Application Support/Terraria/tModLoader/ModSources/RagnarokMod/RagnarokMod.csproj",
+  "projectFilePath": "C:\\Users\\daemo\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\RagnarokMod\\RagnarokMod.csproj",
   "expectedPackageFiles": [
-    "/Users/ryan/.nuget/packages/tmodloader.codeassist/0.1.5/tmodloader.codeassist.0.1.5.nupkg.sha512"
+    "C:\\Users\\daemo\\.nuget\\packages\\tmodloader.codeassist\\0.1.5\\tmodloader.codeassist.0.1.5.nupkg.sha512"
   ],
   "logs": []
 }

@@ -16,7 +16,6 @@ using ThoriumMod.Items.HealerItems;
 using ThoriumMod.Items.ThrownItems;
 using CalamityMod.NPCs.Perforator;
 using RagnarokMod.Items.HealerItems.Other;
-using RagnarokMod.Items.BardItems;
 using CalamityMod.NPCs.AstrumDeus;
 using CalamityMod.NPCs.CalClone;
 using ThoriumMod.NPCs.BossFallenBeholder;
@@ -29,6 +28,7 @@ using CalamityMod.World;
 using RagnarokMod.Common.Configs;
 using RagnarokMod.Utils;
 using RagnarokMod.Items.RevItems;
+using RagnarokMod.Items.BardItems.Percussion;
 
 namespace RagnarokMod.Common.GlobalNPCs
 {

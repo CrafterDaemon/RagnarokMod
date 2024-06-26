@@ -33,7 +33,7 @@ namespace RagnarokMod.ILEditing
                     IL.ThoriumMod.Buffs.Bard.SoloistsHatSetBuff.Update += SoloistSetNerf;
 					IL.ThoriumMod.Items.BossThePrimordials.Rhapsodist.InspiratorsHelmet.ModifyEmpowerment += RhapsodistSetNerf;
                     IL.ThoriumMod.ThoriumPlayer.PostUpdateEquips += removeBardResourceCaps;
-					//IL.ThoriumMod.Buffs.Mount.GoldenScaleBuff.Update += tweakGoldenScaleBuff;
+					IL.ThoriumMod.Buffs.Mount.GoldenScaleBuff.Update += tweakGoldenScaleBuff;
                     ZZZtoLoadAfterThoirumEditsBardWheel.GetMaxInsp(maxInsp);
                     loadCaught = true;
                     break;
@@ -50,7 +50,7 @@ namespace RagnarokMod.ILEditing
                 IL.ThoriumMod.Buffs.Bard.SoloistsHatSetBuff.Update -= SoloistSetNerf;
 				IL.ThoriumMod.Items.BossThePrimordials.Rhapsodist.InspiratorsHelmet.ModifyEmpowerment -= RhapsodistSetNerf;
                 IL.ThoriumMod.ThoriumPlayer.PostUpdateEquips -= removeBardResourceCaps;
-				//IL.ThoriumMod.Buffs.Mount.GoldenScaleBuff.Update -= tweakGoldenScaleBuff;
+				IL.ThoriumMod.Buffs.Mount.GoldenScaleBuff.Update -= tweakGoldenScaleBuff;
             }
         }
         private void HavocPhylactory(ILContext il)
@@ -168,30 +168,23 @@ namespace RagnarokMod.ILEditing
             c.Emit(OpCodes.Ldc_I4, maxInsp + 20);
         }
 		
-		private void tweakGoldenScaleBuff(ILContext il) 
-		{
-			var c = new ILCursor(il);
-			
-			if (!c.TryGotoNext(MoveType.After, i => i.OpCode == OpCodes.Ldarg_0
-                                      && i.Next?.OpCode == OpCodes.Ldfld
-                                      && ((FieldReference)i.Next.Operand).Name == "breath"
-                                      && i.Next.Next?.OpCode == OpCodes.Ldarg_0
-                                      && i.Next.Next.Next?.OpCode == OpCodes.Ldfld
-                                      && ((FieldReference)i.Next.Next.Next.Operand).Name == "breathMax"
-                                      && i.Next.Next.Next.Next?.OpCode == OpCodes.Add
-                                      && i.Next.Next.Next.Next.Next?.OpCode == OpCodes.Ldc_I4_3
-                                      && i.Next.Next.Next.Next.Next.Next?.OpCode == OpCodes.Add
-                                      && i.Next.Next.Next.Next.Next.Next.Next?.OpCode == OpCodes.Stfld))
-			{
-				return;
-			}
-			c.Remove();
-			c.Emit(OpCodes.Ldarg_0);
-			c.Emit(OpCodes.Dup);
-			c.Emit(OpCodes.Ldfld, typeof(Player).GetField("breath"));
-			c.Emit(OpCodes.Ldc_I4_1);
-			c.Emit(OpCodes.Add);
-			c.Emit(OpCodes.Stfld, typeof(Player).GetField("breath"));
-		}
+        private void tweakGoldenScaleBuff(ILContext il) 
+        {
+	        var c = new ILCursor(il);
+
+            for (int i = 0; i < 3; i++)
+            {
+                if (!c.TryGotoNext(i => i.OpCode == OpCodes.Stfld))
+                {
+                    return;
+                }
+            }
+	        c.Emit(OpCodes.Ldarg_1);
+	        c.Emit(OpCodes.Dup);
+	        c.Emit(OpCodes.Ldfld, typeof(Player).GetField("breath"));
+	        c.Emit(OpCodes.Ldc_I4_1);
+	        c.Emit(OpCodes.Add);
+	        c.Emit(OpCodes.Stfld, typeof(Player).GetField("breath"));
+        }
     }
 }
