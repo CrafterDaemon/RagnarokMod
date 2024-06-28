@@ -18,13 +18,13 @@ namespace RagnarokMod.Items.HealerItems.Scythes
         public override void SetDefaults()
         {
             SetDefaultsToScythe();
-            base.Item.damage = 464;
+            Item.damage = 124;
             scytheSoulCharge = 3;
-            base.Item.width = 86;
-            base.Item.height = 90;
-            base.Item.value = Item.sellPrice(0, 28, 0);
-            base.Item.rare = ModContent.RarityType<Turquoise>();
-            base.Item.shoot = ModContent.ProjectileType<ProfanedScythePro>();
+            Item.width = 86;
+            Item.height = 90;
+            Item.value = Item.sellPrice(0, 28, 0);
+            Item.rare = ModContent.RarityType<Turquoise>();
+            Item.shoot = ModContent.ProjectileType<ProfanedScythePro>();
         }
 		
 		public override void AddRecipes()

@@ -148,7 +148,12 @@ public abstract class ScythePro2 : ThoriumProjectile
         return false;
     }
 
-    public sealed override void AI()
+    public override bool PreDraw(ref Color lightColor)
+    {
+        return base.PreDraw(ref lightColor);
+    }
+
+    public override void AI()
     {
         Player player = Main.player[base.Projectile.owner];
         if (player.dead)
@@ -221,7 +226,7 @@ public abstract class ScythePro2 : ThoriumProjectile
                         ModifyDust(dust2, position, i);
                     }
                 }
-            } 
+            }
         }
     }
 

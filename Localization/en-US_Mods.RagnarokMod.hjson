@@ -597,6 +597,11 @@ Items: {
 		DisplayName: Graspof Void
 		Tooltip: ""
 	}
+
+	PhantasmalEdge: {
+		DisplayName: Phantasmal Edge
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -650,6 +655,9 @@ Projectiles: {
 	KorobeinikiPro7.DisplayName: Korobeiniki Pro7
 	GraspofVoidPro1.DisplayName: Graspof Void Pro1
 	GraspofVoidPro2.DisplayName: Graspof Void Pro2
+	PhantasmalEdgePro1.DisplayName: Phantasmal Edge Pro1
+	PhantasmalEdgeBombs.DisplayName: Phantasmal Edge Bombs
+	PhantasmalEdgeHook.DisplayName: Phantasmal Edge Hook
 }
 
 Configs: {
