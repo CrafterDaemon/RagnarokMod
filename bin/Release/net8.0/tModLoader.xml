@@ -1637,7 +1637,7 @@
         </member>
         <member name="F:Terraria.Entity.active">
             <summary>
-            If true, the Entity actually exists within the game world. Within the specific entity array, if active is false, the entity is junk data. Always check active if iterating over the entity array.
+            If true, the Entity actually exists within the game world. Within the specific entity array, if active is false, the entity is junk data. Always check active if iterating over the entity array. Another option for iterating is to use <see cref="P:Terraria.Main.ActivePlayers"/>, <see cref="P:Terraria.Main.ActiveNPCs"/>, <see cref="P:Terraria.Main.ActiveProjectiles"/>, or <see cref="P:Terraria.Main.ActiveItems"/> instead for simpler code.
             </summary>
         </member>
         <member name="F:Terraria.Entity.position">
@@ -6523,8 +6523,9 @@
         </member>
         <member name="F:Terraria.ID.ProjectileID.Sets.DontAttachHideToAlpha">
             <summary>
-            If <see langword="true"/> for a given projectile type (<see cref="F:Terraria.Projectile.type"/>), then that projectile will always draw using the lighting color at its center, even if <see cref="F:Terraria.Projectile.hide"/> is <see langword="true"/>. If not in this set, these projectiles would use the lighting color at their owner's center.
-            <br/> Defaults to <see langword="false"/>.
+            Controls the lighting for projectiles with <see cref="F:Terraria.Projectile.hide"/> set to <see langword="true"/>. By default, projectiles with <see cref="F:Terraria.Projectile.hide"/> set to <see langword="true"/> would use the lighting color at the player's center. If this is set to <see langword="true"/> then this projectile will use lighting values from the projectile center as normal.
+            <para/> Set this to true for any <see cref="F:Terraria.Projectile.hide"/> projectile that isn't being held directly in the players hands. 
+            <para/> Defaults to <see langword="false"/>.
             </summary>
         </member>
         <member name="F:Terraria.ID.ProjectileID.Sets.ExtendedCanHitCheckSearch">
@@ -7500,7 +7501,7 @@
             Can be used with <see cref="F:Terraria.Item.shopSpecialCurrency"/> to assign a price in terms of a custom currency instead of coins.<br/>
             To get the raw price of an item, use <see cref="M:Terraria.Item.GetStoreValue"/>.<br/>
             To get the price of an item after discounts, use <see cref="M:Terraria.Player.GetItemExpectedPrice(Terraria.Item,System.Int64@,System.Int64@)"/>.
-            <para/> Be careful of setting a custom price far below the normal <see cref="F:Terraria.Item.value"/>, it could result in an infinite money exploit.
+            <para/> Be careful of setting a custom price far below the normal <see cref="F:Terraria.Item.value"/>, it could result in an infinite money exploit. For example, with maximum happiness and a discount card, a custom price 0.44 times the regular value would allow the user to sell the item for just barely more than it was bought for after leaving and reentering the world.
             <para/> Defaults to <see langword="null"/>.
             </summary>
         </member>
@@ -8469,7 +8470,7 @@
         <member name="M:Terraria.Localization.LocalizedText.Format(System.Object[])">
             <summary>
             Creates a string from this LocalizedText populated with data from the provided <paramref name="args"/> arguments. Formats the string in the same manner as <see href="https://learn.microsoft.com/en-us/dotnet/api/system.string.format?view=net-6.0">string.Format</see>. Placeholders such as "{0}", "{1}", etc will be replaced with the string representation of the corresponding objects provided.<br/>
-            Additionally, pluralization is supported as well. The <see href="https://github.com/tModLoader/tModLoader/wiki/Contributing-Localization#placeholders">Contributing Localization Guide</see> teaches more about placeholders and plural support.
+            Additionally, pluralization is supported as well. The <see href="https://github.com/tModLoader/tModLoader/wiki/Localization#string-formatting">Localization Guide</see> teaches more about placeholders and plural support.
             
             </summary>
             <param name="args"></param>
@@ -8841,6 +8842,9 @@
             </summary>
             <param name="index">Item type</param>
             <param name="animation">Draw animation</param>
+        </member>
+        <member name="M:Terraria.Main.clrInput">
+            <summary> Clears text input from any keys pressed since the last time <see cref="M:Terraria.Main.GetInputText(System.String,System.Boolean)"/> was called. Call when activating a menu with text input or focusing an element with text input to prevent keys pressed beforehand to be immediately captured as input. </summary>
         </member>
         <member name="M:Terraria.Main.DrawHealthBar(System.Single,System.Single,System.Int32,System.Int32,System.Single,System.Single,System.Boolean)">
             <summary>
@@ -18938,7 +18942,7 @@
         </member>
         <member name="M:Terraria.ModLoader.ModProjectile.DrawBehind(System.Int32,System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32})">
             <summary>
-            When used in conjunction with "Projectile.hide = true", allows you to specify that this projectile should be drawn behind certain elements. Add the index to one and only one of the lists. For example, the Nebula Arcanum projectile draws behind NPCs and tiles.
+            When used in conjunction with <c>Projectile.hide = true</c> (<see cref="F:Terraria.Projectile.hide"/>), allows you to specify that this projectile should be drawn behind certain elements. Add the index to one and only one of the lists. For example, the Nebula Arcanum projectile draws behind NPCs and tiles.
             </summary>
         </member>
         <member name="T:Terraria.ModLoader.ModPylon">
@@ -21474,6 +21478,9 @@
             Gets the ModWall instance with the given type. If no ModWall with the given type exists, returns null.
             </summary>
         </member>
+        <member name="P:Terraria.Mount.Active">
+            <summary> True if the player is currently using a mount. </summary>
+        </member>
         <member name="M:Terraria.NetMessage.SendStrikeNPC(Terraria.NPC,Terraria.NPC.HitInfo@,System.Int32)">
             <summary>
             Use this to synchronize damage strikes against NPCs!
@@ -22554,6 +22561,15 @@
             For the Tabi dash, and when dashing into an enemy with the Shield of Cthulhu, this is set to 30 ticks, or 1/2 of a second, instead.<br/>
             </summary>
         </member>
+        <member name="F:Terraria.Player.accRunSpeed">
+            <summary>
+            Similar to <see cref="F:Terraria.Player.maxRunSpeed"/>, except this is usually set to a specific value for the active shoe accessory. If accRunSpeed ends up larger than maxRunSpeed, then sprint dust will spawn at high speeds. Basically, this exists to differentiate between sprinting ("run super fast") and running. 
+            <para/> Defaults to 3f. Accessories set this to specific values, resulting in the last equipped accessories to dictate the final value. Vanilla shoe accessories set this to <c>6f</c> (<see cref="F:Terraria.ID.ItemID.HermesBoots"/>) or <c>6.75</c> (<see cref="F:Terraria.ID.ItemID.LightningBoots"/>). This assignment should happen in <see cref="M:Terraria.ModLoader.ModItem.UpdateEquip(Terraria.Player)"/>.
+            <para/> This value is later multiplied by other effects in the same manner as <see cref="F:Terraria.Player.maxRunSpeed"/>. They are usually modified in tandem, but not always depending on the desired result. For example, asphalt triples maxRunSpeed but does not affect accRunSpeed, whereas Shadow Armor affects both equally.
+            <para/> These multiplicative adjustments should only be done in <see cref="M:Terraria.ModLoader.ModPlayer.PostUpdateRunSpeeds"/> or <see cref="M:Terraria.ModLoader.ModItem.HorizontalWingSpeeds(Terraria.Player,System.Single@,System.Single@)"/> to correctly function.
+            <para/> When on a mount, all other modifiers are ignored and it is set to <see cref="P:Terraria.Mount.DashSpeed"/>
+            </summary>
+        </member>
         <member name="F:Terraria.Player.meleeEnchant">
             <summary>
             The vanilla flask effect which the player currently has active; these affect all melee weapons and whips.<br/>
@@ -22579,6 +22595,9 @@
             If true, the player is attached to a rope or similar tile.
             </summary>
         </member>
+        <member name="F:Terraria.Player.iceSkate">
+            <summary> Grant the player improved speed on ice and not breaking thin ice when falling onto it </summary>
+        </member>
         <member name="F:Terraria.Player.spikedBoots">
             <summary>
             Used by the Shoe Spikes and Climbing Claws to allow for holding onto walls (of tiles, not to be confused with actual walls).<br/>
@@ -22586,6 +22605,18 @@
             A value of 1 causes the player to slowly slide down them while holding onto them.<br/>
             A value of 2 or more doesn't give this limitation, allowing the player to stay holding onto a wall indefinitely.
             </summary>
+        </member>
+        <member name="F:Terraria.Player.sticky">
+            <summary> Player is on <see cref="F:Terraria.ID.TileID.HoneyBlock"/>. Affects movement parameters. </summary>
+        </member>
+        <member name="F:Terraria.Player.slippy">
+            <summary> Player is on a <see cref="F:Terraria.ID.TileID.Sets.IceSkateSlippery"/> tile. Affects movement parameters. </summary>
+        </member>
+        <member name="F:Terraria.Player.slippy2">
+            <summary> Player is on <see cref="F:Terraria.ID.TileID.FrozenSlimeBlock"/>. Affects movement parameters. </summary>
+        </member>
+        <member name="F:Terraria.Player.powerrun">
+            <summary> Player is on <see cref="F:Terraria.ID.TileID.Asphalt"/>. Affects movement parameters. </summary>
         </member>
         <member name="F:Terraria.Player.endurance">
             <summary>
@@ -22661,6 +22692,19 @@
             <br/> Defaults to <see langword="false"/>.
             </summary>
         </member>
+        <member name="F:Terraria.Player.heldProj">
+            <summary>
+            The index of the projectile (<see cref="F:Terraria.Entity.whoAmI"/>) currently being "held" by the player as if it were an item. Set during projectile AI. Held projectiles will be drawn during player rendering over the player's arms.
+            <para/> When making a held projectile, make sure to test holding the projectile while moving up or down a single block obstacles and adjust <see cref="M:Terraria.Player.RotatedRelativePoint(Microsoft.Xna.Framework.Vector2,System.Boolean,System.Boolean)"/>, <see cref="F:Terraria.Player.gfxOffY"/> or <see cref="F:Terraria.ID.ProjectileID.Sets.HeldProjDoesNotUsePlayerGfxOffY"/> accordingly if the draw location is incorrect.
+            <para/> Defaults to -1.
+            </summary>
+        </member>
+        <member name="F:Terraria.Player.lavaMax">
+            <summary> The max amount of lava immunity time (in ticks) the player can have. <see cref="F:Terraria.ID.ItemID.LavaCharm"/> and many other accessories add 420 do this, or 7 seconds. </summary>
+        </member>
+        <member name="F:Terraria.Player.lavaTime">
+            <summary> The remaining amount of lava immunity time (in ticks) the player has. </summary>
+        </member>
         <member name="F:Terraria.Player.setBonus">
             <summary>
             The text that is shown on armor (<see cref="F:Terraria.Item.wornArmor"/>) with an active set bonus.
@@ -22683,6 +22727,9 @@
             The percent of mana actually used when mana is consumed.
             <br/> Cannot reduce an item's mana cost below <c>0</c>.
             </summary>
+        </member>
+        <member name="F:Terraria.Player.fireWalk">
+            <summary> Grants the player immunity from <see cref="F:Terraria.ID.TileID.Sets.TouchDamageHot"/> applying the <see cref="F:Terraria.ID.BuffID.Burning"/> buff. Given by <see cref="F:Terraria.ID.ItemID.ObsidianSkull"/> and many other items. </summary>
         </member>
         <member name="F:Terraria.Player.statDefense">
             <summary>
@@ -22765,6 +22812,9 @@
             Use <see cref="M:Terraria.ModLoader.ModPlayer.NaturalLifeRegen(System.Single@)"/> to directly modify natural life regeneration.
             </remarks>
         </member>
+        <member name="F:Terraria.Player.lavaRose">
+            <summary> Reduces damage from touching lava and halves the duration of lava inflicted <see cref="F:Terraria.ID.BuffID.OnFire"/>, such as given by <see cref="F:Terraria.ID.ItemID.ObsidianRose"/> and many other items. </summary>
+        </member>
         <member name="F:Terraria.Player.strongBees">
             <summary>
             If <see langword="true"/>, then the bees created by <see cref="F:Terraria.Player.honeyCombItem"/> have a chance to be stronger.
@@ -22784,11 +22834,25 @@
             <summary>
             This player's <see cref="T:Terraria.Mount"/>.
             <br/> <strong>Do not overwrite this value.</strong> Instead, call <see cref="M:Terraria.Mount.SetMount(System.Int32,Terraria.Player,System.Boolean)"/> or <see cref="M:Terraria.Mount.Dismount(Terraria.Player)"/> on it.
+            <para/> Check <see cref="P:Terraria.Mount.Active"/> (via <c>Player.mount.Active</c>) to determine if the player is currently using a mount.
             </summary>
+        </member>
+        <member name="F:Terraria.Player.desertBoots">
+            <summary> Grants the player increased movement speed while running on sand </summary>
         </member>
         <member name="F:Terraria.Player.moveSpeed">
             <summary>
-            The multiplier on this player's <see cref="F:Terraria.Player.maxRunSpeed"/> and <see cref="F:Terraria.Player.runAcceleration"/>.
+            The multiplier on this player's <see cref="F:Terraria.Player.maxRunSpeed"/> and <see cref="F:Terraria.Player.runAcceleration"/>. This affects how quickly the player reaches max speed as well as the max speed itself.
+            This is typically modified in <see cref="M:Terraria.ModLoader.ModBuff.Update(Terraria.Player,System.Int32@)"/>, <see cref="M:Terraria.ModLoader.ModItem.UpdateEquip(Terraria.Player)"/>, <see cref="M:Terraria.ModLoader.ModItem.UpdateAccessory(Terraria.Player,System.Boolean)"/>, or <see cref="M:Terraria.ModLoader.ModPlayer.PostUpdateMiscEffects"/>. <see cref="M:Terraria.ModLoader.ModPlayer.PostUpdateRunSpeeds"/> is too late to have any effect.
+            <para/> Defaults to 1f. Effects typically add to or subtract from this, typically expressed as "X% increased movement speed" in tooltips. Some examples:
+            <para/> Swiftness potion (<see cref="F:Terraria.ID.BuffID.Swiftness"/>): <c>+= 0.25f</c>
+            <br/> Webbed buff (<see cref="F:Terraria.ID.BuffID.Webbed"/>): <c>= 0f</c>
+            <br/> Titanium Leggings: <c>+= 0.06f</c>
+            <br/> Frostspark Boots: <c>+= 0.08f</c>
+            <para/> Some effects apply multiplicatively, these must be applied later on in the update process to work correctly, <see cref="M:Terraria.ModLoader.ModPlayer.PostUpdateMiscEffects"/> or <see cref="M:Terraria.ModLoader.ModPlayer.UpdateBadLifeRegen"/> are suitable places for this. Some examples:
+            <para/> Oozed buff (<see cref="F:Terraria.Player.slowOgreSpit"/>): <c>*= 1/3f</c>
+            <br/> Slow buff (<see cref="F:Terraria.Player.slow"/>): <c>*= 0.5f</c>
+            <br/> Chilled buff (<see cref="F:Terraria.Player.chilled"/>): <c>*= 0.75f</c>
             </summary>
         </member>
         <member name="F:Terraria.Player.jumpSpeed">
@@ -22798,13 +22862,29 @@
         </member>
         <member name="F:Terraria.Player.maxRunSpeed">
             <summary>
-            The maximum speed, in pixels/tick, that this player can reach by just running.
+            The maximum speed, in pixels/tick, that this player can reach by just running. The acceleration to that speed is a separate stat (<see cref="F:Terraria.Player.runAcceleration"/>).
+            <para/> This should only be modified in <see cref="M:Terraria.ModLoader.ModPlayer.PostUpdateRunSpeeds"/>, <see cref="M:Terraria.ModLoader.ModItem.HorizontalWingSpeeds(Terraria.Player,System.Single@,System.Single@)"/>, or <see cref="M:Terraria.ModLoader.ExtraJump.UpdateHorizontalSpeeds(Terraria.Player)"/> to correctly function. <see cref="F:Terraria.Player.accRunSpeed"/> is commonly adjusted in tandem if suitable.
+            <para/> Defaults to 3f, which is then multiplied by <see cref="F:Terraria.Player.moveSpeed"/>. Effects typically multiply this by some factor. Some examples:
+            <para/> On ice with Ice Skates: <c>*= 1.25f</c>
+            <br/> On honey block (<see cref="F:Terraria.Player.sticky"/>): <c>*= 0.25f</c>
+            <br/> On asphalt block (<see cref="F:Terraria.Player.powerrun"/>): <c>*= 3.5f</c>
+            <br/> Shadow Armor (<see cref="F:Terraria.Player.shadowArmor"/>): <c>*= 1.15f</c>
+            <br/> Extra jumps: Typically <c>*= 1.5f</c>, see <see cref="M:Terraria.ModLoader.ExtraJump.UpdateHorizontalSpeeds(Terraria.Player)"/>
+            <para/> When on a mount, all other modifiers are ignored and it is set to <see cref="P:Terraria.Mount.RunSpeed"/>
             </summary>
             <remarks>To apply a global run speed modifier, use <see cref="F:Terraria.Player.moveSpeed"/>.</remarks>
         </member>
         <member name="F:Terraria.Player.runAcceleration">
             <summary>
-            The acceleration, in pixels/ticks^2, that this player experiences while running.
+            The acceleration, in pixels/ticks^2, that this player experiences while running. This affects how quickly the player reaches max speed, not the max speed (<see cref="F:Terraria.Player.maxRunSpeed"/>) itself.
+            <para/> This should only be modified in <see cref="M:Terraria.ModLoader.ModPlayer.PostUpdateRunSpeeds"/>, <see cref="M:Terraria.ModLoader.ModItem.HorizontalWingSpeeds(Terraria.Player,System.Single@,System.Single@)"/>, or <see cref="M:Terraria.ModLoader.ExtraJump.UpdateHorizontalSpeeds(Terraria.Player)"/> to correctly function.
+            <para/> Defaults to 0.08f, which is then multiplied by <see cref="F:Terraria.Player.moveSpeed"/>. Effects typically multiply this by some factor. Some examples:
+            <para/> On ice (<see cref="F:Terraria.Player.slippy"/>): <c>*= 0.7f</c> (or <c>*= 2.1f</c> if wearing Ice Skates)
+            <br/> On honey block (<see cref="F:Terraria.Player.sticky"/>): <c>*= 0.25f</c>
+            <br/> Shadow Armor (<see cref="F:Terraria.Player.shadowArmor"/>): <c>*= 1.75f</c>
+            <br/> Wings: <c>*= <see cref="F:Terraria.DataStructures.WingStats.AccRunAccelerationMult"/></c>
+            <br/> Extra jumps: Typically <c>*= 3f</c>, see <see cref="M:Terraria.ModLoader.ExtraJump.UpdateHorizontalSpeeds(Terraria.Player)"/>
+            <para/> When on a mount, all other modifiers are ignored and it is set to <see cref="P:Terraria.Mount.Acceleration"/>
             </summary>
             <remarks>To apply a global run speed modifier, use <see cref="F:Terraria.Player.moveSpeed"/>.</remarks>
         </member>
@@ -22815,16 +22895,32 @@
         </member>
         <member name="F:Terraria.Player.extraFall">
             <summary>
-            The number of extra tiles this player can fall before they start taking fall damage.
+            The number of extra tiles this player can fall before they start taking fall damage. For example <see cref="F:Terraria.ID.ItemID.FrogLeg"/> adds 10 to extraFall.
             </summary>
             <remarks>
             If you want to prevent fall damage entirely, use <see cref="F:Terraria.Player.noFallDmg"/>.
             </remarks>
         </member>
+        <member name="F:Terraria.Player.rocketBoots">
+            <summary> If greater than 0, the player can briefly fly using rocket boots. Is usually set to the same value as <see cref="F:Terraria.Player.vanityRocketBoots"/> </summary>
+        </member>
+        <member name="F:Terraria.Player.vanityRocketBoots">
+            <summary> Controls which rocket boots visuals and sounds will be used: <para/> 1: Rocket Boots <br/> 2: Fairy Boots (plus <see cref="F:Terraria.Player.fairyBoots"/>), Spectre Boots, Lightning Boots <br/> 3: Frostspark Boots <br/> 4: Terraspark Boots <br/> 5: Hellfire Treads </summary>
+        </member>
         <member name="F:Terraria.Player.noFallDmg">
             <summary>
-            If <see langword="true"/>, this player will take no fall damage.
+            If <see langword="true"/>, this player will take no fall damage, such as the effect given by <see cref="F:Terraria.ID.ItemID.LuckyHorseshoe"/>.
+            <para/> If you want to increase the fall height required for fall damage, use <see cref="F:Terraria.Player.extraFall"/> instead.
             </summary>
+        </member>
+        <member name="F:Terraria.Player.lavaImmune">
+            <summary> Complete lava immunity, such as given by <see cref="F:Terraria.ID.ItemID.ObsidianSkinPotion"/>. </summary>
+        </member>
+        <member name="F:Terraria.Player.waterWalk">
+            <summary> Allows the player to walk on water, honey, and shimmer, such as given by <see cref="F:Terraria.ID.ItemID.WaterWalkingBoots"/>. </summary>
+        </member>
+        <member name="F:Terraria.Player.waterWalk2">
+            <summary> Allows the player to walk on water, honey, lava, and shimmer, such as given by <see cref="F:Terraria.ID.ItemID.LavaWaders"/>. </summary>
         </member>
         <member name="F:Terraria.Player.honeyCombItem">
             <summary>
@@ -23036,6 +23132,11 @@
             Sets the <see cref="P:Terraria.DataStructures.ExtraJumpState.Available"/> flag for all extra jumps to <see langword="false"/>.<br/>
             If you want to disable an extra jump, use <see cref="M:Terraria.DataStructures.ExtraJumpState.Disable"/> instead.<br/>
             If you want to disable <b>all</b> extra jumps, but not prevent them once the disabling factor is removed, use <see cref="F:Terraria.Player.blockExtraJumps"/> instead.
+            </summary>
+        </member>
+        <member name="M:Terraria.Player.GetFloorTile(System.Int32,System.Int32)">
+            <summary>
+            Gets a solid, unactuated tile at the tile coordinates provided. Will fallback to the tile to the left or right if necessary. Returns null if no suitable tile is found. Typically used to retrieve the tile a player is standing on by passing in the tile coordinates directly below the player.
             </summary>
         </member>
         <member name="M:Terraria.Player.OpenChest(System.Int32,System.Int32,System.Int32)">
@@ -23928,6 +24029,11 @@
             isAtomicLockable could be expressed as CopyToNewlyCreatedDestinationFolderViaTempFolder if that makes more sense to the reader.
             </summary>
         </member>
+        <member name="F:Terraria.Projectile.arrow">
+            <summary>
+            Indicates that this is an arrow projectile. Used to apply the Phantasm and Magic Quiver effects.
+            </summary>
+        </member>
         <member name="F:Terraria.Projectile.netImportant">
             <summary>
             Indicates that this projectile will be synced to a joining player (by default, any projectiles active before the player joins (besides projectiles with type in <see cref="F:Terraria.Main.projPet"/>) are not synced over). Example: glowsticks
@@ -24157,6 +24263,8 @@
         <member name="F:Terraria.Projectile.hide">
             <summary>
             Projectile is not drawn normally. Held projectiles (<see cref="F:Terraria.Player.heldProj"/>) and projectiles specified to be drawn at specific layers (<see cref="M:Terraria.ModLoader.ModProjectile.DrawBehind(System.Int32,System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32})"/>)  use this.
+            <para/> Be default this will also influence the lighting of this projectile to match the players lighting, as if it were a held projectile. Projectiles that are not held ny the player should set <see cref="F:Terraria.ID.ProjectileID.Sets.DontAttachHideToAlpha"/> to true in SetStaticDefaults: <c>ProjectileID.Sets.DontAttachHideToAlpha[Type] = true;</c>
+            <para/> Defaults to <see langword="false"/>.
             </summary>
         </member>
         <member name="F:Terraria.Projectile.ownerHitCheck">

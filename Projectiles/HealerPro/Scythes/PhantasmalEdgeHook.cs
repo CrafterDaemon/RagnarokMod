@@ -15,6 +15,10 @@ using ReLogic.Content;
 using CalamityMod;
 using Terraria.DataStructures;
 using Terraria.Audio;
+using RagnarokMod.Sounds;
+using ReLogic.Utilities;
+using ThoriumMod.Utilities;
+using RagnarokMod.Utils;
 
 namespace RagnarokMod.Projectiles.HealerPro.Scythes
 {
@@ -41,6 +45,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
         private bool bosshit = false;
         private NPC hitTarget;
         private bool kaboom = false;
+        private SlotId soundSlot;
 
         public override void Load()
         {
@@ -61,7 +66,8 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             Projectile.friendly = true;
             Projectile.tileCollide = false;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 20;
+            Projectile.localNPCHitCooldown = 12;
+            Projectile.soundDelay = 0;
         }
         public override void AI()
         {
@@ -70,6 +76,15 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             {
                 Projectile.Kill();
                 return;
+            }
+
+            if (player.direction != -1)
+            {
+                Projectile.rotation = Projectile.DirectionFrom(player.Center).ToRotation() + MathHelper.ToRadians(45f);
+            }
+            else
+            {
+                Projectile.rotation = Projectile.DirectionTo(player.Center).ToRotation() - MathHelper.ToRadians(45f);
             }
             if (Main.myPlayer == Projectile.owner && Main.mapFullscreen)
             {
@@ -108,8 +123,19 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                     }
                 case AIState.Launching:
                     {
+                        if (Projectile.soundDelay == 0)
+                        {
+                            soundSlot = SoundEngine.PlaySound(RagnarokModSounds.HookLaunch);
+                            Projectile.soundDelay = 120;
+                        }
                         if ((Projectile.Distance(mCenter) >= maxDist && !enemyhit && !bosshit) || !player.Calamity().mouseRight)
                         {
+                            SoundEngine.TryGetActiveSound(soundSlot, out var sound);
+                            if (sound != null)
+                            {
+                                sound.Stop();
+                            }
+                            Projectile.soundDelay = 0;
                             CurrentAIState = AIState.MissedRetract;
                             StateTimer = 0f;
                             Projectile.netUpdate = true;
@@ -117,6 +143,12 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                         }
                         if (enemyhit)
                         {
+                            SoundEngine.TryGetActiveSound(soundSlot, out var sound);
+                            if (sound != null)
+                            {
+                                sound.Stop();
+                            }
+                            Projectile.soundDelay = 0;
                             CurrentAIState = AIState.EnemyHitRetract;
                             StateTimer = 0f;
                             Projectile.netUpdate = true;
@@ -124,18 +156,16 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                         }
                         if (bosshit)
                         {
+                            SoundEngine.TryGetActiveSound(soundSlot, out var sound);
+                            if (sound != null)
+                            {
+                                sound.Stop();
+                            }
+                            Projectile.soundDelay = 0;
                             CurrentAIState = AIState.BossHitRetract;
                             StateTimer = 0f;
                             Projectile.netUpdate = true;
                             break;
-                        }
-                        if (player.direction != -1)
-                        {
-                            Projectile.rotation = Projectile.DirectionFrom(player.Center).ToRotation() + MathHelper.ToRadians(45f);
-                        }
-                        else
-                        {
-                            Projectile.rotation = Projectile.DirectionTo(player.Center).ToRotation() - MathHelper.ToRadians(45f);
                         }
                         player.ChangeDir((player.Center.X < Projectile.Center.X).ToDirectionInt());
                         StateTimer += 1f;
@@ -143,6 +173,11 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                     }
                 case AIState.MissedRetract:
                     {
+                        if (Projectile.soundDelay == 0)
+                        {
+                            soundSlot = SoundEngine.PlaySound(RagnarokModSounds.HookRetract);
+                            Projectile.soundDelay = 420;
+                        }
                         Vector2 uVTP = Projectile.DirectionTo(mCenter).SafeNormalize(Vector2.Zero);
                         if (Projectile.Distance(mCenter) <= missedPullSpeed)
                         {
@@ -155,6 +190,11 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                     }
                 case AIState.EnemyHitRetract:
                     {
+                        if (Projectile.soundDelay == 0)
+                        {
+                            soundSlot = SoundEngine.PlaySound(RagnarokModSounds.HookRetract);
+                            Projectile.soundDelay = 420;
+                        }
                         kaboom = true;
                         Vector2 uVTP = Projectile.DirectionTo(mCenter).SafeNormalize(Vector2.Zero);
                         if (Projectile.Distance(mCenter) <= 3 * hitTarget.width)
@@ -169,12 +209,25 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                     }
                 case AIState.BossHitRetract:
                     {
+                        player.GetRagnarokModPlayer().oneTimeDamageReduction = 0.975f;
+                        if (Projectile.soundDelay == 0)
+                        {
+                            soundSlot = SoundEngine.PlaySound(RagnarokModSounds.HookRetract);
+                            Projectile.soundDelay = 420;
+                        }
                         kaboom = true;
                         Projectile.velocity = Vector2.Zero;
                         Projectile.Center = hitTarget.Center;
                         Vector2 uVTP = player.DirectionTo(Projectile.Center).SafeNormalize(Vector2.Zero);
-                        if (Projectile.Distance(mCenter) <= 3 * hitTarget.width || (StateTimer > 30 && player.velocity == Vector2.Zero) || Projectile.scale < 0.05)
+                        if (Projectile.Distance(mCenter) <= 4 * hitTarget.width || (StateTimer > 30 && player.velocity == Vector2.Zero) || Projectile.scale < 0.05)
                         {
+                            player.GetRagnarokModPlayer().oneTimeDamageReduction = 0;
+                            if (StateTimer > 30)
+                            {
+                                player.immune = true;
+                                player.immuneNoBlink = true;
+                                player.immuneTime = 80;
+                            }
                             Projectile.Kill();
                             return;
                         }
@@ -190,19 +243,28 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (target.boss)
+            if (hitTarget == null)
             {
-                bosshit = true;
+                if (target.boss)
+                {
+                    bosshit = true;
+                    hitTarget = target;
+                }
+                else
+                {
+                    enemyhit = true;
+                    hitTarget = target;
+                }
             }
-            else
-            {
-                enemyhit = true;
-            }
-            hitTarget = target;
         }
 
         public override void OnKill(int timeLeft)
         {
+            SoundEngine.TryGetActiveSound(soundSlot, out var sound);
+            if (sound != null)
+            {
+                sound.Stop();
+            }
             if (kaboom)
             {
                 SoundEngine.PlaySound(SoundID.Item14, Projectile.Center);

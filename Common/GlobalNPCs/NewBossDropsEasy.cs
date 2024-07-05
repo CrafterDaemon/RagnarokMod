@@ -29,6 +29,8 @@ using RagnarokMod.Common.Configs;
 using RagnarokMod.Utils;
 using RagnarokMod.Items.RevItems;
 using RagnarokMod.Items.BardItems.Percussion;
+using CalamityMod.NPCs.Polterghast;
+using RagnarokMod.Items.HealerItems.Scythes;
 
 namespace RagnarokMod.Common.GlobalNPCs
 {
@@ -118,6 +120,10 @@ namespace RagnarokMod.Common.GlobalNPCs
                         }
                     }
                 }
+            }
+            if (npc.type == ModContent.NPCType<Polterghast>() && !Main.expertMode)
+            {
+                npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<PhantasmalEdge>(), 4, 0));
             }
         }
     }

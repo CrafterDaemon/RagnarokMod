@@ -17,6 +17,7 @@ using ThoriumMod.Items.BossQueenJellyfish;
 using ThoriumMod.Items.BossForgottenOne;
 using ThoriumMod.Items.BossViscount;
 using RagnarokMod.Items.BardItems.Percussion;
+using RagnarokMod.Items.HealerItems.Scythes;
 
 namespace RagnarokMod.Common.GlobalItems
 {
@@ -68,6 +69,10 @@ namespace RagnarokMod.Common.GlobalItems
             if (item.type == ModContent.ItemType<ForgottenOneTreasureBag>())
             {
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<EldritchShellFragment>(),1,1,3));
+            }
+            if (item.type == ModContent.ItemType<PolterghastBag>())
+            {
+                itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<PhantasmalEdge>()));
             }
         }
     }

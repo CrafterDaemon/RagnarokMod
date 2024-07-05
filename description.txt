@@ -1,16 +1,56 @@
 Ragnarok. A great calamity in norse mythology, Is now a mod that allows Thorium and Calamity to be used together with minimal issues. 
 Adds more content for Thorium classes, Merges Thrower + Rogue, and creates a more coherent experience throughout all stages of the game.
 
-Update 1.4.1 Changelog
+[h1]Update 1.4.2 Changelog[/h1]
 [list]
-[*] Nightfallen armor now gives radiant damage rather than removing it
-[*] Removed Queen Jelly from Decapodita Sprout recipe
-[*] Thorium bosses are now automatically added to bossrush with appropriate scaling, unless Thorium Bosses Reworked is installed.
-[*] Calamity Multiplayer Health Scalar is now applied to Thorium bosses as well
-[*] Added Sigil of a Cruel World
-[*] Added Golden Bat Droppings
-[*] Added Universal Headset
+[*] Added Phantasmal Edge
+[*] Added Grasp of Void
+[*] Added Korobeiniki
+[*] Added Cosmic Injector
+[*] Thorium Boss Summons are no longer consumable. This does not apply to Viscount or Lich
+[*] Added Damage Reduction to Thorium Bosses
+[*] Added Revengence / Death / Boss Rush reworks to Grand Thunder Bird and Queen Jellyfish
 [/list]
+[h2]Boss Rework Information:[/h2]
+
+[h3]Grand Thunder Bird[/h3]
+Rev:
+Moves and attacks faster and unlocks additional attacks upon reaching 50% health instead of 33% health
+Spawns more ThunderZaps from above
+Moves faster
+Charges faster
+ThunderZaps fly faster
+
+Death:
+Charges twice and faster
+Moves even faster
+ThunderZaps fly even faster
+Spawns 1 additional Storm Hatchling
+Shoots even more ThunderZaps
+
+Bossrush:
+Moves and charges way faster
+Shoots even more ThunderZaps
+StormHatchlings also move way faster
+ThunderZaps fly even faster
+
+[h3]Queen Jellyfish[/h3]
+Rev:
+BubbleBomb no longer requires the player to be on the ground
+Slightly increased movement speed
+Shoots BubbleBombs more frequently in all phases, BubbleBombs fly a little bit faster
+
+Death:
+Moves significantly faster
+Shoots BubbleBombs even more frequently, BubbleBombs fly significantly faster
+Increased  defense while casting whirlpool
+Increased summon cap for every summon from 3 to 4
+
+Bossrush:
+Queen Jellyfish and her summons move and shoot much faster
+Whirlpool  has way stronger tracking
+Increased the defense while casting whirlpool even more
+BubbleBombs flies way faster
 
 [h1] ANNOUNCEMENT [/h1]
 After such a long wait...
@@ -30,22 +70,6 @@ This large update changes many things, so here is a list of notable changes:
 [*]Merged both mods' boss progression (configurable)
 [*]Much more we forgot to document / i cannot rememeber
 [/list]
-
-[b]Item Jam[/b]
-We are hosting an Item Jam in celebration of 10,000 Subscribers on Steam and 100 Discord Members!
-Submit your item ideas for a chance for it to be added Ragnarok, and even win a little money!
-All submissions are to be submitted through either #ragnarok-suggestions or #create-ticket-here in our discord server!
-https://discord.com/invite/UBAQwtKCbf
-All of our favorite ideas will be added to Ragnarok, and there are 5 categories in which you can win a prize!
-[list]
-[*]Category One - Best Accessory, $10
-[*]Category Two - Most Well-Written, $10
-[*]Category Three - Best Calamity Inspired Item, $10
-[*]Category Four - Best External Reference, $10
-[*]Category Five - Best Original Item, $10
-[/list]
-
-Item Jam Concludes June 30th.
 
 Join the official discord for help with bugs/glitches or to hang out with the community!
 https://discord.com/invite/UBAQwtKCbf

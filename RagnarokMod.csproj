@@ -11,7 +11,9 @@
     <None Remove="Items\BardItems\hi_to_anyone_reading_this.png" />
     <None Remove="Items\BardItems\TarragonShroud.png" />
     <None Remove="Items\BlazingDrunBeat.png" />
+    <None Remove="Items\HealerItems\Scythes\GodSlayersReap.png" />
     <None Remove="Localization\en-US_Mods.ThoriumMod.hjson" />
+    <None Remove="Projectiles\HealerPro\Scythes\GodSlayersReapPro1.png" />
     <None Remove="Projectiles\HealerPro\Scythes\PhantasmalEdgeHook.png" />
     <None Remove="Projectiles\HealerPro\Scythes\WapBamBoom.png" />
     <None Remove="Projectiles\NoProj.png" />

@@ -36,12 +36,12 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             Projectile.ignoreWater = true;
             Projectile.penetrate = -1;
             Projectile.usesIDStaticNPCImmunity = true;
-            Projectile.idStaticNPCHitCooldown = 10;
+            Projectile.idStaticNPCHitCooldown = 6;
             Projectile.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
             scytheCount = 2;
             Projectile.Size = new Vector2(278f, 274f);
             Projectile.timeLeft = 20000;
-            rotationSpeed = 0.15f;
+            rotationSpeed = 0.2f;
             fadeOutSpeed = 30;
             fadeOutTime = 10;
         }
@@ -63,7 +63,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             spawnLoc.Y = Main.rand.Next(-Projectile.height/2, Projectile.height/2);
             if (Main.rand.Next(1, 34) == 33 && fireBallCounter != 15)
             {
-                Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center + spawnLoc, Vector2.Zero, ModContent.ProjectileType<PhantasmalEdgeBombs>(), 95, Projectile.knockBack);
+                Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center + spawnLoc, Vector2.Zero, ModContent.ProjectileType<PhantasmalEdgeBombs>(), Projectile.damage, Projectile.knockBack);
                 fireBallCounter++;
             }
             if (player.dead || !player.channel)

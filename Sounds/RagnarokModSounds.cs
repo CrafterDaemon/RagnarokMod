@@ -14,5 +14,7 @@ namespace RagnarokMod.Sounds
         public static readonly SoundStyle TSS = new("RagnarokMod/Sounds/TSS") { Volume = 0.75f, MaxInstances = 0 };
         public static readonly SoundStyle Steampipes = new("RagnarokMod/Sounds/Steampipes") { Volume = 0.75f, MaxInstances = 0 };
         public static readonly SoundStyle RadioDemon = new("RagnarokMod/Sounds/radiodemon") { Volume = 0.75f, MaxInstances = 0 };
+        public static readonly SoundStyle HookLaunch = new("RagnarokMod/Sounds/HookLaunch") { Volume = 0.75f, MaxInstances = 0 };
+        public static readonly SoundStyle HookRetract = new("RagnarokMod/Sounds/HookRetract") { Volume = 0.75f, MaxInstances = 0 };
     }
 }

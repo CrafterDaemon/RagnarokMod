@@ -31,10 +31,15 @@ namespace RagnarokMod.Utils
 		
 		private static Mod thorium = ModLoader.GetMod("ThoriumMod");
 		private static Mod calamity = ModLoader.GetMod("CalamityMod");
-		
+
 		private static int debugcounter = 0;
-		
-        //this is most likely only gonna be for armor set abilities.
+
+		/// <summary>
+		/// multiplies FinalDamage by (1 - this value) on the next damage taken.
+		/// </summary>
+		public float oneTimeDamageReduction = 0;
+
+		//this is most likely only gonna be for armor set abilities.
 		public bool batpoop = false;
         public bool auricBardSet = false;
 		public bool auricHealerSet = false;
@@ -51,15 +56,24 @@ namespace RagnarokMod.Utils
 		private int bloodflarebloodlust = 0;
 		private int bloodflarepointtimer = 0;
 		private const int maxbloodlustpoints = 150;
-	
-		public override void OnHurt(Player.HurtInfo info) 
+
+		public override void OnHurt(Player.HurtInfo info)
 		{
-			if(bloodflareHealer || bloodflareBard) 
+			if (bloodflareHealer || bloodflareBard)
 			{
 				RemoveBloodFlareBloodlustPoints(25);
 			}
-		}	
-	
+		}
+
+        public override void ModifyHitByNPC(NPC npc, ref Player.HurtModifiers modifiers)
+        {
+            if (oneTimeDamageReduction != 0)
+            {
+                modifiers.FinalDamage *= (1 - oneTimeDamageReduction);
+                oneTimeDamageReduction = 0;
+            }
+        }
+
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
             if (ThoriumHotkeySystem.ArmorKey.JustPressed)

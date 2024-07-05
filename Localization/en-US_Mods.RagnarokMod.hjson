@@ -602,6 +602,11 @@ Items: {
 		DisplayName: Phantasmal Edge
 		Tooltip: ""
 	}
+
+	GodSlayersReap: {
+		DisplayName: God Slayers Reap
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
