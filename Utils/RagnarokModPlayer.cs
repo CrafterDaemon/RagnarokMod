@@ -39,8 +39,13 @@ namespace RagnarokMod.Utils
 		/// </summary>
 		public float oneTimeDamageReduction = 0;
 
-		//this is most likely only gonna be for armor set abilities.
-		public bool batpoop = false;
+		/// <summary>
+		/// if this is set to true, then all attacks will inflict brimstone flames for 5 seconds.
+		/// </summary>
+        public bool brimstoneFlamesOnHit = false;
+
+        //this is most likely only gonna be for armor set abilities.
+        public bool batpoop = false;
         public bool auricBardSet = false;
 		public bool auricHealerSet = false;
 		public bool tarraHealer = false;
@@ -418,8 +423,12 @@ namespace RagnarokMod.Utils
 		}
 		
 		public override void OnHitNPCWithProj(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
-		{
-			if (this.bloodflareHealer && projectile.DamageType == ThoriumDamageBase<HealerDamage>.Instance)
+        {
+            if (brimstoneFlamesOnHit)
+            {
+                target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 300);
+            }
+            if (this.bloodflareHealer && projectile.DamageType == ThoriumDamageBase<HealerDamage>.Instance)
 			{
 				ApplyBloodFlareOnHit(target, damageDone);	
 			}
@@ -429,9 +438,13 @@ namespace RagnarokMod.Utils
 			}
 		}
 		
-		public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone) 
-		{
-			if (this.bloodflareHealer && item.DamageType == ThoriumDamageBase<HealerDamage>.Instance)
+		public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            if (brimstoneFlamesOnHit)
+            {
+                target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 300);
+            }
+            if (this.bloodflareHealer && item.DamageType == ThoriumDamageBase<HealerDamage>.Instance)
 			{
 				ApplyBloodFlareOnHit(target, damageDone);	
 			}
@@ -485,6 +498,7 @@ namespace RagnarokMod.Utils
 				{
 					bloodflarebloodlust = 0;
 				}
+				this.brimstoneFlamesOnHit = false;
 				this.tarraHealer = false;
 				this.tarraBard = false;
 				this.daedalusHealer = false;

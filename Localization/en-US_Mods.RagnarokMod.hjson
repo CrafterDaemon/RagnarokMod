@@ -23,6 +23,41 @@ Buffs: {
 		Description: Mods.RagnarokMod.Buffs.UniversalBlessing.Description
 		DisplayName: Universal Blessing
 	}
+
+	ElementalScytheCooldown: {
+		DisplayName: Elemental Scythe Cooldown
+		Description: Mods.RagnarokMod.Buffs.ElementalScytheCooldown.Description
+	}
+
+	ScytheAirBuff: {
+		DisplayName: Scythe Air Buff
+		Description: Mods.RagnarokMod.Buffs.ScytheAirBuff.Description
+	}
+
+	ScytheBrimstoneBuff: {
+		DisplayName: Scythe Brimstone Buff
+		Description: Mods.RagnarokMod.Buffs.ScytheBrimstoneBuff.Description
+	}
+
+	ScytheEarthBuff: {
+		DisplayName: Scythe Earth Buff
+		Description: Mods.RagnarokMod.Buffs.ScytheEarthBuff.Description
+	}
+
+	ScytheOasisBuff: {
+		DisplayName: Scythe Oasis Buff
+		Description: Mods.RagnarokMod.Buffs.ScytheOasisBuff.Description
+	}
+
+	ScytheSandBuff: {
+		DisplayName: Scythe Sand Buff
+		Description: Mods.RagnarokMod.Buffs.ScytheSandBuff.Description
+	}
+
+	ScytheWaterBuff: {
+		DisplayName: Scythe Water Buff
+		Description: Mods.RagnarokMod.Buffs.ScytheWaterBuff.Description
+	}
 }
 
 Items: {
