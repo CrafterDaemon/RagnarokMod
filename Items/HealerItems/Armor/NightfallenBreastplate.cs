@@ -24,7 +24,7 @@ namespace RagnarokMod.Items.HealerItems.Armor
 			base.Item.height = 20;
 			base.Item.value = 115055;
 			base.Item.rare = ModContent.RarityType<PureGreen>();
-			base.Item.defense = 30;
+			base.Item.defense = 28;
 		}
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -49,7 +49,7 @@ namespace RagnarokMod.Items.HealerItems.Armor
 		{
 			ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
 		    player.GetDamage(DamageClass.Generic) *= 0.65f;
-			player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) += 1.45f;
+			player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) += 1.9f;
 			player.GetCritChance(ThoriumDamageBase<HealerDamage>.Instance) += 12f;
 		
 		}
