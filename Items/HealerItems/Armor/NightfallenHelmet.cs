@@ -52,8 +52,8 @@ namespace RagnarokMod.Items.HealerItems.Armor
 		public override void UpdateEquip(Player player)
 		{
 			ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
-		    player.GetDamage(DamageClass.Generic) *= 0.65f;
-			player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) += 1.7f;
+		    player.GetDamage(DamageClass.Generic) -= 0.65f;
+			player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) += 1.35f;
 			player.GetCritChance(ThoriumDamageBase<HealerDamage>.Instance) += 16f;
 			player.statManaMax2 += 60;
 		
