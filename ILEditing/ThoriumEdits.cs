@@ -59,14 +59,18 @@ namespace RagnarokMod.ILEditing
             {
                 var c = new ILCursor(il);
 
-                if (!c.TryGotoNext(i => i.MatchLdcI4(1725)))
+                if (!c.TryGotoNext(MoveType.After, i => i.MatchLdcI4(1725)))
                 {
                     return;
                 }
-
-                c.Index++;
                 c.Emit(OpCodes.Pop);
                 c.Emit(OpCodes.Ldc_I4, ModContent.ItemType<EssenceofHavoc>());
+                if (!c.TryGotoNext(MoveType.After, i => i.MatchLdcI4(30)))
+                {
+                    return;
+                }
+                c.Emit(OpCodes.Pop);
+                c.Emit(OpCodes.Ldc_I4, 3);
             }
         }
         private void NewLifestealMath(ILContext il)
