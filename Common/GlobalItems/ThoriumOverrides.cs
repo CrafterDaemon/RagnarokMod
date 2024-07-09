@@ -3,6 +3,7 @@ using CalamityMod.Items.Accessories.Wings;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Systems;
+using CalamityMod;
 using Ragnarok.Items;
 using RagnarokMod.Items;
 using RagnarokMod.Items.BardItems;
@@ -18,7 +19,6 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using ThoriumMod.Items.BardItems;
 using ThoriumMod.Items.Consumable;
-using ThoriumMod.Items.Depths;
 using ThoriumMod.Items.Donate;
 using ThoriumMod.Items.Terrarium;
 using ThoriumMod.Items.ThrownItems;
@@ -33,11 +33,13 @@ using ThoriumMod.Items.BossFallenBeholder;
 using ThoriumMod.Items.BossForgottenOne;
 using ThoriumMod.Items.BossThePrimordials;
 using ThoriumMod.Utilities;
+using ThoriumMod.Buffs;
 
 namespace RagnarokMod.Common.GlobalItems
 {
     public class ThoriumOverrides : GlobalItem
     {
+		private static Mod thorium = ModLoader.GetMod("ThoriumMod");
         public override void AddRecipes()
         {
             GetRecipe finder = new();
@@ -119,6 +121,5 @@ namespace RagnarokMod.Common.GlobalItems
 			recipe.RemoveTile(tileold);
 			recipe.AddTile(tilenew);
 		}
-
     }
 }

@@ -1,11 +1,14 @@
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
+using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using CalamityMod;
 using ThoriumMod;
+using ThoriumMod.Items.Depths;
+using ThoriumMod.Buffs;
 
 namespace RagnarokMod.Common.GlobalItems
 {
@@ -602,5 +605,85 @@ namespace RagnarokMod.Common.GlobalItems
 				return;
 			}
 		}
+		
+		public override void UpdateEquip(Item item, Player player) 
+		{
+			if(item.type == thorium.Find<ModItem>("DepthDiverHelmet").Type) 
+			{
+				if (Main.netMode == 1 && Main.myPlayer != player.whoAmI)
+				{
+					Player localPlayer = Main.LocalPlayer;
+					if (localPlayer.DistanceSQ(player.Center) < 62500f)
+					{
+						localPlayer.AddBuff(ModContent.BuffType<DepthBreath>(), 30, true, false);
+					}
+				}
+			
+				var calamityPlayer = player.Calamity();
+				if (!calamityPlayer.ZoneAbyss)
+				{
+					if (player.breath <= player.breathMax + 2)
+					{
+						player.breath = player.breathMax + 3;
+					}	
+				} 
+				else
+				{
+					player.moveSpeed += 0.2f;
+					player.statDefense += 10;
+					if(player.breath < player.breathMax - 25 && player.breath > 5) 
+					{	
+						Random rnd = new Random(); 
+						if(rnd.Next(1, 600) == 1) 
+						{
+							player.breath = player.breath + 20;
+						}
+					}
+				}
+				player.GetCritChance(DamageClass.Generic) += 6f;
+			}
+			if(item.type == thorium.Find<ModItem>("WhiteDwarfMask").Type) 
+			{
+				player.GetDamage(DamageClass.Throwing) -= 0.05f;
+			}
+			if(item.type == thorium.Find<ModItem>("WhiteDwarfGuard").Type) 
+			{
+				player.GetDamage(DamageClass.Throwing) -= 0.05f;
+			}
+			if(item.type == thorium.Find<ModItem>("WhiteDwarfGreaves").Type) 
+			{
+				player.GetDamage(DamageClass.Throwing) -= 0.05f;
+			}
+			if(item.type == thorium.Find<ModItem>("ShadeMasterMask").Type) 
+			{
+				player.GetDamage(DamageClass.Throwing) -= 0.05f;
+			}
+			if(item.type == thorium.Find<ModItem>("ShadeMasterTreads").Type) 
+			{
+				player.GetDamage(DamageClass.Throwing) -= 0.075f;
+			}
+			if(item.type == thorium.Find<ModItem>("LichCarapace").Type) 
+			{
+				player.GetDamage(DamageClass.Throwing) -= 0.05f;
+			}
+			if(item.type == thorium.Find<ModItem>("LichTalon").Type) 
+			{
+				player.GetDamage(DamageClass.Throwing) -= 0.025f;
+			}
+			if(item.type == thorium.Find<ModItem>("TideTurnersGaze").Type) 
+			{
+				player.GetDamage(DamageClass.Throwing) -= 0.15f;
+			}
+		}
+		
+		public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
+        {
+				if(item.type == thorium.Find<ModItem>("DepthDiverHelmet").Type) 
+				{
+					tooltips[5].Text = tooltips[5].Text + "\nDoes not work in the Abyss but instead grants you and your allies +10 defense and +20% movement speed\nYou also randomly get some oxygen back";
+					
+				}
+		}
+		
 	}
 }

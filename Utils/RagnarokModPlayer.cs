@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.GameInput;
 using Terraria.ModLoader;
+using ThoriumMod.Buffs;
 using ThoriumMod.Buffs.Bard;
 using ThoriumMod.Buffs.Healer;
 using ThoriumMod.Buffs.Thrower;
@@ -151,6 +152,21 @@ namespace RagnarokMod.Utils
 				if(base.Player.buffTime[bufftypeindex] > 480 && bufftypeindex != -100) 
 				{
 					base.Player.buffTime[bufftypeindex] = 480;
+				}
+			}
+			else if (base.Player.HasBuff(ModContent.BuffType<OceansBuffer>())) 
+			{
+				int bufftypeindex = -100;
+				for( int i = 0; i < base.Player.buffType.Length; i++) 
+				{
+					if(base.Player.buffType[i] == ModContent.BuffType<OceansBuffer>()) 
+					{
+						bufftypeindex = i;
+					}
+				}
+				if(base.Player.buffTime[bufftypeindex] > 360 && bufftypeindex != -100) 
+				{
+					base.Player.buffTime[bufftypeindex] = 360;
 				}
 			}
 			

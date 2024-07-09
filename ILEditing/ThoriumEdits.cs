@@ -1,5 +1,6 @@
 ﻿using CalamityMod.Items.Materials;
 using CalamityMod.CalPlayer;
+using CalamityMod;
 using IL.ThoriumMod;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
@@ -34,6 +35,8 @@ namespace RagnarokMod.ILEditing
 					IL.ThoriumMod.Items.BossThePrimordials.Rhapsodist.InspiratorsHelmet.ModifyEmpowerment += RhapsodistSetNerf;
                     IL.ThoriumMod.ThoriumPlayer.PostUpdateEquips += removeBardResourceCaps;
 					IL.ThoriumMod.Buffs.Mount.GoldenScaleBuff.Update += tweakGoldenScaleBuff;
+					IL.ThoriumMod.Buffs.DepthBreath.Update += tweakDepthBreath;
+					IL.ThoriumMod.Items.Depths.DepthDiverHelmet.UpdateEquip += tweakDepthDiverHelmet;
                     ZZZtoLoadAfterThoirumEditsBardWheel.GetMaxInsp(maxInsp);
                     loadCaught = true;
                     break;
@@ -51,6 +54,8 @@ namespace RagnarokMod.ILEditing
 				IL.ThoriumMod.Items.BossThePrimordials.Rhapsodist.InspiratorsHelmet.ModifyEmpowerment -= RhapsodistSetNerf;
                 IL.ThoriumMod.ThoriumPlayer.PostUpdateEquips -= removeBardResourceCaps;
 				IL.ThoriumMod.Buffs.Mount.GoldenScaleBuff.Update -= tweakGoldenScaleBuff;
+				IL.ThoriumMod.Buffs.DepthBreath.Update -= tweakDepthBreath;
+				IL.ThoriumMod.Items.Depths.DepthDiverHelmet.UpdateEquip -= tweakDepthDiverHelmet;
             }
         }
         private void HavocPhylactory(ILContext il)
@@ -174,21 +179,20 @@ namespace RagnarokMod.ILEditing
 		
         private void tweakGoldenScaleBuff(ILContext il) 
         {
-	        var c = new ILCursor(il);
-
-            for (int i = 0; i < 3; i++)
-            {
-                if (!c.TryGotoNext(i => i.OpCode == OpCodes.Stfld))
-                {
-                    return;
-                }
-            }
-	        c.Emit(OpCodes.Ldarg_1);
-	        c.Emit(OpCodes.Dup);
-	        c.Emit(OpCodes.Ldfld, typeof(Player).GetField("breath"));
-	        c.Emit(OpCodes.Ldc_I4_1);
-	        c.Emit(OpCodes.Add);
-	        c.Emit(OpCodes.Stfld, typeof(Player).GetField("breath"));
+				var c = new ILCursor(il);
+				c.EmitRet();
         }
+		
+		private void tweakDepthBreath(ILContext il) 
+        {
+				var c = new ILCursor(il);
+				c.EmitRet();
+        }
+		
+		private void tweakDepthDiverHelmet(ILContext il) 
+		{
+			var c = new ILCursor(il);
+			c.EmitRet();
+		}
     }
 }

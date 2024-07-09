@@ -179,7 +179,7 @@ Items: {
 		Tooltip:
 			'''
 			'Unleash aquatic wrath upon your foes'
-			40% increased rogue damage
+			25% increased rogue damage
 			50% chance not to consume rogue items
 			Increases your maximum technique points by 2
 			Rogue damage briefly increases the damage the enemy takes by 10%
@@ -193,7 +193,7 @@ Items: {
 		Tooltip:
 			'''
 			'Embrace death...'
-			20% increased rogue damage
+			15% increased rogue damage
 			30% increased rogue weapon velocity
 			'''
 	}
@@ -214,7 +214,7 @@ Items: {
 		Tooltip:
 			'''
 			'Embrace death...'
-			15% increased rogue damage
+			12.5% increased rogue damage
 			15% increased rogue critical strike chance
 			'''
 	}
@@ -424,7 +424,7 @@ Items: {
 		Tooltip:
 			'''
 			'Live in the shadows and strike with precision'
-			20% increased rogue damage
+			15% increased rogue damage
 			33% chance not to consume rogue items
 			Increases your maximum technique points by 2
 			'''
@@ -435,7 +435,7 @@ Items: {
 		Tooltip:
 			'''
 			'Live in the shadows and strike with precision'
-			20% increased rogue damage
+			12.5% increased rogue damage
 			20% increased rogue weapon critical strike chance
 			15% increased movement speed
 			'''
@@ -485,9 +485,14 @@ Items: {
 		DisplayName: White Dwarf Greaves
 		Tooltip:
 			'''
-			20% increased rogue damage
+			15% increased rogue damage
 			20% increased rogue weapon critical strike chance
 			20% increased movement speed
+			'''
+		SetBonus:
+			'''
+			Critical strikes will unleash ivory flares from the cosmos
+			Ivory flares deal 0.05% of the hit target's maximum life as damage
 			'''
 	}
 
@@ -499,15 +504,25 @@ Items: {
 			15% increased rogue weapon speed
 			30% increased rogue weapon velocity
 			'''
+		SetBonus:
+			'''
+			Critical strikes will unleash ivory flares from the cosmos
+			Ivory flares deal 0.05% of the hit target's maximum life as damage
+			'''
 	}
 
 	WhiteDwarfMask: {
 		DisplayName: White Dwarf Mask
 		Tooltip:
 			'''
-			25% increased rogue damage
+			15% increased rogue damage
 			33% chance not to consume rogue items
 			Increases your maximum technique points by 2
+			'''
+		SetBonus:
+			'''
+			Critical strikes will unleash ivory flares from the cosmos
+			Ivory flares deal 0.05% of the hit target's maximum life as damage
 			'''
 	}
 
