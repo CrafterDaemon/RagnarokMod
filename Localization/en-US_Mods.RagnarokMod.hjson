@@ -642,6 +642,11 @@ Items: {
 		DisplayName: God Slayers Reap
 		Tooltip: ""
 	}
+
+	Arpeggiator: {
+		DisplayName: Arpeggiator
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -698,6 +703,8 @@ Projectiles: {
 	PhantasmalEdgePro1.DisplayName: Phantasmal Edge Pro1
 	PhantasmalEdgeBombs.DisplayName: Phantasmal Edge Bombs
 	PhantasmalEdgeHook.DisplayName: Phantasmal Edge Hook
+	ArpeggiatorPro1.DisplayName: Arpeggiator Pro1
+	ArpeggiatorPro2.DisplayName: Arpeggiator Pro2
 }
 
 Configs: {
