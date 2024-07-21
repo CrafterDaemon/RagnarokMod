@@ -40,7 +40,7 @@ namespace RagnarokMod.Items.BardItems.Electronic
             InspirationCost = 1;
             Item.width = 50;
             Item.height = 26;
-            Item.scale = 1.5f;
+            Item.scale = 1f;
             Item.useTime = 5;
             Item.useAnimation = 16;
             Item.useStyle = ItemUseStyleID.Shoot;
