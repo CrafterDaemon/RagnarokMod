@@ -21,25 +21,25 @@ namespace RagnarokMod.Items.HealerItems.Scythes
         public override void SetDefaults()
         {
             SetDefaultsToScythe();
-            base.Item.damage = 120;
+            base.Item.damage = 115;
             scytheSoulCharge = 2;
-            base.Item.width = 80;
-            base.Item.height = 76;
+            base.Item.width = 146;
+            base.Item.height = 176;
             base.Item.value = Item.sellPrice(0, 28, 0);
-            base.Item.rare = ItemRarityID.Orange;
+            base.Item.rare = ItemRarityID.Purple;
             base.Item.shoot = ModContent.ProjectileType<ElementalReaperPro>();
             base.Item.shootSpeed = 0.1f;
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) {
             Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
-            Vector2 vel1 = new Vector2(20f, 0f);
+            Vector2 vel1 = new Vector2(10f, 0f);
             Projectile.NewProjectileDirect(source, position, vel1, ModContent.ProjectileType<ElementalReaperPro2>(), damage, knockback, player.whoAmI);
-            Vector2 vel2 = new Vector2(0f, 20f);
-            Projectile.NewProjectileDirect(source, position, vel1, ModContent.ProjectileType<ElementalReaperPro2>(), damage, knockback, player.whoAmI);
-            Vector2 vel3 = new Vector2(-20f, 0f);
-            Projectile.NewProjectileDirect(source, position, vel1, ModContent.ProjectileType<ElementalReaperPro2>(), damage, knockback, player.whoAmI);
-            Vector2 vel4 = new Vector2(0f, -20f);
-            Projectile.NewProjectileDirect(source, position, vel1, ModContent.ProjectileType<ElementalReaperPro2>(), damage, knockback, player.whoAmI);
+            Vector2 vel2 = new Vector2(0f, 10f);
+            Projectile.NewProjectileDirect(source, position, vel2, ModContent.ProjectileType<ElementalReaperPro2>(), damage, knockback, player.whoAmI);
+            Vector2 vel3 = new Vector2(-10f, 0f);
+            Projectile.NewProjectileDirect(source, position, vel3, ModContent.ProjectileType<ElementalReaperPro2>(), damage, knockback, player.whoAmI);
+            Vector2 vel4 = new Vector2(0f, -10f);
+            Projectile.NewProjectileDirect(source, position, vel4, ModContent.ProjectileType<ElementalReaperPro2>(), damage, knockback, player.whoAmI);
             
     
 			return false;

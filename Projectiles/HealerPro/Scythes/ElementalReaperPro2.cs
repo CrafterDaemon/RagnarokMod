@@ -16,8 +16,8 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
         public int dustTimer = 0;
         public override void SetDefaults()
         {
-            Projectile.width = 26;
-            Projectile.height = 18;
+            Projectile.width = 14;
+            Projectile.height = 26;
             Projectile.friendly = true;
             Projectile.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
             Projectile.tileCollide = false;
@@ -29,7 +29,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
         public override void AI()
         {
             dustTimer++;
-            if (dustTimer == 2)
+            if (dustTimer == 1)
             {
                 dustTimer = 0;
                 int rainbow = Dust.NewDust(Projectile.position, 2, 2, DustID.RainbowTorch, 0f, 0f, 150, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), 1.3f);
@@ -37,14 +37,19 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                 Main.dust[rainbow].velocity *= 0f;
             }
 
-            Projectile.rotation = Projectile.velocity.ToRotation();
+            float direction = Projectile.velocity.ToRotation();
+            direction += MathHelper.PiOver2;
+            Projectile.rotation = direction;
 
             NPC npc = Projectile.FindNearestNPC(600);
             if (npc != null)
             {
                 Projectile.HomeInOnTarget(npc, 15f, 0.12f);
             }
-
+            
         }
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers) {
+			    modifiers.FinalDamage *= 0.8f;
+            }
     }
 }

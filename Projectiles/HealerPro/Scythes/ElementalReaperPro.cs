@@ -30,7 +30,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             Projectile.penetrate = -1;
             Projectile.timeLeft = 26;
             Projectile.usesIDStaticNPCImmunity = true;
-            Projectile.idStaticNPCHitCooldown = 5;
+            Projectile.idStaticNPCHitCooldown = 10;
             Projectile.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
             fadeOutTime = 10;
             fadeOutSpeed = 30;
@@ -41,5 +41,5 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             dustType = DustID.RainbowTorch;
             
         }
-    }
+    }	
 }
