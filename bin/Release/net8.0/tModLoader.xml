@@ -12790,6 +12790,7 @@
             Allows you to modify the contents of a shop whenever player opens it. <br/>
             If possible, use <see cref="M:Terraria.ModLoader.GlobalNPC.ModifyShop(Terraria.ModLoader.NPCShop)"/> instead, to reduce mod conflicts and improve compatibility.
             Note that for special shops like travelling merchant, the <paramref name="shopName"/> may not correspond to a <see cref="T:Terraria.ModLoader.NPCShop"/> in the <see cref="T:Terraria.ModLoader.NPCShopDatabase"/>
+            <para/> Also note that unused slots in <paramref name="items"/> are null while <see cref="P:Terraria.Item.IsAir"/> entries are entries that have a reserved slot (<see cref="P:Terraria.ModLoader.NPCShop.Entry.SlotReserved"/>) but did not have their conditions met. These should not be overwritten.
             </summary>
             <param name="npc">An instance of <seealso cref="T:Terraria.NPC"/> that currently player talks to.</param>
             <param name="shopName">The full name of the shop being opened. See <see cref="M:Terraria.ModLoader.NPCShopDatabase.GetShopName(System.Int32,System.String)"/> for the format. </param>
@@ -17372,7 +17373,8 @@
             <summary>
             Allows you to modify the contents of a shop whenever player opens it. <br/>
             To create a shop, use <see cref="M:Terraria.ModLoader.ModNPC.AddShops"/> <br/>
-            Note that for special shops like travelling merchant, the <paramref name="shopId"/> may not correspond to a <see cref="T:Terraria.ModLoader.NPCShop"/> in the <see cref="T:Terraria.ModLoader.NPCShopDatabase"/>
+            Note that for special shops like travelling merchant, the <paramref name="shopName"/> may not correspond to a <see cref="T:Terraria.ModLoader.NPCShop"/> in the <see cref="T:Terraria.ModLoader.NPCShopDatabase"/>
+            <para/> Also note that unused slots in <paramref name="items"/> are null while <see cref="P:Terraria.Item.IsAir"/> entries are entries that have a reserved slot (<see cref="P:Terraria.ModLoader.NPCShop.Entry.SlotReserved"/>) but did not have their conditions met. These should not be overwritten.
             </summary>
             <param name="shopName">The full name of the shop being opened. See <see cref="M:Terraria.ModLoader.NPCShopDatabase.GetShopName(System.Int32,System.String)"/> for the format. </param>
             <param name="items">Items in the shop including 'air' items in empty slots.</param>
@@ -20735,6 +20737,15 @@
             <param name="items">Array to be filled.</param>
             <param name="npc">The NPC the player is talking to, for <see cref="M:Terraria.ModLoader.NPCShop.Entry.OnShopOpen(Terraria.Item,Terraria.NPC)"/> calls.</param>
             <param name="overflow">True if some items were unable to fit in the provided array.</param>
+        </member>
+        <member name="P:Terraria.ModLoader.NPCShop.Entry.SlotReserved">
+            <inheritdoc cref="M:Terraria.ModLoader.NPCShop.Entry.ReserveSlot"/>
+        </member>
+        <member name="M:Terraria.ModLoader.NPCShop.Entry.ReserveSlot">
+            <summary>
+            Reserves a slot for this entry even if its conditions are not met (<see cref="M:Terraria.ModLoader.NPCShop.Entry.ConditionsMet"/>). This can be used to create a defined shop layout similar to the Tavernkeep shop.
+            </summary>
+            <returns></returns>
         </member>
         <member name="M:Terraria.ModLoader.NPCShopDatabase.GetShopName(System.Int32,System.String)">
             <summary>

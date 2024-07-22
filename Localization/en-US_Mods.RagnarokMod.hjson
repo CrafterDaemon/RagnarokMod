@@ -647,6 +647,11 @@ Items: {
 		DisplayName: Arpeggiator
 		Tooltip: ""
 	}
+
+	MaxEmpowermentTester: {
+		DisplayName: Max Empowerment Tester
+		Tooltip: ""
+	}
 }
 
 Projectiles: {

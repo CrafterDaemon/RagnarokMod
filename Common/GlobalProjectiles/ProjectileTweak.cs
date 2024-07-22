@@ -18,9 +18,16 @@ namespace RagnarokMod.Common.GlobalProjectiles
 		public override void ModifyHitNPC(Projectile projectile, NPC target, ref NPC.HitModifiers modifier) 
 		{
 			ModLoader.TryGetMod("ThoriumMod", out Mod thorium);
-			if ( projectile.type == thorium.Find<ModProjectile>("WhiteFlare").Type ) 
+			if ( projectile.type == thorium.Find<ModProjectile>("WhiteFlare").Type)
 			{
-				projectile.damage = (int)(projectile.damage * 0.5f);
+				if (projectile.TryGetOwner(out Player player) && player.GetWeaponDamage(player.HeldItem) > target.damage)
+				{
+					projectile.damage = player.GetWeaponDamage(player.HeldItem);
+                }
+				else 
+				{
+					projectile.damage = target.damage; 
+				}
 			}
 		}
 	}
