@@ -652,6 +652,11 @@ Items: {
 		DisplayName: Elemental Reaper
 		Tooltip: ""
 	}
+
+	MaxEmpowermentTester: {
+		DisplayName: Max Empowerment Tester
+		Tooltip: ""
+	}
 }
 
 Projectiles: {

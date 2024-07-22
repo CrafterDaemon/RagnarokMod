@@ -49,7 +49,7 @@ namespace RagnarokMod.Items.HealerItems.Armor
 		{
 			ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
 		    player.GetDamage(DamageClass.Generic) -= 0.35f;
-			player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) += 1.8f;
+			player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) += 1.4f;
 			player.GetCritChance(ThoriumDamageBase<HealerDamage>.Instance) += 12f;
 		
 		}
