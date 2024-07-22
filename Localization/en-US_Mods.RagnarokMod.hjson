@@ -647,6 +647,11 @@ Items: {
 		DisplayName: Arpeggiator
 		Tooltip: ""
 	}
+
+	ElementalReaper: {
+		DisplayName: Elemental Reaper
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -705,6 +710,8 @@ Projectiles: {
 	PhantasmalEdgeHook.DisplayName: Phantasmal Edge Hook
 	ArpeggiatorPro1.DisplayName: Arpeggiator Pro1
 	ArpeggiatorPro2.DisplayName: Arpeggiator Pro2
+	ElementalReaperPro.DisplayName: Elemental Reaper Pro
+	ElementalReaperPro2.DisplayName: Elemental Reaper Pro2
 }
 
 Configs: {
