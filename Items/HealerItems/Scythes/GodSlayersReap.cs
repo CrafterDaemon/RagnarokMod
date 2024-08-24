@@ -10,10 +10,6 @@ namespace RagnarokMod.Items.HealerItems.Scythes
 {
     public class GodSlayersReap : ScytheItem
     {
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return false;
-        }
         public override void SetStaticDefaults()
         {
             SetStaticDefaultsToScythe();

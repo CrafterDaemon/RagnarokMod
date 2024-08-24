@@ -69,7 +69,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             if (fireballReleased)
             {
                 Projectile.friendly = true;
-                NPC npc = Projectile.FindTargetWithinRange(500);
+                NPC npc = Projectile.FindNearestNPCIgnoreTiles(500);
                 if (npc != null)
                 {
                     Projectile.HomeInOnTarget(npc, 15f, 0.15f);

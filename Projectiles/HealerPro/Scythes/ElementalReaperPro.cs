@@ -10,6 +10,7 @@ using Terraria.Audio;
 using Terraria.ModLoader;
 using ThoriumMod;
 using ThoriumMod.Projectiles.Scythe;
+using CalamityMod.Buffs.DamageOverTime;
 
 namespace RagnarokMod.Projectiles.HealerPro.Scythes
 {
@@ -39,7 +40,12 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             Projectile.Size = new Vector2(274f, 304f);
             dustCount = 4;
             dustType = DustID.RainbowTorch;
-            
+            dustOffset = new Vector2(-20f, 0f);
+
         }
-    }	
+        public override void SafeModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
+        {
+            target.AddBuff(ModContent.BuffType<ElementalMix>(), 360);
+        }
+    }
 }
