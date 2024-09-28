@@ -657,6 +657,11 @@ Items: {
 		DisplayName: Max Empowerment Tester
 		Tooltip: ""
 	}
+
+	UnbreakableCombatUkulele: {
+		DisplayName: Unbreakable Combat Ukulele
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -717,6 +722,9 @@ Projectiles: {
 	ArpeggiatorPro2.DisplayName: Arpeggiator Pro2
 	ElementalReaperPro.DisplayName: Elemental Reaper Pro
 	ElementalReaperPro2.DisplayName: Elemental Reaper Pro2
+	UnbreakableCombatUkulelePro1.DisplayName: Unbreakable Combat Ukulele Pro1
+	UnbreakableCombatUkulelePro2.DisplayName: Unbreakable Combat Ukulele Pro2
+	UnbreakableCombatUkulelePro3.DisplayName: Unbreakable Combat Ukulele Pro3
 }
 
 Configs: {
