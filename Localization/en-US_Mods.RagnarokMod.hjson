@@ -662,6 +662,11 @@ Items: {
 		DisplayName: Unbreakable Combat Ukulele
 		Tooltip: ""
 	}
+
+	NightmareFreezer: {
+		DisplayName: Nightmare Freezer
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -725,6 +730,9 @@ Projectiles: {
 	UnbreakableCombatUkulelePro1.DisplayName: Unbreakable Combat Ukulele Pro1
 	UnbreakableCombatUkulelePro2.DisplayName: Unbreakable Combat Ukulele Pro2
 	UnbreakableCombatUkulelePro3.DisplayName: Unbreakable Combat Ukulele Pro3
+	NightmareFreezerPro.DisplayName: Nightmare Freezer Pro
+	NightmareFreezerPro2.DisplayName: Nightmare Freezer Pro2
+	NightmareFreezerPro3.DisplayName: Nightmare Freezer Pro3
 }
 
 Configs: {
