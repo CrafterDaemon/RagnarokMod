@@ -30,6 +30,7 @@ namespace RagnarokMod.Items.HealerItems.Scythes
             base.Item.value = CalamityGlobalItem.RarityRedBuyPrice;
             base.Item.rare = ItemRarityID.Red;
             base.Item.shoot = ModContent.ProjectileType<PhantasmalEdgePro1>();
+            Item.reuseDelay = 8;
             Item.channel = true;
             Item.autoReuse = false;
         }

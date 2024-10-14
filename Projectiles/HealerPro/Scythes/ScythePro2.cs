@@ -118,9 +118,8 @@ public abstract class ScythePro2 : ThoriumProjectile
         Player player = Main.player[base.Projectile.owner];
         ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
         int scytheCharge = ScytheCharge;
-        if (scytheCharge > 0 && CanGiveScytheCharge && target.IsHostile())
+        if (scytheCharge > 0 && target.IsHostile())
         {
-            CanGiveScytheCharge = false;
             player.AddBuff(ModContent.BuffType<SoulEssence>(), 1800);
             CombatText.NewText(target.Hitbox, new Color(100, 255, 200), scytheCharge, dramatic: false, dot: true);
             thoriumPlayer.soulEssence += scytheCharge;
