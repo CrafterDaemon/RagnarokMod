@@ -32,7 +32,7 @@ namespace RagnarokMod.Items.HealerItems.Armor
         {
             Item.width = 18;
             Item.height = 18;
-            Item.value = 212121;
+            Item.value = CalamityGlobalItem.RarityTurquoiseBuyPrice;
 			Item.defense = 12;
             Item.rare = ModContent.RarityType<Turquoise>();
             

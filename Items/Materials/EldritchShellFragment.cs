@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CalamityMod.Items;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,7 +17,7 @@ namespace RagnarokMod.Items.Materials
             Item.height = 10;
             Item.scale = 0.33f;
             Item.maxStack = 9999;
-            Item.value = 333333;
+            Item.value = CalamityGlobalItem.RarityYellowBuyPrice;
             Item.rare = ItemRarityID.Yellow;
         }
     }

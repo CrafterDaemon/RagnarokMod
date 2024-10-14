@@ -40,7 +40,7 @@ namespace RagnarokMod.Items
             Item.knockBack = 5f;
             
 
-            Item.value = 140050;
+            Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
             Item.rare = ModContent.RarityType<DarkBlue>();
             Item.Calamity().donorItem = true;
 

@@ -10,6 +10,7 @@ using ThoriumMod;
 using ThoriumMod.Items;
 using ThoriumMod.Projectiles.Healer;
 using CalamityMod.Items.Materials;
+using CalamityMod.Items;
 
 namespace RagnarokMod.Items.HealerItems.Other
 {
@@ -39,8 +40,8 @@ namespace RagnarokMod.Items.HealerItems.Other
 			base.Item.useAnimation = 20;
 			base.Item.useStyle = 5;
 			base.Item.noMelee = true;
-			base.Item.value = Item.sellPrice(0, 0, 80, 0);
-			base.Item.rare = 3;
+			base.Item.value = CalamityGlobalItem.RarityOrangeBuyPrice;
+			base.Item.rare = ItemRarityID.Orange;
 			base.Item.UseSound = new SoundStyle?(SoundID.Item8);
 			base.Item.shoot = ModContent.ProjectileType<BloodTransfusionPro>();
 			base.Item.shootSpeed = 9f;

@@ -21,7 +21,7 @@ namespace RagnarokMod.Items.HealerItems.Armor
 	[AutoloadEquip(EquipType.Head)]
 	public class SilvaHeadHealer : ThoriumItem
 	{
-		public string LocalizationCategory
+		public override string LocalizationCategory
 		{
 			get
 			{
@@ -33,7 +33,7 @@ namespace RagnarokMod.Items.HealerItems.Armor
 		{
 			base.Item.width = 24;
 			base.Item.height = 22;
-			base.Item.value = 101115;
+			base.Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
 			base.Item.defense = 23;
 			base.Item.rare = ModContent.RarityType<DarkBlue>();
 		}

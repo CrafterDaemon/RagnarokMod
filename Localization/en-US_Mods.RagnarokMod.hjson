@@ -667,6 +667,15 @@ Items: {
 		DisplayName: Nightmare Freezer
 		Tooltip: ""
 	}
+
+	Armor: {
+		PostMoonLord: {
+			SilvaHeadHealer: {
+				DisplayName: Silva Head Healer
+				Tooltip: ""
+			}
+		}
+	}
 }
 
 Projectiles: {

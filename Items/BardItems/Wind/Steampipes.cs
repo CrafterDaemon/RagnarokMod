@@ -44,7 +44,7 @@ namespace RagnarokMod.Items.BardItems.Wind
             Item.noMelee = true;
             Item.autoReuse = true;
             Item.knockBack = 2f;
-            Item.value = 241115;
+            Item.value = CalamityGlobalItem.RarityLimeBuyPrice;
             Item.rare = ItemRarityID.Lime;
             Item.shoot = ModContent.ProjectileType<SteampipesPro>();
             Item.shootSpeed = 13f;

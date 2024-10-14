@@ -11,6 +11,7 @@ using ThoriumMod.Items.BardItems;
 using ThoriumMod.Items.BossThePrimordials.Aqua;
 using ThoriumMod.Items.BossThePrimordials.Slag;
 using ThoriumMod.Items.BossThePrimordials.Omni;
+using CalamityMod.Items;
 
 namespace RagnarokMod.Items.BardItems.Consumable
 {
@@ -27,8 +28,8 @@ namespace RagnarokMod.Items.BardItems.Consumable
         public override void SetBardDefaults()
         {
             base.SetBardDefaults();
-            Item.value = Item.sellPrice(0, 10, 0, 0);
-            Item.rare = 11;
+            Item.value = CalamityGlobalItem.RarityPurpleBuyPrice;
+            Item.rare = ItemRarityID.Purple;
         }
 
         public override void AddRecipes()
@@ -38,7 +39,7 @@ namespace RagnarokMod.Items.BardItems.Consumable
             recipe.AddIngredient(ModContent.ItemType<DeathEssence>(), 1);
             recipe.AddIngredient(ModContent.ItemType<InfernoEssence>(), 1);
             recipe.AddIngredient(ModContent.ItemType<InspirationFragment>(), 1);
-            recipe.AddTile(412);
+            recipe.AddTile(TileID.LunarCraftingStation);
             recipe.Register();
         }
     }

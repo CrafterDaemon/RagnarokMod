@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using ThoriumMod.Items.HealerItems;
 using RagnarokMod.Projectiles.HealerPro.Scythes;
 using CalamityMod.Items.Materials;
+using CalamityMod.Items;
 
 namespace RagnarokMod.Items.HealerItems.Scythes
 {
@@ -23,7 +24,7 @@ namespace RagnarokMod.Items.HealerItems.Scythes
             scytheSoulCharge = 2;
             base.Item.width = 80;
             base.Item.height = 76;
-            base.Item.value = Item.sellPrice(0, 28, 0);
+            base.Item.value = CalamityGlobalItem.RarityRedBuyPrice;
             base.Item.rare = ItemRarityID.Red;
             base.Item.shoot = ModContent.ProjectileType<AstralRipperPro>();
             base.Item.shootSpeed = 0.1f;

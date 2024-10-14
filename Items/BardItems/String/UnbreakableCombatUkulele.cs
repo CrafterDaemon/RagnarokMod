@@ -49,7 +49,7 @@ namespace RagnarokMod.Items.BardItems.String
             Item.noMelee = true;
             Item.autoReuse = true;
             Item.knockBack = 20f;
-            Item.value = 15000;
+            Item.value = CalamityGlobalItem.RarityPureGreenBuyPrice;
             Item.rare = ModContent.RarityType<PureGreen>();
             Item.UseSound = new SoundStyle?(ThoriumSounds.SuperGuitarNoise);
             Item.shoot = ModContent.ProjectileType<UnbreakableCombatUkulelePro1>();

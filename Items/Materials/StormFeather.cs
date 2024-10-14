@@ -2,6 +2,7 @@
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
+using CalamityMod.Items;
 
 namespace RagnarokMod.Items.Materials
 {
@@ -19,7 +20,7 @@ namespace RagnarokMod.Items.Materials
             Item.height = 10;
             Item.scale = 0.75f;
             Item.maxStack = 9999;
-            Item.value = Item.sellPrice(silver: 1);
+            Item.value = CalamityGlobalItem.RarityBlueBuyPrice;
             Item.rare = ItemRarityID.Blue;
         }
     }

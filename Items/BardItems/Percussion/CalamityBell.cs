@@ -42,7 +42,7 @@ namespace RagnarokMod.Items.BardItems.Percussion
             Item.noMelee = true;
             Item.autoReuse = true;
             Item.knockBack = 2f;
-            Item.value = 87566;
+            Item.value = CalamityGlobalItem.RarityLimeBuyPrice;
             Item.rare = ItemRarityID.Lime;
             Item.UseSound = RagnarokModSounds.calamitybell;
             Item.shoot = ModContent.ProjectileType<CalamityBellPro>();

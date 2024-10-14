@@ -22,6 +22,7 @@ using ThoriumMod.Items.ArcaneArmor;
 using CalamityMod.Rarities;
 using ThoriumMod.Items.Donate;
 using CalamityMod.Tiles.Furniture.CraftingStations;
+using CalamityMod.Items;
 
 namespace RagnarokMod.Items.HealerItems.Other
 {
@@ -50,7 +51,7 @@ namespace RagnarokMod.Items.HealerItems.Other
     	this.Item.useStyle = 5;
     	this.Item.noMelee = true;
     	this.Item.knockBack = 4f;
-    	this.Item.value = Item.sellPrice(0, 20, 40, 0);
+    	this.Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
     	this.Item.rare = ModContent.RarityType<DarkBlue>();
     	this.Item.UseSound = new SoundStyle?(SoundID.Item17);
     	this.Item.autoReuse = true;

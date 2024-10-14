@@ -6,6 +6,7 @@ using CalamityMod.Items.Armor.Aerospec;
 using CalamityMod.Items.Materials;
 using ThoriumMod;
 using ThoriumMod.Utilities;
+using Terraria.ID;
 
 namespace RagnarokMod.Items.HealerItems.Armor
 {
@@ -22,8 +23,8 @@ namespace RagnarokMod.Items.HealerItems.Armor
         {
 			base.Item.width = 18;
 			base.Item.height = 18;
-			base.Item.value = 3365;
-			base.Item.rare = 3;
+			base.Item.value = CalamityGlobalItem.RarityOrangeBuyPrice;
+			base.Item.rare = ItemRarityID.Orange;
 			base.Item.defense = 4;
         }
 		

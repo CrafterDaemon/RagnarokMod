@@ -39,7 +39,7 @@ namespace Ragnarok.Items
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.knockBack = 2f;
-            Item.value = 3500;
+            Item.value = CalamityGlobalItem.RarityPinkBuyPrice;
             Item.rare = ItemRarityID.Pink;
             Item.autoReuse = true;
             Item.shoot = ModContent.ProjectileType<AcidicReed>();

@@ -13,6 +13,7 @@ using ThoriumMod.Items.BardItems;
 using ThoriumMod.Utilities;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace RagnarokMod.Items.BardItems.Armor
 {
@@ -23,8 +24,8 @@ namespace RagnarokMod.Items.BardItems.Armor
         {
             Item.width = 18;
             Item.height = 18;
-            Item.value = 5455;
-            Item.rare = 5;
+            Item.value = CalamityGlobalItem.RarityPinkBuyPrice;
+            Item.rare = ItemRarityID.Pink;
             Item.defense = 6;
         }
 

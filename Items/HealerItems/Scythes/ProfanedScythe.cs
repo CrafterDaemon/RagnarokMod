@@ -5,6 +5,7 @@ using ThoriumMod.Items.HealerItems;
 using CalamityMod.Rarities;
 using CalamityMod.Items.Materials;
 using RagnarokMod.Projectiles.HealerPro.Scythes;
+using CalamityMod.Items;
 
 namespace RagnarokMod.Items.HealerItems.Scythes
 {
@@ -22,7 +23,7 @@ namespace RagnarokMod.Items.HealerItems.Scythes
             scytheSoulCharge = 3;
             Item.width = 86;
             Item.height = 90;
-            Item.value = Item.sellPrice(0, 28, 0);
+            Item.value = CalamityGlobalItem.RarityTurquoiseBuyPrice;
             Item.rare = ModContent.RarityType<Turquoise>();
             Item.shoot = ModContent.ProjectileType<ProfanedScythePro>();
         }

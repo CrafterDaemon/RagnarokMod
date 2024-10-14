@@ -10,6 +10,7 @@ using ThoriumMod;
 using ThoriumMod.Utilities;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace RagnarokMod.Items.HealerItems.Armor
 {
@@ -20,8 +21,8 @@ namespace RagnarokMod.Items.HealerItems.Armor
 		{
 			base.Item.width = 18;
 			base.Item.height = 18;
-			base.Item.value = 5555;
-			base.Item.rare = 5;
+			base.Item.value = CalamityGlobalItem.RarityPinkBuyPrice;
+			base.Item.rare = ItemRarityID.Pink;
 			base.Item.defense = 6;
 		}
 

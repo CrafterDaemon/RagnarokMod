@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 using Terraria.ID;
 using RagnarokMod.Projectiles;
 using CalamityMod.Items.Materials;
+using CalamityMod.Items;
 
 namespace RagnarokMod.Items.BardItems.Percussion;
 public class DrumStick : BardItem
@@ -30,7 +31,7 @@ public class DrumStick : BardItem
         Item.useStyle = ItemUseStyleID.Swing;
         Item.noMelee = false;
         Item.knockBack = 4f;
-        Item.value = Item.sellPrice(0, 10, 0, 0);
+        Item.value = CalamityGlobalItem.RarityRedBuyPrice;
         Item.rare = ItemRarityID.Red;
         Item.UseSound = Sounds.RagnarokModSounds.bonk;
         Item.shoot = ModContent.ProjectileType<NoProj>();

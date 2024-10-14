@@ -9,6 +9,7 @@ using RagnarokMod.Projectiles.HealerPro.Scythes;
 using System.CommandLine.Help;
 using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
+using CalamityMod.Items;
 
 namespace RagnarokMod.Items.HealerItems.Scythes
 {
@@ -29,7 +30,7 @@ namespace RagnarokMod.Items.HealerItems.Scythes
             base.Item.height = 94;
             base.Item.useTime = 20;
 
-            base.Item.value = Item.sellPrice(0, 28, 0);
+            base.Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
             base.Item.rare = ModContent.RarityType<DarkBlue>();
             base.Item.shoot = ModContent.ProjectileType<NightmareFreezerPro>();
             base.Item.shootSpeed = 0.1f;

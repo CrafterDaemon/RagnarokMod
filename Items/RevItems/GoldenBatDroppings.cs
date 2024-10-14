@@ -20,7 +20,7 @@ namespace RagnarokMod.Items.RevItems
 			base.Item.width = 26;
 			base.Item.height = 26;
 			base.Item.value = CalamityGlobalItem.RarityOrangeBuyPrice;
-			base.Item.rare = 3;
+			base.Item.rare = ItemRarityID.Orange;
 			base.Item.accessory = true;
 		}
 

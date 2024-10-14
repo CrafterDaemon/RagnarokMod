@@ -5,6 +5,7 @@ using CalamityMod.Rarities;
 using RagnarokMod.Projectiles.HealerPro.Scythes;
 using CalamityMod.Items.Materials;
 using Terraria.ID;
+using CalamityMod.Items;
 
 namespace RagnarokMod.Items.HealerItems.Scythes
 {
@@ -22,7 +23,7 @@ namespace RagnarokMod.Items.HealerItems.Scythes
             scytheSoulCharge = 3;
             base.Item.width = 114;
             base.Item.height = 116;
-            base.Item.value = Item.sellPrice(0, 28, 0);
+            base.Item.value = CalamityGlobalItem.RarityTurquoiseBuyPrice;
             base.Item.rare = ModContent.RarityType<Turquoise>();
             base.Item.shoot = ModContent.ProjectileType<ScoriaDualscythePro>();
         }

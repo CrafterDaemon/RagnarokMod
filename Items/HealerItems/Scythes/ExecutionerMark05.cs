@@ -13,6 +13,7 @@ using ThoriumMod.Items.Terrarium;
 using ThoriumMod.Items.BossThePrimordials.Dream;
 using ThoriumMod.Items.Titan;
 using CalamityMod.Tiles.Furniture.CraftingStations;
+using CalamityMod.Items;
 
 namespace RagnarokMod.Items.HealerItems.Scythes
 {
@@ -34,7 +35,7 @@ namespace RagnarokMod.Items.HealerItems.Scythes
             base.Item.reuseDelay = 50;
             base.Item.width = 94;
             base.Item.height = 106;
-            base.Item.value = Item.sellPrice(0, 28, 0);
+            base.Item.value = CalamityGlobalItem.RarityTurquoiseBuyPrice;
             base.Item.rare = ModContent.RarityType<Turquoise>();
             base.Item.shoot = ModContent.ProjectileType<ExecutionerMark05Pro>();
 

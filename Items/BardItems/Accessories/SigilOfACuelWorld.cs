@@ -20,7 +20,7 @@ namespace RagnarokMod.Items.BardItems.Accessories
             Item.width = 24;
             Item.height = 24;
             Item.value = CalamityGlobalItem.RarityYellowBuyPrice;
-            Item.rare = 8;
+            Item.rare = ItemRarityID.Yellow;
             Item.accessory = true;
         }
 

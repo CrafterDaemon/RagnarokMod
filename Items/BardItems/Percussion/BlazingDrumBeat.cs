@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework;
 using RagnarokMod.Projectiles;
 using ThoriumMod.Utilities;
 using RagnarokMod.Projectiles.BardPro.Percussion;
+using CalamityMod.Items;
 
 namespace RagnarokMod.Items.BardItems.Percussion;
 public class BlazingDrumBeat : BigInstrumentItemBase
@@ -35,7 +36,7 @@ public class BlazingDrumBeat : BigInstrumentItemBase
         Item.useStyle = ItemUseStyleID.Swing;
         Item.noMelee = false;
         Item.knockBack = 4f;
-        Item.value = Item.sellPrice(0, 10, 0, 0);
+        Item.value = CalamityGlobalItem.RarityRedBuyPrice;
         Item.rare = ItemRarityID.Red;
         Item.UseSound = Sounds.RagnarokModSounds.bonk;
         Item.shoot = ModContent.ProjectileType<BlazingDrumBeatFireSlash>();

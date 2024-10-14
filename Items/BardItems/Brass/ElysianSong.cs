@@ -43,7 +43,7 @@ namespace RagnarokMod.Items.BardItems.Brass
             Item.noMelee = true;
             Item.autoReuse = true;
             Item.knockBack = 20f;
-            Item.value = 15000;
+            Item.value = CalamityGlobalItem.RarityTurquoiseBuyPrice;
             Item.rare = ModContent.RarityType<Turquoise>();
             Item.UseSound = new SoundStyle?(ThoriumSounds.Trumpet_Sound);
             Item.shoot = ModContent.ProjectileType<ElysianSongPro>();

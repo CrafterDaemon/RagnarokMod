@@ -19,6 +19,7 @@ using CalamityMod.Items.Placeables;
 using CalamityMod;
 using CalamityMod.Buffs.StatDebuffs;
 using CalamityMod.Rarities;
+using CalamityMod.Items;
 
 namespace RagnarokMod.Items.HealerItems.Other
 {
@@ -46,7 +47,7 @@ namespace RagnarokMod.Items.HealerItems.Other
 			base.Item.useStyle = 5;
 			base.Item.noMelee = true;
 			base.Item.autoReuse = true;
-			base.Item.value = Item.sellPrice(0, 1, 0, 0);
+			base.Item.value = CalamityGlobalItem.RarityPureGreenBuyPrice;
 			base.Item.rare = ModContent.RarityType<PureGreen>();
 			base.Item.UseSound = new SoundStyle?(SoundID.Item8);
 			base.Item.shoot = ModContent.ProjectileType<GraspofVoidPro1>();

@@ -44,7 +44,7 @@ namespace RagnarokMod.Items.BardItems.Electronic
             Item.noMelee = true;
             Item.autoReuse = true;
             Item.knockBack = 20f;
-            Item.value = 30000;
+            Item.value = CalamityGlobalItem.RarityCalamityRedBuyPrice;
             Item.rare = ModContent.RarityType<CalamityRed>();
             Item.UseSound = RagnarokModSounds.RadioDemon;
             Item.shoot = ModContent.ProjectileType<TendrilStrike>();

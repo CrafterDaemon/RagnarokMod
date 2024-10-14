@@ -28,7 +28,7 @@ namespace RagnarokMod.Items.BardItems.Armor
         {
             Item.width = 18;
             Item.height = 18;
-            Item.value = 145050;
+            Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
             Item.defense = 22;
             Item.rare = ModContent.RarityType<DarkBlue>();
         }

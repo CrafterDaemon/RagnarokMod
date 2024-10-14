@@ -18,6 +18,7 @@ using RagnarokMod.Projectiles.HealerPro.Other;
 using CalamityMod.Items.Placeables;
 using CalamityMod;
 using CalamityMod.Buffs.StatDebuffs;
+using CalamityMod.Items;
 
 namespace RagnarokMod.Items.HealerItems.Other
 {
@@ -42,8 +43,8 @@ namespace RagnarokMod.Items.HealerItems.Other
 			base.Item.useAnimation = 24;
 			base.Item.useStyle = 5;
 			base.Item.noMelee = true;
-			base.Item.value = Item.sellPrice(0, 1, 0, 0);
-			base.Item.rare = 2;
+			base.Item.value = CalamityGlobalItem.RarityGreenBuyPrice;
+			base.Item.rare = ItemRarityID.Green;
 			base.Item.UseSound = new SoundStyle?(SoundID.Item8);
 			base.Item.shoot = ModContent.ProjectileType<PrismaPro1>();
 			base.Item.shootSpeed = 12f;

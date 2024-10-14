@@ -2,6 +2,7 @@
 using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
+using CalamityMod.Items;
 
 namespace RagnarokMod.Items.Materials
 {
@@ -23,7 +24,7 @@ namespace RagnarokMod.Items.Materials
             Item.width = 64;
             Item.height = 64;
             Item.maxStack = 9999;
-            Item.value = Item.sellPrice(silver: 15);
+            Item.value = CalamityGlobalItem.RarityLightRedBuyPrice;
             Item.rare = ItemRarityID.LightRed;
             Item.potion = true;
         }

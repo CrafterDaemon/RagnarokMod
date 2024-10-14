@@ -21,6 +21,7 @@ using CalamityMod.Buffs.StatDebuffs;
 using ThoriumMod.Items.ArcaneArmor;
 using CalamityMod.Rarities;
 using ThoriumMod.Items.Donate;
+using CalamityMod.Items;
 
 
 namespace RagnarokMod.Items.HealerItems.Other
@@ -52,7 +53,7 @@ namespace RagnarokMod.Items.HealerItems.Other
     	this.Item.useStyle = 1;
     	this.Item.noMelee = true;
     	this.Item.knockBack = 4f;
-    	this.Item.value = Item.sellPrice(0, 16, 40, 0);
+    	this.Item.value = CalamityGlobalItem.RarityTurquoiseBuyPrice;
     	this.Item.rare = ModContent.RarityType<Turquoise>();
     	this.Item.UseSound = new SoundStyle?(SoundID.Item32);
     	this.Item.autoReuse = true;

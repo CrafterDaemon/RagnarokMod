@@ -43,7 +43,7 @@ namespace RagnarokMod.Items.BardItems.Percussion
             Item.noMelee = true;
             Item.autoReuse = true;
             Item.knockBack = 2f;
-            Item.value = Item.sellPrice(0, 25, 0);
+            Item.value = CalamityGlobalItem.RarityTurquoiseBuyPrice;
             Item.rare = ModContent.RarityType<Turquoise>();
             Item.UseSound = RagnarokModSounds.calamitybell;
             Item.shoot = ModContent.ProjectileType<ProfanedBellBlast>();
