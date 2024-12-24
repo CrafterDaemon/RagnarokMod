@@ -24,7 +24,7 @@ namespace RagnarokMod.Items.HealerItems.Scythes
         {
             SetDefaultsToScythe();
             base.Item.damage = 220;
-            scytheSoulCharge = 5;
+            scytheSoulCharge = 4;
             base.Item.width = 152;
             base.Item.height = 148;
             base.Item.value = CalamityGlobalItem.RarityRedBuyPrice;

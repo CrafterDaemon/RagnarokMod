@@ -61,6 +61,7 @@ namespace RagnarokMod.Utils
 		public int godslayerBardcurrentemplevel = 0;
 		private int bloodflarebloodlust = 0;
 		private int bloodflarepointtimer = 0;
+		public int elementalReaperCD = 0;
 		private const int maxbloodlustpoints = 150;
 
 		public override void OnHurt(Player.HurtInfo info)
@@ -71,7 +72,7 @@ namespace RagnarokMod.Utils
 			}
 		}
 
-        public override void ModifyHitByNPC(NPC npc, ref Player.HurtModifiers modifiers)
+		public override void ModifyHitByNPC(NPC npc, ref Player.HurtModifiers modifiers)
         {
             if (oneTimeDamageReduction != 0)
             {
@@ -292,8 +293,15 @@ namespace RagnarokMod.Utils
 				float damagemodifier = (float)Math.Pow(((float)effectivecoinvalue / 10000000), 0.2) / 10;
 				base.Player.GetDamage(DamageClass.Generic) += damagemodifier;	
 			}
-			
-			this.ApplyRogueUseTimeFix();
+
+
+
+            if (elementalReaperCD > 0)
+            {
+                elementalReaperCD--;
+            }
+
+            this.ApplyRogueUseTimeFix();
 			
 			// The debugcounter
 			if(debugcounter >= 59) 

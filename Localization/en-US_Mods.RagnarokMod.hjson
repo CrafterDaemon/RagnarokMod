@@ -330,7 +330,7 @@ Items: {
 			Grants an extra jump and increased jump height
 			12% increased jump speed
 			Healing spells heal an additional 2 life
-			+20 max mana
+			Maximum Mana increased by 20
 			5% decreased mana usage
 			'''
 	}
@@ -348,7 +348,7 @@ Items: {
 			60% decreased non-radiant damage
 			40% increased radiant damage and 15% increased criticial radiant strike chance
 			Bonus healing increased by 6
-			60 additional mana
+			Maximum mana increased by 60
 			Mana usage reduced by 15%
 			'''
 	}
@@ -615,57 +615,98 @@ Items: {
 
 	VerdurantBloom: {
 		DisplayName: Verdurant Bloom
-		Tooltip: ""
+		Tooltip: Fire a spread of various flower petals.
 	}
 
 	CosmicInjector: {
 		DisplayName: Cosmic Injector
-		Tooltip: ""
+		Tooltip:
+			'''
+			Rapid fires both healing and damaging needles.
+			Inflicts God Slayer's Inferno on hit.
+			Uses Syringes as ammo.
+			'''
 	}
 
 	Korobeiniki: {
 		DisplayName: Korobeiniki
-		Tooltip: ""
+		Tooltip:
+			'''
+			A non-descript game console.
+			Causes Tetriminos to fall from the sky.
+			'''
 	}
 
 	GraspofVoid: {
-		DisplayName: Graspof Void
-		Tooltip: ""
+		DisplayName: Grasp of Void
+		Tooltip: Fires a shard of void essence, inflicting shadowflame on hit.
 	}
 
 	PhantasmalEdge: {
 		DisplayName: Phantasmal Edge
-		Tooltip: ""
+		Tooltip:
+			'''
+			Spinning this scythe creates many miniature fireballs that will follow as you contiue to spin the scythe.
+			Once you stop spinning the scythe, the fireballs immediately seek out the nearest target and explode.
+
+			Right Click launches the scythe like a hook, pulling enemies towards you. 
+			This does not work on bosses, and you are instead pulled towards the boss.
+			'''
 	}
 
 	GodSlayersReap: {
 		DisplayName: God Slayers Reap
-		Tooltip: ""
+		Tooltip:
+			'''
+			Creates a small hologram resembling the Devourer of Gods at the very edge of your scythe spin.
+			Enemies hit by this take significantly more damage and are inflicted with Godslayer's Inferno.
+			'''
 	}
 
 	Arpeggiator: {
 		DisplayName: Arpeggiator
-		Tooltip: ""
+		Tooltip: Rapid-fires projectiles in an arpeggio pattern.
 	}
 
 	ElementalReaper: {
 		DisplayName: Elemental Reaper
-		Tooltip: ""
+		Tooltip:
+			'''
+			Spinning this scythes creates homing projectiles that inflict Elemental Inferno.
+			Right Click grants you and all allies an Elemental Blessing for 10 seconds, with a 30 second cooldown.
+			Elemental Blessings are as follows:
+			Sand: +5% attack damage
+			Water: +5% attack speed
+			Air: +20% mpvement speed and flight time
+			Earth: +10 Defense
+			Brimstone: All attacks inflict Brimstone Flames
+			Oasis: Regenerate 50 hp over 10 seconds.
+			'''
 	}
 
 	MaxEmpowermentTester: {
 		DisplayName: Max Empowerment Tester
-		Tooltip: ""
+		Tooltip: Grants all empowerments at a level specified in item code :P
 	}
 
 	UnbreakableCombatUkulele: {
 		DisplayName: Unbreakable Combat Ukulele
-		Tooltip: ""
+		Tooltip:
+			'''
+			Left Click to play the ukelele
+			Right Click to throw the ukelele
+			Does not make for a good apology.
+			'''
 	}
 
 	NightmareFreezer: {
 		DisplayName: Nightmare Freezer
-		Tooltip: ""
+		Tooltip:
+			'''
+			Spinning the scythe periodically releases a barrage of chilling darts.
+			Found somewhere between Halloween and Christmas.
+			Hey, you could make a movie about that!
+			'''
 	}
 
 	Armor: {
@@ -742,6 +783,7 @@ Projectiles: {
 	NightmareFreezerPro.DisplayName: Nightmare Freezer Pro
 	NightmareFreezerPro2.DisplayName: Nightmare Freezer Pro2
 	NightmareFreezerPro3.DisplayName: Nightmare Freezer Pro3
+	ElementalBuff.DisplayName: Elemental Buff
 }
 
 Configs: {

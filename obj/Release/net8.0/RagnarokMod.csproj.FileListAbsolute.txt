@@ -169,7 +169,6 @@ C:\Users\daemo\Documents\My Games\Terraria\tModLoader\ModSources\RagnarokMod\obj
 C:\Users\daemo\Documents\My Games\Terraria\tModLoader\ModSources\RagnarokMod\obj\Release\net8.0\RagnarokMod.AssemblyInfo.cs
 C:\Users\daemo\Documents\My Games\Terraria\tModLoader\ModSources\RagnarokMod\obj\Release\net8.0\RagnarokMod.csproj.CoreCompileInputs.cache
 C:\Users\daemo\Documents\My Games\Terraria\tModLoader\ModSources\RagnarokMod\obj\Release\net8.0\RagnarokMod.sourcelink.json
-C:\Users\daemo\Documents\My Games\Terraria\tModLoader\ModSources\RagnarokMod\obj\Release\net8.0\RagnarokMod.csproj.CopyComplete
 C:\Users\daemo\Documents\My Games\Terraria\tModLoader\ModSources\RagnarokMod\obj\Release\net8.0\RagnarokMod.dll
 C:\Users\daemo\Documents\My Games\Terraria\tModLoader\ModSources\RagnarokMod\obj\Release\net8.0\refint\RagnarokMod.dll
 C:\Users\daemo\Documents\My Games\Terraria\tModLoader\ModSources\RagnarokMod\obj\Release\net8.0\RagnarokMod.pdb
@@ -233,3 +232,4 @@ C:\Users\daemo\Documents\My Games\Terraria\tModLoader\ModSources\RagnarokMod\bin
 C:\Users\daemo\Documents\My Games\Terraria\tModLoader\ModSources\RagnarokMod\bin\Release\net8.0\System.Security.Permissions.xml
 C:\Users\daemo\Documents\My Games\Terraria\tModLoader\ModSources\RagnarokMod\bin\Release\net8.0\System.Windows.Extensions.xml
 C:\Users\daemo\Documents\My Games\Terraria\tModLoader\ModSources\RagnarokMod\bin\Release\net8.0\UtfUnknown.xml
+C:\Users\daemo\Documents\My Games\Terraria\tModLoader\ModSources\RagnarokMod\obj\Release\net8.0\Ragnarok.F8257524.Up2Date

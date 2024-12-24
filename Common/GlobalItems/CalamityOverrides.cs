@@ -20,6 +20,7 @@ using ThoriumMod.Items.BardItems;
 using ThoriumMod.Items.Consumable;
 using ThoriumMod.Items.Depths;
 using ThoriumMod.Items.Donate;
+using ThoriumMod.Items.HealerItems;
 using ThoriumMod.Items.Terrarium;
 using ThoriumMod.Items.ThrownItems;
 
@@ -78,6 +79,18 @@ namespace RagnarokMod.Common.GlobalItems
             {
                 RecipeHelper helper = new(item);
                 helper.Add(ModContent.ItemType<TerrariumParticleSprinters>(), 1);
+            }
+            finder.LookFor(ModContent.ItemType<TerraKnife>(), 1);
+            foreach (Recipe item in finder.Search())
+            {
+                RecipeHelper helper = new(item);
+                helper.Add(ModContent.ItemType<LivingShard>(), 12);
+            }
+            finder.LookFor(ModContent.ItemType<TerraScythe>(), 1);
+            foreach (Recipe item in finder.Search())
+            {
+                RecipeHelper helper = new(item);
+                helper.Add(ModContent.ItemType<LivingShard>(), 12);
             }
 
             //ew multiple leather recipes
