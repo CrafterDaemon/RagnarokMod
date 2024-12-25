@@ -63,6 +63,7 @@ namespace RagnarokMod.Utils
 		private int bloodflarepointtimer = 0;
 		public int elementalReaperCD = 0;
 		private const int maxbloodlustpoints = 150;
+		public int elementalReaperIndex = 0;
 
 		public override void OnHurt(Player.HurtInfo info)
 		{

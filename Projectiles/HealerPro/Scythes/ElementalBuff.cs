@@ -8,6 +8,8 @@ using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Terraria.Audio;
+using RagnarokMod.Buffs;
+using RagnarokMod.Utils;
 
 namespace RagnarokMod.Projectiles.HealerPro.Scythes
 {
@@ -29,55 +31,76 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
         {
             // Radius in pixels (200 tiles * 16 pixels per tile)
             float radius = 200 * 16;
-            // Apply the buff (e.g., BuffID.Regeneration for 10 seconds)
-            Player myPlayer = Main.player[Projectile.owner];
-            myPlayer.AddBuff(BuffID.Regeneration, 600);
 
-            // Create a burst of particles around the player
-            for (int j = 0; j < 20; j++) // 20 particles
-            {
-                Dust dust = Dust.NewDustDirect(myPlayer.position, myPlayer.width, myPlayer.height, DustID.BlueCrystalShard, 0f, 0f, 100, default, 1.5f);
-                dust.velocity = Main.rand.NextVector2Circular(3f, 3f); // Random circular velocity
-                dust.noGravity = true; // Makes the dust float
-            }
-            // Loop through all active players
+            Player myPlayer = Main.player[Projectile.owner];
+            RagnarokModPlayer ragnarokPlayer = myPlayer.GetRagnarokModPlayer();
+            int elementIndex = ragnarokPlayer.elementalReaperIndex;
+
+            // Apply effects based on the current element
             for (int i = 0; i < Main.maxPlayers; i++)
             {
                 Player player = Main.player[i];
 
-                // Check if the player is active, alive, on the same team, and within the radiuss
-                if (player.active && !player.dead && Projectile.owner == Main.myPlayer &&
+                if (player.active && !player.dead &&
                     (player.team == Main.player[Projectile.owner].team || Main.player[Projectile.owner].team == 0) &&
                     Vector2.Distance(Projectile.Center, player.Center) <= radius)
                 {
-                    // Apply the buff (e.g., BuffID.Regeneration for 10 seconds)
-                    player.AddBuff(BuffID.Regeneration, 600);
-
-                    // Create a burst of particles around the player
-                    for (int j = 0; j < 20; j++) // 20 particles
+                    switch (elementIndex)
                     {
-                        Dust dust = Dust.NewDustDirect(player.position, player.width, player.height, DustID.BlueCrystalShard, 0f, 0f, 100, default, 1.5f);
-                        dust.velocity = Main.rand.NextVector2Circular(3f, 3f); // Random circular velocity
-                        dust.noGravity = true; // Makes the dust float
+                        case 0: // Sand
+                            ApplyBuffWithParticles(player, ModContent.BuffType<ScytheSandBuff>(), 900, DustID.Sandstorm, Color.SandyBrown);
+                            ragnarokPlayer.elementalReaperIndex++;
+                            break;
+
+                        case 1: // Water
+                            ApplyBuffWithParticles(player, ModContent.BuffType<ScytheWaterBuff>(), 900, DustID.Water, Color.CornflowerBlue);
+                            ragnarokPlayer.elementalReaperIndex++;
+                            break;
+
+                        case 2: // Air
+                            ApplyBuffWithParticles(player, ModContent.BuffType<ScytheAirBuff>(), 900, DustID.Cloud, Color.LightGray);
+                            ragnarokPlayer.elementalReaperIndex++;
+                            break;
+
+                        case 3: // Earth
+                            ApplyBuffWithParticles(player, ModContent.BuffType<ScytheEarthBuff>(), 900, DustID.Stone, Color.SaddleBrown);
+                            ragnarokPlayer.elementalReaperIndex++;
+                            break;
+
+                        case 4: // Brimstone
+                            ApplyBuffWithParticles(player, ModContent.BuffType<ScytheBrimstoneBuff>(), 900, DustID.RedTorch, Color.OrangeRed);
+                            ragnarokPlayer.elementalReaperIndex++;
+                            break;
+
+                        case 5: // Oasis
+                            ApplyBuffWithParticles(player, ModContent.BuffType<ScytheOasisBuff>(), 900, DustID.Grass, Color.LimeGreen);
+                            ragnarokPlayer.elementalReaperIndex = 0;
+                            break;
                     }
                 }
             }
 
-            // Optionally, destroy the projectile after applying the effect
-            Projectile.Kill();
+            // Cycle the element for the next use
+            Projectile.Kill(); // Destroy the projectile after applying the effect
         }
 
         public override void Kill(int timeLeft)
         {
-            // Visual explosion effect when the projectile is destroyed
-            for (int i = 0; i < 30; i++) // 30 particles
+            SoundEngine.PlaySound(SoundID.Item4, Projectile.position); // Play a sound effect (e.g., Item4)
+        }
+
+        private void ApplyBuffWithParticles(Player player, int buffID, int buffDuration, int dustType, Color color)
+        {
+            // Apply the buff
+            player.AddBuff(buffID, buffDuration);
+
+            // Create a burst of particles around the player
+            for (int j = 0; j < 20; j++) // 20 particles
             {
-                Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.BlueCrystalShard, 0f, 0f, 100, default, 2f);
-                dust.velocity = Main.rand.NextVector2Circular(5f, 5f); // Random circular velocity
+                Dust dust = Dust.NewDustDirect(player.position, player.width, player.height, dustType, 0f, 0f, 100, color, 1.5f);
+                dust.velocity = Main.rand.NextVector2Circular(3f, 3f); // Random circular velocity
                 dust.noGravity = true; // Makes the dust float
             }
-
-            SoundEngine.PlaySound(SoundID.Item4, Projectile.position); // Play a sound effect (e.g., Item4)
         }
 
     }

@@ -10,7 +10,7 @@ namespace RagnarokMod.Buffs
     {
         public override void Update(Player player, ref int buffIndex)
         {
-            player.lifeRegen += 10;
+            player.lifeRegen += 40;
         }
     }
 }

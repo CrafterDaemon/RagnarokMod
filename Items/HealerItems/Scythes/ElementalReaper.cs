@@ -38,24 +38,13 @@ namespace RagnarokMod.Items.HealerItems.Scythes
         {
             player.Calamity().rightClickListener = true;
         }
-        public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
-        {
-            type = ModContent.ProjectileType<ElementalReaperPro>();
-
-            RagnarokModPlayer ragnarokplayer = player.GetRagnarokModPlayer();
-
-            if (player.altFunctionUse == 2)
-            {
-                type = ModContent.ProjectileType<ElementalBuff>();
-                ragnarokplayer.elementalReaperCD = 1200;
-            }
-        }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             RagnarokModPlayer ragnarokplayer = player.GetRagnarokModPlayer();
             if (player.altFunctionUse == 2 && ragnarokplayer.elementalReaperCD == 0)
             {
                 Projectile.NewProjectileDirect(source, position, Vector2.Zero, ModContent.ProjectileType<ElementalBuff>(), damage, knockback, player.whoAmI);
+                ragnarokplayer.elementalReaperCD = 1200;
             }
             else if (player.altFunctionUse != 2)
             {
