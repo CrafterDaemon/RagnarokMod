@@ -10,6 +10,7 @@ using RagnarokMod.Projectiles.HealerPro.Other;
 using CalamityMod;
 using RagnarokMod.Projectiles;
 using RagnarokMod.Utils;
+using RagnarokMod.Buffs;
 
 namespace RagnarokMod.Items.HealerItems.Scythes
 {
@@ -44,6 +45,7 @@ namespace RagnarokMod.Items.HealerItems.Scythes
             if (player.altFunctionUse == 2 && ragnarokplayer.elementalReaperCD == 0)
             {
                 Projectile.NewProjectileDirect(source, position, Vector2.Zero, ModContent.ProjectileType<ElementalBuff>(), damage, knockback, player.whoAmI);
+                player.AddBuff(ModContent.BuffType<ElementalScytheCooldown>(), 1200);
                 ragnarokplayer.elementalReaperCD = 1200;
             }
             else if (player.altFunctionUse != 2)

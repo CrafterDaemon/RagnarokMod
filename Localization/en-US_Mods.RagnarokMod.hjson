@@ -25,38 +25,38 @@ Buffs: {
 	}
 
 	ElementalScytheCooldown: {
-		DisplayName: Elemental Scythe Cooldown
-		Description: Mods.RagnarokMod.Buffs.ElementalScytheCooldown.Description
+		DisplayName: Elemental Reaper Cooldown
+		Description: Elemental Reaper Right Click is on cooldown!
 	}
 
 	ScytheAirBuff: {
-		DisplayName: Scythe Air Buff
-		Description: Mods.RagnarokMod.Buffs.ScytheAirBuff.Description
+		DisplayName: Blessing of the Air
+		Description: +20% Move Speed and Wing Time
 	}
 
 	ScytheBrimstoneBuff: {
-		DisplayName: Scythe Brimstone Buff
-		Description: Mods.RagnarokMod.Buffs.ScytheBrimstoneBuff.Description
+		DisplayName: Blessing of the Brimstone
+		Description: Apply Brimstone Flames on hit
 	}
 
 	ScytheEarthBuff: {
-		DisplayName: Scythe Earth Buff
-		Description: Mods.RagnarokMod.Buffs.ScytheEarthBuff.Description
+		DisplayName: Blessing of the Earth
+		Description: +10 Defense
 	}
 
 	ScytheOasisBuff: {
-		DisplayName: Scythe Oasis Buff
-		Description: Mods.RagnarokMod.Buffs.ScytheOasisBuff.Description
+		DisplayName: Blessing of the Oasis
+		Description: Natural regen increased by 15 hp per second
 	}
 
 	ScytheSandBuff: {
-		DisplayName: Scythe Sand Buff
-		Description: Mods.RagnarokMod.Buffs.ScytheSandBuff.Description
+		DisplayName: Blessing of the Sand
+		Description: All Damage Dealt increased by 5%
 	}
 
 	ScytheWaterBuff: {
-		DisplayName: Scythe Water Buff
-		Description: Mods.RagnarokMod.Buffs.ScytheWaterBuff.Description
+		DisplayName: Blessing of the Water
+		Description: All Attack Speed increased by 5%
 	}
 }
 
