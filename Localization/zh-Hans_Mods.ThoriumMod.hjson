@@ -1,0 +1,564 @@
+Buffs: {
+	AssassinPotionBuff: {
+		DisplayName: 刺客
+		Description: 脱战后的首次盗贼攻击必定暴击并造成4倍伤害
+	}
+
+	DeepFreezeCoatingBuff: {
+		DisplayName: 盗贼武器灌注: 深度冻结
+		Description: 使用盗贼武器攻击敌人时有几率大幅度降低其移动速度
+	}
+
+	ExplosiveCoatingBuff: {
+		DisplayName: 盗贼武器灌注: 爆炸
+		Description: 使用盗贼武器攻击敌人时有几率造成爆炸, 点燃附近的敌人
+	}
+
+	GorgonCoatingBuff: {
+		DisplayName: 盗贼武器灌注: 石化果汁
+		Description: 使用盗贼武器攻击敌人时有几率使其石化
+	}
+
+	LichSetBuff: {
+		DisplayName: 灵魂收割
+		Description: 移动速度和盗贼速度大幅度增加
+	}
+
+	MyceliumVeins: {
+		DisplayName: 真菌脉络
+		Description: 盗贼速度增加10%
+	}
+
+	NinjaBuff: {
+		DisplayName: 诡诈之手
+		Description: 盗贼速度、盗贼的弹幕速度和盗贼暴击率增加
+	}
+
+	SporeCoatingBuff: {
+		DisplayName: 盗贼武器灌注: 孢子
+		Description: 使用盗贼武器攻击敌人时有几率使其感染
+	}
+
+	LastStandBuff: {
+		DisplayName: 背水一战
+		Description: 盗贼速度和伤害增加30%, 但代价是什么呢...
+	}
+
+	ThrowingSpeed: {
+		DisplayName: 急速爆发
+		Description: 盗贼速度增加15%
+	}
+
+	ToxicCoatingBuff: {
+		DisplayName: 盗贼武器灌注: 剧毒
+		Description: 使用盗贼武器攻击敌人时有几率使其中毒
+	}
+
+	TrueStrike: {
+		DisplayName: 弱点打击
+		Description: 你的攻击必定造成暴击
+	}
+}
+
+Items: {
+	FlightMail: {
+		DisplayName: 飞羽胸甲
+		Tooltip:
+			'''
+			'天空是你的飞行场地'
+			增加10%盗贼伤害
+			'''
+	}
+
+	FlightMask: {
+		DisplayName: 飞羽帽子
+		Tooltip:
+			'''
+			'天空是你的飞行场地'
+			增加5%盗贼伤害
+			增加6%盗贼暴击率
+			'''
+	}
+
+	TopazRing: {
+		DisplayName: 黄玉戒指
+		Tooltip: 增加1点盗贼伤害
+	}
+
+	BronzeBreastplate: {
+		DisplayName: 青铜胸甲
+		Tooltip: 增加20%盗贼伤害
+	}
+
+	BronzeGreaves: {
+		DisplayName: 青铜护胫
+		Tooltip:
+			'''
+			增加10%盗贼速度
+			增加10%移动速度
+			'''
+	}
+
+	BronzeHelmet: {
+		DisplayName: 青铜头盔
+		Tooltip:
+			'''
+			增加10%盗贼暴击率
+			增加10%盗贼弹幕速度
+			'''
+	}
+
+	DeepFreezeCoatingItem: {
+		DisplayName: 深寒涂层
+		Tooltip: 盗贼攻击有概率显著阻碍受击敌怪的移动
+	}
+
+	ExplosiveCoatingItem: {
+		DisplayName: 爆炸涂层
+		Tooltip: 盗贼攻击有概率爆炸，熔化附近敌怪
+	}
+
+	GorgonCoatingItem: {
+		DisplayName: 石化涂层
+		Tooltip: 盗贼攻击有概率石化敌怪
+	}
+
+	SporeCoatingItem: {
+		DisplayName: 孢子涂层
+		Tooltip: 盗贼攻击有概率用真菌感染敌怪
+	}
+
+	ToxicCoatingItem: {
+		DisplayName: 剧毒涂层
+		Tooltip: 盗贼攻击有概率使敌怪中毒
+	}
+
+	PlagueLordFlask: {
+		DisplayName: 瘟疫之主的药剂瓶
+		Tooltip:
+			'''
+			增加10%盗贼伤害
+			增加10%盗贼弹幕速度
+			增加10%盗贼速度
+			使用盗贼物品有20%概率释放两道枯萎飞刀
+			枯萎飞刀追踪敌怪并施加高度感染的疾病
+			'''
+	}
+
+	ShinobiSigil: {
+		DisplayName: 忍者魔符
+		Tooltip:
+			'''
+			增加6%盗贼暴击率
+			连续造成两次盗贼暴击会产生暗影闪电并短暂增加盗贼速度
+			'''
+	}
+
+	TideTurnerBreastplate: {
+		DisplayName: 洪流逆潮者胸甲
+		Tooltip:
+			'''
+			增加15%近战和盗贼伤害
+			增加10%近战和盗贼速度
+			增加16%近战和盗贼暴击率
+			'''
+	}
+
+	TideTurnerGreaves: {
+		DisplayName: 洪流逆潮者足具
+		Tooltip:
+			'''
+			增加10%近战和盗贼伤害
+			增加20%近战击退和盗贼弹幕速度
+			增加30%移动速度
+			'''
+	}
+
+	TideTurnersGaze: {
+		DisplayName: 洪流逆潮者王冠
+		Tooltip:
+			'''
+			'向你的敌人释放海洋之怒'
+			增加25%盗贼伤害
+			50%概率不消耗盗贼物品
+			最大技巧值增加2
+			盗贼伤害会使敌怪受到的伤害短暂增加10%
+			每秒钟产生一个漂浮球
+			每颗球会使你下次攻击没暴击时产生一次小暴击
+			'''
+	}
+
+	LichCarapace: {
+		DisplayName: 巫妖皮甲
+		Tooltip:
+			'''
+			'拥抱死亡……'
+			增加15%盗贼伤害
+			增加30%盗贼弹幕速度
+			'''
+	}
+
+	LichCowl: {
+		DisplayName: 巫妖头套
+		Tooltip:
+			'''
+			'拥抱死亡……'
+			增加15%盗贼伤害
+			33%概率不消耗盗贼物品
+			最大技巧值增加2
+			'''
+	}
+
+	LichTalon: {
+		DisplayName: 巫妖之爪
+		Tooltip:
+			'''
+			'拥抱死亡……'
+			增加12.5%盗贼伤害
+			增加15%盗贼暴击率
+			'''
+	}
+
+	AncientHallowedGuise: {
+		DisplayName: 远古神圣兜盔
+		Tooltip:
+			'''
+			增加20%盗贼伤害
+			增加8%盗贼速度和暴击率
+			'''
+	}
+
+	NinjaRack: {
+		DisplayName: 忍者武器架
+		Tooltip: 与之交互时提升各种盗贼能力
+	}
+
+	SandStoneGreaves: {
+		DisplayName: 砂石护胫
+		Tooltip:
+			'''
+			'被沙漠的狂风笼罩'
+			增加3%移动速度
+			增加5%盗贼伤害
+			'''
+	}
+
+	SandStoneHelmet: {
+		DisplayName: 砂石头盔
+		Tooltip:
+			'''
+			'被沙漠的狂风笼罩'
+			增加2%移动速度
+			增加5%盗贼伤害
+			'''
+	}
+
+	SandstoneIngot: {
+		DisplayName: 砂石锭
+		Tooltip: "'没有任何水分且很温暖'"
+	}
+
+	SandStoneMail: {
+		DisplayName: 砂石胸甲
+		Tooltip:
+			'''
+			'被沙漠的狂风笼罩'
+			增加5%移动速度
+			增加5%盗贼伤害
+			'''
+	}
+
+	AssassinPotion: {
+		DisplayName: 刺客药水
+		Tooltip: 脱战后的首次盗贼攻击必定暴击并造成4倍伤害
+	}
+
+	BoneGrip: {
+		DisplayName: 骨手套
+		Tooltip:
+			'''
+			拾取盗贼物品时有33%概率复制它并增加你的盗贼速度
+			此效果只能在脱战时每半秒触发一次
+			'''
+	}
+
+	Canteen: {
+		DisplayName: 水壶
+		Tooltip:
+			'''
+			非消耗性盗贼武器到达疲惫的时间延长40%
+			(骷髅王后由荒漠侍僧出售)
+			'''
+	}
+
+	CaptainsPoniard: {
+		DisplayName: 船长刺剑
+		Tooltip: 击中靠近你的敌怪会短暂增加你的盗贼速度
+	}
+
+	FungusGuard: {
+		DisplayName: 真菌胸甲
+		Tooltip:
+			'''
+			增加12%盗贼伤害
+			增加5%盗贼速度
+			'''
+	}
+
+	FungusHat: {
+		DisplayName: 真菌帽
+		Tooltip:
+			'''
+			增加8%盗贼伤害
+			33%概率不消耗盗贼物品
+			最大技巧值增加1
+			'''
+	}
+
+	FungusLeggings: {
+		DisplayName: 真菌护胫
+		Tooltip:
+			'''
+			增加10%盗贼伤害
+			增加5%盗贼暴击率
+			'''
+	}
+
+	MagnetoGrip: {
+		DisplayName: 万磁王手套
+		Tooltip:
+			'''
+			增加地面上盗贼物品的拾取范围
+			拾取盗贼物品时有33%概率复制它并增加你的盗贼速度
+			此效果只能在脱战时每半秒触发一次
+			'''
+	}
+
+	MermaidCanteen: {
+		DisplayName: 美人鱼水壶
+		Tooltip:
+			'''
+			非消耗性盗贼武器到达疲惫的时间延长60%
+			非消耗性盗贼武器在你疲劳值越低时会至多造成15%伤害
+			'''
+	}
+
+	NinjaEmblem: {
+		DisplayName: 忍者徽章
+		Tooltip: 增加15%盗贼伤害
+	}
+
+	OlympicTorch: {
+		DisplayName: 奥林匹克圣火
+		Tooltip:
+			'''
+			盗贼伤害会增加你1%移动速度，至多25%
+			盗贼伤害会增加你0.4%盗贼速度，至多10%
+			这些效果在不造成盗贼伤害3秒后消散
+			'''
+	}
+
+	PaddedGrip: {
+		DisplayName: 填充手套
+		Tooltip:
+			'''
+			拾取盗贼物品时有25%概率复制它
+			此效果只能在脱战时每半秒触发一次
+			(荒漠侍僧出售）
+			'''
+	}
+
+	PiratesPurse: {
+		DisplayName: 海盗的钱袋子
+		Tooltip:
+			'''
+			被盗贼伤害击杀的敌怪会释放一片伤害性钱币
+			被钱币伤害的敌怪会被穿刺并在死亡时掉落更多钱
+			'''
+	}
+
+	PlagueDoctorsGarb: {
+		DisplayName: 瘟疫医生外衣
+		Tooltip:
+			'''
+			'你在酿什么恶心的混合物？'
+			增加14%盗贼伤害
+			增加10%盗贼弹幕速度
+			'''
+	}
+
+	PlagueDoctorsLeggings: {
+		DisplayName: 瘟疫医生裤
+		Tooltip:
+			'''
+			'你在酿什么恶心的混合物？'
+			增加14%盗贼伤害
+			增加10%盗贼暴击率
+			'''
+	}
+
+	PlagueDoctorsMask: {
+		DisplayName: 瘟疫医生面具
+		Tooltip:
+			'''
+			'你在酿什么恶心的混合物？'
+			增加12%盗贼伤害
+			33%概率不消耗盗贼物品
+			最大技巧值增加1
+			'''
+	}
+
+	ShadeMasterGarb: {
+		DisplayName: 暗影大师装束
+		Tooltip:
+			'''
+			'生活在暗影中并精确打击'
+			增加15%盗贼伤害
+			增加10%盗贼速度
+			增加30%盗贼弹幕速度
+			'''
+	}
+
+	ShadeMasterMask: {
+		DisplayName: 暗影大师面具
+		Tooltip:
+			'''
+			'生活在暗影中并精确打击'
+			增加15%盗贼伤害
+			33%概率不消耗盗贼物品
+			最大技巧值增加2
+			'''
+	}
+
+	ShadeMasterTreads: {
+		DisplayName: 暗影大师足具
+		Tooltip:
+			'''
+			'生活在暗影中并精确打击'
+			增加12.5%盗贼伤害
+			增加20%盗贼暴击率
+			增加15%移动速度
+			'''
+	}
+
+	TechniqueBlankScroll: {
+		DisplayName: 空白秘技卷轴
+		Tooltip:
+			'''
+			'用于制作各种独特的秘技能力'
+			激活秘技后造成盗贼伤害可以充能技巧值
+			如果未持续造成伤害技巧值会随时间衰减
+			按下“{$Keybinds.ThrowingTechnique.DisplayName}”键 使用你的秘技卷轴
+			(荒漠侍僧出售）
+			'''
+	}
+
+	ThiefsWallet: {
+		DisplayName: 窃贼的钱包
+		Tooltip:
+			'''
+			被盗贼伤害击杀的敌怪最多可以额外掉落2银币
+			(荒漠侍僧出售）
+			'''
+	}
+
+	ThrowingGuide: {
+		DisplayName: 盗贼大师指南
+		Tooltip:
+			'''
+			复制15%的盗贼伤害
+			(克苏鲁之眼后，荒漠侍僧出售）
+			'''
+	}
+
+	ThrowingGuideVolume2: {
+		DisplayName: 盗贼大师指南：卷二
+		Tooltip:
+			'''
+			增加10%盗贼伤害
+			复制你20%的盗贼伤害
+			'''
+	}
+
+	ThrowingGuideVolume3: {
+		DisplayName: 盗贼大师指南：卷三
+		Tooltip:
+			'''
+			增加10%盗贼伤害
+			增加10%盗贼弹幕速度
+			复制你25%的盗贼伤害
+			'''
+	}
+
+	WhiteDwarfGreaves: {
+		DisplayName: 白矮星护胫
+		Tooltip:
+			'''
+			增加15%盗贼伤害
+			增加20%盗贼暴击率
+			增加20%移动速度
+			'''
+		SetBonus:
+			'''
+			暴击会从星宇释放象牙状火焰
+			象牙状火焰会造成被击中目标0.05%生命值的伤害
+			'''
+	}
+
+	WhiteDwarfGuard: {
+		DisplayName: 白矮星胸甲
+		Tooltip:
+			'''
+			增加15%盗贼伤害
+			增加15%盗贼速度
+			增加30%盗贼弹幕速度
+			'''
+		SetBonus:
+			'''
+			暴击会从星宇释放象牙状火焰
+			象牙状火焰会造成被击中目标0.05%生命值的伤害
+			'''
+	}
+
+	WhiteDwarfMask: {
+		DisplayName: 白矮星面具
+		Tooltip:
+			'''
+			增加15%盗贼伤害
+			33%概率不消耗盗贼物品
+			最大技巧值增加2
+			'''
+		SetBonus:
+			'''
+			暴击会从星宇释放象牙状火焰
+			象牙状火焰会造成被击中目标0.05%生命值的伤害
+			'''
+	}
+
+	Wreath: {
+		DisplayName: 叶环
+		Tooltip:
+			'''
+			增加10%盗贼弹幕速度
+			手持盗贼物品时增加10%移动速度
+			'''
+	}
+}
+
+Keybinds.ThrowingTechnique.DisplayName: 盗贼卷轴
+
+ThrowerTechniques: {
+	UseToEnable: 点击使用秘技卷轴 | 造成盗贼伤害，增加秘技点
+	UseToDisable: 秘技卷轴启用 | 再次点击禁用 | 造成盗贼伤害，增加秘技点
+
+	LastStand: {
+		DisplayName: 背水一战
+		Description:
+			'''
+			受到致命伤害时自动激活，获得{0}{^0:秒;seconds}的无敌
+			无敌期间会提升自身{1}%盗贼速度和伤害但结束时会死亡
+			'''
+	}
+}
+
+Configs.ThoriumConfigClient.Headers.ThrowerOptions: 盗贼选项

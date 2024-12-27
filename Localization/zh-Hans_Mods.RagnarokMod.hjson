@@ -1,0 +1,876 @@
+Buffs: {
+	AntarcticCreativityBuff: {
+		DisplayName: 极地创想
+		Description: 灵感值恢复速度提高15%和增加10%音波演奏速度
+	}
+
+	AntarcticReinforcementBuff: {
+		DisplayName: 极地援护
+		Description: 防御力增加8, 治疗法术会额外治疗2点生命值
+	}
+
+	AntarcticExhaustionDebuff: {
+		DisplayName: 极地竭尽
+		Description: 你不能再次使用此增益了
+	}
+
+	GuardianHealerBeamBuff: {
+		DisplayName: 圣晶守卫的祝福
+		Description: 额外降低10%伤害减免和5点生命恢复并持续20秒
+	}
+
+	UniversalBlessing: {
+		Description: Mods.RagnarokMod.Buffs.UniversalBlessing.Description
+		DisplayName: 至上祝福
+	}
+
+	ElementalScytheCooldown: {
+		DisplayName: 元素收割者
+		Description: 元素收割者右键冷却时间！
+	}
+
+	ScytheAirBuff: {
+		DisplayName: 空气的祝福
+		Description: 增加20%移动速度和飞行时间
+	}
+
+	ScytheBrimstoneBuff: {
+		DisplayName: 硫磺火的祝福
+		Description: 所有攻击都造成硫磺火
+	}
+
+	ScytheEarthBuff: {
+		DisplayName: 大地的祝福
+		Description: 防御力增加10
+	}
+
+	ScytheOasisBuff: {
+		DisplayName: 绿洲的祝福
+		Description: 自然回复提高15点生命值/秒
+	}
+
+	ScytheSandBuff: {
+		DisplayName: 沙的祝福
+		Description: 增加5%攻击伤害
+	}
+
+	ScytheWaterBuff: {
+		DisplayName: 水的祝福
+		Description: 增加5%攻击速度
+	}
+}
+
+Items: {
+	DrumStick: {
+		DisplayName: 鼓槌
+		Tooltip: 你的敌人就是你的鼓
+	}
+
+	AerospecBard: {
+		DisplayName: 天蓝铲帽
+		Tooltip:
+			'''
+			增加5%音波演奏速度和灵感值恢复速度
+			咒音增幅持续时间延长2秒
+			'''
+		SetBonus:
+			'''
+			一次受到超过25点伤害会召唤追踪羽毛从天而降
+			提高下落速度并免疫摔落伤害
+			增加6%音波伤害
+			增加7%移动速度
+			'''
+	}
+
+	AerospecHealer: {
+		DisplayName: 天蓝风帽
+		Tooltip:
+			'''
+			降低20%非光辉伤害
+			增加20%光辉伤害
+			最大魔力值增加20
+			'''
+		SetBonus:
+			'''
+			一次受到超过25点伤害会召唤追踪羽毛从天而降
+			提高下落速度并免疫摔落伤害
+			治疗法术会额外治疗2点生命值
+			增加10%移动速度
+			'''
+	}
+
+	AuricTeslaFrilledHelmet: {
+		DisplayName: 金缀韵灵盔
+		Tooltip:
+			'''
+			增加20%音波伤害、音波暴击率和音波追踪速度
+			增加5%移动速度
+			增加30%灵感值恢复速度
+			最大灵感值增加15
+			弦乐器的弹幕会额外反弹两次
+			'''
+		SetBonus:
+			'''
+			拥有狂想独奏帽/狂想启迪盔, 弑神者兜帽, 血嚎尖芒盔, 龙篙魂罩的套装效果
+			按下“盔甲能力”键将触发的两个狂想套装效果
+			'''
+	}
+
+	AuricTeslaHealerHead: {
+		DisplayName: 金煌圣祗盔
+		Tooltip:
+			'''
+			降低70%非光辉伤害
+			增加70%光辉伤害
+			增加25%光辉暴击率
+			增加5%移动速度
+			魔力消耗减少25%
+			治疗法术会额外治疗11生命值
+			最大魔力值增加100
+			'''
+		SetBonus:
+			'''
+			拥有梦境编织者兜帽/梦境编织者头盔, 始源林海覆面盔, 血恸幽冥盔, 龙篙风帽的套装效果
+			按下“盔甲能力”键将触发的两个梦境编织者套装效果
+			'''
+	}
+
+	BlazingDrumBeat: {
+		DisplayName: 亵渎鼓棒
+		Tooltip:
+			'''
+			连续正确拍击两次，向前方释放神圣之火
+			神圣之火附近的敌人也会受到伤害
+			'''
+	}
+
+	BloodflareHeadBard: {
+		DisplayName: 血嚎尖芒盔
+		Tooltip:
+			'''
+			增加20%音波伤害和12%音波暴击率
+			增加15%灵感恢复速度和最大灵感值增加6
+			增加15%的灵感音符掉率
+			'''
+		SetBonus:
+			'''
+			音波伤害会对敌人造成血液沸腾减益
+			创造嗜血领域，每秒回复2点，最多150点
+			达到100点时: 增加20%的音波伤害和音波暴击率，增加25%的移动速度
+			咒音增幅额外延长3秒，灵感值恢复速度提高10%
+			被击中将失去25点
+			'''
+	}
+
+	BloodflareHeadHealer: {
+		DisplayName: 血恸幽冥盔
+		Tooltip:
+			'''
+			降低70%非光辉伤害
+			增加50%光辉伤害
+			魔力消耗减少20%
+			增加20%光辉暴击率
+			治疗法术会额外治疗7生命值
+			最大魔力值增加60
+			'''
+		SetBonus:
+			'''
+			音波伤害会对敌人造成血液沸腾减益
+			创造嗜血领域，每秒回复2点，最多150点
+			达到100点时: 增加20%的光辉伤害和光辉暴击率，增加25%的移动速度和治疗法术会额外治疗3生命值
+			造成小部分伤害获得治疗
+			被击中将失去25点
+			'''
+	}
+
+	CalamityBell: {
+		DisplayName: 灾厄之铃
+		Tooltip: 被击中的敌人会被硫磺火灼烧，持续2秒
+	}
+
+	DaedalusHeadBard: {
+		DisplayName: 代达罗斯风帽
+		Tooltip:
+			'''
+			增加12%音波伤害和5%音波暴击率
+			最大灵感值增加2
+			'''
+		SetBonus:
+			'''
+			增加10%灵感值恢复速度
+			按下'盔甲能力'键将赋予你和你的队友攻速I和伤害I
+			你将获得极地创想
+			在极地创意增幅下，增加15%灵感恢复速度和10%音波演奏速度
+			消耗12点灵感值
+			'''
+	}
+
+	DaedalusHeadHealer: {
+		DisplayName: 代达罗斯面具
+		Tooltip:
+			'''
+			魔力消耗减少10%
+			降低15%非光辉伤害
+			增加15%光辉伤害和7%光辉暴击率
+			最大灵感值增加40
+			'''
+		SetBonus:
+			'''
+			治疗法术会额外治疗3生命值
+			按下'盔甲能力'键将为你提供50点护盾，并赋予你15秒的极地援护
+			极地援护期间你将获得8点防御且你的治疗法术将额外治疗2点生命
+			消耗100点魔力值
+			'''
+	}
+
+	GodSlayerHeadBard: {
+		DisplayName: 弑神者兜帽
+		Tooltip:
+			'''
+			增加25%音波伤害和15%音波暴击率
+			增加15%灵感值恢复速度
+			最大灵感值增加7
+			增加15%的灵感音符掉率
+			'''
+		SetBonus: 当你拿着乐器时，你会获得随机的咒音增幅
+	}
+
+	SilvaHeadHealer: {
+		DisplayName: 始源林海覆面盔
+		Tooltip:
+			'''
+			魔力消耗减少25%
+			降低70%非光辉伤害
+			增加55%光辉伤害
+			增加20%光辉暴击率
+			治疗法术会额外治疗7生命值
+			最大魔力值增加80
+			'''
+		SetBonus:
+			'''
+			治疗法术会提升队友的生命恢复和生命恢复速度
+			在治疗队友的同时提高50点最大生命值
+			有概率获得治疗或者生命护盾的祝福
+			血量越低，触发概率越高
+			'''
+	}
+
+	StormFeather: {
+		DisplayName: 风暴之羽
+		Tooltip: 从惊雷王鹰身上掉落下来的羽毛，闪烁着电火花。
+	}
+
+	StrangeAlienMotherBoard: {
+		DisplayName: 奇怪的外星主板
+		Tooltip: 从星际监察者身上掉落下来的主板，这个物品蕴含的科技超出了你的认知。
+	}
+
+	BelchingSaxophoneOverride: {
+		DisplayName: "{$Mods.CalamityMod.Items.Weapons.Magic.BelchingSaxophone.DisplayName}"
+		Tooltip: "{$Mods.CalamityMod.Items.Weapons.Magic.BelchingSaxophone.Tooltip}"
+	}
+
+	AnahitasArpeggioOverride: {
+		DisplayName: "{$Mods.CalamityMod.Items.Weapons.Magic.AnahitasArpeggio.DisplayName}"
+		Tooltip: "{$Mods.CalamityMod.Items.Weapons.Magic.AnahitasArpeggio.Tooltip}"
+	}
+
+	FaceMelterOverride: {
+		DisplayName: "{$Mods.CalamityMod.Items.Weapons.Magic.FaceMelter.DisplayName}"
+		Tooltip: "{$Mods.CalamityMod.Items.Weapons.Magic.FaceMelter.Tooltip}"
+	}
+
+	EmpoweredGranite: {
+		DisplayName: 赋能花岗岩
+		Tooltip: 充斥着风暴能量的花岗岩块。
+	}
+
+	EnchantedMarble: {
+		DisplayName: 魔能大理岩
+		Tooltip: 盈满了古代神圣魔法的特殊大理岩
+	}
+
+	StatigelHeadBard: {
+		DisplayName: 斯塔提斯檐帽
+		Tooltip:
+			'''
+			增加10%音波伤害
+			增加7%音波暴击率
+			'''
+		SetBonus:
+			'''
+			当你收到超过100点伤害的攻击时，获得一段较长时间的无敌。
+			增加跳跃高度，并获得一段额外的跳跃
+			增加12%跳跃速度
+			增加15%的灵感音符掉率
+			增加5%灵感值恢复速度
+			咒音增幅将延长2秒
+			'''
+	}
+
+	StatigelHeadHealer: {
+		DisplayName: 斯塔提斯角盔
+		Tooltip:
+			'''
+			降低10%非光辉伤害
+			增加10%光辉伤害
+			增加7%光辉暴击率
+			'''
+		SetBonus:
+			'''
+			当你收到超过100点伤害的攻击时，获得一段较长时间的无敌。
+			增加跳跃高度，并获得一段额外的跳跃
+			增加12%跳跃速度
+			治疗法术会额外治疗2生命值
+			最大魔力值增加20
+			魔力消耗减少5%
+			'''
+	}
+
+	StriderFang: {
+		DisplayName: 遁蛛冰牙
+		Tooltip: 从极地遁蛛嘴里拔下来的寒冰獠牙
+	}
+
+	TarragonCowl: {
+		DisplayName: 龙篙风帽
+		Tooltip:
+			'''
+			增加5%伤害减免
+			降低60%非光辉伤害
+			增加40%光辉伤害，15%光辉暴击率
+			治疗法术会额外治疗6生命值
+			最大魔力值增加60
+			魔力消耗减少15%
+			'''
+	}
+
+	TarragonShroud: {
+		DisplayName: 龙篙魂罩
+		Tooltip:
+			'''
+			增加5%伤害减免
+			增加20%音波伤害和15%音波暴击率
+			增加15%音波演奏速度
+			极大的增加灵感值恢复速度
+			增加15%的灵感音符掉率
+			最大灵感值增加4
+			'''
+	}
+
+	VictideHeadHealer: {
+		DisplayName: 胜潮绵帽
+		Tooltip:
+			'''
+			降低5%非光辉伤害
+			增加5%光辉伤害
+			'''
+		SetBonus:
+			'''
+			敌人将不太可能以你为目标
+			浸泡在液体中，增加3点生命再生，增加10%光辉伤害，降低10%非光辉伤害
+			使用任何武器时都有 10% 的几率投掷回旋贝壳弹幕
+			贝壳造成真实伤害，不受任何职业伤害加成影响
+			提供更高的水下机动性，稍微减缓深渊中呼吸条消耗速度
+			'''
+	}
+
+	NightfallenHelmet: {
+		DisplayName: 苍帷头盔
+		Tooltip:
+			'''
+			降低35%非光辉伤害
+			增加35%光辉伤害和16%光辉暴击率
+			治疗法术会额外治疗1生命值
+			最大魔力值增加60
+			'''
+	}
+
+	NightfallenBreastplate: {
+		DisplayName: 苍帷胸甲
+		Tooltip:
+			'''
+			降低45%非光辉伤害
+			增加45%光辉伤害和12%光辉暴击率
+			治疗法术会额外治疗2生命值
+			'''
+	}
+
+	NightfallenGreaves: {
+		DisplayName: 苍帷护胫
+		Tooltip:
+			'''
+			降低35%非光辉伤害
+			增加35%光辉伤害和8%光辉暴击率
+			魔力消耗减少20%
+			治疗法术会额外治疗1生命值
+			'''
+	}
+
+	VictideHeadBard: {
+		DisplayName: 胜潮海葵帽
+		Tooltip: 增加5%音波伤害
+		SetBonus:
+			'''
+			敌人将不太可能以你为目标
+			浸泡在液体中，增加3点生命再生，增加10%音波伤害
+			使用任何武器时都有 10% 的几率投掷回旋贝壳弹幕
+			贝壳造成真实伤害，不受任何职业伤害加成影响
+			提供更高的水下机动性，稍微减缓深渊中呼吸条消耗速度
+			'''
+	}
+
+	EquivalentExchange: {
+		DisplayName: 等价交换
+		Tooltip:
+			'''
+			你必须遵守等价交换的规则。
+			你得到的只能等于你投入的。
+			'''
+	}
+
+	ProfanedScythe: {
+		Tooltip: 一把神圣即地狱的镰刀
+		DisplayName: 亵渎之镰
+	}
+
+	MarbleScythe: {
+		Tooltip: 神奇的大理石让镰刀散发着额外的光芒。
+		DisplayName: 大理石之镰
+	}
+
+	ScoriaDualscythe: {
+		Tooltip: 熔渣通过排出的蒸汽使镰刀旋转得更快。
+		DisplayName: 熔渣之镰
+	}
+
+	InspirationEssence.DisplayName: 灵感精髓
+
+	AstralRipper: {
+		DisplayName: 幻星镰刃
+		Tooltip: 利用星辉瘟疫向你的敌人释放地狱之雨!
+	}
+
+	RadioMic: {
+		DisplayName: 无线电麦克风
+		Tooltip:
+			'''
+			远古凋亡恶魔的麦克风
+			对着它演唱可以召唤出阴影卷须来攻击敌人
+			'''
+	}
+
+	CorrosiveFlux: {
+		DisplayName: 腐蚀涌流
+		Tooltip: 释放3个有毒气泡
+	}
+
+	WindReaver: {
+		DisplayName: 风暴掠夺者
+		Tooltip: 一柄由天蓝锭制成的镰刀，偶尔释放出风刃。
+	}
+
+	SquirrelScarf: {
+		DisplayName: 松鼠式围巾
+		Tooltip: 调试，不是真正的游戏玩法。增加999哨兵槽
+	}
+
+	Prisma: {
+		DisplayName: 海棱杖
+		Tooltip: 释放海棱之星，然后碎裂成五个尖刺
+	}
+
+	Fractal: {
+		DisplayName: 晶变流形
+		Tooltip: 发射一个不断迸射的神圣魔力星
+	}
+
+	VoidseerPearl: {
+		DisplayName: 虚兆珠
+		Tooltip:
+			'''
+			这个美物据说来自虚空注视者的眼球里。
+			我不认为他们是字面上的意思。
+			'''
+	}
+
+	QueenJelly: {
+		DisplayName: 水母皇后胶体
+		Tooltip:
+			'''
+			一种美味的水母胶体。
+			可以说它可以制作海上最美味的三明治。
+			治疗50点生命值。
+			获得''很满意''效果
+			'''
+	}
+
+	Steampipes: {
+		DisplayName: 蒸汽风笛
+		Tooltip: 蒸汽动力风笛!
+	}
+
+	ElysianSong: {
+		DisplayName: 极乐之歌
+		Tooltip: 宛若天使手中的号角，却又差之千里......
+	}
+
+	ExecutionerMark05: {
+		DisplayName: 圣裁之镰: Mark 05
+		Tooltip:
+			'''
+			用XM-05“塔纳托斯”的核心制作的一把镰刀
+			一开始很慢，但会不断加快速度。
+			镰刀达到最高速度，会把镰刀发射到光标所在的方向，
+			如果发射到敌人身上会造成爆炸圈并对周围的敌人造成伤害。
+			'''
+	}
+
+	JellySlicer: {
+		DisplayName: 果冻切割镰
+		Tooltip: 旋转时，释放弹跳的黏液弹
+	}
+
+	Splattercannon: {
+		DisplayName: 飞溅加农
+		Tooltip:
+			'''
+			右键填充4发子弹
+			最多填充24发子弹
+			左键释放所有子弹
+			命中有几率释放追踪的治疗血弹
+			射击会增加击杀敌人时释放鲜血飞溅的几率
+			手持时治疗只有 50% 的效果
+			血 液 是 弹 药！
+			'''
+	}
+
+	ProfanedBell: {
+		DisplayName: 亵渎铃铛
+		Tooltip:
+			'''
+			释放圣之爆焱
+			击中的敌人获得神圣之火减益持续3秒
+			'''
+	}
+
+	AuricDamru: {
+		DisplayName: 金源双头鼓
+		Tooltip:
+			'''
+			敲打双头鼓并对附近敌人造成伤害
+			右键释放耀斑弹
+			耀斑弹对敌人施加龙焰减益，持续3秒
+			(Aeolus的功劳)
+			'''
+	}
+
+	NewLichRequirement: {
+		DisplayName: 新巫妖要求
+		Tooltip: 你不应该看到这个.
+	}
+
+	EldritchShellFragment: {
+		DisplayName: 诡异的贝壳碎片
+		Tooltip: 从旧潮汐神的监狱里取出的魔法碎片。
+	}
+
+	SigilOfACruelWorld: {
+		DisplayName: 残酷世界的印记
+		Tooltip:
+			'''
+			增加15%音波伤害
+			增加8%音波演奏速度
+			增加8%灵感值恢复速度
+			最大灵感值增加3
+			'''
+	}
+
+	UniversalHeadset: {
+		Tooltip:
+			'''
+			增加20%音波伤害
+			增加7%音波暴击率
+			增加10%音波演奏速度
+			增加10%灵感值恢复速度
+			最大灵感值增加5
+			每拥有一种咒音增幅使移动速度增加2%，音波演奏速度增加1%
+			'''
+		DisplayName: 宇宙耳机
+	}
+
+	GoldenBatDroppings: {
+		DisplayName: 金蝙蝠粪便
+		Tooltip:
+			'''
+			"你没有疯……你真是疯了!"
+			增加30%来自敌人的金币
+			基于持有的钱币增加伤害(仅限存钱罐)
+			复仇模式专属
+			'''
+	}
+
+	VerdurantBloom: {
+		DisplayName: 常春之瓣
+		Tooltip: 点燃各种各样的花瓣。
+	}
+
+	CosmicInjector: {
+		DisplayName: 宇宙注射器
+		Tooltip:
+			'''
+			注射器可以治愈也可以造成伤害
+			攻击时造成弑神怒焰减益
+			使用注射器作为弹药
+			'''
+	}
+
+	Korobeiniki: {
+		DisplayName: 俄罗斯方块
+		Tooltip:
+			'''
+			一个普通的游戏机.
+			四格拼板从天而落.
+			'''
+	}
+
+	GraspofVoid: {
+		DisplayName: 虚空之握
+		Tooltip: 发射暗能量并生成暗影焰。
+	}
+
+	PhantasmalEdge: {
+		DisplayName: 幻影边际
+		Tooltip:
+			'''
+			旋转这把镰刀时生成跟随你的火球
+			停止旋转镰刀火球立即攻击最近的目标
+
+			右键释放钩子把敌人拉向你。
+			对BOSS不起作用，反而会把你拉向BOSS。
+			'''
+	}
+
+	GodSlayersReap: {
+		DisplayName: 弑神收割
+		Tooltip:
+			'''
+			镰刀旋转时在边缘生成一个类似于小神明吞噬者的全息图。
+			受到此攻击的敌人会受到更多伤害并受到弑神怒焰减益的伤害。
+			'''
+	}
+
+	Arpeggiator: {
+		DisplayName: 琶音器
+		Tooltip: 以琶音形式快速发射的弹幕。
+	}
+
+	ElementalReaper: {
+		DisplayName: 元素收割者
+		Tooltip:
+			'''
+			旋转这把镰刀可生成追踪敌人的弹幕并造成元素谐鸣减益
+			右键给予你和你的队友一个元素祝福，持续10秒并有30秒冷却时间。
+			元素祝福如下：
+			沙: 增加5%攻击伤害
+			水: 增加5%攻击速度
+			空气: 增加20%移动速度和飞行时间
+			大地: 防御力增加10
+			绿洲: 在10秒内回复150点生命值。
+			硫磺火: 所有攻击都造成硫磺火
+			'''
+	}
+
+	MaxEmpowermentTester: {
+		DisplayName: 最大咒音增幅测试仪
+		Tooltip: 在物品中指定的级别授予所有咒音增幅
+	}
+
+	UnbreakableCombatUkulele: {
+		DisplayName: 坚不可摧的战斗尤克里里
+		Tooltip:
+			'''
+			左键播放尤克里里
+			右键投掷尤克里里
+			这可算不上一个好的道歉。
+			'''
+	}
+
+	NightmareFreezer: {
+		DisplayName: 噩梦制冷工
+		Tooltip:
+			'''
+			周期性地释放出一连串冰冷的飞镖。
+			在万圣节和圣诞节找到的。
+			嘿，你可以把它拍成电影！
+			'''
+	}
+
+	Armor: {
+		PostMoonLord: {
+			SilvaHeadHealer: {
+				DisplayName: 始源林海帽
+				Tooltip: ""
+			}
+		}
+	}
+}
+
+Projectiles: {
+	MelterAmpOverride.DisplayName: Melter Amp Override
+	BlazingDrumBeatFireSlash.DisplayName: Blazing Drum Beat Fire Slash
+	CalamityBellPro.DisplayName: Calamity Bell Pro
+	CalamityBellPro2.DisplayName: Calamity Bell Pro2
+	TendrilStrike.DisplayName: Tendril Strike
+	GuardianHealer.DisplayName: Guardian Healer
+	GuardianHealerBeam.DisplayName: Guardian Healer Beam
+	CorrosiveFluxPro.DisplayName: Corrosive Flux Pro
+	FractalPro1.DisplayName: Fractal Pro1
+	FractalPro2.DisplayName: Fractal Pro2
+	MarbleScythePro.DisplayName: Marble Scythe Pro
+	PrismaPro1.DisplayName: Prisma Pro1
+	PrismaPro2.DisplayName: Prisma Pro2
+	ProfanedScythePro.DisplayName: Profaned Scythe Pro
+	ScoriaDualscythePro.DisplayName: Scoria Dualscythe Pro
+	WindReaverPro.DisplayName: Wind Reaver Pro
+	WindSlashPro.DisplayName: Wind Slash Pro
+	NoProj.DisplayName: No Proj
+	SteampipesPro.DisplayName: Steampipes Pro
+	ElysianSongPro.DisplayName: Elysian Song Pro
+	FractalOrb.DisplayName: Fractal Orb
+	ExecutionerMark05Pro.DisplayName: Executioner Mark05 Pro
+	ExecutionerMark05ThrowPro.DisplayName: Executioner Mark05 Throw Pro
+	WapBamBoom.DisplayName: Wap Bam Boom
+	GelScythePro1.DisplayName: Gel Scythe Pro1
+	GelScythePro2.DisplayName: Gel Scythe Pro2
+	AstralRipperPro.DisplayName: Astral Ripper Pro
+	AstralRipperStarPro.DisplayName: Astral Ripper Star Pro
+	Splattershot.DisplayName: Splattershot
+	BloodOrb.DisplayName: Blood Orb
+	ProfaneBellBlast.DisplayName: Profane Bell Blast
+	ProfanedBellBlast.DisplayName: Profaned Bell Blast
+	BellBlastBoom.DisplayName: Bell Blast Boom
+	AuricDamruShock.DisplayName: Auric Damru Shock
+	AuricDamruFlareBombBoom.DisplayName: Auric Damru Flare Bomb Boom
+	AuricDamruFlareBomb.DisplayName: Auric Damru Flare Bomb
+	VerdurantBloomPro.DisplayName: Verdurant Bloom Pro
+	VerdurantBloomPro2.DisplayName: Verdurant Bloom Pro2
+	VerdurantBloomPro3.DisplayName: Verdurant Bloom Pro3
+	CosmicInjectorPro1.DisplayName: Cosmic Injector Pro1
+	CosmicInjectorPro2.DisplayName: Cosmic Injector Pro2
+	KorobeinikiPro1.DisplayName: Korobeiniki Pro1
+	KorobeinikiPro2.DisplayName: Korobeiniki Pro2
+	KorobeinikiPro3.DisplayName: Korobeiniki Pro3
+	KorobeinikiPro4.DisplayName: Korobeiniki Pro4
+	KorobeinikiPro5.DisplayName: Korobeiniki Pro5
+	KorobeinikiPro6.DisplayName: Korobeiniki Pro6
+	KorobeinikiPro7.DisplayName: Korobeiniki Pro7
+	GraspofVoidPro1.DisplayName: Graspof Void Pro1
+	GraspofVoidPro2.DisplayName: Graspof Void Pro2
+	PhantasmalEdgePro1.DisplayName: Phantasmal Edge Pro1
+	PhantasmalEdgeBombs.DisplayName: Phantasmal Edge Bombs
+	PhantasmalEdgeHook.DisplayName: Phantasmal Edge Hook
+	ArpeggiatorPro1.DisplayName: Arpeggiator Pro1
+	ArpeggiatorPro2.DisplayName: Arpeggiator Pro2
+	ElementalReaperPro.DisplayName: Elemental Reaper Pro
+	ElementalReaperPro2.DisplayName: Elemental Reaper Pro2
+	UnbreakableCombatUkulelePro1.DisplayName: Unbreakable Combat Ukulele Pro1
+	UnbreakableCombatUkulelePro2.DisplayName: Unbreakable Combat Ukulele Pro2
+	UnbreakableCombatUkulelePro3.DisplayName: Unbreakable Combat Ukulele Pro3
+	NightmareFreezerPro.DisplayName: Nightmare Freezer Pro
+	NightmareFreezerPro2.DisplayName: Nightmare Freezer Pro2
+	NightmareFreezerPro3.DisplayName: Nightmare Freezer Pro3
+	ElementalBuff.DisplayName: Elemental Buff
+}
+
+Configs: {
+	BossProgressionConfig: {
+		DisplayName: Boss进程设置
+		Headers.BossProgressionChanges: Boss进程改变
+
+		GrandFlareGun: {
+			Label: 惊雷王鹰召唤物配方改变
+			Tooltip: 辉耀信号枪和风暴信号弹需要风暴之颚，而不是鸟爪，默认为是
+		}
+
+		DesertMedallion: {
+			Label: 荒漠灾虫召唤物配方改变
+			Tooltip: 在荒漠吊坠的配方增加惊雷王鹰掉落的风暴之羽，默认为是
+		}
+
+		DecapoditaSprout: {
+			Label: 菌生蟹召唤物配方改变
+			Tooltip: 在节肢动物芽孢的配方增加惊雷王鹰掉落的风暴之羽，默认为是
+		}
+
+		MarbleGranite: {
+			Label: 花岗岩流能风暴/英灵遗骸召唤物配方改变
+			Tooltip: 在不稳定核心和上古之剑的配方增加血液样本和德古拉之牙，默认为是
+		}
+
+		OverloadedSludge: {
+			Label: 史莱姆之神召唤物配方改变
+			Tooltip: 在过载凝胶的配方增加赋能花岗岩和魔能大理石. 默认为是
+		}
+
+		StarCaller: {
+			Label: 星际监察者召唤物配方改变
+			Tooltip: 在星空召唤器的配方增加腐烂物质/血液样本. 默认为是
+		}
+
+		CryoKey: {
+			Label: 极地之灵召唤物配方改变
+			Tooltip: 在极寒之匙的配方增加遁蛛冰牙. 默认为是
+		}
+
+		MechBosses: {
+			Label: 机械Boss召唤物配方改变
+			Tooltip: 在机械魔眼、机械蠕虫、机械骷髅王的配方增加奇怪的外星主板. 默认为是
+		}
+
+		Lich: {
+			Label: 巫妖召唤方式改变
+			Tooltip: 需要混乱精华来召唤巫妖而不是南瓜. 默认为是
+		}
+
+		CharredIdol: {
+			Label: 硫磺火元素召唤物配方改变
+			Tooltip: 在焦炭玩偶的配方增加虚兆珠. 默认为是
+		}
+
+		Seafood: {
+			Label: 渊海灾虫召唤物配方改变
+			Tooltip: 在海鲜饵料的配方增加水母皇后胶体. 默认为是
+		}
+
+		EyeOfDesolation: {
+			Label: 灾厄之影召唤物配方改变
+			Tooltip: 在荒芜之眼的配方增加虚兆珠. 默认为是
+		}
+
+		DeathWhistle: {
+			Label: 毁灭魔像召唤物配方改变
+			Tooltip: 在唤死笛哨的配方增加诅咒布匹. 默认为是
+		}
+
+		DoomSayerCoin: {
+			Label: 始生灾灵召唤物配方改变
+			Tooltip: 在末日预言者的硬币的配方增加诡异的贝壳碎片和灾厄尘. 默认为是
+		}
+
+		RuneOfKos: {
+			Label: 宇宙符文获取改变
+			Tooltip: 将宇宙符文改为需要神圣晶石、狱火精华、海洋精华、死亡精华合成，并不再由亵渎神掉落. 默认为是
+		}
+	}
+
+	OtherConfig: {
+		DisplayName: 其他配置
+		Headers.Other: 其他
+
+		wip: {
+			Label: 正在制作......
+			Tooltip: ""
+		}
+	}
+}
