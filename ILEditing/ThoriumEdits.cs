@@ -1,7 +1,6 @@
 ﻿using CalamityMod.Items.Materials;
 using CalamityMod.CalPlayer;
 using CalamityMod;
-using IL.ThoriumMod;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using Mono.Cecil;
@@ -13,12 +12,41 @@ using System.Reflection;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
 using Terraria;
+using ThoriumMod.Buffs.Bard;
 
 namespace RagnarokMod.ILEditing
 {
     public class ThoriumEdits : ModSystem
     {
         private static Mod Thorium => ModLoader.GetMod("ThoriumMod");
+        private static Assembly ThoriumAssembly = Thorium.GetType().Assembly;
+        private static Type tlk = null;
+        private static MethodInfo tlkonhit = null;
+        private static ILHook tlkhook = null;
+        private static Type phyl = null;
+        private static MethodInfo phylrc = null;
+        private static ILHook phylhook = null;
+        private static Type midi = null;
+        private static MethodInfo midihit = null;
+        private static ILHook midihook = null;
+        private static Type solo = null;
+        private static MethodInfo solobuff = null;
+        private static ILHook solohook = null; 
+        private static Type rhap = null;
+        private static MethodInfo rhapbuff = null;
+        private static ILHook rhaphook = null;
+        private static Type bardcap = null;
+        private static MethodInfo insplimit = null;
+        private static ILHook insphook = null;
+        private static Type gscale = null;
+        private static MethodInfo gscaleup = null;
+        private static ILHook gscalehook = null;
+        private static Type depthaura = null;
+        private static MethodInfo depthaurabuff = null;
+        private static ILHook depthaurahook = null;
+        private static Type ddh = null;
+        private static MethodInfo ddhbuff = null;
+        private static ILHook ddhhook = null;
 
         public int maxInsp = 50;
         public override void OnModLoad()
@@ -28,15 +56,104 @@ namespace RagnarokMod.ILEditing
             {
                 if (Thorium != null)
                 {
-                    IL.ThoriumMod.Items.Donate.TerrariansLastKnife.OnHitNPC += NewLifestealMath;
-                    IL.ThoriumMod.Tiles.AncientPhylactery.RightClick += HavocPhylactory;
-                    IL.ThoriumMod.Projectiles.Bard.BlackMIDIPro.BardOnHitNPC += BlackMidiTweak;
-                    IL.ThoriumMod.Buffs.Bard.SoloistsHatSetBuff.Update += SoloistSetNerf;
-					IL.ThoriumMod.Items.BossThePrimordials.Rhapsodist.InspiratorsHelmet.ModifyEmpowerment += RhapsodistSetNerf;
-                    IL.ThoriumMod.ThoriumPlayer.PostUpdateEquips += removeBardResourceCaps;
-					IL.ThoriumMod.Buffs.Mount.GoldenScaleBuff.Update += tweakGoldenScaleBuff;
-					IL.ThoriumMod.Buffs.DepthBreath.Update += tweakDepthBreath;
-					IL.ThoriumMod.Items.Depths.DepthDiverHelmet.UpdateEquip += tweakDepthDiverHelmet;
+                    foreach (Type type in ThoriumAssembly.GetTypes())
+                    {
+                        if (type.Name == "TerrariansLastKnife")
+                        {
+                            tlk = type;
+                        }
+                    }
+                    tlkonhit = tlk.GetMethod("OnHitNPC", BindingFlags.Public | BindingFlags.Instance);
+                    tlkhook = new ILHook(tlkonhit, NewLifestealMath);
+                    tlkhook.Apply();
+
+                    foreach (Type type in ThoriumAssembly.GetTypes())
+                    {
+                        if (type.Name == "AncientPhylactery")
+                        {
+                            phyl = type;
+                        }
+                    }
+                    phylrc = phyl.GetMethod("RightClick", BindingFlags.Public | BindingFlags.Instance);
+                    phylhook = new ILHook(phylrc, HavocPhylactory);
+                    phylhook.Apply();
+
+                    foreach (Type type in ThoriumAssembly.GetTypes())
+                    {
+                        if (type.Name == "BlackMIDIPro")
+                        {
+                            midi = type;
+                        }
+                    }
+                    midihit = midi.GetMethod("BardOnHitNPC", BindingFlags.Public | BindingFlags.Instance);
+                    midihook = new ILHook(midihit, BlackMidiTweak);
+                    midihook.Apply();
+
+                    foreach (Type type in ThoriumAssembly.GetTypes())
+                    {
+                        if (type.Name == "SoloistsHatSetBuff")
+                        {
+                            solo = type;
+                        }
+                    }
+                    solobuff = solo.GetMethod("Update", BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly, [typeof(Player), typeof(int).MakeByRefType()]);
+                    solohook = new ILHook(solobuff, SoloistSetNerf);
+                    solohook.Apply();
+
+                    foreach (Type type in ThoriumAssembly.GetTypes())
+                    {
+                        if (type.Name == "InspiratorsHelmet")
+                        {
+                            rhap = type;
+                        }
+                    }
+                    rhapbuff = rhap.GetMethod("ModifyEmpowerment", BindingFlags.Public | BindingFlags.Instance);
+                    rhaphook = new ILHook(rhapbuff, RhapsodistSetNerf);
+                    rhaphook.Apply();
+
+                    foreach (Type type in ThoriumAssembly.GetTypes())
+                    {
+                        if (type.Name == "ThoriumPlayer")
+                        {
+                            bardcap = type;
+                        }
+                    }
+                    insplimit = bardcap.GetMethod("PostUpdateEquips", BindingFlags.Public | BindingFlags.Instance);
+                    insphook = new ILHook(insplimit, removeBardResourceCaps);
+                    insphook.Apply();
+
+                    foreach (Type type in ThoriumAssembly.GetTypes())
+                    {
+                        if (type.Name == "GoldenScaleBuff")
+                        {
+                            gscale = type;
+                        }
+                    }
+                    gscaleup = gscale.GetMethod("Update", BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly);
+                    gscalehook = new ILHook(gscaleup, tweakGoldenScaleBuff);
+                    gscalehook.Apply();
+
+                    foreach (Type type in ThoriumAssembly.GetTypes())
+                    {
+                        if (type.Name == "DepthDiverAura")
+                        {
+                            depthaura = type;
+                        }
+                    }
+                    depthaurabuff = depthaura.GetMethod("Update", BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly);
+                    depthaurahook = new ILHook(depthaurabuff, tweakDepthBreath);
+                    depthaurahook.Apply();
+
+                    foreach (Type type in ThoriumAssembly.GetTypes())
+                    {
+                        if (type.Name == "DepthDiverHelmet")
+                        {
+                            ddh = type;
+                        }
+                    }
+                    ddhbuff = ddh.GetMethod("UpdateEquip", BindingFlags.Public | BindingFlags.Instance);
+                    ddhhook = new ILHook(ddhbuff, tweakDepthDiverHelmet);
+                    ddhhook.Apply();
                     ZZZtoLoadAfterThoirumEditsBardWheel.GetMaxInsp(maxInsp);
                     loadCaught = true;
                     break;
@@ -47,15 +164,15 @@ namespace RagnarokMod.ILEditing
         {
             if (Thorium != null)
             {
-                IL.ThoriumMod.Items.Donate.TerrariansLastKnife.OnHitNPC -= NewLifestealMath;
-                IL.ThoriumMod.Tiles.AncientPhylactery.RightClick -= HavocPhylactory;
-                IL.ThoriumMod.Projectiles.Bard.BlackMIDIPro.BardOnHitNPC -= BlackMidiTweak;
-                IL.ThoriumMod.Buffs.Bard.SoloistsHatSetBuff.Update -= SoloistSetNerf;
-				IL.ThoriumMod.Items.BossThePrimordials.Rhapsodist.InspiratorsHelmet.ModifyEmpowerment -= RhapsodistSetNerf;
-                IL.ThoriumMod.ThoriumPlayer.PostUpdateEquips -= removeBardResourceCaps;
-				IL.ThoriumMod.Buffs.Mount.GoldenScaleBuff.Update -= tweakGoldenScaleBuff;
-				IL.ThoriumMod.Buffs.DepthBreath.Update -= tweakDepthBreath;
-				IL.ThoriumMod.Items.Depths.DepthDiverHelmet.UpdateEquip -= tweakDepthDiverHelmet;
+                tlkhook.Dispose();
+                phylhook.Dispose();
+                midihook.Dispose();
+                solohook.Dispose();
+                rhaphook.Dispose();
+                insphook.Dispose();
+                gscalehook.Dispose();
+                depthaurahook.Dispose();
+                ddhhook.Dispose();
             }
         }
         private void HavocPhylactory(ILContext il)

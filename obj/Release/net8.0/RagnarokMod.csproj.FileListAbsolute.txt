@@ -36,7 +36,6 @@ C:\Users\daemo\Documents\My Games\Terraria\tModLoader\ModSources\RagnarokMod\bin
 C:\Users\daemo\Documents\My Games\Terraria\tModLoader\ModSources\RagnarokMod\bin\Release\net8.0\Microsoft.Extensions.Primitives.dll
 C:\Users\daemo\Documents\My Games\Terraria\tModLoader\ModSources\RagnarokMod\bin\Release\net8.0\Microsoft.NET.StringTools.dll
 C:\Users\daemo\Documents\My Games\Terraria\tModLoader\ModSources\RagnarokMod\bin\Release\net8.0\Microsoft.Win32.SystemEvents.dll
-C:\Users\daemo\Documents\My Games\Terraria\tModLoader\ModSources\RagnarokMod\bin\Release\net8.0\MMHOOK_ThoriumMod.dll
 C:\Users\daemo\Documents\My Games\Terraria\tModLoader\ModSources\RagnarokMod\bin\Release\net8.0\Mono.Cecil.dll
 C:\Users\daemo\Documents\My Games\Terraria\tModLoader\ModSources\RagnarokMod\bin\Release\net8.0\Mono.Cecil.Mdb.dll
 C:\Users\daemo\Documents\My Games\Terraria\tModLoader\ModSources\RagnarokMod\bin\Release\net8.0\Mono.Cecil.Pdb.dll
@@ -173,7 +172,6 @@ C:\Users\daemo\Documents\My Games\Terraria\tModLoader\ModSources\RagnarokMod\obj
 C:\Users\daemo\Documents\My Games\Terraria\tModLoader\ModSources\RagnarokMod\obj\Release\net8.0\refint\RagnarokMod.dll
 C:\Users\daemo\Documents\My Games\Terraria\tModLoader\ModSources\RagnarokMod\obj\Release\net8.0\RagnarokMod.pdb
 C:\Users\daemo\Documents\My Games\Terraria\tModLoader\ModSources\RagnarokMod\obj\Release\net8.0\ref\RagnarokMod.dll
-C:\Users\daemo\Documents\My Games\Terraria\tModLoader\ModSources\RagnarokMod\bin\Release\net8.0\MMHOOK_CalamityMod.dll
 C:\Users\daemo\Documents\My Games\Terraria\tModLoader\ModSources\RagnarokMod\bin\Release\net8.0\DotNetZip.pdb
 C:\Users\daemo\Documents\My Games\Terraria\tModLoader\ModSources\RagnarokMod\bin\Release\net8.0\DotNetZip.xml
 C:\Users\daemo\Documents\My Games\Terraria\tModLoader\ModSources\RagnarokMod\bin\Release\net8.0\Hjson.xml

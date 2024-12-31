@@ -615,7 +615,7 @@ namespace RagnarokMod.Common.GlobalItems
 					Player localPlayer = Main.LocalPlayer;
 					if (localPlayer.DistanceSQ(player.Center) < 62500f)
 					{
-						localPlayer.AddBuff(ModContent.BuffType<DepthBreath>(), 30, true, false);
+						localPlayer.AddBuff(ModContent.BuffType<DepthDiverAura>(), 30, true, false);
 					}
 				}
 			

@@ -1,9 +1,12 @@
 Ragnarok. A great calamity in norse mythology, Is now a mod that allows Thorium and Calamity to be used together with minimal issues. 
 Adds more content for Thorium classes, Merges Thrower + Rogue, and creates a more coherent experience throughout all stages of the game.
 
-[h1]Update 1.4.3 Changelog[/h1]
-Holiday Update~!
+
+[h1]Update 1.4.3.2 Changelog[/h1]
+Holiday Update~! & "thorium updated again patches"
 [list]
+[*] Fixed issues caused by new thorium update
+[*] Added Localization for Simplified Chinese.
 [*] Added Elemental Reaper
 [*] Added Arpeggiator
 [*] Added Unbreakable Combat Ukelele
@@ -29,6 +32,7 @@ Holiday Update~!
 [*] If enemy's attack damage is less than the attack damage of your weapon (as shown in tooltip) it will apply that instead.
 [*] Fixed multiple glitches with Phantasmal Edge.
 [*] Phantasmal Edge damage significantly increased.
+[*] Changed all MMHook usage to Reflection (For those of you who understand)
 [/list]
 
 

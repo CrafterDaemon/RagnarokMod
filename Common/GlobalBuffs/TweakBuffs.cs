@@ -37,7 +37,7 @@ namespace RagnarokMod.Common.GlobalBuffs
 					}	
 				} 
 			} 
-			if(player.HasBuff(ModContent.BuffType<DepthBreath>()))
+			if(player.HasBuff(ModContent.BuffType<DepthDiverAura>()))
 			{
 				var calamityPlayer = player.Calamity();
 				if (!calamityPlayer.ZoneAbyss)

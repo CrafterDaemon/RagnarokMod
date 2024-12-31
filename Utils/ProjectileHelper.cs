@@ -74,9 +74,9 @@ namespace RagnarokMod.Utils
 				{
 					selfHeals += 4;
 				}
-				if (!self && thoriumPlayer.innerFlame.Active && thoriumPlayer.lowestPlayer != player.whoAmI)
+				if (!self && thoriumPlayer.innerFlame.Active && thoriumPlayer.LowestPlayer != player.whoAmI)
 				{
-					Projectile.NewProjectile(player.GetSource_Accessory(thoriumPlayer.innerFlame.Item, null), player.Center.X, player.Center.Y - 50f, 0f, 0f, ModContent.ProjectileType<LowestPro>(), 0, 0f, player.whoAmI, 0f, 0f, 0f);
+					Projectile.NewProjectile(player.GetSource_Accessory(thoriumPlayer.innerFlame.Item, null), player.Center.X, player.Center.Y - 50f, 0f, 0f, ModContent.ProjectileType<InnerFlamePro>(), 0, 0f, player.whoAmI, 0f, 0f, 0f);
 				}
 				if (!self && thoriumPlayer.accDewCollector.Active)
 				{

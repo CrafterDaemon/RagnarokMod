@@ -44,8 +44,6 @@
           "Microsoft.Extensions.Primitives": "7.0.0.0",
           "Microsoft.NET.StringTools": "1.0.0.0",
           "Microsoft.Win32.SystemEvents": "6.0.0.0",
-          "MMHOOK_CalamityMod": "0.0.0.0",
-          "MMHOOK_ThoriumMod": "0.0.0.0",
           "Mono.Cecil": "0.11.5.0",
           "Mono.Cecil.Mdb": "0.11.5.0",
           "Mono.Cecil.Pdb": "0.11.5.0",
@@ -574,22 +572,6 @@
           "Microsoft.Win32.SystemEvents.dll": {
             "assemblyVersion": "6.0.0.0",
             "fileVersion": "6.0.21.52210"
-          }
-        }
-      },
-      "MMHOOK_CalamityMod/0.0.0.0": {
-        "runtime": {
-          "MMHOOK_CalamityMod.dll": {
-            "assemblyVersion": "0.0.0.0",
-            "fileVersion": "0.0.0.0"
-          }
-        }
-      },
-      "MMHOOK_ThoriumMod/0.0.0.0": {
-        "runtime": {
-          "MMHOOK_ThoriumMod.dll": {
-            "assemblyVersion": "0.0.0.0",
-            "fileVersion": "0.0.0.0"
           }
         }
       },
@@ -1140,16 +1122,6 @@
       "sha512": ""
     },
     "Microsoft.Win32.SystemEvents/6.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "MMHOOK_CalamityMod/0.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "MMHOOK_ThoriumMod/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

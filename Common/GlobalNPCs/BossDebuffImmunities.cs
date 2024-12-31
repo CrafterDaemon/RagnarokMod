@@ -1,6 +1,5 @@
 ﻿using CalamityMod;
 using CalamityMod.NPCs.AquaticScourge;
-using IL.ThoriumMod.Items.ThrownItems;
 using System;
 using System.Collections.Generic;
 using System.Linq;
