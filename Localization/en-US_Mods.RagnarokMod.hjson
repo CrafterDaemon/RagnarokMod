@@ -58,6 +58,11 @@ Buffs: {
 		DisplayName: Blessing of the Water
 		Description: All Attack Speed increased by 5%
 	}
+
+	AuricSurge: {
+		DisplayName: Auric Surge
+		Description: Mods.RagnarokMod.Buffs.AuricSurge.Description
+	}
 }
 
 Items: {

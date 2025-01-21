@@ -58,6 +58,11 @@ Buffs: {
 		DisplayName: 水的祝福
 		Description: 增加5%攻击速度
 	}
+
+	AuricSurge: {
+		// DisplayName: Auric Surge
+		// Description: Mods.RagnarokMod.Buffs.AuricSurge.Description
+	}
 }
 
 Items: {
