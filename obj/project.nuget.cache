@@ -1,17 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "TBcEWcbkamc=",
+  "dgSpecHash": "/UGbz7aMj4iV/0EphkQA0yMxnhQaM1RCW7u9nCZeEiqBCKDgPmMJeiA0wtgjKota+Km9hujWKn7I33Ws/E0EJQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\daemo\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\RagnarokMod\\RagnarokMod.csproj",
+  "projectFilePath": "/Users/ryan/Library/Application Support/Terraria/tModLoader/ModSources/RagnarokMod/RagnarokMod.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\daemo\\.nuget\\packages\\tmodloader.codeassist\\0.1.5\\tmodloader.codeassist.0.1.5.nupkg.sha512"
+    "/Users/ryan/.nuget/packages/tmodloader.codeassist/0.1.5/tmodloader.codeassist.0.1.5.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\daemo\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\RagnarokMod\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  "logs": []
 }

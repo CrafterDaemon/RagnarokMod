@@ -722,6 +722,15 @@ Items: {
 			}
 		}
 	}
+
+	DragonForce: {
+		DisplayName: Dragon Force
+		Tooltip:
+			'''
+			Shoots a fiery slash that splits into infernal notes.
+			Through the Fire and the Flames.
+			'''
+	}
 }
 
 Projectiles: {
@@ -789,6 +798,8 @@ Projectiles: {
 	NightmareFreezerPro2.DisplayName: Nightmare Freezer Pro2
 	NightmareFreezerPro3.DisplayName: Nightmare Freezer Pro3
 	ElementalBuff.DisplayName: Elemental Buff
+	DragonForcePro1.DisplayName: Dragon Force Pro1
+	DragonForcePro2.DisplayName: Dragon Force Pro2
 }
 
 Configs: {
