@@ -9,6 +9,7 @@ using CalamityMod;
 using ThoriumMod;
 using ThoriumMod.Items.Depths;
 using ThoriumMod.Buffs;
+using RagnarokMod.Common.Configs;
 
 namespace RagnarokMod.Common.GlobalItems
 {
@@ -675,6 +676,18 @@ namespace RagnarokMod.Common.GlobalItems
 				player.GetDamage(DamageClass.Throwing) -= 0.15f;
 			}
 		}
+		
+		public override void UpdateAccessory(Item item, Player player, bool hideVisual) 
+		{
+			if (ModContent.GetInstance<ItemBalancerConfig>().OmegaCore)
+            {
+				if(item.type == thorium.Find<ModItem>("TheOmegaCore").Type) 
+				{
+						player.moveSpeed -= 0.3f;
+						player.maxRunSpeed /= 1.3f;
+				}
+            }
+		}	
 		
 		public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {

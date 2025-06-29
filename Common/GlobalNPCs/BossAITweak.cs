@@ -212,6 +212,7 @@ namespace RagnarokMod.Common.GlobalNPCs
 							npc.TargetClosest(true);
 						}
 						Player player = Main.player[npc.target];
+						//Vanishes when Player is dead or not active
 						if (!player.active || player.dead)
 						{
 							npc.velocity.Y = npc.velocity.Y - 0.04f;
@@ -222,32 +223,24 @@ namespace RagnarokMod.Common.GlobalNPCs
 							return false;
 						}
 						IEntitySource source_FromAI = npc.GetSource_FromAI(null);
-						bool flag = (double)npc.life <= (double)npc.lifeMax * 0.5;
-						int num = ((flag) ? 300 : 350); // Instead of 33%, trigger on 50% and give higher values
+						bool isfrenzythreshold = (double)npc.life <= (double)npc.lifeMax * 0.5;
 						npc.spriteDirection = ((player.Center.X > npc.Center.X) ? 1 : (-1));
 						Vector2 vector = npc.DirectionTo(player.Center);
-						if (flag) // When life below 50%
+						if (isfrenzythreshold)
 						{
 							if (!value_attackOptions.Contains(3))
 							{
 								value_attackOptions.Add(3);
 							}
+							value_frenzy = 60;
 						}
 						else
 						{
 							value_attackOptions.Remove(3);
-						}
-						
-						if (flag) // Frenzies much earlier
-						{
-							value_frenzy = 60;
-						}
-						else 
-						{
 							value_frenzy = 30;
 						}
 						
-						if (getAttackState(npc) != 1) 
+						if (getAttackState(npc) != 1) // No attack regular movement
 						{
 							if (player.Center.X + 850f < npc.Center.X) // Move much faster
 							{
@@ -256,17 +249,6 @@ namespace RagnarokMod.Common.GlobalNPCs
 							if (player.Center.X - 850f > npc.Center.X)
 							{
 								npc.velocity.X = ((npc.velocity.X < 0f) ? 10f : 7f);
-							}
-						}
-						if (getChargeTimer(npc) < 5f)
-						{
-							for (int i = 0; i < (int)getChargeTimer(npc); i++)
-							{
-								int num2 = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width, npc.height, 15, npc.velocity.X * 0.1f, -5f, 125, default(Color), 1f);
-								Main.dust[num2].noGravity = true;
-								Main.dust[num2].velocity *= 1f;
-								Dust dust = Main.dust[num2];
-								dust.velocity.Y = dust.velocity.Y - 0.25f;
 							}
 						}
 						if (getAnimationState(npc) == 2 && getAttackStateTimer(npc) < -90f)
@@ -285,52 +267,62 @@ namespace RagnarokMod.Common.GlobalNPCs
 						}
 						else if ((getAnimationState(npc) == 0 && getAttackState(npc) != 1) || (getAttackState(npc) == 1 && getAttackStateTimer(npc) < 60f))
 						{
-							if (player.position.Y < npc.position.Y + (float)num)
+							int desiredaltitudeaboveplayer = 325;
+							if (player.position.Y < npc.position.Y + (float)desiredaltitudeaboveplayer)
 							{
 								NPC npc2 = npc;
-								npc2.velocity.Y = npc2.velocity.Y - ((npc.velocity.Y > 0f) ? 1.2f : 0.12f);  // Move faster
+								npc2.velocity.Y = npc2.velocity.Y - ((npc.velocity.Y > 0f) ? 1.2f : 0.13f);  // Move faster
 							}
-							if (player.position.Y > npc.position.Y + (float)num)
+							if (player.position.Y > npc.position.Y + (float)desiredaltitudeaboveplayer)
 							{
 								NPC npc3 = npc;
-								npc3.velocity.Y = npc3.velocity.Y + ((npc.velocity.Y < 0f) ? 1.2f : 0.12f);
+								npc3.velocity.Y = npc3.velocity.Y + ((npc.velocity.Y < 0f) ? 1.2f : 0.13f);
 							}
 							npc.rotation = npc.velocity.X * 0.05f;
-							if (player.Center.X < npc.position.X && npc.velocity.X > -10f) // Move way faster
+							if (player.Center.X < npc.position.X && npc.velocity.X > -11f) // Move way faster
 							{
-								npc.velocity.X = npc.velocity.X - 0.13f;
-								if (npc.velocity.X > 10f)
+								npc.velocity.X = npc.velocity.X - 0.14f;
+								if (npc.velocity.X > 11f)
 								{
-									npc.velocity.X = npc.velocity.X - 0.13f;
+									npc.velocity.X = npc.velocity.X - 0.14f;
 								}
 								else if (npc.velocity.X > 0f)
 								{
-									npc.velocity.X = npc.velocity.X + 0.075f;
+									npc.velocity.X = npc.velocity.X + 0.08f;
 								}
-								if (npc.velocity.X < -10f)
+								if (npc.velocity.X < -11f)
 								{
-									npc.velocity.X = -10f;
+									npc.velocity.X = -11f;
 								}
 							}
-							else if (player.Center.X > npc.position.X && npc.velocity.X < 10f) // Move way faster
+							else if (player.Center.X > npc.position.X && npc.velocity.X < 11f) // Move way faster
 							{
 								npc.velocity.X = npc.velocity.X + 0.13f;
-								if (npc.velocity.X < -10f)
+								if (npc.velocity.X < -11f)
 								{
-									npc.velocity.X = npc.velocity.X + 0.13f;
+									npc.velocity.X = npc.velocity.X + 0.14f;
 								}
 								else if (npc.velocity.X < 0f)
 								{
-									npc.velocity.X = npc.velocity.X - 0.075f;
+									npc.velocity.X = npc.velocity.X - 0.08f;
 								}
-								if (npc.velocity.X > 10f)
+								if (npc.velocity.X > 11f)
 								{
-									npc.velocity.X = 10f;
+									npc.velocity.X = 11f;
 								}
 							}
 						}
 						if (getChargeTimer(npc) < 5f)
 						{
+							for (int i = 0; i < (int)getChargeTimer(npc); i++)
+							{
+								int dustparam = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width, npc.height, 15, npc.velocity.X * 0.1f, -5f, 125, default(Color), 1f);
+								Main.dust[dustparam].noGravity = true;
+								Main.dust[dustparam].velocity *= 1f;
+								Dust dust = Main.dust[dustparam];
+								dust.velocity.Y = dust.velocity.Y - 0.25f;
+							}
+							
 							if (getAttackState(npc) == 0) // spawns thunderzap from above
 							{
 								float num3 = getAttackStateTimer(npc);
@@ -372,47 +364,84 @@ namespace RagnarokMod.Common.GlobalNPCs
 							else if (getAttackState(npc) == 1) // Charge
 							{
 								npc.rotation = 0f;
-								float num6 = 15f; // Adjust position before charging much quicker 
-								float num3 = getAttackStateTimer(npc);
-								setAttackStateTimer(npc, num3 + 1f);
+								float chargealignspeed = 25f; // Adjust position before charging much quicker 
+								float chargespeed = 50f;
+								float attacktimer = getAttackStateTimer(npc);
+								setAttackStateTimer(npc, attacktimer + 1f);
 								if (getAttackStateTimer(npc) == 90f && chargeDecide == 0 && Main.netMode != 1)
 								{
 									chargeDecide = (byte)((player.Center.X < npc.Center.X) ? 1 : 2);
 									npc.netUpdate = true;
 								}
-								if (getAttackStateTimer(npc) > 120f && getAttackStateTimer(npc) < 300f)
+								if ((getAttackStateTimer(npc) == 290f || getAttackStateTimer(npc) == 460f ) && Main.netMode != 1)
 								{
-									int num7 = ((chargeDecide == 1) ? (-1) : 1);
-									npc.direction = num7;
-									npc.spriteDirection = num7;
-									Vector2 vector2 = player.Center + new Vector2((float)(-(float)num7) * 400f, 0f);
+									chargeDecide = (byte)((player.Center.X < npc.Center.X) ? 1 : 2);
+									npc.netUpdate = true;
+								}
+								if (getAttackStateTimer(npc) > 120f && getAttackStateTimer(npc) < 240f) // initiate first charge
+								{
+									int chargedirection = ((chargeDecide == 1) ? (-1) : 1);
+									npc.direction = chargedirection;
+									npc.spriteDirection = chargedirection;
+									Vector2 vector2 = player.Center + new Vector2((float)(-(float)chargedirection) * 400f, 0f);
 									Vector2 vector3 = vector2 - npc.Center;
 									if (vector3.LengthSquared() > 400f)
 									{
-										npc.velocity = Terraria.Utils.SafeNormalize(vector3, Vector2.UnitX) * num6;
+										npc.velocity = Terraria.Utils.SafeNormalize(vector3, Vector2.UnitX) * chargealignspeed;
 									}
 									else
 									{
 										npc.Center = vector2;
 									}
 								}
-								if (getAttackStateTimer(npc) == 300f && Main.netMode != 2)
+								if ((getAttackStateTimer(npc) == 240f || getAttackStateTimer(npc) == 410f ) && Main.netMode != 2) // Dust right before charge
 								{
 									for (int k = 0; k < 20; k++)
 									{
-										int num8 = Dust.NewDust(npc.position, npc.width, npc.height, 57, (float)Main.rand.Next(-8, 8), (float)Main.rand.Next(-8, 8), 0, default(Color), 3f);
-										Main.dust[num8].noGravity = true;
+										int chargedustparam = Dust.NewDust(npc.position, npc.width, npc.height, 57, (float)Main.rand.Next(-8, 8), (float)Main.rand.Next(-8, 8), 0, default(Color), 3f);
+										Main.dust[chargedustparam].noGravity = true;
 									}
 									for (int l = 0; l < 20; l++)
 									{
-										int num9 = Dust.NewDust(npc.position, npc.width, npc.height, 88, (float)Main.rand.Next(-8, 8), (float)Main.rand.Next(-8, 8), 0, default(Color), 3f);
-										Main.dust[num9].noGravity = true;
+										int chargedustparam = Dust.NewDust(npc.position, npc.width, npc.height, 88, (float)Main.rand.Next(-8, 8), (float)Main.rand.Next(-8, 8), 0, default(Color), 3f);
+										Main.dust[chargedustparam].noGravity = true;
 									}
 								}
-								if (getAttackStateTimer(npc) > 300f && getAttackStateTimer(npc) < 350f ) // Charge is splitted into two phases
+								if (getAttackStateTimer(npc) > 240f && getAttackStateTimer(npc) < 290f ) // First charge
 								{
-									int num10 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 15, 0f, 0f, 255, default(Color), 1.2f);
-									Dust dust2 = Main.dust[num10];
+									int chargedustparam = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 15, 0f, 0f, 255, default(Color), 1.2f);
+									Dust dust2 = Main.dust[chargedustparam];
+									dust2.velocity *= 0.2f;
+									dust2.noGravity = true;
+									setAnimationState(npc, 3);
+									npc.velocity.Y = 0f;
+									SetFrame(npc, 7);
+									int chargedirection = ((chargeDecide == 1) ? (-1) : 1);
+									npc.direction = chargedirection;
+									npc.spriteDirection = chargedirection;
+									npc.velocity.X = (float)chargedirection * chargespeed;
+								}
+								else if ((getAttackStateTimer(npc) >= 290f && getAttackStateTimer(npc) < 410f) || (getAttackStateTimer(npc) >= 460f && getAttackStateTimer(npc) < 580f)) // Prepare additional charges
+								{
+									int chargedirection = ((chargeDecide == 1) ? (-1) : 1);
+									npc.direction = chargedirection;
+									npc.spriteDirection = chargedirection;
+									setAnimationState(npc, 0);
+									Vector2 vector2 = player.Center + new Vector2((float)(-(float)chargedirection) * 400f, 0f);
+									Vector2 vector3 = vector2 - npc.Center;
+									if (vector3.LengthSquared() > 400f)
+									{
+										npc.velocity = Terraria.Utils.SafeNormalize(vector3, Vector2.UnitX) * chargealignspeed;
+									}
+									else
+									{
+										npc.Center = vector2;
+									}
+								}
+								else if((getAttackStateTimer(npc) >= 410f && getAttackStateTimer(npc) < 460) || getAttackStateTimer(npc) >= 580f) // Additional charges
+								{
+									int chargedustparam = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 15, 0f, 0f, 255, default(Color), 1.2f);
+									Dust dust2 = Main.dust[chargedustparam];
 									dust2.velocity *= 0.2f;
 									dust2.noGravity = true;
 									setAnimationState(npc, 3);
@@ -421,33 +450,9 @@ namespace RagnarokMod.Common.GlobalNPCs
 									int num11 = ((chargeDecide == 1) ? (-1) : 1);
 									npc.direction = num11;
 									npc.spriteDirection = num11;
-									npc.velocity.X = (float)num11 * 32f;
+									npc.velocity.X = (float)num11 * chargespeed;
 								}
-								else if (getAttackStateTimer(npc) >= 350f && getAttackStateTimer(npc) < 375f ) 
-								{
-									setAnimationState(npc, 0);
-									npc.velocity.Y = 0f;
-									int num11 = ((chargeDecide == 1) ? (1) : -1);
-									npc.direction = num11;
-									npc.spriteDirection = num11;
-									npc.velocity.X = 0f;
-									
-								}
-								else if(getAttackStateTimer(npc) >= 375f)
-								{
-									int num10 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 15, 0f, 0f, 255, default(Color), 1.2f);
-									Dust dust2 = Main.dust[num10];
-									dust2.velocity *= 0.2f;
-									dust2.noGravity = true;
-									setAnimationState(npc, 3);
-									npc.velocity.Y = 0f;
-									SetFrame(npc, 7);
-									int num11 = ((chargeDecide == 1) ? (1) : -1);
-									npc.direction = num11;
-									npc.spriteDirection = num11;
-									npc.velocity.X = (float)num11 * 32f;
-								}
-								if (getAttackStateTimer(npc) > 425f)
+								if (getAttackStateTimer(npc) > 630f) // End charges
 								{
 									if (Main.netMode != 2)
 									{
@@ -469,8 +474,8 @@ namespace RagnarokMod.Common.GlobalNPCs
 							}
 							else if (getAttackState(npc) == 2)  // Spawn StormHatchlings
 							{
-								float num3 = getAttackStateTimer(npc);
-								setAttackStateTimer(npc,  num3 + 1f);
+								float attacktimer = getAttackStateTimer(npc);
+								setAttackStateTimer(npc,  attacktimer + 1f);
 								if (getAttackStateTimer(npc) > 180f)
 								{
 									DecideNewAttack(npc, 0, Array.Empty<int>());
@@ -489,8 +494,8 @@ namespace RagnarokMod.Common.GlobalNPCs
 							}
 							else if (getAttackState(npc) == 3)  // shoots zaps at the player
 							{
-								float num3 = getAttackStateTimer(npc);
-								setAttackStateTimer(npc, num3 + 1f);
+								float attacktimer = getAttackStateTimer(npc);
+								setAttackStateTimer(npc, attacktimer + 1f);
 								if (getAttackStateTimer(npc) == 10f && Main.netMode != 2)
 								{
 									for (int num15 = 0; num15 < 15; num15++)
@@ -516,8 +521,8 @@ namespace RagnarokMod.Common.GlobalNPCs
 						else
 						{
 							setAttackStateTimer(npc, -60f);
-							float num3 = getChargeTimer(npc);
-							setChargeTimer(npc, num3 + 1f);
+							float currentchargetimer = getChargeTimer(npc);
+							setChargeTimer(npc, currentchargetimer + 1f);
 							if (getChargeTimer(npc) == 6f)
 							{
 								for (int num17 = 0; num17 < 20; num17++)
@@ -1051,49 +1056,31 @@ namespace RagnarokMod.Common.GlobalNPCs
 							return false;
 						}
 						IEntitySource source_FromAI = npc.GetSource_FromAI(null);
-						bool flag = (double)npc.life <= (double)npc.lifeMax * 0.5; // Trigger at 50% and higher values
-						int num = ((flag) ? 300 : 350);  
+						bool isfrenzythreshold = (double)npc.life <= (double)npc.lifeMax * 0.5;  
 						npc.spriteDirection = ((player.Center.X > npc.Center.X) ? 1 : (-1));
 						Vector2 vector = npc.DirectionTo(player.Center);
-						if (flag)
+						if (isfrenzythreshold)
 						{
 							if (!value_attackOptions.Contains(3))
 							{
 								value_attackOptions.Add(3);
 							}
+							value_frenzy = 60;
 						}
 						else
 						{
 							value_attackOptions.Remove(3);
-						}
-						if (flag) // Start frenzy earlier
-						{
-							value_frenzy = 60;
-						}
-						else 
-						{
-							value_frenzy = 30; 
+							value_frenzy = 30;
 						}
 						if (getAttackState(npc) != 1)
 						{
-							if (player.Center.X + 850f < npc.Center.X)  // Much faster
+							if (player.Center.X + 850f < npc.Center.X)
 							{
 								npc.velocity.X = ((npc.velocity.X < 0f) ? (-9f) : (-6f));
 							}
 							if (player.Center.X - 850f > npc.Center.X)
 							{
 								npc.velocity.X = ((npc.velocity.X < 0f) ? 9f : 6f);
-							}
-						}
-						if (getChargeTimer(npc) < 5f)
-						{
-							for (int i = 0; i < (int)getChargeTimer(npc); i++)
-							{
-								int num2 = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width, npc.height, 15, npc.velocity.X * 0.1f, -5f, 125, default(Color), 1f);
-								Main.dust[num2].noGravity = true;
-								Main.dust[num2].velocity *= 1f;
-								Dust dust = Main.dust[num2];
-								dust.velocity.Y = dust.velocity.Y - 0.25f;
 							}
 						}
 						if (getAnimationState(npc) == 2 && getAttackStateTimer(npc) < -90f)
@@ -1112,12 +1099,13 @@ namespace RagnarokMod.Common.GlobalNPCs
 						}
 						else if ((getAnimationState(npc) == 0 && getAttackState(npc) != 1) || (getAttackState(npc) == 1 && getAttackStateTimer(npc) < 60f))
 						{
-							if (player.position.Y < npc.position.Y + (float)num) // Faster
+							int desiredaltitudeaboveplayer = 325;
+							if (player.position.Y < npc.position.Y + (float)desiredaltitudeaboveplayer) // Faster
 							{
 								NPC npc2 = npc;
 								npc2.velocity.Y = npc2.velocity.Y - ((npc.velocity.Y > 0f) ? 1.0f : 0.1f);  // 1.0f and 0.1f instead of 0.8 and 0.07
 							}
-							if (player.position.Y > npc.position.Y + (float)num)
+							if (player.position.Y > npc.position.Y + (float)desiredaltitudeaboveplayer)
 							{
 								NPC npc3 = npc;
 								npc3.velocity.Y = npc3.velocity.Y + ((npc.velocity.Y < 0f) ? 1.0f : 0.1f);
@@ -1158,10 +1146,18 @@ namespace RagnarokMod.Common.GlobalNPCs
 						}
 						if (getChargeTimer(npc) < 5f)
 						{
+							for (int i = 0; i < (int)getChargeTimer(npc); i++)
+								{
+									int dustparam = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width, npc.height, 15, npc.velocity.X * 0.1f, -5f, 125, default(Color), 1f);
+									Main.dust[dustparam].noGravity = true;
+									Main.dust[dustparam].velocity *= 1f;
+									Dust dust = Main.dust[dustparam];
+									dust.velocity.Y = dust.velocity.Y - 0.25f;
+								}
 							if (getAttackState(npc) == 0)
 							{
-								float num3 = getAttackStateTimer(npc);
-								setAttackStateTimer(npc, num3 + 1f);
+								float attacktimer = getAttackStateTimer(npc);
+								setAttackStateTimer(npc, attacktimer  + 1f);
 								if (getAttackStateTimer(npc) >= 60f)
 								{
 									if (npc.spriteDirection == 1)
@@ -1180,15 +1176,14 @@ namespace RagnarokMod.Common.GlobalNPCs
 									SetFrame(npc, 5);
 									if (!player.dead && Main.netMode != 1)
 									{
-										int num4 = ModContent.ProjectileType<GrandThunderBirdZap>();
-										for (int j = 0; j < 16; j++)  // Orignally 8
+										int grandthunderbirdzapid = ModContent.ProjectileType<GrandThunderBirdZap>();
+										for (int j = 0; j < 14; j++)  // Orignally 8
 										{
-											Projectile.NewProjectile(source_FromAI, player.Center.X + (float)Main.rand.Next(-310, 310), player.Center.Y - 800f + (float)Main.rand.Next(-30, 30), 0f, 10f, num4, 12, 0f, Main.myPlayer, 0f, 0f, 0f);
+											Projectile.NewProjectile(source_FromAI, player.Center.X + (float)Main.rand.Next(-320, 320), player.Center.Y - 800f + (float)Main.rand.Next(-30, 30), 0f, 10f, grandthunderbirdzapid, 12, 0f, Main.myPlayer, 0f, 0f, 0f);
 										}
-										//
-										Projectile.NewProjectile(source_FromAI, player.Center.X, player.Center.Y - 800f + (float)Main.rand.Next(-30, 30), 0f, 10f, num4, 12, 0f, Main.myPlayer, 0f, 0f, 0f);
-										float num5 = -0.05f * (float)Terraria.Utils.ToDirectionInt(npc.velocity.X > 0f);
-										Projectile.NewProjectile(source_FromAI, npc.Center.X, npc.Center.Y - 34f, num5, 0f, ModContent.ProjectileType<ThunderBirdScreech>(), 0, 0f, Main.myPlayer, npc.rotation, 0f, 0f);
+										Projectile.NewProjectile(source_FromAI, player.Center.X, player.Center.Y - 800f + (float)Main.rand.Next(-30, 30), 0f, 10f, grandthunderbirdzapid, 12, 0f, Main.myPlayer, 0f, 0f, 0f);
+										float screechdirection = -0.05f * (float)Terraria.Utils.ToDirectionInt(npc.velocity.X > 0f);
+										Projectile.NewProjectile(source_FromAI, npc.Center.X, npc.Center.Y - 34f, screechdirection, 0f, ModContent.ProjectileType<ThunderBirdScreech>(), 0, 0f, Main.myPlayer, npc.rotation, 0f, 0f);
 									}
 								}
 								if (getAttackStateTimer(npc) >= 120f)
@@ -1200,82 +1195,94 @@ namespace RagnarokMod.Common.GlobalNPCs
 							else if (getAttackState(npc) == 1) // Charge
 							{
 								npc.rotation = 0f;
-								float num6 = 5f;
-								float num3 = getAttackStateTimer(npc);
-								setAttackStateTimer(npc, num3 + 1f);
-								if (getAttackStateTimer(npc) == 90f && chargeDecide == 0 && Main.netMode != 1)
+								float chargealignspeed = 5f;
+								float attacktimer = getAttackStateTimer(npc);
+								setAttackStateTimer(npc, attacktimer + 1f);
+								if (getAttackStateTimer(npc) == 90f && chargeDecide == 0 && Main.netMode != 1) // pre allign
 								{
 									chargeDecide = (byte)((player.Center.X < npc.Center.X) ? 1 : 2);
 									npc.netUpdate = true;
 								}
-								if (getAttackStateTimer(npc) > 120f && getAttackStateTimer(npc) < 300f)
+								if (getAttackStateTimer(npc) == 350f && Main.netMode != 1) // pre allign 2
 								{
-									int num7 = ((chargeDecide == 1) ? (-1) : 1);
-									npc.direction = num7;
-									npc.spriteDirection = num7;
-									Vector2 vector2 = player.Center + new Vector2((float)(-(float)num7) * 400f, 0f);
+									chargeDecide = (byte)((player.Center.X < npc.Center.X) ? 1 : 2);
+									npc.netUpdate = true;
+								}
+								if (getAttackStateTimer(npc) > 120f && getAttackStateTimer(npc) < 300f) // alling first charge
+								{
+									int chargedirection = ((chargeDecide == 1) ? (-1) : 1);
+									npc.direction = chargedirection;
+									npc.spriteDirection = chargedirection;
+									Vector2 vector2 = player.Center + new Vector2((float)(-(float)chargedirection) * 400f, 0f);
 									Vector2 vector3 = vector2 - npc.Center;
 									if (vector3.LengthSquared() > 400f)
 									{
-										npc.velocity = Terraria.Utils.SafeNormalize(vector3, Vector2.UnitX) * num6;
+										npc.velocity = Terraria.Utils.SafeNormalize(vector3, Vector2.UnitX) * chargealignspeed;
 									}
 									else
 									{
 										npc.Center = vector2;
 									}
 								}
-								if (getAttackStateTimer(npc) == 300f && Main.netMode != 2)
+								if ((getAttackStateTimer(npc) == 300f || getAttackStateTimer(npc) == 470f )&& Main.netMode != 2)
 								{
 									for (int k = 0; k < 20; k++)
 									{
-										int num8 = Dust.NewDust(npc.position, npc.width, npc.height, 57, (float)Main.rand.Next(-8, 8), (float)Main.rand.Next(-8, 8), 0, default(Color), 3f);
-										Main.dust[num8].noGravity = true;
+										int chargedustparam = Dust.NewDust(npc.position, npc.width, npc.height, 57, (float)Main.rand.Next(-8, 8), (float)Main.rand.Next(-8, 8), 0, default(Color), 3f);
+										Main.dust[chargedustparam].noGravity = true;
 									}
 									for (int l = 0; l < 20; l++)
 									{
-										int num9 = Dust.NewDust(npc.position, npc.width, npc.height, 88, (float)Main.rand.Next(-8, 8), (float)Main.rand.Next(-8, 8), 0, default(Color), 3f);
-										Main.dust[num9].noGravity = true;
+										int chargedustparam = Dust.NewDust(npc.position, npc.width, npc.height, 88, (float)Main.rand.Next(-8, 8), (float)Main.rand.Next(-8, 8), 0, default(Color), 3f);
+										Main.dust[chargedustparam].noGravity = true;
 									}
 								}
-								if (getAttackStateTimer(npc) > 300f && getAttackStateTimer(npc) < 350f ) // Charge is splitted into two phases
+								if (getAttackStateTimer(npc) > 300f && getAttackStateTimer(npc) < 350f ) // Charge is splitted into two phases, first charge
 								{
-									int num10 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 15, 0f, 0f, 255, default(Color), 1.2f);
-									Dust dust2 = Main.dust[num10];
+									int chargedustparam = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 15, 0f, 0f, 255, default(Color), 1.2f);
+									Dust dust2 = Main.dust[chargedustparam];
 									dust2.velocity *= 0.2f;
 									dust2.noGravity = true;
 									setAnimationState(npc, 3);
 									npc.velocity.Y = 0f;
 									SetFrame(npc, 7);
-									int num11 = ((chargeDecide == 1) ? (-1) : 1);
-									npc.direction = num11;
-									npc.spriteDirection = num11;
-									npc.velocity.X = (float)num11 * 21f;
+									int chargedirection = ((chargeDecide == 1) ? (-1) : 1);
+									npc.direction = chargedirection;
+									npc.spriteDirection = chargedirection;
+									npc.velocity.X = (float)chargedirection * 21f;
 								}
-								else if (getAttackStateTimer(npc) >= 350f && getAttackStateTimer(npc) < 390f ) 
+								else if (getAttackStateTimer(npc) >= 350f && getAttackStateTimer(npc) < 470f )  //allign second time
 								{
+									int chargedirection = ((chargeDecide == 1) ? (-1) : 1);
+									npc.direction = chargedirection;
+									npc.spriteDirection = chargedirection;
 									setAnimationState(npc, 0);
-									npc.velocity.Y = 0f;
-									int num11 = ((chargeDecide == 1) ? (1) : -1);
-									npc.direction = num11;
-									npc.spriteDirection = num11;
-									npc.velocity.X = 0f;
-									
+									Vector2 vector2 = player.Center + new Vector2((float)(-(float)chargedirection) * 400f, 0f);
+									Vector2 vector3 = vector2 - npc.Center;
+									if (vector3.LengthSquared() > 400f)
+									{
+										npc.velocity = Terraria.Utils.SafeNormalize(vector3, Vector2.UnitX) * chargealignspeed * 1.2f;
+									}
+									else
+									{
+										npc.Center = vector2;
+									}
 								}
-								else if(getAttackStateTimer(npc) >= 390f)
+								else if(getAttackStateTimer(npc) >= 470f) // Second charge
 								{
-									int num10 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 15, 0f, 0f, 255, default(Color), 1.2f);
-									Dust dust2 = Main.dust[num10];
+									int chargedustparam = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 15, 0f, 0f, 255, default(Color), 1.2f);
+									Dust dust2 = Main.dust[chargedustparam];
 									dust2.velocity *= 0.2f;
 									dust2.noGravity = true;
 									setAnimationState(npc, 3);
 									npc.velocity.Y = 0f;
 									SetFrame(npc, 7);
-									int num11 = ((chargeDecide == 1) ? (1) : -1);
-									npc.direction = num11;
-									npc.spriteDirection = num11;
-									npc.velocity.X = (float)num11 * 21f;
+									int chargedirection = ((chargeDecide == 1) ? (-1) : 1);
+									npc.direction = chargedirection;
+									npc.spriteDirection = chargedirection;
+									npc.velocity.X = (float)chargedirection * 21f;
 								}
-								if (getAttackStateTimer(npc) > 440f)
+								if (getAttackStateTimer(npc) > 520f)
 								{
 									if (Main.netMode != 2)
 									{
@@ -1297,8 +1304,8 @@ namespace RagnarokMod.Common.GlobalNPCs
 							}
 							else if (getAttackState(npc) == 2)  // Spawn StormHatchlings
 							{
-								float num3 = getAttackStateTimer(npc);
-								setAttackStateTimer(npc,  num3 + 1f);
+								float attacktimer = getAttackStateTimer(npc);
+								setAttackStateTimer(npc, attacktimer + 1f);
 								if (getAttackStateTimer(npc) > 180f)
 								{
 									DecideNewAttack(npc, 0, Array.Empty<int>());
@@ -1317,8 +1324,8 @@ namespace RagnarokMod.Common.GlobalNPCs
 							}
 							else if (getAttackState(npc) == 3) // Shooting ThunderZaps
 							{
-								float num3 = getAttackStateTimer(npc);
-								setAttackStateTimer(npc, num3 + 1f);
+								float attacktimer = getAttackStateTimer(npc);
+								setAttackStateTimer(npc, attacktimer + 1f);
 								if (getAttackStateTimer(npc) == 10f && Main.netMode != 2)
 								{
 									for (int num15 = 0; num15 < 15; num15++)
@@ -1344,8 +1351,8 @@ namespace RagnarokMod.Common.GlobalNPCs
 						else
 						{
 							setAttackStateTimer(npc, -60f);
-							float num3 = getChargeTimer(npc);
-							setChargeTimer(npc, num3 + 1f);
+							float currentchargetimer = getChargeTimer(npc);
+							setChargeTimer(npc, currentchargetimer + 1f);
 							if (getChargeTimer(npc) == 6f)
 							{
 								for (int num17 = 0; num17 < 20; num17++)
@@ -1652,27 +1659,20 @@ namespace RagnarokMod.Common.GlobalNPCs
 							return false;
 						}
 						IEntitySource source_FromAI = npc.GetSource_FromAI(null);
-						bool flag = (double)npc.life <= (double)npc.lifeMax * 0.5; // Trigger at 50%
-						int num = ((flag) ? 250 : 300);
+						bool isfrenzythreshold = (double)npc.life <= (double)npc.lifeMax * 0.5;
 						npc.spriteDirection = ((player.Center.X > npc.Center.X) ? 1 : (-1));
 						Vector2 vector = npc.DirectionTo(player.Center);
-						if (flag)
+						if (isfrenzythreshold)
 						{
 							if (!value_attackOptions.Contains(3))
 							{
 								value_attackOptions.Add(3);
 							}
+							value_frenzy = 60;
 						}
 						else
 						{
 							value_attackOptions.Remove(3);
-						}
-						if (flag)
-						{
-							value_frenzy = 60;
-						}
-						else 
-						{
 							value_frenzy = 30;
 						}
 						if (getAttackState(npc) != 1)
@@ -1684,17 +1684,6 @@ namespace RagnarokMod.Common.GlobalNPCs
 							if (player.Center.X - 850f > npc.Center.X)
 							{
 								npc.velocity.X = ((npc.velocity.X < 0f) ? 7f : 5f); // Move faster
-							}
-						}
-						if (getChargeTimer(npc) < 5f)
-						{
-							for (int i = 0; i < (int)getChargeTimer(npc); i++)
-							{
-								int num2 = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width, npc.height, 15, npc.velocity.X * 0.1f, -5f, 125, default(Color), 1f);
-								Main.dust[num2].noGravity = true;
-								Main.dust[num2].velocity *= 1f;
-								Dust dust = Main.dust[num2];
-								dust.velocity.Y = dust.velocity.Y - 0.25f;
 							}
 						}
 						if (getAnimationState(npc) == 2 && getAttackStateTimer(npc) < -90f)
@@ -1713,12 +1702,13 @@ namespace RagnarokMod.Common.GlobalNPCs
 						}
 						else if ((getAnimationState(npc) == 0 && getAttackState(npc) != 1) || (getAttackState(npc) == 1 && getAttackStateTimer(npc) < 60f))
 						{
-							if (player.position.Y < npc.position.Y + (float)num)
+							int desiredaltitudeaboveplayer = 325;
+							if (player.position.Y < npc.position.Y + (float)desiredaltitudeaboveplayer)
 							{
 								NPC npc2 = npc;
 								npc2.velocity.Y = npc2.velocity.Y - ((npc.velocity.Y > 0f) ? 0.9f : 0.08f); // Move faster
 							}
-							if (player.position.Y > npc.position.Y + (float)num)
+							if (player.position.Y > npc.position.Y + (float)desiredaltitudeaboveplayer)
 							{
 								NPC npc3 = npc;
 								npc3.velocity.Y = npc3.velocity.Y + ((npc.velocity.Y < 0f) ? 0.9f : 0.08f);
@@ -1759,6 +1749,15 @@ namespace RagnarokMod.Common.GlobalNPCs
 						}
 						if (getChargeTimer(npc) < 5f)
 						{
+							for (int i = 0; i < (int)getChargeTimer(npc); i++)
+							{
+								int dustparam = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width, npc.height, 15, npc.velocity.X * 0.1f, -5f, 125, default(Color), 1f);
+								Main.dust[dustparam].noGravity = true;
+								Main.dust[dustparam].velocity *= 1f;
+								Dust dust = Main.dust[dustparam];
+								dust.velocity.Y = dust.velocity.Y - 0.25f;
+							}
+							
 							if (getAttackState(npc) == 0)
 							{
 								float num3 = getAttackStateTimer(npc);

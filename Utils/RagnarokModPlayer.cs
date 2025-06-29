@@ -24,15 +24,14 @@ using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.CalPlayer;
 using RagnarokMod.Items.BardItems.Armor;
+using RagnarokMod.Common.Configs;
 
 namespace RagnarokMod.Utils
 {
     public class RagnarokModPlayer : ModPlayer
     {
-		
 		private static Mod thorium = ModLoader.GetMod("ThoriumMod");
 		private static Mod calamity = ModLoader.GetMod("CalamityMod");
-
 		private static int debugcounter = 0;
 
 		/// <summary>
@@ -137,10 +136,8 @@ namespace RagnarokMod.Utils
             }
         }
 		
-		
 		public override void PreUpdateBuffs()
 		{
-			
 			if (base.Player.HasBuff(ModContent.BuffType<LastStandBuff>()))
 			{
 				int bufftypeindex = -100;
@@ -173,7 +170,6 @@ namespace RagnarokMod.Utils
 			}
 			
 		}
-		
 		
 		public override void PostUpdateMiscEffects() 
 		{
@@ -235,7 +231,6 @@ namespace RagnarokMod.Utils
 				}
 			}
 			
-			
 			if(bloodflareHealer) 
 			{
 					if(bloodflarepointtimer == 0) 
@@ -295,15 +290,19 @@ namespace RagnarokMod.Utils
 				base.Player.GetDamage(DamageClass.Generic) += damagemodifier;	
 			}
 
-
-
             if (elementalReaperCD > 0)
             {
                 elementalReaperCD--;
             }
 
+			// Fixes the RogueUseTime problem, that occurs, because Thorium implements features like buffs that can effect item use times, which is incompatible with the Calamity Rogue usetime / attackspeed check.
             this.ApplyRogueUseTimeFix();
 			
+			// Applies the damage modifiers from the Configs
+			// This code always has to be a the end of this function (except debug functions) to properly calculate the effective damage!!!
+			base.Player.GetDamage(ThoriumDamageBase<BardDamage>.Instance) *= ModContent.GetInstance<ClassBalancerConfig>().BardDamageModifier;
+			base.Player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) *= ModContent.GetInstance<ClassBalancerConfig>().HealerDamageModifier;
+		
 			// The debugcounter
 			if(debugcounter >= 59) 
 			{
@@ -312,18 +311,15 @@ namespace RagnarokMod.Utils
 			else
 			{
 				debugcounter++;
-			}
-			
-			
-			
-				
+			}	
 		}
 		
+		// Fixes the RogueUseTime problem, that occurs, because Thorium implements features like buffs that can effect item use times, which is incompatible with the Calamity Rogue Stealthmode usetime / attackspeed check.
 		private void ApplyRogueUseTimeFix() 
 		{
 			var calamityPlayer = base.Player.Calamity();
 			Item it = base.Player.ActiveItem();
-            if (!calamityPlayer.wearingRogueArmor || it.useAnimation == it.useTime)
+            if (!calamityPlayer.wearingRogueArmor || it.useAnimation == it.useTime) // When the player does not wear a rogue armor or the item animation and usetime is the same, the fix does not have to be applied.
 			{
 				return;
 			}
@@ -342,8 +338,9 @@ namespace RagnarokMod.Utils
 				return;
 			}
 			
+			// Besides Rogue attackspeed, Thoriums own attack speed changes for throwing and general class have to be calculated into the attackspeed.
 			float attackSpeed = base.Player.GetAttackSpeed<RogueDamageClass>() * base.Player.GetAttackSpeed(DamageClass.Throwing) * base.Player.GetAttackSpeed(DamageClass.Generic);
-			int adjustedUseTime = (int)(it.useTime / attackSpeed);
+			int adjustedUseTime = (int)(it.useTime / attackSpeed); // Calculates the effective use time
 			
 			bool animationCheck = (base.Player.itemTime == adjustedUseTime );
 			if (!calamityPlayer.stealthStrikeThisFrame && animationCheck)
@@ -423,8 +420,7 @@ namespace RagnarokMod.Utils
 		   }
 		}
 		
-		
-		
+		// Function to add stealth to thorium throwing armors
 		public void AddStealth(int stealth) 
 		{
 		   CalamityPlayer calamityPlayer = base.Player.Calamity();
