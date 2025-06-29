@@ -184,6 +184,7 @@ namespace RagnarokMod.Common.ModSystems
 								this.ThoriumNPC("Omnicide")
 							})));
 							
+							/*
 							if(Main.expertMode) 
 							{
 								bossRushEntries.Add(new ValueTuple<int, int, Action<int>, int, bool, float, int[], ValueTuple<int[]>>(this.ThoriumNPC("DreamEater"), 0, delegate(int type)
@@ -198,6 +199,7 @@ namespace RagnarokMod.Common.ModSystems
 									this.ThoriumNPC("DreamEater")
 								})));
 							}
+							*/
 						}	
 					}
 					calamity.Call(new object[] { "SetBossRushEntries", bossRushEntries });
