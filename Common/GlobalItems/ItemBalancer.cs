@@ -501,7 +501,7 @@ namespace RagnarokMod.Common.GlobalItems
 						}
 					}
 			} 
-			else if (item.damage > 0) 
+			else if (item.damage > 0) // Weapon and Tools
 			{	
 				//Summon
 				if(item.DamageType == DamageClass.Summon) 
@@ -604,6 +604,27 @@ namespace RagnarokMod.Common.GlobalItems
 					item.damage = 280;
 					item.shootSpeed = 16f;
 					item.scale = 1.7f;
+				}
+				//Toolpowers
+				else if(item.type == thorium.Find<ModItem>("ValadiumPickaxe").Type) 
+				{
+					item.pick = 120;
+				}
+				else if(item.type == thorium.Find<ModItem>("FleshPickAxe").Type) 
+				{
+					item.pick = 115;
+				}
+				else if(item.type == thorium.Find<ModItem>("FleshDrill").Type) 
+				{
+					item.pick = 115;
+				}
+				else if(item.type == thorium.Find<ModItem>("FleshChainSaw").Type) 
+				{
+					item.axe = 13;
+				}
+				else if(item.type == thorium.Find<ModItem>("GeodePickaxe").Type) 
+				{
+					item.pick = 115;
 				}
 			}	
 			else 
