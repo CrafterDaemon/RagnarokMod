@@ -50,6 +50,9 @@ namespace RagnarokMod.ILEditing
 		private static Type bardempowermentbar = null;
         private static MethodInfo getstartcoordinates = null;
         private static ILHook bardempowermentbarhook = null;
+		private static Type nsm = null;
+        private static MethodInfo nsmbuff = null;
+        private static ILHook nsmhook = null;
 
         public int maxInsp = 50;
         public override void OnModLoad()
@@ -169,6 +172,17 @@ namespace RagnarokMod.ILEditing
 					bardempowermentbarhook = new ILHook(getstartcoordinates, updateEmpowermentBar);	
 					bardempowermentbarhook.Apply();    
 					
+					foreach (Type type in ThoriumAssembly.GetTypes())
+                    {
+                        if (type.Name == "NagaSkinMask")
+                        {
+                            nsm = type;
+                        }
+                    }
+                    nsmbuff = nsm.GetMethod("UpdateEquip", BindingFlags.Public | BindingFlags.Instance);
+                    nsmhook = new ILHook(nsmbuff, tweakNagaSkinMask);
+                    nsmhook.Apply();
+					
                     ZZZtoLoadAfterThoirumEditsBardWheel.GetMaxInsp(maxInsp);
                     loadCaught = true;
                     break;
@@ -189,6 +203,7 @@ namespace RagnarokMod.ILEditing
                 depthaurahook.Dispose();
                 ddhhook.Dispose();
 				bardempowermentbarhook.Dispose();
+				nsmhook.Dispose();
             }
         }
         private void HavocPhylactory(ILContext il)
@@ -352,7 +367,12 @@ namespace RagnarokMod.ILEditing
 
             c.Emit(OpCodes.Pop);
             c.Emit(OpCodes.Ldc_I4, (int)ModContent.GetInstance<UIConfig>().BardEmpowermentBarOffsetY);
-			//c.Emit(OpCodes.Ldc_I4, 120);
         }
+		
+		private void tweakNagaSkinMask(ILContext il) 
+		{
+			var c = new ILCursor(il);
+			c.EmitRet();
+		}
     }
 }

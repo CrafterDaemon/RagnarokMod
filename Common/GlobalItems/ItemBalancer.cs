@@ -609,71 +609,260 @@ namespace RagnarokMod.Common.GlobalItems
 		
 		public override void UpdateEquip(Item item, Player player) 
 		{
-			if(item.type == thorium.Find<ModItem>("DepthDiverHelmet").Type) 
+			if (item.defense > 0) 
 			{
-				if (Main.netMode == 1 && Main.myPlayer != player.whoAmI)
+				if(item.type == thorium.Find<ModItem>("DepthDiverHelmet").Type) 
 				{
-					Player localPlayer = Main.LocalPlayer;
-					if (localPlayer.DistanceSQ(player.Center) < 62500f)
+					if (Main.netMode == 1 && Main.myPlayer != player.whoAmI)
 					{
-						localPlayer.AddBuff(ModContent.BuffType<DepthDiverAura>(), 30, true, false);
-					}
-				}
-			
-				var calamityPlayer = player.Calamity();
-				if (!calamityPlayer.ZoneAbyss)
-				{
-					if (player.breath <= player.breathMax + 2)
-					{
-						player.breath = player.breathMax + 3;
-					}	
-				} 
-				else
-				{
-					player.moveSpeed += 0.2f;
-					player.statDefense += 10;
-					if(player.breath < player.breathMax - 25 && player.breath > 5) 
-					{	
-						Random rnd = new Random(); 
-						if(rnd.Next(1, 600) == 1) 
+						Player localPlayer = Main.LocalPlayer;
+						if (localPlayer.DistanceSQ(player.Center) < 62500f)
 						{
-							player.breath = player.breath + 20;
+							localPlayer.AddBuff(ModContent.BuffType<DepthDiverAura>(), 30, true, false);
 						}
 					}
+				
+					var calamityPlayer = player.Calamity();
+					if (!calamityPlayer.ZoneAbyss)
+					{
+						if (player.breath <= player.breathMax + 2)
+						{
+							player.breath = player.breathMax + 3;
+						}	
+					} 
+					else
+					{
+						player.moveSpeed += 0.2f;
+						player.statDefense += 10;
+						if(player.breath < player.breathMax - 25 && player.breath > 5) 
+						{	
+							Random rnd = new Random(); 
+							if(rnd.Next(1, 600) == 1) 
+							{
+								player.breath = player.breath + 20;
+							}
+						}
+					}
+					player.GetCritChance(DamageClass.Generic) += 6f;
 				}
-				player.GetCritChance(DamageClass.Generic) += 6f;
-			}
-			if(item.type == thorium.Find<ModItem>("WhiteDwarfMask").Type) 
-			{
-				player.GetDamage(DamageClass.Throwing) -= 0.05f;
-			}
-			if(item.type == thorium.Find<ModItem>("WhiteDwarfGuard").Type) 
-			{
-				player.GetDamage(DamageClass.Throwing) -= 0.05f;
-			}
-			if(item.type == thorium.Find<ModItem>("WhiteDwarfGreaves").Type) 
-			{
-				player.GetDamage(DamageClass.Throwing) -= 0.05f;
-			}
-			if(item.type == thorium.Find<ModItem>("ShadeMasterMask").Type) 
-			{
-				player.GetDamage(DamageClass.Throwing) -= 0.05f;
-			}
-			if(item.type == thorium.Find<ModItem>("ShadeMasterTreads").Type) 
-			{
-				player.GetDamage(DamageClass.Throwing) -= 0.075f;
-			}
-			if(item.type == thorium.Find<ModItem>("LichCarapace").Type) 
-			{
-				player.GetDamage(DamageClass.Throwing) -= 0.05f;
-			}
-			if(item.type == thorium.Find<ModItem>("LichTalon").Type) 
-			{
-				player.GetDamage(DamageClass.Throwing) -= 0.025f;
-			}
-			if(item.type == thorium.Find<ModItem>("TideTurnersGaze").Type) 
-			{
-				player.GetDamage(DamageClass.Throwing) -= 0.15f;
+				else if(item.type == thorium.Find<ModItem>("WhiteDwarfMask").Type) 
+				{
+					player.GetDamage(DamageClass.Throwing) -= 0.05f;
+				}
+				else if(item.type == thorium.Find<ModItem>("WhiteDwarfGuard").Type) 
+				{
+					player.GetDamage(DamageClass.Throwing) -= 0.05f;
+				}
+				else if(item.type == thorium.Find<ModItem>("WhiteDwarfGreaves").Type) 
+				{
+					player.GetDamage(DamageClass.Throwing) -= 0.05f;
+				}
+				else if(item.type == thorium.Find<ModItem>("ShadeMasterMask").Type) 
+				{
+					player.GetDamage(DamageClass.Throwing) -= 0.05f;
+				}
+				else if(item.type == thorium.Find<ModItem>("ShadeMasterTreads").Type) 
+				{
+					player.GetDamage(DamageClass.Throwing) -= 0.075f;
+				}
+				else if(item.type == thorium.Find<ModItem>("LichCarapace").Type) 
+				{
+					player.GetDamage(DamageClass.Throwing) -= 0.05f;
+				}
+				else if(item.type == thorium.Find<ModItem>("LichTalon").Type) 
+				{
+					player.GetDamage(DamageClass.Throwing) -= 0.025f;
+				}
+				else if(item.type == thorium.Find<ModItem>("TideTurnersGaze").Type) 
+				{
+					player.GetDamage(DamageClass.Throwing) -= 0.15f;
+				}
+				// Healer armor
+				else if(item.type == thorium.Find<ModItem>("NoviceClericCowl").Type) 
+				{
+					player.manaRegenDelayBonus -= 1f;
+				}
+				else if(item.type == thorium.Find<ModItem>("NoviceClericPants").Type) 
+				{
+					player.manaRegenDelayBonus -= 1f;
+				}
+				else if(item.type == thorium.Find<ModItem>("NoviceClericTabard").Type) 
+				{
+					player.manaRegenDelayBonus -= 1f;
+				}
+				else if(item.type == thorium.Find<ModItem>("BloomingCrown").Type) 
+				{
+					player.manaRegenDelayBonus -= 1f;
+				}
+				else if(item.type == thorium.Find<ModItem>("BloomingTabard").Type) 
+				{
+					player.manaRegenDelayBonus -= 1f;
+				}
+				else if(item.type == thorium.Find<ModItem>("BloomingLeggings").Type) 
+				{
+					player.manaRegenDelayBonus -= 1f;
+				}
+				else if(item.type == thorium.Find<ModItem>("WarlockLeggings").Type) 
+				{
+					player.manaCost += 0.15f;
+					player.manaCost *= 0.85f;
+				}
+				else if(item.type == thorium.Find<ModItem>("SacredHelmet").Type) 
+				{
+					player.manaRegenDelayBonus -= 2f;
+					player.manaCost += 0.07f;
+					player.manaCost *= 0.93f;
+					
+				}
+				else if(item.type == thorium.Find<ModItem>("SacredBreastplate").Type) 
+				{
+					player.manaRegenDelayBonus -= 3f;
+					player.manaCost += 0.14f;
+					player.manaCost *= 0.86f;
+				}
+				else if(item.type == thorium.Find<ModItem>("SacredLeggings").Type) 
+				{
+					player.manaRegenDelayBonus -= 2f;
+					player.manaCost += 0.09f;
+					player.manaCost *= 0.91f;
+				}
+				else if(item.type == thorium.Find<ModItem>("HallowedCowl").Type) 
+				{
+					player.manaRegenDelayBonus -= 2f;
+					player.manaCost += 0.20f;
+					player.manaCost *= 0.80f;
+				}
+				else if(item.type == thorium.Find<ModItem>("BioTechHood").Type) 
+				{
+					player.manaRegenDelayBonus -= 2f;
+					player.manaCost += 0.12f;
+					player.manaCost *= 0.88f;
+				}
+				else if(item.type == thorium.Find<ModItem>("BioTechGarment").Type) 
+				{
+					player.manaRegenDelayBonus -= 3f;
+					player.manaCost += 0.1f;
+					player.manaCost *= 0.9f;
+				}
+				else if(item.type == thorium.Find<ModItem>("BioTechLeggings").Type) 
+				{
+					player.manaRegenDelayBonus -= 3f;
+					player.manaCost += 0.08f;
+					player.manaCost *= 0.92f;
+				}
+				else if(item.type == thorium.Find<ModItem>("LifeBinderMask").Type) 
+				{
+					player.manaRegenDelayBonus -= 2f;
+					player.manaCost += 0.18f;
+					player.manaCost *= 0.82f;
+				}
+				else if(item.type == thorium.Find<ModItem>("LifeBinderBreastplate").Type) 
+				{
+					player.manaRegenDelayBonus -= 1f;
+					player.manaCost += 0.12f;
+					player.manaCost *= 0.88f;
+				}
+				else if(item.type == thorium.Find<ModItem>("LifeBinderGreaves").Type) 
+				{
+					player.manaRegenDelayBonus -= 2f;
+					player.manaCost += 0.1f;
+					player.manaCost *= 0.9f;
+				}
+				else if(item.type == thorium.Find<ModItem>("FallenPaladinGreaves").Type) 
+				{
+					player.manaCost += 0.15f;
+					player.manaCost *= 0.85f;
+				}
+				else if(item.type == thorium.Find<ModItem>("WhisperingLeggings").Type) 
+				{
+					player.manaCost += 0.15f;
+					player.manaCost *= 0.85f;
+				}
+				else if(item.type == thorium.Find<ModItem>("CelestialCrown").Type) 
+				{
+					player.manaRegenDelayBonus -= 2f;
+					player.manaCost += 0.20f;
+					player.manaCost *= 0.80f;
+				}
+				else if(item.type == thorium.Find<ModItem>("CelestialVestment").Type) 
+				{
+					player.manaRegenDelayBonus -= 3f;
+					player.manaCost += 0.25f;
+					player.manaCost *= 0.75f;
+				}
+				else if(item.type == thorium.Find<ModItem>("CelestialLeggings").Type) 
+				{
+					player.manaRegenDelayBonus -= 2f;
+					player.manaCost += 0.25f;
+					player.manaCost *= 0.75f;
+				}
+				else if(item.type == thorium.Find<ModItem>("DreamWeaversHood").Type) 
+				{
+					player.manaRegenDelayBonus -= 4f;
+					player.manaCost += 0.35f;
+					player.manaCost *= 0.65f;
+				}
+				else if(item.type == thorium.Find<ModItem>("DreamWeaversTabard").Type) 
+				{
+					player.manaRegenDelayBonus -= 2f;
+					player.manaCost += 0.2f;
+					player.manaCost *= 0.8f;
+				}
+				else if(item.type == thorium.Find<ModItem>("DreamWeaversTreads").Type) 
+				{
+					player.manaRegenDelayBonus -= 2f;
+					player.manaCost += 0.20f;
+					player.manaCost *= 0.80f;
+				}
+				// Mage Armor
+				else if(item.type == thorium.Find<ModItem>("SilkHat").Type) 
+				{
+					player.manaRegenDelayBonus -= 1f;
+				}
+				else if(item.type == thorium.Find<ModItem>("SilkTabard").Type) 
+				{
+					player.manaRegenDelayBonus -= 1f;
+				}
+				else if(item.type == thorium.Find<ModItem>("SilkLeggings").Type) 
+				{
+					player.manaRegenDelayBonus -= 1f;
+				}
+				else if(item.type == thorium.Find<ModItem>("NagaSkinMask").Type) 
+				{
+					// Add conditional underwater breathing when not in the abyss
+					var calamityPlayer = player.Calamity();
+					if (!calamityPlayer.ZoneAbyss)
+					{
+						if (player.breath <= player.breathMax + 2)
+						{
+							player.breath = player.breathMax + 3;
+						}	
+					} 
+					// Add old buffs again
+					player.statManaMax2 += 60;
+				}
+				else if(item.type == thorium.Find<ModItem>("NagaSkinSuit").Type) 
+				{
+					player.manaRegenDelayBonus -= 1f;
+				}
+				else if(item.type == thorium.Find<ModItem>("TitanHeadgear").Type) 
+				{
+					player.manaCost += 0.15f;
+					player.manaCost *= 0.85f;
+				}
+				else if(item.type == thorium.Find<ModItem>("CryomancersCrown").Type) 
+				{
+					player.manaCost += 0.15f;
+					player.manaCost *= 0.85f;
+				}
+				else if(item.type == thorium.Find<ModItem>("CryomancersTabard").Type) 
+				{
+					player.manaRegenDelayBonus -= 3f;
+				}	
+				else if(item.type == thorium.Find<ModItem>("PyromancerCowl").Type) 
+				{
+					player.manaRegenDelayBonus -= 5f;
+				}
 			}
 		}
 		
@@ -691,11 +880,19 @@ namespace RagnarokMod.Common.GlobalItems
 		
 		public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
+			if(item.defense > 0) 
+			{
 				if(item.type == thorium.Find<ModItem>("DepthDiverHelmet").Type) 
 				{
 					tooltips[5].Text = tooltips[5].Text + "\nDoes not work in the Abyss but instead grants you and your allies +10 defense and +20% movement speed\nYou also randomly get some oxygen back";
 					
 				}
+				if(item.type == thorium.Find<ModItem>("NagaSkinMask").Type) 
+				{
+					tooltips[5].Text = tooltips[5].Text + "\nUnderwater breath does not work in the Abyss";
+					
+				}
+			}	
 		}
 		
 	}
