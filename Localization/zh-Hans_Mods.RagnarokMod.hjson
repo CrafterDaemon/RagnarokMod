@@ -728,6 +728,23 @@ Items: {
 			Through the Fire and the Flames.
 			''' */
 	}
+
+	IntergelacticHeadBard: {
+		// DisplayName: Intergelactic Hat
+		/* Tooltip:
+			'''
+			Reduces damage taken by 12%
+			Increases bard damage, critical strike change and playing speed by 15%
+			15% increased inspiration regeneration
+			+4 max inspiration and empowerments last 3 additional seconds
+			+10% chance for inspiration notes to drop from enemies
+			''' */
+		/* SetBonus:
+			'''
+			Grants immunity to knockback and multiple movement debuffs
+			Your are immune to the Astral Blight
+			''' */
+	}
 }
 
 Projectiles: {
@@ -889,4 +906,46 @@ Configs: {
 			Tooltip: ""
 		}
 	}
+
+	ClassBalancerConfig: {
+		// DisplayName: Class Balancer Config
+		// Headers.ClassBalanceChanges: Class Balance Changes Header
+
+		HealerDamageModifier: {
+			// Label: Healer Damage Modifier
+			// Tooltip: ""
+		}
+
+		BardDamageModifier: {
+			// Label: Bard Damage Modifier
+			// Tooltip: ""
+		}
+	}
+
+	ItemBalancerConfig: {
+		// DisplayName: Item Balancer Config
+		// Headers.ItemBalanceChanges: Item Balance Changes Header
+
+		OmegaCore: {
+			// Label: Omega Core
+			// Tooltip: ""
+		}
+	}
+
+	UIConfig: {
+		// DisplayName: U I Config
+		// Headers.UITweaks: U I Tweaks Header
+
+		BardEmpowermentBarOffsetX: {
+			// Label: Bard Empowerment Bar Offset X
+			// Tooltip: ""
+		}
+
+		BardEmpowermentBarOffsetY: {
+			// Label: Bard Empowerment Bar Offset Y
+			// Tooltip: ""
+		}
+	}
 }
+
+// Prefixes.Weapon.Thrower_Atrocious.DisplayName: Thrower_ Atrocious

@@ -47,6 +47,9 @@ namespace RagnarokMod.ILEditing
         private static Type ddh = null;
         private static MethodInfo ddhbuff = null;
         private static ILHook ddhhook = null;
+		private static Type bardempowermentbar = null;
+        private static MethodInfo getstartcoordinates = null;
+        private static ILHook bardempowermentbarhook = null;
 
         public int maxInsp = 50;
         public override void OnModLoad()
@@ -154,6 +157,18 @@ namespace RagnarokMod.ILEditing
                     ddhbuff = ddh.GetMethod("UpdateEquip", BindingFlags.Public | BindingFlags.Instance);
                     ddhhook = new ILHook(ddhbuff, tweakDepthDiverHelmet);
                     ddhhook.Apply();
+					
+					foreach (Type type in ThoriumAssembly.GetTypes())
+					{
+						if (type.Name == "BardEmpowermentBar")
+						{
+                            bardempowermentbar = type;
+						}
+					}
+					getstartcoordinates = bardempowermentbar.GetMethod("GetStartCoordinates", BindingFlags.NonPublic | BindingFlags.Instance);
+					bardempowermentbarhook = new ILHook(getstartcoordinates, updateEmpowermentBar);	
+					bardempowermentbarhook.Apply();    
+					
                     ZZZtoLoadAfterThoirumEditsBardWheel.GetMaxInsp(maxInsp);
                     loadCaught = true;
                     break;
@@ -173,6 +188,7 @@ namespace RagnarokMod.ILEditing
                 gscalehook.Dispose();
                 depthaurahook.Dispose();
                 ddhhook.Dispose();
+				bardempowermentbarhook.Dispose();
             }
         }
         private void HavocPhylactory(ILContext il)
@@ -311,5 +327,32 @@ namespace RagnarokMod.ILEditing
 			var c = new ILCursor(il);
 			c.EmitRet();
 		}
+		
+		 private void updateEmpowermentBar(ILContext il)
+        {
+            var c = new ILCursor(il);
+			
+			if (!c.TryGotoNext(MoveType.After, i => i.MatchLdcR4(32f)))
+            {
+                return;
+            }
+			if (!c.TryGotoNext(MoveType.After, i => i.MatchLdcR4(32f)))
+            {
+                return;
+            }
+
+			c.Emit(OpCodes.Pop);
+            c.Emit(OpCodes.Ldc_R4, (float)ModContent.GetInstance<UIConfig>().BardEmpowermentBarOffsetX);
+			
+			
+            if (!c.TryGotoNext(MoveType.After, i => i.MatchLdcI4(76)))
+            {
+                return;
+            }
+
+            c.Emit(OpCodes.Pop);
+            c.Emit(OpCodes.Ldc_I4, (int)ModContent.GetInstance<UIConfig>().BardEmpowermentBarOffsetY);
+			//c.Emit(OpCodes.Ldc_I4, 120);
+        }
     }
 }

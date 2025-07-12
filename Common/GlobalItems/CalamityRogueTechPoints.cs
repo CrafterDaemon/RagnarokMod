@@ -40,6 +40,15 @@ namespace RagnarokMod.Common.GlobalItems
 				{
 					player.GetThoriumPlayer().techRechargeBonus = 30;
 				}
+			// Catalyst
+				if(ModLoader.TryGetMod("CatalystMod", out Mod CatalystMod)) 
+				{
+					if(item.type == CatalystMod.Find<ModItem>("IntergelacticHeadRogue").Type) 
+					{
+						player.GetThoriumPlayer().techRechargeBonus = 15;
+						player.GetThoriumPlayer().techPointsMax += 2;
+					}
+				}		
 		}
 		
 		public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
@@ -65,7 +74,15 @@ namespace RagnarokMod.Common.GlobalItems
 				else if(item.type == calamity.Find<ModItem>("AuricTeslaPlumedHelm").Type) 
 				{
 					tooltips[3].Text = tooltips[3].Text + " and recharge by 30%";
-				}	
+				}
+				// Catalyst
+				if(ModLoader.TryGetMod("CatalystMod", out Mod CatalystMod)) 
+				{
+					if(item.type == CatalystMod.Find<ModItem>("IntergelacticHeadRogue").Type) 
+					{
+						tooltips[3].Text = tooltips[3].Text + "\nIncreases your maximum technique points by and recharge by 15%";
+					}	
+				}
 			} 
 		}
 		
