@@ -1,5 +1,9 @@
-﻿using Terraria.Audio;
+﻿using Microsoft.Xna.Framework;
+using System;
+using System.Collections.Generic;
 using Terraria;
+using Terraria.DataStructures;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.GameInput;
 using Terraria.ModLoader;
@@ -11,20 +15,18 @@ using ThoriumMod.Items.BossThePrimordials.Rhapsodist;
 using ThoriumMod.Items.BossThePrimordials.Dream;
 using ThoriumMod.Items;
 using ThoriumMod.Sounds;
-using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
 using ThoriumMod;
 using ThoriumMod.Utilities;
 using ThoriumMod.Empowerments;
-using RagnarokMod.Buffs;
-using RagnarokMod.Items.HealerItems;
+using ThoriumMod.Projectiles.Thrower;
 using CalamityMod.Cooldowns;
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.CalPlayer;
 using RagnarokMod.Items.BardItems.Armor;
 using RagnarokMod.Common.Configs;
+using RagnarokMod.Buffs;
+using RagnarokMod.Items.HealerItems;
 
 namespace RagnarokMod.Utils
 {
@@ -32,7 +34,6 @@ namespace RagnarokMod.Utils
     {
 		private static Mod thorium = ModLoader.GetMod("ThoriumMod");
 		private static Mod calamity = ModLoader.GetMod("CalamityMod");
-		private static int debugcounter = 0;
 
 		/// <summary>
 		/// multiplies FinalDamage by (1 - this value) on the next damage taken.
@@ -63,6 +64,11 @@ namespace RagnarokMod.Utils
 		public int elementalReaperCD = 0;
 		private const int maxbloodlustpoints = 150;
 		public int elementalReaperIndex = 0;
+		public bool accShinobiSigilFix = false;
+		public bool blightAccFix = false;
+		public bool throwGuideFix = false;
+		public bool throwGuide2Fix = false;
+		public bool throwGuide3Fix = false;
 
 		public override void OnHurt(Player.HurtInfo info)
 		{
@@ -230,7 +236,6 @@ namespace RagnarokMod.Utils
 					this.Player.Heal(12);
 				}
 			}
-			
 			if(bloodflareHealer) 
 			{
 					if(bloodflarepointtimer == 0) 
@@ -298,20 +303,38 @@ namespace RagnarokMod.Utils
 			// Fixes the RogueUseTime problem, that occurs, because Thorium implements features like buffs that can effect item use times, which is incompatible with the Calamity Rogue usetime / attackspeed check.
             this.ApplyRogueUseTimeFix();
 			
+			// Fixes problems with thorium thrower accessories by disablng the thoriumplayer flags for the setbonuses and reimplementing it
+			ThoriumPlayer thoriumPlayer2 = ThoriumMod.Utilities.PlayerHelper.GetThoriumPlayer(base.Player);
+			if(thoriumPlayer2.accShinobiSigil) 
+			{
+				thoriumPlayer2.accShinobiSigil = false;
+				accShinobiSigilFix  = true;
+			}
+			if(thoriumPlayer2.blightAcc) 
+			{
+				thoriumPlayer2.blightAcc = false;
+				blightAccFix  = true;
+			}
+			if(thoriumPlayer2.throwGuide) 
+			{
+				thoriumPlayer2.throwGuide = false;
+				throwGuideFix = true;
+			}
+			if(thoriumPlayer2.throwGuide2) 
+			{
+				thoriumPlayer2.throwGuide2 = false;
+				throwGuide2Fix = true;
+			}
+			if(thoriumPlayer2.throwGuide3) 
+			{
+				thoriumPlayer2.throwGuide3 = false;
+				throwGuide3Fix = true;
+			}
+			
 			// Applies the damage modifiers from the Configs
 			// This code always has to be a the end of this function (except debug functions) to properly calculate the effective damage!!!
 			base.Player.GetDamage(ThoriumDamageBase<BardDamage>.Instance) *= ModContent.GetInstance<ClassBalancerConfig>().BardDamageModifier;
 			base.Player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) *= ModContent.GetInstance<ClassBalancerConfig>().HealerDamageModifier;
-		
-			// The debugcounter
-			if(debugcounter >= 59) 
-			{
-				debugcounter = 0;
-			} 
-			else
-			{
-				debugcounter++;
-			}	
 		}
 		
 		// Fixes the RogueUseTime problem, that occurs, because Thorium implements features like buffs that can effect item use times, which is incompatible with the Calamity Rogue Stealthmode usetime / attackspeed check.
@@ -457,6 +480,75 @@ namespace RagnarokMod.Utils
 			{
 				ApplyBloodFlareOnHit(target, damageDone);
 			}
+			
+			if (projectile.IsThrown()) 
+			{
+				if(accShinobiSigilFix) 
+				{
+					ThoriumPlayer thoriumplayer = ThoriumMod.Utilities.PlayerHelper.GetThoriumPlayer(base.Player);
+					if (hit.Crit)
+					{
+						int shinobi = ModContent.ProjectileType<ShinobiSigilPro>();
+						if (projectile.type != shinobi)
+						{
+							
+							thoriumplayer.accShinobiSigilCrit++;
+							if (thoriumplayer.accShinobiSigilCrit >= 2)
+							{
+							thoriumplayer.accShinobiSigilCrit = 0;
+							SoundEngine.PlaySound(SoundID.Item103, new Vector2?(projectile.Center), null);
+							this.Player.AddBuff(ModContent.BuffType<ThrowingSpeed>(), 300, true, false);
+							int shinobiDamage = (int)((float)projectile.damage * 0.25f);
+							if (shinobiDamage > 500) 
+							{
+								shinobiDamage = 500;
+							}
+							IEntitySource source = projectile.GetSource_OnHit(target, null);
+							Projectile.NewProjectile(source, target.Center.X, target.Center.Y, 0f, -1f, shinobi, shinobiDamage, 1f, projectile.owner, 0f, 0f, 0f);
+							Projectile.NewProjectile(source, target.Center.X, target.Center.Y, 0.75f, 1f, shinobi, shinobiDamage, 1f, projectile.owner, 0f, 0f, 0f);
+							Projectile.NewProjectile(source, target.Center.X, target.Center.Y, -1f, -0.75f, shinobi, shinobiDamage, 1f, projectile.owner, 0f, 0f, 0f);
+							Projectile.NewProjectile(source, target.Center.X, target.Center.Y, 1f, -0.75f, shinobi, shinobiDamage, 1f, projectile.owner, 0f, 0f, 0f);
+							Projectile.NewProjectile(source, target.Center.X, target.Center.Y, -0.75f, 1f, shinobi, shinobiDamage, 1f, projectile.owner, 0f, 0f, 0f);
+							}
+						}
+					}
+					else
+					{
+						thoriumplayer.accShinobiSigilCrit = 0;
+					}
+				}
+				
+				int guideDamage = 0;
+				if (throwGuide3Fix)
+				{
+					guideDamage = (int)((double)projectile.damage * 0.175);
+					if (guideDamage > 200) 
+					{
+						guideDamage = 200;
+					}
+				}
+				else if (throwGuide2Fix)
+				{
+					guideDamage = (int)((double)projectile.damage * 0.15);
+					if (guideDamage > 100) 
+					{
+						guideDamage = 100;
+					}
+				}
+				else if (throwGuideFix)
+				{
+					guideDamage = (int)((double)projectile.damage * 0.125);
+					if (guideDamage > 50) 
+					{
+						guideDamage = 50;
+					}
+				}
+				if (guideDamage > 0)
+				{
+					IEntitySource source = projectile.GetSource_OnHit(target, null);
+					Projectile.NewProjectile(source, target.Center, Vector2.Zero, ModContent.ProjectileType<ThrowingGuideFollowup>(), guideDamage, 0f, projectile.owner, (float)target.whoAmI, 0f, 0f);
+				}	
+			}
 		}
 		
 		public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone)
@@ -531,6 +623,11 @@ namespace RagnarokMod.Utils
 				this.auricBardSet = false;
 		        this.auricHealerSet = false;
 				this.batpoop = false;
+				this.accShinobiSigilFix = false;
+				this.blightAccFix = false;
+				this.throwGuideFix = false;
+				this.throwGuide2Fix = false;
+				this.throwGuide3Fix = false;
 		}
     }
 }

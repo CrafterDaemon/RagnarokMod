@@ -5,11 +5,16 @@ using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using Terraria.DataStructures;
 using CalamityMod;
 using ThoriumMod;
+using ThoriumMod.Utilities;
 using ThoriumMod.Items.Depths;
+using ThoriumMod.Items;
+using ThoriumMod.Projectiles;
 using ThoriumMod.Buffs;
 using RagnarokMod.Common.Configs;
+using RagnarokMod.Utils;
 
 namespace RagnarokMod.Common.GlobalItems
 {
@@ -876,6 +881,29 @@ namespace RagnarokMod.Common.GlobalItems
 						player.maxRunSpeed /= 1.3f;
 				}
             }
+		}
+
+		public override bool Shoot(Item item, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+		{
+			if (item.CountsAsClass(DamageClass.Throwing) && item.damage >= 1 && player.GetRagnarokModPlayer().blightAccFix && Terraria.Utils.NextBool(Main.rand, 5))
+			{
+				ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
+				ThoriumItem thoriumItem = item.ModItem as ThoriumItem;
+				float spread = 0.25f;
+				float baseSpeed = velocity.Length();
+				double num = Math.Atan2((double)velocity.X, (double)velocity.Y);
+				double randomAngle = num + (double)(0.25f * spread);
+				double randomAngle2 = num - (double)(0.25f * spread);
+				float randomSpeed = Terraria.Utils.NextFloat(Main.rand) * 0.2f + 0.95f;
+				int daggerdamage = (int)(0.75f * damage);
+				if(daggerdamage > 2000) 
+				{
+					daggerdamage = 2000;
+				}
+				Projectile.NewProjectile(source, position.X, position.Y, baseSpeed * randomSpeed * (float)Math.Sin(randomAngle), baseSpeed * randomSpeed * (float)Math.Cos(randomAngle), ModContent.ProjectileType<BlightDagger>(), daggerdamage, knockback, player.whoAmI, 0f, 0f, 0f);
+				Projectile.NewProjectile(source, position.X, position.Y, baseSpeed * randomSpeed * (float)Math.Sin(randomAngle2), baseSpeed * randomSpeed * (float)Math.Cos(randomAngle2), ModContent.ProjectileType<BlightDagger>(), daggerdamage, knockback, player.whoAmI, 0f, 0f, 0f);
+			}
+			return true;
 		}	
 		
 		public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
@@ -892,8 +920,82 @@ namespace RagnarokMod.Common.GlobalItems
 					tooltips[5].Text = tooltips[5].Text + "\nUnderwater breath does not work in the Abyss";
 					
 				}
-			}	
+			}
+			if(item.type == thorium.Find<ModItem>("ShinobiSigil").Type) 
+				{
+					for (int i = 0; i < tooltips.Count; i++)
+					{
+						if (tooltips[i].Text.Contains("basic damage"))
+						{
+							tooltips[i].Text = "25% basic damage";
+						}
+					}
+					var newLine = new TooltipLine(Mod, "shinobisigil", "Projectile damage caps at 500")
+					{
+						OverrideColor = Color.Red
+					};
+					tooltips.Add(newLine);
+				}
+			if(item.type == thorium.Find<ModItem>("PlagueLordFlask").Type) 
+				{
+					for (int i = 0; i < tooltips.Count; i++)
+					{
+						if (tooltips[i].Text.Contains("basic damage"))
+						{
+							tooltips[i].Text = "75% basic damage";
+						}
+					}
+					var newLine = new TooltipLine(Mod, "plaguelordflask", "Projectile damage caps at 2000")
+					{
+						OverrideColor = Color.Red
+					};
+					tooltips.Add(newLine);
+				}
+			if(item.type == thorium.Find<ModItem>("ThrowingGuide").Type) 
+				{
+					for (int i = 0; i < tooltips.Count; i++)
+					{
+						if (tooltips[i].Text.Contains("duplicated"))
+						{
+							tooltips[i].Text = "12.5% of your rogue damage is duplicated";
+						}
+					}
+					var newLine = new TooltipLine(Mod, "throwingguide", "Duplication damage caps at 50. Effect does not stack with other Guides")
+					{
+						OverrideColor = Color.Red
+					};
+					tooltips.Add(newLine);
+				}
+			if(item.type == thorium.Find<ModItem>("ThrowingGuideVolume2").Type) 
+				{
+					for (int i = 0; i < tooltips.Count; i++)
+					{
+						if (tooltips[i].Text.Contains("duplicated"))
+						{
+							tooltips[i].Text = "15% of your rogue damage is duplicated";
+						}
+					}
+					var newLine = new TooltipLine(Mod, "throwingguide2", "Duplication damage caps at 100. Effect does not stack with other Guides")
+					{
+						OverrideColor = Color.Red
+					};
+					tooltips.Add(newLine);
+				}
+			if(item.type == thorium.Find<ModItem>("ThrowingGuideVolume3").Type) 
+				{
+					for (int i = 0; i < tooltips.Count; i++)
+					{
+						if (tooltips[i].Text.Contains("duplicated"))
+						{
+							tooltips[i].Text = "17.5% of your rogue damage is duplicated";
+						}
+					}
+					var newLine = new TooltipLine(Mod, "throwingguide2", "Duplication damage caps at 200. Effect does not stack with other Guides")
+					{
+						OverrideColor = Color.Red
+					};
+					tooltips.Add(newLine);
+				}	
 		}
-		
 	}
 }
