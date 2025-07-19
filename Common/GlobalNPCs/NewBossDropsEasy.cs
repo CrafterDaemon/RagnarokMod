@@ -18,6 +18,7 @@ using CalamityMod.NPCs.Perforator;
 using RagnarokMod.Items.HealerItems.Other;
 using CalamityMod.NPCs.AstrumDeus;
 using CalamityMod.NPCs.CalClone;
+using CalamityMod.NPCs.SupremeCalamitas;
 using ThoriumMod.NPCs.BossFallenBeholder;
 using ThoriumMod.NPCs.BossQueenJellyfish;
 using ThoriumMod.NPCs.BossForgottenOne;
@@ -121,9 +122,13 @@ namespace RagnarokMod.Common.GlobalNPCs
                     }
                 }
             }
-            if (npc.type == ModContent.NPCType<Polterghast>() && !Main.expertMode)
+            if (npc.type == ModContent.NPCType<Polterghast>())
             {
                 npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<PhantasmalEdge>(), 4, 0));
+            }
+			if (npc.type == ModContent.NPCType<SupremeCalamitas>() && !Main.expertMode)
+            {
+                npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<Lamentation>(), 4, 0));
             }
         }
     }

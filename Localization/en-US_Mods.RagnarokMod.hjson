@@ -748,6 +748,11 @@ Items: {
 			Your are immune to the Astral Blight
 			'''
 	}
+
+	Lamentation: {
+		DisplayName: Lamentation
+		Tooltip: Shoots homing brimstone fireblasts
+	}
 }
 
 Projectiles: {
@@ -817,6 +822,9 @@ Projectiles: {
 	ElementalBuff.DisplayName: Elemental Buff
 	DragonForcePro1.DisplayName: Dragon Force Pro1
 	DragonForcePro2.DisplayName: Dragon Force Pro2
+	SupremeBellPro.DisplayName: Supreme Bell Pro
+	LamentationBoom.DisplayName: Lamentation Boom
+	LamentationPro.DisplayName: Lamentation Pro
 }
 
 Configs: {

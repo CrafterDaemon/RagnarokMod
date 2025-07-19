@@ -74,6 +74,10 @@ namespace RagnarokMod.Common.GlobalItems
             {
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<PhantasmalEdge>()));
             }
+			if (item.type == ModContent.ItemType<CalamitasCoffer>())
+            {
+                itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<Lamentation>(), 3));
+            }
         }
     }
 }
