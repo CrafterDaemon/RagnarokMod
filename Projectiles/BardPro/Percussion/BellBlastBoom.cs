@@ -15,7 +15,7 @@ namespace RagnarokMod.Projectiles.BardPro.Percussion
 {
     public class BellBlastBoom : BardProjectile
     {
-		public override string Texture => "RagnarokMod/Projectiles/BardPro/Percussion/AOE_Blast";
+		public override string Texture => "RagnarokMod/Projectiles/NoProj";
         public override void SetBardDefaults()
         {
             Projectile.width = 110;
