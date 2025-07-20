@@ -23,6 +23,25 @@ namespace RagnarokMod.Common.GlobalItems
 {
     public class NewBossDrops : GlobalItem
     {
+		public override bool AppliesToEntity(Item item, bool lateInstantiation)
+        {
+            return (
+			item.type == ModContent.ItemType<TheGrandThunderBirdTreasureBag>()
+            || item.type == ModContent.ItemType<QueenJellyfishTreasureBag>()
+            || item.type == ModContent.ItemType<StarScouterTreasureBag>()
+            || item.type == ModContent.ItemType<GraniteEnergyStormTreasureBag>()
+            || item.type == ModContent.ItemType<BuriedChampionTreasureBag>()
+            || item.type == ModContent.ItemType<BoreanStriderTreasureBag>()
+            || item.type == ModContent.ItemType<PerforatorBag>()
+            || item.type == ModContent.ItemType<CalamitasCloneBag>()
+			|| item.type == ModContent.ItemType<ProvidenceBag>()
+            || item.type == ModContent.ItemType<FallenBeholderTreasureBag>()
+            || item.type == ModContent.ItemType<ForgottenOneTreasureBag>()
+            || item.type == ModContent.ItemType<PolterghastBag>()
+			|| item.type == ModContent.ItemType<CalamitasCoffer>()
+			);
+        }
+		
         public override void ModifyItemLoot(Item item, ItemLoot itemLoot)
         {
             //changing lootbag drops

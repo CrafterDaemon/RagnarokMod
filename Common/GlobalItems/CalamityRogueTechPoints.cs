@@ -15,6 +15,11 @@ namespace RagnarokMod.Common.GlobalItems
 		private static Mod thorium = ModLoader.GetMod("ThoriumMod");
 		private static Mod calamity = ModLoader.GetMod("CalamityMod");
 		
+		public override bool AppliesToEntity(Item item, bool lateInstantiation)
+        {
+            return ( item.defense > 0 );
+        }
+		
 		public override void UpdateEquip(Item item, Player player) 
 		{
 			if(item.defense > 0)
@@ -27,21 +32,22 @@ namespace RagnarokMod.Common.GlobalItems
 							break;
 						}
 					}
-			}
-			if(item.type == calamity.Find<ModItem>("BloodflareHeadRogue").Type) 
+				if(item.type == calamity.Find<ModItem>("BloodflareHeadRogue").Type) 
 				{
 					player.GetThoriumPlayer().techRechargeBonus = 15;
 				}
-			else if(item.type == calamity.Find<ModItem>("GodSlayerHeadRogue").Type) 
-				{
+				else if(item.type == calamity.Find<ModItem>("GodSlayerHeadRogue").Type) 
+					{
 					player.GetThoriumPlayer().techRechargeBonus = 20;
 				}
-			else if(item.type == calamity.Find<ModItem>("AuricTeslaPlumedHelm").Type) 
+				else if(item.type == calamity.Find<ModItem>("AuricTeslaPlumedHelm").Type) 
 				{
 					player.GetThoriumPlayer().techRechargeBonus = 30;
 				}
+			}
+			
 			// Catalyst
-				if(ModLoader.TryGetMod("CatalystMod", out Mod CatalystMod)) 
+			if(ModLoader.TryGetMod("CatalystMod", out Mod CatalystMod)) 
 				{
 					if(item.type == CatalystMod.Find<ModItem>("IntergelacticHeadRogue").Type) 
 					{

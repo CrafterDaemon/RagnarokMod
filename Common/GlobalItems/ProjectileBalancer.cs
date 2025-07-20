@@ -11,9 +11,15 @@ namespace RagnarokMod.Common.GlobalItems
 {
     public class ProjectileBalancer : GlobalProjectile
     {
-		private static bool print_message=true;
 		private static Mod thorium = ModLoader.GetMod("ThoriumMod");
-		private static Mod calamity = ModLoader.GetMod("CalamityMod");
+		
+		public override bool AppliesToEntity(Projectile projectile, bool lateInstantiation)
+        {
+            return (
+			projectile.type == thorium.Find<ModProjectile>("LifeDeathPro1").Type
+			);
+        }
+		
 		public override void SetDefaults(Projectile projectile)
         {
 			if (projectile.type == thorium.Find<ModProjectile>("LifeDeathPro1").Type) 
@@ -25,6 +31,5 @@ namespace RagnarokMod.Common.GlobalItems
 
 			}
 		}
-
 	}
 }

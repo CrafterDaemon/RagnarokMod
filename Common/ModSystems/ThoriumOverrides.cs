@@ -38,9 +38,9 @@ using ThoriumMod.Items.Geode;
 using ThoriumMod.Utilities;
 using ThoriumMod.Buffs;
 
-namespace RagnarokMod.Common.GlobalItems
+namespace RagnarokMod.Common.ModSystems
 {
-    public class ThoriumOverrides : GlobalItem
+    public class ThoriumOverrides : ModSystem
     {
         public override void AddRecipes()
         {
@@ -273,16 +273,6 @@ namespace RagnarokMod.Common.GlobalItems
             {
                 Tileswitcher(item, 134, TileID.Anvils);
             }
-        }
-
-        public override void SetDefaults(Item item)
-        {
-            if (item.type == ModContent.ItemType<StormFlare>() || item.type == ModContent.ItemType<JellyfishResonator>() || item.type == ModContent.ItemType<UnstableCore>() ||
-			item.type == ModContent.ItemType<AncientBlade>() || item.type == ModContent.ItemType<StarCaller>() || item.type == ModContent.ItemType<StriderTear>() ||
-			item.type == ModContent.ItemType<VoidLens>() || item.type == ModContent.ItemType<AbyssalShadow2>() || item.type == ModContent.ItemType<DoomSayersCoin>())
-			{
-				item.consumable = false;
-			}
         }
 
         public void Tileswitcher( Recipe recipe ,int tileold, int tilenew) 

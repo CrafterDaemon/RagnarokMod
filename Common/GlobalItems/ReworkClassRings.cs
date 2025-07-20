@@ -26,8 +26,6 @@ namespace RagnarokMod.Common.GlobalItems
 			item.type == ModContent.ItemType<TheRing>()
 			);
         }
-        
-
         //change to all class item
         public override void UpdateAccessory(Item item, Player player, bool hideVisual)
         {
@@ -75,7 +73,6 @@ namespace RagnarokMod.Common.GlobalItems
 		
 		 public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-			
 			 if(item.type == ModContent.ItemType<OpalRing>()) 
 			{
 				tooltips[3].Text = tooltips[3].Text + "\n3% increased symphonic damage";

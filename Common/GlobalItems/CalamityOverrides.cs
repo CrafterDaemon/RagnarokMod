@@ -122,9 +122,5 @@ namespace RagnarokMod.Common.GlobalItems
             handler.SimpleRecipe(ModContent.ItemType<KineticPotion>(), ItemID.BottledWater, 1, ModContent.ItemType<BloodOrb>(), 10, TileID.AlchemyTable);
             handler.SimpleRecipe(ModContent.ItemType<WarmongerPotion>(), ItemID.BottledWater, 1, ModContent.ItemType<BloodOrb>(), 10, TileID.AlchemyTable);
         }
-        public override void UpdateInventory(Item item, Player player)
-        {
-        }
-
     }
 }

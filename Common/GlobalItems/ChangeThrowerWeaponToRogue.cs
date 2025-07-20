@@ -27,12 +27,6 @@ namespace RagnarokMod.Common.GlobalItems
         //remove Thorium Thrower Class from item for easier repurposing
         public override void SetDefaults(Item item)
         {
-            ThoriumItem thisThoriumItem = getThoriumItem(item);
-            if (thisThoriumItem != null)
-            {
-                thisThoriumItem.isThrower = false;
-            }
-            item.DamageType = ModContent.GetInstance<RogueDamageClass>();
         }
     }
 }

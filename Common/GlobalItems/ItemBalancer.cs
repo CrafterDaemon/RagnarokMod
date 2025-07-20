@@ -24,7 +24,19 @@ namespace RagnarokMod.Common.GlobalItems
 		private static Mod thorium = ModLoader.GetMod("ThoriumMod");
 		private static Mod calamity = ModLoader.GetMod("CalamityMod");
 	
+		public override bool AppliesToEntity(Item item, bool lateInstantiation)
+        {
+            return (item.damage > 0 
+			|| item.defense > 0 
+			|| item.type == thorium.Find<ModItem>("ShinobiSigil").Type 
+			|| item.type == thorium.Find<ModItem>("PlagueLordFlask").Type 
+			|| item.type == thorium.Find<ModItem>("ThrowingGuide").Type
+		    || item.type == thorium.Find<ModItem>("ThrowingGuideVolume2").Type
+			|| item.type == thorium.Find<ModItem>("ThrowingGuideVolume3").Type );
+        }
 	
+		private static Dictionary<int, int> thoriumItemTypeToInteger;
+		
 		private static List<string> pointblankshots = new List<string> {
 			"FrostFury",
 			"eSandStoneBow",
@@ -124,8 +136,9 @@ namespace RagnarokMod.Common.GlobalItems
 			"NovaRifle"
 		};
 	
-		private static Dictionary<string,int> thorium_melee_and_other_damage_tweak = new Dictionary<string,int>
+		private static Dictionary<string,int> thorium_damage_tweak = new Dictionary<string,int> 
 		{
+			// Melee
 			{"IceLance", 14}, 
 			{"ColdFront", 16},
 			{"BentZombieArm", 16},
@@ -236,11 +249,8 @@ namespace RagnarokMod.Common.GlobalItems
 			{"LingeringWill", 235},
 			{"EssenceofFlame", 265},
 			{"SevenSeasDevastator", 275}, // No change
-			{"OceansJudgement", 325} // No change
-		};
-		
-		private static Dictionary<string,int> thorium_throwing_damage_tweak = new Dictionary<string,int> 
-		{
+			{"OceansJudgement", 325}, // No change
+			//  Throwing
 			{"gSandStoneThrowingKnife", 13},
 			{"StoneThrowingSpear", 10},
 			{"CactusNeedle", 9},
@@ -350,19 +360,88 @@ namespace RagnarokMod.Common.GlobalItems
 			{"FireAxe",129},
 			{"TidalWave",145},
 			{"DeitysTrefork",215},
-			{"AngelsEnd",300}
-		};
-		
-		private static Dictionary<string,int> thorium_healer_damage_tweak = new Dictionary<string,int>
-		{
-			{"LifeQuartzClaymore",15},
+			{"AngelsEnd",300},
+			// Healer
+			{"TheGigaNeedle", 31},
+			{"BalanceBloom", 46},
+			{"TwilightStaff", 23},
 			{"LifeAndDeath", 95},
-			{"DarkScythe",16},
-			{"CrimsonScythe", 16}
-		};
-		
-		private static Dictionary<string,int> thorium_bard_damage_tweak = new Dictionary<string,int>
-		{
+			{"WoodenBaton", 7},
+			{"IceShaver", 10},
+			{"DarkScythe", 15},
+			{"CrimsonScythe", 15},
+			{"AquaiteScythe", 17},
+			{"BatScythe", 19},
+			{"BountifulHarvest", 17},
+			{"BoneReaper", 15},
+			{"MoltenThresher", 22},
+			{"FallingTwilight", 29},
+			{"BloodHarvest", 26},
+			{"LustrousBaton", 31},
+			{"BoneBaton", 34},
+			{"HallowedScythe", 45},
+			{"TitanScythe", 48},
+			{"TrueFallingTwilight", 57},
+			{"TrueBloodHarvest", 52},
+			{"TrueHallowedScythe", 54},
+			{"TerraScythe", 68},
+			{"MorningDew", 40},
+			{"ScytheofUndoing", 70},
+			{"DreadTearer", 63},
+			{"DemonBloodRipper", 61},
+			{"IllumiteScythe", 61},
+			{"TheBlackScythe", 24},
+			{"Kinetoscythe", 89},
+			{"ChristmasCheer", 83},
+			{"TerrariumHolyScythe", 83},
+			{"RealitySlasher", 200},
+			{"RottenCod", 14},
+			{"TheStalker", 18},
+			{"TemplarJudgment", 31},
+			{"SacredBludgeon", 44},
+			{"TheEffuser", 52 },
+			{"Pill", 13},
+			{"PalmCross", 13},
+			{"ClericsCross", 13},
+			{"Bonesaw", 16},
+			{"PurifiedWater", 15},
+			{"LifeQuartzClaymore",15},
+			{"HereticBreaker", 17},
+			{"LeechBolt", 15},
+			{"ShadowWand", 18},
+			{"FeatherBarrierRod", 19},
+			{"SamsaraLotus", 24},
+			{"PoisonPrickler", 21},
+			{"TheDigester", 36},
+			{"DeepStaff", 24},
+			{"LifeDisperser", 24},
+			{"SpiritBlastWand", 22},
+			{"Omen", 31},
+			{"LightsLament", 40},
+			{"TranquilLyre", 36},
+			{"HeavenlyCloudScepter", 36},
+			{"MidnightStaff", 23},
+			{"CursedHammer", 51},
+			{"BloodTransfusion", 30},
+			{"DarkContagion", 36},
+			{"HolyFire", 36},
+			{"WildUmbra", 33},
+			{"IridescentStaff", 29},
+			{"LilDevilsWand", 24},
+			{"HallowedBlessing", 41},
+			{"SmitingHammer", 62},
+			{"MindMelter", 46},
+			{"Hippocraticrossbow", 66},
+			{"LethalInjection", 48},
+			{"SpiritBendersStaff", 48},
+			{"FriendlyFireStaff", 72},
+			{"LightBringerWarhammer", 76 },
+			{"HolyHammer", 72},
+			{"PillPopper", 62},
+			{"PaganGrasp", 100},
+			{"CosmicFluxStaff", 129},
+			{"Lucidity", 265},
+			// Bard
 			{"GoldBugleHorn", 12},
 			{"PlatinumBugleHorn", 14},
 			{"Didgeridoo", 16},
@@ -486,26 +565,8 @@ namespace RagnarokMod.Common.GlobalItems
 			{"BlackMIDI", 150},
 			{"ShootingStarBlastGuitar", 150},
 			{"TheSet", 290},
-			{"EdgeofImagination", 165}
-		};
-		
-		private static Dictionary<string,int> thorium_ranged_damage_tweak = new Dictionary<string,int>
-		{
-			{"YewWoodFlintlock", 14},
-			{"HellfireMinigun", 8},
-			{"CobaltPopper", 28},
-			{"TitaniumRifle", 43},
-			{"RangedThorHammer", 30},
-			{"PalladiumSubmachineGun", 25},
-			{"MythrilPelter", 33},
-			{"OrichalcumPelter", 35},
-			{"AdamantiteCarbine", 54},
-			{"DragonsGaze", 31}
-			
-		};
-		
-		private static Dictionary<string,int> thorium_summon_damage_tweak = new Dictionary<string,int>
-		{
+			{"EdgeofImagination", 165},
+			// Summon
 			{"SeahorseWand", 8},
 			{"LivingWoodAcorn", 12},
 			{"StormHatchlingStaff", 13},
@@ -563,12 +624,19 @@ namespace RagnarokMod.Common.GlobalItems
 			{"StellarRod", 46},
 			{"StellarSystem", 57},
 			{"PhantomWand", 55},
-			{"ShadowOrbStaff", 104}
-		};
-	
-	
-		private static Dictionary<string,int> thorium_magic_damage_tweak = new Dictionary<string,int>
-		{
+			{"ShadowOrbStaff", 104},
+			// Ranged
+			{"YewWoodFlintlock", 14},
+			{"HellfireMinigun", 8},
+			{"CobaltPopper", 28},
+			{"TitaniumRifle", 43},
+			{"RangedThorHammer", 30},
+			{"PalladiumSubmachineGun", 25},
+			{"MythrilPelter", 33},
+			{"OrichalcumPelter", 35},
+			{"AdamantiteCarbine", 54},
+			{"DragonsGaze", 31},
+			// Magic
 			{"IceCube", 8},
 			{"Charm", 12},
 			{"Confuse", 12},
@@ -586,7 +654,7 @@ namespace RagnarokMod.Common.GlobalItems
 			{"MagicThorHammer", 34},
 			{"DragonsBreath", 32}
 		};
-			
+		
 		private static Dictionary<string,int> thorium_armor_defense_tweak = new Dictionary<string,int>
 		{
 			{"SandStoneMail", 4},
@@ -605,6 +673,16 @@ namespace RagnarokMod.Common.GlobalItems
 			{"DragonBreastplate", 15}	
 		};
 		
+		public override void Load()
+		{
+			thoriumItemTypeToInteger = new Dictionary<int, int>();
+			foreach (var entry in thorium_damage_tweak)
+			{
+				int itemtype = (thorium.Find<ModItem>(entry.Key)).Type;
+				thoriumItemTypeToInteger[itemtype] = entry.Value;
+			}
+		}
+		
 		public override void SetDefaults(Item item)
         {
 			// Armor
@@ -621,101 +699,11 @@ namespace RagnarokMod.Common.GlobalItems
 			} 
 			else if (item.damage > 0) // Weapon and Tools
 			{	
-				//Summon
-				if(item.DamageType == DamageClass.Summon) 
+				if (thoriumItemTypeToInteger.TryGetValue(item.type, out int newDamage))
 				{
-					foreach (var compareditem in thorium_summon_damage_tweak) 
-					{
-						if ( item.type == thorium.Find<ModItem>(compareditem.Key).Type) 
-						{
-							item.damage = compareditem.Value;
-							break;
-						}
-					}
+					item.damage = newDamage;
 				}
-				//Healer
-				else if(item.DamageType == ThoriumDamageBase<HealerDamage>.Instance) 
-				{
-					foreach (var compareditem in thorium_healer_damage_tweak) 
-					{
-						if ( item.type == thorium.Find<ModItem>(compareditem.Key).Type) 
-						{
-							item.damage = compareditem.Value;
-							break;
-						}
-					}
-				}
-				//Bard
-				else if(item.DamageType == ThoriumDamageBase<BardDamage>.Instance) 
-				{
-					foreach (var compareditem in thorium_bard_damage_tweak) 
-					{
-						if ( item.type == thorium.Find<ModItem>(compareditem.Key).Type) 
-						{
-							item.damage = compareditem.Value;
-							break;
-						}
-					}
-				}
-				//Throwing
-				else if(item.DamageType == DamageClass.Throwing) 
-				{
-					foreach (var compareditem in thorium_throwing_damage_tweak) 
-					{
-						if ( item.type == thorium.Find<ModItem>(compareditem.Key).Type) 
-						{
-							item.damage = compareditem.Value;
-							break;
-						}
-					}
-				}
-				//Ranged
-				else if(item.DamageType == DamageClass.Ranged) 
-				{
-					foreach (var compareditem in thorium_ranged_damage_tweak) 
-					{
-						if ( item.type == thorium.Find<ModItem>(compareditem.Key).Type) 
-						{
-							item.damage = compareditem.Value;
-							break;
-						}
-					}
-					
-					//AddPointBlankShots
-					foreach (string weaponname in pointblankshots ) 
-					{
-						if ( item.type == thorium.Find<ModItem>(weaponname).Type) 
-						{	
-							item.Calamity().canFirePointBlankShots = true;
-							break;
-						}
-					}
-				}
-				// Magic
-				else if(item.DamageType == DamageClass.Magic) 
-				{
-					foreach (var compareditem in thorium_magic_damage_tweak) 
-					{
-						if ( item.type == thorium.Find<ModItem>(compareditem.Key).Type) 
-						{
-							item.damage = compareditem.Value;
-							break;
-						}
-					}
-				}
-				//Melee or anything else
-				else 
-				{
-					foreach (var compareditem in thorium_melee_and_other_damage_tweak) 
-					{
-						if ( item.type == thorium.Find<ModItem>(compareditem.Key).Type) 
-						{
-							item.damage = compareditem.Value;
-							break;
-						}
-					}
-				}
-				
+
 				// Apply some other tweaks
 				if(item.type == thorium.Find<ModItem>("TerrariansLastKnife").Type) 
 				{
@@ -855,8 +843,7 @@ namespace RagnarokMod.Common.GlobalItems
 				{
 					player.manaRegenDelayBonus -= 2f;
 					player.manaCost += 0.07f;
-					player.manaCost *= 0.93f;
-					
+					player.manaCost *= 0.93f;	
 				}
 				else if(item.type == thorium.Find<ModItem>("SacredBreastplate").Type) 
 				{
@@ -1057,7 +1044,6 @@ namespace RagnarokMod.Common.GlobalItems
 				if(item.type == thorium.Find<ModItem>("NagaSkinMask").Type) 
 				{
 					tooltips[5].Text = tooltips[5].Text + "\nUnderwater breath does not work in the Abyss";
-					
 				}
 			}
 			if(item.type == thorium.Find<ModItem>("ShinobiSigil").Type) 
