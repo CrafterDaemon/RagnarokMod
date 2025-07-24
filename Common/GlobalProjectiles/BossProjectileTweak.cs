@@ -15,6 +15,19 @@ namespace RagnarokMod.Common.GlobalProjectiles
 {
     public class BossProjectileTweak : GlobalProjectile
     {
+		private static Mod thorium = ModLoader.GetMod("ThoriumMod");
+		public override bool AppliesToEntity(Projectile projectile, bool lateInstantiation)
+		{
+			foreach (var entry in thorium_projectile_list) 
+			{
+				if ( projectile.type == thorium.Find<ModProjectile>(entry).Type ) 
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+		
 		private static List<string> thorium_projectile_list = new List<string> {
 			"AbyssalStrike",
 			"AbyssalStrike2",
@@ -367,14 +380,11 @@ namespace RagnarokMod.Common.GlobalProjectiles
 			{
 				return;
 			}
-			
-			
 			float currentDamageModifier = modifier.IncomingDamageMultiplier.Value;
 			float desiredDamageModifier;
 			
 			if (CalamityGamemodeCheck.isBossrush) 
 			{
-				ModLoader.TryGetMod("ThoriumMod", out Mod thorium);
 				foreach (var projectilename in thorium_bosses_bossrush_projectile_damage_modifier) 
 				{
 					if ( projectile.type == thorium.Find<ModProjectile>(projectilename.Key).Type ) 
@@ -410,8 +420,6 @@ namespace RagnarokMod.Common.GlobalProjectiles
 				{
 					return;
 				}
-			
-				ModLoader.TryGetMod("ThoriumMod", out Mod thorium);
 				foreach (string projectilename in thorium_projectile_list) 
 				{
 					if ( projectile.type == thorium.Find<ModProjectile>(projectilename).Type ) 
@@ -430,8 +438,6 @@ namespace RagnarokMod.Common.GlobalProjectiles
 			{
 				return;
 			}
-			
-			ModLoader.TryGetMod("ThoriumMod", out Mod thorium);
 			foreach (string projectilename in thorium_projectile_defense_damage_list) 
 			{
 				if ( projectile.type == thorium.Find<ModProjectile>(projectilename).Type ) 

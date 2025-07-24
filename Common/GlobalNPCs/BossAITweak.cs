@@ -25,6 +25,18 @@ namespace RagnarokMod.Common.GlobalNPCs
     {
 		private static Mod thorium = ModLoader.GetMod("ThoriumMod");
 		
+		public override bool AppliesToEntity(NPC npc, bool lateInstantiation) 
+		{
+			return (
+			npc.type == thorium.Find<ModNPC>("TheGrandThunderBird").Type
+			|| npc.type == thorium.Find<ModNPC>("StormHatchling").Type
+			|| npc.type == thorium.Find<ModNPC>("QueenJellyfish").Type
+			|| npc.type == thorium.Find<ModNPC>("DistractingJellyfish").Type
+			|| npc.type == thorium.Find<ModNPC>("ZealousJellyfish").Type
+			|| npc.type == thorium.Find<ModNPC>("SpittingJellyfish").Type
+			);
+		}
+		
 		// GrandThunderBird 
 		private static void DecideNewAttack(NPC npc, int frame, params int[] attackStatesToIgnore)
 		{
@@ -368,12 +380,12 @@ namespace RagnarokMod.Common.GlobalNPCs
 								float chargespeed = 50f;
 								float attacktimer = getAttackStateTimer(npc);
 								setAttackStateTimer(npc, attacktimer + 1f);
-								if (getAttackStateTimer(npc) == 90f && chargeDecide == 0 && Main.netMode != 1)
+								if (getAttackStateTimer(npc) == 90f && chargeDecide == 0)
 								{
 									chargeDecide = (byte)((player.Center.X < npc.Center.X) ? 1 : 2);
 									npc.netUpdate = true;
 								}
-								if ((getAttackStateTimer(npc) == 290f || getAttackStateTimer(npc) == 460f ) && Main.netMode != 1)
+								if ((getAttackStateTimer(npc) == 290f || getAttackStateTimer(npc) == 460f ))
 								{
 									chargeDecide = (byte)((player.Center.X < npc.Center.X) ? 1 : 2);
 									npc.netUpdate = true;
@@ -1198,12 +1210,12 @@ namespace RagnarokMod.Common.GlobalNPCs
 								float chargealignspeed = 5f;
 								float attacktimer = getAttackStateTimer(npc);
 								setAttackStateTimer(npc, attacktimer + 1f);
-								if (getAttackStateTimer(npc) == 90f && chargeDecide == 0 && Main.netMode != 1) // pre allign
+								if (getAttackStateTimer(npc) == 90f && chargeDecide == 0) // pre allign
 								{
 									chargeDecide = (byte)((player.Center.X < npc.Center.X) ? 1 : 2);
 									npc.netUpdate = true;
 								}
-								if (getAttackStateTimer(npc) == 350f && Main.netMode != 1) // pre allign 2
+								if (getAttackStateTimer(npc) == 350f) // pre allign 2
 								{
 									chargeDecide = (byte)((player.Center.X < npc.Center.X) ? 1 : 2);
 									npc.netUpdate = true;
@@ -1802,7 +1814,7 @@ namespace RagnarokMod.Common.GlobalNPCs
 								float num6 = 5f;
 								float num3 = getAttackStateTimer(npc);
 								setAttackStateTimer(npc, num3 + 1f);
-								if (getAttackStateTimer(npc) == 90f && chargeDecide == 0 && Main.netMode != 1)
+								if (getAttackStateTimer(npc) == 90f && chargeDecide == 0)
 								{
 									chargeDecide = (byte)((player.Center.X < npc.Center.X) ? 1 : 2);
 									npc.netUpdate = true;

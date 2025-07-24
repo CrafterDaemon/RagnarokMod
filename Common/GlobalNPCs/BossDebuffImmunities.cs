@@ -14,6 +14,11 @@ namespace RagnarokMod.Common.GlobalNPCs
 {
     public class BossDebuffImmunities : GlobalNPC
     {
+		public override bool AppliesToEntity(NPC npc, bool lateInstantiation)
+        {
+            return ( npc.type == ModContent.NPCType<AquaticScourgeHead>());
+        }
+		
         public override void SetDefaults(NPC npc)
         {
             if (npc == ModContent.GetModNPC(ModContent.NPCType<AquaticScourgeHead>()).NPC)

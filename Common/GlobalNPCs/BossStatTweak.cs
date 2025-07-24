@@ -16,6 +16,59 @@ namespace RagnarokMod.Common.GlobalNPCs
 {
     public class BossStatTweak : GlobalNPC
     {
+		private static Mod thorium = ModLoader.GetMod("ThoriumMod");
+		public override bool AppliesToEntity(NPC npc, bool lateInstantiation)
+        {
+            foreach (var entry in tweaked_npcs) 
+			{
+				if ( npc.type == thorium.Find<ModNPC>(entry).Type ) 
+				{
+					return true;
+				}
+			}
+			return false;
+        }
+		
+		private static List<string> tweaked_npcs = new List<string> {
+			"TheGrandThunderBirdv2",
+			"Viscount",
+			"QueenJelly", 
+			"GraniteEnergyStorm",
+			"TheBuriedWarrior", 
+			"ThePrimeScouter",
+			"BoreanStrider", 
+			"BoreanStriderPopped",
+			"FallenDeathBeholder", 
+			"FallenDeathBeholder2", 
+			"Lich",
+			"LichHeadless",
+			"Abyssion",
+			"AbyssionCracked",
+			"AbyssionReleased",
+			"Omnicide",
+			"RealityBreaker",
+			"SlagFury",
+			"Aquaius",
+			"ViscountBaby",
+			"Hatchling",
+			"ZealousJelly",
+			"DistractJelly",
+			"SpittingJelly",
+			"GraniteEnergy",
+			"EncroachingEnergy",
+			"EnergyStormConduit",
+			"PyroCore",
+			"CryoCore",
+			"BioCore",
+			"BoreanMyte1",
+			"BoreanHopper",
+			"EnemyBeholder",
+			"ThousandSoulPhalactry",
+			"AbyssalSpawn",
+			"AquaiusBubble",
+			"LucidBubble"
+		};
+		
 		private static Dictionary<string,float> thorium_bosses_base_health_modifier = new Dictionary<string,float>
 		{
 			{"TheGrandThunderBirdv2", 1.1f},
@@ -147,7 +200,6 @@ namespace RagnarokMod.Common.GlobalNPCs
 			{"LucidBubble", 1.5f}
 		};
 		
-		
 		private static List<string> thorium_defense_damage_npcs = new List<string> {
 			"TheGrandThunderBirdv2",
 			"Viscount",
@@ -182,7 +234,6 @@ namespace RagnarokMod.Common.GlobalNPCs
 			"PatchWerk", 
 		};
 		
-		
 		private static Dictionary<string,float> thorium_npcs_dr = new Dictionary<string,float>
 		{
 			{"Viscount", 0.05f},
@@ -214,578 +265,6 @@ namespace RagnarokMod.Common.GlobalNPCs
 			{"AbyssalSpawn", 0.15f},
 			{"AquaiusBubble", 0.1f},
 			{"LucidBubble", 0.15f}
-		};
-		
-		private static Dictionary<string,bool> thorium_npc_debuff_cold_vulnerability = new Dictionary<string,bool>
-		{
-			// If value is 1, the npc is vulnerable, 0 is resistance and no entry is neutral
-			// Bosses and minions
-			{"TheGrandThunderBirdv2", true},
-			{"QueenJelly", true},
-			{"ZealousJelly", true},
-			{"DistractJelly", true},
-			{"SpittingJelly", true},
-			{"TheBuriedWarrior", true},
-			{"GraniteEnergyStorm", true},
-			{"ThePrimeScouter", false},
-			{"BoreanStrider", false},
-			{"BoreanStriderPopped", false},
-			{"FallenDeathBeholder", false},
-			{"FallenDeathBeholder2", false},
-			{"Abyssion", false},
-			{"AbyssionCracked", false},
-			{"Hatchling", true},
-			{"GraniteEnergy", true},
-			{"EncroachingEnergy", true},
-			{"EnergyStormConduit", true},
-			{"CryoCore", false},
-			{"BoreanMyte1", false},
-			{"BoreanHopper", false},
-			{"EnemyBeholder", false},
-			{"CorpseBloom", true},
-			{"CorpsePetal", true},
-			{"CorpseWeed", true},
-			// All other NPCs
-			{"AncientArcher", true},
-			{"AncientCharger", true},
-			{"AncientPhalanx", true},
-			{"ArmyAnt", true},
-			{"Biter", true},
-			{"BizarreRockFormation", true},
-			{"Blowfish", true},
-			{"LivingHemorrhage", true},
-			{"Clot", true},
-			{"Coolmera", false},
-			{"EarthenBat", true},
-			{"EarthenGolem", true},
-			{"FrostWurmHead", false},
-			{"FrostWurmBody1", false},
-			{"FrostWurmBody2", false},
-			{"FrostWurmTail", false},
-			{"FrozenFace", false},
-			{"GildedBat", true},
-			{"GraniteEradicator", true},
-			{"GraniteFusedSlime", true},
-			{"GraniteSurger", true},
-			{"CyanHag", false},
-			{"LifeCrystalMimic", true},
-			{"BloomMahoganyEnt", true},
-			{"MahoganyEnt", true},
-			{"Nestling", false},
-			{"SnowBall",  false},
-			{"SnowEater", false},
-			{"SpaceSlime", true},
-			{"StrangeBulb", true},
-			{"TheInnocent", true},
-			{"UFO", false},
-			{"UnstableEnergyAnomaly", true},
-			{"BlackWidow", true},
-			{"BrownRecluse", true},
-			{"BrownRecluseBaby", true},
-			{"Blister", true},
-			{"BlisterPod", true},
-			{"BoneFlayer", true},
-			{"ChilledSpitter", false},
-			{"Coldling", false},
-			{"DissonanceSeer", true},
-			{"Freezer", false},
-			{"FrostFang", false},
-			{"FrozenGross", false},
-			{"GlitteringGolem", true},
-			{"HorrificCharger", true},
-			{"Lycan", true},
-			{"MartianScout", false},
-			{"MoltenMortar", true},
-			{"MossWasp", true},
-			{"SnowFlinxMatriarch", false},
-			{"SoulCorrupter", true},
-			{"Spectrumite", true},
-			{"Tarantula", true},
-			{"TheStarved", true},
-			{"UnderworldPot1", true},
-			{"UnderworldPot2", true},
-			{"VileFloater", true},
-			{"Abomination", true},
-			{"BloodMage", true},
-			{"BloodyWarg", true},
-			{"EngorgedEye", true},
-			{"GraveLimb", true},
-			{"SeveredLegs", true},
-			{"SmotheringShade", true},
-			{"BlizzardBat", false},
-			{"FrostBurnt", false},
-			{"SnowElemental", false},
-			{"SnowyOwl", false},
-			{"GoblinSpiritGuide", true},
-			{"SeaShantySinger", true},
-			{"LeFantome", true},
-			{"ScissorStalker", true},
-			{"SnowSinga", false}
-		};
-		
-		private static Dictionary<string,bool> thorium_npc_debuff_water_vulnerability = new Dictionary<string,bool>
-		{
-			// If value is 1, the npc is vulnerable, 0 is resistance and no entry is neutral
-			// Bosses and minions
-			{"QueenJelly", false},
-			{"GraniteEnergyStorm", true},
-			{"ThePrimeScouter", true},
-			{"BoreanStrider", false},
-			{"BoreanStriderPopped", false},
-			{"FallenDeathBeholder", true},
-			{"FallenDeathBeholder2", true},
-			{"Abyssion", false},
-			{"AbyssionCracked", false},
-			{"AbyssionReleased", false},
-			{"RealityBreaker", false},
-			{"SlagFury", true},
-			{"Aquaius", false},
-			{"ZealousJelly", false},
-			{"DistractJelly", false},
-			{"SpittingJelly", false},
-			{"EncroachingEnergy", true},
-			{"PyroCore", true},
-			{"BoreanMyte1", false},
-			{"BoreanHopper", false},
-			{"EnemyBeholder", true},
-			{"AbyssalSpawn", false},
-			{"AquaiusBubble", false},
-			{"LucidBubble", false},
-			{"CorpseBloom", false},
-			{"CorpsePetal", false},
-			{"CorpseWeed", false},
-			// All other NPCs
-			{"FireAnt", true},
-			{"Barracuda", false},
-			{"BatOutaHell", true},
-			{"FlamekinCaster", true},
-			{"Blowfish", false},
-			{"GigaClam", false},
-			{"BigBone", true},
-			{"Globee", false},
-			{"GraniteEradicator", true},
-			{"GraniteSurger", true},
-			{"BlueHag", false},
-			{"RedHag", true},
-			{"Hammerhead", false},
-			{"LifeCrystalMimic", true},
-			{"ManofWar", false},
-			{"BloomMahoganyEnt", false},
-			{"MahoganyEnt", false},
-			{"Octopus", false},
-			{"Shambler", true},
-			{"Sharptooth", false},
-			{"SpaceSlime", true},
-			{"StrangeBulb", false},
-			{"TheInnocent", false},
-			{"UFO", true},
-			{"UnstableEnergyAnomaly", true},
-			{"AbyssalAngler", false},
-			{"AstroBeetle", false},
-			{"AquaticHallucination", false},
-			{"Blobfish", false},
-			{"BoneFlayer", true},
-			{"CrownofThorns", false},
-			{"EpiDermon", true},
-			{"FeedingFrenzy", false},
-			{"GlitteringGolem", true},
-			{"HellBringerMimic", true},
-			{"InfernalHound", true},
-			{"Kraken", false},
-			{"MoltenMortar", true},
-			{"MyceliumMimic", false},
-			{"NecroPot", true},
-			{"PutridSerpent", false},
-			{"SubmergedMimic", false},
-			{"Whale", false},
-			{"UnderworldPot1", true},
-			{"UnderworldPot2", true},
-			{"VampireSquid", false},
-			{"VoltEelHead", false},
-			{"VoltEelBody1", false},
-			{"VoltEelBody2", false},
-			{"VoltEelTail", false},
-			{"BloodDrop", false},
-			{"ShadowflameRevenant", true}
-		};
-		
-		private static Dictionary<string,bool> thorium_npc_debuff_sickness_vulnerability = new Dictionary<string,bool>
-		{
-			// If value is 1, the npc is vulnerable, 0 is resistance and no entry is neutral
-			// Bosses and minions
-			{"TheGrandThunderBirdv2", true},
-			{"Viscount", false},
-			{"QueenJelly", false},
-			{"GraniteEnergyStorm", false},
-			{"TheBuriedWarrior", false},
-			{"ThePrimeScouter", false},
-			{"BoreanStrider", true},
-			{"BoreanStriderPopped", true},
-			{"FallenDeathBeholder", false},
-			{"FallenDeathBeholder2", false},
-			{"Lich", false},
-			{"LichHeadless", false},
-			{"Abyssion", true},
-			{"AbyssionCracked", true},
-			{"AbyssionReleased", true},
-			{"Omnicide", false},
-			{"RealityBreaker", false},
-			{"ViscountBaby", false},
-			{"Hatchling", true},
-			{"ZealousJelly", false},
-			{"DistractJelly", false},
-			{"SpittingJelly", false},
-			{"GraniteEnergy", false},
-			{"EncroachingEnergy", false},
-			{"EnergyStormConduit", false},
-			{"PyroCore", false},
-			{"CryoCore", false},
-			{"BioCore", false},
-			{"BoreanMyte1", true},
-			{"BoreanHopper", true},
-			{"ThousandSoulPhalactry", false},
-			{"AbyssalSpawn", true},
-			{"CorpseBloom", true},
-			{"CorpsePetal", true},
-			{"CorpseWeed", true},
-			{"Illusionist", false},
-			{"IllusionistDecoy", false},
-			{"PatchWerk", false},
-			{"Maggot", false},
-	     	{"BurstingMaggot", false},
-			// All other NPCs
-			{"AncientArcher", false},
-			{"AncientCharger", false},
-			{"AncientPhalanx", false},
-			{"ArmyAnt", false},
-			{"FireAnt", false},
-			{"BabySpider", false},
-			{"BigBone", false},
-			{"Biter", false},
-			{"BizarreRockFormation", false},
-			{"Blowfish", false},
-			{"LivingHemorrhage", true},
-			{"Clot", true},
-			{"Coolmera", true},
-			{"DarksteelKnight", false},
-			{"EarthenBat", false},
-			{"EarthenGolem", false},
-			{"FrostWurmHead", true},
-			{"FrostWurmBody1", true},
-			{"FrostWurmBody2", true},
-			{"FrostWurmTail", true},
-			{"FrozenFace", true},
-			{"GelatinousCube", true},
-			{"GigaClam", true},
-			{"GildedLycan", true},
-			{"GraniteEradicator", false},
-			{"GraniteFusedSlime", false},
-			{"GraniteSurger", false},
-			{"GreenHag", false},
-			{"CyanHag", true},
-			{"Hammerhead", true},
-			{"HoppingSpider", false},
-			{"LifeCrystalMimic", false},
-			{"ManofWar", false},
-			{"BloomMahoganyEnt", false},
-			{"MahoganyEnt", false},
-			{"MorayHead", false},
-			{"MorayBody", false},
-			{"MorayTail", false},
-			{"MudMan", false},
-			{"Nestling", true},
-			{"Octopus", true},
-			{"RagingMinotaur", true},
-			{"Shambler", false},
-			{"GelatinousSludge", true},
-			{"SnowBall",  false},
-			{"SnowEater", true},
-			{"SpaceSlime", false},
-			{"StrangeBulb", false},
-			{"TheInnocent", true},
-			{"UFO", false},
-			{"UnstableEnergyAnomaly", false},
-			{"WindElemental", false},
-			{"AbyssalAngler", true},
-			{"AstroBeetle", false},
-			{"BlackWidow", false},
-			{"BrownRecluse", false},
-			{"BrownRecluseBaby", false},
-			{"Blister", true},
-			{"BlisterPod", true},
-			{"BoneFlayer", false},
-			{"ChilledSpitter", true},
-			{"Coldling", true},
-			{"CrownofThorns", true},
-			{"DissonanceSeer", false},
-			{"EpiDermon", true},
-			{"FeedingFrenzy", true},
-			{"Freezer", true},
-			{"FrostFang", true},
-			{"FrozenGross", true},
-			{"GlitteringGolem", false},
-			{"HorrificCharger", true},
-			{"HellBringerMimic", false},
-			{"InfernalHound", true},
-			{"Lycan", true},
-			{"LihzardMimic", false},
-			{"LihzardPotMimic1", false},
-			{"LihzardPotMimic2", false},
-			{"MartianScout", true},
-			{"MartianSentry", false},
-			{"MossWasp", false},
-			{"MyceliumMimic", false},
-			{"NecroPot", false},
-			{"PutridSerpent", true},
-			{"SnowFlinxMatriarch", true},
-			{"SoulCorrupter", true},
-			{"Spectrumite", false},
-			{"SubmergedMimic", false},
-			{"SunPriestess", true},
-			{"Tarantula", true},
-			{"TheStarved", true},
-			{"Whale", true},
-			{"UnderworldPot1", false},
-			{"UnderworldPot2", false},
-			{"VampireSquid", true},
-			{"VileFloater", true},
-			{"VoltEelHead", true},
-			{"VoltEelBody1", true},
-			{"VoltEelBody2", true},
-			{"VoltEelTail", true},
-			{"BloodDrop", true},
-			{"BloodMage", true},
-			{"BloodyWarg", true},
-			{"EngorgedEye", true},
-			{"SeveredLegs", true},
-			{"SmotheringShade", false},
-			{"SnowElemental", false},
-			{"GoblinDrummer", true},
-			{"GoblinTrapper", true},
-			{"GoblinSpiritGuide", true},
-			{"ShadowflameRevenant", false},
-			{"SeaShantySinger", true},
-			{"LeFantome", true},
-			{"ScissorStalker", true},
-			{"SnowSinga", false}
-		};
-		
-		private static Dictionary<string,bool> thorium_npc_debuff_electricity_vulnerability = new Dictionary<string,bool>
-		{
-			// If value is 1, the npc is vulnerable, 0 is resistance and no entry is neutral
-			// Bosses and minions
-			{"TheGrandThunderBirdv2", false},
-			{"Viscount", true},
-			{"QueenJelly", false},
-			{"GraniteEnergyStorm", false},
-			{"TheBuriedWarrior", true},
-			{"ThePrimeScouter", true},
-			{"BoreanStriderPopped", true},
-			{"FallenDeathBeholder", true},
-			{"FallenDeathBeholder2", true},
-			{"Lich", true},
-			{"LichHeadless", true},
-			{"Abyssion", true},
-			{"AbyssionCracked", true},
-			{"AbyssionReleased", true},
-			{"Aquaius", true},
-			{"ViscountBaby", true},
-			{"Hatchling", false},
-			{"ZealousJelly", false},
-			{"DistractJelly", false},
-			{"SpittingJelly", false},
-			{"GraniteEnergy", false},
-			{"EncroachingEnergy", false},
-			{"EnergyStormConduit", false},
-			{"PyroCore", true},
-			{"CryoCore", true},
-			{"BioCore", true},
-			{"EnemyBeholder", true},
-			{"AbyssalSpawn", true},
-			{"AquaiusBubble", true},
-			{"LucidBubble", true},
-			// All other NPCs
-			{"AncientArcher", true},
-			{"AncientCharger", true},
-			{"AncientPhalanx", true},
-			{"Barracuda", true},
-			{"BigBone", false},
-			{"BizarreRockFormation", false},
-			{"Blowfish", true},
-			{"DarksteelKnight", true},
-			{"EarthenBat", false},
-			{"EarthenGolem", false},
-			{"GelatinousCube", false},
-			{"GigaClam", true},
-			{"GildedBat", true},
-			{"GildedSlime", true},
-			{"GildedSlimeling", true},
-			{"GildedLycan", true},
-			{"Globee", true},
-			{"GraniteEradicator", false},
-			{"GraniteFusedSlime", false},
-			{"GraniteSurger", false},
-			{"BlueHag", true},
-			{"Hammerhead", true},
-			{"ManofWar", false},
-			{"MorayHead", true},
-			{"MorayBody", true},
-			{"MorayTail", true},
-			{"Octopus", true},
-			{"GelatinousSludge", false},
-			{"Sharptooth", true},
-			{"UFO", true},
-			{"UnstableEnergyAnomaly", false},
-			{"WindElemental", false},
-			{"AbyssalAngler", true},
-			{"AquaticHallucination", true},
-			{"Blobfish", true},
-			{"CrownofThorns", true},
-			{"FeedingFrenzy", true},
-			{"GlitteringGolem", false},
-			{"Kraken", true},
-			{"MartianSentry", true},
-			{"MoltenMortar", false},
-			{"PutridSerpent", true},
-			{"Spectrumite", true},
-			{"SubmergedMimic", true},
-			{"Whale", true},
-			{"VampireSquid", true},
-			{"VoltEelHead", false},
-			{"VoltEelBody1", false},
-			{"VoltEelBody2", false},
-			{"VoltEelTail", false}
-			
-		};
-		
-		private static Dictionary<string,bool> thorium_npc_debuff_heat_vulnerability = new Dictionary<string,bool>
-		{
-			// If value is 1, the npc is vulnerable, 0 is resistance and no entry is neutral
-			// Bosses and minions
-			{"TheGrandThunderBirdv2", false},
-			{"QueenJelly", true},
-			{"GraniteEnergyStorm", false},
-			{"TheBuriedWarrior", false},
-			{"ThePrimeScouter", false},
-			{"BoreanStrider", true},
-			{"BoreanStriderPopped", true},
-			{"FallenDeathBeholder", false},
-			{"FallenDeathBeholder2", false},
-			{"Abyssion", false},
-			{"AbyssionReleased", true},
-			{"Omnicide", true},
-			{"SlagFury", false},
-			{"Hatchling", false},
-			{"ZealousJelly", true},
-			{"DistractJelly", true},
-			{"SpittingJelly", true},
-			{"GraniteEnergy", false},
-			{"EncroachingEnergy", false},
-			{"EnergyStormConduit", false},
-			{"PyroCore", false},
-			{"CryoCore", true},
-			{"BoreanMyte1", true},
-			{"BoreanHopper", true},
-			{"EnemyBeholder", false},
-			{"ThousandSoulPhalactry", false},
-			{"LucidBubble", false},
-			{"CorpseBloom", true},
-			{"CorpsePetal", true},
-			{"CorpseWeed", true},
-			{"PatchWerk", true},
-			{"Maggot", true},
-	     	{"BurstingMaggot" , true},
-			// All other NPCs
-			{"AncientArcher", false},
-			{"AncientCharger", false},
-			{"AncientPhalanx", false},
-			{"ArmyAnt", true},
-			{"FireAnt", false},
-			{"BabySpider", true},
-			{"BatOutaHell", false},
-			{"FlamekinCaster", false},
-			{"Biter", true},
-			{"BizarreRockFormation", false},
-			{"LivingHemorrhage", true},
-			{"Clot", true},
-			{"Coolmera", true},
-			{"EarthenBat", true},
-			{"EarthenGolem", true},
-			{"FrostWurmHead", true},
-			{"FrostWurmBody1", true},
-			{"FrostWurmBody2", true},
-			{"FrostWurmTail", true},
-			{"FrozenFace", true},
-			{"GelatinousCube", true},
-			{"GildedBat", false},
-			{"GildedLycan", false},
-			{"GraniteEradicator", false},
-			{"GraniteSurger", false},
-			{"GreenHag", true},
-			{"HoppingSpider", true},
-			{"LifeCrystalMimic", false},
-			{"ManofWar", true},
-			{"BloomMahoganyEnt", true},
-			{"MahoganyEnt", true},
-			{"MudMan", true},
-			{"Nestling", true},
-			{"RagingMinotaur", false},
-			{"GelatinousSludge", true},
-			{"SnowBall",  true},
-			{"SnowEater", true},
-			{"SpaceSlime", false},
-			{"StrangeBulb", true},
-			{"TheInnocent", true},
-			{"UnstableEnergyAnomaly", false},
-			{"AstroBeetle", true},
-			{"BlackWidow", true},
-			{"BrownRecluse", true},
-			{"BrownRecluseBaby", true},
-			{"Blister", true},
-			{"BlisterPod", true},
-			{"BoneFlayer", false},
-			{"ChilledSpitter", true},
-			{"Coldling", true},
-			{"DissonanceSeer", true},
-			{"EpiDermon", false},
-			{"Freezer", true},
-			{"FrostFang", true},
-			{"FrozenGross", true},
-			{"GlitteringGolem", false},
-			{"HorrificCharger", true},
-			{"HellBringerMimic", false},
-			{"InfernalHound", false},
-			{"Lycan", true},
-			{"MartianScout", true},
-			{"MoltenMortar", false},
-			{"MossWasp", true},
-			{"MyceliumMimic", true},
-			{"SnowFlinxMatriarch", true},
-			{"Spectrumite", false},
-			{"SunPriestess", false},
-			{"Tarantula", true},
-			{"TheStarved", true},
-			{"UnderworldPot1", false},
-			{"UnderworldPot2", false},
-			{"VileFloater", true},
-			{"Abomination", true},
-			{"BloodDrop", true},
-			{"BloodMage", true},
-			{"BloodyWarg", true},
-			{"EngorgedEye", true},
-			{"GraveLimb", true},
-			{"SeveredLegs", true},
-			{"SmotheringShade", true},
-			{"BlizzardBat", true},
-			{"FrostBurnt", true},
-			{"SnowElemental", true},
-			{"SnowyOwl", true},
-			{"GoblinSpiritGuide", true},
-			{"ShadowflameRevenant", false},
-			{"SeaShantySinger", true},
-			{"LeFantome", true},
-			{"ScissorStalker", true},
-			{"SnowSinga", true}
 		};
 		
 		public override void ModifyHitPlayer (NPC npc, Player target, ref Player.HurtModifiers modifier) 
@@ -900,8 +379,7 @@ namespace RagnarokMod.Common.GlobalNPCs
 					}
 				}
 			}
-			
-			
+
 			// Check which npcs should apply defense damage
 			foreach (var boss in thorium_defense_damage_npcs) 
 			{
@@ -919,56 +397,6 @@ namespace RagnarokMod.Common.GlobalNPCs
 				{
 					// Applying Damage Reduction
 					npc.DR_NERD(boss.Value, null, null, null, null);
-				}
-			}
-			
-			//Apply cold vulnerabilities
-			foreach (var mob in thorium_npc_debuff_cold_vulnerability) 
-			{
-				if ( npc.type == thorium.Find<ModNPC>(mob.Key).Type ) 
-				{
-						npc.Calamity().VulnerableToCold = new bool?(mob.Value);
-						break;
-				}
-			}
-			
-			//Apply water vulnerabilities
-			foreach (var mob in thorium_npc_debuff_water_vulnerability) 
-			{
-				if ( npc.type == thorium.Find<ModNPC>(mob.Key).Type ) 
-				{
-						npc.Calamity().VulnerableToWater = new bool?(mob.Value);
-						break;
-				}
-			}
-			
-		    //Apply sickness vulnerabilities
-			foreach (var mob in thorium_npc_debuff_sickness_vulnerability) 
-			{
-				if ( npc.type == thorium.Find<ModNPC>(mob.Key).Type ) 
-				{
-						npc.Calamity().VulnerableToSickness = new bool?(mob.Value);
-						break;
-				}
-			}
-			
-			//Apply electricity vulnerabilities
-			foreach (var mob in thorium_npc_debuff_electricity_vulnerability) 
-			{
-				if ( npc.type == thorium.Find<ModNPC>(mob.Key).Type ) 
-				{
-						npc.Calamity().VulnerableToElectricity = new bool?(mob.Value);
-						break;
-				}
-			}
-			
-			//Apply heat vulnerabilities
-			foreach (var mob in thorium_npc_debuff_heat_vulnerability) 
-			{
-				if ( npc.type == thorium.Find<ModNPC>(mob.Key).Type ) 
-				{
-						npc.Calamity().VulnerableToHeat = new bool?(mob.Value);
-						break;
 				}
 			}
 		}	

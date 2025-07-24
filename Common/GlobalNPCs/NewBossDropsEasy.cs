@@ -37,6 +37,27 @@ namespace RagnarokMod.Common.GlobalNPCs
 {
     public class NewBossDropsEasy : GlobalNPC
     {
+		public override bool AppliesToEntity(NPC npc, bool lateInstantiation)
+        {
+            return (
+			npc.type == ModContent.NPCType<TheGrandThunderBird>()
+			||npc.type == ModContent.NPCType<Viscount>()
+            ||npc.type == ModContent.NPCType<QueenJellyfish>() 
+            ||npc.type == ModContent.NPCType<StarScouter>()
+            ||npc.type == ModContent.NPCType<BelchingCoral>() 
+            ||npc.type == ModContent.NPCType<GraniteEnergyStorm>()
+            ||npc.type == ModContent.NPCType<BuriedChampion>()
+            ||npc.type == ModContent.NPCType<BoreanStrider>()  
+            ||npc.type == ModContent.NPCType<FallenBeholder>()
+            ||npc.type == ModContent.NPCType<PerforatorHive>()
+            ||npc.type == ModContent.NPCType<CalamitasClone>() 
+            ||npc.type == ModContent.NPCType<Providence>()   
+            ||npc.type == ModContent.NPCType<ForgottenOne>() 
+            ||npc.type == ModContent.NPCType<AstrumDeusHead>()
+            ||npc.type == ModContent.NPCType<Polterghast>()
+			||npc.type == ModContent.NPCType<SupremeCalamitas>() );
+        }
+		
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
         {
             //changing non-lootbag drops
