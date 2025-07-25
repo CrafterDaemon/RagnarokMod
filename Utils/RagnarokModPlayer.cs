@@ -335,6 +335,11 @@ namespace RagnarokMod.Utils
 			// This code always has to be a the end of this function (except debug functions) to properly calculate the effective damage!!!
 			base.Player.GetDamage(ThoriumDamageBase<BardDamage>.Instance) *= ModContent.GetInstance<ClassBalancerConfig>().BardDamageModifier;
 			base.Player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) *= ModContent.GetInstance<ClassBalancerConfig>().HealerDamageModifier;
+			base.Player.GetDamage(DamageClass.Throwing) *= ModContent.GetInstance<ClassBalancerConfig>().RogueDamageModifier;
+			base.Player.GetDamage(DamageClass.Magic) *= ModContent.GetInstance<ClassBalancerConfig>().MagicDamageModifier;
+			base.Player.GetDamage(DamageClass.Summon) *= ModContent.GetInstance<ClassBalancerConfig>().SummonDamageModifier;
+			base.Player.GetDamage(DamageClass.Ranged) *= ModContent.GetInstance<ClassBalancerConfig>().RangedDamageModifier;
+			base.Player.GetDamage(DamageClass.Melee) *= ModContent.GetInstance<ClassBalancerConfig>().MeleeDamageModifier;
 		}
 		
 		// Fixes the RogueUseTime problem, that occurs, because Thorium implements features like buffs that can effect item use times, which is incompatible with the Calamity Rogue Stealthmode usetime / attackspeed check.

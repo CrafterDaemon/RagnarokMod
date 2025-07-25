@@ -10,7 +10,10 @@ namespace RagnarokMod.Common.Configs
        [Header("ItemBalanceChanges")]
 		
 		[DefaultValue(true)]
-        //[ReloadRequired]
-        public bool OmegaCore; 
+		[ReloadRequired]
+		public bool genericweaponchanges;
+		
+		[DefaultValue(true)]
+        public bool OmegaCore;
     }
 }

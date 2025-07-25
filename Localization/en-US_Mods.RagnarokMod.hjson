@@ -924,12 +924,37 @@ Configs: {
 
 		HealerDamageModifier: {
 			Label: Healer Damage Modifier
-			Tooltip: ""
+			Tooltip: Multiplier for Healer damage. Multiplier applies after all other changes have been applied.
 		}
 
 		BardDamageModifier: {
 			Label: Bard Damage Modifier
-			Tooltip: ""
+			Tooltip: Multiplier for Bard damage. Multiplier applies after all other changes have been applied.
+		}
+
+		RogueDamageModifier: {
+			Label: Rogue Damage Modifier
+			Tooltip: Multiplier for Rogue/Throwing damage. Multiplier applies after all other changes have been applied.
+		}
+
+		RangedDamageModifier: {
+			Label: Ranged Damage Modifier
+			Tooltip: Multiplier for Ranged damage. Multiplier applies after all other changes have been applied.
+		}
+
+		MagicDamageModifier: {
+			Label: Magic Damage Modifier
+			Tooltip: Multiplier for Magic damage. Multiplier applies after all other changes have been applied.
+		}
+
+		SummonDamageModifier: {
+			Label: Summon Damage Modifier
+			Tooltip: Multiplier for Summon damage. Multiplier applies after all other changes have been applied.
+		}
+
+		MeleeDamageModifier: {
+			Label: Melee Damage Modifier
+			Tooltip: Multiplier for melee damage. Multiplier applies after all other changes have been applied.
 		}
 	}
 
@@ -939,22 +964,27 @@ Configs: {
 
 		OmegaCore: {
 			Label: Omega Core
-			Tooltip: ""
+			Tooltip: Nerfs the movement speed bonus of Omega Core to keep it more balanced for the further progression in the game.
+		}
+
+		genericweaponchanges: {
+			Label: Generic Weapon Tweaks
+			Tooltip: Applies general weapon rebalances.
 		}
 	}
 
 	UIConfig: {
-		DisplayName: U I Config
+		DisplayName: UI Config
 		Headers.UITweaks: U I Tweaks Header
 
 		BardEmpowermentBarOffsetX: {
 			Label: Bard Empowerment Bar Offset X
-			Tooltip: ""
+			Tooltip: X Offset of the bard empowerment bar. Default value should already fix the overlap with Calamity item cooldowns
 		}
 
 		BardEmpowermentBarOffsetY: {
 			Label: Bard Empowerment Bar Offset Y
-			Tooltip: ""
+			Tooltip: Y Offset of the bard empowerment bar. Default value should already fix the overlap with Calamity item cooldowns
 		}
 	}
 }

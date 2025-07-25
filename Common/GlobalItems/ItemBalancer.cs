@@ -141,10 +141,18 @@ namespace RagnarokMod.Common.GlobalItems
 		private static Dictionary<string,int> thorium_damage_tweak = new Dictionary<string,int> 
 		{
 			{"WoodenBaton", 9},
+			{"Didgeridoo", 19},
+			{"ThunderTalon", 17},
+			{"TalonBurst", 7},
 			{"IceShaver", 11},
 			{"BatScythe", 21},
 			{"DragonTooth", 47},
-			{"TerrariansLastKnife", 285}
+			{"TerrariansLastKnife", 285},
+			{"SonicAmplifier", 325},
+			{"BlackMIDI", 220},
+			{"ShootingStarBlastGuitar", 210},
+			{"TheSet", 325},
+			{"EdgeofImagination", 210}
 		};
 		
 		private static Dictionary<string,int> thorium_armor_defense_tweak = new Dictionary<string,int>
@@ -191,26 +199,30 @@ namespace RagnarokMod.Common.GlobalItems
 			} 
 			else if (item.damage > 0 && item.ModItem != null) // Weapon and Tools
 			{	
-				// Overall damage tweaks
-				if (item.ModItem.Mod.Name == "ThoriumMod")
+				if (ModContent.GetInstance<ItemBalancerConfig>().genericweaponchanges) 
 				{
-					item.damage = (int)Math.Round(item.damage * 1.3f);
+					// Overall damage tweaks
+					if (item.ModItem.Mod.Name == "ThoriumMod")
+					{
+						item.damage = (int)Math.Round(item.damage * 1.3f);
+					}
+				
+					// Special damage tweaks
+					if (WeaponItemTypeToInteger.TryGetValue(item.type, out int newDamage))
+					{
+						item.damage = newDamage;
+					}
+					
+					// Apply some other tweaks
+					if(item.type == thorium.Find<ModItem>("TerrariansLastKnife").Type) 
+					{
+						item.shootSpeed = 16f;
+						item.scale = 1.7f;
+					}
 				}
 				
-				// Special damage tweaks
-				if (WeaponItemTypeToInteger.TryGetValue(item.type, out int newDamage))
-				{
-					item.damage = newDamage;
-				}
-
-				// Apply some other tweaks
-				if(item.type == thorium.Find<ModItem>("TerrariansLastKnife").Type) 
-				{
-					item.shootSpeed = 16f;
-					item.scale = 1.7f;
-				}
 				//Toolpowers
-				else if(item.type == thorium.Find<ModItem>("ValadiumPickaxe").Type) 
+				if(item.type == thorium.Find<ModItem>("ValadiumPickaxe").Type) 
 				{
 					item.pick = 120;
 				}
@@ -251,7 +263,6 @@ namespace RagnarokMod.Common.GlobalItems
 							localPlayer.AddBuff(ModContent.BuffType<DepthDiverAura>(), 30, true, false);
 						}
 					}
-				
 					var calamityPlayer = player.Calamity();
 					if (!calamityPlayer.ZoneAbyss)
 					{

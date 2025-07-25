@@ -10,17 +10,52 @@ namespace RagnarokMod.Common.Configs
 		[Header("ClassBalanceChanges")]
 		
 		[DefaultValue(1f)]
-		[BackgroundColor(192, 0, 192, 170)]
+		[BackgroundColor(255, 0, 0, 170)]
+		[Range(0f, 3f)]
+		[Increment(0.05f)]
+		[DrawTicks]
+		public float BardDamageModifier { get; set; }
+		
+		[DefaultValue(1f)]
+		[BackgroundColor(255, 160, 0, 170)]
+		[Range(0f, 3f)]
+		[Increment(0.05f)]
+		[DrawTicks]
+		public float MeleeDamageModifier { get; set; }
+		
+		[DefaultValue(1f)]
+		[BackgroundColor(255, 255, 0, 170)]
 		[Range(0f, 3f)]
 		[Increment(0.05f)]
 		[DrawTicks]
 		public float HealerDamageModifier { get; set; }
 		
 		[DefaultValue(1f)]
-		[BackgroundColor(192, 0, 192, 170)]
+		[BackgroundColor(0, 255, 0, 170)]
 		[Range(0f, 3f)]
 		[Increment(0.05f)]
 		[DrawTicks]
-		public float BardDamageModifier { get; set; }
+		public float RogueDamageModifier { get; set; }
+		
+		[DefaultValue(1f)]
+		[BackgroundColor(0, 255, 255, 170)]
+		[Range(0f, 3f)]
+		[Increment(0.05f)]
+		[DrawTicks]
+		public float RangedDamageModifier { get; set; }
+		
+		[DefaultValue(1f)]
+		[BackgroundColor(0, 192, 255, 170)]
+		[Range(0f, 3f)]
+		[Increment(0.05f)]
+		[DrawTicks]
+		public float SummonDamageModifier { get; set; }
+		
+		[DefaultValue(1f)]
+		[BackgroundColor(255, 0, 180, 170)]
+		[Range(0f, 3f)]
+		[Increment(0.05f)]
+		[DrawTicks]
+		public float MagicDamageModifier { get; set; }
     }
 }

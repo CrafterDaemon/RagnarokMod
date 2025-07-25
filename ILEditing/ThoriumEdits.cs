@@ -228,35 +228,37 @@ namespace RagnarokMod.ILEditing
         }
         private void NewLifestealMath(ILContext il)
         {
-            var c = new ILCursor(il);
-
-            if (!c.TryGotoNext(i => i.MatchDiv()))
-            {
-                return;
-            }
-
-
-            c.Emit(OpCodes.Pop);
-            c.Emit(OpCodes.Ldc_I4, 30);
-            c.Index++;
-            c.Emit(OpCodes.Conv_R8);
-            c.Emit(OpCodes.Ldc_R8, 0.5);
-            c.Emit(OpCodes.Call, typeof(Math).GetMethod("Pow"));
-            c.Emit(OpCodes.Conv_I4);
+			if (ModContent.GetInstance<ItemBalancerConfig>().genericweaponchanges) 
+			{
+					var c = new ILCursor(il);
+					if (!c.TryGotoNext(i => i.MatchDiv()))
+					{
+						return;
+					}
+					c.Emit(OpCodes.Pop);
+					c.Emit(OpCodes.Ldc_I4, 30);
+					c.Index++;
+					c.Emit(OpCodes.Conv_R8);
+					c.Emit(OpCodes.Ldc_R8, 0.5);
+					c.Emit(OpCodes.Call, typeof(Math).GetMethod("Pow"));
+					c.Emit(OpCodes.Conv_I4);
+			}
         }
 
         private void BlackMidiTweak(ILContext il)
         {
-            var c = new ILCursor(il);
+			if (ModContent.GetInstance<ItemBalancerConfig>().genericweaponchanges) 
+			{
+					 var c = new ILCursor(il);
+					 if (!c.TryGotoNext(MoveType.After, i => i.MatchConvI4()))
+					{
+						return;
+					}
 
-            if (!c.TryGotoNext(MoveType.After, i => i.MatchConvI4()))
-            {
-                return;
-            }
-
-            c.Emit(OpCodes.Pop);
-            c.Emit(OpCodes.Ldarg, 3);
-            c.EmitDelegate<Func<int, int>>(damageDone => (int)Math.Sqrt((double)(damageDone / 20)));
+					c.Emit(OpCodes.Pop);
+					c.Emit(OpCodes.Ldarg, 3);
+					c.EmitDelegate<Func<int, int>>(damageDone => (int)Math.Sqrt((double)(damageDone / 20)));
+			}
         }
 
         private void SoloistSetNerf(ILContext il)
