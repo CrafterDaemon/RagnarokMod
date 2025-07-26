@@ -44,12 +44,12 @@ namespace RagnarokMod.Common.ModSystems
     {
         public override void AddRecipes()
         {
-            Recipe recipe_bloodorb = Recipe.Create(ModContent.ItemType<BloodOrb>(), 2);
-            recipe_bloodorb.AddIngredient(ModContent.ItemType<UnholyShards>(), 1);                  
+            Recipe recipe_bloodorb = Recipe.Create(ModContent.ItemType<BloodOrb>(), 1);
+            recipe_bloodorb.AddIngredient(ModContent.ItemType<UnholyShards>(), 4);                  
             recipe_bloodorb.Register();
 			
 			Recipe recipe_unholyshard = Recipe.Create(ModContent.ItemType<UnholyShards>(), 1);
-            recipe_unholyshard.AddIngredient(ModContent.ItemType<BloodOrb>(), 5);
+            recipe_unholyshard.AddIngredient(ModContent.ItemType<BloodOrb>(), 2);
 			recipe_unholyshard.AddTile(TileID.Anvils);			
             recipe_unholyshard.Register();
 	

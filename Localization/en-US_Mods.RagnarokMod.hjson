@@ -987,6 +987,23 @@ Configs: {
 			Tooltip: Y Offset of the bard empowerment bar. Default value should already fix the overlap with Calamity item cooldowns
 		}
 	}
+
+	ModCompatConfig: {
+		DisplayName: Mod Compat Config
+		Headers.ModCompat: Mod Compat Header
+
+		item_deduplication_mode: {
+			Label: Calamity Bard & Healer item deduplication
+			Tooltip: Select, which item recipes of duplicate items are loaded. Off enables both mod versions.
+		}
+	}
+
+	CalamityBardHealer_selection_mode: {
+		Tooltip: ""
+		Off.Label: Off
+		Ragnarok.Label: Ragnarok
+		CalamityBardHealer.Label: Calamity Bard Healer
+	}
 }
 
 Prefixes.Weapon.Thrower_Atrocious.DisplayName: Thrower_ Atrocious
