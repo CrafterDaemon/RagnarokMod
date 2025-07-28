@@ -1001,6 +1001,38 @@ Configs: {
 		// Ragnarok.Label: Ragnarok
 		// CalamityBardHealer.Label: Calamity Bard Healer
 	}
+
+	BossConfig: {
+		// DisplayName: Boss Config
+		// Headers.BossChanges: Boss Changes Header
+
+		bird: {
+			// Label: Grand Thunderbird AI
+			// Tooltip: Select, which AI rework should be used. Off for default behaviour
+		}
+
+		jelly: {
+			// Label: Queen Jellygfish AI
+			// Tooltip: Select, which AI rework should be used. This setting.Off for default behaviour
+		}
+
+		bossstatstweak: {
+			// Label: Boss Stat Tweak
+			// Tooltip: Select, if Thorium Bosses receive stat tweaks (Attack Damage, Health, Defense Damage, Damage Reduction) for Calamity scaling
+		}
+
+		bossrush: {
+			// Label: Thorium Boss Rush
+			// Tooltip: Select, which bossrush mode should be used. Off disables bossrush
+		}
+	}
+
+	ThoriumBossRework_selection_mode: {
+		// Tooltip: ""
+		// Off.Label: Off
+		// Ragnarok.Label: Ragnarok
+		// ThoriumBossRework.Label: Thorium Boss Rework
+	}
 }
 
-// Prefixes.Weapon.Thrower_Atrocious.DisplayName: Thrower_ Atrocious
+// DamageClasses.ThoriumRogueClass.DisplayName: rogue damage

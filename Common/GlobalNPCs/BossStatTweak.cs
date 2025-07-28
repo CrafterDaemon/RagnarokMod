@@ -6,6 +6,8 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using RagnarokMod.Utils;
+using RagnarokMod.Common.ModSystems;
+using RagnarokMod.Common.Configs;
 using CalamityMod;
 using CalamityMod.NPCs;
 using ThoriumMod;
@@ -269,21 +271,22 @@ namespace RagnarokMod.Common.GlobalNPCs
 		
 		public override void ModifyHitPlayer (NPC npc, Player target, ref Player.HurtModifiers modifier) 
 		{
-			ModLoader.TryGetMod("ThoriumRework", out Mod ThoriumRework);
-			if(ThoriumRework != null) 
+			if(!ModContent.GetInstance<BossConfig>().bossstatstweak) 
 			{
 				return;
 			}
-			
 			float currentDamageModifier = modifier.IncomingDamageMultiplier.Value;
 			float desiredDamageModifier;
 			
 			if (CalamityGamemodeCheck.isBossrush) 
 			{
-				ModLoader.TryGetMod("ThoriumMod", out Mod thorium);
+				if(!(ModContent.GetInstance<BossConfig>().bossrush == ThoriumBossRework_selection_mode.Ragnarok)) // If Ragnarok is not enabled do not tweak stats
+				{
+					return;
+				}
 				foreach (var boss in thorium_bosses_bossrush_damage_modifier) 
 				{
-					if ( npc.type == thorium.Find<ModNPC>(boss.Key).Type ) 
+					if ( npc.type == thorium.Find<ModNPC>(boss.Key).Type) 
 					{
 						if(CalamityGamemodeCheck.isDeath) 
 						{
@@ -296,6 +299,11 @@ namespace RagnarokMod.Common.GlobalNPCs
 						else 
 						{
 							desiredDamageModifier = currentDamageModifier + boss.Value;
+						}
+						
+						if(OtherModsCompat.tbr_loaded) // Even when TBR bossrush is not loaded the damage numbers are still loaded in Ragnarok boss rush, so we have to remove them.
+						{
+							desiredDamageModifier-= boss.Value;
 						}
 						modifier.IncomingDamageMultiplier *= desiredDamageModifier / currentDamageModifier;
 						return;
@@ -316,8 +324,6 @@ namespace RagnarokMod.Common.GlobalNPCs
 				{
 					return;
 				}
-			
-				ModLoader.TryGetMod("ThoriumMod", out Mod thorium);
 				foreach (var boss in thorium_bosses_base_health_modifier) 
 				{
 					if ( npc.type == thorium.Find<ModNPC>(boss.Key).Type ) 
@@ -331,13 +337,10 @@ namespace RagnarokMod.Common.GlobalNPCs
 		
         public override void SetDefaults(NPC npc)
 		{
-			ModLoader.TryGetMod("ThoriumRework", out Mod ThoriumRework);
-			if(ThoriumRework != null) 
+			if(!ModContent.GetInstance<BossConfig>().bossstatstweak) 
 			{
 				return;
 			}
-			
-			ModLoader.TryGetMod("ThoriumMod", out Mod thorium);
 			// Get Calamity-Config Health Boost
 			double CalamityHPBoost = CalamityConfig.Instance.BossHealthBoost * 0.01;
 			 
@@ -368,7 +371,7 @@ namespace RagnarokMod.Common.GlobalNPCs
 			}
 			
 			// Apply bossrush health
-			if(CalamityGamemodeCheck.isBossrush) 
+			if(CalamityGamemodeCheck.isBossrush && !OtherModsCompat.tbr_loaded) 
 			{
 				foreach (var boss in thorium_bosses_bossrush_health_modifier) 
 				{
@@ -380,13 +383,16 @@ namespace RagnarokMod.Common.GlobalNPCs
 				}
 			}
 
-			// Check which npcs should apply defense damage
-			foreach (var boss in thorium_defense_damage_npcs) 
+			// Check which npcs should apply defense damage, only apply if ThoriumRework is not loaded or the TBR config option is disabled
+			if(!OtherModsCompat.tbr_defense_damage) 
 			{
-				if ( npc.type == thorium.Find<ModNPC>(boss).Type ) 
+				foreach (var boss in thorium_defense_damage_npcs) 
 				{
-					// Applying Defense Damage
-					npc.Calamity().canBreakPlayerDefense = true;
+					if ( npc.type == thorium.Find<ModNPC>(boss).Type ) 
+					{
+						// Applying Defense Damage
+						npc.Calamity().canBreakPlayerDefense = true;
+					}
 				}
 			}
 			

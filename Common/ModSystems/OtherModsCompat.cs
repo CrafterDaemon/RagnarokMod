@@ -17,6 +17,8 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.ModLoader.Config;
+using System.Reflection;
 using RagnarokMod.Items.BardItems.Armor;
 using RagnarokMod.Items.HealerItems.Armor;
 using RagnarokMod.Common.Configs;
@@ -25,6 +27,11 @@ namespace RagnarokMod.Common.ModSystems
 {
     public class OtherModsCompat : ModSystem
     {
+		// Thorium Bosses Reworked Config Settings
+		public static bool tbr_loaded = false;
+		public static bool tbr_defense_damage = false;
+		private static Mod ThoriumRework;
+		
         public override void PostAddRecipes()
         {
 			if(ModLoader.TryGetMod("CalamityBardHealer", out Mod CalamityBardHealer))				
@@ -86,6 +93,30 @@ namespace RagnarokMod.Common.ModSystems
 				}
 			}
         }
+		
+		public override void PostSetupContent() 
+		{
+			ModLoader.TryGetMod("ThoriumRework", out ThoriumRework);
+			if(ThoriumRework != null) 
+			{
+				tbr_loaded = true;
+				ModConfig tbr_compat = ThoriumRework.Find<ModConfig>("CompatConfig");
+				ModConfig tbr_reworktoggles = ThoriumRework.Find<ModConfig>("ReworkTogglesConfig");
+				tbr_defense_damage = (bool)(tbr_compat.GetType().GetField("defenseDamage", BindingFlags.Public | BindingFlags.Instance)).GetValue(tbr_compat);
+				if(!(ModContent.GetInstance<BossConfig>().bossrush == ThoriumBossRework_selection_mode.ThoriumBossRework)) 
+				{
+					(tbr_compat.GetType().GetField("thorlamityBR", BindingFlags.Public | BindingFlags.Instance)).SetValue(tbr_compat, false);
+				}
+				if(!(ModContent.GetInstance<BossConfig>().bird == ThoriumBossRework_selection_mode.ThoriumBossRework)) 
+				{
+					(tbr_reworktoggles.GetType().GetField("bird", BindingFlags.Public | BindingFlags.Instance)).SetValue(tbr_reworktoggles, false);
+				}
+				if(!(ModContent.GetInstance<BossConfig>().jelly == ThoriumBossRework_selection_mode.ThoriumBossRework)) 
+				{
+					(tbr_reworktoggles.GetType().GetField("jelly", BindingFlags.Public | BindingFlags.Instance)).SetValue(tbr_reworktoggles, false);
+				}
+			}
+		}
 
 		public void ExchangeRecipe(Mod othermod, int ritemtype, string oitemname) 
 		{

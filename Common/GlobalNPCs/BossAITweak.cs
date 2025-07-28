@@ -12,6 +12,8 @@ using Terraria.GameContent;
 using ThoriumMod;
 using ThoriumMod.NPCs;
 using RagnarokMod.Utils;
+using RagnarokMod.Common.ModSystems;
+using RagnarokMod.Common.Configs;
 using ThoriumMod.Projectiles.Boss;
 using ThoriumMod.NPCs.BossTheGrandThunderBird;
 using ThoriumMod.NPCs.BossQueenJellyfish;
@@ -24,7 +26,6 @@ namespace RagnarokMod.Common.GlobalNPCs
     public class BossAITweak : GlobalNPC
     {
 		private static Mod thorium = ModLoader.GetMod("ThoriumMod");
-		
 		public override bool AppliesToEntity(NPC npc, bool lateInstantiation) 
 		{
 			return (
@@ -132,16 +133,18 @@ namespace RagnarokMod.Common.GlobalNPCs
 		// For NPC changes without changing the bass AI
 		public override void AI(NPC npc) 
 		{
-			// If Thorium Rework is active do not change anything
-			ModLoader.TryGetMod("ThoriumRework", out Mod ThoriumRework);
-			if(ThoriumRework != null) 
-			{
-				return;
-			}
-			
 			if(CalamityGamemodeCheck.isBossrush) 
 			{
-			
+				//Thorium Rework is still bugged, so bossrush is always Thorium Rework for now
+				if(OtherModsCompat.tbr_loaded)
+				{
+					return;
+				}
+				if(!(ModContent.GetInstance<BossConfig>().bossrush == ThoriumBossRework_selection_mode.Ragnarok)) // If Ragnarok is not selected do not change bossrush AIs
+				{
+					return;
+				}
+				
 				if (npc.type == thorium.Find<ModNPC>("StormHatchling").Type)
 				{
 						Player player = Main.player[npc.target];
@@ -208,15 +211,17 @@ namespace RagnarokMod.Common.GlobalNPCs
 		
 		public override bool PreAI(NPC npc) 
 		{
-			// If Thorium Rework is active do not change anything
-			ModLoader.TryGetMod("ThoriumRework", out Mod ThoriumRework);
-			if(ThoriumRework != null) 
-			{
-				return true;
-			}
-			
 			if(CalamityGamemodeCheck.isBossrush) 
 			{	
+				if(OtherModsCompat.tbr_loaded) // Can be removed as soon as Thorium Rework bossrush is fixed
+				{
+					return true;
+				}
+				if(!(ModContent.GetInstance<BossConfig>().bossrush == ThoriumBossRework_selection_mode.Ragnarok)) // If Ragnarok is not selected do not change bossrush AIs
+				{
+					return true;
+				}
+		
 				if(npc.type == thorium.Find<ModNPC>("TheGrandThunderBird").Type) 
 					{
 						if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead || !Main.player[npc.target].active)
@@ -1053,6 +1058,12 @@ namespace RagnarokMod.Common.GlobalNPCs
 			{	
 					if(npc.type == thorium.Find<ModNPC>("TheGrandThunderBird").Type) 
 					{
+						// Checks if this boss ai should be reworked
+						if(!(ModContent.GetInstance<BossConfig>().bird == ThoriumBossRework_selection_mode.Ragnarok)) 
+						{
+								return true;
+						}
+						
 						if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead || !Main.player[npc.target].active)
 						{
 							npc.TargetClosest(true);
@@ -1391,6 +1402,12 @@ namespace RagnarokMod.Common.GlobalNPCs
 					}
 					else if (npc.type == thorium.Find<ModNPC>("QueenJellyfish").Type)
 					{
+						// Checks if this boss ai should be reworked
+						if(!(ModContent.GetInstance<BossConfig>().jelly == ThoriumBossRework_selection_mode.Ragnarok)) 
+						{
+								return true;
+						}
+						
 						NPCHelper.BatAI(npc, thorium.Find<ModNPC>("QueenJellyfish").AIType, 1.6f); // Significant speed up
 						Player player = Main.player[npc.target];
 						if (!player.active || player.dead)
@@ -1656,6 +1673,12 @@ namespace RagnarokMod.Common.GlobalNPCs
 			{
 					if(npc.type == thorium.Find<ModNPC>("TheGrandThunderBird").Type) 
 					{
+						// Checks if this boss ai should be reworked
+						if(!(ModContent.GetInstance<BossConfig>().bird == ThoriumBossRework_selection_mode.Ragnarok)) 
+						{
+								return true;
+						}
+						
 						if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead || !Main.player[npc.target].active)
 						{
 							npc.TargetClosest(true);
@@ -1955,6 +1978,12 @@ namespace RagnarokMod.Common.GlobalNPCs
 					}
 					else if(npc.type == thorium.Find<ModNPC>("QueenJellyfish").Type) 
 					{
+						// Checks if this boss ai should be reworked
+						if(!(ModContent.GetInstance<BossConfig>().jelly == ThoriumBossRework_selection_mode.Ragnarok)) 
+						{
+								return true;
+						}
+						
 						NPCHelper.BatAI(npc, thorium.Find<ModNPC>("QueenJellyfish").AIType, 1.2f); // Slightly speed up
 						Player player = Main.player[npc.target];
 						if (!player.active || player.dead)

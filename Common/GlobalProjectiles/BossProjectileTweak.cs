@@ -5,6 +5,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using RagnarokMod.Utils;
+using RagnarokMod.Common.Configs;
 using CalamityMod;
 using ThoriumMod;
 using ThoriumMod.NPCs;
@@ -375,16 +376,21 @@ namespace RagnarokMod.Common.GlobalProjectiles
 		
 		public override void ModifyHitPlayer (Projectile projectile, Player target, ref Player.HurtModifiers modifier) 
 		{
-			ModLoader.TryGetMod("ThoriumRework", out Mod ThoriumRework);
-			if(ThoriumRework != null) 
+			if(!ModContent.GetInstance<BossConfig>().bossstatstweak) 
 			{
 				return;
 			}
+			
 			float currentDamageModifier = modifier.IncomingDamageMultiplier.Value;
 			float desiredDamageModifier;
 			
 			if (CalamityGamemodeCheck.isBossrush) 
 			{
+				if(!(ModContent.GetInstance<BossConfig>().bossrush == ThoriumBossRework_selection_mode.Ragnarok)) // If Ragnarok is not enabled do not tweak stats
+				{
+					return;
+				}
+				
 				foreach (var projectilename in thorium_bosses_bossrush_projectile_damage_modifier) 
 				{
 					if ( projectile.type == thorium.Find<ModProjectile>(projectilename.Key).Type ) 
@@ -401,6 +407,11 @@ namespace RagnarokMod.Common.GlobalProjectiles
 						{
 							desiredDamageModifier = currentDamageModifier + projectilename.Value;
 						}
+						if(OtherModsCompat.tbr_loaded) // Even when TBR bossrush is not loaded the damage numbers are still loaded in Ragnarok boss rush, so we have to remove them.
+						{
+							desiredDamageModifier-= projectilename.Value;
+						}
+						
 						modifier.IncomingDamageMultiplier *= desiredDamageModifier / currentDamageModifier;
 						return;
 					}
@@ -433,8 +444,7 @@ namespace RagnarokMod.Common.GlobalProjectiles
 		
 		public override void SetDefaults(Projectile projectile) 
 		{
-			ModLoader.TryGetMod("ThoriumRework", out Mod ThoriumRework);
-			if(ThoriumRework != null) 
+			if(!ModContent.GetInstance<BossConfig>().bossstatstweak) 
 			{
 				return;
 			}

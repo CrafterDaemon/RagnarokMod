@@ -7,6 +7,7 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using RagnarokMod.Common.Configs;
 
 
 
@@ -16,12 +17,15 @@ namespace RagnarokMod.Common.ModSystems
 	{
 		public override void PostSetupContent() 
 		{
-			ModLoader.TryGetMod("ThoriumRework", out Mod ThoriumRework);
-			if(ThoriumRework != null) 
+			//Thorium Rework is still bugged, so bossrush is always Thorium Rework for now
+				if(OtherModsCompat.tbr_loaded)
+				{
+					return;
+				}
+			if(!(ModContent.GetInstance<BossConfig>().bossrush == ThoriumBossRework_selection_mode.Ragnarok)) // If Ragnarok is not enabled do not add thorium bosses to the bossrush
 			{
 				return;
 			}
-			
 			Mod calamity;
 			if (ModLoader.TryGetMod("CalamityMod", out calamity) )
 			{

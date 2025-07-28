@@ -1,14 +1,16 @@
-﻿using Terraria.DataStructures;
+﻿using System.Collections.Generic;
+using Microsoft.Xna.Framework;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.GameContent;
+using Terraria.Utilities;
 using ThoriumMod.Items.ThrownItems;
 using ThoriumMod.Items;
 using ThoriumMod;
 using CalamityMod;
-using Terraria.GameContent;
-using Terraria.Utilities;
-using System.Collections.Generic;
+using RagnarokMod.Utils;
 
 namespace RagnarokMod.Common.GlobalItems
 {
@@ -37,9 +39,8 @@ namespace RagnarokMod.Common.GlobalItems
             ThoriumItem thisThoriumItem = getThoriumItem(item);
             if (thisThoriumItem != null)
             {
-				item.DamageType = ModContent.GetInstance<RogueDamageClass>();
+				item.DamageType = ModContent.GetInstance<ThoriumRogueClass>();
                 thisThoriumItem.isThrower = false;
-				ItemID.Sets.CanGetPrefixes[item.type] = true;
             }
         }
     }
