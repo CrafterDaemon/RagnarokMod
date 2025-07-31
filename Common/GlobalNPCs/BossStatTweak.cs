@@ -353,11 +353,19 @@ namespace RagnarokMod.Common.GlobalNPCs
 			{
 				TotalHPModifier *= 1.2;
 				TotalDamageModifier = 1.35;
+				if(npc.type == thorium.Find<ModNPC>("TheGrandThunderBirdv2").Type) 
+				{
+					TotalHPModifier += 0.3;
+				}
 			}
 			else if(CalamityGamemodeCheck.isRevengeance)
 			{
 				TotalHPModifier *= 1.2;
 				TotalDamageModifier = 1.2;
+				if(npc.type == thorium.Find<ModNPC>("TheGrandThunderBirdv2").Type) 
+				{
+						TotalHPModifier += 0.3;
+				}
 			} 
 			
 			// Apply health modifiers

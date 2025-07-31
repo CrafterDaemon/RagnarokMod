@@ -6,6 +6,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using RagnarokMod.Utils;
 using RagnarokMod.Common.Configs;
+using RagnarokMod.Common.ModSystems;
 using CalamityMod;
 using ThoriumMod;
 using ThoriumMod.NPCs;

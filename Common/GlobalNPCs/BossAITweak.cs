@@ -128,9 +128,10 @@ namespace RagnarokMod.Common.GlobalNPCs
 		public static int diverOffset;
 		public static int counting;
 		public static int counter;
-		// QueenJellyfish END
 		
-		// For NPC changes without changing the bass AI
+		//Viscount
+		
+		// For NPC changes without changing the base AI
 		public override void AI(NPC npc) 
 		{
 			if(CalamityGamemodeCheck.isBossrush) 
