@@ -39,5 +39,10 @@ namespace RagnarokMod.Common.Configs
 		[Tooltip("Select, which AI rework should be used. Off for default behaviour")]
         public ThoriumBossRework_selection_mode jelly;
 		
+		[DefaultValue(ThoriumBossRework_selection_mode.Ragnarok)]
+        [ReloadRequired]
+		[Label("Viscount AI")]
+		[Tooltip("Select, which AI rework should be used. Off for default behaviour")]
+        public ThoriumBossRework_selection_mode viscount;
     }
 }

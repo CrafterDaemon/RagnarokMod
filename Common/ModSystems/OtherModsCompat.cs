@@ -115,6 +115,10 @@ namespace RagnarokMod.Common.ModSystems
 				{
 					(tbr_reworktoggles.GetType().GetField("jelly", BindingFlags.Public | BindingFlags.Instance)).SetValue(tbr_reworktoggles, false);
 				}
+				if(!(ModContent.GetInstance<BossConfig>().viscount == ThoriumBossRework_selection_mode.ThoriumBossRework)) 
+				{
+					(tbr_reworktoggles.GetType().GetField("bat", BindingFlags.Public | BindingFlags.Instance)).SetValue(tbr_reworktoggles, false);
+				}
 			}
 		}
 

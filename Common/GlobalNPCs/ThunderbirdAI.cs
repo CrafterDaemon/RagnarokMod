@@ -25,6 +25,7 @@ namespace RagnarokMod.Common.GlobalNPCs
 {
     public class ThunderbirdAI : GlobalNPC
     {
+		public override bool InstancePerEntity => true;
 		private static Mod thorium = ModLoader.GetMod("ThoriumMod");
 		public override bool AppliesToEntity(NPC npc, bool lateInstantiation) 
 		{
