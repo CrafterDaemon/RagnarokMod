@@ -4,20 +4,19 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
 using ThoriumMod;
+using ThoriumMod.Projectiles.Bard;
 using CalamityMod.Items;
 using CalamityMod.Buffs.StatDebuffs;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
 namespace RagnarokMod.Projectiles.BardPro.Wind
 {
-    public class SteampipesPro : ModProjectile, ILocalizedModType
+    public class SteampipesPro : BardProjectile, ILocalizedModType
     {
-        public override void SetStaticDefaults()
-        {
-
+        public override void SetStaticDefaults(){
             Main.projFrames[Projectile.type] = 4;
         }
-        public override void SetDefaults()
+        public override void SetBardDefaults()
         {
             Projectile.width = 48;
             Projectile.height = 80;
@@ -27,20 +26,25 @@ namespace RagnarokMod.Projectiles.BardPro.Wind
             Projectile.penetrate = 1;
             Projectile.timeLeft = 200;
             Projectile.ignoreWater = true;
-
         }
+		public override BardInstrumentType InstrumentType
+		{
+			get
+			{
+				return BardInstrumentType.Wind;
+			}
+		}
+		
         public override void AI()
         {
-
-            if (++Projectile.frameCounter >= 5)
-            {
+            if (++Projectile.frameCounter >= 5){
                 Projectile.frameCounter = 0;
                 if (++Projectile.frame >= Main.projFrames[Projectile.type])
                     Projectile.frame = 0;
-
             }
             Projectile.rotation = Projectile.velocity.ToRotation();
             Dust.NewDust(Projectile.Center, 0, 0, 55);
+			WindHomingCommon(null, 384f, null, null, false);
         }
         public override bool PreDraw(ref Color lightColor)
         {
