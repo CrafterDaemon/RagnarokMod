@@ -753,6 +753,14 @@ Items: {
 		DisplayName: Lamentation
 		Tooltip: Shoots homing brimstone fireblasts
 	}
+
+	Virusprayer: {
+		DisplayName: Virusprayer
+		Tooltip: 
+			'''
+			Shoots a barrage of acid bubbles
+			'''
+	}
 }
 
 Projectiles: {
@@ -825,6 +833,8 @@ Projectiles: {
 	SupremeBellPro.DisplayName: Supreme Bell Pro
 	LamentationBoom.DisplayName: Lamentation Boom
 	LamentationPro.DisplayName: Lamentation Pro
+	VirusprayerPro1.DisplayName: Virusprayer Pro1
+	VirusprayerPro2.DisplayName: Virusprayer Pro2
 }
 
 Configs: {
@@ -1027,6 +1037,11 @@ Configs: {
 		bossrush: {
 			Label: Thorium Boss Rush
 			Tooltip: Select, which bossrush mode should be used. Off disables bossrush
+		}
+
+		viscount: {
+			Label: Viscount AI
+			Tooltip: Select, which AI rework should be used. Off for default behaviour
 		}
 	}
 

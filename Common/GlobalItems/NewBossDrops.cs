@@ -41,7 +41,7 @@ namespace RagnarokMod.Common.GlobalItems
 			|| item.type == ModContent.ItemType<CalamitasCoffer>()
 			);
         }
-		
+
         public override void ModifyItemLoot(Item item, ItemLoot itemLoot)
         {
             //changing lootbag drops
@@ -77,25 +77,29 @@ namespace RagnarokMod.Common.GlobalItems
             {
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<CalamityBell>(), 3));
             }
-			if (item.type == ModContent.ItemType<ProvidenceBag>())
+            if (item.type == ModContent.ItemType<ProvidenceBag>())
             {
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<ProfanedBell>(), 3));
             }
-            if (item.type == ModContent.ItemType<FallenBeholderTreasureBag>()) 
+            if (item.type == ModContent.ItemType<FallenBeholderTreasureBag>())
             {
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<VoidseerPearl>()));
             }
             if (item.type == ModContent.ItemType<ForgottenOneTreasureBag>())
             {
-                itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<EldritchShellFragment>(),1,1,3));
+                itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<EldritchShellFragment>(), 1, 1, 3));
             }
             if (item.type == ModContent.ItemType<PolterghastBag>())
             {
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<PhantasmalEdge>()));
             }
-			if (item.type == ModContent.ItemType<CalamitasCoffer>())
+            if (item.type == ModContent.ItemType<CalamitasCoffer>())
             {
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<Lamentation>(), 3));
+            }
+            if (item.type == ModContent.ItemType<OldDukeBag>())
+            {
+                itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<Virusprayer>(), 2));
             }
         }
     }
