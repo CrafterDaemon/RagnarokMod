@@ -9,26 +9,20 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using RagnarokMod.Common.Configs;
 
-
-
 namespace RagnarokMod.Common.ModSystems
 {
-	public class AddThoriumBossRush : ModSystem
-	{
-		public override void PostSetupContent() 
-		{
+	public class AddThoriumBossRush : ModSystem{
+		public override void PostSetupContent() {
 			//Thorium Rework is still bugged, so bossrush is always Thorium Rework for now
-				if(OtherModsCompat.tbr_loaded)
-				{
+			if(OtherModsCompat.tbr_loaded){
 					return;
-				}
+			}
 			if(!(ModContent.GetInstance<BossConfig>().bossrush == ThoriumBossRework_selection_mode.Ragnarok)) // If Ragnarok is not enabled do not add thorium bosses to the bossrush
 			{
 				return;
 			}
 			Mod calamity;
-			if (ModLoader.TryGetMod("CalamityMod", out calamity) )
-			{
+			if (ModLoader.TryGetMod("CalamityMod", out calamity) ){
 				try
 				{
 					List<ValueTuple<int, int, Action<int>, int, bool, float, int[], ValueTuple<int[]>>> list = calamity.Call(new object[] { "GetBossRushEntries" }) as List<ValueTuple<int, int, Action<int>, int, bool, float, int[], ValueTuple<int[]>>>;
@@ -48,8 +42,7 @@ namespace RagnarokMod.Common.ModSystems
 							})));
 						}
 						bossRushEntries.Add(entry);
-						if (entry.Item1 == 266) // After BoC add QueenJellyfish and Viscount
-						{
+						if (entry.Item1 == 266){ // After BoC add QueenJellyfish and Viscount
 							bossRushEntries.Add(new ValueTuple<int, int, Action<int>, int, bool, float, int[], ValueTuple<int[]>>(this.ThoriumNPC("QueenJellyfish"), 0, delegate(int type)
 							{
 								NPC.SpawnOnPlayer((int)Player.FindClosest(new Vector2((float)Main.maxTilesX, (float)Main.maxTilesY) * 8f, 0, 0), type);
@@ -81,7 +74,9 @@ namespace RagnarokMod.Common.ModSystems
 							}, -1, false, 0f, new int[]
 							{
 								this.ThoriumNPC("BuriedChampion"),
-								this.ThoriumNPC("FallenChampion2")
+								this.ThoriumNPC("FallenChampion1"),
+								this.ThoriumNPC("FallenChampion2"),
+								this.ThoriumNPC("MagicalBurst")
 							}, new ValueTuple<int[]>(new int[] { this.ThoriumNPC("BuriedChampion") })));
 							bossRushEntries.Add(new ValueTuple<int, int, Action<int>, int, bool, float, int[], ValueTuple<int[]>>(this.ThoriumNPC("GraniteEnergyStorm"), 0, delegate(int type)
 							{
@@ -129,9 +124,7 @@ namespace RagnarokMod.Common.ModSystems
 							{
 								this.ThoriumNPC("FallenBeholder"),
 								this.ThoriumNPC("FallenBeholder2")
-							})));
-							
-							
+							})));	
 						}
 						else if(entry.Item1 == 127) // After Skeletron Prime add Lich
 						{
@@ -208,14 +201,10 @@ namespace RagnarokMod.Common.ModSystems
 					}
 					calamity.Call(new object[] { "SetBossRushEntries", bossRushEntries });
 				}
-				catch
-				{
-				}
+				catch{}
 			}
 		}
-		
-		private int ThoriumNPC(string name)
-		{
+		private int ThoriumNPC(string name){
 			return ModLoader.GetMod("ThoriumMod").Find<ModNPC>(name).Type;
 		}
 	}

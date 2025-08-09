@@ -31,22 +31,22 @@ namespace RagnarokMod.Common.GlobalNPCs
 		public override bool AppliesToEntity(NPC npc, bool lateInstantiation) {
 			return npc.type == thorium.Find<ModNPC>("Viscount").Type;
 		}
-		public static int counting;
-		public static int counter;
-		public static int rage;
-		public static int flux;
-		public static int dodgeTimer;
-		public static bool shift;
-		public static bool openMouth;
-		public static bool blood;
-		public static bool stomp;
-		public static bool stomped;
-		public static bool scream;
+		public int counting;
+		public int counter;
+		public int rage;
+		public int flux;
+		public int dodgeTimer;
+		public bool shift;
+		public bool openMouth;
+		public bool blood;
+		public bool stomp;
+		public bool stomped;
+		public bool scream;
 		public string Texture_viscount => "ThoriumMod/NPCs/BossViscount/Viscount";
 		public string Texture_viscountglow => "ThoriumMod/NPCs/BossViscount/Viscount_Glow";
 	
 		public override void SendExtraAI(NPC npc, BitWriter bitWriter, BinaryWriter writer){
-			if(CalamityGamemodeCheck.isRevengeance) {
+			if((CalamityGamemodeCheck.isRevengeance || CalamityGamemodeCheck.isBossrush) && ModContent.GetInstance<BossConfig>().viscount == ThoriumBossRework_selection_mode.Ragnarok) {
 				BitsByte bitsByte = default(BitsByte);
 				bitsByte[0] = (npc.aiStyle == -1);
 				bitsByte[1] = openMouth;
@@ -58,7 +58,7 @@ namespace RagnarokMod.Common.GlobalNPCs
 			}
 		}
 		public override void ReceiveExtraAI(NPC npc, BitReader bitReader, BinaryReader reader){
-			if(CalamityGamemodeCheck.isRevengeance) {
+			if((CalamityGamemodeCheck.isRevengeance || CalamityGamemodeCheck.isBossrush) && ModContent.GetInstance<BossConfig>().viscount == ThoriumBossRework_selection_mode.Ragnarok) {
 				BitsByte bitsByte = reader.ReadByte();
 				npc.aiStyle = (bitsByte[0] ? -1 : -2);
 				openMouth = bitsByte[1];
@@ -69,8 +69,7 @@ namespace RagnarokMod.Common.GlobalNPCs
 			}
 		}
 		public override void PostDraw(NPC npc, SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor){
-			
-			if(CalamityGamemodeCheck.isRevengeance) {
+			if((CalamityGamemodeCheck.isRevengeance || CalamityGamemodeCheck.isBossrush) && ModContent.GetInstance<BossConfig>().viscount == ThoriumBossRework_selection_mode.Ragnarok) {
 				Vector2 vector = npc.Center - screenPos;
 				Color color = Lighting.GetColor((int)(npc.Center.X / 16f), (int)(npc.Center.Y / 16f));
 				Vector2 vector2 = Terraria.Utils.Size(npc.frame) / 2f + new Vector2(0f, 4f);
@@ -87,7 +86,7 @@ namespace RagnarokMod.Common.GlobalNPCs
 			}
 		}
 		public override void FindFrame(NPC npc, int frameHeight){
-			if(CalamityGamemodeCheck.isRevengeance) {
+			if((CalamityGamemodeCheck.isRevengeance || CalamityGamemodeCheck.isBossrush) && ModContent.GetInstance<BossConfig>().viscount == ThoriumBossRework_selection_mode.Ragnarok) {
 				if (!stomp && !stomped && !scream){
 					counting++;
 					int num;

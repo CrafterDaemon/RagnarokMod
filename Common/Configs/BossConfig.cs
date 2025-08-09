@@ -44,5 +44,17 @@ namespace RagnarokMod.Common.Configs
 		[Label("Viscount AI")]
 		[Tooltip("Select, which AI rework should be used. Off for default behaviour")]
         public ThoriumBossRework_selection_mode viscount;
+		
+		[DefaultValue(ThoriumBossRework_selection_mode.Ragnarok)]
+        [ReloadRequired]
+		[Label("Granite Enegy Storm AI")]
+		[Tooltip("Select, which AI rework should be used. Off for default behaviour")]
+        public ThoriumBossRework_selection_mode granite;
+		
+		[DefaultValue(ThoriumBossRework_selection_mode.Ragnarok)]
+        [ReloadRequired]
+		[Label("Buried Champion AI")]
+		[Tooltip("Select, which AI rework should be used. Off for default behaviour")]
+        public ThoriumBossRework_selection_mode champion;
     }
 }

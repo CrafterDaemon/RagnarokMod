@@ -21,15 +21,12 @@ namespace RagnarokMod.Common.GlobalNPCs
     public class StormHatchlingAI : GlobalNPC
     {
 		private static Mod thorium = ModLoader.GetMod("ThoriumMod");
-		public override bool AppliesToEntity(NPC npc, bool lateInstantiation) 
-		{
+		public override bool AppliesToEntity(NPC npc, bool lateInstantiation) {
 			return npc.type == thorium.Find<ModNPC>("StormHatchling").Type;
 		}
 	
-		public override bool PreAI(NPC npc) 
-		{
-			if(CalamityGamemodeCheck.isBossrush) 
-			{	
+		public override bool PreAI(NPC npc) {
+			if(CalamityGamemodeCheck.isBossrush) {	
 				if(OtherModsCompat.tbr_loaded) // Can be removed as soon as Thorium Rework bossrush is fixed
 				{
 					return true;
@@ -38,15 +35,13 @@ namespace RagnarokMod.Common.GlobalNPCs
 				{
 					return true;
 				}
-				if(!(ModContent.GetInstance<BossConfig>().bird == ThoriumBossRework_selection_mode.Ragnarok)) 
-				{
-							return true;
+				if(!(ModContent.GetInstance<BossConfig>().bird == ThoriumBossRework_selection_mode.Ragnarok)) {
+						return true;
 				}
 				NPCHelper.BatAI(npc, 0, 2.75f);
 				return false;
 			}
-			else 
-			{
+			else {
 					return true;
 			}
 		}

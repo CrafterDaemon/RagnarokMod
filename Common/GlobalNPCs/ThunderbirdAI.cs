@@ -31,7 +31,7 @@ namespace RagnarokMod.Common.GlobalNPCs
 		{
 			return npc.type == thorium.Find<ModNPC>("TheGrandThunderBird").Type;
 		}
-		private static void DecideNewAttack(NPC npc, int frame, params int[] attackStatesToIgnore)
+		private void DecideNewAttack(NPC npc, int frame, params int[] attackStatesToIgnore)
 		{
 			SetFrame(npc, frame);
 			setAnimationState(npc, 0);
@@ -42,75 +42,61 @@ namespace RagnarokMod.Common.GlobalNPCs
 			if (Main.netMode != 1)
 			{
 				List<int> list = new List<int>(value_attackOptions);
-				if (attackStatesToIgnore.Length == 0)
-				{
+				if (attackStatesToIgnore.Length == 0){
 					attackStatesToIgnore = new int[] { getAttackState(npc) };
 				}
-				foreach (int num in attackStatesToIgnore)
-				{
+				foreach (int num in attackStatesToIgnore){
 					list.Remove(num);
 				}
-				if (list.Count == 0)
-				{
+				if (list.Count == 0){
 					list.Add(0);
 				}
 				setAttackState(npc, Terraria.Utils.Next<int>(Main.rand, list));
 				npc.netUpdate = true;
 			}
 		}
-		private static void SetFrame(NPC npc, int frame)
-		{
+		private void SetFrame(NPC npc, int frame){
 			npc.frame.Y = frame * 126;
 			npc.frameCounter = 0.0;
 		}
-		public static void setAnimationState(NPC npc, float thevalue) 
-		{
+		public void setAnimationState(NPC npc, float thevalue) {
 			npc.ai[0] = (float)thevalue;
 		}
-		public static int getAnimationState(NPC npc) 
-		{
+		public int getAnimationState(NPC npc) {
 			return (int)npc.ai[0];
 		}
-		public static void setChargeTimer(NPC npc, float thevalue) 
-		{
+		public void setChargeTimer(NPC npc, float thevalue) {
 			npc.ai[1] = thevalue;
 		}
-		public static float getChargeTimer(NPC npc) 
-		{
+		public float getChargeTimer(NPC npc) {
 			return npc.ai[1];
 		}
-		public static void setAttackStateTimer(NPC npc, float thevalue) 
-		{
+		public void setAttackStateTimer(NPC npc, float thevalue) {
 			npc.ai[2] = thevalue;
 		}
-		public static float getAttackStateTimer(NPC npc) 
-		{
+		public float getAttackStateTimer(NPC npc) {
 			return npc.ai[2];
 		}
-		public static void setAttackState(NPC npc, int thevalue) 
-		{
+		public void setAttackState(NPC npc, int thevalue) {
 			npc.ai[3] = (float)thevalue;
 		}
-		public static int getAttackState(NPC npc) 
-		{
+		public int getAttackState(NPC npc) {
 			return (int)npc.ai[3];
 		}		
-		public static byte chargeDecide;
-		public static int value_frenzy;
-		public static List<int> value_attackOptions = new List<int> { 0, 1, 2 };
-		public static int Animation_Base = 0;
-		public static int Animation_Screech = 1;
-		public static int Animation_Stunned = 2;
-		public static int Animation_Charging = 3;
-		public static int Attack_LightningStrikes = 0;
-		public static int Attack_Charge = 1;
-		public static int Attack_Hatchling = 2;
-		public static int Attack_SparkShot = 3;
+		public byte chargeDecide;
+		public int value_frenzy;
+		public List<int> value_attackOptions = new List<int> { 0, 1, 2 };
+		public int Animation_Base = 0;
+		public int Animation_Screech = 1;
+		public int Animation_Stunned = 2;
+		public int Animation_Charging = 3;
+		public int Attack_LightningStrikes = 0;
+		public int Attack_Charge = 1;
+		public int Attack_Hatchling = 2;
+		public int Attack_SparkShot = 3;
 		
-		public override bool PreAI(NPC npc) 
-		{
-			if(CalamityGamemodeCheck.isBossrush) 
-			{	
+		public override bool PreAI(NPC npc) {
+			if(CalamityGamemodeCheck.isBossrush) {	
 				if(OtherModsCompat.tbr_loaded) // Can be removed as soon as Thorium Rework bossrush is fixed
 				{
 					return true;
@@ -119,22 +105,18 @@ namespace RagnarokMod.Common.GlobalNPCs
 				{
 					return true;
 				}
-				if(!(ModContent.GetInstance<BossConfig>().bird == ThoriumBossRework_selection_mode.Ragnarok)) 
-						{
+				if(!(ModContent.GetInstance<BossConfig>().bird == ThoriumBossRework_selection_mode.Ragnarok)) {
 								return true;
 						}
 				
-				if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead || !Main.player[npc.target].active)
-						{
+				if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead || !Main.player[npc.target].active){
 							npc.TargetClosest(true);
 						}
 						Player player = Main.player[npc.target];
 						//Vanishes when Player is dead or not active
-						if (!player.active || player.dead)
-						{
+						if (!player.active || player.dead){
 							npc.velocity.Y = npc.velocity.Y - 0.04f;
-							if (npc.timeLeft > 30)
-							{
+							if (npc.timeLeft > 30){
 								npc.timeLeft = 30;
 							}
 							return false;
@@ -143,22 +125,17 @@ namespace RagnarokMod.Common.GlobalNPCs
 						bool isfrenzythreshold = (double)npc.life <= (double)npc.lifeMax * 0.5;
 						npc.spriteDirection = ((player.Center.X > npc.Center.X) ? 1 : (-1));
 						Vector2 vector = npc.DirectionTo(player.Center);
-						if (isfrenzythreshold)
-						{
-							if (!value_attackOptions.Contains(3))
-							{
+						if (isfrenzythreshold){
+							if (!value_attackOptions.Contains(3)){
 								value_attackOptions.Add(3);
 							}
 							value_frenzy = 60;
 						}
-						else
-						{
+						else{
 							value_attackOptions.Remove(3);
 							value_frenzy = 30;
 						}
-						
-						if (getAttackState(npc) != 1) // No attack regular movement
-						{
+						if (getAttackState(npc) != 1){
 							if (player.Center.X + 850f < npc.Center.X) // Move much faster
 							{
 								npc.velocity.X = ((npc.velocity.X < 0f) ? (-10f) : (-7f));

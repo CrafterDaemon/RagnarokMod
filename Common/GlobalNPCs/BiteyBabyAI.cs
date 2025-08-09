@@ -22,22 +22,13 @@ namespace RagnarokMod.Common.GlobalNPCs
     {
 		public override bool InstancePerEntity => true;
 		private static Mod thorium = ModLoader.GetMod("ThoriumMod");
-		public override bool AppliesToEntity(NPC npc, bool lateInstantiation) 
-		{
+		public override bool AppliesToEntity(NPC npc, bool lateInstantiation) {
 			return npc.type == thorium.Find<ModNPC>("BiteyBaby").Type;
 		}
-		public static int counter;
+		public int counter;
 	
 		public override void FindFrame(NPC npc, int frameHeight){
-			if(OtherModsCompat.tbr_loaded) 
-			{
-				return;
-			}
-			if(!(ModContent.GetInstance<BossConfig>().bossrush == ThoriumBossRework_selection_mode.Ragnarok)) // If Ragnarok is not selected do not change bossrush AIs
-			{
-				return;
-			}
-			if(CalamityGamemodeCheck.isBossrush) {	
+			if(CalamityGamemodeCheck.isBossrush && !OtherModsCompat.tbr_loaded && ModContent.GetInstance<BossConfig>().viscount == ThoriumBossRework_selection_mode.Ragnarok && ModContent.GetInstance<BossConfig>().bossrush == ThoriumBossRework_selection_mode.Ragnarok ) {	
 				npc.frameCounter += 1.0;
 				if (npc.frameCounter > 5.0){
 					counter++;
@@ -47,10 +38,14 @@ namespace RagnarokMod.Common.GlobalNPCs
 					counter = 0;
 				}
 				npc.frame.Y = counter * frameHeight;
+				return;
 			}
 		}
 	
 		public override bool PreAI(NPC npc) {
+			if(!(ModContent.GetInstance<BossConfig>().viscount == ThoriumBossRework_selection_mode.Ragnarok)) {
+							return true;
+			}
 			if(CalamityGamemodeCheck.isBossrush) {	
 				if(OtherModsCompat.tbr_loaded) // Can be removed as soon as Thorium Rework bossrush is fixed
 				{
@@ -59,9 +54,6 @@ namespace RagnarokMod.Common.GlobalNPCs
 				if(!(ModContent.GetInstance<BossConfig>().bossrush == ThoriumBossRework_selection_mode.Ragnarok)) // If Ragnarok is not selected do not change bossrush AIs
 				{
 					return true;
-				}
-				if(!(ModContent.GetInstance<BossConfig>().viscount == ThoriumBossRework_selection_mode.Ragnarok)) {
-							return true;
 				}
 				NPCHelper.BatAI(npc, 0, 3.5f);
 				Player player = Main.player[npc.target];

@@ -15,15 +15,11 @@ using System.IO;
 
 namespace RagnarokMod.Common.GlobalProjectiles
 {
-    public class BossProjectileTweak : GlobalProjectile
-    {
+    public class BossProjectileTweak : GlobalProjectile {
 		private static Mod thorium = ModLoader.GetMod("ThoriumMod");
-		public override bool AppliesToEntity(Projectile projectile, bool lateInstantiation)
-		{
-			foreach (var entry in thorium_projectile_list) 
-			{
-				if ( projectile.type == thorium.Find<ModProjectile>(entry).Type ) 
-				{
+		public override bool AppliesToEntity(Projectile projectile, bool lateInstantiation){
+			foreach (var entry in thorium_projectile_list) {
+				if ( projectile.type == thorium.Find<ModProjectile>(entry).Type ) {
 					return true;
 				}
 			}
@@ -157,9 +153,7 @@ namespace RagnarokMod.Common.GlobalProjectiles
 			"Whirlpool"
 		};
 		
-		
-		private static Dictionary<string,float> thorium_bosses_bossrush_projectile_damage_modifier = new Dictionary<string,float> 
-		{
+		private static Dictionary<string,float> thorium_bosses_bossrush_projectile_damage_modifier = new Dictionary<string,float> {
 			{"AbyssalStrike", 1.5f},
 			{"AbyssalStrike2", 1.5f},
 			{"AquaBomb", 1.5f},
@@ -374,68 +368,49 @@ namespace RagnarokMod.Common.GlobalProjectiles
 			"Whirlpool"
 		};
 		
-		
-		public override void ModifyHitPlayer (Projectile projectile, Player target, ref Player.HurtModifiers modifier) 
-		{
-			if(!ModContent.GetInstance<BossConfig>().bossstatstweak) 
-			{
+		public override void ModifyHitPlayer (Projectile projectile, Player target, ref Player.HurtModifiers modifier) {
+			if(!ModContent.GetInstance<BossConfig>().bossstatstweak) {
 				return;
 			}
 			
 			float currentDamageModifier = modifier.IncomingDamageMultiplier.Value;
 			float desiredDamageModifier;
-			
-			if (CalamityGamemodeCheck.isBossrush) 
-			{
+			if (CalamityGamemodeCheck.isBossrush) {
 				if(!(ModContent.GetInstance<BossConfig>().bossrush == ThoriumBossRework_selection_mode.Ragnarok)) // If Ragnarok is not enabled do not tweak stats
 				{
 					return;
 				}
-				
-				foreach (var projectilename in thorium_bosses_bossrush_projectile_damage_modifier) 
-				{
-					if ( projectile.type == thorium.Find<ModProjectile>(projectilename.Key).Type ) 
-					{
-						if(CalamityGamemodeCheck.isDeath) 
-						{
+				foreach (var projectilename in thorium_bosses_bossrush_projectile_damage_modifier) {
+					if ( projectile.type == thorium.Find<ModProjectile>(projectilename.Key).Type ) {
+						if(CalamityGamemodeCheck.isDeath) {
 							desiredDamageModifier = currentDamageModifier + 0.35f + projectilename.Value;
 						}
-						else if (CalamityGamemodeCheck.isRevengeance) 
-						{
+						else if (CalamityGamemodeCheck.isRevengeance) {
 							desiredDamageModifier = currentDamageModifier + 0.2f + projectilename.Value;
 						} 
-						else 
-						{
+						else {
 							desiredDamageModifier = currentDamageModifier + projectilename.Value;
 						}
-						if(OtherModsCompat.tbr_loaded) // Even when TBR bossrush is not loaded the damage numbers are still loaded in Ragnarok boss rush, so we have to remove them.
-						{
+						if(OtherModsCompat.tbr_loaded) { // Even when TBR bossrush is not loaded the damage numbers are still loaded in Ragnarok boss rush, so we have to remove them.
 							desiredDamageModifier-= projectilename.Value;
 						}
-						
 						modifier.IncomingDamageMultiplier *= desiredDamageModifier / currentDamageModifier;
 						return;
 					}
 				}
 			}
-			else 
-			{
-				if(CalamityGamemodeCheck.isDeath) 
-				{
+			else {
+				if(CalamityGamemodeCheck.isDeath) {
 					desiredDamageModifier = currentDamageModifier +  0.35f;
 				}
-				else if (CalamityGamemodeCheck.isRevengeance) 
-				{
+				else if (CalamityGamemodeCheck.isRevengeance) {
 					desiredDamageModifier = currentDamageModifier + 0.2f;
 				}
-				else 
-				{
+				else {
 					return;
 				}
-				foreach (string projectilename in thorium_projectile_list) 
-				{
-					if ( projectile.type == thorium.Find<ModProjectile>(projectilename).Type ) 
-					{
+				foreach (string projectilename in thorium_projectile_list) {
+					if ( projectile.type == thorium.Find<ModProjectile>(projectilename).Type ) {
 						modifier.IncomingDamageMultiplier *= desiredDamageModifier / currentDamageModifier;
 						break;
 					}
@@ -443,21 +418,37 @@ namespace RagnarokMod.Common.GlobalProjectiles
 			}	
 		}
 		
-		public override void SetDefaults(Projectile projectile) 
-		{
-			if(!ModContent.GetInstance<BossConfig>().bossstatstweak) 
-			{
+		public override void SetDefaults(Projectile projectile){
+			if(projectile.type == thorium.Find<ModProjectile>("GraniteCharge").Type
+			|| projectile.type == thorium.Find<ModProjectile>("BuriedArrow").Type 
+			|| projectile.type == thorium.Find<ModProjectile>("BuriedArrowC").Type
+			|| projectile.type == thorium.Find<ModProjectile>("BuriedArrowP").Type
+			|| projectile.type == thorium.Find<ModProjectile>("BuriedArrowF").Type
+			) {
+				projectile.aiStyle = 0;
+			}
+			
+			if(!ModContent.GetInstance<BossConfig>().bossstatstweak) {
 				return;
 			}
-			foreach (string projectilename in thorium_projectile_defense_damage_list) 
-			{
-				if ( projectile.type == thorium.Find<ModProjectile>(projectilename).Type ) 
-				{
+			foreach (string projectilename in thorium_projectile_defense_damage_list) {
+				if ( projectile.type == thorium.Find<ModProjectile>(projectilename).Type ) {
 					// Applying Defense Damage
 					projectile.Calamity().DealsDefenseDamage = true;
 					break;
 				}
-			}	
+			}			
+		}
+		
+		public override void AI(Projectile projectile) {
+			if(projectile.type == thorium.Find<ModProjectile>("GraniteCharge").Type
+			|| projectile.type == thorium.Find<ModProjectile>("BuriedArrow").Type 
+			|| projectile.type == thorium.Find<ModProjectile>("BuriedArrowC").Type
+			|| projectile.type == thorium.Find<ModProjectile>("BuriedArrowP").Type
+			|| projectile.type == thorium.Find<ModProjectile>("BuriedArrowF").Type
+			) {
+				projectile.rotation = projectile.velocity.ToRotation() +  MathHelper.PiOver2;
+			}
 		}
 	}
 }
