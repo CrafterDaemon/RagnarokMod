@@ -31,7 +31,7 @@ namespace RagnarokMod.Items.HealerItems.Other
 		public override void SetDefaults()
 		{
 			base.Item.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
-			base.Item.damage = 284;
+			base.Item.damage = 244;
 			this.isHealer = true;
 			this.healDisplay = true;
 			this.radiantLifeCost = 8;
@@ -76,14 +76,6 @@ namespace RagnarokMod.Items.HealerItems.Other
 			return false;
 		}
 
-		public override void AddRecipes()
-		{
-			Recipe recipe = Recipe.Create(Item.type);
-			recipe.AddIngredient(ModContent.ItemType<Acidwood>(), 30);
-			recipe.AddIngredient(ModContent.ItemType<SulphuricScale>(), 12);
-			recipe.AddTile(16);
-			recipe.Register();
-		}
 		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone) {
 			// Inflict the OnFire debuff for 1 second onto any NPC/Monster that this hits.
 			// 60 frames = 1 second

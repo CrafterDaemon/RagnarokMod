@@ -46,7 +46,7 @@ namespace RagnarokMod.Items.BardItems.String
             Item.scale = 1f;
             Item.useTime = 12;
             Item.useAnimation = 12;
-            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.useStyle = 5;
             Item.noMelee = true;
             Item.autoReuse = true;
             Item.knockBack = 20f;
@@ -58,6 +58,7 @@ namespace RagnarokMod.Items.BardItems.String
 
 
         }
+        public virtual Vector2? HoldoutOffset() => new Vector2?(new Vector2(-12f, 0.0f));
         public override bool BardShoot(
             Player player,
             EntitySource_ItemUse_WithAmmo source,
