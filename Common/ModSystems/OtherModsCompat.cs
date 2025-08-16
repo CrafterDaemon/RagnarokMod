@@ -124,7 +124,6 @@ namespace RagnarokMod.Common.ModSystems
 				tbr_defense_damage = (bool)(tbr_compat.GetType().GetField("defenseDamage", BindingFlags.Public | BindingFlags.Instance)).GetValue(tbr_compat);
 				if(!(ModContent.GetInstance<BossConfig>().bossrush == ThoriumBossRework_selection_mode.ThoriumBossRework)) {
 					(tbr_compat.GetType().GetField("thorlamityBR", BindingFlags.Public | BindingFlags.Instance)).SetValue(tbr_compat, false);
-					tbr_configs_edited = true;
 				}
 				if(!(ModContent.GetInstance<BossConfig>().bird == ThoriumBossRework_selection_mode.ThoriumBossRework)) {
 					(tbr_reworktoggles.GetType().GetField("bird", BindingFlags.Public | BindingFlags.Instance)).SetValue(tbr_reworktoggles, false);
