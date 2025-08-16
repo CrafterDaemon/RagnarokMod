@@ -67,7 +67,7 @@ namespace RagnarokMod.Common.GlobalNPCs
 			if(!(ModContent.GetInstance<BossConfig>().champion == ThoriumBossRework_selection_mode.Ragnarok)) {
 							return true;
 			}
-			if(CalamityGamemodeCheck.isBossrush || CalamityGamemodeCheck.isRevengeance) {	
+			if(CalamityGamemodeCheck.isBossrush) {	
 				if(OtherModsCompat.tbr_loaded) // Can be removed as soon as Thorium Rework bossrush is fixed
 				{
 					return true;

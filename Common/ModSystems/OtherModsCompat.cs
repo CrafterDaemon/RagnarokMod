@@ -25,19 +25,15 @@ using RagnarokMod.Common.Configs;
 
 namespace RagnarokMod.Common.ModSystems
 {
-    public class OtherModsCompat : ModSystem
-    {
+    public class OtherModsCompat : ModSystem{
 		// Thorium Bosses Reworked Config Settings
 		public static bool tbr_loaded = false;
 		public static bool tbr_defense_damage = false;
 		private static Mod ThoriumRework;
 		
-        public override void PostAddRecipes()
-        {
-			if(ModLoader.TryGetMod("CalamityBardHealer", out Mod CalamityBardHealer))				
-			{
-				if(ModContent.GetInstance<ModCompatConfig>().item_deduplication_mode == CalamityBardHealer_selection_mode.Off) 
-				{
+        public override void PostAddRecipes(){
+			if(ModLoader.TryGetMod("CalamityBardHealer", out Mod CalamityBardHealer))				{
+				if(ModContent.GetInstance<ModCompatConfig>().item_deduplication_mode == CalamityBardHealer_selection_mode.Off) {
 					ExchangeRecipe(CalamityBardHealer, ModContent.ItemType<AerospecBard>(),"AerospecHeadphones");
 					ExchangeRecipe(CalamityBardHealer, ModContent.ItemType<AerospecHealer>(),"AerospecBiretta");
 					ExchangeRecipe(CalamityBardHealer, ModContent.ItemType<AuricTeslaFrilledHelmet>(),"AuricTeslaFeatheredHeadwear");
@@ -53,12 +49,9 @@ namespace RagnarokMod.Common.ModSystems
 					ExchangeRecipe(CalamityBardHealer, ModContent.ItemType<TarragonShroud>(),"TarragonChapeau");
 					ExchangeRecipe(CalamityBardHealer, ModContent.ItemType<TarragonCowl>(),"TarragonParagonCrown");
 				}
-				else if (ModContent.GetInstance<ModCompatConfig>().item_deduplication_mode == CalamityBardHealer_selection_mode.Ragnarok) 
-				{
+				else if (ModContent.GetInstance<ModCompatConfig>().item_deduplication_mode == CalamityBardHealer_selection_mode.Ragnarok) {
 					RemoveOtherModRecipe(CalamityBardHealer,"AerospecHeadphones");
 					RemoveOtherModRecipe(CalamityBardHealer,"AerospecBiretta");
-					RemoveOtherModRecipe(CalamityBardHealer,"AugmentedAuricTeslaFeatheredHeadwear");
-					RemoveOtherModRecipe(CalamityBardHealer,"AugmentedAuricTeslaValkyrieVisage");
 					RemoveOtherModRecipe(CalamityBardHealer,"AuricTeslaFeatheredHeadwear");
 					RemoveOtherModRecipe(CalamityBardHealer,"AuricTeslaValkyrieVisage");
 					RemoveOtherModRecipe(CalamityBardHealer,"BloodflareRitualistMask");
@@ -66,13 +59,18 @@ namespace RagnarokMod.Common.ModSystems
 					RemoveOtherModRecipe(CalamityBardHealer,"DaedalusCowl");
 					RemoveOtherModRecipe(CalamityBardHealer,"DaedalusHat");
 					RemoveOtherModRecipe(CalamityBardHealer,"GodSlayerDeathsingerCowl");
-					RemoveOtherModRecipe(CalamityBardHealer,"IntergelacticCloche");
-					RemoveOtherModRecipe(CalamityBardHealer,"IntergelacticProtectorHelm");
 					RemoveOtherModRecipe(CalamityBardHealer,"SilvaGuardianHelmet");
 					RemoveOtherModRecipe(CalamityBardHealer,"StatigelEarrings");
 					RemoveOtherModRecipe(CalamityBardHealer,"StatigelFoxMask");
 					RemoveOtherModRecipe(CalamityBardHealer,"TarragonChapeau");
 					RemoveOtherModRecipe(CalamityBardHealer,"TarragonParagonCrown");
+					
+					if(ModLoader.HasMod("CatalystMod")) { // Catalyst Content
+						RemoveOtherModRecipe(CalamityBardHealer,"AugmentedAuricTeslaFeatheredHeadwear");
+						RemoveOtherModRecipe(CalamityBardHealer,"AugmentedAuricTeslaValkyrieVisage");
+						RemoveOtherModRecipe(CalamityBardHealer,"IntergelacticCloche");
+						RemoveOtherModRecipe(CalamityBardHealer,"IntergelacticProtectorHelm");
+					}
 				}
 				else 
 				{
@@ -94,8 +92,7 @@ namespace RagnarokMod.Common.ModSystems
 			}
         }
 		
-		public override void PostSetupContent() 
-		{
+		public override void PostSetupContent() {
 			ModLoader.TryGetMod("ThoriumRework", out ThoriumRework);
 			if(ThoriumRework != null) {
 				tbr_loaded = true;
@@ -123,8 +120,7 @@ namespace RagnarokMod.Common.ModSystems
 			}
 		}
 
-		public void ExchangeRecipe(Mod othermod, int ritemtype, string oitemname) 
-		{
+		public void ExchangeRecipe(Mod othermod, int ritemtype, string oitemname) {
 			Recipe recipe_ragnarok_to_othermod = Recipe.Create(othermod.Find<ModItem>(oitemname).Type, 1);
 			recipe_ragnarok_to_othermod.AddIngredient(ritemtype, 1).AddTile(26); 
 			recipe_ragnarok_to_othermod.Register();
@@ -134,30 +130,25 @@ namespace RagnarokMod.Common.ModSystems
 			recipe_othermod_to_ragnarok.Register();
 		}
 		
-		public void RemoveOwnRecipe(int ritemtype) 
-		{
+		public void RemoveOwnRecipe(int ritemtype) {
 			GetRecipe finder = new();
 			finder.LookFor(ritemtype, 1);
-			foreach (Recipe item in finder.Search())
-			{
+			foreach (Recipe item in finder.Search()){
 				RecipeHelper helper = new(item);
 				helper.Disable();
 			}
 		}
 		
-		public void RemoveOtherModRecipe(Mod othermod, string oitemname) 
-		{
+		public void RemoveOtherModRecipe(Mod othermod, string oitemname){
 			GetRecipe finder = new();
 			finder.LookFor(othermod.Find<ModItem>(oitemname).Type, 1);
-			foreach (Recipe item in finder.Search())
-			{
+			foreach (Recipe item in finder.Search()){
 				RecipeHelper helper = new(item);
 				helper.Disable();
 			}
 		}
 		
-        public void Tileswitcher( Recipe recipe ,int tileold, int tilenew) 
-		{
+        public void Tileswitcher( Recipe recipe ,int tileold, int tilenew) {
 			recipe.RemoveTile(tileold);
 			recipe.AddTile(tilenew);
 		}
