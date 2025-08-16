@@ -29,7 +29,10 @@ namespace RagnarokMod.Common.ModSystems
 		// Thorium Bosses Reworked Config Settings
 		public static bool tbr_loaded = false;
 		public static bool tbr_defense_damage = false;
+		public static bool tbr_configs_edited = false;
 		private static Mod ThoriumRework;
+		
+		private int timer = 0;
 		
         public override void PostAddRecipes(){
 			if(ModLoader.TryGetMod("CalamityBardHealer", out Mod CalamityBardHealer))				{
@@ -92,32 +95,57 @@ namespace RagnarokMod.Common.ModSystems
 			}
         }
 		
+		// Fixes the TBReworked bossrush when Ragnarok AI are enabled
+		public override void PostUpdateEverything() {
+			if(timer == 300) { // Timer to not apply changes every tick -> otherwise heavy performance impact
+				timer = 0;
+				if(tbr_loaded) {
+					if(CalamityGamemodeCheck.isBossrush) {
+						if(tbr_configs_edited) {
+							Main.NewText("Ragnarok Error: Please enable all Bosses in ThoriumBossRework config and set all BossAIs in RagnarokMod Config to TBR");
+						}
+					} 
+				}
+			}
+			timer++;
+		}
+		
 		public override void PostSetupContent() {
 			ModLoader.TryGetMod("ThoriumRework", out ThoriumRework);
 			if(ThoriumRework != null) {
 				tbr_loaded = true;
+				ApplyRagnarokTBRBossChanges();
+			}
+		}
+		
+		public void ApplyRagnarokTBRBossChanges() {
 				ModConfig tbr_compat = ThoriumRework.Find<ModConfig>("CompatConfig");
 				ModConfig tbr_reworktoggles = ThoriumRework.Find<ModConfig>("ReworkTogglesConfig");
 				tbr_defense_damage = (bool)(tbr_compat.GetType().GetField("defenseDamage", BindingFlags.Public | BindingFlags.Instance)).GetValue(tbr_compat);
 				if(!(ModContent.GetInstance<BossConfig>().bossrush == ThoriumBossRework_selection_mode.ThoriumBossRework)) {
 					(tbr_compat.GetType().GetField("thorlamityBR", BindingFlags.Public | BindingFlags.Instance)).SetValue(tbr_compat, false);
+					tbr_configs_edited = true;
 				}
 				if(!(ModContent.GetInstance<BossConfig>().bird == ThoriumBossRework_selection_mode.ThoriumBossRework)) {
 					(tbr_reworktoggles.GetType().GetField("bird", BindingFlags.Public | BindingFlags.Instance)).SetValue(tbr_reworktoggles, false);
+					tbr_configs_edited = true;
 				}
 				if(!(ModContent.GetInstance<BossConfig>().jelly == ThoriumBossRework_selection_mode.ThoriumBossRework)) {
 					(tbr_reworktoggles.GetType().GetField("jelly", BindingFlags.Public | BindingFlags.Instance)).SetValue(tbr_reworktoggles, false);
+					tbr_configs_edited = true;
 				}
 				if(!(ModContent.GetInstance<BossConfig>().viscount == ThoriumBossRework_selection_mode.ThoriumBossRework)) {
 					(tbr_reworktoggles.GetType().GetField("bat", BindingFlags.Public | BindingFlags.Instance)).SetValue(tbr_reworktoggles, false);
+					tbr_configs_edited = true;
 				}
 				if(!(ModContent.GetInstance<BossConfig>().granite == ThoriumBossRework_selection_mode.ThoriumBossRework)) {
 					(tbr_reworktoggles.GetType().GetField("ges", BindingFlags.Public | BindingFlags.Instance)).SetValue(tbr_reworktoggles, false);
+					tbr_configs_edited = true;
 				}
 				if(!(ModContent.GetInstance<BossConfig>().champion == ThoriumBossRework_selection_mode.ThoriumBossRework)) {
 					(tbr_reworktoggles.GetType().GetField("champ", BindingFlags.Public | BindingFlags.Instance)).SetValue(tbr_reworktoggles, false);
+					tbr_configs_edited = true;
 				}
-			}
 		}
 
 		public void ExchangeRecipe(Mod othermod, int ritemtype, string oitemname) {
