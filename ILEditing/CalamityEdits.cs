@@ -20,6 +20,7 @@ namespace RagnarokMod.ILEditing
     public class CalamityEdits : ModSystem
     {
 		private short timer = 0;
+		private static int downedBosses = 0;
 		
 		private static Mod Thorium => ModLoader.GetMod("ThoriumMod");
 		private static Mod Calamity = ModLoader.GetMod("CalamityMod");
@@ -30,59 +31,52 @@ namespace RagnarokMod.ILEditing
         private static ILHook community_hook = null;
 
 		
-        public override void OnModLoad()
-        {
+        public override void OnModLoad() {
             bool loadCaught = false;
-            while (!loadCaught)
-			{
-				if (Calamity != null)
-				{ 
-					foreach (Type type in calamityAssembly.GetTypes())
-					{
-						if (type.Name == "TheCommunity")
-						{
+            while (!loadCaught){
+				if (Calamity != null){ 
+					foreach (Type type in calamityAssembly.GetTypes()){
+						if (type.Name == "TheCommunity"){
 							community = type;
 						}
 					}
 					communitycalculatepower = community.GetMethod("CalculatePower", BindingFlags.NonPublic | BindingFlags.Static);
 					community_hook = new ILHook(communitycalculatepower, tweakTheCommunity);
 					community_hook.Apply();
+					downedBosses = getBossSlayCount();
+					
 					loadCaught = true;
 					break;
 				}
             }
         }
 		
-		 public override void PostUpdateItems()
-        {
-				if(timer == 600) // Every 10 seconds reapply hook instead every tick
-				{
+		 public override void PostUpdateItems(){
+				if(timer == 600){
 					timer = 0;
-					community_hook.Undo();
-					communitycalculatepower = community.GetMethod("CalculatePower", BindingFlags.NonPublic | BindingFlags.Static);
-					community_hook = new ILHook(communitycalculatepower, tweakTheCommunity);
-					community_hook.Apply();
+					if(checkNewBossSlay(downedBosses)){
+						community_hook.Undo();
+						communitycalculatepower = community.GetMethod("CalculatePower", BindingFlags.NonPublic | BindingFlags.Static);
+						community_hook = new ILHook(communitycalculatepower, tweakTheCommunity);
+						community_hook.Apply();
+					}	
 				}
 				timer++;
         }
 		
-		 public override void OnModUnload()
-        {
-            if (Calamity != null)
-            {
+		 public override void OnModUnload(){
+            if (Calamity != null){
 				community_hook.Dispose();
             }
         }
 		
-		private void tweakTheCommunity(ILContext il) 
-		{
+		private void tweakTheCommunity(ILContext il) {
 			var c = new ILCursor(il);
 			c.Emit(OpCodes.Ldc_R4, calculateCommunityPowerLerp());
 			c.EmitRet();
 		}
 		
-		public static float calculateCommunityPower() 
-		{
+		public static int getBossSlayCount() {
 			int downedbosscount = 
 			0
 			+ Terraria.Utils.ToInt((bool)Thorium.Call("GetDownedBoss", "TheGrandThunderBird"))
@@ -138,19 +132,29 @@ namespace RagnarokMod.ILEditing
 			+ Terraria.Utils.ToInt(DownedBossSystem.downedYharon) 
 			+ Terraria.Utils.ToInt(DownedBossSystem.downedExoMechs)
 			+ Terraria.Utils.ToInt(DownedBossSystem.downedCalamitas);
-			
+			return downedbosscount;
+		}
+		
+		public static bool checkNewBossSlay(int oldcount) {
+			int count = getBossSlayCount();
+			if(count > oldcount) {
+				downedBosses = count;
+				return true;
+			} else {return false;}
+		}
+		
+		public static float calculateCommunityPower() {
+			int downedbosscount = getBossSlayCount();
 			float num = downedbosscount / 53f;
 			return num;
 		}
 		
-		public static int calculateCommunityPowerKillsOnly() 
-		{
+		public static int calculateCommunityPowerKillsOnly() {
 			int result  = (int)(calculateCommunityPower() * 100);
 			return result;
 		}
 		
-		public static float calculateCommunityPowerLerp() 
-		{
+		public static float calculateCommunityPowerLerp() {
 			float result  = calculateCommunityPower();
 			return MathHelper.Lerp(0.05f, 0.2f, result);
 		}
