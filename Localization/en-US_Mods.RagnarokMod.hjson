@@ -99,7 +99,7 @@ Items: {
 			'''
 			Taking over 25 damage in one hit will cause a spread of homing feathers to fall
 			Allows you to fall more quickly and disables fall damage
-			Healing speels heal an additional 2 life
+			Healing spells heal an additional 2 life
 			10% increased movement speed
 			'''
 	}
@@ -221,7 +221,7 @@ Items: {
 			'''
 		SetBonus:
 			'''
-			Healing speels heal an additional 3 life
+			Healing spells heal an additional 3 life
 			Pressing the 'Armor Ability' key will shield you for 50 life and grants you the Antarctic Reinforcement buff for 15 seconds
 			While buffed you will be granted +8 defense and your healing spells will heal for an additional 2 life
 			Costs 100 mana
@@ -756,10 +756,7 @@ Items: {
 
 	Virusprayer: {
 		DisplayName: Virusprayer
-		Tooltip: 
-			'''
-			Shoots a barrage of acid bubbles
-			'''
+		Tooltip: Shoots a barrage of acid bubbles
 	}
 }
 
@@ -1041,6 +1038,21 @@ Configs: {
 
 		viscount: {
 			Label: Viscount AI
+			Tooltip: Select, which AI rework should be used. Off for default behaviour
+		}
+
+		granite: {
+			Label: Granite Enegy Storm AI
+			Tooltip: Select, which AI rework should be used. Off for default behaviour
+		}
+
+		champion: {
+			Label: Buried Champion AI
+			Tooltip: Select, which AI rework should be used. Off for default behaviour
+		}
+
+		scouter: {
+			Label: Star Scouter AI
 			Tooltip: Select, which AI rework should be used. Off for default behaviour
 		}
 	}

@@ -236,7 +236,7 @@ namespace RagnarokMod.Common.GlobalItems
 				}
 				else if(item.type == thorium.Find<ModItem>("FleshChainSaw").Type) 
 				{
-					item.axe = 13;
+					item.axe = 130;
 				}
 				else if(item.type == thorium.Find<ModItem>("GeodePickaxe").Type) 
 				{
