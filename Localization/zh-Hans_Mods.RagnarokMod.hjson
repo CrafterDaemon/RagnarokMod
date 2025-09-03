@@ -116,7 +116,7 @@ Items: {
 			'''
 		SetBonus:
 			'''
-			拥有狂想独奏帽/狂想启迪盔, 弑神者兜帽, 血嚎尖芒盔, 龙篙魂罩的套装效果
+			拥有狂想独奏帽/狂想启迪盔, 弑神者兜帽, 血嚎尖芒盔, 龙蒿魂罩的套装效果
 			按下“盔甲能力”键将触发的两个狂想套装效果
 			'''
 	}
@@ -135,7 +135,7 @@ Items: {
 			'''
 		SetBonus:
 			'''
-			拥有梦境编织者兜帽/梦境编织者头盔, 始源林海覆面盔, 血恸幽冥盔, 龙篙风帽的套装效果
+			拥有梦境编织者兜帽/梦境编织者头盔, 始源林海覆面盔, 血恸幽冥盔, 龙蒿风帽的套装效果
 			按下“盔甲能力”键将触发的两个梦境编织者套装效果
 			'''
 	}
@@ -338,7 +338,7 @@ Items: {
 	}
 
 	TarragonCowl: {
-		DisplayName: 龙篙风帽
+		DisplayName: 龙蒿风帽
 		Tooltip:
 			'''
 			增加5%伤害减免
@@ -351,7 +351,7 @@ Items: {
 	}
 
 	TarragonShroud: {
-		DisplayName: 龙篙魂罩
+		DisplayName: 龙蒿魂罩
 		Tooltip:
 			'''
 			增加5%伤害减免
@@ -721,12 +721,12 @@ Items: {
 	}
 
 	DragonForce: {
-		// DisplayName: Dragon Force
-		/* Tooltip:
+		DisplayName: 圣龙之力
+		Tooltip:
 			'''
-			Shoots a fiery slash that splits into infernal notes.
-			Through the Fire and the Flames.
-			''' */
+			释放炽热之刃然后分裂
+			攻击后会在敌人身上生成火焰和烈焰
+			'''
 	}
 
 	IntergelacticHeadBard: {
@@ -747,13 +747,13 @@ Items: {
 	}
 
 	Lamentation: {
-		// DisplayName: Lamentation
-		// Tooltip: Shoots homing brimstone fireblasts
+		DisplayName: 嗟叹
+		Tooltip: 发射带有追踪功能的硫磺火
 	}
 
 	Virusprayer: {
-		// DisplayName: Virusprayer
-		// Tooltip: ""
+		DisplayName: 病毒喷雾器
+		Tooltip: ""
 	}
 }
 
@@ -923,128 +923,128 @@ Configs: {
 	}
 
 	ClassBalancerConfig: {
-		// DisplayName: Class Balancer Config
-		// Headers.ClassBalanceChanges: Class Balance Changes Header
+		DisplayName: 职业平衡设置
+		Headers.ClassBalanceChanges: 职业平衡设置页
 
 		HealerDamageModifier: {
-			// Label: Healer Damage Modifier
-			// Tooltip: Multiplier for Healer damage. Multiplier applies after all other changes have been applied.
+			Label: 牧师伤害倍率
+			Tooltip: 牧师伤害倍率，倍率在其他变化加成后才会生效。
 		}
 
 		BardDamageModifier: {
-			// Label: Bard Damage Modifier
-			// Tooltip: Multiplier for Bard damage. Multiplier applies after all other changes have been applied.
+			Label: 吟游诗人伤害倍率
+			Tooltip: 吟游诗人伤害倍率，倍率在其他变化加成后才会生效。
 		}
 
 		RogueDamageModifier: {
-			// Label: Rogue Damage Modifier
-			// Tooltip: Multiplier for Rogue/Throwing damage. Multiplier applies after all other changes have been applied.
+			Label: 盗贼伤害倍率
+			Tooltip: 盗贼或投手伤害倍率，倍率在其他变化加成后才会生效。
 		}
 
 		RangedDamageModifier: {
-			// Label: Ranged Damage Modifier
-			// Tooltip: Multiplier for Ranged damage. Multiplier applies after all other changes have been applied.
+			Label: 远程伤害倍率
+			Tooltip: 远程伤害倍率，倍率在其他变化加成后才会生效。
 		}
 
 		MagicDamageModifier: {
-			// Label: Magic Damage Modifier
-			// Tooltip: Multiplier for Magic damage. Multiplier applies after all other changes have been applied.
+			Label: 法师伤害倍率
+			Tooltip: 法师伤害倍率，倍率在其他变化加成后才会生效。
 		}
 
 		SummonDamageModifier: {
-			// Label: Summon Damage Modifier
-			// Tooltip: Multiplier for Summon damage. Multiplier applies after all other changes have been applied.
+			Label: 召唤伤害倍率
+			Tooltip: 召唤伤害倍率，倍率在其他变化加成后才会生效。
 		}
 
 		MeleeDamageModifier: {
-			// Label: Melee Damage Modifier
-			// Tooltip: Multiplier for melee damage. Multiplier applies after all other changes have been applied.
+			Label: 近战伤害倍率
+			Tooltip: 近战伤害倍率，倍率在其他变化加成后才会生效。
 		}
 	}
 
 	ItemBalancerConfig: {
-		// DisplayName: Item Balancer Config
-		// Headers.ItemBalanceChanges: Item Balance Changes Header
+		DisplayName: 物品平衡设置
+		Headers.ItemBalanceChanges: 物品平衡更改页
 
 		OmegaCore: {
-			// Label: Omega Core
-			// Tooltip: Nerfs the movement speed bonus of Omega Core to keep it more balanced for the further progression in the game.
+			Label: 欧米伽核心
+			Tooltip: 降低了奥米茄核心的速度加成，让该物品在游戏里面更加平衡，从而促进游戏发展。
 		}
 
 		genericweaponchanges: {
-			// Label: Generic Weapon Tweaks
-			// Tooltip: Applies general weapon rebalances.
+			Label: 通用武器调整
+			Tooltip: 进行通用武器平衡调整
 		}
 	}
 
 	UIConfig: {
-		// DisplayName: UI Config
-		// Headers.UITweaks: U I Tweaks Header
+		DisplayName: UI 设置
+		Headers.UITweaks: UI 调整页
 
 		BardEmpowermentBarOffsetX: {
-			// Label: Bard Empowerment Bar Offset X
-			// Tooltip: X Offset of the bard empowerment bar. Default value should already fix the overlap with Calamity item cooldowns
+			Label: 吟游诗人咒音增幅条向 X 轴偏移
+			Tooltip: 吟游诗人咒音增幅条向 X 轴偏移，默认值应该可以解决和灾厄物品冷却条的问题
 		}
 
 		BardEmpowermentBarOffsetY: {
-			// Label: Bard Empowerment Bar Offset Y
-			// Tooltip: Y Offset of the bard empowerment bar. Default value should already fix the overlap with Calamity item cooldowns
+			Label: 吟游诗人咒音增幅条向 Y 轴偏移
+			Tooltip: 吟游诗人咒音增幅条向 Y 轴偏移，默认值应该可以解决和灾厄物品冷却条的问题
 		}
 	}
 
 	ModCompatConfig: {
-		// DisplayName: Mod Compat Config
-		// Headers.ModCompat: Mod Compat Header
+		DisplayName: 模组兼容配置
+		Headers.ModCompat: 模组兼容页
 
 		item_deduplication_mode: {
-			// Label: Calamity Bard & Healer item deduplication
-			// Tooltip: Select, which item recipes of duplicate items are loaded. Off enables both mod versions.
+			Label: 非灾厄官方吟游诗人，牧师武器武器重复项目
+			Tooltip: 选择加载那个模组的物品项目，关闭则同时加载两个模组项目
 		}
 	}
 
 	CalamityBardHealer_selection_mode: {
-		// Tooltip: ""
-		// Off.Label: Off
-		// Ragnarok.Label: Ragnarok
-		// CalamityBardHealer.Label: Calamity Bard Healer
+		Tooltip: ""
+		Off.Label: 关闭
+		Ragnarok.Label: 诸神的黄昏
+		CalamityBardHealer.Label: 非灾厄官方吟游诗人，牧师武器
 	}
 
 	BossConfig: {
-		// DisplayName: Boss Config
-		// Headers.BossChanges: Boss Changes Header
+		DisplayName: BOSS设置
+		Headers.BossChanges: BOSS更改页
 
 		bird: {
-			// Label: Grand Thunderbird AI
-			// Tooltip: Select, which AI rework should be used. Off for default behaviour
+			Label: 惊雷王鹰AI
+			Tooltip: 选择使用那个模组的AI，关闭为默认状态
 		}
 
 		jelly: {
-			// Label: Queen Jellygfish AI
-			// Tooltip: Select, which AI rework should be used. This setting.Off for default behaviour
+			Label: 水母皇后AI
+			Tooltip: 选择使用那个模组的AI，关闭为默认状态
 		}
 
 		bossstatstweak: {
-			// Label: Boss Stat Tweak
-			// Tooltip: Select, if Thorium Bosses receive stat tweaks (Attack Damage, Health, Defense Damage, Damage Reduction) for Calamity scaling
+			Label: BOSS机制修改
+			Tooltip: 如果瑟银BOSS因为灾厄机制获得属性调整（攻击伤害，生命值，防御伤害，伤害减免）选择相应选项
 		}
 
 		bossrush: {
-			// Label: Thorium Boss Rush
-			// Tooltip: Select, which bossrush mode should be used. Off disables bossrush
+			Label: 瑟银BOSS RUSH
+			Tooltip: 选择使用那个模组的BOSS RUSH,关闭则禁用BOSS RUSH
 		}
 
 		viscount: {
-			// Label: Viscount AI
-			// Tooltip: Select, which AI rework should be used. Off for default behaviour
+			Label: 蝙蝠子爵AI
+			Tooltip: 选择使用那个模组的AI，关闭为默认状态
 		}
 	}
 
 	ThoriumBossRework_selection_mode: {
-		// Tooltip: ""
-		// Off.Label: Off
-		// Ragnarok.Label: Ragnarok
-		// ThoriumBossRework.Label: Thorium Boss Rework
+		Tooltip: ""
+		Off.Label: 关闭
+		Ragnarok.Label: 诸神的黄昏
+		ThoriumBossRework.Label: 瑟银BOSS重置
 	}
 }
 
-// DamageClasses.ThoriumRogueClass.DisplayName: rogue damage
+DamageClasses.ThoriumRogueClass.DisplayName: 盗贼伤害
