@@ -8,6 +8,7 @@ using MonoMod.RuntimeDetour;
 using MonoMod.RuntimeDetour.HookGen;
 using RagnarokMod.Common.Configs;
 using RagnarokMod.Utils;
+using RagnarokMod.Common.ModSystems;
 using System;
 using System.Reflection;
 using Terraria.DataStructures;
@@ -208,7 +209,7 @@ namespace RagnarokMod.ILEditing
 		 public override void PostUpdateEverything(){
 				if(timer == 1800){
 					timer = 0;
-					if((CalamityGamemodeCheck.isRevengeance || CalamityGamemodeCheck.isBossrush) && ModContent.GetInstance<BossConfig>().jelly == ThoriumBossRework_selection_mode.Ragnarok){
+					if((CalamityGamemodeCheck.isRevengeance || CalamityGamemodeCheck.isBossrush) && OtherModsCompat.shouldRagnarokBossAILoad(ModContent.GetInstance<BossConfig>().jelly)){
 						qjellyhook.Undo();
 						qjellypostdraw = qjelly.GetMethod("PostDraw", BindingFlags.Public | BindingFlags.Instance);
 						qjellyhook = new ILHook(qjellypostdraw, DisableQuellyfishPostDraw);
@@ -217,7 +218,7 @@ namespace RagnarokMod.ILEditing
 					else {
 						qjellyhook.Undo();
 					}
-					if((CalamityGamemodeCheck.isRevengeance || CalamityGamemodeCheck.isBossrush) && ModContent.GetInstance<BossConfig>().scouter == ThoriumBossRework_selection_mode.Ragnarok){
+					if((CalamityGamemodeCheck.isRevengeance || CalamityGamemodeCheck.isBossrush) && OtherModsCompat.shouldRagnarokBossAILoad(ModContent.GetInstance<BossConfig>().scouter)){
 						scouterhook.Undo();
 						scouterpostdraw = scouter.GetMethod("PostDraw", BindingFlags.Public | BindingFlags.Instance);
 						scouterhook = new ILHook(scouterpostdraw, DisableScouterPostDraw);
@@ -359,13 +360,13 @@ namespace RagnarokMod.ILEditing
 			c.EmitRet();
 		}
 		private void DisableQuellyfishPostDraw(ILContext il) {
-			if((CalamityGamemodeCheck.isRevengeance || CalamityGamemodeCheck.isBossrush) && ModContent.GetInstance<BossConfig>().jelly == ThoriumBossRework_selection_mode.Ragnarok){
+			if( (CalamityGamemodeCheck.isRevengeance || CalamityGamemodeCheck.isBossrush) && OtherModsCompat.shouldRagnarokBossAILoad(ModContent.GetInstance<BossConfig>().jelly) ){
 				var c = new ILCursor(il);
 				c.EmitRet();
 			}
 		}
 		private void DisableScouterPostDraw(ILContext il) {
-			if((CalamityGamemodeCheck.isRevengeance || CalamityGamemodeCheck.isBossrush) && ModContent.GetInstance<BossConfig>().scouter == ThoriumBossRework_selection_mode.Ragnarok){
+			if( (CalamityGamemodeCheck.isRevengeance || CalamityGamemodeCheck.isBossrush) && OtherModsCompat.shouldRagnarokBossAILoad(ModContent.GetInstance<BossConfig>().scouter) ){
 				var c = new ILCursor(il);
 				c.EmitRet();
 			}

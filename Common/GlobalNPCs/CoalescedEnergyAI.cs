@@ -34,8 +34,8 @@ namespace RagnarokMod.Common.GlobalNPCs
 		}
 		
 		public override bool PreAI(NPC npc) {
-			if(!(ModContent.GetInstance<BossConfig>().granite == ThoriumBossRework_selection_mode.Ragnarok)) {
-							return true;
+			if(!(OtherModsCompat.shouldRagnarokBossAILoad(ModContent.GetInstance<BossConfig>().granite))) {
+					return true;
 			}
 			if(CalamityGamemodeCheck.isBossrush) {	
 				if(OtherModsCompat.tbr_loaded) // Can be removed as soon as Thorium Rework bossrush is fixed

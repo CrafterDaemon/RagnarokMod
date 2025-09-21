@@ -37,19 +37,19 @@ namespace RagnarokMod.Common.GlobalNPCs
 		public int framecounter = 0;
 		
 		public override void SendExtraAI(NPC npc, BitWriter bitWriter, BinaryWriter writer){
-			if((CalamityGamemodeCheck.isRevengeance || CalamityGamemodeCheck.isBossrush) && ModContent.GetInstance<BossConfig>().champion == ThoriumBossRework_selection_mode.Ragnarok) {
+			if((CalamityGamemodeCheck.isRevengeance || CalamityGamemodeCheck.isBossrush) && OtherModsCompat.shouldRagnarokBossAILoad(ModContent.GetInstance<BossConfig>().champion)) {
 				BitsByte bitsByte = default(BitsByte);
 				bitsByte[0] = sideRight;
 				writer.Write(bitsByte);
 			}
 		}
 		public override void ReceiveExtraAI(NPC npc, BitReader bitReader, BinaryReader reader){
-			if((CalamityGamemodeCheck.isRevengeance || CalamityGamemodeCheck.isBossrush) && ModContent.GetInstance<BossConfig>().champion == ThoriumBossRework_selection_mode.Ragnarok) {
+			if((CalamityGamemodeCheck.isRevengeance || CalamityGamemodeCheck.isBossrush) && OtherModsCompat.shouldRagnarokBossAILoad(ModContent.GetInstance<BossConfig>().champion)) {
 				sideRight = reader.ReadByte() != 0;
 			}
 		}
 		public override void FindFrame(NPC npc, int frameHeight){
-			if((CalamityGamemodeCheck.isRevengeance || CalamityGamemodeCheck.isBossrush) && ModContent.GetInstance<BossConfig>().champion == ThoriumBossRework_selection_mode.Ragnarok) {
+			if((CalamityGamemodeCheck.isRevengeance || CalamityGamemodeCheck.isBossrush) && OtherModsCompat.shouldRagnarokBossAILoad(ModContent.GetInstance<BossConfig>().champion)) {
 				framecounter++;
 				if (framecounter > 6){
 					counter++;
@@ -64,8 +64,8 @@ namespace RagnarokMod.Common.GlobalNPCs
 		}
 		
 		public override bool PreAI(NPC npc) {
-			if(!(ModContent.GetInstance<BossConfig>().champion == ThoriumBossRework_selection_mode.Ragnarok)) {
-							return true;
+			if(!(OtherModsCompat.shouldRagnarokBossAILoad(ModContent.GetInstance<BossConfig>().champion))) {
+					return true;
 			}
 			if(CalamityGamemodeCheck.isBossrush) {	
 				if(OtherModsCompat.tbr_loaded) // Can be removed as soon as Thorium Rework bossrush is fixed

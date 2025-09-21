@@ -46,7 +46,7 @@ namespace RagnarokMod.Common.GlobalNPCs
 		public string Texture_viscountglow => "ThoriumMod/NPCs/BossViscount/Viscount_Glow";
 	
 		public override void SendExtraAI(NPC npc, BitWriter bitWriter, BinaryWriter writer){
-			if((CalamityGamemodeCheck.isRevengeance || CalamityGamemodeCheck.isBossrush) && ModContent.GetInstance<BossConfig>().viscount == ThoriumBossRework_selection_mode.Ragnarok) {
+			if((CalamityGamemodeCheck.isRevengeance || CalamityGamemodeCheck.isBossrush) && OtherModsCompat.shouldRagnarokBossAILoad(ModContent.GetInstance<BossConfig>().viscount)) {
 				BitsByte bitsByte = default(BitsByte);
 				bitsByte[0] = (npc.aiStyle == -1);
 				bitsByte[1] = openMouth;
@@ -58,7 +58,7 @@ namespace RagnarokMod.Common.GlobalNPCs
 			}
 		}
 		public override void ReceiveExtraAI(NPC npc, BitReader bitReader, BinaryReader reader){
-			if((CalamityGamemodeCheck.isRevengeance || CalamityGamemodeCheck.isBossrush) && ModContent.GetInstance<BossConfig>().viscount == ThoriumBossRework_selection_mode.Ragnarok) {
+			if((CalamityGamemodeCheck.isRevengeance || CalamityGamemodeCheck.isBossrush) && OtherModsCompat.shouldRagnarokBossAILoad(ModContent.GetInstance<BossConfig>().viscount)) {
 				BitsByte bitsByte = reader.ReadByte();
 				npc.aiStyle = (bitsByte[0] ? -1 : -2);
 				openMouth = bitsByte[1];
@@ -86,7 +86,7 @@ namespace RagnarokMod.Common.GlobalNPCs
 			}
 		}
 		public override void FindFrame(NPC npc, int frameHeight){
-			if((CalamityGamemodeCheck.isRevengeance || CalamityGamemodeCheck.isBossrush) && ModContent.GetInstance<BossConfig>().viscount == ThoriumBossRework_selection_mode.Ragnarok) {
+			if((CalamityGamemodeCheck.isRevengeance || CalamityGamemodeCheck.isBossrush) && OtherModsCompat.shouldRagnarokBossAILoad(ModContent.GetInstance<BossConfig>().viscount)) {
 				if (!stomp && !stomped && !scream){
 					counting++;
 					int num;
@@ -148,8 +148,7 @@ namespace RagnarokMod.Common.GlobalNPCs
 			}
 		}
 		
-		public override void ModifyHitByItem(NPC npc, Player player, Item item, ref NPC.HitModifiers modifiers)
-		{
+		public override void ModifyHitByItem(NPC npc, Player player, Item item, ref NPC.HitModifiers modifiers){
 			if(stomped) {
 				modifiers.FinalDamage *= 3f;
 			}
@@ -157,7 +156,7 @@ namespace RagnarokMod.Common.GlobalNPCs
 		
 		public override bool PreAI(NPC npc) 
 		{
-			if(!(ModContent.GetInstance<BossConfig>().viscount == ThoriumBossRework_selection_mode.Ragnarok)) {
+			if(!(OtherModsCompat.shouldRagnarokBossAILoad(ModContent.GetInstance<BossConfig>().viscount))) {
 					return true;
 			}
 			if(CalamityGamemodeCheck.isBossrush) {	

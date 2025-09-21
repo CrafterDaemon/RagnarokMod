@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using Terraria.Audio;
 using RagnarokMod.Utils;
 using RagnarokMod.Common.Configs;
 using RagnarokMod.Common.ModSystems;
@@ -427,6 +428,23 @@ namespace RagnarokMod.Common.GlobalProjectiles
 			) {
 				projectile.aiStyle = 0;
 			}
+			else if(projectile.type == thorium.Find<ModProjectile>("GravitonSurge").Type) {
+					if(OtherModsCompat.shouldRagnarokBossAILoad(ModContent.GetInstance<BossConfig>().scouter)) {
+						if(CalamityGamemodeCheck.isBossrush) {
+							projectile.timeLeft = 300;
+						}
+						else if(CalamityGamemodeCheck.isRevengeance) {
+							projectile.timeLeft = 240;
+						}
+					}
+			}
+			else if(projectile.type == thorium.Find<ModProjectile>("GravitySpark").Type) {
+					if(OtherModsCompat.shouldRagnarokBossAILoad(ModContent.GetInstance<BossConfig>().scouter)) {
+						if(CalamityGamemodeCheck.isBossrush) {
+							projectile.timeLeft = 240;
+						}
+					}
+			}
 			
 			if(!ModContent.GetInstance<BossConfig>().bossstatstweak) {
 				return;
@@ -448,6 +466,113 @@ namespace RagnarokMod.Common.GlobalProjectiles
 			|| projectile.type == thorium.Find<ModProjectile>("BuriedArrowF").Type
 			) {
 				projectile.rotation = projectile.velocity.ToRotation() +  MathHelper.PiOver2;
+			}
+			else if(projectile.type == thorium.Find<ModProjectile>("GravitonSurge").Type) {
+				if(OtherModsCompat.shouldRagnarokBossAILoad(ModContent.GetInstance<BossConfig>().scouter)) {
+					if(CalamityGamemodeCheck.isBossrush) {
+						float targetX = projectile.Center.X;
+						float targetY = projectile.Center.Y;
+						float maxDistance = 1200f;
+						bool foundTarget = false;
+						for (int i = 0; i < 255; i++){
+							Player player = Main.player[i];
+							if (player.active && !player.dead && projectile.DistanceSQ(player.Center) < maxDistance * maxDistance){
+								float distance = Math.Abs(projectile.Center.X - player.Center.X) + Math.Abs(projectile.Center.Y - player.Center.Y);
+								if (distance < maxDistance){
+									maxDistance = distance;
+									targetX = player.Center.X;
+									targetY = player.Center.Y;
+									foundTarget = true;
+								}
+							}
+						}
+						if (foundTarget){
+							float homingSpeed = 25f;
+							Vector2 toTarget = new Vector2(targetX, targetY) - projectile.Center;
+							float distance = toTarget.Length();
+							if (distance > 0f){
+								toTarget.Normalize();
+								toTarget *= homingSpeed;
+								float inertia = 8f;
+								projectile.velocity = (projectile.velocity * (inertia - 1) + toTarget) / inertia;
+							}
+						}
+					}
+					if(CalamityGamemodeCheck.isRevengeance) {
+						float targetX = projectile.Center.X;
+						float targetY = projectile.Center.Y;
+						float maxDistance = 800f;
+						bool foundTarget = false;
+						for (int i = 0; i < 255; i++){
+							Player player = Main.player[i];
+							if (player.active && !player.dead && projectile.DistanceSQ(player.Center) < maxDistance * maxDistance){
+								float distance = Math.Abs(projectile.Center.X - player.Center.X) + Math.Abs(projectile.Center.Y - player.Center.Y);
+								if (distance < maxDistance){
+									maxDistance = distance;
+									targetX = player.Center.X;
+									targetY = player.Center.Y;
+									foundTarget = true;
+								}
+							}
+						}
+						if (foundTarget){
+							float homingSpeed = 9f;
+							Vector2 toTarget = new Vector2(targetX, targetY) - projectile.Center;
+							float distance = toTarget.Length();
+							if (distance > 0f){
+								toTarget.Normalize();
+								toTarget *= homingSpeed;
+								float inertia = 10f;
+								projectile.velocity = (projectile.velocity * (inertia - 1) + toTarget) / inertia;
+							}
+						}
+					}
+				}
+			}
+			else if(projectile.type == thorium.Find<ModProjectile>("GravitySpark").Type) {
+				if(OtherModsCompat.shouldRagnarokBossAILoad(ModContent.GetInstance<BossConfig>().scouter) && CalamityGamemodeCheck.isBossrush) {
+					if(projectile.timeLeft == 240) {
+						projectile.velocity *= 2.25f;
+					}
+				}
+			}
+			else if(projectile.type == thorium.Find<ModProjectile>("MoltenVaporize").Type
+			|| projectile.type == thorium.Find<ModProjectile>("CryoVaporize").Type 
+			|| projectile.type == thorium.Find<ModProjectile>("BioVaporize").Type
+			) {
+				if(OtherModsCompat.shouldRagnarokBossAILoad(ModContent.GetInstance<BossConfig>().scouter) && CalamityGamemodeCheck.isBossrush) {
+					if(projectile.timeLeft == 300) {
+						projectile.velocity *= 2f;
+					}
+				}
+			}
+			else if(projectile.type == thorium.Find<ModProjectile>("BlizzardFang").Type) {
+				if(OtherModsCompat.shouldRagnarokBossAILoad(ModContent.GetInstance<BossConfig>().strider)) {
+					if(CalamityGamemodeCheck.isBossrush) {
+						if(projectile.timeLeft == 300) {
+						projectile.velocity *= 2f;
+						}
+					}
+					else if(CalamityGamemodeCheck.isDeath) {
+						if(projectile.timeLeft == 300) {
+						projectile.velocity *= 1.1f;
+						}
+					}
+				}
+			}
+			else if(projectile.type == thorium.Find<ModProjectile>("BlizzardCascade").Type) {
+				if(OtherModsCompat.shouldRagnarokBossAILoad(ModContent.GetInstance<BossConfig>().strider)) {
+					if(CalamityGamemodeCheck.isBossrush) {
+						if(projectile.timeLeft == 160) {
+							projectile.velocity.X *= 2f;
+						}
+					}
+					else if(CalamityGamemodeCheck.isDeath) {
+						if(projectile.timeLeft == 160) {
+							projectile.velocity.X *= 1.2f;
+						}
+					}
+				}
 			}
 		}
 	}

@@ -52,10 +52,7 @@ namespace RagnarokMod.Common.ModSystems
 								this.ThoriumNPC("DistractJelly"),
 								this.ThoriumNPC("SpittingJelly"), 
 								this.ThoriumNPC("QueenJellyfish") 
-							}, new ValueTuple<int[]>(new int[] 
-							{
-								this.ThoriumNPC("QueenJellyfish") 
-							})));
+							}, new ValueTuple<int[]>(new int[] {this.ThoriumNPC("QueenJellyfish") })));
 							
 							bossRushEntries.Add(new ValueTuple<int, int, Action<int>, int, bool, float, int[], ValueTuple<int[]>>(this.ThoriumNPC("Viscount"), 0, delegate(int type)
 							{
@@ -92,7 +89,13 @@ namespace RagnarokMod.Common.ModSystems
 							bossRushEntries.Add(new ValueTuple<int, int, Action<int>, int, bool, float, int[], ValueTuple<int[]>>(this.ThoriumNPC("StarScouter"), 0, delegate(int type)
 							{
 								NPC.SpawnOnPlayer((int)Player.FindClosest(new Vector2((float)Main.maxTilesX, (float)Main.maxTilesY) * 8f, 0, 0), type);
-							}, -1, true, 0f, new int[] { this.ThoriumNPC("StarScouter") }, new ValueTuple<int[]>(new int[] { this.ThoriumNPC("StarScouter") })));
+							}, -1, true, 0f, new int[]
+							{ 
+								this.ThoriumNPC("StarScouter"),
+								this.ThoriumNPC("BioCore"),
+								this.ThoriumNPC("PyroCore"),
+								this.ThoriumNPC("CryoCore")
+							}, new ValueTuple<int[]>(new int[] { this.ThoriumNPC("StarScouter") })));
 						}
 						else if (entry.Item1 == 113) // After Wall of Flesh add Borean Strider and FallenBeholder
 						{

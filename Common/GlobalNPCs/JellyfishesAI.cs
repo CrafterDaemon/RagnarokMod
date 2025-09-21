@@ -35,6 +35,9 @@ namespace RagnarokMod.Common.GlobalNPCs
 		}
 		
 		public override bool PreAI(NPC npc) {
+			if(!(OtherModsCompat.shouldRagnarokBossAILoad(ModContent.GetInstance<BossConfig>().jelly))) {
+					return true;
+			}
 			if(CalamityGamemodeCheck.isBossrush)  {
 				if(OtherModsCompat.tbr_loaded) // Can be removed as soon as Thorium Rework bossrush is fixed
 				{
@@ -44,10 +47,6 @@ namespace RagnarokMod.Common.GlobalNPCs
 				{
 					return true;
 				}
-				if(!(ModContent.GetInstance<BossConfig>().jelly == ThoriumBossRework_selection_mode.Ragnarok)) {
-					return true;
-				}
-		
 				if (npc.type == thorium.Find<ModNPC>("DistractingJellyfish").Type){
 					NPC npc1 = Main.npc[(int)npc.ai[0]];
 					if (!npc1.active){

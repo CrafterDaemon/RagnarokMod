@@ -40,7 +40,7 @@ namespace RagnarokMod.Common.GlobalNPCs
 		public string Texture_ges => "ThoriumMod/NPCs/BossGraniteEnergyStorm/GraniteEnergyStorm";
 		
 		public override void FindFrame(NPC npc, int frameHeight){
-			if((CalamityGamemodeCheck.isRevengeance || CalamityGamemodeCheck.isBossrush) && ModContent.GetInstance<BossConfig>().granite == ThoriumBossRework_selection_mode.Ragnarok){
+			if((CalamityGamemodeCheck.isRevengeance || CalamityGamemodeCheck.isBossrush) && OtherModsCompat.shouldRagnarokBossAILoad(ModContent.GetInstance<BossConfig>().granite)){
 				npc.frameCounter += 1.0;
 				if (npc.frameCounter > 8.0){
 					effectFrameY++;
@@ -53,7 +53,7 @@ namespace RagnarokMod.Common.GlobalNPCs
 			}
 		}
 		public override void PostDraw(NPC npc, SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor){
-			if((CalamityGamemodeCheck.isRevengeance || CalamityGamemodeCheck.isBossrush) && ModContent.GetInstance<BossConfig>().granite == ThoriumBossRework_selection_mode.Ragnarok) {
+			if((CalamityGamemodeCheck.isRevengeance || CalamityGamemodeCheck.isBossrush) && OtherModsCompat.shouldRagnarokBossAILoad(ModContent.GetInstance<BossConfig>().granite)) {
 				Texture2D effectTexture = ModContent.Request<Texture2D>(Texture_ges + "_Effect", AssetRequestMode.ImmediateLoad).Value;
 				Rectangle effectFrame = Terraria.Utils.Frame(effectTexture, 1, 6, 0, effectFrameY, 0, 0);
 				Vector2 yOffset = npc.Center;
@@ -68,8 +68,8 @@ namespace RagnarokMod.Common.GlobalNPCs
 		}
 		
 		public override bool PreAI(NPC npc) {
-		    if(!(ModContent.GetInstance<BossConfig>().granite == ThoriumBossRework_selection_mode.Ragnarok)) {
-				return true;
+		    if(!(OtherModsCompat.shouldRagnarokBossAILoad(ModContent.GetInstance<BossConfig>().granite))) {
+					return true;
 			}	
 			if(CalamityGamemodeCheck.isBossrush){	
 				if(OtherModsCompat.tbr_loaded) // Can be removed as soon as Thorium Rework bossrush is fixed

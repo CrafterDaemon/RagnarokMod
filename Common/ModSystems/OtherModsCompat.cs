@@ -102,12 +102,24 @@ namespace RagnarokMod.Common.ModSystems
 				if(tbr_loaded) {
 					if(CalamityGamemodeCheck.isBossrush) {
 						if(tbr_configs_edited) {
-							Main.NewText("Ragnarok Error: Please enable all Bosses in ThoriumBossRework config and set all BossAIs in RagnarokMod Config to TBR");
+							Main.NewText("Ragnarok Error: Please enable all Bosses in ThoriumBossRework config and set all BossAIs in RagnarokMod Config to TBR or Auto");
 						}
 					} 
 				}
 			}
 			timer++;
+		}
+		
+		public static bool shouldRagnarokBossAILoad(ThoriumBossRework_selection_mode selected) {
+			if(selected == ThoriumBossRework_selection_mode.Ragnarok) {
+				return true;
+			}else if(selected == ThoriumBossRework_selection_mode.Auto){
+				if(tbr_loaded){
+					return false;
+				}else {
+					return true;
+				}
+			} else {return false;}
 		}
 		
 		public override void PostSetupContent() {
@@ -124,33 +136,48 @@ namespace RagnarokMod.Common.ModSystems
 				if(tbr_compat != null && tbr_reworktoggles != null) {
 					try{
 						tbr_defense_damage = (bool)(tbr_compat.GetType().GetField("defenseDamage", BindingFlags.Public | BindingFlags.Instance)).GetValue(tbr_compat);
-						if(!(ModContent.GetInstance<BossConfig>().bossrush == ThoriumBossRework_selection_mode.ThoriumBossRework)) {
+						if(OtherModsCompat.shouldRagnarokBossAILoad(ModContent.GetInstance<BossConfig>().bossrush)) {
 							(tbr_compat.GetType().GetField("thorlamityBR", BindingFlags.Public | BindingFlags.Instance)).SetValue(tbr_compat, false);
 						}
-						if(!(ModContent.GetInstance<BossConfig>().bird == ThoriumBossRework_selection_mode.ThoriumBossRework)) {
+						if(OtherModsCompat.shouldRagnarokBossAILoad(ModContent.GetInstance<BossConfig>().bird)) {
 							(tbr_reworktoggles.GetType().GetField("bird", BindingFlags.Public | BindingFlags.Instance)).SetValue(tbr_reworktoggles, false);
 							tbr_configs_edited = true;
 						}
-						if(!(ModContent.GetInstance<BossConfig>().jelly == ThoriumBossRework_selection_mode.ThoriumBossRework)) {
+						if(OtherModsCompat.shouldRagnarokBossAILoad(ModContent.GetInstance<BossConfig>().jelly)) {
 							(tbr_reworktoggles.GetType().GetField("jelly", BindingFlags.Public | BindingFlags.Instance)).SetValue(tbr_reworktoggles, false);
 							tbr_configs_edited = true;
 						}
-						if(!(ModContent.GetInstance<BossConfig>().viscount == ThoriumBossRework_selection_mode.ThoriumBossRework)) {
+						if(OtherModsCompat.shouldRagnarokBossAILoad(ModContent.GetInstance<BossConfig>().viscount)) {
 							(tbr_reworktoggles.GetType().GetField("bat", BindingFlags.Public | BindingFlags.Instance)).SetValue(tbr_reworktoggles, false);
 							tbr_configs_edited = true;
 						}
-						if(!(ModContent.GetInstance<BossConfig>().granite == ThoriumBossRework_selection_mode.ThoriumBossRework)) {
+						if(OtherModsCompat.shouldRagnarokBossAILoad(ModContent.GetInstance<BossConfig>().granite)) {
 							(tbr_reworktoggles.GetType().GetField("ges", BindingFlags.Public | BindingFlags.Instance)).SetValue(tbr_reworktoggles, false);
 							tbr_configs_edited = true;
 						}
-						if(!(ModContent.GetInstance<BossConfig>().champion == ThoriumBossRework_selection_mode.ThoriumBossRework)) {
+						if(OtherModsCompat.shouldRagnarokBossAILoad(ModContent.GetInstance<BossConfig>().champion)) {
 							(tbr_reworktoggles.GetType().GetField("champ", BindingFlags.Public | BindingFlags.Instance)).SetValue(tbr_reworktoggles, false);
+							tbr_configs_edited = true;
+						}
+						if(OtherModsCompat.shouldRagnarokBossAILoad(ModContent.GetInstance<BossConfig>().scouter)) {
+							(tbr_reworktoggles.GetType().GetField("scout", BindingFlags.Public | BindingFlags.Instance)).SetValue(tbr_reworktoggles, false);
+							tbr_configs_edited = true;
+						}
+						if(OtherModsCompat.shouldRagnarokBossAILoad(ModContent.GetInstance<BossConfig>().strider)) {
+							(tbr_reworktoggles.GetType().GetField("strider", BindingFlags.Public | BindingFlags.Instance)).SetValue(tbr_reworktoggles, false);
 							tbr_configs_edited = true;
 						}
 					}
 					catch{
 						Mod ragnarok = ModContent.GetInstance<RagnarokMod>();
-						ragnarok.Logger.Error("Ragnarok Error: Failed to read and modify TBReworked config");
+						ragnarok.Logger.Error("Ragnarok Error: Failed to read and modify TBReworked config. Fallback to Auto config");
+						ModContent.GetInstance<BossConfig>().bird = ThoriumBossRework_selection_mode.Auto;
+						ModContent.GetInstance<BossConfig>().jelly = ThoriumBossRework_selection_mode.Auto;
+						ModContent.GetInstance<BossConfig>().viscount = ThoriumBossRework_selection_mode.Auto;
+						ModContent.GetInstance<BossConfig>().granite = ThoriumBossRework_selection_mode.Auto;
+						ModContent.GetInstance<BossConfig>().champion = ThoriumBossRework_selection_mode.Auto;
+						ModContent.GetInstance<BossConfig>().scouter = ThoriumBossRework_selection_mode.Auto;
+						ModContent.GetInstance<BossConfig>().strider = ThoriumBossRework_selection_mode.Auto;
 					}
 				}
 		}

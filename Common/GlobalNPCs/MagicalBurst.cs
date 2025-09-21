@@ -30,8 +30,8 @@ namespace RagnarokMod.Common.GlobalNPCs
 		public int timer = 0;
 	
 		public override bool PreAI(NPC npc) {
-			if(!(ModContent.GetInstance<BossConfig>().champion == ThoriumBossRework_selection_mode.Ragnarok)) {
-							return true;
+			if(!(OtherModsCompat.shouldRagnarokBossAILoad(ModContent.GetInstance<BossConfig>().champion))) {
+					return true;
 			}
 			if(CalamityGamemodeCheck.isBossrush) {	
 				if(OtherModsCompat.tbr_loaded) // Can be removed as soon as Thorium Rework bossrush is fixed

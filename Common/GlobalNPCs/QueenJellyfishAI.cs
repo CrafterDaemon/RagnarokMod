@@ -42,7 +42,7 @@ namespace RagnarokMod.Common.GlobalNPCs
 		public int counter;
 		
 		public override void FindFrame(NPC npc, int frameHeight){
-			if((CalamityGamemodeCheck.isBossrush || CalamityGamemodeCheck.isRevengeance) && ModContent.GetInstance<BossConfig>().jelly == ThoriumBossRework_selection_mode.Ragnarok ) {	
+			if((CalamityGamemodeCheck.isBossrush || CalamityGamemodeCheck.isRevengeance) && OtherModsCompat.shouldRagnarokBossAILoad(ModContent.GetInstance<BossConfig>().jelly)) {	
 				if (whirlPoolTimer < 60){
 					counting++;
 					if (counting >= 64){
@@ -89,7 +89,7 @@ namespace RagnarokMod.Common.GlobalNPCs
 		}
 		
 		public override void PostDraw(NPC npc, SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor){
-			if((CalamityGamemodeCheck.isBossrush || CalamityGamemodeCheck.isRevengeance) && ModContent.GetInstance<BossConfig>().jelly == ThoriumBossRework_selection_mode.Ragnarok ) {	
+			if((CalamityGamemodeCheck.isBossrush || CalamityGamemodeCheck.isRevengeance) && OtherModsCompat.shouldRagnarokBossAILoad(ModContent.GetInstance<BossConfig>().jelly)) {	
 				Texture2D value = ModContent.Request<Texture2D>("ThoriumMod/NPCs/BossQueenJellyfish/QueenJellyfish" + "_Effect", AssetRequestMode.ImmediateLoad).Value;
 				Vector2 center = npc.Center;
 				if (npc.IsABestiaryIconDummy){
@@ -113,9 +113,10 @@ namespace RagnarokMod.Common.GlobalNPCs
 		}
 		
 		public override bool PreAI(NPC npc) {
-			if(!(ModContent.GetInstance<BossConfig>().jelly == ThoriumBossRework_selection_mode.Ragnarok)) {
-								return true;
+			if(!(OtherModsCompat.shouldRagnarokBossAILoad(ModContent.GetInstance<BossConfig>().jelly))) {
+					return true;
 			}
+			
 			if(CalamityGamemodeCheck.isBossrush) {	
 				if(OtherModsCompat.tbr_loaded) // Can be removed as soon as Thorium Rework bossrush is fixed
 				{

@@ -521,5 +521,22 @@ namespace RagnarokMod.Utils
 				npc.ai[0] = 0f;
 			}
 		}
+   
+		public static void BasicMoveLeftRight(this NPC npc, Player target, Vector2 offset, float speed = 8f, float inertia = 40f, bool netUpdate = false){
+			Vector2 vector = target.Top + new Vector2((float)npc.direction * offset.X, offset.Y - (float)npc.height);
+			Vector2 vector2 = Vector2.Normalize(vector - npc.Center);
+			float num = offset.X * 0.7f;
+			if ((npc.direction == -1 && npc.Center.X - num < vector.X) || (npc.direction == 1 && npc.Center.X + num > vector.X)){
+				npc.direction *= -1;
+				if (netUpdate){
+					npc.netUpdate = true;
+				}
+			}
+			if (npc.Top.Y > target.Bottom.Y){
+				speed *= 1.5f;
+			}
+			Vector2 vector3 = vector2 * speed;
+			npc.velocity = (npc.velocity * (inertia - 1f) + vector3) / inertia;
+		}
    }
 }

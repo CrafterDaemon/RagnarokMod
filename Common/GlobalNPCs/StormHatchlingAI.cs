@@ -35,9 +35,9 @@ namespace RagnarokMod.Common.GlobalNPCs
 				{
 					return true;
 				}
-				if(!(ModContent.GetInstance<BossConfig>().bird == ThoriumBossRework_selection_mode.Ragnarok)) {
-						return true;
-				}
+				if(!(OtherModsCompat.shouldRagnarokBossAILoad(ModContent.GetInstance<BossConfig>().bird))) {
+					return true;
+				}	
 				NPCHelper.BatAI(npc, 0, 2.75f);
 				return false;
 			}
