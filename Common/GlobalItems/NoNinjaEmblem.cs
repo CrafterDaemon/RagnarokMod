@@ -43,7 +43,7 @@ namespace RagnarokMod.Common.GlobalItems
             ref StatModifier alldamage = ref player.GetDamage(DamageClass.Generic);
             alldamage += 0.08f;
             player.GetAttackSpeed(DamageClass.Generic) += 0.05f;
-            player.GetCritChance(DamageClass.Generic) += 0.05f;
+            player.GetCritChance(DamageClass.Generic) += 5;
         }
     }
 }
