@@ -21,6 +21,7 @@ using Terraria.ModLoader.Config;
 using System.Reflection;
 using RagnarokMod.Items.BardItems.Armor;
 using RagnarokMod.Items.HealerItems.Armor;
+using RagnarokMod.Items;
 using RagnarokMod.Common.Configs;
 
 namespace RagnarokMod.Common.ModSystems
@@ -51,6 +52,11 @@ namespace RagnarokMod.Common.ModSystems
 					ExchangeRecipe(CalamityBardHealer, ModContent.ItemType<StatigelHeadHealer>(),"StatigelFoxMask");
 					ExchangeRecipe(CalamityBardHealer, ModContent.ItemType<TarragonShroud>(),"TarragonChapeau");
 					ExchangeRecipe(CalamityBardHealer, ModContent.ItemType<TarragonCowl>(),"TarragonParagonCrown");
+						
+					//Weapons
+					ExchangeRecipe(CalamityBardHealer, ModContent.ItemType<AnahitasArpeggioOverride>(),"AnahitasArpeggio");
+					ExchangeRecipe(CalamityBardHealer, ModContent.ItemType<BelchingSaxophoneOverride>(),"BelchingSaxophone");
+					ExchangeRecipe(CalamityBardHealer, ModContent.ItemType<FaceMelterOverride>(),"FaceMelter");			
 				}
 				else if (ModContent.GetInstance<ModCompatConfig>().item_deduplication_mode == CalamityBardHealer_selection_mode.Ragnarok) {
 					RemoveOtherModRecipe(CalamityBardHealer,"AerospecHeadphones");
@@ -75,8 +81,7 @@ namespace RagnarokMod.Common.ModSystems
 						RemoveOtherModRecipe(CalamityBardHealer,"IntergelacticProtectorHelm");
 					}
 				}
-				else 
-				{
+				else {
 					RemoveOwnRecipe(ModContent.ItemType<AerospecBard>());
 					RemoveOwnRecipe(ModContent.ItemType<AerospecHealer>());
 					RemoveOwnRecipe(ModContent.ItemType<AuricTeslaFrilledHelmet>());
@@ -183,31 +188,47 @@ namespace RagnarokMod.Common.ModSystems
 		}
 
 		public void ExchangeRecipe(Mod othermod, int ritemtype, string oitemname) {
-			Recipe recipe_ragnarok_to_othermod = Recipe.Create(othermod.Find<ModItem>(oitemname).Type, 1);
-			recipe_ragnarok_to_othermod.AddIngredient(ritemtype, 1).AddTile(26); 
-			recipe_ragnarok_to_othermod.Register();
+			try{
+				Recipe recipe_ragnarok_to_othermod = Recipe.Create(othermod.Find<ModItem>(oitemname).Type, 1);
+				recipe_ragnarok_to_othermod.AddIngredient(ritemtype, 1).AddTile(26); 
+				recipe_ragnarok_to_othermod.Register();
 			
-			Recipe recipe_othermod_to_ragnarok = Recipe.Create(ritemtype, 1);
-			recipe_othermod_to_ragnarok.AddIngredient(othermod.Find<ModItem>(oitemname).Type, 1).AddTile(26);
-			recipe_othermod_to_ragnarok.Register();
+				Recipe recipe_othermod_to_ragnarok = Recipe.Create(ritemtype, 1);
+				recipe_othermod_to_ragnarok.AddIngredient(othermod.Find<ModItem>(oitemname).Type, 1).AddTile(26);
+				recipe_othermod_to_ragnarok.Register();
+			} catch {
+				Mod ragnarok = ModContent.GetInstance<RagnarokMod>();
+				ragnarok.Logger.Error("Ragnarok Error: Failed to create exchange recipe for " +	oitemname +	" of another mod. Does this item even exist?");
+			}	
 		}
 		
 		public void RemoveOwnRecipe(int ritemtype) {
 			GetRecipe finder = new();
-			finder.LookFor(ritemtype, 1);
-			foreach (Recipe item in finder.Search()){
-				RecipeHelper helper = new(item);
-				helper.Disable();
+			try{
+				finder.LookFor(ritemtype, 1);
+				foreach (Recipe item in finder.Search()){
+					RecipeHelper helper = new(item);
+					helper.Disable();
+				}
+			}catch{	
+				Mod ragnarok = ModContent.GetInstance<RagnarokMod>();
+				ragnarok.Logger.Error("Ragnarok Error: Failed to remove own recipe.");
 			}
 		}
 		
 		public void RemoveOtherModRecipe(Mod othermod, string oitemname){
 			GetRecipe finder = new();
-			finder.LookFor(othermod.Find<ModItem>(oitemname).Type, 1);
-			foreach (Recipe item in finder.Search()){
-				RecipeHelper helper = new(item);
-				helper.Disable();
+			try{
+				finder.LookFor(othermod.Find<ModItem>(oitemname).Type, 1);
+				foreach (Recipe item in finder.Search()){
+					RecipeHelper helper = new(item);
+					helper.Disable();
+				}
+			}catch{
+				Mod ragnarok = ModContent.GetInstance<RagnarokMod>();
+				ragnarok.Logger.Error("Ragnarok Error: Failed to remove recipe for " +	oitemname +	" of another mod. Does this item even exist?");
 			}
+			
 		}
 		
         public void Tileswitcher( Recipe recipe ,int tileold, int tilenew) {
