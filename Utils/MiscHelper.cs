@@ -29,7 +29,7 @@ namespace RagnarokMod.Utils
 				throw new ArgumentException("width cannot be negative");
 			}
 			float num = startX;
-			for (;;){
+			while (true) {
 				Point point = Terraria.Utils.ToTileCoordinates(new Vector2(num, y + 0.01f));
 				if ((onlySolid && MiscHelper.SolidTile(point.X, point.Y)) || MiscHelper.SolidOrSolidTopTile(point.X, point.Y))
 				{

@@ -1,54 +1,33 @@
 {
   "version": 3,
   "targets": {
-    "net8.0": {
-      "tModLoader.CodeAssist/0.1.5": {
-        "type": "package"
-      }
-    }
+    "net8.0": {}
   },
-  "libraries": {
-    "tModLoader.CodeAssist/0.1.5": {
-      "sha512": "Sg/jKEg/z5eN+Cdi3/9CU4JfJwvXHVH+UDJf4Lipo26uTa+guLLJXH1XDJNPShTFwKK8jMUYbthINP4QhsgHSA==",
-      "type": "package",
-      "path": "tmodloader.codeassist/0.1.5",
-      "hasTools": true,
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "NugetIcon.png",
-        "analyzers/dotnet/cs/tModLoader.CodeAssist.dll",
-        "tmodloader.codeassist.0.1.5.nupkg.sha512",
-        "tmodloader.codeassist.nuspec",
-        "tools/install.ps1",
-        "tools/uninstall.ps1"
-      ]
-    }
-  },
+  "libraries": {},
   "projectFileDependencyGroups": {
-    "net8.0": [
-      "tModLoader.CodeAssist >= 0.1.*"
-    ]
+    "net8.0": []
   },
   "packageFolders": {
-    "/Users/ryan/.nuget/packages/": {}
+    "C:\\Users\\Mould\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/ryan/Library/Application Support/Terraria/tModLoader/ModSources/RagnarokMod/RagnarokMod.csproj",
+      "projectUniqueName": "C:\\Users\\Mould\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\RagnarokMod\\RagnarokMod.csproj",
       "projectName": "RagnarokMod",
-      "projectPath": "/Users/ryan/Library/Application Support/Terraria/tModLoader/ModSources/RagnarokMod/RagnarokMod.csproj",
-      "packagesPath": "/Users/ryan/.nuget/packages/",
-      "outputPath": "/Users/ryan/Library/Application Support/Terraria/tModLoader/ModSources/RagnarokMod/obj/",
+      "projectPath": "C:\\Users\\Mould\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\RagnarokMod\\RagnarokMod.csproj",
+      "packagesPath": "C:\\Users\\Mould\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Mould\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\RagnarokMod\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/ryan/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Mould\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -61,17 +40,17 @@
         "warnAsError": [
           "NU1605"
         ]
-      }
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      },
+      "SdkAnalysisLevel": "10.0.100"
     },
     "frameworks": {
       "net8.0": {
         "targetAlias": "net8.0",
-        "dependencies": {
-          "tModLoader.CodeAssist": {
-            "target": "Package",
-            "version": "[0.1.*, )"
-          }
-        },
         "imports": [
           "net461",
           "net462",
@@ -83,12 +62,26 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[8.0.22, 8.0.22]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[8.0.22, 8.0.22]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[8.0.22, 8.0.22]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
