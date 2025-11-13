@@ -1,38 +1,43 @@
-Ragnarok. A great calamity in norse mythology, Is now a mod that allows Thorium and Calamity to be used together with minimal issues. 
+Ragnarok. A great calamity in norse mythology, Is now a mod that intends to allow Thorium and Calamity to be used together with minimal issues. 
 Adds more content for Thorium classes, Merges Thrower + Rogue, and creates a more coherent experience throughout all stages of the game.
 
+[h1]Hotfix 1.4.4.4[/h1]
 
-[h1]Update 1.4.3.2 Changelog[/h1]
-Holiday Update~! & "thorium updated again patches"
+Fixed the memory leak caused by our patch to The Community. Apologies for the crashes!
+
+[h1]Update 1.4.4 Changelog[/h1]
+the "It's been a while" update
 [list]
-[*] Fixed issues caused by new thorium update
-[*] Added Localization for Simplified Chinese.
-[*] Added Elemental Reaper
-[*] Added Arpeggiator
-[*] Added Unbreakable Combat Ukelele
-[*] Added Nightmare Freezer
-[*] Fixed several crafting recipes and missing tooltips
-[*] Fixed item sell values (whoops :P)
-[*] Fixed nightfalln armor set (still no set bonus, yet! suggest one on the discord :)
-[*] Fixed Phylactory takiing too much essence of Havoc
-[*] Golden Shell no longer works in the abyss
-[*] Depth Diver Armor no longer works in the abyss
-[*] Depth Diver Armor Instead has a chance to give you and your allies some breath back
-[*] Depth Diver Armor Increases movement speed by 20% in the abyss
-[*] Depth Diver Armor Increases defense by 10 in the abyss
-[*] Nerfed Tide Turner's Ocean Buffer duration from 10 to 6 seconds
-[*] Nerfed White Dwarf Setbonus damage from 0.01% to 0.005% max health damage
-[*] Nerfed Tide Turner's Depth-Crown rogue damage bonus from 40% to 25%
-[*] Nerfed each White Dwarf armor pieces' bonus damage by 5%
-[*] Nerfed Shademaster Treads bonus rogue damage from 20% to 12.5%
-[*] Nerfed Shademaster Mask bonus rogue damage from 20% to 15%
-[*] Nerfed Lich Carapace bonus rogue damage from 20% to 15%
-[*] Nerfed Lich Talon bonus rogue damage from 15% to 12.5%
-[*] Reworked white dwarf setbonus damage to apply enemy's attack damage, rather than % max health. 
-[*] If enemy's attack damage is less than the attack damage of your weapon (as shown in tooltip) it will apply that instead.
-[*] Fixed multiple glitches with Phantasmal Edge.
-[*] Phantasmal Edge damage significantly increased.
-[*] Changed all MMHook usage to Reflection (For those of you who understand)
+[*] Steampipes' projectiles now have homing (like they were supposed to, whoops)
+[*] Added Auric Surge debuff
+[*] Added Dragonforce (Yharon Bard String Weapon)
+[*] Added Virusprayer (Old Duke healer weapon)
+[*] Fixed a thorium + boss rush bug
+[*] Nerfed OmegaCore (sorry)
+[*] Fixed many enemy and boss vulnerabilities and immunities
+[*] Fixed infinite stealth strike bug
+[*] Added stealth to applicable thorium armors
+[*] Fixed overlapping UI elements
+[*] Added some support for Catalyst
+[*] Fixed broken mana regen on thorium armors
+[*] Fixed several netcode problems (my fault, thanks pjoetrek for fixing my sloppy netcode!)
+[*] Rebalanced Throwing Guides, Shinobi Sigil, and Plague Flask
+[*] Tweaked tool power for flesh, geode, and vanadium
+[*] All flesh and geode recipes no longer require a mithril anvil
+[*] Added Lamentation (SCal Bard Percussion Weapon)
+[*] Added all bard weapons to weapon balancing (yippee!)
+[*] Tweaked most bard and healer weapons
+[*] Significant code performance overhaul
+[*] Minor tweaks to many boss AIs
+[*] Added config sliders for damage multipliers for all classes
+[*] Added a config option to toggle Ragnarok's weapon balancing changes
+[*] Added UCBAH item deduplication in config
+[*] Fixed thrower reforge bug
+[*] Added more Thorium Bosses Reworked compatibility (Woo!)
+[*] Reworked The Community to include Thorium bosses
+[*] Viscount AI changes were added for Rev, Death, and Boss Rush
+[*] Granite Energy Storm AI Changes were added for Rev, Death, and Boss Rush
+[*] Buried Champion AI Changed were added for Rev, Death, and Boss Rush
 [/list]
 
 
@@ -43,4 +48,5 @@ Any donations are greatly appreciated! (get some cool perks too)
 https://www.patreon.com/devteamragnarok/membership
 
 Public Github
-https://github.com/CrafterDaemon/RagnarokMod
+https://github.com/CrafterDaemon/RagnarokMod[quote=tModLoader RagnarokMod]
+Developed By The Ragnarok Team[/quote]

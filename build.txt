@@ -1,5 +1,5 @@
 displayName = Ragnarok
 author = CrafterDaemon & The Ragnarok Team
-version = 1.4.3.2
+version = 1.4.4.4
 modReferences = ThoriumMod, CalamityMod
 sortAfter = ThoriumMod, CalamityMod
