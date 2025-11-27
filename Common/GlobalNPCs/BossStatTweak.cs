@@ -342,7 +342,7 @@ namespace RagnarokMod.Common.GlobalNPCs
 				return;
 			}
 			// Get Calamity-Config Health Boost
-			double CalamityHPBoost = CalamityConfig.Instance.BossHealthBoost * 0.01;
+			double CalamityHPBoost = CalamityServerConfig.Instance.BossHealthBoost * 0.01;
 			 
 			// Total HP Modifier without the CalamityHPBoost;
 			double TotalHPModifier = 1;

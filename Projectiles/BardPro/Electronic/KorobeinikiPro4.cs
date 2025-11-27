@@ -10,17 +10,21 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
 using System;
 using System.Collections.Generic;
+using ThoriumMod.Projectiles.Bard;
+
 namespace RagnarokMod.Projectiles.BardPro.Electronic
 {
-    public class KorobeinikiPro4 : ModProjectile, ILocalizedModType
+    public class KorobeinikiPro4 : BardProjectile, ILocalizedModType
     {
+        public override BardInstrumentType InstrumentType => BardInstrumentType.Electronic;
+
         public override void SetStaticDefaults()
         {
 
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
         }
-        public override void SetDefaults()
+        public override void SetBardDefaults()
         {
             Projectile.width = 28;
             Projectile.height = 28;

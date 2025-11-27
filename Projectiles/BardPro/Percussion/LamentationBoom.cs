@@ -33,5 +33,6 @@ namespace RagnarokMod.Projectiles.BardPro.Percussion
 
         }
 
+        public override BardInstrumentType InstrumentType => BardInstrumentType.Percussion;
     }
 }

@@ -28,6 +28,8 @@ namespace RagnarokMod.Projectiles.BardPro.Percussion
             Projectile.DamageType = ThoriumDamageBase<BardDamage>.Instance;
         }
 
+        public override BardInstrumentType InstrumentType => BardInstrumentType.Percussion;
+
         public override void BardOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.AddBuff(ModContent.BuffType<Dragonfire>(), 180, false);

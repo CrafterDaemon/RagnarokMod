@@ -4,18 +4,20 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
 using ThoriumMod;
+using ThoriumMod.Projectiles.Bard;
 using CalamityMod.Items;
 using CalamityMod;
 using CalamityMod.Buffs.StatDebuffs;
 using System.Security.Cryptography.X509Certificates;
 using CalamityMod.Buffs.DamageOverTime;
+using Terraria.DataStructures;
 
 namespace RagnarokMod.Projectiles.BardPro.String
 {
-    public class DragonForcePro1 : ModProjectile, ILocalizedModType
+    public class DragonForcePro1 : BardProjectile, ILocalizedModType
     {
         private int dustTimer = 0;
-        public override void SetDefaults()
+        public override void SetBardDefaults()
         {
             Projectile.width = 72;
             Projectile.height = 94;
@@ -27,6 +29,14 @@ namespace RagnarokMod.Projectiles.BardPro.String
             Projectile.ignoreWater = true;
             
         }
+
+        public override BardInstrumentType InstrumentType => BardInstrumentType.String;
+
+        public override void OnSpawn(IEntitySource source)
+        {
+            Projectile.damage = (int)(Projectile.damage * 1.25f);
+        }
+
         public override void AI()
         {
             dustTimer++;
@@ -38,9 +48,13 @@ namespace RagnarokMod.Projectiles.BardPro.String
 
             Projectile.rotation = Projectile.velocity.ToRotation();
         }
-        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        public override void BardOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            base.OnHitNPC(target, hit, damageDone);
+            if (Projectile.localAI[0] == 1)
+                return; // prevent infinite recursion
+
+            Projectile.localAI[0] = 1;
+
             Vector2 launchVelocity1 = Projectile.velocity;
             launchVelocity1 = Vector2.Normalize(launchVelocity1) * 25f;
             Vector2 launchVelocity2 = launchVelocity1.RotatedBy(MathHelper.ToRadians(90));
@@ -55,10 +69,5 @@ namespace RagnarokMod.Projectiles.BardPro.String
             Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, launchVelocity5, ModContent.ProjectileType<DragonForcePro2>(), Projectile.damage, Projectile.knockBack, Main.myPlayer, 0, 1);
             Projectile.Kill();
         }    
-        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
-        {
-          modifiers.FinalDamage *= 1.25f;
-        }   
-        
     }
 }

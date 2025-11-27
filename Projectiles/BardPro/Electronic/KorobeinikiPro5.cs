@@ -10,10 +10,14 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
 using System;
 using System.Collections.Generic;
+using ThoriumMod.Projectiles.Bard;
+
 namespace RagnarokMod.Projectiles.BardPro.Electronic
 {
-    public class KorobeinikiPro5 : ModProjectile, ILocalizedModType
+    public class KorobeinikiPro5 : BardProjectile, ILocalizedModType
     {
+        public override BardInstrumentType InstrumentType => BardInstrumentType.Electronic;
+
         private int x = 10;
         private List<float> rotations = new List<float> { MathHelper.PiOver2, MathHelper.Pi, MathHelper.PiOver2 + MathHelper.Pi, 0f };
         public override void SetStaticDefaults()
@@ -22,7 +26,7 @@ namespace RagnarokMod.Projectiles.BardPro.Electronic
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
         }
-        public override void SetDefaults()
+        public override void SetBardDefaults()
         {
             Projectile.width = 28;
             Projectile.height = 42;

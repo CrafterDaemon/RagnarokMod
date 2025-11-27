@@ -4,17 +4,22 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
 using ThoriumMod;
+using ThoriumMod.Projectiles.Bard;
 using CalamityMod.Items;
 using CalamityMod.Buffs.StatDebuffs;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
 using RagnarokMod.Dusts;
+
 namespace RagnarokMod.Projectiles.BardPro.String
 {
-    public class UnbreakableCombatUkulelePro1 : ModProjectile, ILocalizedModType
+    public class UnbreakableCombatUkulelePro1 : BardProjectile, ILocalizedModType
     {
         int counter = 0;
-        public override void SetDefaults()
+
+        public override BardInstrumentType InstrumentType => BardInstrumentType.String;
+
+        public override void SetBardDefaults()
         {
             Projectile.width = 46;
             Projectile.height = 20;

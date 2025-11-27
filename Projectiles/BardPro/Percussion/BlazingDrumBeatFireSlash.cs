@@ -6,12 +6,15 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ModLoader;
 using ThoriumMod.Projectiles.Bard;
+using ThoriumMod;
 
 namespace RagnarokMod.Projectiles.BardPro.Percussion
 {
     //Calamity Fire Slash, with 100% less scythe.
     public class BlazingDrumBeatFireSlash : BardProjectile, ILocalizedModType
     {
+        public override BardInstrumentType InstrumentType => BardInstrumentType.Percussion;
+
         public override void SetStaticDefaults()
         {
             Main.projFrames[Projectile.type] = 11;

@@ -5,10 +5,12 @@ using Terraria.ModLoader;
 using Terraria.Audio;
 using ThoriumMod;
 using ThoriumMod.Projectiles.Bard;
+using ThoriumMod;
 using CalamityMod.Items;
 using CalamityMod.Buffs.StatDebuffs;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
+
 namespace RagnarokMod.Projectiles.BardPro.Wind
 {
     public class SteampipesPro : BardProjectile, ILocalizedModType

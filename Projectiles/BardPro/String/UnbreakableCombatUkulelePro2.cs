@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 using Terraria.Audio;
 using ThoriumMod;
 using ThoriumMod.Utilities;
+using ThoriumMod.Projectiles.Bard;
 using CalamityMod.Items;
 using CalamityMod.Buffs.StatDebuffs;
 using Microsoft.Xna.Framework.Graphics;
@@ -15,10 +16,13 @@ using RagnarokMod.Projectiles.HealerPro.Scythes;
 
 namespace RagnarokMod.Projectiles.BardPro.String
 {
-    public class UnbreakableCombatUkulelePro2 : ModProjectile, ILocalizedModType
+    public class UnbreakableCombatUkulelePro2 : BardProjectile, ILocalizedModType
     {
         int counter = 0;
-        public override void SetDefaults()
+
+        public override BardInstrumentType InstrumentType => BardInstrumentType.String;
+
+        public override void SetBardDefaults()
         {
             Projectile.width = 60;
             Projectile.height = 60;
@@ -90,7 +94,7 @@ namespace RagnarokMod.Projectiles.BardPro.String
       
       }
     }
-        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        public override void BardOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<UnbreakableCombatUkulelePro3>(), default, default);
             this.Projectile.Kill();

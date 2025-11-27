@@ -5,12 +5,15 @@ using RagnarokMod.Sounds;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ModLoader;
+using ThoriumMod;
 using ThoriumMod.Projectiles.Bard;
 
 namespace RagnarokMod.Projectiles.BardPro.Electronic
 {
     public class TendrilStrike : BardProjectile, ILocalizedModType
     {
+        public override BardInstrumentType InstrumentType => BardInstrumentType.Electronic;
+
         public override void SetStaticDefaults()
         {
             Main.projFrames[Projectile.type] = 9;

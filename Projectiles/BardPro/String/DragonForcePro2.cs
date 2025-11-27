@@ -4,6 +4,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
 using ThoriumMod;
+using ThoriumMod.Projectiles.Bard;
 using CalamityMod.Items;
 using CalamityMod.Buffs.StatDebuffs;
 using RagnarokMod.Utils;
@@ -11,11 +12,14 @@ using System.Threading;
 
 namespace RagnarokMod.Projectiles.BardPro.String
 {
-    public class DragonForcePro2 : ModProjectile, ILocalizedModType
+    public class DragonForcePro2 : BardProjectile, ILocalizedModType
     {
         public int timer = 0;
         public int dustTimer = 0;
-        public override void SetDefaults()
+
+        public override BardInstrumentType InstrumentType => BardInstrumentType.String;
+
+        public override void SetBardDefaults()
         {
             Projectile.width = 22;
             Projectile.height = 36;

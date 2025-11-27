@@ -20,14 +20,16 @@ using ThoriumMod.Projectiles.Scythe;
 
 namespace RagnarokMod.Projectiles.BardPro.String
 {
-    public class UnbreakableCombatUkulelePro3 : ModProjectile, ILocalizedModType
+    public class UnbreakableCombatUkulelePro3 : BardProjectile, ILocalizedModType
     {
         public int onFives = 0;
         public override void SetStaticDefaults()
         {
         }
 
-        public override void SetDefaults()
+        public override BardInstrumentType InstrumentType => BardInstrumentType.String;
+
+        public override void SetBardDefaults()
         {
             Projectile.friendly = true;
             Projectile.tileCollide = false;

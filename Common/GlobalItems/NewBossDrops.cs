@@ -18,6 +18,7 @@ using ThoriumMod.Items.BossForgottenOne;
 using ThoriumMod.Items.BossViscount;
 using RagnarokMod.Items.BardItems.Percussion;
 using RagnarokMod.Items.HealerItems.Scythes;
+using RagnarokMod.Items.BardItems.String;
 
 namespace RagnarokMod.Common.GlobalItems
 {
@@ -38,7 +39,8 @@ namespace RagnarokMod.Common.GlobalItems
             || item.type == ModContent.ItemType<PolterghastBag>()
 			|| item.type == ModContent.ItemType<CalamitasCoffer>()
 			|| item.type == ModContent.ItemType<OldDukeBag>()
-			);
+            || item.type == ModContent.ItemType<YharonBag>()
+            );
         }
         public override void ModifyItemLoot(Item item, ItemLoot itemLoot){
             //changing lootbag drops
@@ -83,6 +85,10 @@ namespace RagnarokMod.Common.GlobalItems
             }
             if (item.type == ModContent.ItemType<OldDukeBag>()){
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<Virusprayer>(), 2));
+            }
+            if (item.type == ModContent.ItemType<YharonBag>())
+            {
+                itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<DragonForce>(), 3));
             }
         }
     }

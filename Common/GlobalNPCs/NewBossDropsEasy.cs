@@ -31,7 +31,9 @@ using RagnarokMod.Utils;
 using RagnarokMod.Items.RevItems;
 using RagnarokMod.Items.BardItems.Percussion;
 using CalamityMod.NPCs.Polterghast;
+using CalamityMod.NPCs.Yharon;
 using RagnarokMod.Items.HealerItems.Scythes;
+using RagnarokMod.Items.BardItems.String;
 
 namespace RagnarokMod.Common.GlobalNPCs
 {
@@ -54,7 +56,8 @@ namespace RagnarokMod.Common.GlobalNPCs
             ||npc.type == ModContent.NPCType<ForgottenOne>() 
             ||npc.type == ModContent.NPCType<AstrumDeusHead>()
             ||npc.type == ModContent.NPCType<Polterghast>()
-			||npc.type == ModContent.NPCType<SupremeCalamitas>() );
+			||npc.type == ModContent.NPCType<SupremeCalamitas>()
+            || npc.type == ModContent.NPCType<Yharon>());
         }
 		
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot){
@@ -139,6 +142,10 @@ namespace RagnarokMod.Common.GlobalNPCs
             }
 			if (npc.type == ModContent.NPCType<SupremeCalamitas>() && !Main.expertMode){
                 npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<Lamentation>(), 4, 0));
+            }
+            if (npc.type == ModContent.NPCType<Yharon>() && !Main.expertMode)
+            {
+                npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<DragonForce>(), 3, 0));
             }
         }
     }

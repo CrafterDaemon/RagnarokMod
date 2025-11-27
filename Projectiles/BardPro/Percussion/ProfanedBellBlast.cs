@@ -17,6 +17,8 @@ namespace RagnarokMod.Projectiles.BardPro.Percussion
     public class ProfanedBellBlast : BardProjectile
     {
 
+        public override BardInstrumentType InstrumentType => BardInstrumentType.Percussion;
+
         public override string Texture => "CalamityMod/Projectiles/Boss/HolyBlast";
         public override void SetStaticDefaults()
         {

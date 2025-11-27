@@ -29,6 +29,8 @@ namespace RagnarokMod.Projectiles.BardPro.Percussion
             Projectile.DamageType = ThoriumDamageBase<BardDamage>.Instance;
         }
 
+        public override BardInstrumentType InstrumentType => BardInstrumentType.Percussion;
+
         public override void AI()
         {
             if (++Projectile.frameCounter >= 5)
