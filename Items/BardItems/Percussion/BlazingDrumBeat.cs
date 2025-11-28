@@ -5,6 +5,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 using CalamityMod.Items.Materials;
+using CalamityMod.Rarities;
 using ThoriumMod.Items.BardItems;
 using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
@@ -36,8 +37,8 @@ public class BlazingDrumBeat : BigInstrumentItemBase
         Item.useStyle = ItemUseStyleID.Swing;
         Item.noMelee = false;
         Item.knockBack = 4f;
-        Item.value = CalamityGlobalItem.RarityRedBuyPrice;
-        Item.rare = ItemRarityID.Red;
+        Item.value = CalamityGlobalItem.RarityTurquoiseBuyPrice;
+        Item.rare = ModContent.RarityType<Turquoise>();
         Item.UseSound = Sounds.RagnarokModSounds.bonk;
         Item.shoot = ModContent.ProjectileType<BlazingDrumBeatFireSlash>();
         Item.shootSpeed = 10f;

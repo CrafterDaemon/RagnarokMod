@@ -46,19 +46,36 @@ namespace RagnarokMod.Items.BardItems.String
             Item.scale = 1f;
             Item.useTime = 12;
             Item.useAnimation = 12;
-            Item.useStyle = 5;
+            Item.useStyle = ItemUseStyleID.Guitar;
             Item.noMelee = true;
             Item.autoReuse = true;
             Item.knockBack = 20f;
-            Item.value = CalamityGlobalItem.RarityPureGreenBuyPrice;
-            Item.rare = ModContent.RarityType<DarkOrange>();
+            Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
+            Item.rare = ModContent.RarityType<Violet>();
             Item.UseSound = new SoundStyle?(SoundID.Item47);
             Item.shoot = ModContent.ProjectileType<DragonForcePro1>();
             Item.shootSpeed = 20;
 
-
+            ((ModItem)this).Item.holdStyle = 5;
         }
-        public virtual Vector2? HoldoutOffset() => new Vector2?(new Vector2(-12f, 0.0f));
+
+        public override Vector2? HoldoutOffset()
+        {
+            return new Vector2(-18, 20);
+        }
+
+        public override void HoldItemFrame(Player player)
+        {
+            player.itemLocation += new Vector2(-18, 20) * player.Directions;
+        }
+
+        public override void UseStyle(Player player, Rectangle heldItemFrame)
+        {
+            Vector2 offset = new Vector2(-18, 20) * player.Directions;
+
+            player.itemLocation += offset;
+        }
+
         public override bool BardShoot(
             Player player,
             EntitySource_ItemUse_WithAmmo source,

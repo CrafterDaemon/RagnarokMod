@@ -35,7 +35,7 @@ namespace RagnarokMod.Items
             Item.height = 50;
             Item.useTime = 6;
             Item.useAnimation = 10;
-            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.useStyle = ItemUseStyleID.Guitar;
             Item.noMelee = true;
             Item.knockBack = 5f;
             
@@ -48,9 +48,26 @@ namespace RagnarokMod.Items
             Item.UseSound = SoundID.Item47;
             Item.autoReuse = true;
             Item.shootSpeed = 20f;
+
+            ((ModItem)this).Item.holdStyle = 5;
         }
 
-        public override Vector2? HoldoutOffset() => new Vector2(-15, 0);
+        public override Vector2? HoldoutOffset()
+        {
+            return new Vector2(-17, 10);
+        }
+
+        public override void HoldItemFrame(Player player)
+        {
+            player.itemLocation += new Vector2(-17, 10) * player.Directions;
+        }
+
+        public override void UseStyle(Player player, Rectangle heldItemFrame)
+        {
+            Vector2 offset = new Vector2(-17, 10) * player.Directions;
+
+            player.itemLocation += offset;
+        }
 
         public override bool AltFunctionUse(Player player) => true;
 

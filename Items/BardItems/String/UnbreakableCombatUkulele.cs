@@ -45,18 +45,36 @@ namespace RagnarokMod.Items.BardItems.String
             Item.scale = 1f;
             Item.useTime = 15;
             Item.useAnimation = 15;
-            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.useStyle = ItemUseStyleID.Guitar;
             Item.noMelee = true;
             Item.autoReuse = true;
             Item.knockBack = 20f;
-            Item.value = CalamityGlobalItem.RarityPureGreenBuyPrice;
-            Item.rare = ModContent.RarityType<PureGreen>();
+            Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
+            Item.rare = ModContent.RarityType<DarkBlue>();
             Item.UseSound = new SoundStyle?(ThoriumSounds.SuperGuitarNoise);
             Item.shoot = ModContent.ProjectileType<UnbreakableCombatUkulelePro1>();
             Item.shootSpeed = 20;
 
-
+            ((ModItem)this).Item.holdStyle = 5;
         }
+
+        public override Vector2? HoldoutOffset()
+        {
+            return new Vector2(-10, 11);
+        }
+
+        public override void HoldItemFrame(Player player)
+        {
+            player.itemLocation += new Vector2(-10, 11f) * player.Directions;
+        }
+
+        public override void UseStyle(Player player, Rectangle heldItemFrame)
+        {
+            Vector2 offset = new Vector2(-10, 11f) * player.Directions;
+
+            player.itemLocation += offset;
+        }
+
         public override bool AltFunctionUse(Player player) => true;
         public override bool CanShoot(Player player)
         {

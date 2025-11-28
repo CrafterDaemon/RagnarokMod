@@ -10,6 +10,7 @@ using RagnarokMod.Projectiles.HealerPro.Scythes;
 using RagnarokMod.Projectiles.HealerPro.Other;
 using RagnarokMod.Projectiles;
 using CalamityMod.Items;
+using CalamityMod.Rarities;
 
 namespace RagnarokMod.Items.HealerItems.Scythes
 {
@@ -27,8 +28,8 @@ namespace RagnarokMod.Items.HealerItems.Scythes
             scytheSoulCharge = 4;
             base.Item.width = 152;
             base.Item.height = 148;
-            base.Item.value = CalamityGlobalItem.RarityRedBuyPrice;
-            base.Item.rare = ItemRarityID.Red;
+            base.Item.value = CalamityGlobalItem.RarityPureGreenBuyPrice;
+            base.Item.rare = ModContent.RarityType<PureGreen>();
             base.Item.shoot = ModContent.ProjectileType<PhantasmalEdgePro1>();
             Item.reuseDelay = 8;
             Item.channel = true;

@@ -24,8 +24,8 @@ namespace RagnarokMod.Items.HealerItems.Scythes
             scytheSoulCharge = 2;
             base.Item.width = 80;
             base.Item.height = 76;
-            base.Item.value = CalamityGlobalItem.RarityRedBuyPrice;
-            base.Item.rare = ItemRarityID.Red;
+            base.Item.value = CalamityGlobalItem.RarityCyanBuyPrice;
+            base.Item.rare = ItemRarityID.Cyan;
             base.Item.shoot = ModContent.ProjectileType<AstralRipperPro>();
             base.Item.shootSpeed = 0.1f;
         }

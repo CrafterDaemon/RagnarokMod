@@ -68,7 +68,7 @@ Buffs: {
 Items: {
 	DrumStick: {
 		DisplayName: Drum Stick
-		Tooltip: Your enemies are your drums.
+		Tooltip: "'Your enemies are your drums!'"
 	}
 
 	AerospecBard: {
@@ -143,9 +143,11 @@ Items: {
 		DisplayName: Emblazoned Drum Stick
 		Tooltip:
 			'''
-			Chaining two or more successes 
-			will let out a large flaming slash, 
-			inflicting all enemies in range with Holy Inferno.
+			Successfully timing hits will steadily increase its damage and empowerment level
+			Mistiming hits will decrease these bonuses greatly and cost 9 inspiration
+			These bonuses will stay between weapon swaps, but gradually fade while not your active weapon
+			Chaining two or more successes will let out a large flaming slash, 
+			Flaming slashes inflict all enemies in range with Holy Inferno
 			'''
 	}
 
@@ -261,12 +263,16 @@ Items: {
 
 	StormFeather: {
 		DisplayName: Storm Feather
-		Tooltip: A feather fallen from the Grand Thunder Bird, it crackles with lightning.
+		Tooltip: A feather fallen from the Grand Thunder Bird, it crackles with lightning
 	}
 
 	StrangeAlienMotherBoard: {
 		DisplayName: Strange Alien Mother Board
-		Tooltip: The motherboard from the Star Scouter. This technology is beyond your knowlege
+		Tooltip:
+			'''
+			The motherboard from the Star Scouter
+			This technology is beyond your knowlege
+			'''
 	}
 
 	BelchingSaxophoneOverride: {
@@ -274,7 +280,7 @@ Items: {
 		Tooltip:
 			'''
 			Fires an array of dirty reeds, music notes, and sulphuric bubbles
-			Doot
+			'Doot'
 			'''
 	}
 
@@ -295,12 +301,12 @@ Items: {
 
 	EmpoweredGranite: {
 		DisplayName: Empowered Granite
-		Tooltip: Granite block charged full of energy from the Granite Energy Storm.
+		Tooltip: Granite block charged full of energy from the Granite Energy Storm
 	}
 
 	EnchantedMarble: {
 		DisplayName: Enchanted Marble
-		Tooltip: Special marble, imbued with ancient holy magic.
+		Tooltip: Special marble, imbued with ancient holy magic
 	}
 
 	StatigelHeadBard: {
@@ -342,7 +348,7 @@ Items: {
 
 	StriderFang: {
 		DisplayName: Strider Fang
-		Tooltip: An icy fang straight from the Borean Strider's mouth.
+		Tooltip: An icy fang straight from the Borean Strider's mouth
 	}
 
 	TarragonCowl: {
@@ -433,23 +439,23 @@ Items: {
 		DisplayName: Equivalent Exchange
 		Tooltip:
 			'''
-			You must follow the law of equivalent exchange.
-			You can only get out equal to what you put in.
+			'You must follow the law of equivalent exchange'
+			'You can only get out equal to what you put in'
 			'''
 	}
 
 	ProfanedScythe: {
-		Tooltip: A holy inferno of a scythe.
+		Tooltip: A holy inferno of a scythe
 		DisplayName: Profaned Scythe
 	}
 
 	MarbleScythe: {
-		Tooltip: The magic marble imbues the scythe head with extra radiance.
+		Tooltip: The magic marble imbues the scythe head with extra radiance
 		DisplayName: Marble Scythe
 	}
 
 	ScoriaDualscythe: {
-		Tooltip: The scoria allows you to spin the scythe much faster by constantly expelling steam.
+		Tooltip: The scoria allows you to spin the scythe much faster by constantly expelling steam
 		DisplayName: Scoria Dualscythe
 	}
 
@@ -464,19 +470,19 @@ Items: {
 		DisplayName: Radio Mic
 		Tooltip:
 			'''
-			The microphone of a long-dead demon. 
-			Singing into it allows the user to create shadowy tendrils that strike nearby enemies.
+			Singing into it allows the user to create shadowy tendrils that strike nearby enemies
+			'The microphone of a long-dead demon'
 			'''
 	}
 
 	CorrosiveFlux: {
 		DisplayName: Corrosive Flux
-		Tooltip: Fires 3 toxic bubbles.
+		Tooltip: Fires 3 toxic bubbles
 	}
 
 	WindReaver: {
 		DisplayName: Wind Reaver
-		Tooltip: A scythe made of aerospec, releases an occasional wind slice.
+		Tooltip: Releases an occasional wind slice when spun
 	}
 
 	SquirrelScarf: {
@@ -486,20 +492,20 @@ Items: {
 
 	Prisma: {
 		DisplayName: Prisma
-		Tooltip: Fire a holy water sea star, that shatters into 5 spikes
+		Tooltip: Fire a holy water sea star that shatters into 5 spikes
 	}
 
 	Fractal: {
 		DisplayName: Fractal
-		Tooltip: Fire a ball of holy magic that splits, and splits, and splits.
+		Tooltip: Fire a ball of holy magic that splits, and splits, and splits
 	}
 
 	VoidseerPearl: {
 		DisplayName: Voidseer Pearl
 		Tooltip:
 			'''
-			They say beauty is in the eye of the beholder.
-			I don't think they meant that literally.
+			'They say beauty is in the eye of the beholder'
+			'I don't think they meant that literally'
 			'''
 	}
 
@@ -507,10 +513,10 @@ Items: {
 		DisplayName: Queen Jelly
 		Tooltip:
 			'''
-			A delicious jellyfish jelly.
-			One could say it makes the tastiest sandwich in the sea.
-			Heals 50 hp.
-			Grants Plenty Satisfied
+			Restores 100 life
+			Medium improvements to all stats
+			'A delicious jellyfish jelly'
+			'One could say it makes the tastiest sandwich in the sea'
 			'''
 	}
 
@@ -521,16 +527,16 @@ Items: {
 
 	ElysianSong: {
 		DisplayName: Elysian Song
-		Tooltip: So close to an angel's trumpet, yet so far...
+		Tooltip: "'So close to an angel's trumpet, yet so far...'"
 	}
 
 	ExecutionerMark05: {
 		DisplayName: The Executioner: Mark 05
 		Tooltip:
 			'''
-			The core of XM-05 Thanatos rebuilt as a scythe.
-			It starts slow, but will continuously build speed.
-			Once at maximum speed, It will launch itself into the nearest enemy and explode for a massive area of effect.
+			It starts slow, but will continuously build speed
+			Once at maximum speed, It will launch itself into the nearest enemy and explode for a massive area of effect
+			'The core of XM-05 Thanatos rebuilt as a scythe'
 			'''
 	}
 
@@ -549,7 +555,7 @@ Items: {
 			Hits have a chance to release homing healing blood splatters
 			Shots have increased chance to release blood splatters on enemy kill
 			Bonus healing is only 50% effective while held
-			BLOOD IS FUEL.
+			'BLOOD IS FUEL'
 			'''
 	}
 
@@ -575,12 +581,12 @@ Items: {
 
 	NewLichRequirement: {
 		DisplayName: New Lich Requirement
-		Tooltip: you're uhhhh... not supposed to see this.
+		Tooltip: you're uhhhh... not supposed to see this
 	}
 
 	EldritchShellFragment: {
 		DisplayName: Eldritch Shell Fragment
-		Tooltip: An enchanted shard from the prison of an ancient god.
+		Tooltip: An enchanted shard from the prison of an ancient god
 	}
 
 	SigilOfACruelWorld: {
@@ -611,25 +617,25 @@ Items: {
 		DisplayName: Golden Bat Droppings
 		Tooltip:
 			'''
-			"You're not greedy... you're batshit insane!"
 			+30% coins from enemies
 			Increases damage based on held coins (coinslots only)
+			"You're not greedy... you're batshit insane!"
 			Revengeance drop
 			'''
 	}
 
 	VerdurantBloom: {
 		DisplayName: Verdurant Bloom
-		Tooltip: Fire a spread of various flower petals.
+		Tooltip: Fire a spread of various flower petals
 	}
 
 	CosmicInjector: {
 		DisplayName: Cosmic Injector
 		Tooltip:
 			'''
-			Rapid fires both healing and damaging needles.
-			Inflicts God Slayer's Inferno on hit.
-			Uses Syringes as ammo.
+			Rapid fires both healing and damaging needles
+			Inflicts God Slayer's Inferno on hit
+			Uses Syringes as ammo
 			'''
 	}
 
@@ -637,25 +643,25 @@ Items: {
 		DisplayName: Korobeiniki
 		Tooltip:
 			'''
-			A non-descript game console.
-			Causes Tetriminos to fall from the sky.
+			Causes Tetriminos to fall from the sky
+			'A non-descript game console'
 			'''
 	}
 
 	GraspofVoid: {
 		DisplayName: Grasp of Void
-		Tooltip: Fires a shard of void essence, inflicting shadowflame on hit.
+		Tooltip: Fires a shard of void essence, inflicting shadowflame on hit
 	}
 
 	PhantasmalEdge: {
 		DisplayName: Phantasmal Edge
 		Tooltip:
 			'''
-			Spinning this scythe creates many miniature fireballs that will follow as you contiue to spin the scythe.
-			Once you stop spinning the scythe, the fireballs immediately seek out the nearest target and explode.
+			Spinning this scythe creates many miniature fireballs that follow as you contiue to spin the scythe
+			Once you stop spinning the scythe, the fireballs immediately seek out the nearest target and explode
 
-			Right Click launches the scythe like a hook, pulling enemies towards you. 
-			This does not work on bosses, and you are instead pulled towards the boss.
+			Right Click to launch the scythe like a hook, pulling enemies towards you 
+			This does not work on bosses, and you are instead pulled towards the boss
 			'''
 	}
 
@@ -663,29 +669,29 @@ Items: {
 		DisplayName: God Slayers Reap
 		Tooltip:
 			'''
-			Creates a small hologram resembling the Devourer of Gods at the very edge of your scythe spin.
-			Enemies hit by this take significantly more damage and are inflicted with Godslayer's Inferno.
+			Creates a small hologram resembling the Devourer of Gods at the very edge of your scythe spin
+			Enemies hit by this take significantly more damage and are inflicted with Godslayer's Inferno
 			'''
 	}
 
 	Arpeggiator: {
 		DisplayName: Arpeggiator
-		Tooltip: Rapid-fires projectiles in an arpeggio pattern.
+		Tooltip: Rapid-fires projectiles in an arpeggio pattern
 	}
 
 	ElementalReaper: {
 		DisplayName: Elemental Reaper
 		Tooltip:
 			'''
-			Spinning this scythes creates homing projectiles that inflict Elemental Inferno.
-			Right Click grants you and all allies an Elemental Blessing for 10 seconds, with a 30 second cooldown.
+			Spinning this scythes creates homing projectiles that inflict Elemental Inferno
+			Right Click grants you and all allies an Elemental Blessing for 10 seconds, with a 30 second cooldown
 			Elemental Blessings are as follows:
 			Sand: +5% attack damage
 			Water: +5% attack speed
 			Air: +20% mpvement speed and flight time
 			Earth: +10 Defense
 			Brimstone: All attacks inflict Brimstone Flames
-			Oasis: Regenerate 50 hp over 10 seconds.
+			Oasis: Regenerate 50 hp over 10 seconds
 			'''
 	}
 
@@ -700,7 +706,7 @@ Items: {
 			'''
 			Left Click to play the ukelele
 			Right Click to throw the ukelele
-			Does not make for a good apology.
+			'Does not make for a good apology'
 			'''
 	}
 
@@ -708,9 +714,9 @@ Items: {
 		DisplayName: Nightmare Freezer
 		Tooltip:
 			'''
-			Spinning the scythe periodically releases a barrage of chilling darts.
-			Found somewhere between Halloween and Christmas.
-			Hey, you could make a movie about that!
+			Spinning the scythe periodically releases a barrage of chilling darts
+			'Found somewhere between Halloween and Christmas'
+			'Hey, you could make a movie about that!'
 			'''
 	}
 
@@ -727,8 +733,8 @@ Items: {
 		DisplayName: Dragon Force
 		Tooltip:
 			'''
-			Shoots a fiery slash that splits into infernal notes.
-			Through the Fire and the Flames.
+			Shoots a fiery slash that splits into infernal notes
+			'Through the Fire and the Flames!'
 			'''
 	}
 

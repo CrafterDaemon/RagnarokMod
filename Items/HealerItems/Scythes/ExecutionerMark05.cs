@@ -28,15 +28,15 @@ namespace RagnarokMod.Items.HealerItems.Scythes
         {
             SetDefaultsToScythe();
             base.Item.damage = 220;
-            scytheSoulCharge = 1;
+            scytheSoulCharge = 4;
             base.Item.useTime = 100;
             base.Item.useAnimation = 100;
             base.Item.autoReuse = false;
             base.Item.reuseDelay = 50;
             base.Item.width = 94;
             base.Item.height = 106;
-            base.Item.value = CalamityGlobalItem.RarityTurquoiseBuyPrice;
-            base.Item.rare = ModContent.RarityType<Turquoise>();
+            base.Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
+            base.Item.rare = ModContent.RarityType<Violet>();
             base.Item.shoot = ModContent.ProjectileType<ExecutionerMark05Pro>();
 
         }

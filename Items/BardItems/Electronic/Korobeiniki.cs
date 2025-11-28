@@ -45,14 +45,20 @@ namespace RagnarokMod.Items.BardItems.Electronic
             Item.noMelee = true;
             Item.autoReuse = true;
             Item.knockBack = 20f;
-            Item.value = CalamityGlobalItem.RarityCalamityRedBuyPrice;
-            Item.rare = ModContent.RarityType<DarkOrange>();
+            Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
+            Item.rare = ModContent.RarityType<Violet>();
             Item.UseSound = new SoundStyle?(ThoriumSounds.Didgeridoo);
             Item.shoot = ModContent.ProjectileType<KorobeinikiPro1>();
             Item.shootSpeed = 0.1f;
 
 
         }
+
+        public override Vector2? HoldoutOffset()
+        {
+            return new Vector2(-2, 0);
+        }
+
         public override bool BardShoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
 

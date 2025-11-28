@@ -18,6 +18,12 @@ using System;
 using RagnarokMod.Projectiles.HealerPro;
 using CalamityMod.Items.Materials;
 using RagnarokMod.Projectiles.BardPro.Wind;
+using System.Collections.Generic;
+using ThoriumMod.Items;
+using ThoriumMod.Empowerments;
+using ThoriumMod.Sounds;
+using CalamityMod.Items;
+using CalamityMod.Rarities;
 
 
 namespace RagnarokMod.Items.BardItems.Wind
@@ -44,13 +50,24 @@ namespace RagnarokMod.Items.BardItems.Wind
             Item.noMelee = true;
             Item.autoReuse = true;
             Item.knockBack = 2f;
-            Item.value = CalamityGlobalItem.RarityLimeBuyPrice;
-            Item.rare = ItemRarityID.Lime;
+            Item.value = CalamityGlobalItem.RarityYellowBuyPrice;
+            Item.rare = ItemRarityID.Yellow;
             Item.shoot = ModContent.ProjectileType<SteampipesPro>();
             Item.shootSpeed = 13f;
             Item.UseSound = RagnarokModSounds.Steampipes;
 
+            ((ModItem)this).Item.useStyle = 5;
+            if (!ModLoader.HasMod("Look"))
+            {
+                ((ModItem)this).Item.holdStyle = 3;
+            }
         }
+
+        public override Vector2? HoldoutOffset()
+        {
+            return new Vector2(4, 6f);
+        }
+
         public override void AddRecipes()
         {
             Recipe recipe = Recipe.Create(Item.type);

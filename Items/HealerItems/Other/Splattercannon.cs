@@ -46,8 +46,8 @@ namespace RagnarokMod.Items.HealerItems.Other
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.knockBack = 4f;
-            Item.value = CalamityGlobalItem.RarityTurquoiseBuyPrice;
-            Item.rare = ModContent.RarityType<Turquoise>();
+            Item.value = CalamityGlobalItem.RarityPureGreenBuyPrice;
+            Item.rare = ModContent.RarityType<PureGreen>();
             Item.shootSpeed = 5f;
             Item.shoot = ModContent.ProjectileType<Splattershot>();
             radiantLifeCost = 8;

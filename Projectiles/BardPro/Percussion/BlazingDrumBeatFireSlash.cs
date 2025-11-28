@@ -93,33 +93,50 @@ namespace RagnarokMod.Projectiles.BardPro.Percussion
         }
         public override bool PreDraw(ref Color lightColor)
         {
-            int width = 296 / 4;
-            int height = 276 / 2;
+            int frameWidth = 296 / 4;  // 74
+            int frameHeight = 276 / 2; // 138
+
+            float scaleX = Projectile.width / (float)frameWidth;
+            float scaleY = Projectile.height / (float)frameHeight;
+            Vector2 drawScale = new Vector2(scaleX, scaleY);
 
             Vector2 drawCenter = Projectile.Center;
-            Rectangle frameRectangle = new Rectangle(Projectile.frame / 2 * width, Projectile.frame % 2 * height, width, height);
+            Rectangle frameRectangle = new Rectangle(
+                (Projectile.frame / 2) * frameWidth,
+                (Projectile.frame % 2) * frameHeight,
+                frameWidth,
+                frameHeight
+            );
 
             Texture2D scytheTexture = ModContent.Request<Texture2D>(Texture).Value;
             Texture2D glowTexture = ModContent.Request<Texture2D>("RagnarokMod/Projectiles/BardPro/Percussion/BlazingDrumBeatFireSlash_Glow").Value;
 
-            Main.spriteBatch.Draw(scytheTexture,
-                                  drawCenter - Main.screenPosition,
-                                  frameRectangle,
-                                  Projectile.GetAlpha(lightColor),
-                                  Projectile.rotation,
-                                  frameRectangle.Size() / 2,
-                                  Projectile.scale,
-                                  Projectile.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally,
-                                  0f);
-            Main.spriteBatch.Draw(glowTexture,
-                                  drawCenter - Main.screenPosition,
-                                  frameRectangle,
-                                  Projectile.GetAlpha(Color.White),
-                                  Projectile.rotation,
-                                  frameRectangle.Size() / 2,
-                                  Projectile.scale,
-                                  Projectile.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally,
-                                  0f);
+            // Base texture
+            Main.spriteBatch.Draw(
+                scytheTexture,
+                drawCenter - Main.screenPosition,
+                frameRectangle,
+                Projectile.GetAlpha(lightColor),
+                Projectile.rotation,
+                frameRectangle.Size() / 2f,
+                drawScale,
+                Projectile.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally,
+                0f
+            );
+
+            // Glow texture
+            Main.spriteBatch.Draw(
+                glowTexture,
+                drawCenter - Main.screenPosition,
+                frameRectangle,
+                Projectile.GetAlpha(Color.White),
+                Projectile.rotation,
+                frameRectangle.Size() / 2f,
+                drawScale,
+                Projectile.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally,
+                0f
+            );
+
             return false;
         }
     }

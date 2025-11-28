@@ -6,6 +6,7 @@ using RagnarokMod.Items.Materials;
 using RagnarokMod.Projectiles.HealerPro.Scythes;
 using ThoriumMod;
 using CalamityMod.Items;
+using CalamityMod.Rarities;
 
 namespace RagnarokMod.Items.HealerItems.Scythes
 {
@@ -38,8 +39,8 @@ namespace RagnarokMod.Items.HealerItems.Scythes
             scytheSoulCharge = 2;
             base.Item.width = 54;
             base.Item.height = 42;
-            base.Item.value = CalamityGlobalItem.RarityOrangeBuyPrice;
-            base.Item.rare = ItemRarityID.Orange;
+            base.Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
+            base.Item.rare = ModContent.RarityType<DarkBlue>();
             base.Item.shoot = ModContent.ProjectileType<MarbleScythePro>();
         }
         public override void AddRecipes()

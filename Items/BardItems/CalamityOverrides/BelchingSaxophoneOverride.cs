@@ -44,6 +44,12 @@ namespace Ragnarok.Items
             Item.autoReuse = true;
             Item.shoot = ModContent.ProjectileType<AcidicReed>();
             Item.shootSpeed = 20f;
+
+            ((ModItem)this).Item.useStyle = 5;
+            if (!ModLoader.HasMod("Look"))
+            {
+                ((ModItem)this).Item.holdStyle = 3;
+            }
         }
 
         public override bool BardShoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
@@ -82,6 +88,6 @@ namespace Ragnarok.Items
             return false;
         }
 
-        public override Vector2? HoldoutOffset() => new Vector2(0, 18);
+        public override Vector2? HoldoutOffset() => new Vector2(0, 14);
     }
 }

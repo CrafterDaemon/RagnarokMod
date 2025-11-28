@@ -30,7 +30,7 @@ namespace RagnarokMod.Items.Materials
         }
         public override void OnConsumeItem(Player player)
         {
-            player.Heal(50);
+            player.Heal(100);
         }
 
         public override void AddRecipes()

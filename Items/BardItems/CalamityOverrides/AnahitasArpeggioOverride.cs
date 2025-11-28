@@ -39,6 +39,12 @@ namespace RagnarokMod.Items
             Item.autoReuse = true;
             Item.shoot = ModContent.ProjectileType<AnahitasArpeggioNote>();
             Item.shootSpeed = 13f;
+
+            ((ModItem)this).Item.useStyle = 5;
+            if (!ModLoader.HasMod("Look"))
+            {
+                ((ModItem)this).Item.holdStyle = 3;
+            }
         }
 
         public override Vector2? HoldoutOffset() => new Vector2(-10, 0);

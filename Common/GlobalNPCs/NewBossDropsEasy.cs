@@ -31,6 +31,7 @@ using RagnarokMod.Utils;
 using RagnarokMod.Items.RevItems;
 using RagnarokMod.Items.BardItems.Percussion;
 using CalamityMod.NPCs.Polterghast;
+using CalamityMod.NPCs.OldDuke;
 using CalamityMod.NPCs.Yharon;
 using RagnarokMod.Items.HealerItems.Scythes;
 using RagnarokMod.Items.BardItems.String;
@@ -56,7 +57,8 @@ namespace RagnarokMod.Common.GlobalNPCs
             ||npc.type == ModContent.NPCType<ForgottenOne>() 
             ||npc.type == ModContent.NPCType<AstrumDeusHead>()
             ||npc.type == ModContent.NPCType<Polterghast>()
-			||npc.type == ModContent.NPCType<SupremeCalamitas>()
+            || npc.type == ModContent.NPCType<OldDuke>()
+            || npc.type == ModContent.NPCType<SupremeCalamitas>()
             || npc.type == ModContent.NPCType<Yharon>());
         }
 		
@@ -140,7 +142,11 @@ namespace RagnarokMod.Common.GlobalNPCs
             if (npc.type == ModContent.NPCType<Polterghast>()){
                 npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<PhantasmalEdge>(), 4, 0));
             }
-			if (npc.type == ModContent.NPCType<SupremeCalamitas>() && !Main.expertMode){
+            if (npc.type == ModContent.NPCType<OldDuke>() && !Main.expertMode)
+            {
+                npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<Virusprayer>(), 3, 0));
+            }
+            if (npc.type == ModContent.NPCType<SupremeCalamitas>() && !Main.expertMode){
                 npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<Lamentation>(), 4, 0));
             }
             if (npc.type == ModContent.NPCType<Yharon>() && !Main.expertMode)

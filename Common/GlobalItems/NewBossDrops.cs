@@ -84,7 +84,7 @@ namespace RagnarokMod.Common.GlobalItems
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<Lamentation>(), 3));
             }
             if (item.type == ModContent.ItemType<OldDukeBag>()){
-                itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<Virusprayer>(), 2));
+                itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<Virusprayer>(), 3));
             }
             if (item.type == ModContent.ItemType<YharonBag>())
             {

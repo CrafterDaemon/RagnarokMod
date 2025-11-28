@@ -23,8 +23,8 @@ namespace RagnarokMod.Items.HealerItems.Scythes
             scytheSoulCharge = 3;
             base.Item.width = 114;
             base.Item.height = 116;
-            base.Item.value = CalamityGlobalItem.RarityTurquoiseBuyPrice;
-            base.Item.rare = ModContent.RarityType<Turquoise>();
+            base.Item.value = CalamityGlobalItem.RarityYellowBuyPrice;
+            base.Item.rare = ItemRarityID.Yellow;
             base.Item.shoot = ModContent.ProjectileType<ScoriaDualscythePro>();
         }
         public override void AddRecipes()

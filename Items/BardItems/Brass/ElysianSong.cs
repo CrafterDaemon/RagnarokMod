@@ -49,6 +49,12 @@ namespace RagnarokMod.Items.BardItems.Brass
             Item.shoot = ModContent.ProjectileType<ElysianSongPro>();
             Item.shootSpeed = 15f;
 
+
+            ((ModItem)this).Item.useStyle = 5;
+            if (!ModLoader.HasMod("Look"))
+            {
+                ((ModItem)this).Item.holdStyle = 3;
+            }
         }
 
         public override void AddRecipes()
