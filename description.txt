@@ -1,9 +1,26 @@
 Ragnarok. A great calamity in norse mythology, Is now a mod that intends to allow Thorium and Calamity to be used together with minimal issues. 
 Adds more content for Thorium classes, Merges Thrower + Rogue, and creates a more coherent experience throughout all stages of the game.
 
-[h1]Hotfix 1.4.4.4[/h1]
+[h1]Hotfix 1.4.4.7[/h1]
+(IEoR Collab Update :D)
+[list]
+[*] Rarities of items fixed to match materials or equivalent weapons.
+[*] Localization changes to improve consistency and readability.
+[*] Fixed holdouts for all bard instruments and updated use style to match Thorium.
+[*] Drum Stick will now cause a drum mallet effect on enemy hits. Damage is halved to compensate, but single-target DPS remains unaffected.
+[*] Drum Stick now requires a Drum Mallet to craft.
+[*] Queen jelly buffed from 50 to 100 life, to match the healing potions of that tier.
+[*] Adjusted Blazing Drum Slash to match the hitbox size for consistency.
+[*] Fixed Virusprayer to now correctly drop on non-expert mode.
+[*] Buffed soul essence on Executioner Mark 05 from 1 to 4.
+[/list]
 
-Fixed the memory leak caused by our patch to The Community. Apologies for the crashes!
+[h1]Hotfix 1.4.4.6[/h1]
+(Thanks, WHummus!)
+[list]
+[*] Fixed crash on load caused by new Calamity update separating Client and Server configs.
+[*] Fixed bard weapon issues regarding weapon type and damage scaling.
+[/list]
 
 [h1]Update 1.4.4 Changelog[/h1]
 the "It's been a while" update

@@ -1013,9 +1013,21 @@ Configs: {
 
 	CalamityBardHealer_selection_mode: {
 		Tooltip: ""
-		Off.Label: Off
-		Ragnarok.Label: Ragnarok
-		CalamityBardHealer.Label: Calamity Bard Healer
+
+		Off: {
+			Label: Off
+			Tooltip: ""
+		}
+
+		Ragnarok: {
+			Label: Ragnarok
+			Tooltip: ""
+		}
+
+		CalamityBardHealer: {
+			Label: Calamity Bard Healer
+			Tooltip: ""
+		}
 	}
 
 	BossConfig: {
@@ -1061,13 +1073,35 @@ Configs: {
 			Label: Star Scouter AI
 			Tooltip: Select, which AI rework should be used. Off for default behaviour
 		}
+
+		strider: {
+			Tooltip: Select, which AI rework should be used. Off for vanilla behaviour. Auto uses Ragnarok AI if no other rework is detected
+			Label: Borean Strider AI
+		}
 	}
 
 	ThoriumBossRework_selection_mode: {
 		Tooltip: ""
-		Off.Label: Off
-		Ragnarok.Label: Ragnarok
-		ThoriumBossRework.Label: Thorium Boss Rework
+
+		Off: {
+			Label: Off
+			Tooltip: ""
+		}
+
+		Ragnarok: {
+			Label: Ragnarok
+			Tooltip: ""
+		}
+
+		ThoriumBossRework: {
+			Label: Thorium Boss Rework
+			Tooltip: ""
+		}
+
+		Auto: {
+			Tooltip: ""
+			Label: Auto
+		}
 	}
 }
 

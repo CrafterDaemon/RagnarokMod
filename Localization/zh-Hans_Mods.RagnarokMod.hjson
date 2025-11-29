@@ -1004,9 +1004,21 @@ Configs: {
 
 	CalamityBardHealer_selection_mode: {
 		Tooltip: ""
-		Off.Label: 关闭
-		Ragnarok.Label: 诸神的黄昏
-		CalamityBardHealer.Label: 非灾厄官方吟游诗人，牧师武器
+
+		Off: {
+			Label: 关闭
+			// Tooltip: ""
+		}
+
+		Ragnarok: {
+			Label: 诸神的黄昏
+			// Tooltip: ""
+		}
+
+		CalamityBardHealer: {
+			Label: 非灾厄官方吟游诗人，牧师武器
+			// Tooltip: ""
+		}
 	}
 
 	BossConfig: {
@@ -1037,13 +1049,50 @@ Configs: {
 			Label: 蝙蝠子爵AI
 			Tooltip: 选择使用那个模组的AI，关闭为默认状态
 		}
+
+		granite: {
+			// Label: Granite Enegy Storm AI
+			// Tooltip: Select, which AI rework should be used. Off for default behaviour
+		}
+
+		champion: {
+			// Label: Buried Champion AI
+			// Tooltip: Select, which AI rework should be used. Off for default behaviour
+		}
+
+		scouter: {
+			// Label: Star Scouter AI
+			// Tooltip: Select, which AI rework should be used. Off for default behaviour
+		}
+
+		strider: {
+			// Tooltip: Select, which AI rework should be used. Off for vanilla behaviour. Auto uses Ragnarok AI if no other rework is detected
+			// Label: Borean Strider AI
+		}
 	}
 
 	ThoriumBossRework_selection_mode: {
 		Tooltip: ""
-		Off.Label: 关闭
-		Ragnarok.Label: 诸神的黄昏
-		ThoriumBossRework.Label: 瑟银BOSS重置
+
+		Off: {
+			Label: 关闭
+			// Tooltip: ""
+		}
+
+		Ragnarok: {
+			Label: 诸神的黄昏
+			// Tooltip: ""
+		}
+
+		ThoriumBossRework: {
+			Label: 瑟银BOSS重置
+			// Tooltip: ""
+		}
+
+		Auto: {
+			// Tooltip: ""
+			// Label: Auto
+		}
 	}
 }
 
