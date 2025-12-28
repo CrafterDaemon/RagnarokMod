@@ -344,8 +344,13 @@ Items: {
 	}
 
 	NinjaEmblem: {
-		DisplayName: 忍者徽章
-		Tooltip: 增加15%盗贼伤害
+		DisplayName: 多职业徽章
+		Tooltip:
+			'''
+			增加8%伤害
+			增加5%暴击率
+			增加5%攻击速度
+			'''
 	}
 
 	OlympicTorch: {

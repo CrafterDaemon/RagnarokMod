@@ -1051,23 +1051,23 @@ Configs: {
 		}
 
 		granite: {
-			// Label: Granite Enegy Storm AI
-			// Tooltip: Select, which AI rework should be used. Off for default behaviour
+			Label: 花岗岩流能风暴AI
+			Tooltip: 选择使用那个模组的AI，关闭为默认状态
 		}
 
 		champion: {
-			// Label: Buried Champion AI
-			// Tooltip: Select, which AI rework should be used. Off for default behaviour
+			Label: 英灵遗骸AI
+			Tooltip: 选择使用那个模组的AI，关闭为默认状态
 		}
 
 		scouter: {
-			// Label: Star Scouter AI
-			// Tooltip: Select, which AI rework should be used. Off for default behaviour
+			Label: 星际监察者AI
+			Tooltip: 选择使用那个模组的AI，关闭为默认状态
 		}
 
 		strider: {
-			// Tooltip: Select, which AI rework should be used. Off for vanilla behaviour. Auto uses Ragnarok AI if no other rework is detected
-			// Label: Borean Strider AI
+			Tooltip: 选择使用那个模组的AI，关闭为原版状态. 如果未检测到其他模组的修改，则自动使用诸神的黄昏ai。
+			Label: 极地遁蛛AI
 		}
 	}
 
