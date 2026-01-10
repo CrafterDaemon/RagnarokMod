@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
 using Terraria;
-using System;
 using System.Reflection;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
@@ -14,6 +13,9 @@ using MonoMod.RuntimeDetour;
 using MonoMod.RuntimeDetour.HookGen;
 using CalamityMod;
 using RagnarokMod.Common.Configs;
+using Terraria.ID;
+using Terraria.Chat;
+using Terraria.Localization;
 
 namespace RagnarokMod.ILEditing
 {
@@ -30,7 +32,11 @@ namespace RagnarokMod.ILEditing
         private static MethodInfo communitycalculatepower = null;
         private static ILHook community_hook = null;
 
-        public override void OnModLoad() {
+        public override void OnModLoad() 
+		{
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+                return;
+
             bool loadCaught = false;
             while (!loadCaught){
 				if (Calamity != null){ 
@@ -49,34 +55,57 @@ namespace RagnarokMod.ILEditing
 				}
             }
         }
-		
-		 public override void PostUpdateItems(){
-				if(timer == 600){
-					timer = 0;
-					if(checkNewBossSlay(downedBosses)){
-						community_hook.Undo();
-						communitycalculatepower = community.GetMethod("CalculatePower", BindingFlags.NonPublic | BindingFlags.Static);
-						community_hook = new ILHook(communitycalculatepower, tweakTheCommunity);
-						community_hook.Apply();
-						Main.NewText("A new boss has been slayed for the first time. The power of TheCommunity has increased!");
-					}	
-				}
-				timer++;
+
+		/*
+        public override void PostUpdateWorld()
+        {
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+                return;
+
+            if (checkNewBossSlay(downedBosses))
+            {
+                community_hook.Undo();
+                communitycalculatepower = community.GetMethod("CalculatePower", BindingFlags.NonPublic | BindingFlags.Static);
+                community_hook = new ILHook(communitycalculatepower, tweakTheCommunity);
+                community_hook.Apply();
+
+                Color expertColor = Color.Orange; // expert-style color
+
+                if (Main.netMode == NetmodeID.Server)
+                {
+                    ChatHelper.BroadcastChatMessage(
+                        NetworkText.FromLiteral("With a powerful foe fallen, the Community's power grows!"),
+                        expertColor
+                    );
+                }
+                else
+                {
+                    Main.NewText("With a powerful foe fallen, the Community's power grows!", expertColor);
+                }
+            }
         }
-		
-		 public override void OnModUnload(){
+		*/
+
+        public override void OnModUnload(){
             if (Calamity != null){
 				community_hook.Dispose();
             }
         }
-		
-		private void tweakTheCommunity(ILContext il) {
-			var c = new ILCursor(il);
-			c.Emit(OpCodes.Ldc_R4, calculateCommunityPowerLerp());
-			c.EmitRet();
-		}
-		
-		public static int getBossSlayCount() {
+
+        private void tweakTheCommunity(ILContext il)
+        {
+            var c = new ILCursor(il);
+
+            // Clear original method body
+            c.Emit(OpCodes.Call,
+                typeof(CalamityEdits).GetMethod(
+                    nameof(calculateCommunityPowerLerp),
+                    BindingFlags.Public | BindingFlags.Static));
+
+            c.Emit(OpCodes.Ret);
+        }
+
+        public static int getBossSlayCount() {
 			int downedbosscount = 
 			0
 			+ Terraria.Utils.ToInt((bool)Thorium.Call("GetDownedBoss", "TheGrandThunderBird"))
