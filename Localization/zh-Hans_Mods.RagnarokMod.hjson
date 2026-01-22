@@ -963,6 +963,11 @@ Configs: {
 			Label: 近战伤害倍率
 			Tooltip: 近战伤害倍率，倍率在其他变化加成后才会生效。
 		}
+
+		HealingBonusModifier: {
+			// Label: Healing Bonus Modifier
+			// Tooltip: ""
+		}
 	}
 
 	ItemBalancerConfig: {
@@ -1071,6 +1076,11 @@ Configs: {
 		strider: {
 			Tooltip: 选择使用那个模组的AI，关闭为原版状态. 如果未检测到其他模组的修改，则自动使用诸神的黄昏ai。
 			Label: 极地遁蛛AI
+		}
+
+		beholder: {
+			// Tooltip: Select, which AI rework should be used. Off for vanilla behaviour. Auto uses Ragnarok AI if no other rework is detected
+			// Label: Fallen Beholder AI
 		}
 	}
 

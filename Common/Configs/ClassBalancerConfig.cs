@@ -57,5 +57,12 @@ namespace RagnarokMod.Common.Configs
 		[Increment(0.05f)]
 		[DrawTicks]
 		public float MagicDamageModifier { get; set; }
+		
+		[DefaultValue(1f)]
+		[BackgroundColor(218, 165, 32, 170)]
+		[Range(0f, 3f)]
+		[Increment(0.05f)]
+		[DrawTicks]
+		public float HealingBonusModifier { get; set; }
     }
 }

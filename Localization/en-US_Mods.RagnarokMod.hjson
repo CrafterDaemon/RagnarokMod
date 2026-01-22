@@ -969,6 +969,11 @@ Configs: {
 			Label: Melee Damage Modifier
 			Tooltip: Multiplier for melee damage. Multiplier applies after all other changes have been applied.
 		}
+
+		HealingBonusModifier: {
+			Label: Healing Bonus Modifier
+			Tooltip: ""
+		}
 	}
 
 	ItemBalancerConfig: {
@@ -1056,27 +1061,32 @@ Configs: {
 
 		viscount: {
 			Label: Viscount AI
-			Tooltip: Select, which AI rework should be used. Off for default behaviour
+			Tooltip: Select, which AI rework should be used. Off for vanilla behaviour. Auto uses Ragnarok AI if no other rework is detected
 		}
 
 		granite: {
 			Label: Granite Enegy Storm AI
-			Tooltip: Select, which AI rework should be used. Off for default behaviour
+			Tooltip: Select, which AI rework should be used. Off for vanilla behaviour. Auto uses Ragnarok AI if no other rework is detected
 		}
 
 		champion: {
 			Label: Buried Champion AI
-			Tooltip: Select, which AI rework should be used. Off for default behaviour
+			Tooltip: Select, which AI rework should be used. Off for vanilla behaviour. Auto uses Ragnarok AI if no other rework is detected
 		}
 
 		scouter: {
 			Label: Star Scouter AI
-			Tooltip: Select, which AI rework should be used. Off for default behaviour
+			Tooltip: Select, which AI rework should be used. Off for vanilla behaviour. Auto uses Ragnarok AI if no other rework is detected
 		}
 
 		strider: {
 			Tooltip: Select, which AI rework should be used. Off for vanilla behaviour. Auto uses Ragnarok AI if no other rework is detected
 			Label: Borean Strider AI
+		}
+
+		beholder: {
+			Tooltip: Select, which AI rework should be used. Off for vanilla behaviour. Auto uses Ragnarok AI if no other rework is detected
+			Label: Fallen Beholder AI
 		}
 	}
 
