@@ -23,6 +23,7 @@ using ThoriumMod.Items.Donate;
 using ThoriumMod.Items.Terrarium;
 using ThoriumMod.Items.ThrownItems;
 using ThoriumMod.Items.Valadium;
+using ThoriumMod.Items.Lodestone;
 using ThoriumMod.Items.BossTheGrandThunderBird;
 using ThoriumMod.Items.BossQueenJellyfish;
 using ThoriumMod.Items.BossGraniteEnergyStorm;
