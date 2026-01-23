@@ -56,227 +56,235 @@ namespace RagnarokMod.Common.ModSystems
 			// Tweak recipes for hardmode ore rework
 			GetRecipe finder = new();
             finder.LookFor(ModContent.ItemType<ValadiumAxe>(), 1);
-            foreach (Recipe item in finder.Search())
-            {
+            foreach (Recipe item in finder.Search()){
                 Tileswitcher(item, 134, TileID.Anvils);
             }
             finder.LookFor(ModContent.ItemType<ValadiumBattleAxe>(), 1);
-            foreach (Recipe item in finder.Search())
-            {
+            foreach (Recipe item in finder.Search()){
                 Tileswitcher(item, 134, TileID.Anvils);
             }
             finder.LookFor(ModContent.ItemType<ValadiumBow>(), 1);
-            foreach (Recipe item in finder.Search())
-            {
+            foreach (Recipe item in finder.Search()){
                 Tileswitcher(item, 134, TileID.Anvils);
             }
             finder.LookFor(ModContent.ItemType<ValadiumBreastPlate>(), 1);
-            foreach (Recipe item in finder.Search())
-            {
+            foreach (Recipe item in finder.Search()){
                 Tileswitcher(item, 134, TileID.Anvils);
             }
             finder.LookFor(ModContent.ItemType<ValadiumFoeBlaster>(), 1);
-            foreach (Recipe item in finder.Search())
-            {
+            foreach (Recipe item in finder.Search()){
                 Tileswitcher(item, 134, TileID.Anvils);
             }
             finder.LookFor(ModContent.ItemType<ValadiumGreaves>(), 1);
-            foreach (Recipe item in finder.Search())
-            {
+            foreach (Recipe item in finder.Search()){
                 Tileswitcher(item, 134, TileID.Anvils);
             }
             finder.LookFor(ModContent.ItemType<ValadiumHammer>(), 1);
-            foreach (Recipe item in finder.Search())
-            {
+            foreach (Recipe item in finder.Search()){
                 Tileswitcher(item, 134, TileID.Anvils);
             }
             finder.LookFor(ModContent.ItemType<ValadiumHelmet>(), 1);
-            foreach (Recipe item in finder.Search())
-            {
+            foreach (Recipe item in finder.Search()){
                 Tileswitcher(item, 134, TileID.Anvils);
             }
             finder.LookFor(ModContent.ItemType<ValadiumPickaxe>(), 1);
-            foreach (Recipe item in finder.Search())
-            {
+            foreach (Recipe item in finder.Search()){
                 Tileswitcher(item, 134, TileID.Anvils);
             }
             finder.LookFor(ModContent.ItemType<ValadiumSlicer>(), 1);
-            foreach (Recipe item in finder.Search())
-            {
+            foreach (Recipe item in finder.Search()){
                 Tileswitcher(item, 134, TileID.Anvils);
             }
             finder.LookFor(ModContent.ItemType<ValadiumSpear>(), 1);
-            foreach (Recipe item in finder.Search())
-            {
+            foreach (Recipe item in finder.Search()){
                 Tileswitcher(item, 134, TileID.Anvils);
             }
             finder.LookFor(ModContent.ItemType<ValadiumStaff>(), 1);
-            foreach (Recipe item in finder.Search())
-            {
+            foreach (Recipe item in finder.Search()){
                 Tileswitcher(item, 134, TileID.Anvils);
             }
-			
+			//Lodestone
+			finder.LookFor(ModContent.ItemType<LodeStonePickaxe>(), 1);
+            foreach (Recipe item in finder.Search()){
+                Tileswitcher(item, 134, TileID.Anvils);
+            }
+			finder.LookFor(ModContent.ItemType<LodeStoneGreatAxe>(), 1);
+            foreach (Recipe item in finder.Search()){
+                Tileswitcher(item, 134, TileID.Anvils);
+            }
+			finder.LookFor(ModContent.ItemType<LodeStoneHammer>(), 1);
+            foreach (Recipe item in finder.Search()){
+                Tileswitcher(item, 134, TileID.Anvils);
+            }
+			finder.LookFor(ModContent.ItemType<LodeStoneClaymore>(), 1);
+            foreach (Recipe item in finder.Search()){
+                Tileswitcher(item, 134, TileID.Anvils);
+            }
+			finder.LookFor(ModContent.ItemType<LodeStoneBreaker>(), 1);
+            foreach (Recipe item in finder.Search()){
+                Tileswitcher(item, 134, TileID.Anvils);
+            }
+			finder.LookFor(ModContent.ItemType<LodestoneJavelin>(), 1);
+            foreach (Recipe item in finder.Search()){
+                Tileswitcher(item, 134, TileID.Anvils);
+            }
+			finder.LookFor(ModContent.ItemType<LodeStoneBow>(), 1);
+            foreach (Recipe item in finder.Search()){
+                Tileswitcher(item, 134, TileID.Anvils);
+            }
+			finder.LookFor(ModContent.ItemType<LodeStoneQuickDraw>(), 1);
+            foreach (Recipe item in finder.Search()){
+                Tileswitcher(item, 134, TileID.Anvils);
+            }
+			finder.LookFor(ModContent.ItemType<LodeStoneStaff>(), 1);
+            foreach (Recipe item in finder.Search()){
+                Tileswitcher(item, 134, TileID.Anvils);
+            }
+			finder.LookFor(ModContent.ItemType<LodestoneRadio>(), 1);
+            foreach (Recipe item in finder.Search()){
+                Tileswitcher(item, 134, TileID.Anvils);
+            }
+			finder.LookFor(ModContent.ItemType<LodeStoneFaceGuard>(), 1);
+            foreach (Recipe item in finder.Search()){
+                Tileswitcher(item, 134, TileID.Anvils);
+            }
+			finder.LookFor(ModContent.ItemType<LodeStoneChestGuard>(), 1);
+            foreach (Recipe item in finder.Search()){
+                Tileswitcher(item, 134, TileID.Anvils);
+            }
+			finder.LookFor(ModContent.ItemType<LodeStoneShinGuards>(), 1);
+            foreach (Recipe item in finder.Search()){
+                Tileswitcher(item, 134, TileID.Anvils);
+            }
 			// Flesh
 			finder.LookFor(ModContent.ItemType<FleshMask>(), 1);
-            foreach (Recipe item in finder.Search())
-            {
+            foreach (Recipe item in finder.Search()){
                 Tileswitcher(item, 134, TileID.Anvils);
             }
 			finder.LookFor(ModContent.ItemType<FleshBody>(), 1);
-            foreach (Recipe item in finder.Search())
-            {
+            foreach (Recipe item in finder.Search()){
                 Tileswitcher(item, 134, TileID.Anvils);
             }
 			finder.LookFor(ModContent.ItemType<FleshLegs>(), 1);
-            foreach (Recipe item in finder.Search())
-            {
+            foreach (Recipe item in finder.Search()){
                 Tileswitcher(item, 134, TileID.Anvils);
             }
 			finder.LookFor(ModContent.ItemType<FleshJackhammer>(), 1);
-            foreach (Recipe item in finder.Search())
-            {
+            foreach (Recipe item in finder.Search()){
                 Tileswitcher(item, 134, TileID.Anvils);
             }
 			finder.LookFor(ModContent.ItemType<FleshPickAxe>(), 1);
-            foreach (Recipe item in finder.Search())
-            {
+            foreach (Recipe item in finder.Search()){
                 Tileswitcher(item, 134, TileID.Anvils);
             }
 			finder.LookFor(ModContent.ItemType<FleshDrill>(), 1);
-            foreach (Recipe item in finder.Search())
-            {
+            foreach (Recipe item in finder.Search()){
                 Tileswitcher(item, 134, TileID.Anvils);
             }
 			finder.LookFor(ModContent.ItemType<FleshAxe>(), 1);
-            foreach (Recipe item in finder.Search())
-            {
+            foreach (Recipe item in finder.Search()){
                 Tileswitcher(item, 134, TileID.Anvils);
             }
 			finder.LookFor(ModContent.ItemType<FleshChainSaw>(), 1);
-            foreach (Recipe item in finder.Search())
-            {
+            foreach (Recipe item in finder.Search()){
                 Tileswitcher(item, 134, TileID.Anvils);
             }
 			finder.LookFor(ModContent.ItemType<FleshHammer>(), 1);
-            foreach (Recipe item in finder.Search())
-            {
+            foreach (Recipe item in finder.Search()){
                 Tileswitcher(item, 134, TileID.Anvils);
             }
 			finder.LookFor(ModContent.ItemType<ToothOfTheConsumer>(), 1);
-            foreach (Recipe item in finder.Search())
-            {
+            foreach (Recipe item in finder.Search()){
                 Tileswitcher(item, 134, TileID.Anvils);
             }
 			finder.LookFor(ModContent.ItemType<FleshMace>(), 1);
-            foreach (Recipe item in finder.Search())
-            {
+            foreach (Recipe item in finder.Search()){
                 Tileswitcher(item, 134, TileID.Anvils);
             }
 			finder.LookFor(ModContent.ItemType<FleshSkewer>(), 1);
-            foreach (Recipe item in finder.Search())
-            {
+            foreach (Recipe item in finder.Search()){
                 Tileswitcher(item, 134, TileID.Anvils);
             }
 			finder.LookFor(ModContent.ItemType<FleshBow>(), 1);
-            foreach (Recipe item in finder.Search())
-            {
+            foreach (Recipe item in finder.Search()) {
                 Tileswitcher(item, 134, TileID.Anvils);
             }
 			finder.LookFor(ModContent.ItemType<BloodBelcher>(), 1);
-            foreach (Recipe item in finder.Search())
-            {
+            foreach (Recipe item in finder.Search()){
                 Tileswitcher(item, 134, TileID.Anvils);
             }
 			finder.LookFor(ModContent.ItemType<BloodClotStaff>(), 1);
-            foreach (Recipe item in finder.Search())
-            {
+            foreach (Recipe item in finder.Search()){
                 Tileswitcher(item, 134, TileID.Anvils);
             }
 			finder.LookFor(ModContent.ItemType<FleshHorn>(), 1);
-            foreach (Recipe item in finder.Search())
-            {
+            foreach (Recipe item in finder.Search()){
                 Tileswitcher(item, 134, TileID.Anvils);
             }
 			finder.LookFor(ModContent.ItemType<FleshWings>(), 1);
-            foreach (Recipe item in finder.Search())
-            {
+            foreach (Recipe item in finder.Search()) {
                 Tileswitcher(item, 134, TileID.Anvils);
             }
 			finder.LookFor(ModContent.ItemType<UnfathomableFlesh>(), 3);
-            foreach (Recipe item in finder.Search())
-            {
+            foreach (Recipe item in finder.Search()){
                 Tileswitcher(item, 134, TileID.Anvils);
             }
 			//Geode
 			finder.LookFor(ModContent.ItemType<GeodePickaxe>(), 1);
-            foreach (Recipe item in finder.Search())
-            {
+            foreach (Recipe item in finder.Search()){
                 Tileswitcher(item, 134, TileID.Anvils);
             }
 			finder.LookFor(ModContent.ItemType<CrystalGeode>(), 1);
-            foreach (Recipe item in finder.Search())
-            {
+            foreach (Recipe item in finder.Search()){
                 Tileswitcher(item, 134, TileID.Anvils);
             }
 			finder.LookFor(ModContent.ItemType<GeodeSaxophone>(), 1);
-            foreach (Recipe item in finder.Search())
-            {
+            foreach (Recipe item in finder.Search()){
                 Tileswitcher(item, 134, TileID.Anvils);
             }
 			finder.LookFor(ModContent.ItemType<CrystalArrow>(), 1);
-            foreach (Recipe item in finder.Search())
-            {
+            foreach (Recipe item in finder.Search()){
                 Tileswitcher(item, 134, TileID.Anvils);
             }
 			finder.LookFor(ModContent.ItemType<SawbladeLight>(), 1);
-            foreach (Recipe item in finder.Search())
-            {
+            foreach (Recipe item in finder.Search()){
                 Tileswitcher(item, 134, TileID.Anvils);
             }
 			finder.LookFor(ModContent.ItemType<GeodeGatherer>(), 1);
-            foreach (Recipe item in finder.Search())
-            {
+            foreach (Recipe item in finder.Search()){
                 Tileswitcher(item, 134, TileID.Anvils);
             }
 			finder.LookFor(ModContent.ItemType<GeodeHamaxe>(), 1);
-            foreach (Recipe item in finder.Search())
-            {
+            foreach (Recipe item in finder.Search()){
                 Tileswitcher(item, 134, TileID.Anvils);
             }
 			finder.LookFor(ModContent.ItemType<GeodeHelmet>(), 1);
-            foreach (Recipe item in finder.Search())
-            {
+            foreach (Recipe item in finder.Search()){
                 Tileswitcher(item, 134, TileID.Anvils);
             }
 			finder.LookFor(ModContent.ItemType<GeodeGreaves>(), 1);
-            foreach (Recipe item in finder.Search())
-            {
+            foreach (Recipe item in finder.Search()) {
                 Tileswitcher(item, 134, TileID.Anvils);
             }
 			finder.LookFor(ModContent.ItemType<GeodeChestplate>(), 1);
-            foreach (Recipe item in finder.Search())
-            {
+            foreach (Recipe item in finder.Search()){
                 Tileswitcher(item, 134, TileID.Anvils);
             }
 			finder.LookFor(ModContent.ItemType<Xylophone>(), 1);
-            foreach (Recipe item in finder.Search())
-            {
+            foreach (Recipe item in finder.Search()){
                 Tileswitcher(item, 134, TileID.Anvils);
             }
 			finder.LookFor(ModContent.ItemType<GlitteringScepter>(), 1);
-            foreach (Recipe item in finder.Search())
-            {
+            foreach (Recipe item in finder.Search()){
                 Tileswitcher(item, 134, TileID.Anvils);
             }
 			finder.LookFor(ModContent.ItemType<CrystalWish>(), 1);
-            foreach (Recipe item in finder.Search())
-            {
+            foreach (Recipe item in finder.Search()){
                 Tileswitcher(item, 134, TileID.Anvils);
             }
         }
 
-        public void Tileswitcher( Recipe recipe ,int tileold, int tilenew) 
-		{
+        public void Tileswitcher( Recipe recipe ,int tileold, int tilenew) {
 			recipe.RemoveTile(tileold);
 			recipe.AddTile(tilenew);
 		}

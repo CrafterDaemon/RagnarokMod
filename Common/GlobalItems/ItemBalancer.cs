@@ -31,21 +31,9 @@ namespace RagnarokMod.Common.GlobalItems
 			|| item.type == thorium.Find<ModItem>("ThrowingGuide").Type
 		    || item.type == thorium.Find<ModItem>("ThrowingGuideVolume2").Type
 			|| item.type == thorium.Find<ModItem>("ThrowingGuideVolume3").Type
-			|| item.type == thorium.Find<ModItem>("TheOmegaCore").Type)
-			|| isHealerItem(item);
+			|| item.type == thorium.Find<ModItem>("TheOmegaCore").Type);
         }
 		
-		public bool isHealerItem(Item item) {
-			if (item.ModItem is ThoriumItem thoriumItem){
-				if (thoriumItem != null){
-					if(thoriumItem.isHealer){
-						return true;
-					}
-				}
-			}
-			return false;
-		}
-	
 		private static Dictionary<int, int> WeaponItemTypeToInteger;
 		
 		private static List<string> pointblankshots = new List<string> {
@@ -220,6 +208,9 @@ namespace RagnarokMod.Common.GlobalItems
 				
 				//Toolpowers
 				if(item.type == thorium.Find<ModItem>("ValadiumPickaxe").Type) {
+					item.pick = 120;
+				}
+				else if(item.type == thorium.Find<ModItem>("LodeStonePickaxe").Type) {
 					item.pick = 120;
 				}
 				else if(item.type == thorium.Find<ModItem>("FleshPickAxe").Type) {
