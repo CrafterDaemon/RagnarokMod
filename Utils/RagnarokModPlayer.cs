@@ -19,6 +19,7 @@ using ThoriumMod;
 using ThoriumMod.Utilities;
 using ThoriumMod.Empowerments;
 using ThoriumMod.Projectiles.Thrower;
+using ThoriumMod.Projectiles.Healer;
 using CalamityMod.Cooldowns;
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
@@ -55,8 +56,13 @@ namespace RagnarokMod.Utils{
 		public bool silvaHealer = false;
 		public bool bloodflareHealer = false;
 		public bool bloodflareBard = false;
+		public bool intergelacticBard = false;
+		public bool intergelacticHealer = false;
 		public int godslayerBardcurrentemp = 0;
 		public int godslayerBardcurrentemplevel = 0;
+		public int intergelacticBardcurrentemp = 0;
+		public int intergelacticBardcurrentemplevel = 0;
+		public int asteroidexhaustioncounter = 0;
 		private int bloodflarebloodlust = 0;
 		private int bloodflarepointtimer = 0;
 		public int elementalReaperCD = 0;
@@ -123,6 +129,19 @@ namespace RagnarokMod.Utils{
 					ModContent.GetInstance<DaedalusHeadBard>().NetApplyEmpowerments(base.Player, 0);	
 					this.Player.AddBuff(ModContent.BuffType<AntarcticExhaustionDebuff>(), 3600, true, false);
 					this.Player.AddBuff(ModContent.BuffType<AntarcticCreativityBuff>(), 900, true, false);
+				}
+				
+				if(intergelacticBard && asteroidexhaustioncounter == 0) {
+					asteroidexhaustioncounter = 1800;
+					SoundEngine.PlaySound(ThoriumSounds.PassbySurge, (Vector2?)null, (SoundUpdateCallback)null);
+					base.Player.GetModPlayer<ThoriumPlayer>().HealInspiration(100, false);
+				}
+				if(intergelacticHealer && asteroidexhaustioncounter == 0) {
+					asteroidexhaustioncounter = 1800;
+					SoundEngine.PlaySound(ThoriumSounds.PassbySurge, (Vector2?)null, (SoundUpdateCallback)null);
+					this.Player.statLife+= 50;
+					ThoriumPlayer thoriumPlayer = ThoriumMod.Utilities.PlayerHelper.GetThoriumPlayer(base.Player);
+					thoriumPlayer.shieldHealth += 100;
 				}
             }
         }
@@ -223,7 +242,6 @@ namespace RagnarokMod.Utils{
 				else {
 					bloodflarepointtimer--;
 				}
-				
 				if(bloodflarebloodlust >= 100) {
 						base.Player.moveSpeed += 0.25f;
 						ThoriumPlayer thoriumPlayer = ThoriumMod.Utilities.PlayerHelper.GetThoriumPlayer(base.Player);
@@ -233,6 +251,19 @@ namespace RagnarokMod.Utils{
 						thoriumPlayer.bardBuffDuration += 180;
 					}
 			}
+			if(intergelacticBard || intergelacticHealer) {
+				if(asteroidexhaustioncounter > 0) {
+					asteroidexhaustioncounter--;
+					if(intergelacticBard) {
+						if(asteroidexhaustioncounter == 1799) {
+							ModContent.GetInstance<IntergelacticRobohelm>().NetApplyEmpowerments(((ModPlayer)this).Player, 0);
+						}
+					}
+				} else{
+					asteroidexhaustioncounter = 0;
+				}
+			}
+				
 			if(batpoop) {
 				long effectivecoinvalue = 0;
 				// for every possible coin the 4 coin slots
@@ -408,7 +439,35 @@ namespace RagnarokMod.Utils{
 			if (this.bloodflareBard && projectile.DamageType == ThoriumDamageBase<BardDamage>.Instance){
 				ApplyBloodFlareOnHit(target, damageDone);
 			}
-			
+			if(this.intergelacticBard){
+				ModProjectile modProjectile = projectile.ModProjectile;
+				if (((modProjectile != null) ? modProjectile.Mod.Name : null) == "CatalystMod"){
+					ModProjectile modProjectile2 = projectile.ModProjectile;
+					if (((modProjectile2 != null) ? modProjectile2.Name : null) == "AstralRocksProj"){
+						Random rnd = new Random();
+						if(rnd.Next(0,20) == 0) {
+							intergelacticBardcurrentemp = rnd.Next(1,18);
+							intergelacticBardcurrentemplevel = rnd.Next(1,4);
+							ModContent.GetInstance<IntergelacticRobohelm>().NetApplyEmpowerments(((ModPlayer)this).Player, 0);
+							intergelacticBardcurrentemp = 0;
+							intergelacticBardcurrentemplevel = 0;
+						}
+					}
+				}
+			}
+			if(intergelacticHealer) {
+				ModProjectile modProjectile = projectile.ModProjectile;
+				if (((modProjectile != null) ? modProjectile.Mod.Name : null) == "CatalystMod"){
+					ModProjectile modProjectile2 = projectile.ModProjectile;
+					if (((modProjectile2 != null) ? modProjectile2.Name : null) == "AstralRocksProj"){
+						Random rnd = new Random();
+						if(rnd.Next(0,20) == 0) {
+							Projectile astralrock = modProjectile2.Projectile;
+							Projectile.NewProjectile( astralrock.GetSource_FromThis(),astralrock.Center, Vector2.Zero, ModContent.ProjectileType<HeartWandPro2>(), 0, 0, astralrock.owner);
+						}
+					}
+				}
+			}
 			if (projectile.IsThrown()) {
 				if(accShinobiSigilFix) {
 					ThoriumPlayer thoriumplayer = ThoriumMod.Utilities.PlayerHelper.GetThoriumPlayer(base.Player);
@@ -437,7 +496,6 @@ namespace RagnarokMod.Utils{
 						thoriumplayer.accShinobiSigilCrit = 0;
 					}
 				}
-				
 				int guideDamage = 0;
 				if (throwGuide3Fix){
 					guideDamage = (int)((double)projectile.damage * 0.175);
@@ -457,8 +515,7 @@ namespace RagnarokMod.Utils{
 						guideDamage = 50;
 					}
 				}
-				if (guideDamage > 0)
-				{
+				if (guideDamage > 0){
 					IEntitySource source = projectile.GetSource_OnHit(target, null);
 					Projectile.NewProjectile(source, target.Center, Vector2.Zero, ModContent.ProjectileType<ThrowingGuideFollowup>(), guideDamage, 0f, projectile.owner, (float)target.whoAmI, 0f, 0f);
 				}	
@@ -500,7 +557,6 @@ namespace RagnarokMod.Utils{
 				else {
 					bloodflarebloodlust = maxbloodlustpoints;
 				}	
-				
 				if(bloodflarebloodlust == 100) {
 					 SoundEngine.PlaySound(SoundID.NPCHit13, (Vector2?)null, (SoundUpdateCallback)null);
 				}
@@ -527,6 +583,8 @@ namespace RagnarokMod.Utils{
 				this.throwGuideFix = false;
 				this.throwGuide2Fix = false;
 				this.throwGuide3Fix = false;
+				this.intergelacticBard = false;
+				this.intergelacticHealer = false;
 		}
     }
 }

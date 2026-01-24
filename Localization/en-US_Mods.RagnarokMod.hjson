@@ -6,7 +6,7 @@ Buffs: {
 
 	AntarcticReinforcementBuff: {
 		DisplayName: Antarctic Reinforcement
-		Description: +8 defense, you healing spells will heal for an additional 2 life
+		Description: +8 defense, your healing spells will heal for an additional 2 life
 	}
 
 	AntarcticExhaustionDebuff: {
@@ -129,7 +129,7 @@ Items: {
 			25% increased radiant critical strike chance
 			5% increased movement speed
 			25% decreased mana usage
-			   Healing spells heal an additional 11 life
+			Healing spells heal an additional 11 life
 			+100 maximum mana
 			'''
 		SetBonus:
@@ -738,23 +738,6 @@ Items: {
 			'''
 	}
 
-	IntergelacticHeadBard: {
-		DisplayName: Intergelactic Hat
-		Tooltip:
-			'''
-			Reduces damage taken by 12%
-			Increases bard damage, critical strike change and playing speed by 15%
-			15% increased inspiration regeneration
-			+4 max inspiration and empowerments last 3 additional seconds
-			+10% chance for inspiration notes to drop from enemies
-			'''
-		SetBonus:
-			'''
-			Grants immunity to knockback and multiple movement debuffs
-			Your are immune to the Astral Blight
-			'''
-	}
-
 	Lamentation: {
 		DisplayName: Lamentation
 		Tooltip: Shoots homing brimstone fireblasts
@@ -763,6 +746,31 @@ Items: {
 	Virusprayer: {
 		DisplayName: Virusprayer
 		Tooltip: Shoots a barrage of acid bubbles
+	}
+
+	IntergelacticRobohelm: {
+		Tooltip:
+			'''
+			Increases symphonic damage, critical strike chance and playing speed by 20%
+			Increases inspiration regen by 15%
+			Increases max inspiration by 6
+			Increases empowerment duration by 3 seconds
+			Reduces damage taken by 12%
+			'''
+		DisplayName: Intergelactic Robohelm
+	}
+
+	IntergelacticRamhelm: {
+		Tooltip:
+			'''
+			Decreases non-radiant damage by 40%
+			Increases radiant damage by 30%
+			Increases radiant critical strike chance and attack speed by 15%
+			10% decreased mana usage
+			+60 maximum mana
+			Your healing spells will heal for an additional 5 life
+			'''
+		DisplayName: Intergelactic Ramhelm
 	}
 }
 

@@ -32,11 +32,10 @@ namespace RagnarokMod.Common.ModSystems
 		public static bool tbr_defense_damage = false;
 		public static bool tbr_configs_edited = false;
 		private static Mod ThoriumRework;
-		
 		private int timer = 0;
 		
         public override void PostAddRecipes(){
-			if(ModLoader.TryGetMod("CalamityBardHealer", out Mod CalamityBardHealer))				{
+			if(ModLoader.TryGetMod("CalamityBardHealer", out Mod CalamityBardHealer)){
 				if(ModContent.GetInstance<ModCompatConfig>().item_deduplication_mode == CalamityBardHealer_selection_mode.Off) {
 					ExchangeRecipe(CalamityBardHealer, ModContent.ItemType<AerospecBard>(),"AerospecHeadphones");
 					ExchangeRecipe(CalamityBardHealer, ModContent.ItemType<AerospecHealer>(),"AerospecBiretta");
@@ -52,6 +51,8 @@ namespace RagnarokMod.Common.ModSystems
 					ExchangeRecipe(CalamityBardHealer, ModContent.ItemType<StatigelHeadHealer>(),"StatigelFoxMask");
 					ExchangeRecipe(CalamityBardHealer, ModContent.ItemType<TarragonShroud>(),"TarragonChapeau");
 					ExchangeRecipe(CalamityBardHealer, ModContent.ItemType<TarragonCowl>(),"TarragonParagonCrown");
+					ExchangeRecipe(CalamityBardHealer, ModContent.ItemType<IntergelacticRobohelm>(),"IntergelacticCloche");
+					ExchangeRecipe(CalamityBardHealer, ModContent.ItemType<IntergelacticRamhelm>(),"IntergelacticProtectorHelm");
 						
 					//Weapons
 					ExchangeRecipe(CalamityBardHealer, ModContent.ItemType<AnahitasArpeggioOverride>(),"AnahitasArpeggio");
@@ -96,6 +97,8 @@ namespace RagnarokMod.Common.ModSystems
 					RemoveOwnRecipe(ModContent.ItemType<StatigelHeadHealer>());
 					RemoveOwnRecipe(ModContent.ItemType<TarragonShroud>());
 					RemoveOwnRecipe(ModContent.ItemType<TarragonCowl>());
+					RemoveOwnRecipe(ModContent.ItemType<IntergelacticRobohelm>());
+					RemoveOwnRecipe(ModContent.ItemType<IntergelacticRamhelm>());
 				}
 			}
         }

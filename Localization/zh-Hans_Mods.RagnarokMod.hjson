@@ -732,23 +732,6 @@ Items: {
 			'''
 	}
 
-	IntergelacticHeadBard: {
-		// DisplayName: Intergelactic Hat
-		/* Tooltip:
-			'''
-			Reduces damage taken by 12%
-			Increases bard damage, critical strike change and playing speed by 15%
-			15% increased inspiration regeneration
-			+4 max inspiration and empowerments last 3 additional seconds
-			+10% chance for inspiration notes to drop from enemies
-			''' */
-		/* SetBonus:
-			'''
-			Grants immunity to knockback and multiple movement debuffs
-			Your are immune to the Astral Blight
-			''' */
-	}
-
 	Lamentation: {
 		DisplayName: 嗟叹
 		Tooltip: 发射带有追踪功能的硫磺火
@@ -757,6 +740,31 @@ Items: {
 	Virusprayer: {
 		DisplayName: 病毒喷雾器
 		Tooltip: ""
+	}
+
+	IntergelacticRobohelm: {
+		/* Tooltip:
+			'''
+			Increases symphonic damage, critical strike chance and playing speed by 20%
+			Increases inspiration regen by 15%
+			Increases max inspiration by 6
+			Increases empowerment duration by 3 seconds
+			Reduces damage taken by 12%
+			''' */
+		// DisplayName: Intergelactic Robohelm
+	}
+
+	IntergelacticRamhelm: {
+		/* Tooltip:
+			'''
+			Decreases non-radiant damage by 40%
+			Increases radiant damage by 30%
+			Increases radiant critical strike chance and attack speed by 15%
+			10% decreased mana usage
+			+60 maximum mana
+			Your healing spells will heal for an additional 5 life
+			''' */
+		// DisplayName: Intergelactic Ramhelm
 	}
 }
 
