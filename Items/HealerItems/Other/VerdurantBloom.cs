@@ -42,7 +42,7 @@ namespace RagnarokMod.Items.HealerItems.Other
     	this.Item.mana = 10;
     	this.Item.damage = 165;
     	this.healType = HealType.Ally;
-    	this.healAmount = 5;
+    	this.healAmount = 2;
     	this.healDisplay = true;
     	this.isHealer = true;
     	this.Item.width = 34;

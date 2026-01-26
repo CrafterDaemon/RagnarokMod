@@ -39,7 +39,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
       {
         Projectile.TryGetOwner(out Player player);
         Player searchPlayer = Main.player[i];
-        if (searchPlayer.active && !searchPlayer.dead && !searchPlayer.hostile && searchPlayer.team == player.team && searchPlayer.team != 0 || searchPlayer != player)
+        if (searchPlayer.active && !searchPlayer.dead && !searchPlayer.hostile && searchPlayer.team == player.team && searchPlayer.team != 0 && searchPlayer != player)
         {
           double distance = Vector2.Distance(searchPlayer.Center, Projectile.Center);
           if (distance <= 10)
