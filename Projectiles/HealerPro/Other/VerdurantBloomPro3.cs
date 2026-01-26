@@ -30,25 +30,35 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
       return new Color?(new Color((int) byte.MaxValue, (int) byte.MaxValue, (int) byte.MaxValue, 150) * (1f * this.Projectile.Opacity));
     }
 
-    public override void AI()
-    {
-      Projectile.rotation = Projectile.velocity.ToRotation();
-      Projectile projectile = this.Projectile;
-      ((Entity) projectile).velocity = ((Entity) projectile).velocity * 0.97f;
-      for (int i = 0; i < Main.maxPlayers; i++)
-      {
-        Projectile.TryGetOwner(out Player player);
-        Player searchPlayer = Main.player[i];
-        if (searchPlayer.active && !searchPlayer.dead && !searchPlayer.hostile && searchPlayer.team == player.team && searchPlayer.team != 0 && searchPlayer != player)
+        public override void AI()
         {
-          double distance = Vector2.Distance(searchPlayer.Center, Projectile.Center);
-          if (distance <= 10)
-          {
-            Projectile.ThoriumHeal(2, specificPlayer: i, ignoreHealer: false);
-            Projectile.Kill();
-          }
+            Projectile.rotation = Projectile.velocity.ToRotation();
+            Projectile.velocity *= 0.97f;
+
+            if (!Projectile.TryGetOwner(out Player owner))
+                return;
+
+            for (int i = 0; i < Main.maxPlayers; i++)
+            {
+                Player p = Main.player[i];
+
+                if (!p.active || p.dead)
+                    continue;
+
+                if (p.whoAmI == owner.whoAmI)
+                    continue;
+
+                if (owner.team == 0 || p.team != owner.team)
+                    continue;
+
+                if (Projectile.Hitbox.Intersects(p.Hitbox))
+                {
+                    Projectile.ThoriumHeal(2, specificPlayer: p.whoAmI, ignoreHealer: false);
+                    Projectile.Kill();
+                    break;
+                }
+            }
         }
-      }
+
     }
-  }
 }
