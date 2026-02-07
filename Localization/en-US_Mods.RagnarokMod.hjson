@@ -65,8 +65,8 @@ Buffs: {
 	}
 
 	KellyPetBuff: {
-		Description: Kelly!
-		DisplayName: Kelly
+		Description: Kelly will follow you.
+		DisplayName: Kelly!
 	}
 }
 
@@ -780,11 +780,12 @@ Items: {
 
 	KellyPet: {
 		Tooltip:
-		'''
-		Summons Kelly
-		Donor Item
-		'''
-		DisplayName: Kelly Pet
+			'''
+			Summons Kelly to follow you
+			Donor Item by HayWire799
+			Sprites by Zenovia
+			'''
+		DisplayName: Wand of Anarchi
 	}
 }
 

@@ -82,7 +82,7 @@ namespace RagnarokMod.Items.HealerItems.Other
 			recipe.AddIngredient(ModContent.ItemType<TheGoodBook>());
 			//recipe.AddIngredient(ModContent.ItemType<RecoveryWand>());
 			recipe.AddIngredient(ItemID.CrimtaneBar, 4);
-			recipe.AddIngredient(ItemID.Vertebrae, 4);
+			recipe.AddIngredient(ItemID.TissueSample, 4);
 			recipe.AddIngredient(ModContent.ItemType<AerialiteBar>(), 8);
 			recipe.AddTile(TileID.Anvils);
 			recipe.Register();

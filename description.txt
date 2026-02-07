@@ -1,6 +1,20 @@
 Ragnarok. A great calamity in norse mythology, Is now a mod that intends to allow Thorium and Calamity to be used together with minimal issues. 
 Adds more content for Thorium classes, Merges Thrower + Rogue, and creates a more coherent experience throughout all stages of the game.
 
+[h1]Update 1.4.5[/h1]
+(Brainstorm Compat Update)
+[list]
+[*] Updated to Calamity 2.1: Brainstorm.
+[*] Added new item: Wand of Anarchi. (Donor item by HayWire799, Art by Zenovia)
+[*] Added server-side config option to adjust bonus healing modifier.
+[*] Adjusted the Unstable Core, Ancient Blade, & Star Caller recipes to use Aerialite Bars and Tissue Samples/Shadow Scales instead of Blood Sample/Rotten Matter.
+[*] Adjusted the Equivalent Exchange recipe to use 8 Aerialite Bars and 4 Tissue Samples instead of Blood Samples.
+[*] Added Intergelactic Helmets for Bard and Healer. (Catalyst support)
+[*] Lodestone recipes now require an anvil.
+[*] Lodestone Pickaxe now has a pickaxe power of 120.
+[*] Fixed a bug with Verdurant Bloom that caused it to self-heal, and improperly display healing.
+[/list]
+
 [h1]Hotfix 1.4.4.7[/h1]
 (IEoR Collab Update :D)
 [list]

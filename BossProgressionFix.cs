@@ -96,6 +96,7 @@ namespace RagnarokMod
                     .AddIngredient(ItemID.GraniteBlock, 25)
                     .AddIngredient<GraniteEnergyCore>(4)
                     .AddIngredient<AerialiteBar>(5)
+                    .AddIngredient(ItemID.ShadowScale, 8)
                     .AddIngredient<DraculaFang>(100)
                     .AddTile(TileID.Anvils)
                     .Register();
@@ -103,6 +104,7 @@ namespace RagnarokMod
                     .AddIngredient(ItemID.GraniteBlock, 25)
                     .AddIngredient<GraniteEnergyCore>(4)
                     .AddIngredient<AerialiteBar>(5)
+                    .AddIngredient(ItemID.TissueSample, 8)
                     .AddIngredient<DraculaFang>(100)
                     .AddTile(TileID.Anvils)
                     .Register();
@@ -116,6 +118,7 @@ namespace RagnarokMod
                     .AddIngredient(ItemID.MarbleBlock, 25)
                     .AddIngredient<BronzeAlloyFragments>(4)
                     .AddIngredient<AerialiteBar>(5)
+                    .AddIngredient(ItemID.ShadowScale, 8)
                     .AddIngredient<DraculaFang>(100)
                     .AddTile(TileID.Anvils)
                     .Register();
@@ -123,6 +126,7 @@ namespace RagnarokMod
                     .AddIngredient(ItemID.MarbleBlock, 25)
                     .AddIngredient<BronzeAlloyFragments>(4)
                     .AddIngredient<AerialiteBar>(5)
+                    .AddIngredient(ItemID.TissueSample, 8)
                     .AddIngredient<DraculaFang>(100)
                     .AddTile(TileID.Anvils)
                     .Register();
@@ -150,6 +154,7 @@ namespace RagnarokMod
                     .AddIngredient(ItemID.MeteoriteBar, 10)
                     .AddIngredient<StrangeAlienTech>()
                     .AddIngredient<AerialiteBar>(5)
+                    .AddIngredient(ItemID.TissueSample, 8)
                     .AddTile(TileID.Anvils)
                     .Register();
 
@@ -157,6 +162,7 @@ namespace RagnarokMod
                     .AddIngredient(ItemID.MeteoriteBar, 10)
                     .AddIngredient<StrangeAlienTech>()
                     .AddIngredient<AerialiteBar>(5)
+                    .AddIngredient(ItemID.ShadowScale, 8)
                     .AddTile(TileID.Anvils)
                     .Register();
             }

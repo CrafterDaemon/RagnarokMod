@@ -65,8 +65,8 @@ Buffs: {
 	}
 
 	KellyPetBuff: {
-		// Description: Mods.RagnarokMod.Buffs.KellyPetBuff.Description
-		// DisplayName: Kelly
+		// Description: Kelly will follow you.
+		// DisplayName: Kelly!
 	}
 }
 
@@ -773,8 +773,13 @@ Items: {
 	}
 
 	KellyPet: {
-		// Tooltip: Summons Kelly
-		// DisplayName: Kelly Pet
+		/* Tooltip:
+			'''
+			Summons Kelly to follow you
+			Donor Item by HayWire799
+			Sprites by Zenovia
+			''' */
+		// DisplayName: Wand of Anarchi
 	}
 }
 
