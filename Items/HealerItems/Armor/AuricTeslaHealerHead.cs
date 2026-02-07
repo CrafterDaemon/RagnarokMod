@@ -37,7 +37,7 @@ namespace RagnarokMod.Items.HealerItems.Armor
             Item.height = 18;
             Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
             Item.defense = 27; //132
-            Item.rare = ModContent.RarityType<Violet>();
+            Item.rare = ModContent.RarityType<BurnishedAuric>();
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -77,7 +77,7 @@ namespace RagnarokMod.Items.HealerItems.Armor
 
         public override void UpdateEquip(Player player)
         {
-            var modPlayer = player.Calamity();
+            var modPlayer = player.GetRagnarokModPlayer();
             modPlayer.auricBoost = true;
             player.moveSpeed += 0.05f;
 			player.manaCost *= 0.75f;

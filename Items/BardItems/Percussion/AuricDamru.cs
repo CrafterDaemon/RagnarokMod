@@ -56,7 +56,7 @@ namespace RagnarokMod.Items.BardItems.Percussion
             Item.autoReuse = true;
             Item.knockBack = 0.5f;
             Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
-            Item.rare = ModContent.RarityType<Violet>();
+            Item.rare = ModContent.RarityType<BurnishedAuric>();
             Item.UseSound = new SoundStyle?(SoundID.Item1);
             Item.UseSound = new SoundStyle?(ThoriumSounds.Bongo);
             Item.shoot = ModContent.ProjectileType<AuricDamruShock>();

@@ -74,7 +74,7 @@ namespace RagnarokMod.Common.GlobalItems
                 RecipeHelper helper = new(item);
                 helper.Remove(ItemID.TerrasparkBoots);
             }
-            finder.LookFor(ModContent.ItemType<TracersCelestial>(), 1);
+            finder.LookFor(ModContent.ItemType<MoonWalkers>(), 1);
             foreach (Recipe item in finder.Search())
             {
                 RecipeHelper helper = new(item);

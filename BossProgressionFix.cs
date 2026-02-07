@@ -95,14 +95,14 @@ namespace RagnarokMod
                 Recipe.Create(ModContent.ItemType<UnstableCore>())
                     .AddIngredient(ItemID.GraniteBlock, 25)
                     .AddIngredient<GraniteEnergyCore>(4)
-                    .AddIngredient<BloodSample>(5)
+                    .AddIngredient<AerialiteBar>(5)
                     .AddIngredient<DraculaFang>(100)
                     .AddTile(TileID.Anvils)
                     .Register();
                 Recipe.Create(ModContent.ItemType<UnstableCore>())
                     .AddIngredient(ItemID.GraniteBlock, 25)
                     .AddIngredient<GraniteEnergyCore>(4)
-                    .AddIngredient<RottenMatter>(5)
+                    .AddIngredient<AerialiteBar>(5)
                     .AddIngredient<DraculaFang>(100)
                     .AddTile(TileID.Anvils)
                     .Register();
@@ -115,14 +115,14 @@ namespace RagnarokMod
                 Recipe.Create(ModContent.ItemType<AncientBlade>())
                     .AddIngredient(ItemID.MarbleBlock, 25)
                     .AddIngredient<BronzeAlloyFragments>(4)
-                    .AddIngredient<BloodSample>(5)
+                    .AddIngredient<AerialiteBar>(5)
                     .AddIngredient<DraculaFang>(100)
                     .AddTile(TileID.Anvils)
                     .Register();
                 Recipe.Create(ModContent.ItemType<AncientBlade>())
                     .AddIngredient(ItemID.MarbleBlock, 25)
                     .AddIngredient<BronzeAlloyFragments>(4)
-                    .AddIngredient<RottenMatter>(5)
+                    .AddIngredient<AerialiteBar>(5)
                     .AddIngredient<DraculaFang>(100)
                     .AddTile(TileID.Anvils)
                     .Register();
@@ -149,14 +149,14 @@ namespace RagnarokMod
                 Recipe.Create(ModContent.ItemType<StarCaller>())
                     .AddIngredient(ItemID.MeteoriteBar, 10)
                     .AddIngredient<StrangeAlienTech>()
-                    .AddIngredient<BloodSample>(5)
+                    .AddIngredient<AerialiteBar>(5)
                     .AddTile(TileID.Anvils)
                     .Register();
 
                 Recipe.Create(ModContent.ItemType<StarCaller>())
                     .AddIngredient(ItemID.MeteoriteBar, 10)
                     .AddIngredient<StrangeAlienTech>()
-                    .AddIngredient<RottenMatter>(5)
+                    .AddIngredient<AerialiteBar>(5)
                     .AddTile(TileID.Anvils)
                     .Register();
             }
@@ -241,13 +241,13 @@ namespace RagnarokMod
 
             if (ModContent.GetInstance<BossProgressionConfig>().RuneOfKos)
             {
-                getter.LookFor(ModContent.ItemType<RuneofKos>(), 1);
+                getter.LookFor(ModContent.ItemType<MarkofProvidence>(), 1);
                 foreach (Recipe item in getter.Search())
                 {
                     RecipeHelper helper = new(item);
                     helper.Disable();
                 }
-                Recipe.Create(ModContent.ItemType<RuneofKos>())
+                Recipe.Create(ModContent.ItemType<MarkofProvidence>())
                     .AddIngredient(ModContent.ItemType<DivineGeode>(), 50)
                     .AddIngredient(ModContent.ItemType<InfernoEssence>(), 10)
                     .AddIngredient(ModContent.ItemType<OceanEssence>(), 10)

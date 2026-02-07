@@ -3,3 +3,4 @@ author = CrafterDaemon & The Ragnarok Team
 version = 1.4.4.9
 modReferences = ThoriumMod, CalamityMod
 sortAfter = ThoriumMod, CalamityMod
+buildIgnore = .vs\*, Properties\*, *.csproj, *.user, obj\*, bin\*, *.config, .git\*, .github\*, LICENSE, README.md, .editorconfig, .gitignore, .gitattributes, lib\*

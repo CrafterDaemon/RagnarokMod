@@ -31,7 +31,7 @@ namespace RagnarokMod.Items.HealerItems.Scythes
             base.Item.useTime = 20;
 
             base.Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
-            base.Item.rare = ModContent.RarityType<DarkBlue>();
+            base.Item.rare = ModContent.RarityType<CosmicPurple>();
             base.Item.shoot = ModContent.ProjectileType<NightmareFreezerPro>();
             base.Item.shootSpeed = 0.1f;
         }

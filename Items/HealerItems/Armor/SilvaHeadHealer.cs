@@ -15,6 +15,7 @@ using CalamityMod.Items.Placeables;
 using ThoriumMod;
 using ThoriumMod.Items;
 using ThoriumMod.Utilities;
+using CalamityMod.Items.Placeables.Abyss;
 
 namespace RagnarokMod.Items.HealerItems.Armor
 {
@@ -35,7 +36,7 @@ namespace RagnarokMod.Items.HealerItems.Armor
 			base.Item.height = 22;
 			base.Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
 			base.Item.defense = 23;
-			base.Item.rare = ModContent.RarityType<DarkBlue>();
+			base.Item.rare = ModContent.RarityType<CosmicPurple>();
 		}
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)

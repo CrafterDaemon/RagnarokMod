@@ -36,7 +36,7 @@ namespace RagnarokMod.Items.HealerItems.Scythes
             base.Item.width = 94;
             base.Item.height = 106;
             base.Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
-            base.Item.rare = ModContent.RarityType<Violet>();
+            base.Item.rare = ModContent.RarityType<BurnishedAuric>();
             base.Item.shoot = ModContent.ProjectileType<ExecutionerMark05Pro>();
 
         }

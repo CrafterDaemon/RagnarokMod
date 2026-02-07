@@ -40,7 +40,7 @@ namespace RagnarokMod.Items.HealerItems.Scythes
             base.Item.width = 54;
             base.Item.height = 42;
             base.Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
-            base.Item.rare = ModContent.RarityType<DarkBlue>();
+            base.Item.rare = ModContent.RarityType<CosmicPurple>();
             base.Item.shoot = ModContent.ProjectileType<MarbleScythePro>();
         }
         public override void AddRecipes()

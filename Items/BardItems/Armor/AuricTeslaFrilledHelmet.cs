@@ -44,7 +44,7 @@ namespace RagnarokMod.Items.BardItems.Armor
             Item.height = 18;
             Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
             Item.defense = 30; //132
-            Item.rare = ModContent.RarityType<Violet>();
+            Item.rare = ModContent.RarityType<BurnishedAuric>();
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -79,9 +79,11 @@ namespace RagnarokMod.Items.BardItems.Armor
 
         public override void UpdateEquip(Player player)
         {
-            var modPlayer = player.Calamity();
-            modPlayer.auricBoost = true;
+            //var modPlayer = player.Calamity();
+            //modPlayer.auric = true; removed in Cal 2.1
             player.moveSpeed += 0.05f;
+
+            player.GetRagnarokModPlayer().auricBoost = true;
 
             ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
             thoriumPlayer.bardResourceMax2 += 15;

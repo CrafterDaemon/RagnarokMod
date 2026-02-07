@@ -48,7 +48,10 @@ namespace Ragnarok.Projectiles
                     Projectile.active = false;
                     return;
                 }
-                if (!player.ActiveItem().CountsAsClass<BardDamage>())
+
+                Item activeItem = !Main.mouseItem.IsAir ? Main.mouseItem : player.HeldItem;
+
+                if (!activeItem.CountsAsClass<BardDamage>())
                 {
                     Projectile.active = false;
                     return;

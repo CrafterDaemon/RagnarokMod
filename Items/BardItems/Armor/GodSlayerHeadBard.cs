@@ -30,7 +30,7 @@ namespace RagnarokMod.Items.BardItems.Armor
             Item.height = 18;
             Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
             Item.defense = 22;
-            Item.rare = ModContent.RarityType<DarkBlue>();
+            Item.rare = ModContent.RarityType<CosmicPurple>();
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -51,7 +51,7 @@ namespace RagnarokMod.Items.BardItems.Armor
             player.setBonus = this.GetLocalizedValue("SetBonus") + "\n" + CalamityUtils.GetTextFromModItem<GodSlayerChestplate>("CommonSetBonus").Format(new object[]
             {
                 hotkey,
-                GodslayerArmorDash.GodslayerCooldown
+                GodSlayerChestplate.DashCooldown.FramesToSeconds()
             });
             if (calamityPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && calamityPlayer.LastUsedDashID == GodslayerArmorDash.ID)
             {

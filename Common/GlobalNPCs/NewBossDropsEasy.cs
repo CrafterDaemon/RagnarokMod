@@ -126,7 +126,7 @@ namespace RagnarokMod.Common.GlobalNPCs
             {
                 if (npc.type == ModContent.NPCType<Providence>()){
                     // Remove Rune of Kos
-                    IItemDropRule itemDrop = ItemDropRule.Common(ModContent.ItemType<RuneofKos>());
+                    IItemDropRule itemDrop = ItemDropRule.Common(ModContent.ItemType<MarkofProvidence>());
                     bool waitingForChange = true;
                     while (waitingForChange && DownedBossSystem.downedProvidence){
                         foreach (var item in npcLoot.Get()){

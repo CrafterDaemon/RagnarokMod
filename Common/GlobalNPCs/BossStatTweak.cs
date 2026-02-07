@@ -410,7 +410,7 @@ namespace RagnarokMod.Common.GlobalNPCs
 				if ( npc.type == thorium.Find<ModNPC>(boss.Key).Type ) 
 				{
 					// Applying Damage Reduction
-					npc.DR_NERD(boss.Value, null, null, null, null);
+					npc.DR_NERD(boss.Value);
 				}
 			}
 		}	

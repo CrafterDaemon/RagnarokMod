@@ -46,7 +46,7 @@ namespace RagnarokMod.Items.BardItems.Electronic
             Item.autoReuse = true;
             Item.knockBack = 20f;
             Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
-            Item.rare = ModContent.RarityType<Violet>();
+            Item.rare = ModContent.RarityType<BurnishedAuric>();
             Item.UseSound = new SoundStyle?(ThoriumSounds.Didgeridoo);
             Item.shoot = ModContent.ProjectileType<KorobeinikiPro1>();
             Item.shootSpeed = 0.1f;

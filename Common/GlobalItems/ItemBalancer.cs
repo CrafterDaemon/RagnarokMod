@@ -232,7 +232,7 @@ namespace RagnarokMod.Common.GlobalItems
 		{
 			if (item.defense > 0) {
 				if(item.type == thorium.Find<ModItem>("DepthDiverHelmet").Type) {
-					if (Main.netMode == 1 && Main.myPlayer != player.whoAmI){
+					if (Main.netMode == NetmodeID.MultiplayerClient && Main.myPlayer != player.whoAmI){
 						Player localPlayer = Main.LocalPlayer;
 						if (localPlayer.DistanceSQ(player.Center) < 62500f){
 							localPlayer.AddBuff(ModContent.BuffType<DepthDiverAura>(), 30, true, false);

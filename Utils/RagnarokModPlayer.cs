@@ -73,6 +73,7 @@ namespace RagnarokMod.Utils{
 		public bool throwGuideFix = false;
 		public bool throwGuide2Fix = false;
 		public bool throwGuide3Fix = false;
+		public bool auricBoost;
 
 		public override void OnHurt(Player.HurtInfo info){
 			if (bloodflareHealer || bloodflareBard){
@@ -324,7 +325,7 @@ namespace RagnarokMod.Utils{
 		// Fixes the RogueUseTime problem, that occurs, because Thorium implements features like buffs that can effect item use times, which is incompatible with the Calamity Rogue Stealthmode usetime / attackspeed check.
 		private void ApplyRogueUseTimeFix() {
 			var calamityPlayer = base.Player.Calamity();
-			Item it = base.Player.ActiveItem();
+            Item it = !Main.mouseItem.IsAir ? Main.mouseItem : Player.HeldItem;
             if (!calamityPlayer.wearingRogueArmor || it.useAnimation == it.useTime) // When the player does not wear a rogue armor or the item animation and usetime is the same, the fix does not have to be applied.
 			{
 				return;
@@ -563,28 +564,59 @@ namespace RagnarokMod.Utils{
 		}
 		
 		public override void ResetEffects(){
-				if(this.tarraBard == false  && this.tarraHealer == false) {
-					bloodflarebloodlust = 0;
-				}
-				this.brimstoneFlamesOnHit = false;
-				this.tarraHealer = false;
-				this.tarraBard = false;
-				this.daedalusHealer = false;
-				this.daedalusBard = false;
-				this.godslayerBard = false;
-				this.silvaHealer = false;
-				this.bloodflareHealer = false;
-				this.bloodflareBard = false;
-				this.auricBardSet = false;
-		        this.auricHealerSet = false;
-				this.batpoop = false;
-				this.accShinobiSigilFix = false;
-				this.blightAccFix = false;
-				this.throwGuideFix = false;
-				this.throwGuide2Fix = false;
-				this.throwGuide3Fix = false;
-				this.intergelacticBard = false;
-				this.intergelacticHealer = false;
-		}
+			if (this.tarraBard == false  && this.tarraHealer == false)
+				bloodflarebloodlust = 0;
+
+			this.brimstoneFlamesOnHit = false;
+			this.tarraHealer = false;
+			this.tarraBard = false;
+			this.daedalusHealer = false;
+			this.daedalusBard = false;
+			this.godslayerBard = false;
+			this.silvaHealer = false;
+			this.bloodflareHealer = false;
+			this.bloodflareBard = false;
+			this.auricBardSet = false;
+		    this.auricHealerSet = false;
+			this.batpoop = false;
+			this.accShinobiSigilFix = false;
+			this.blightAccFix = false;
+			this.throwGuideFix = false;
+			this.throwGuide2Fix = false;
+			this.throwGuide3Fix = false;
+			this.intergelacticBard = false;
+			this.intergelacticHealer = false;
+			auricBoost = false;
+        }
+
+        public override void UpdateDead()
+        {
+            this.brimstoneFlamesOnHit = false;
+            this.tarraHealer = false;
+            this.tarraBard = false;
+            this.daedalusHealer = false;
+            this.daedalusBard = false;
+            this.godslayerBard = false;
+            this.silvaHealer = false;
+            this.bloodflareHealer = false;
+            this.bloodflareBard = false;
+            this.auricBardSet = false;
+            this.auricHealerSet = false;
+            this.batpoop = false;
+            this.accShinobiSigilFix = false;
+            this.blightAccFix = false;
+            this.throwGuideFix = false;
+            this.throwGuide2Fix = false;
+            this.throwGuide3Fix = false;
+            this.intergelacticBard = false;
+            this.intergelacticHealer = false;
+            auricBoost = false;
+        }
+
+        public override void ModifyWeaponKnockback(Item item, ref StatModifier knockback)
+        {
+			if (auricBoost)
+				knockback.Flat += item.knockBack * 0.5f;
+        }
     }
 }

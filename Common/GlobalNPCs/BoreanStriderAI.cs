@@ -41,7 +41,7 @@ namespace RagnarokMod.Common.GlobalNPCs
 			if(fangtimer >= timermax) {
 				if(fangtimer >= 8000) { fangtimer = timermax;}
 				if(Collision.CanHit(npc.position, npc.width, npc.height, target.position, target.width, target.height)) {
-					if (Main.netMode != 1){
+					if (Main.netMode != NetmodeID.MultiplayerClient){
 						Vector2 vector = npc.DirectionTo(target.Center);
 						Projectile.NewProjectile(npc.GetSource_FromAI(null), npc.Center, vector * velocity, ModContent.ProjectileType<BlizzardFang>(), 25, 0f, Main.myPlayer, 0f, 0f, 0f);
 					}

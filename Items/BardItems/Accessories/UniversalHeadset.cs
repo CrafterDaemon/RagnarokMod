@@ -22,7 +22,7 @@ namespace RagnarokMod.Items.BardItems.Accessories
             Item.width = 24;
             Item.height = 24;
             Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
-            Item.rare = ModContent.RarityType<DarkBlue>();
+            Item.rare = ModContent.RarityType<CosmicPurple>();
             Item.accessory = true;
         }
 

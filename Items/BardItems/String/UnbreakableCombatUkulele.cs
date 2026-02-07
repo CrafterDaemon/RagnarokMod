@@ -50,7 +50,7 @@ namespace RagnarokMod.Items.BardItems.String
             Item.autoReuse = true;
             Item.knockBack = 20f;
             Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
-            Item.rare = ModContent.RarityType<DarkBlue>();
+            Item.rare = ModContent.RarityType<CosmicPurple>();
             Item.UseSound = new SoundStyle?(ThoriumSounds.SuperGuitarNoise);
             Item.shoot = ModContent.ProjectileType<UnbreakableCombatUkulelePro1>();
             Item.shootSpeed = 20;

@@ -17,6 +17,7 @@ using CalamityMod.Tiles.Furniture.CraftingStations;
 using ThoriumMod;
 using ThoriumMod.Items;
 using ThoriumMod.Utilities;
+using CalamityMod.Tiles.FurnitureStatigel;
 
 
 namespace RagnarokMod.Items.BardItems.Armor

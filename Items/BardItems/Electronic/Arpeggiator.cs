@@ -48,7 +48,7 @@ namespace RagnarokMod.Items.BardItems.Electronic
             Item.autoReuse = true;
             Item.knockBack = 20f;
             Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
-            Item.rare = ModContent.RarityType<DarkBlue>();
+            Item.rare = ModContent.RarityType<CosmicPurple>();
             Item.UseSound = new SoundStyle?(ThoriumSounds.BlackMidi);
             Item.shoot = ModContent.ProjectileType<ArpeggiatorPro1>();
             Item.shootSpeed = 20;

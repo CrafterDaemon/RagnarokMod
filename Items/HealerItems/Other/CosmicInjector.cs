@@ -52,7 +52,7 @@ namespace RagnarokMod.Items.HealerItems.Other
     	this.Item.noMelee = true;
     	this.Item.knockBack = 4f;
     	this.Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
-    	this.Item.rare = ModContent.RarityType<DarkBlue>();
+    	this.Item.rare = ModContent.RarityType<CosmicPurple>();
     	this.Item.UseSound = new SoundStyle?(SoundID.Item17);
     	this.Item.autoReuse = true;
     	this.Item.shoot = ModContent.ProjectileType<CosmicInjectorPro1>();

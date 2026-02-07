@@ -19,6 +19,7 @@ using CalamityMod.Items.Placeables;
 using CalamityMod;
 using CalamityMod.Buffs.StatDebuffs;
 using CalamityMod.Items;
+using CalamityMod.Items.Placeables.FurnitureAcidwood;
 
 namespace RagnarokMod.Items.HealerItems.Other
 {
@@ -74,7 +75,7 @@ namespace RagnarokMod.Items.HealerItems.Other
 			Recipe recipe = Recipe.Create(Item.type);
 			recipe.AddIngredient(ModContent.ItemType<Acidwood>(), 30);
 			recipe.AddIngredient(ModContent.ItemType<SulphuricScale>(), 12);
-			recipe.AddTile(16);
+			recipe.AddTile(TileID.Anvils);
 			recipe.Register();
 		}
 		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone) {

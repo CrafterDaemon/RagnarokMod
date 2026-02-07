@@ -1,32 +1,14 @@
-using Terraria.GameContent.ItemDropRules;
 using Terraria;
 using Terraria.ModLoader;
 using ThoriumMod.Items.BossTheGrandThunderBird;
-using RagnarokMod.Items.Materials;
 using ThoriumMod.Items.BossStarScouter;
 using ThoriumMod.Items.BossGraniteEnergyStorm;
 using ThoriumMod.Items.BossBuriedChampion;
 using ThoriumMod.Items.BossBoreanStrider;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
-using Terraria.DataStructures;
-using Terraria.ID;
-using Terraria.ModLoader;
-using RagnarokMod.Utils;
 using ThoriumMod.Items.BossFallenBeholder;
 using ThoriumMod.Items.BossQueenJellyfish;
 using ThoriumMod.Items.BossForgottenOne;
-using ThoriumMod.Items.BossViscount;
-using ThoriumMod.Items.BossBuriedChampion;
-using ThoriumMod.Items.BossStarScouter;
-using ThoriumMod.Items.BossBoreanStrider;
-using ThoriumMod.Items.BossFallenBeholder;
-using ThoriumMod.Items.BossForgottenOne;
 using ThoriumMod.Items.BossThePrimordials;
-using RagnarokMod.Items.BardItems.Percussion;
-using RagnarokMod.Items.HealerItems.Scythes;
 
 namespace RagnarokMod.Common.GlobalItems
 {

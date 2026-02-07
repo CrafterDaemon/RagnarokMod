@@ -16,7 +16,6 @@ using ThoriumMod.Projectiles.Boss;
 using RagnarokMod.Utils;
 using RagnarokMod.Common.ModSystems;
 using RagnarokMod.Common.Configs;
-using RagnarokMod.Utils;
 
 namespace RagnarokMod.Common.GlobalNPCs
 {

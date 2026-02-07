@@ -870,7 +870,7 @@ Configs: {
 
 		MarbleGranite: {
 			Label: Granite Energy Core and Buried Champion Recipe Changes
-			Tooltip: Changes Ancient Blade and Unstable Core to require Rotten Matter/Blood Samples and Dracula Fangs. Defaults to True
+			Tooltip: Changes Ancient Blade and Unstable Core to require Aerialite Bars and Dracula Fangs. Defaults to True
 		}
 
 		OverloadedSludge: {
@@ -880,7 +880,7 @@ Configs: {
 
 		StarCaller: {
 			Label: Star Scouter Recipe Change
-			Tooltip: Changes Star Caller to use Rotten Matter/Blood Samples. Defaults to True
+			Tooltip: Changes Star Caller to use Aerialite Bars. Defaults to True
 		}
 
 		CryoKey: {

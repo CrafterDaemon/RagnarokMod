@@ -51,7 +51,7 @@ namespace RagnarokMod.Items.BardItems.String
             Item.autoReuse = true;
             Item.knockBack = 20f;
             Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
-            Item.rare = ModContent.RarityType<Violet>();
+            Item.rare = ModContent.RarityType<BurnishedAuric>();
             Item.UseSound = new SoundStyle?(SoundID.Item47);
             Item.shoot = ModContent.ProjectileType<DragonForcePro1>();
             Item.shootSpeed = 20;
