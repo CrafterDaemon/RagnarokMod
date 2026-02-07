@@ -63,6 +63,11 @@ Buffs: {
 		DisplayName: Auric Surge
 		Description: Mods.RagnarokMod.Buffs.AuricSurge.Description
 	}
+
+	KellyPetBuff: {
+		Description: Kelly!
+		DisplayName: Kelly
+	}
 }
 
 Items: {
@@ -772,6 +777,15 @@ Items: {
 			'''
 		DisplayName: Intergelactic Ramhelm
 	}
+
+	KellyPet: {
+		Tooltip:
+		'''
+		Summons Kelly
+		Donor Item
+		'''
+		DisplayName: Kelly Pet
+	}
 }
 
 Projectiles: {
@@ -846,6 +860,7 @@ Projectiles: {
 	LamentationPro.DisplayName: Lamentation Pro
 	VirusprayerPro1.DisplayName: Virusprayer Pro1
 	VirusprayerPro2.DisplayName: Virusprayer Pro2
+	KellyPetProjectile.DisplayName: Kelly Pet Projectile
 }
 
 Configs: {
