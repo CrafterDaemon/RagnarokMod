@@ -74,7 +74,7 @@ namespace RagnarokMod.Common.GlobalNPCs
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<QueenJelly>(), 1, 4, 16));
             }
             if (npc.type == ModContent.NPCType<StarScouter>() && !Main.expertMode){
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<StrangeAlienMotherBoard>()));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<StrangeAlienMotherBoard>(), 1, 4, 6));
             }
             if (npc.type == ModContent.NPCType<BelchingCoral>() && !Main.expertMode){
 				if(ModContent.GetInstance<ModCompatConfig>().item_deduplication_mode == CalamityBardHealer_selection_mode.Ragnarok) {
@@ -93,10 +93,10 @@ namespace RagnarokMod.Common.GlobalNPCs
                 npcLoot.Remove(ItemDropRule.Common(ModContent.ItemType<BelchingSaxophone>(), 10));
             }
             if (npc.type == ModContent.NPCType<GraniteEnergyStorm>() && !Main.expertMode){
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<EmpoweredGranite>(), 1, 1, 6));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<EmpoweredGranite>(), 1, 3, 6));
             }
             if (npc.type == ModContent.NPCType<BuriedChampion>() && !Main.expertMode){
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<EnchantedMarble>(), 1, 1, 6));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<EnchantedMarble>(), 1, 3, 6));
             }
             if (npc.type == ModContent.NPCType<BoreanStrider>() && !Main.expertMode){
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<StriderFang>(), 1, 1, 4));

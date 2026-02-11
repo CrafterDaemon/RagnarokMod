@@ -27,29 +27,17 @@ namespace RagnarokMod.Items.HealerItems.Armor
 			base.Item.defense = 28;
 		}
 
-		public override bool IsArmorSet(Item head, Item body, Item legs)
-		{
-			return head.type == ModContent.ItemType<NightfallenHelmet>() && legs.type == ModContent.ItemType<NightfallenGreaves>();
-		}
-
 		public override void ArmorSetShadows(Player player)
 		{
 			player.armorEffectDrawShadowSubtle = true;
 			player.armorEffectDrawOutlines = true;
 		}
 
-		public override void UpdateArmorSet(Player player)
-		{
-			player.setBonus = this.GetLocalizedValue("SetBonus");
-			ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
-			thoriumPlayer.healBonus += 2;
-		}
-
 		public override void UpdateEquip(Player player)
 		{
 			ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
 		    player.GetDamage(DamageClass.Generic) -= 0.35f;
-			player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) += 1.4f;
+			player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) += 1.05f;
 			player.GetCritChance(ThoriumDamageBase<HealerDamage>.Instance) += 12f;
 		
 		}

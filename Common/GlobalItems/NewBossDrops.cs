@@ -51,7 +51,7 @@ namespace RagnarokMod.Common.GlobalItems
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<QueenJelly>(), 1, 4, 16));
             }
             if (item.type == ModContent.ItemType<StarScouterTreasureBag>()){
-                itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<StrangeAlienMotherBoard>()));
+                itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<StrangeAlienMotherBoard>(), 1, 4, 6));
             }
             if (item.type == ModContent.ItemType<GraniteEnergyStormTreasureBag>()){
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<EmpoweredGranite>(), 1, 1, 10));

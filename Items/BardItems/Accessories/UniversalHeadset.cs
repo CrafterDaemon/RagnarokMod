@@ -41,8 +41,6 @@ namespace RagnarokMod.Items.BardItems.Accessories
         {
             CreateRecipe(1).AddIngredient<SigilOfACruelWorld>(1)
             .AddIngredient<Headset>(1)
-            .AddIngredient(3467, 8)
-            .AddIngredient<GalacticaSingularity>(4)
             .AddIngredient<AscendantSpiritEssence>(4)
             .AddTile<CosmicAnvil>()
             .Register();

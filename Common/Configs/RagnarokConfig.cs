@@ -51,14 +51,6 @@ namespace RagnarokMod.Common.Configs
 
         [DefaultValue(true)]
         [ReloadRequired]
-        public bool Seafood;
-
-        [DefaultValue(true)]
-        [ReloadRequired]
-        public bool EyeOfDesolation;
-
-        [DefaultValue(true)]
-        [ReloadRequired]
         public bool DeathWhistle;
 
         [DefaultValue(true)]

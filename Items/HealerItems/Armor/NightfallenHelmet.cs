@@ -46,14 +46,16 @@ namespace RagnarokMod.Items.HealerItems.Armor
 		{
 			player.setBonus = this.GetLocalizedValue("SetBonus");
 			ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
-			thoriumPlayer.healBonus += 1;
+			thoriumPlayer.healBonus += 4;
+			player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) += 0.33f;
+			player.GetRagnarokModPlayer().nightfallen = true;
 		}
 
 		public override void UpdateEquip(Player player)
 		{
 			ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
 		    player.GetDamage(DamageClass.Generic) -= 0.35f;
-			player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) += 1.35f;
+			player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) += 0.95f;
 			player.GetCritChance(ThoriumDamageBase<HealerDamage>.Instance) += 16f;
 			player.statManaMax2 += 60;
 		

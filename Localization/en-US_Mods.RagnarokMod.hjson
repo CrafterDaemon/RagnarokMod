@@ -68,7 +68,19 @@ Buffs: {
 		Description: Kelly will follow you.
 		DisplayName: Kelly!
 	}
+
+	NightfallenDebuff: {
+		DisplayName: Nightfallen Debuff
+		Description: Mods.RagnarokMod.Buffs.NightfallenDebuff.Description
+	}
 }
+
+Tooltips.WhiteDwarfSetBonus:
+	'''
+	Critical strikes will unleash ivory flares from the cosmos.
+	Ivory flares inflict the target's contact damage back at them,
+	if it is less than your base weapon damage, it will deal that instead.
+	'''
 
 Items: {
 	DrumStick: {

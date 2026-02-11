@@ -137,8 +137,8 @@ namespace RagnarokMod
                 foreach (Recipe item in getter.Search())
                 {
                     RecipeHelper helper = new(item);
-                    helper.Add(ModContent.ItemType<EmpoweredGranite>(), 5);
-                    helper.Add(ModContent.ItemType<EnchantedMarble>(), 5);
+                    helper.Add(ModContent.ItemType<EmpoweredGranite>(), 2);
+                    helper.Add(ModContent.ItemType<EnchantedMarble>(), 2);
                 }
             }
 
@@ -207,31 +207,13 @@ namespace RagnarokMod
                     helper.Add(ModContent.ItemType<VoidseerPearl>(), 1);
                 }
             }
-            if (ModContent.GetInstance<BossProgressionConfig>().Seafood)
-            {
-                getter.LookFor(ModContent.ItemType<Seafood>(), 1);
-                foreach (Recipe item in getter.Search())
-                {
-                    RecipeHelper helper = new(item);
-                    helper.Add(ModContent.ItemType<QueenJelly>(), 5);
-                }
-            }
-            if (ModContent.GetInstance<BossProgressionConfig>().EyeOfDesolation)
-            {
-                getter.LookFor(ModContent.ItemType<EyeofDesolation>(), 1);
-                foreach (Recipe item in getter.Search())
-                {
-                    RecipeHelper helper = new(item);
-                    helper.Add(ModContent.ItemType<VoidseerPearl>(), 1);
-                }
-            }
             if (ModContent.GetInstance<BossProgressionConfig>().DeathWhistle)
             {
                 getter.LookFor(ModContent.ItemType<DeathWhistle>(), 1);
                 foreach (Recipe item in getter.Search())
                 {
                     RecipeHelper helper = new(item);
-                    helper.Add(ModContent.ItemType<CursedCloth>(), 50);
+                    helper.Add(ModContent.ItemType<CursedCloth>(), 5);
                 }
             }
             if (ModContent.GetInstance<BossProgressionConfig>().DoomSayerCoin)
@@ -240,7 +222,6 @@ namespace RagnarokMod
                 foreach (Recipe item in getter.Search())
                 {
                     RecipeHelper helper = new(item);
-                    helper.Add(ModContent.ItemType<EldritchShellFragment>(), 3);
                     helper.Add(ModContent.ItemType<AshesofCalamity>(), 10);
                 }
             }

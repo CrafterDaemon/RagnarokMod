@@ -15,6 +15,8 @@ using ThoriumMod.Projectiles;
 using ThoriumMod.Buffs;
 using RagnarokMod.Common.Configs;
 using RagnarokMod.Utils;
+using ThoriumMod.Items.MagicItems;
+using ThoriumMod.Items.ThrownItems;
 
 namespace RagnarokMod.Common.GlobalItems
 {
@@ -433,14 +435,36 @@ namespace RagnarokMod.Common.GlobalItems
 				}
 			}
 		}
-		
-		public override void UpdateAccessory(Item item, Player player, bool hideVisual) {
-			if (ModContent.GetInstance<ItemBalancerConfig>().OmegaCore){
-				if(item.type == thorium.Find<ModItem>("TheOmegaCore").Type) {
-						player.moveSpeed -= 0.3f;
-						player.maxRunSpeed /= 1.3f;
+
+		public override void UpdateAccessory(Item item, Player player, bool hideVisual)
+		{
+			if (ModContent.GetInstance<ItemBalancerConfig>().OmegaCore)
+			{
+				if (item.type == thorium.Find<ModItem>("TheOmegaCore").Type)
+				{
+					player.moveSpeed -= 0.3f;
+					player.maxRunSpeed /= 1.3f;
 				}
-            }
+			}
+		}
+
+		public override string IsArmorSet(Item head, Item body, Item legs)
+		{
+			if (head.type == ModContent.ItemType<WhiteDwarfMask>() && body.type == ModContent.ItemType<WhiteDwarfGuard>() && legs.type == ModContent.ItemType<WhiteDwarfGreaves>())
+			{
+				return "WhiteDwarfSet";
+			}
+			return base.IsArmorSet(head, body, legs);
+		}
+
+		public override void UpdateArmorSet(Player player, string set)
+		{
+			if (set == "WhiteDwarfSet")
+			{
+				player.GetThoriumPlayer().setWhiteDwarf = false;
+				player.GetRagnarokModPlayer().WhiteDwarf = true;
+				player.setBonus = Language.GetTextValue("Mods.RagnarokMod.Tooltips.WhiteDwarfSetBonus");
+			}
 		}
 
 		public override bool Shoot(Item item, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback){

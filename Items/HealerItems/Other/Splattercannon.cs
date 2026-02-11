@@ -27,6 +27,8 @@ namespace RagnarokMod.Items.HealerItems.Other
     {
         public static readonly SoundStyle clickclick = SoundID.Item149;
         public static readonly SoundStyle pow = SoundID.Item38;
+        public static int maxProj = 64;
+        public static int perLoad = 8;
 
         public int NumProjectiles = 0;
         public override void SetDefaults()
@@ -35,10 +37,10 @@ namespace RagnarokMod.Items.HealerItems.Other
             Item.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
             Item.width = 60;
             Item.height = 40;
-            Item.useTime = 60;
-            Item.useAnimation = 60;
+            Item.useTime = 30;
+            Item.useAnimation = 30;
             Item.autoReuse = true;
-            Item.reuseDelay = 10;
+            Item.reuseDelay = 4;
             isHealer = true;
             healDisplay = true;
             Item.holdStyle = ItemHoldStyleID.HoldFront;
@@ -51,6 +53,7 @@ namespace RagnarokMod.Items.HealerItems.Other
             Item.shootSpeed = 5f;
             Item.shoot = ModContent.ProjectileType<Splattershot>();
             radiantLifeCost = 8;
+            ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
         }
 
         public override Vector2? HoldoutOffset() => new Vector2(-5, 0);
@@ -65,7 +68,7 @@ namespace RagnarokMod.Items.HealerItems.Other
         {
             if (player.altFunctionUse == 2)
             {
-                if (NumProjectiles < 24)
+                if (NumProjectiles < maxProj)
                 {
                     if (player.statLife <= 0)
                     {
@@ -75,7 +78,7 @@ namespace RagnarokMod.Items.HealerItems.Other
                     }
                     else
                     {
-                        NumProjectiles += 4;
+                        NumProjectiles += perLoad;
                         return false;
                     }
                 }
@@ -125,7 +128,7 @@ namespace RagnarokMod.Items.HealerItems.Other
         {
             if (player.altFunctionUse == 2)
             {
-                if (NumProjectiles >= 24) { return false; } else { return true; }
+                if (NumProjectiles >= maxProj) { return false; } else { return true; }
             }
             else
             {
