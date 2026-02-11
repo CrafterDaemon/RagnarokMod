@@ -31,7 +31,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
 
         public override void SafeOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<HolyInferno>(), 180);
+            target.AddBuff(ModContent.BuffType<HolyFlames>(), 180);
         }
     }
 }
