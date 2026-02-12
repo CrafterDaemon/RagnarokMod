@@ -39,7 +39,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
 
             Projectile.rotation = Projectile.velocity.ToRotation();
 
-            NPC npc = Projectile.FindNearestNPC(500);
+            NPC npc = Projectile.FindNearestNPCIgnoreTiles(2000);
             if (npc != null)
             {
                 timer = 0;

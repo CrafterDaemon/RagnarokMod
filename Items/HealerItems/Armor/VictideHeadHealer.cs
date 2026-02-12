@@ -41,8 +41,8 @@ namespace RagnarokMod.Items.HealerItems.Armor
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "Enemies are less likely to target you\n+3 life regen and 10% increased radiant but 10% decreased non-radiant damage while submerged in liquid\nWhen using any weapon you have a 10% chance to throw a returning seashell projectile\nThis seashell does true damage and does not benefit from any damage class\nProvides increased underwater mobility and slightly reduces breath loss in the abyss";
-			player.Calamity().victideSet = true;
+            player.setBonus = Language.GetTextValue("Mods.RagnarokMod.Items.VictideHeadHealer.SetBonus"); 
+            player.Calamity().victideSet = true;
 			player.ignoreWater = true;
 			if (Collision.DrownCollision(player.position, player.width, player.height, player.gravDir, false))
 			{

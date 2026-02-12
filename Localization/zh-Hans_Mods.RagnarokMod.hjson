@@ -409,6 +409,14 @@ Items: {
 			治疗法术会额外治疗1生命值
 			最大魔力值增加60
 			'''
+		/* SetBonus:
+			'''
+			Healing spells will heal an additional 4 life
+			33% increased radiant damage
+			All attacks inflict Nightfallen
+			Nightfallen deals 100 damage per second
+			Nightfallen increases all damage taken by the target by 10%
+			''' */
 	}
 
 	NightfallenBreastplate: {
@@ -868,6 +876,10 @@ Projectiles: {
 	// VirusprayerPro1.DisplayName: Virusprayer Pro1
 	// VirusprayerPro2.DisplayName: Virusprayer Pro2
 	// KellyPetProjectile.DisplayName: Kelly Pet Projectile
+	// GodSlayersReapPro1.DisplayName: God Slayers Reap Pro1
+	// MiniDoGHead.DisplayName: Mini Do G Head
+	// MiniDoGExplosion.DisplayName: Mini Do G Explosion
+	// MiniDoGDeathRenderer.DisplayName: Mini Do G Death Renderer
 }
 
 Configs: {

@@ -1,4 +1,5 @@
-﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
+﻿using CalamityMod.Buffs.DamageOverTime;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
@@ -17,21 +18,20 @@ using ThoriumMod.Projectiles.Scythe;
 
 namespace RagnarokMod.Projectiles.HealerPro.Scythes
 {
-    public class PhantasmalEdgePro1 : ScythePro2
+    public class GodSlayersReapPro1 : ScythePro2
     {
-        private int trail = 6;
-        private int fireBallCounter = 0;
+        private bool spawned = false;
+        private int miniDoGIndex = -1;
+        private int timeSpinning = 0;
         public Player player => Main.player[Projectile.owner];
         public override void SafeSetStaticDefaults()
         {
-            ProjectileID.Sets.TrailCacheLength[base.Projectile.type] = trail;
-            ProjectileID.Sets.TrailingMode[base.Projectile.type] = 2;
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 1;
+            ProjectileID.Sets.TrailingMode[Projectile.type] = -1;
         }
 
         public override void SafeSetDefaults()
         {
-            Projectile.oldPos = new Vector2[trail]; // However many trail segments you want
-            Projectile.oldRot = new float[trail];
             Projectile.aiStyle = 0;
             Projectile.friendly = true;
             Projectile.tileCollide = false;
@@ -39,12 +39,12 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             Projectile.ignoreWater = true;
             Projectile.penetrate = -1;
             Projectile.usesIDStaticNPCImmunity = true;
-            Projectile.idStaticNPCHitCooldown = 6;
+            Projectile.idStaticNPCHitCooldown = 21;
             Projectile.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
             scytheCount = 2;
-            Projectile.Size = new Vector2(278f, 274f);
+            Projectile.Size = new Vector2(222f, 304f);
             Projectile.timeLeft = 20;
-            rotationSpeed = 0.2f;
+            rotationSpeed = 0.15f;
             fadeOutSpeed = 30;
             fadeOutTime = 10;
         }
@@ -52,8 +52,9 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
         public override void AI()
         {
             Projectile.timeLeft++;
+            timeSpinning++;
             Projectile.spriteDirection = Projectile.direction = player.direction;
-            Lighting.AddLight(Projectile.Center, 1f, 0.686f, 0.686f);
+            Lighting.AddLight(Projectile.Center, 0.9f, 0.2f, 0.9f);
             player.heldProj = Projectile.whoAmI;
             player.itemTime = 2;
             player.itemAnimation = 2;
@@ -62,18 +63,42 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             player.heldProj = base.Projectile.whoAmI;
             base.Projectile.Center = player.Center;
             base.Projectile.gfxOffY = player.gfxOffY;
-            Vector2 spawnLoc = Vector2.Zero;
-            spawnLoc.X = Main.rand.Next(-Projectile.width/2, Projectile.width/2);
-            spawnLoc.Y = Main.rand.Next(-Projectile.height/2, Projectile.height/2);
-            if (Main.rand.Next(1, 34) == 33 && fireBallCounter != 15)
-            {
-                Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center + spawnLoc, Vector2.Zero, ModContent.ProjectileType<PhantasmalEdgeBombs>(), Projectile.damage, Projectile.knockBack);
-                fireBallCounter++;
-            }
             if (player.dead || !player.channel)
             {
                 Projectile.Kill();
             }
+            if (!spawned && Projectile.owner == Main.myPlayer && timeSpinning == 180)
+            {
+                spawned = true;
+                miniDoGIndex = Projectile.NewProjectile(
+                    Projectile.GetSource_FromThis(),
+                    Projectile.position,
+                    Vector2.Zero,
+                    ModContent.ProjectileType<MiniDoGHead>(),
+                    Projectile.damage,
+                    Projectile.knockBack,
+                    Projectile.owner
+                );
+            }
+        }
+
+        public override void OnKill(int timeLeft)
+        {
+            // When scythe dies, release DoG to home
+            if (miniDoGIndex >= 0 && miniDoGIndex < Main.maxProjectiles)
+            {
+                Projectile miniDoG = Main.projectile[miniDoGIndex];
+                if (miniDoG.active && miniDoG.ModProjectile is MiniDoGHead head)
+                {
+                    SoundEngine.PlaySound(new SoundStyle("CalamityMod/Sounds/Custom/DevourerAttack"), Projectile.Center);
+                    head.ReleaseToHoming();
+                }
+            }
+        }
+
+        public override void SafeOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 180);
         }
 
         public override bool PreDraw(ref Color lightColor)

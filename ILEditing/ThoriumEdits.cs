@@ -75,14 +75,27 @@ namespace RagnarokMod.ILEditing
                     tlkhook = new ILHook(tlkonhit, NewLifestealMath);
                     tlkhook.Apply();
 
+
                     foreach (Type type in ThoriumAssembly.GetTypes()){
                         if (type.Name == "AncientPhylactery"){
                             phyl = type;
+                            break;
                         }
                     }
-                    phylrc = phyl.GetMethod("RightClick", BindingFlags.Public | BindingFlags.Instance);
+
+                    if (phyl == null){
+                        Mod.Logger.Warn("Could not find AncientPhylactery type");
+                        return;
+                    }
+
+                    phylrc = phyl.GetMethod("RightClick", BindingFlags.Public | BindingFlags.Instance, null, new Type[] { typeof(int), typeof(int) } ,null);
+                    if (phylrc == null){
+                        Mod.Logger.Warn("Could not find AncientPhylactery.RightClick method");
+                        return;
+                    }
                     phylhook = new ILHook(phylrc, HavocPhylactory);
                     phylhook.Apply();
+
 
                     foreach (Type type in ThoriumAssembly.GetTypes()){
                         if (type.Name == "BlackMIDIPro"){
@@ -234,16 +247,12 @@ namespace RagnarokMod.ILEditing
         private void HavocPhylactory(ILContext il){
             if (ModContent.GetInstance<BossProgressionConfig>().Lich){
                 var c = new ILCursor(il);
-                if (!c.TryGotoNext(MoveType.After, i => i.MatchLdcI4(1725))) {
+                if (!c.TryGotoNext(MoveType.Before, i => i.MatchLdcI4(1725)))
                     return;
-                }
-                c.Emit(OpCodes.Pop);
-                c.Emit(OpCodes.Ldc_I4, ModContent.ItemType<EssenceofHavoc>());
-                if (!c.TryGotoNext(MoveType.After, i => i.MatchLdcI4(30))){
+                c.Next.Operand = ModContent.ItemType<EssenceofHavoc>();
+                if (!c.TryGotoNext(MoveType.Before, i => i.MatchLdcI4(30)))
                     return;
-                }
-                c.Emit(OpCodes.Pop);
-                c.Emit(OpCodes.Ldc_I4, 3);
+                c.Next.Operand = 3;
             }
         }
         private void NewLifestealMath(ILContext il){

@@ -1,12 +1,14 @@
-﻿using Terraria.ModLoader;
-using Terraria;
-using ThoriumMod.Items.HealerItems;
-using Terraria.ID;
+﻿using CalamityMod.Items;
+using CalamityMod.Items.Materials;
+using CalamityMod.Rarities;
+using CalamityMod.Tiles.Furniture.CraftingStations;
 using RagnarokMod.Items.Materials;
 using RagnarokMod.Projectiles.HealerPro.Scythes;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 using ThoriumMod;
-using CalamityMod.Items;
-using CalamityMod.Rarities;
+using ThoriumMod.Items.HealerItems;
 
 namespace RagnarokMod.Items.HealerItems.Scythes
 {
@@ -20,31 +22,22 @@ namespace RagnarokMod.Items.HealerItems.Scythes
         public override void SetDefaults()
         {
             SetDefaultsToScythe();
-            //this is what SetDefaultsToScythe does
-            scytheSoulCharge = 0;
-            isHealer = true;
-            base.Item.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
-            base.Item.noMelee = true;
-            base.Item.noUseGraphic = true;
-            base.Item.autoReuse = true;
-            base.Item.useTime = 22;
-            base.Item.useAnimation = 22;
-            base.Item.maxStack = 1;
-            base.Item.knockBack = 6.5f;
-            base.Item.useStyle = 1;
-            base.Item.UseSound = SoundID.Item1;
-            base.Item.shootSpeed = 0.1f;
-            //end
-            base.Item.damage = 18;
-            scytheSoulCharge = 2;
-            base.Item.width = 54;
-            base.Item.height = 42;
-            base.Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
-            base.Item.rare = ModContent.RarityType<CosmicPurple>();
-            base.Item.shoot = ModContent.ProjectileType<MarbleScythePro>();
+            scytheSoulCharge = 6;
+            Item.autoReuse = false;
+            Item.channel = true;
+            Item.damage = 2100;
+            Item.width = 86;
+            Item.height = 122;
+            Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
+            Item.rare = ModContent.RarityType<CosmicPurple>();
+            Item.shoot = ModContent.ProjectileType<GodSlayersReapPro1>();
         }
         public override void AddRecipes()
         {
+            CreateRecipe()
+            .AddIngredient<CosmiliteBar>(12)
+            .AddTile<CosmicAnvil>()
+            .Register();
         }
     }
 }

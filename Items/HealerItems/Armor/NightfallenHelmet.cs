@@ -12,6 +12,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 using CalamityMod.Items.Placeables.Ores;
+using Terraria.Localization;
 
 namespace RagnarokMod.Items.HealerItems.Armor
 {
@@ -44,7 +45,7 @@ namespace RagnarokMod.Items.HealerItems.Armor
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = this.GetLocalizedValue("SetBonus");
+			player.setBonus = Language.GetTextValue("Mods.RagnarokMod.Items.NightfallenHelmet.SetBonus");
 			ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
 			thoriumPlayer.healBonus += 4;
 			player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) += 0.33f;

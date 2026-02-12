@@ -412,9 +412,16 @@ Items: {
 		Tooltip:
 			'''
 			35% decreased non-radiant damage
-			35% increased radiant damage and 16% increased criticial radiant strike chance
-			Healing spells will heal an additional 1 life
+			60% increased radiant damage and 16% increased criticial radiant strike chance
 			Maximum mana increased by 60
+			'''
+		SetBonus:
+			'''
+			Healing spells will heal an additional 4 life
+			33% increased radiant damage
+			All attacks inflict Nightfallen
+			Nightfallen deals 100 damage per second
+			Nightfallen increases all damage taken by the target by 10%
 			'''
 	}
 
@@ -423,8 +430,7 @@ Items: {
 		Tooltip:
 			'''
 			45% decreased non-radiant damage
-			45% increased radiant damage and 12% increased criticial radiant strike chance
-			Healing spells will heal an additional 2 life
+			50% increased radiant damage and 12% increased criticial radiant strike chance
 			'''
 	}
 
@@ -433,9 +439,8 @@ Items: {
 		Tooltip:
 			'''
 			35% decreased non-radiant damage
-			35% increased radiant damage and 8% increased criticial radiant strike chance
+			45% increased radiant damage and 8% increased criticial radiant strike chance
 			20% decreased mana cost
-			Healing spells will heal an additional 1 life
 			'''
 	}
 
@@ -874,6 +879,10 @@ Projectiles: {
 	VirusprayerPro1.DisplayName: Virusprayer Pro1
 	VirusprayerPro2.DisplayName: Virusprayer Pro2
 	KellyPetProjectile.DisplayName: Kelly Pet Projectile
+	GodSlayersReapPro1.DisplayName: God Slayers Reap Pro1
+	MiniDoGHead.DisplayName: Mini Do G Head
+	MiniDoGExplosion.DisplayName: Mini Do G Explosion
+	MiniDoGDeathRenderer.DisplayName: Mini Do G Death Renderer
 }
 
 Configs: {
