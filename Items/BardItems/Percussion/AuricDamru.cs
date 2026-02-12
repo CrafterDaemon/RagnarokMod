@@ -43,7 +43,7 @@ namespace RagnarokMod.Items.BardItems.Percussion
 
         public override void SetBardDefaults()
         {
-            Item.damage = 1950;
+            Item.damage = 2000;
             InspirationCost = 2;
             Item.width = 60;
             Item.height = 60;
@@ -54,7 +54,7 @@ namespace RagnarokMod.Items.BardItems.Percussion
             Item.holdStyle = 3;
             Item.noMelee = true;
             Item.autoReuse = true;
-            Item.knockBack = 0.5f;
+            Item.knockBack = 0f;
             Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
             Item.rare = ModContent.RarityType<BurnishedAuric>();
             Item.UseSound = new SoundStyle?(SoundID.Item1);
@@ -69,7 +69,7 @@ namespace RagnarokMod.Items.BardItems.Percussion
         {
             if (player.altFunctionUse == 2)
             {
-                Item.shootSpeed = 13f;
+                Item.shootSpeed = 17f;
             }
             else
             {
@@ -81,15 +81,12 @@ namespace RagnarokMod.Items.BardItems.Percussion
 
         public override bool AltFunctionUse(Player player) => true;
 
-        public override bool BardShoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-        {
-            if (player.altFunctionUse == 2)
-            {
-                Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<AuricDamruFlareBomb>(), (int)(damage * 0.85f), knockback, player.whoAmI);
+        public override bool BardShoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback){
+            if (player.altFunctionUse == 2){
+                Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<AuricDamruFlareBomb>(), (int)(damage * 1f), knockback, player.whoAmI);
                 return false;
             }
-            else
-            {
+            else{
                 Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<AuricDamruShock>(), damage, knockback, player.whoAmI);
                 return false;
             }
@@ -106,10 +103,7 @@ namespace RagnarokMod.Items.BardItems.Percussion
                 dust.noGravity = true;
             }
         }
-
-        // Token: 0x060068D0 RID: 26832 RVA: 0x002CFE2D File Offset: 0x002CE02D
-        public override void AddRecipes()
-        {
+        public override void AddRecipes(){
             Recipe recipe = CreateRecipe(1);
             recipe.AddIngredient(ModContent.ItemType<AuricBar>(), 5);
             recipe.AddIngredient(ModContent.ItemType<Bongos>(), 1);

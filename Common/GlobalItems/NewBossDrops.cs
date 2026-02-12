@@ -40,6 +40,7 @@ namespace RagnarokMod.Common.GlobalItems
 			|| item.type == ModContent.ItemType<CalamitasCoffer>()
 			|| item.type == ModContent.ItemType<OldDukeBag>()
             || item.type == ModContent.ItemType<YharonBag>()
+			|| item.type == ModContent.ItemType<BrimstoneElementalBag>()
             );
         }
         public override void ModifyItemLoot(Item item, ItemLoot itemLoot){
@@ -89,6 +90,10 @@ namespace RagnarokMod.Common.GlobalItems
             if (item.type == ModContent.ItemType<YharonBag>())
             {
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<DragonForce>(), 3));
+            }
+			if (item.type == ModContent.ItemType<BrimstoneElementalBag>())
+			{
+                itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<BrimScythe>(), 3));
             }
         }
     }

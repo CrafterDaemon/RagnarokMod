@@ -717,6 +717,16 @@ Items: {
 			'''
 	}
 
+	BrimScythe: {
+		DisplayName: Brimscythe
+		Tooltip:
+			'''
+			While spinning, you are surrounded in a circle of Brimstone Flames, that deals constant damage
+			Enemies hit by the circle are also afflicted by Brimstone Flames for 5 seconds.
+			While below 25% hp, killing an enemy with the fire circle will heal you for 3 + 5% of the enemy maximum health
+			'''
+	}
+
 	MaxEmpowermentTester: {
 		DisplayName: Max Empowerment Tester
 		Tooltip: Grants all empowerments at a level specified in item code :P
@@ -883,6 +893,8 @@ Projectiles: {
 	MiniDoGHead.DisplayName: Mini Do G Head
 	MiniDoGExplosion.DisplayName: Mini Do G Explosion
 	MiniDoGDeathRenderer.DisplayName: Mini Do G Death Renderer
+	BrimScytheFirePro.DisplayName: Brim Scythe Fire Pro
+	BrimScythePro.DisplayName: Brim Scythe Pro
 }
 
 Configs: {
