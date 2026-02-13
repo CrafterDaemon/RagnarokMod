@@ -35,9 +35,16 @@ namespace RagnarokMod.Items.HealerItems.Accessories
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            if (rag.darkAura)
+            if (rag != null)
             {
-                tooltips.Add(new TooltipLine(Mod, "tooltip", Language.GetTextValue("Mods.RagnarokMod.Tooltips.LeviathanHeart.CorruptTooltip")));
+                if (rag.darkAura)
+                {
+                    tooltips.Add(new TooltipLine(Mod, "tooltip", Language.GetTextValue("Mods.RagnarokMod.Tooltips.LeviathanHeart.CorruptTooltip")));
+                }
+                else
+                {
+                    tooltips.Add(new TooltipLine(Mod, "tooltip", Language.GetTextValue("Mods.RagnarokMod.Tooltips.LeviathanHeart.NormalTooltip")));
+                }
             }
             else
             {
@@ -93,8 +100,6 @@ namespace RagnarokMod.Items.HealerItems.Accessories
             player.GetAttackSpeed(ThoriumDamageBase<HealerDamage>.Instance) += 0.25f;
         }
 
-        // Called when the player heals an ally (normal healer path)
-        // Hook this from your GlobalProjectile or PlayerHook — see notes below
         public static void OnHealAlly(Player healer, Player target)
         {
             if (!healer.HasItem(ModContent.ItemType<LeviathanHeart>()))
@@ -104,11 +109,9 @@ namespace RagnarokMod.Items.HealerItems.Accessories
             if (thoriumPlayer.darkAura)
                 return;
 
-            // Apply or refresh the teal bubble on the target
             target.AddBuff(ModContent.BuffType<LeviathanHeartBubble>(), 5 * 60);
         }
 
-        // Called when a corrupted healer spends health on a weapon
         public static void OnSpendHealth(Player player)
         {
             if (!player.HasItem(ModContent.ItemType<LeviathanHeart>()))
@@ -118,7 +121,6 @@ namespace RagnarokMod.Items.HealerItems.Accessories
             if (!thoriumPlayer.darkAura)
                 return;
 
-            // Apply or refresh the purple bubble on self
             player.AddBuff(ModContent.BuffType<LeviathanHeartBubbleCorrupted>(), 5 * 60);
         }
     }
