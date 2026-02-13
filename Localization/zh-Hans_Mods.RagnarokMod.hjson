@@ -73,14 +73,48 @@ Buffs: {
 		// DisplayName: Nightfallen Debuff
 		// Description: Mods.RagnarokMod.Buffs.NightfallenDebuff.Description
 	}
+
+	LeviathanHeartBubble: {
+		// DisplayName: Leviathan Heart Bubble
+		// Description: The Leviathan's Bubble grants you +5% Damage Reduction
+	}
+
+	LeviathanHeartBubbleCorrupted: {
+		// DisplayName: Corrupted Leviathan Heart Bubble
+		/* Description:
+			'''
+			The Corrupted Leviathan's Bubble grants you +10% damage
+			But you take 5% more damage
+			''' */
+	}
 }
 
-/* Tooltips.WhiteDwarfSetBonus:
-	'''
-	Critical strikes will unleash ivory flares from the cosmos.
-	Ivory flares inflict the target's contact damage back at them,
-	if it is less than your base weapon damage, it will deal that instead.
-	''' */
+Tooltips: {
+	/* WhiteDwarfSetBonus:
+		'''
+		Critical strikes will unleash ivory flares from the cosmos.
+		Ivory flares inflict the target's contact damage back at them,
+		if it is less than your base weapon damage, it will deal that instead.
+		''' */
+
+	LeviathanHeart: {
+		/* NormalTooltip:
+			'''
+			Healing spells heal 25% more hp.
+			Healing spells apply a protective bubble to their target,
+			granting +5% damage reduction for 5 seconds.
+			25% Increased Radiant attack speed.
+			''' */
+		/* CorruptTooltip:
+			'''
+			The Leviathan's Bubble reacts to your dark energy!
+			All health costs are reduced by 1.
+			Spending health envelopes you in a corrupted bubble,
+			granting +10% damage, but you take 5% more damage.
+			25% Increased Radiant attack speed.
+			''' */
+	}
+}
 
 Items: {
 	DrumStick: {
@@ -801,6 +835,11 @@ Items: {
 			''' */
 		// DisplayName: Wand of Anarchi
 	}
+
+	LeviathanHeart: {
+		// DisplayName: Leviathan Heart
+		// Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -880,6 +919,7 @@ Projectiles: {
 	// MiniDoGHead.DisplayName: Mini Do G Head
 	// MiniDoGExplosion.DisplayName: Mini Do G Explosion
 	// MiniDoGDeathRenderer.DisplayName: Mini Do G Death Renderer
+	// LeviathanHeartBubbleProj.DisplayName: Leviathan Heart Bubble Proj
 }
 
 Configs: {

@@ -1,19 +1,21 @@
-﻿using CalamityMod.Items.Materials;
+﻿using CalamityMod;
 using CalamityMod.CalPlayer;
-using CalamityMod;
+using CalamityMod.Items.Materials;
+using Mono.Cecil;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
-using Mono.Cecil;
 using MonoMod.RuntimeDetour;
 using MonoMod.RuntimeDetour.HookGen;
+using RagnarokMod.Buffs;
 using RagnarokMod.Common.Configs;
-using RagnarokMod.Utils;
 using RagnarokMod.Common.ModSystems;
+using RagnarokMod.Utils;
 using System;
 using System.Reflection;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
-using Terraria;
+using ThoriumMod;
 using ThoriumMod.Buffs.Bard;
 
 namespace RagnarokMod.ILEditing
@@ -60,7 +62,10 @@ namespace RagnarokMod.ILEditing
 		private static Type scouter = null;
         private static MethodInfo scouterpostdraw = null;
         private static ILHook scouterhook = null;
-		private short timer = 0;
+        private static Type onHeal = null;
+        private static MethodInfo onHealEffects = null;
+        private static ILHook onHealHook = null;
+        private short timer = 0;
         public int maxInsp = 50;
         public override void OnModLoad(){
             bool loadCaught = false;
@@ -195,7 +200,18 @@ namespace RagnarokMod.ILEditing
                     scouterpostdraw = scouter.GetMethod("PostDraw", BindingFlags.Public | BindingFlags.Instance);
                     scouterhook = new ILHook(scouterpostdraw, DisableScouterPostDraw);
                     scouterhook.Apply();
-					
+
+                    foreach (Type type in ThoriumAssembly.GetTypes())
+                    {
+                        if (type.Name == "ProjectileHelper")
+                        {
+                            onHeal = type;
+                        }
+                    }
+                    onHealEffects = onHeal.GetMethod("ThoriumHealTarget", BindingFlags.NonPublic | BindingFlags.Static);
+                    onHealHook = new ILHook(onHealEffects, newOnHealEffects);
+                    onHealHook.Apply();
+
                     ZZZtoLoadAfterThoirumEditsBardWheel.GetMaxInsp(maxInsp);
                     loadCaught = true;
                     break;
@@ -379,6 +395,23 @@ namespace RagnarokMod.ILEditing
 				var c = new ILCursor(il);
 				c.EmitRet();
 			}
-		}
+        }
+        private void newOnHealEffects(ILContext il)
+        {
+            var c = new ILCursor(il);
+
+            c.GotoNext(MoveType.After,
+                i => i.MatchLdarg(3),
+                i => i.MatchBrfalse(out _)
+            );
+
+            c.Emit(OpCodes.Ldloc_0);
+            c.Emit(OpCodes.Ldarg_1);
+            c.EmitDelegate<Action<Player, Player>>((healer, target) =>
+            {
+                foreach (var effect in RagnarokModPlayer.OnHealEffects)
+                    effect(healer, target);
+            });
+        }
     }
 }

@@ -9,6 +9,7 @@ using ThoriumMod.Buffs.Healer;
 using ThoriumMod.NPCs;
 using ThoriumMod.Projectiles;
 using ThoriumMod.Projectiles.Healer;
+using RagnarokMod.Buffs;
 
 namespace RagnarokMod.Utils
 {
@@ -23,6 +24,8 @@ namespace RagnarokMod.Utils
 			Player player = Main.player[projectile.owner];
 			ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
 			ThoriumPlayer thoriumTarget = target.GetThoriumPlayer();
+			RagnarokModPlayer ragnarokModPlayer = player.GetRagnarokModPlayer();
+			RagnarokModPlayer ragnarokModTarget = target.GetRagnarokModPlayer();
 			int heals = healAmount;
 			int selfHeals = 0;
 			bool self = player == target;
@@ -36,7 +39,9 @@ namespace RagnarokMod.Utils
 			}
 			if (onHealEffects)
 			{
-				if (thoriumPlayer.accForgottenCrossNecklace)
+                foreach (var effect in RagnarokModPlayer.OnHealEffects)
+                    effect(player, target);
+                if (thoriumPlayer.accForgottenCrossNecklace)
 				{
 					target.AddBuff(ModContent.BuffType<ForgottenCrossNecklaceBuff>(), 900, false, false);
 				}
@@ -55,6 +60,10 @@ namespace RagnarokMod.Utils
 				if (thoriumPlayer.buffDreamWeaversHoodDream)
 				{
 					target.AddBuff(ModContent.BuffType<DreamWeaversHoodDreamAllyBuff>(), 60, false, false);
+				}
+				if (ragnarokModPlayer.leviathanHeart && !thoriumPlayer.darkAura)
+				{
+					target.AddBuff(ModContent.BuffType<LeviathanHeartBubble>(), 5 * 60);
 				}
 				if (!self && thoriumPlayer.honeyHeart && target.statLife <= player.statLife)
 				{

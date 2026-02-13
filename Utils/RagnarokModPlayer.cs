@@ -28,6 +28,7 @@ using RagnarokMod.Items.BardItems.Armor;
 using RagnarokMod.Common.Configs;
 using RagnarokMod.Buffs;
 using RagnarokMod.Items.HealerItems;
+using RagnarokMod.Items.HealerItems.Accessories;
 
 namespace RagnarokMod.Utils
 {
@@ -46,8 +47,10 @@ namespace RagnarokMod.Utils
 		/// </summary>
 		public bool brimstoneFlamesOnHit = false;
 
-		//this is most likely only gonna be for armor set abilities.
-		public bool batpoop = false;
+        public static List<Action<Player, Player>> OnHealEffects = new();
+
+        //this is most likely only gonna be for armor set abilities.
+        public bool batpoop = false;
 		public bool auricBardSet = false;
 		public bool auricHealerSet = false;
 		public bool tarraHealer = false;
@@ -62,6 +65,10 @@ namespace RagnarokMod.Utils
 		public bool intergelacticHealer = false;
 		public bool nightfallen = false;
 		public bool WhiteDwarf = false;
+		public bool leviathanHeart = false;
+		public ThoriumItem lastHeldItem;
+		public int origLifeCost = 0;
+		private int lastSeenHeal = 0;
 		public int godslayerBardcurrentemp = 0;
 		public int godslayerBardcurrentemplevel = 0;
 		public int intergelacticBardcurrentemp = 0;
@@ -199,7 +206,7 @@ namespace RagnarokMod.Utils
 				}
 			}
 		}
-
+		
 		public override void PostUpdateMiscEffects()
 		{
 			if (tarraBard)
@@ -340,8 +347,32 @@ namespace RagnarokMod.Utils
 				elementalReaperCD--;
 			}
 
-			// Fixes the RogueUseTime problem, that occurs, because Thorium implements features like buffs that can effect item use times, which is incompatible with the Calamity Rogue usetime / attackspeed check.
-			this.ApplyRogueUseTimeFix();
+            OnHealEffects.Add((healer, target) =>
+            {
+                var ragHealer = healer.GetModPlayer<RagnarokModPlayer>();
+                if (!ragHealer.leviathanHeart)
+                    return;
+
+                var healerThorium = healer.GetModPlayer<ThoriumPlayer>();
+                if (healerThorium.darkAura)
+                    return;
+
+
+                if (target.whoAmI == Main.myPlayer)
+                {
+                    target.AddBuff(ModContent.BuffType<LeviathanHeartBubble>(), 5 * 60);
+                }
+                else
+                {
+                    ModPacket packet = ModContent.GetInstance<RagnarokMod>().GetPacket();
+                    packet.Write((byte)0);
+                    packet.Write((byte)target.whoAmI);
+                    packet.Send();
+                }
+            });
+
+            // Fixes the RogueUseTime problem, that occurs, because Thorium implements features like buffs that can effect item use times, which is incompatible with the Calamity Rogue usetime / attackspeed check.
+            this.ApplyRogueUseTimeFix();
 
 			// Fixes problems with thorium thrower accessories by disablng the thoriumplayer flags for the setbonuses and reimplementing it
 			ThoriumPlayer thoriumPlayer2 = ThoriumMod.Utilities.PlayerHelper.GetThoriumPlayer(base.Player);
@@ -629,22 +660,22 @@ namespace RagnarokMod.Utils
 					Projectile.NewProjectile(source, target.Center, Vector2.Zero, ModContent.ProjectileType<ThrowingGuideFollowup>(), guideDamage, 0f, projectile.owner, (float)target.whoAmI, 0f, 0f);
 				}
 			}
-            if (WhiteDwarf && hit.Crit)
-            {
+			if (WhiteDwarf && hit.Crit)
+			{
 				int damage;
-                if (Player.GetWeaponDamage(Player.HeldItem) > target.damage)
-                {
-                    damage = Player.GetWeaponDamage(Player.HeldItem);
-                }
-                else
-                {
-                    damage = target.damage;
-                }
-                SoundEngine.PlaySound(SoundID.Item92, target.position);
-                Projectile.NewProjectile(projectile.GetSource_OnHit(target), target.Center, Vector2.Zero, ModContent.ProjectileType<WhiteFlare>(), damage, 0.0f, Main.myPlayer, 0.0f, 0.0f, 0.0f);
-            }
-            OnHitNPCWithAny(target, hit, damageDone);
-        }
+				if (Player.GetWeaponDamage(Player.HeldItem) > target.damage)
+				{
+					damage = Player.GetWeaponDamage(Player.HeldItem);
+				}
+				else
+				{
+					damage = target.damage;
+				}
+				SoundEngine.PlaySound(SoundID.Item92, target.position);
+				Projectile.NewProjectile(projectile.GetSource_OnHit(target), target.Center, Vector2.Zero, ModContent.ProjectileType<WhiteFlare>(), damage, 0.0f, Main.myPlayer, 0.0f, 0.0f, 0.0f);
+			}
+			OnHitNPCWithAny(target, hit, damageDone);
+		}
 
 		public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone)
 		{
@@ -702,6 +733,12 @@ namespace RagnarokMod.Utils
 
 		public override void ResetEffects()
 		{
+			if (lastHeldItem != null)
+			{
+				lastHeldItem.radiantLifeCost = origLifeCost;
+				lastHeldItem = null;
+				origLifeCost = 0;
+			}
 			if (this.tarraBard == false && this.tarraHealer == false)
 				bloodflarebloodlust = 0;
 
@@ -727,6 +764,7 @@ namespace RagnarokMod.Utils
 			this.intergelacticBard = false;
 			this.intergelacticHealer = false;
 			auricBoost = false;
+			leviathanHeart = false;
 		}
 
 		public override void UpdateDead()
@@ -766,5 +804,12 @@ namespace RagnarokMod.Utils
 				npc.AddBuff(ModContent.BuffType<NightfallenDebuff>(), 240);
 			}
 		}
+
+        public override void Unload()
+        {
+            OnHealEffects?.Clear();
+            OnHealEffects = null;
+            base.Unload();
+        }
 	}
 }
