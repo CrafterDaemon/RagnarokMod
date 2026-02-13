@@ -917,24 +917,21 @@ Projectiles: {
 	NightmareFreezerPro2.DisplayName: Nightmare Freezer Pro2
 	NightmareFreezerPro3.DisplayName: Nightmare Freezer Pro3
 	ElementalBuff.DisplayName: Elemental Buff
-	// DragonForcePro1.DisplayName: Dragon Force Pro1
-	// DragonForcePro2.DisplayName: Dragon Force Pro2
-	// SupremeBellPro.DisplayName: Supreme Bell Pro
-	// LamentationBoom.DisplayName: Lamentation Boom
-	// LamentationPro.DisplayName: Lamentation Pro
-	// VirusprayerPro1.DisplayName: Virusprayer Pro1
-	// VirusprayerPro2.DisplayName: Virusprayer Pro2
-	// KellyPetProjectile.DisplayName: Kelly Pet Projectile
-	// GodSlayersReapPro1.DisplayName: God Slayers Reap Pro1
-	// MiniDoGHead.DisplayName: Mini Do G Head
-	// MiniDoGExplosion.DisplayName: Mini Do G Explosion
-	// MiniDoGDeathRenderer.DisplayName: Mini Do G Death Renderer
-<<<<<<< HEAD
-	// LeviathanHeartBubbleProj.DisplayName: Leviathan Heart Bubble Proj
-=======
-	// BrimScytheFirePro.DisplayName: Brim Scythe Fire Pro
-	// BrimScythePro.DisplayName: Brim Scythe Pro
->>>>>>> 56d7ae72efab2754ae5b2c7e57a9bf20faa87ef3
+	DragonForcePro1.DisplayName: Dragon Force Pro1
+	DragonForcePro2.DisplayName: Dragon Force Pro2
+	SupremeBellPro.DisplayName: Supreme Bell Pro
+	LamentationBoom.DisplayName: Lamentation Boom
+	LamentationPro.DisplayName: Lamentation Pro
+	VirusprayerPro1.DisplayName: Virusprayer Pro1
+	VirusprayerPro2.DisplayName: Virusprayer Pro2
+	KellyPetProjectile.DisplayName: Kelly Pet Projectile
+	GodSlayersReapPro1.DisplayName: God Slayers Reap Pro1
+	MiniDoGHead.DisplayName: Mini Do G Head
+	MiniDoGExplosion.DisplayName: Mini Do G Explosion
+	MiniDoGDeathRenderer.DisplayName: Mini Do G Death Renderer
+	LeviathanHeartBubbleProj.DisplayName: Leviathan Heart Bubble Proj
+	BrimScytheFirePro.DisplayName: Brim Scythe Fire Pro
+	BrimScythePro.DisplayName: Brim Scythe Pro
 }
 
 Configs: {
