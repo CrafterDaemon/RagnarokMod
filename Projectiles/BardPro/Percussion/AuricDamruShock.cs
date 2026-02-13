@@ -20,7 +20,7 @@ namespace RagnarokMod.Projectiles.BardPro.Percussion
 
         public override void SetBardDefaults()
         {
-            Projectile.ownerHitCheck = true;
+            Projectile.ownerHitCheck = false;
             Projectile.width = 700;
             Projectile.height = 700;
             Projectile.aiStyle = -1;

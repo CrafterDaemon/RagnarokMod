@@ -19,8 +19,8 @@ namespace RagnarokMod.Projectiles.BardPro.Percussion
 		
         public override void SetBardDefaults()
         {
-            Projectile.width = 110;
-            Projectile.height = 110;
+            Projectile.width = 150;
+            Projectile.height = 150;
             Projectile.penetrate = -1;
             Projectile.friendly = true;
             Projectile.tileCollide = false;

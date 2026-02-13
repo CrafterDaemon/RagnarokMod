@@ -748,6 +748,16 @@ Items: {
 			'''
 	}
 
+	BrimScythe: {
+		// DisplayName: Brimscythe
+		/* Tooltip:
+			'''
+			While spinning, you are surrounded in a circle of Brimstone Flames, that deals constant damage
+			Enemies hit by the circle are also afflicted by Brimstone Flames for 5 seconds.
+			While below 25% hp, killing an enemy with the fire circle will heal you for 3 + 5% of the enemy maximum health
+			''' */
+	}
+
 	MaxEmpowermentTester: {
 		DisplayName: 最大咒音增幅测试仪
 		Tooltip: 在物品中指定的级别授予所有咒音增幅
@@ -919,7 +929,12 @@ Projectiles: {
 	// MiniDoGHead.DisplayName: Mini Do G Head
 	// MiniDoGExplosion.DisplayName: Mini Do G Explosion
 	// MiniDoGDeathRenderer.DisplayName: Mini Do G Death Renderer
+<<<<<<< HEAD
 	// LeviathanHeartBubbleProj.DisplayName: Leviathan Heart Bubble Proj
+=======
+	// BrimScytheFirePro.DisplayName: Brim Scythe Fire Pro
+	// BrimScythePro.DisplayName: Brim Scythe Pro
+>>>>>>> 56d7ae72efab2754ae5b2c7e57a9bf20faa87ef3
 }
 
 Configs: {

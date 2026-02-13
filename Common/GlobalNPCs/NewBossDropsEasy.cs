@@ -33,6 +33,7 @@ using RagnarokMod.Items.BardItems.Percussion;
 using CalamityMod.NPCs.Polterghast;
 using CalamityMod.NPCs.OldDuke;
 using CalamityMod.NPCs.Yharon;
+using CalamityMod.NPCs.BrimstoneElemental;
 using RagnarokMod.Items.HealerItems.Scythes;
 using RagnarokMod.Items.BardItems.String;
 
@@ -59,7 +60,8 @@ namespace RagnarokMod.Common.GlobalNPCs
             ||npc.type == ModContent.NPCType<Polterghast>()
             || npc.type == ModContent.NPCType<OldDuke>()
             || npc.type == ModContent.NPCType<SupremeCalamitas>()
-            || npc.type == ModContent.NPCType<Yharon>());
+            || npc.type == ModContent.NPCType<Yharon>()
+			|| npc.type == ModContent.NPCType<BrimstoneElemental>());
         }
 		
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot){
@@ -152,6 +154,9 @@ namespace RagnarokMod.Common.GlobalNPCs
             if (npc.type == ModContent.NPCType<Yharon>() && !Main.expertMode)
             {
                 npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<DragonForce>(), 3, 0));
+            }
+			if (npc.type == ModContent.NPCType<BrimstoneElemental>() && !Main.expertMode){
+                npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<BrimScythe>(), 3, 0));
             }
         }
     }
