@@ -1,34 +1,38 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.CalPlayer;
+using CalamityMod.Cooldowns;
+using Microsoft.Xna.Framework;
+using RagnarokMod.Buffs;
+using RagnarokMod.Common.Configs;
+using RagnarokMod.ILEditing;
+using RagnarokMod.Items.BardItems.Accessories;
+using RagnarokMod.Items.BardItems.Armor;
+using RagnarokMod.Items.HealerItems;
+using RagnarokMod.Items.HealerItems.Accessories;
+using RagnarokMod.Projectiles.Accessories;
 using System;
 using System.Collections.Generic;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.Audio;
-using Terraria.ID;
+using Terraria.DataStructures;
 using Terraria.GameInput;
+using Terraria.ID;
 using Terraria.ModLoader;
+using ThoriumMod;
 using ThoriumMod.Buffs;
 using ThoriumMod.Buffs.Bard;
 using ThoriumMod.Buffs.Healer;
 using ThoriumMod.Buffs.Thrower;
-using ThoriumMod.Items.BossThePrimordials.Rhapsodist;
-using ThoriumMod.Items.BossThePrimordials.Dream;
-using ThoriumMod.Items;
-using ThoriumMod.Sounds;
-using ThoriumMod;
-using ThoriumMod.Utilities;
 using ThoriumMod.Empowerments;
-using ThoriumMod.Projectiles.Thrower;
+using ThoriumMod.Items;
+using ThoriumMod.Items.BossThePrimordials.Dream;
+using ThoriumMod.Items.BossThePrimordials.Rhapsodist;
 using ThoriumMod.Projectiles.Healer;
-using CalamityMod.Cooldowns;
-using CalamityMod;
-using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.CalPlayer;
-using RagnarokMod.Items.BardItems.Armor;
-using RagnarokMod.Common.Configs;
-using RagnarokMod.Buffs;
-using RagnarokMod.Items.HealerItems;
-using RagnarokMod.Items.HealerItems.Accessories;
+using ThoriumMod.Projectiles.Thrower;
+using ThoriumMod.Sounds;
+using ThoriumMod.Utilities;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace RagnarokMod.Utils
 {
@@ -47,9 +51,10 @@ namespace RagnarokMod.Utils
 		/// </summary>
 		public bool brimstoneFlamesOnHit = false;
 
-        public static List<Action<Player, Player>> OnHealEffects = new();
+		public static List<Action<Player, Player>> OnHealEffects = new();
 
         //this is most likely only gonna be for armor set abilities.
+        public bool stringInstrumentUsed = false;
         public bool batpoop = false;
 		public bool auricBardSet = false;
 		public bool auricHealerSet = false;
@@ -66,6 +71,7 @@ namespace RagnarokMod.Utils
 		public bool nightfallen = false;
 		public bool WhiteDwarf = false;
 		public bool leviathanHeart = false;
+		public bool sirenScale = false;
 		public ThoriumItem lastHeldItem;
 		public int origLifeCost = 0;
 		private int lastSeenHeal = 0;
@@ -86,6 +92,46 @@ namespace RagnarokMod.Utils
 		public bool throwGuide3Fix = false;
 		public bool auricBoost;
 
+
+
+        public void EnsureMiniAnahita()
+        {
+            if (Player.whoAmI != Main.myPlayer)
+                return;
+
+            int type = ModContent.ProjectileType<MiniAnahitaCompanion>();
+            for (int i = 0; i < Main.maxProjectiles; i++)
+            {
+                Projectile p = Main.projectile[i];
+				if (p.active && p.owner == Player.whoAmI && p.type == type)
+				{
+					return; // already exists
+				}
+			}
+
+				Item scale = null;
+            foreach (Item item in Player.armor)
+            {
+                if (item.type == ModContent.ItemType<SirenScale>())
+                {
+                    scale = item;
+                    break;
+                }
+            }
+
+            if (scale == null)
+				return;
+			int index = Projectile.NewProjectile(
+				Player.GetSource_Accessory(scale),
+				Player.Center,
+				Microsoft.Xna.Framework.Vector2.Zero,
+				type,
+				// Damage scaled from player's bard damage
+				(int)(Player.HeldItem.damage),
+				2f,
+				Player.whoAmI
+			);
+        }
 		public override void OnHurt(Player.HurtInfo info)
 		{
 			if (bloodflareHealer || bloodflareBard)
@@ -347,29 +393,29 @@ namespace RagnarokMod.Utils
 				elementalReaperCD--;
 			}
 
-            OnHealEffects.Add((healer, target) =>
-            {
-                var ragHealer = healer.GetModPlayer<RagnarokModPlayer>();
-                if (!ragHealer.leviathanHeart)
-                    return;
+			OnHealEffects.Add((healer, target) =>
+			{
+				var ragHealer = healer.GetModPlayer<RagnarokModPlayer>();
+				if (!ragHealer.leviathanHeart)
+					return;
 
-                var healerThorium = healer.GetModPlayer<ThoriumPlayer>();
-                if (healerThorium.darkAura)
-                    return;
+				var healerThorium = healer.GetModPlayer<ThoriumPlayer>();
+				if (healerThorium.darkAura)
+					return;
 
 
-                if (target.whoAmI == Main.myPlayer)
-                {
-                    target.AddBuff(ModContent.BuffType<LeviathanHeartBubble>(), 5 * 60);
-                }
-                else
-                {
-                    ModPacket packet = ModContent.GetInstance<RagnarokMod>().GetPacket();
-                    packet.Write((byte)0);
-                    packet.Write((byte)target.whoAmI);
-                    packet.Send();
-                }
-            });
+				if (target.whoAmI == Main.myPlayer)
+				{
+					target.AddBuff(ModContent.BuffType<LeviathanHeartBubble>(), 5 * 60);
+				}
+				else
+				{
+					ModPacket packet = ModContent.GetInstance<RagnarokMod>().GetPacket();
+					packet.Write((byte)0);
+					packet.Write((byte)target.whoAmI);
+					packet.Send();
+				}
+			});
 
             // Fixes the RogueUseTime problem, that occurs, because Thorium implements features like buffs that can effect item use times, which is incompatible with the Calamity Rogue usetime / attackspeed check.
             this.ApplyRogueUseTimeFix();
@@ -731,6 +777,33 @@ namespace RagnarokMod.Utils
 			}
 		}
 
+		private void SetFalse()
+		{
+            this.brimstoneFlamesOnHit = false;
+            this.tarraHealer = false;
+            this.tarraBard = false;
+            this.daedalusHealer = false;
+            this.daedalusBard = false;
+            this.godslayerBard = false;
+            this.silvaHealer = false;
+            this.bloodflareHealer = false;
+            this.bloodflareBard = false;
+            this.auricBardSet = false;
+            this.auricHealerSet = false;
+            WhiteDwarf = false;
+            nightfallen = false;
+            this.batpoop = false;
+            this.accShinobiSigilFix = false;
+            this.blightAccFix = false;
+            this.throwGuideFix = false;
+            this.throwGuide2Fix = false;
+            this.throwGuide3Fix = false;
+            this.intergelacticBard = false;
+            this.intergelacticHealer = false;
+            auricBoost = false;
+            leviathanHeart = false;
+            sirenScale = false;
+        }
 		public override void ResetEffects()
 		{
 			if (lastHeldItem != null)
@@ -741,55 +814,13 @@ namespace RagnarokMod.Utils
 			}
 			if (this.tarraBard == false && this.tarraHealer == false)
 				bloodflarebloodlust = 0;
-
-			this.brimstoneFlamesOnHit = false;
-			this.tarraHealer = false;
-			this.tarraBard = false;
-			this.daedalusHealer = false;
-			this.daedalusBard = false;
-			this.godslayerBard = false;
-			this.silvaHealer = false;
-			this.bloodflareHealer = false;
-			this.bloodflareBard = false;
-			this.auricBardSet = false;
-			this.auricHealerSet = false;
-			WhiteDwarf = false;
-			nightfallen = false;
-			this.batpoop = false;
-			this.accShinobiSigilFix = false;
-			this.blightAccFix = false;
-			this.throwGuideFix = false;
-			this.throwGuide2Fix = false;
-			this.throwGuide3Fix = false;
-			this.intergelacticBard = false;
-			this.intergelacticHealer = false;
-			auricBoost = false;
-			leviathanHeart = false;
-		}
+			SetFalse();
+        }
 
 		public override void UpdateDead()
 		{
-			this.brimstoneFlamesOnHit = false;
-			this.tarraHealer = false;
-			this.tarraBard = false;
-			this.daedalusHealer = false;
-			this.daedalusBard = false;
-			this.godslayerBard = false;
-			this.silvaHealer = false;
-			this.bloodflareHealer = false;
-			this.bloodflareBard = false;
-			this.auricBardSet = false;
-			this.auricHealerSet = false;
-			this.batpoop = false;
-			this.accShinobiSigilFix = false;
-			this.blightAccFix = false;
-			this.throwGuideFix = false;
-			this.throwGuide2Fix = false;
-			this.throwGuide3Fix = false;
-			this.intergelacticBard = false;
-			this.intergelacticHealer = false;
-			auricBoost = false;
-		}
+			SetFalse();
+        }
 
 		public override void ModifyWeaponKnockback(Item item, ref StatModifier knockback)
 		{

@@ -42,12 +42,11 @@ namespace RagnarokMod
 
         public override void Load()
 		{
-			
 		}
 
         public override void Unload()
         {
-			PlayerHelper.Unload();
+            PlayerHelper.Unload();
         }
     }
 }

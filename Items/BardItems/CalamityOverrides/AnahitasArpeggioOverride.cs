@@ -1,13 +1,17 @@
-﻿using CalamityMod.Projectiles.Magic;
+﻿using CalamityMod;
+using CalamityMod.Items;
+using CalamityMod.Projectiles.Magic;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using ThoriumMod.Empowerments;
 using ThoriumMod;
+using ThoriumMod.Empowerments;
 using ThoriumMod.Items;
-using CalamityMod.Items;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace RagnarokMod.Items
 {
@@ -18,6 +22,12 @@ namespace RagnarokMod.Items
         public override string Texture => "CalamityMod/Items/Weapons/Magic/AnahitasArpeggio";
         public override BardInstrumentType InstrumentType => BardInstrumentType.String;
 
+        public float RotationOffset;
+
+        public static readonly SoundStyle CapSound = new("CalamityMod/Sounds/Item/HarpLV6");
+        public static readonly SoundStyle EndSound = new("CalamityMod/Sounds/Item/HarpEnd");
+        public static readonly SoundStyle HitSound = new("CalamityMod/Sounds/Item/HarpNoteHit");
+
         public override void SetStaticDefaults()
         {
             Empowerments.AddInfo<AquaticAbility>(3);
@@ -25,13 +35,15 @@ namespace RagnarokMod.Items
         }
         public override void SetBardDefaults()
         {
-            Item.damage = 92;
-            InspirationCost = 2;
             Item.width = 56;
             Item.height = 50;
-            Item.useTime = 18;
-            Item.useAnimation = 18;
-            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.damage = 60;
+            Item.DamageType = DamageClass.Magic;
+            Item.mana = 7;
+            Item.useTime = 22;
+            Item.useAnimation = 22;
+            Item.attackSpeedOnlyAffectsWeaponAnimation = true;
+            Item.channel = true;
             Item.noMelee = true;
             Item.knockBack = 6.5f;
             Item.value = CalamityGlobalItem.RarityLimeBuyPrice;
@@ -47,26 +59,64 @@ namespace RagnarokMod.Items
             }
         }
 
-        public override Vector2? HoldoutOffset() => new Vector2(-10, 0);
+
+        public override bool CanPlayInstrument(Player player) => player.Calamity().arpeggioCooldown <= 0;
 
         public override bool BardShoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            float xDist = Main.mouseX + Main.screenPosition.X - position.X;
-            float yDist = Main.mouseY + Main.screenPosition.Y - position.Y;
-            Vector2 mouseDist = new Vector2(xDist, yDist);
-            float soundMult = mouseDist.Length() / (Main.screenHeight / 2f);
-            if (soundMult > 1f)
-                soundMult = 1f;
-            float soundPitch = soundMult * 2f - 1f;
-            soundPitch = MathHelper.Clamp(soundPitch, -1f, 1f);
+            // Max music note check is in Shoot instead of CanUseItem so that the weapon can still be visually played while at the cap
+            int musicNoteCap = Main.zenithWorld ? 7 : 6;
 
-            velocity.X += Main.rand.NextFloat(-0.75f, 0.75f);
-            velocity.Y += Main.rand.NextFloat(-0.75f, 0.75f);
-            velocity.X *= soundMult + 0.25f;
-            velocity.Y *= soundMult + 0.25f;
+            int nonReleasedMusicNotes = 0;
+            foreach (var proj in Main.ActiveProjectiles)
+            {
+                if (proj.type != Item.shoot || proj.owner != player.whoAmI || proj.ai[1] == 2f)
+                    continue;
+                nonReleasedMusicNotes++;
+            }
 
-            Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, soundPitch, 0f);
-            return false;
+            if (nonReleasedMusicNotes >= musicNoteCap)
+            {
+                if (!Main.zenithWorld)
+                    SoundEngine.PlaySound(CapSound with { Volume = 0.8f }, player.Center);
+                return false;
+            }
+            else
+            {
+                if (nonReleasedMusicNotes <= 0)
+                    RotationOffset = Main.rand.NextFloat(0f, MathHelper.TwoPi);
+
+                Projectile note = Projectile.NewProjectileDirect(source, position, Vector2.Zero, type, damage, knockback, player.whoAmI, ai2: nonReleasedMusicNotes);
+                note.ModProjectile<AnahitasArpeggioNote>()._randomReleaseRotationOffset = RotationOffset;
+                return false;
+            }
+        }
+
+        public override void BardHoldItem(Player player) => player.Calamity().mouseWorldListener = true;
+
+        public override void UseStyle(Player player, Rectangle heldItemFrame)
+        {
+            player.itemLocation.X -= 15f * player.direction;
+            player.itemLocation.Y += 15f * player.gravDir;
+        }
+
+        // Consume much less mana while the maximum number of notes are present
+        public override void ModifyManaCost(Player player, ref float reduce, ref float mult)
+        {
+            int nonReleasedMusicNotes = Main.projectile.Count(proj => proj.type == Item.shoot && Main.myPlayer == proj.owner && proj.active && proj.ai[1] != 2f);
+            if (nonReleasedMusicNotes >= 6)
+                mult *= 0.25f;
+        }
+
+        public override void BardModifyTooltips(List<TooltipLine> tooltips)
+        {
+            var line = tooltips.FirstOrDefault(x => x.Text.Contains("[GFB]") && x.Mod == "Terraria");
+            if (line != null)
+            {
+                line.Text = Lang.SupportGlyphs(this.GetLocalizedValue(Main.zenithWorld ? "TooltipGFB" : "TooltipNormal"));
+                if (Main.zenithWorld)
+                    line.OverrideColor = Main.DiscoColor;
+            }
         }
     }
 }

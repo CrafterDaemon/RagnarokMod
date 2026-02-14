@@ -850,6 +850,18 @@ Items: {
 		// DisplayName: Leviathan Heart
 		// Tooltip: ""
 	}
+
+	SirenScale: {
+		// DisplayName: Siren Scale
+		/* Tooltip:
+			'''
+			The Siren sings along with your enchanting tune.
+
+			Symphonic Damage increased by 15%
+			Inspiration Regen rate increased by 20%
+			Anahita will sing along with your string instruments, firing additional water projectiles.
+			''' */
+	}
 }
 
 Projectiles: {
@@ -932,6 +944,8 @@ Projectiles: {
 	LeviathanHeartBubbleProj.DisplayName: Leviathan Heart Bubble Proj
 	BrimScytheFirePro.DisplayName: Brim Scythe Fire Pro
 	BrimScythePro.DisplayName: Brim Scythe Pro
+	// AnahitaWaterNote.DisplayName: Anahita Water Note
+	// MiniAnahitaCompanion.DisplayName: Mini Anahita Companion
 }
 
 Configs: {

@@ -11,16 +11,20 @@ using RagnarokMod.Common.Configs;
 using RagnarokMod.Common.ModSystems;
 using RagnarokMod.Utils;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
 using ThoriumMod;
 using ThoriumMod.Buffs.Bard;
+using ThoriumMod.Empowerments;
 
 namespace RagnarokMod.ILEditing
 {
-    public class ThoriumEdits : ModSystem{
+    public class ThoriumEdits : ModSystem
+    {
         private static Mod Thorium => ModLoader.GetMod("ThoriumMod");
         private static Assembly ThoriumAssembly = Thorium.GetType().Assembly;
         private static Type tlk = null;
@@ -34,7 +38,7 @@ namespace RagnarokMod.ILEditing
         private static ILHook midihook = null;
         private static Type solo = null;
         private static MethodInfo solobuff = null;
-        private static ILHook solohook = null; 
+        private static ILHook solohook = null;
         private static Type rhap = null;
         private static MethodInfo rhapbuff = null;
         private static ILHook rhaphook = null;
@@ -50,16 +54,16 @@ namespace RagnarokMod.ILEditing
         private static Type ddh = null;
         private static MethodInfo ddhbuff = null;
         private static ILHook ddhhook = null;
-		private static Type bardempowermentbar = null;
+        private static Type bardempowermentbar = null;
         private static MethodInfo getstartcoordinates = null;
         private static ILHook bardempowermentbarhook = null;
-		private static Type nsm = null;
+        private static Type nsm = null;
         private static MethodInfo nsmbuff = null;
         private static ILHook nsmhook = null;
-		private static Type qjelly = null;
+        private static Type qjelly = null;
         private static MethodInfo qjellypostdraw = null;
         private static ILHook qjellyhook = null;
-		private static Type scouter = null;
+        private static Type scouter = null;
         private static MethodInfo scouterpostdraw = null;
         private static ILHook scouterhook = null;
         private static Type onHeal = null;
@@ -67,12 +71,17 @@ namespace RagnarokMod.ILEditing
         private static ILHook onHealHook = null;
         private short timer = 0;
         public int maxInsp = 50;
-        public override void OnModLoad(){
+        public override void OnModLoad()
+        {
             bool loadCaught = false;
-            while (!loadCaught){
-                if (Thorium != null){
-                    foreach (Type type in ThoriumAssembly.GetTypes()){
-                        if (type.Name == "TerrariansLastKnife"){
+            while (!loadCaught)
+            {
+                if (Thorium != null)
+                {
+                    foreach (Type type in ThoriumAssembly.GetTypes())
+                    {
+                        if (type.Name == "TerrariansLastKnife")
+                        {
                             tlk = type;
                         }
                     }
@@ -81,20 +90,24 @@ namespace RagnarokMod.ILEditing
                     tlkhook.Apply();
 
 
-                    foreach (Type type in ThoriumAssembly.GetTypes()){
-                        if (type.Name == "AncientPhylactery"){
+                    foreach (Type type in ThoriumAssembly.GetTypes())
+                    {
+                        if (type.Name == "AncientPhylactery")
+                        {
                             phyl = type;
                             break;
                         }
                     }
 
-                    if (phyl == null){
+                    if (phyl == null)
+                    {
                         Mod.Logger.Warn("Could not find AncientPhylactery type");
                         return;
                     }
 
-                    phylrc = phyl.GetMethod("RightClick", BindingFlags.Public | BindingFlags.Instance, null, new Type[] { typeof(int), typeof(int) } ,null);
-                    if (phylrc == null){
+                    phylrc = phyl.GetMethod("RightClick", BindingFlags.Public | BindingFlags.Instance, null, new Type[] { typeof(int), typeof(int) }, null);
+                    if (phylrc == null)
+                    {
                         Mod.Logger.Warn("Could not find AncientPhylactery.RightClick method");
                         return;
                     }
@@ -102,8 +115,10 @@ namespace RagnarokMod.ILEditing
                     phylhook.Apply();
 
 
-                    foreach (Type type in ThoriumAssembly.GetTypes()){
-                        if (type.Name == "BlackMIDIPro"){
+                    foreach (Type type in ThoriumAssembly.GetTypes())
+                    {
+                        if (type.Name == "BlackMIDIPro")
+                        {
                             midi = type;
                         }
                     }
@@ -111,8 +126,10 @@ namespace RagnarokMod.ILEditing
                     midihook = new ILHook(midihit, BlackMidiTweak);
                     midihook.Apply();
 
-                    foreach (Type type in ThoriumAssembly.GetTypes()){
-                        if (type.Name == "SoloistsHatSetBuff"){
+                    foreach (Type type in ThoriumAssembly.GetTypes())
+                    {
+                        if (type.Name == "SoloistsHatSetBuff")
+                        {
                             solo = type;
                         }
                     }
@@ -120,8 +137,10 @@ namespace RagnarokMod.ILEditing
                     solohook = new ILHook(solobuff, SoloistSetNerf);
                     solohook.Apply();
 
-                    foreach (Type type in ThoriumAssembly.GetTypes()){
-                        if (type.Name == "InspiratorsHelmet"){
+                    foreach (Type type in ThoriumAssembly.GetTypes())
+                    {
+                        if (type.Name == "InspiratorsHelmet")
+                        {
                             rhap = type;
                         }
                     }
@@ -129,8 +148,10 @@ namespace RagnarokMod.ILEditing
                     rhaphook = new ILHook(rhapbuff, RhapsodistSetNerf);
                     rhaphook.Apply();
 
-                    foreach (Type type in ThoriumAssembly.GetTypes()){
-                        if (type.Name == "ThoriumPlayer"){
+                    foreach (Type type in ThoriumAssembly.GetTypes())
+                    {
+                        if (type.Name == "ThoriumPlayer")
+                        {
                             bardcap = type;
                         }
                     }
@@ -138,8 +159,10 @@ namespace RagnarokMod.ILEditing
                     insphook = new ILHook(insplimit, removeBardResourceCaps);
                     insphook.Apply();
 
-                    foreach (Type type in ThoriumAssembly.GetTypes()){
-                        if (type.Name == "GoldenScaleBuff"){
+                    foreach (Type type in ThoriumAssembly.GetTypes())
+                    {
+                        if (type.Name == "GoldenScaleBuff")
+                        {
                             gscale = type;
                         }
                     }
@@ -147,8 +170,10 @@ namespace RagnarokMod.ILEditing
                     gscalehook = new ILHook(gscaleup, tweakGoldenScaleBuff);
                     gscalehook.Apply();
 
-                    foreach (Type type in ThoriumAssembly.GetTypes()){
-                        if (type.Name == "DepthDiverAura"){
+                    foreach (Type type in ThoriumAssembly.GetTypes())
+                    {
+                        if (type.Name == "DepthDiverAura")
+                        {
                             depthaura = type;
                         }
                     }
@@ -156,44 +181,54 @@ namespace RagnarokMod.ILEditing
                     depthaurahook = new ILHook(depthaurabuff, tweakDepthBreath);
                     depthaurahook.Apply();
 
-                    foreach (Type type in ThoriumAssembly.GetTypes()){
-                        if (type.Name == "DepthDiverHelmet"){
+                    foreach (Type type in ThoriumAssembly.GetTypes())
+                    {
+                        if (type.Name == "DepthDiverHelmet")
+                        {
                             ddh = type;
                         }
                     }
                     ddhbuff = ddh.GetMethod("UpdateEquip", BindingFlags.Public | BindingFlags.Instance);
                     ddhhook = new ILHook(ddhbuff, tweakDepthDiverHelmet);
                     ddhhook.Apply();
-					
-					foreach (Type type in ThoriumAssembly.GetTypes()){
-						if (type.Name == "BardEmpowermentBar"){
+
+                    foreach (Type type in ThoriumAssembly.GetTypes())
+                    {
+                        if (type.Name == "BardEmpowermentBar")
+                        {
                             bardempowermentbar = type;
-						}
-					}
-					getstartcoordinates = bardempowermentbar.GetMethod("GetStartCoordinates", BindingFlags.NonPublic | BindingFlags.Instance);
-					bardempowermentbarhook = new ILHook(getstartcoordinates, updateEmpowermentBar);	
-					bardempowermentbarhook.Apply();    
-					
-					foreach (Type type in ThoriumAssembly.GetTypes()){
-                        if (type.Name == "NagaSkinMask"){
+                        }
+                    }
+                    getstartcoordinates = bardempowermentbar.GetMethod("GetStartCoordinates", BindingFlags.NonPublic | BindingFlags.Instance);
+                    bardempowermentbarhook = new ILHook(getstartcoordinates, updateEmpowermentBar);
+                    bardempowermentbarhook.Apply();
+
+                    foreach (Type type in ThoriumAssembly.GetTypes())
+                    {
+                        if (type.Name == "NagaSkinMask")
+                        {
                             nsm = type;
                         }
                     }
                     nsmbuff = nsm.GetMethod("UpdateEquip", BindingFlags.Public | BindingFlags.Instance);
                     nsmhook = new ILHook(nsmbuff, tweakNagaSkinMask);
                     nsmhook.Apply();
-					
-					foreach (Type type in ThoriumAssembly.GetTypes()){
-                        if (type.Name == "QueenJellyfish"){
+
+                    foreach (Type type in ThoriumAssembly.GetTypes())
+                    {
+                        if (type.Name == "QueenJellyfish")
+                        {
                             qjelly = type;
                         }
                     }
                     qjellypostdraw = qjelly.GetMethod("PostDraw", BindingFlags.Public | BindingFlags.Instance);
                     qjellyhook = new ILHook(qjellypostdraw, DisableQuellyfishPostDraw);
                     qjellyhook.Apply();
-					
-					foreach (Type type in ThoriumAssembly.GetTypes()){
-                        if (type.Name == "StarScouter"){
+
+                    foreach (Type type in ThoriumAssembly.GetTypes())
+                    {
+                        if (type.Name == "StarScouter")
+                        {
                             scouter = type;
                         }
                     }
@@ -218,8 +253,10 @@ namespace RagnarokMod.ILEditing
                 }
             }
         }
-        public override void OnModUnload(){
-            if (Thorium != null){
+        public override void OnModUnload()
+        {
+            if (Thorium != null)
+            {
                 tlkhook.Dispose();
                 phylhook.Dispose();
                 midihook.Dispose();
@@ -229,39 +266,48 @@ namespace RagnarokMod.ILEditing
                 gscalehook.Dispose();
                 depthaurahook.Dispose();
                 ddhhook.Dispose();
-				bardempowermentbarhook.Dispose();
-				nsmhook.Dispose();
-				qjellyhook.Dispose();
-				scouterhook.Dispose();
+                bardempowermentbarhook.Dispose();
+                nsmhook.Dispose();
+                qjellyhook.Dispose();
+                scouterhook.Dispose();
+                onHealHook.Dispose();
             }
         }
-		 public override void PostUpdateEverything(){
-				if(timer == 1800){
-					timer = 0;
-					if((CalamityGamemodeCheck.isRevengeance || CalamityGamemodeCheck.isBossrush) && OtherModsCompat.shouldRagnarokBossAILoad(ModContent.GetInstance<BossConfig>().jelly)){
-						qjellyhook.Undo();
-						qjellypostdraw = qjelly.GetMethod("PostDraw", BindingFlags.Public | BindingFlags.Instance);
-						qjellyhook = new ILHook(qjellypostdraw, DisableQuellyfishPostDraw);
-						qjellyhook.Apply();
-					}
-					else {
-						qjellyhook.Undo();
-					}
-					if((CalamityGamemodeCheck.isRevengeance || CalamityGamemodeCheck.isBossrush) && OtherModsCompat.shouldRagnarokBossAILoad(ModContent.GetInstance<BossConfig>().scouter)){
-						scouterhook.Undo();
-						scouterpostdraw = scouter.GetMethod("PostDraw", BindingFlags.Public | BindingFlags.Instance);
-						scouterhook = new ILHook(scouterpostdraw, DisableScouterPostDraw);
-						scouterhook.Apply();
-					}
-					else{
-						scouterhook.Undo();
-					}
-				}
-				timer++;
+        public override void PostUpdateEverything()
+        {
+            if (timer == 1800)
+            {
+                timer = 0;
+                if ((CalamityGamemodeCheck.isRevengeance || CalamityGamemodeCheck.isBossrush) && OtherModsCompat.shouldRagnarokBossAILoad(ModContent.GetInstance<BossConfig>().jelly))
+                {
+                    qjellyhook.Undo();
+                    qjellypostdraw = qjelly.GetMethod("PostDraw", BindingFlags.Public | BindingFlags.Instance);
+                    qjellyhook = new ILHook(qjellypostdraw, DisableQuellyfishPostDraw);
+                    qjellyhook.Apply();
+                }
+                else
+                {
+                    qjellyhook.Undo();
+                }
+                if ((CalamityGamemodeCheck.isRevengeance || CalamityGamemodeCheck.isBossrush) && OtherModsCompat.shouldRagnarokBossAILoad(ModContent.GetInstance<BossConfig>().scouter))
+                {
+                    scouterhook.Undo();
+                    scouterpostdraw = scouter.GetMethod("PostDraw", BindingFlags.Public | BindingFlags.Instance);
+                    scouterhook = new ILHook(scouterpostdraw, DisableScouterPostDraw);
+                    scouterhook.Apply();
+                }
+                else
+                {
+                    scouterhook.Undo();
+                }
+            }
+            timer++;
         }
-		
-        private void HavocPhylactory(ILContext il){
-            if (ModContent.GetInstance<BossProgressionConfig>().Lich){
+
+        private void HavocPhylactory(ILContext il)
+        {
+            if (ModContent.GetInstance<BossProgressionConfig>().Lich)
+            {
                 var c = new ILCursor(il);
                 if (!c.TryGotoNext(MoveType.Before, i => i.MatchLdcI4(1725)))
                     return;
@@ -271,130 +317,159 @@ namespace RagnarokMod.ILEditing
                 c.Next.Operand = 3;
             }
         }
-        private void NewLifestealMath(ILContext il){
-			if (ModContent.GetInstance<ItemBalancerConfig>().genericweaponchanges) {
-					var c = new ILCursor(il);
-					if (!c.TryGotoNext(i => i.MatchDiv())){
-						return;
-					}
-					c.Emit(OpCodes.Pop);
-					c.Emit(OpCodes.Ldc_I4, 30);
-					c.Index++;
-					c.Emit(OpCodes.Conv_R8);
-					c.Emit(OpCodes.Ldc_R8, 0.5);
-					c.Emit(OpCodes.Call, typeof(Math).GetMethod("Pow"));
-					c.Emit(OpCodes.Conv_I4);
-			}
+        private void NewLifestealMath(ILContext il)
+        {
+            if (ModContent.GetInstance<ItemBalancerConfig>().genericweaponchanges)
+            {
+                var c = new ILCursor(il);
+                if (!c.TryGotoNext(i => i.MatchDiv()))
+                {
+                    return;
+                }
+                c.Emit(OpCodes.Pop);
+                c.Emit(OpCodes.Ldc_I4, 30);
+                c.Index++;
+                c.Emit(OpCodes.Conv_R8);
+                c.Emit(OpCodes.Ldc_R8, 0.5);
+                c.Emit(OpCodes.Call, typeof(Math).GetMethod("Pow"));
+                c.Emit(OpCodes.Conv_I4);
+            }
         }
-        private void BlackMidiTweak(ILContext il){
-			if (ModContent.GetInstance<ItemBalancerConfig>().genericweaponchanges) {
-					 var c = new ILCursor(il);
-					 if (!c.TryGotoNext(MoveType.After, i => i.MatchConvI4())){
-						return;
-					 }
-					c.Emit(OpCodes.Pop);
-					c.Emit(OpCodes.Ldarg, 3);
-					c.EmitDelegate<Func<int, int>>(damageDone => (int)Math.Sqrt((double)(damageDone / 20)));
-			}
+        private void BlackMidiTweak(ILContext il)
+        {
+            if (ModContent.GetInstance<ItemBalancerConfig>().genericweaponchanges)
+            {
+                var c = new ILCursor(il);
+                if (!c.TryGotoNext(MoveType.After, i => i.MatchConvI4()))
+                {
+                    return;
+                }
+                c.Emit(OpCodes.Pop);
+                c.Emit(OpCodes.Ldarg, 3);
+                c.EmitDelegate<Func<int, int>>(damageDone => (int)Math.Sqrt((double)(damageDone / 20)));
+            }
         }
-        private void SoloistSetNerf(ILContext il){
+        private void SoloistSetNerf(ILContext il)
+        {
             var c = new ILCursor(il);
-            if (!c.TryGotoNext(MoveType.After, i => i.MatchLdcR4(0.35f))){
+            if (!c.TryGotoNext(MoveType.After, i => i.MatchLdcR4(0.35f)))
+            {
                 return;
             }
             c.Emit(OpCodes.Pop);
             c.Emit(OpCodes.Ldc_R4, 0.15f);
-            if (!c.TryGotoNext(MoveType.After, i => i.MatchLdcR4(0.75f))){
+            if (!c.TryGotoNext(MoveType.After, i => i.MatchLdcR4(0.75f)))
+            {
                 return;
             }
             c.Emit(OpCodes.Pop);
             c.Emit(OpCodes.Ldc_R4, 0.3f);
         }
-		
-		private void RhapsodistSetNerf(ILContext il){
+
+        private void RhapsodistSetNerf(ILContext il)
+        {
             var c = new ILCursor(il);
 
-            if (!c.TryGotoNext(MoveType.After, i => i.MatchLdcR4(600))){
+            if (!c.TryGotoNext(MoveType.After, i => i.MatchLdcR4(600)))
+            {
                 return;
             }
             c.Emit(OpCodes.Pop);
             c.Emit(OpCodes.Ldc_R4, 300);
         }
 
-        private void removeBardResourceCaps(ILContext il){
+        private void removeBardResourceCaps(ILContext il)
+        {
             var c = new ILCursor(il);
-            for (int i = 0; i < 8; i++){
-                if (!c.TryGotoNext(MoveType.After, i => i.MatchLdcI4(40))){
+            for (int i = 0; i < 8; i++)
+            {
+                if (!c.TryGotoNext(MoveType.After, i => i.MatchLdcI4(40)))
+                {
                     return;
                 }
             }
             c.Emit(OpCodes.Pop);
             c.Emit(OpCodes.Ldc_I4, maxInsp);
-            if (!c.TryGotoNext(MoveType.After, i => i.MatchLdcI4(40))){
+            if (!c.TryGotoNext(MoveType.After, i => i.MatchLdcI4(40)))
+            {
                 return;
             }
             c.Emit(OpCodes.Pop);
             c.Emit(OpCodes.Ldc_I4, maxInsp);
-            if (!c.TryGotoNext(MoveType.After, i => i.MatchLdcI4(60))){
+            if (!c.TryGotoNext(MoveType.After, i => i.MatchLdcI4(60)))
+            {
                 return;
             }
             c.Emit(OpCodes.Pop);
             c.Emit(OpCodes.Ldc_I4, maxInsp + 20);
-            if (!c.TryGotoNext(MoveType.After, i => i.MatchLdcI4(60))){
+            if (!c.TryGotoNext(MoveType.After, i => i.MatchLdcI4(60)))
+            {
                 return;
             }
             c.Emit(OpCodes.Pop);
             c.Emit(OpCodes.Ldc_I4, maxInsp + 20);
         }
-		
-        private void tweakGoldenScaleBuff(ILContext il) {
-				var c = new ILCursor(il);
-				c.EmitRet();
-        }
-		
-		private void tweakDepthBreath(ILContext il) {
-				var c = new ILCursor(il);
-				c.EmitRet();
-        }
-		
-		private void tweakDepthDiverHelmet(ILContext il){
-			var c = new ILCursor(il);
-			c.EmitRet();
-		}
-		
-		 private void updateEmpowermentBar(ILContext il){
+
+        private void tweakGoldenScaleBuff(ILContext il)
+        {
             var c = new ILCursor(il);
-			
-			if (!c.TryGotoNext(MoveType.After, i => i.MatchLdcR4(32f))){
+            c.EmitRet();
+        }
+
+        private void tweakDepthBreath(ILContext il)
+        {
+            var c = new ILCursor(il);
+            c.EmitRet();
+        }
+
+        private void tweakDepthDiverHelmet(ILContext il)
+        {
+            var c = new ILCursor(il);
+            c.EmitRet();
+        }
+
+        private void updateEmpowermentBar(ILContext il)
+        {
+            var c = new ILCursor(il);
+
+            if (!c.TryGotoNext(MoveType.After, i => i.MatchLdcR4(32f)))
+            {
                 return;
             }
-			if (!c.TryGotoNext(MoveType.After, i => i.MatchLdcR4(32f))){
+            if (!c.TryGotoNext(MoveType.After, i => i.MatchLdcR4(32f)))
+            {
                 return;
             }
-			c.Emit(OpCodes.Pop);
+            c.Emit(OpCodes.Pop);
             c.Emit(OpCodes.Ldc_R4, (float)ModContent.GetInstance<UIConfig>().BardEmpowermentBarOffsetX);
-            if (!c.TryGotoNext(MoveType.After, i => i.MatchLdcI4(76))){
+            if (!c.TryGotoNext(MoveType.After, i => i.MatchLdcI4(76)))
+            {
                 return;
             }
             c.Emit(OpCodes.Pop);
             c.Emit(OpCodes.Ldc_I4, (int)ModContent.GetInstance<UIConfig>().BardEmpowermentBarOffsetY);
         }
-		
-		private void tweakNagaSkinMask(ILContext il){
-			var c = new ILCursor(il);
-			c.EmitRet();
-		}
-		private void DisableQuellyfishPostDraw(ILContext il) {
-			if( (CalamityGamemodeCheck.isRevengeance || CalamityGamemodeCheck.isBossrush) && OtherModsCompat.shouldRagnarokBossAILoad(ModContent.GetInstance<BossConfig>().jelly) ){
-				var c = new ILCursor(il);
-				c.EmitRet();
-			}
-		}
-		private void DisableScouterPostDraw(ILContext il) {
-			if( (CalamityGamemodeCheck.isRevengeance || CalamityGamemodeCheck.isBossrush) && OtherModsCompat.shouldRagnarokBossAILoad(ModContent.GetInstance<BossConfig>().scouter) ){
-				var c = new ILCursor(il);
-				c.EmitRet();
-			}
+
+        private void tweakNagaSkinMask(ILContext il)
+        {
+            var c = new ILCursor(il);
+            c.EmitRet();
+        }
+        private void DisableQuellyfishPostDraw(ILContext il)
+        {
+            if ((CalamityGamemodeCheck.isRevengeance || CalamityGamemodeCheck.isBossrush) && OtherModsCompat.shouldRagnarokBossAILoad(ModContent.GetInstance<BossConfig>().jelly))
+            {
+                var c = new ILCursor(il);
+                c.EmitRet();
+            }
+        }
+        private void DisableScouterPostDraw(ILContext il)
+        {
+            if ((CalamityGamemodeCheck.isRevengeance || CalamityGamemodeCheck.isBossrush) && OtherModsCompat.shouldRagnarokBossAILoad(ModContent.GetInstance<BossConfig>().scouter))
+            {
+                var c = new ILCursor(il);
+                c.EmitRet();
+            }
         }
         private void newOnHealEffects(ILContext il)
         {

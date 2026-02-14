@@ -19,13 +19,15 @@ using ThoriumMod.Items.BossViscount;
 using RagnarokMod.Items.BardItems.Percussion;
 using RagnarokMod.Items.HealerItems.Scythes;
 using RagnarokMod.Items.BardItems.String;
+using RagnarokMod.Items.HealerItems.Accessories;
+using RagnarokMod.Items.BardItems.Accessories;
 
 namespace RagnarokMod.Common.GlobalItems
 {
     public class NewBossDrops : GlobalItem{
-		public override bool AppliesToEntity(Item item, bool lateInstantiation){
+        public override bool AppliesToEntity(Item item, bool lateInstantiation) {
             return (
-			item.type == ModContent.ItemType<TheGrandThunderBirdTreasureBag>()
+            item.type == ModContent.ItemType<TheGrandThunderBirdTreasureBag>()
             || item.type == ModContent.ItemType<QueenJellyfishTreasureBag>()
             || item.type == ModContent.ItemType<StarScouterTreasureBag>()
             || item.type == ModContent.ItemType<GraniteEnergyStormTreasureBag>()
@@ -33,14 +35,15 @@ namespace RagnarokMod.Common.GlobalItems
             || item.type == ModContent.ItemType<BoreanStriderTreasureBag>()
             || item.type == ModContent.ItemType<PerforatorBag>()
             || item.type == ModContent.ItemType<CalamitasCloneBag>()
-			|| item.type == ModContent.ItemType<ProvidenceBag>()
+            || item.type == ModContent.ItemType<ProvidenceBag>()
             || item.type == ModContent.ItemType<FallenBeholderTreasureBag>()
             || item.type == ModContent.ItemType<ForgottenOneTreasureBag>()
             || item.type == ModContent.ItemType<PolterghastBag>()
-			|| item.type == ModContent.ItemType<CalamitasCoffer>()
-			|| item.type == ModContent.ItemType<OldDukeBag>()
+            || item.type == ModContent.ItemType<CalamitasCoffer>()
+            || item.type == ModContent.ItemType<OldDukeBag>()
             || item.type == ModContent.ItemType<YharonBag>()
-			|| item.type == ModContent.ItemType<BrimstoneElementalBag>()
+            || item.type == ModContent.ItemType<BrimstoneElementalBag>()
+            || item.type == ModContent.ItemType<LeviathanBag>()
             );
         }
         public override void ModifyItemLoot(Item item, ItemLoot itemLoot){
@@ -94,6 +97,11 @@ namespace RagnarokMod.Common.GlobalItems
 			if (item.type == ModContent.ItemType<BrimstoneElementalBag>())
 			{
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<BrimScythe>(), 3));
+            }
+            if (item.type == ModContent.ItemType<LeviathanBag>())
+            {
+                itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<LeviathanHeart>(), 3));
+                itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<SirenScale>(), 3));
             }
         }
     }

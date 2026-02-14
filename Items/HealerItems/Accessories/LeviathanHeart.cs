@@ -16,7 +16,7 @@ using ThoriumMod.Utilities;
 
 namespace RagnarokMod.Items.HealerItems.Accessories
 {
-    public class LeviathanHeart : ModItem
+    public class LeviathanHeart : ThoriumItem
     {
         ThoriumPlayer rag;
         public bool appliedChange = false;
@@ -27,10 +27,7 @@ namespace RagnarokMod.Items.HealerItems.Accessories
             Item.accessory = true;
             Item.rare = ItemRarityID.Red;
             Item.value = Item.buyPrice(gold: 15);
-        }
-
-        public override void SetStaticDefaults()
-        {
+            base.SetDefaults();
         }
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
@@ -39,10 +36,14 @@ namespace RagnarokMod.Items.HealerItems.Accessories
             {
                 if (rag.darkAura)
                 {
+                    isDarkHealer = true;
+                    isHealer = new bool();
                     tooltips.Add(new TooltipLine(Mod, "tooltip", Language.GetTextValue("Mods.RagnarokMod.Tooltips.LeviathanHeart.CorruptTooltip")));
                 }
                 else
                 {
+                    isHealer = true;
+                    isDarkHealer = new bool();
                     tooltips.Add(new TooltipLine(Mod, "tooltip", Language.GetTextValue("Mods.RagnarokMod.Tooltips.LeviathanHeart.NormalTooltip")));
                 }
             }
@@ -50,6 +51,7 @@ namespace RagnarokMod.Items.HealerItems.Accessories
             {
                 tooltips.Add(new TooltipLine(Mod, "tooltip", Language.GetTextValue("Mods.RagnarokMod.Tooltips.LeviathanHeart.NormalTooltip")));
             }
+            base.ModifyTooltips(tooltips);
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)

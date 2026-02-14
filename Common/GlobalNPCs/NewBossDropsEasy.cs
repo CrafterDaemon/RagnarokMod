@@ -1,41 +1,45 @@
-﻿using CalamityMod.Items.Weapons.Magic;
-using CalamityMod;
+﻿using CalamityMod;
+using CalamityMod.Items.SummonItems;
+using CalamityMod.Items.Weapons.Magic;
+using CalamityMod.NPCs.AstrumDeus;
+using CalamityMod.NPCs.BrimstoneElemental;
+using CalamityMod.NPCs.CalClone;
+using CalamityMod.NPCs.Leviathan;
+using CalamityMod.NPCs.OldDuke;
+using CalamityMod.NPCs.Perforator;
+using CalamityMod.NPCs.Polterghast;
+using CalamityMod.NPCs.Providence;
 using CalamityMod.NPCs.SulphurousSea;
+using CalamityMod.NPCs.SupremeCalamitas;
+using CalamityMod.NPCs.Yharon;
+using CalamityMod.World;
+using Ragnarok.Items;
+using RagnarokMod.Common.Configs;
+using RagnarokMod.Items.BardItems.Accessories;
+using RagnarokMod.Items.BardItems.Percussion;
+using RagnarokMod.Items.BardItems.String;
+using RagnarokMod.Items.HealerItems.Accessories;
+using RagnarokMod.Items.HealerItems.Other;
+using RagnarokMod.Items.HealerItems.Scythes;
 using RagnarokMod.Items.Materials;
+using RagnarokMod.Items.RevItems;
+using RagnarokMod.Utils;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ModLoader;
-using ThoriumMod.NPCs.BossStarScouter;
-using ThoriumMod.NPCs.BossTheGrandThunderBird;
-using Ragnarok.Items;
-using ThoriumMod.NPCs.BossGraniteEnergyStorm;
-using ThoriumMod.NPCs.BossBuriedChampion;
-using ThoriumMod.NPCs.BossBoreanStrider;
+using Terraria.UI;
 using ThoriumMod.Items.BardItems;
 using ThoriumMod.Items.HealerItems;
 using ThoriumMod.Items.ThrownItems;
-using CalamityMod.NPCs.Perforator;
-using RagnarokMod.Items.HealerItems.Other;
-using CalamityMod.NPCs.AstrumDeus;
-using CalamityMod.NPCs.CalClone;
-using CalamityMod.NPCs.SupremeCalamitas;
+using ThoriumMod.NPCs.BossBoreanStrider;
+using ThoriumMod.NPCs.BossBuriedChampion;
 using ThoriumMod.NPCs.BossFallenBeholder;
-using ThoriumMod.NPCs.BossQueenJellyfish;
 using ThoriumMod.NPCs.BossForgottenOne;
+using ThoriumMod.NPCs.BossGraniteEnergyStorm;
+using ThoriumMod.NPCs.BossQueenJellyfish;
+using ThoriumMod.NPCs.BossStarScouter;
+using ThoriumMod.NPCs.BossTheGrandThunderBird;
 using ThoriumMod.NPCs.BossViscount;
-using CalamityMod.NPCs.Providence;
-using CalamityMod.Items.SummonItems;
-using CalamityMod.World;
-using RagnarokMod.Common.Configs;
-using RagnarokMod.Utils;
-using RagnarokMod.Items.RevItems;
-using RagnarokMod.Items.BardItems.Percussion;
-using CalamityMod.NPCs.Polterghast;
-using CalamityMod.NPCs.OldDuke;
-using CalamityMod.NPCs.Yharon;
-using CalamityMod.NPCs.BrimstoneElemental;
-using RagnarokMod.Items.HealerItems.Scythes;
-using RagnarokMod.Items.BardItems.String;
 
 namespace RagnarokMod.Common.GlobalNPCs
 {
@@ -43,25 +47,27 @@ namespace RagnarokMod.Common.GlobalNPCs
     {
 		public override bool AppliesToEntity(NPC npc, bool lateInstantiation){
             return (
-			npc.type == ModContent.NPCType<TheGrandThunderBird>()
-			||npc.type == ModContent.NPCType<Viscount>()
-            ||npc.type == ModContent.NPCType<QueenJellyfish>() 
-            ||npc.type == ModContent.NPCType<StarScouter>()
-            ||npc.type == ModContent.NPCType<BelchingCoral>() 
-            ||npc.type == ModContent.NPCType<GraniteEnergyStorm>()
-            ||npc.type == ModContent.NPCType<BuriedChampion>()
-            ||npc.type == ModContent.NPCType<BoreanStrider>()  
-            ||npc.type == ModContent.NPCType<FallenBeholder>()
-            ||npc.type == ModContent.NPCType<PerforatorHive>()
-            ||npc.type == ModContent.NPCType<CalamitasClone>() 
-            ||npc.type == ModContent.NPCType<Providence>()   
-            ||npc.type == ModContent.NPCType<ForgottenOne>() 
-            ||npc.type == ModContent.NPCType<AstrumDeusHead>()
-            ||npc.type == ModContent.NPCType<Polterghast>()
+            npc.type == ModContent.NPCType<TheGrandThunderBird>()
+            || npc.type == ModContent.NPCType<Viscount>()
+            || npc.type == ModContent.NPCType<QueenJellyfish>()
+            || npc.type == ModContent.NPCType<StarScouter>()
+            || npc.type == ModContent.NPCType<BelchingCoral>()
+            || npc.type == ModContent.NPCType<GraniteEnergyStorm>()
+            || npc.type == ModContent.NPCType<BuriedChampion>()
+            || npc.type == ModContent.NPCType<BoreanStrider>()
+            || npc.type == ModContent.NPCType<FallenBeholder>()
+            || npc.type == ModContent.NPCType<PerforatorHive>()
+            || npc.type == ModContent.NPCType<CalamitasClone>()
+            || npc.type == ModContent.NPCType<Providence>()
+            || npc.type == ModContent.NPCType<ForgottenOne>()
+            || npc.type == ModContent.NPCType<AstrumDeusHead>()
+            || npc.type == ModContent.NPCType<Polterghast>()
             || npc.type == ModContent.NPCType<OldDuke>()
             || npc.type == ModContent.NPCType<SupremeCalamitas>()
             || npc.type == ModContent.NPCType<Yharon>()
-			|| npc.type == ModContent.NPCType<BrimstoneElemental>());
+            || npc.type == ModContent.NPCType<BrimstoneElemental>()
+            || npc.type == ModContent.NPCType<Leviathan>()
+            || npc.type == ModContent.NPCType<Anahita>());
         }
 		
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot){
@@ -155,8 +161,19 @@ namespace RagnarokMod.Common.GlobalNPCs
             {
                 npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<DragonForce>(), 3, 0));
             }
-			if (npc.type == ModContent.NPCType<BrimstoneElemental>() && !Main.expertMode){
+            if (npc.type == ModContent.NPCType<BrimstoneElemental>() && !Main.expertMode)
+            {
                 npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<BrimScythe>(), 3, 0));
+            }
+            if (npc.type == ModContent.NPCType<Leviathan>() && !Main.expertMode)
+            {
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<LeviathanHeart>(), 3));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SirenScale>(), 3));
+            }
+            if (npc.type == ModContent.NPCType<Anahita>() && !Main.expertMode)
+            {
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<LeviathanHeart>(), 3));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SirenScale>(), 3));
             }
         }
     }
