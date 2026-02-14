@@ -867,6 +867,17 @@ Items: {
 			'''
 	}
 
+	ScourgesFrets: {
+		Tooltip:
+		'''
+		Sends out bouncing sound waves that appear to be made out of sand
+		With great timing you will be able to play the riff through the end!
+		Building up playing success will allow for minor playing mistakes
+		'''
+		DisplayName: Scourges Frets
+	}
+}
+
 	AuricGreatscythe: {
 		DisplayName: Auric Greatscythe
 		Tooltip: ""

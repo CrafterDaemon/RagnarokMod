@@ -11,8 +11,10 @@ using RagnarokMod.Items.BardItems.Armor;
 using RagnarokMod.Items.HealerItems;
 using RagnarokMod.Items.HealerItems.Accessories;
 using RagnarokMod.Projectiles.Accessories;
+using RagnarokMod.Sounds;
 using System;
 using System.Collections.Generic;
+using ReLogic.Utilities;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -41,21 +43,14 @@ namespace RagnarokMod.Utils
 		private static Mod thorium = ModLoader.GetMod("ThoriumMod");
 		private static Mod calamity = ModLoader.GetMod("CalamityMod");
 
-		/// <summary>
-		/// multiplies FinalDamage by (1 - this value) on the next damage taken.
-		/// </summary>
+
 		public float oneTimeDamageReduction = 0;
-
-		/// <summary>
-		/// if this is set to true, then all attacks will inflict brimstone flames for 5 seconds.
-		/// </summary>
 		public bool brimstoneFlamesOnHit = false;
-
+		
 		public static List<Action<Player, Player>> OnHealEffects = new();
-
-        //this is most likely only gonna be for armor set abilities.
         public bool stringInstrumentUsed = false;
         public bool batpoop = false;
+		
 		public bool auricBardSet = false;
 		public bool auricHealerSet = false;
 		public bool tarraHealer = false;
@@ -92,7 +87,8 @@ namespace RagnarokMod.Utils
 		public bool throwGuide3Fix = false;
 		public bool auricBoost;
 
-
+		public SlotId fretSlot;
+		public bool fretPlaying;
 
         public void EnsureMiniAnahita()
         {
@@ -564,6 +560,18 @@ namespace RagnarokMod.Utils
 		   && base.Player.armor[2].type == thorium.Find<ModItem>("TideTurnerGreaves").Type)
 			{
 				AddStealth(120);
+			}
+		}
+		
+		public override void PostUpdate(){
+			if (!fretPlaying){
+				return;
+			}
+			if (SoundEngine.TryGetActiveSound(fretSlot, out var sound)){
+				sound.Position = Player.Center;
+			}
+			else{
+				fretPlaying = false;
 			}
 		}
 

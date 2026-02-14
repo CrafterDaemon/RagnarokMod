@@ -3,7 +3,9 @@ using RagnarokMod.Utils;
 using System.IO;
 using Terraria;
 using Terraria.ID;
+using Terraria.Audio;
 using Terraria.ModLoader;
+using RagnarokMod.Sounds;
 
 namespace RagnarokMod
 {
@@ -37,6 +39,27 @@ namespace RagnarokMod
                         Main.player[targetIndex].AddBuff(ModContent.BuffType<LeviathanHeartBubble>(), 5 * 60);
                     }
                     break;
+				case 1:
+					byte playerID = reader.ReadByte();
+					bool start = reader.ReadBoolean();
+					Player player = Main.player[playerID];
+					var ragnarokplayer = player.GetModPlayer<RagnarokModPlayer>();
+					if (start){
+						if (!SoundEngine.TryGetActiveSound(ragnarokplayer.fretSlot, out var sound) || !sound.IsPlaying){
+							ragnarokplayer.fretSlot = SoundEngine.PlaySound(
+								RagnarokModSounds.fretsriff,
+								player.Center
+							);
+							ragnarokplayer.fretPlaying = true;
+						}
+					}
+					else{
+						if (SoundEngine.TryGetActiveSound(ragnarokplayer.fretSlot, out var sound)) {
+							sound.Stop();
+						}
+						ragnarokplayer.fretPlaying = false;
+					}
+					break;
             }
         }
 

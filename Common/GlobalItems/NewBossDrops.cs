@@ -44,6 +44,7 @@ namespace RagnarokMod.Common.GlobalItems
             || item.type == ModContent.ItemType<YharonBag>()
             || item.type == ModContent.ItemType<BrimstoneElementalBag>()
             || item.type == ModContent.ItemType<LeviathanBag>()
+			|| item.type == ModContent.ItemType<DesertScourgeBag>()
             );
         }
         public override void ModifyItemLoot(Item item, ItemLoot itemLoot){
@@ -102,6 +103,10 @@ namespace RagnarokMod.Common.GlobalItems
             {
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<LeviathanHeart>(), 3));
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<SirenScale>(), 3));
+            }
+			if (item.type == ModContent.ItemType<DesertScourgeBag>())
+			{
+                itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<ScourgesFrets>(), 3));
             }
         }
     }
