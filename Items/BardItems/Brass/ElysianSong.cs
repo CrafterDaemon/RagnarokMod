@@ -1,23 +1,24 @@
-﻿using ThoriumMod;
-using ThoriumMod.Items;
-using ThoriumMod.Empowerments;
-using ThoriumMod.Projectiles.Bard;
-using Terraria;
-using Terraria.ModLoader;
-using Terraria.ID;
-using Terraria.Audio;
-using Terraria.DataStructures;
-using CalamityMod;
+﻿using CalamityMod;
 using CalamityMod.Items;
-using CalamityMod.Rarities;
 using CalamityMod.Items.Materials;
-using RagnarokMod.Sounds;
-using ThoriumMod.Items.BardItems;
-using ThoriumMod.Sounds;
+using CalamityMod.Rarities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using RagnarokMod.Projectiles.BardPro.Brass;
+using RagnarokMod.Sounds;
+using System;
+using Terraria;
+using Terraria.Audio;
+using Terraria.DataStructures;
+using Terraria.GameContent;
+using Terraria.ID;
+using Terraria.ModLoader;
+using ThoriumMod;
+using ThoriumMod.Empowerments;
+using ThoriumMod.Items;
+using ThoriumMod.Items.BardItems;
+using ThoriumMod.Projectiles.Bard;
+using ThoriumMod.Sounds;
 
 namespace RagnarokMod.Items.BardItems.Brass
 {
@@ -34,8 +35,8 @@ namespace RagnarokMod.Items.BardItems.Brass
         {
             Item.damage = 315;
             InspirationCost = 2;
-            Item.width = 84;
-            Item.height = 50;
+            Item.width = 42;
+            Item.height = 25;
             Item.scale = 0.6f;
             Item.useTime = 24;
             Item.useAnimation = 24;
@@ -55,6 +56,17 @@ namespace RagnarokMod.Items.BardItems.Brass
             {
                 ((ModItem)this).Item.holdStyle = 3;
             }
+        }
+
+        public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
+        {
+            scale = 0.5f;
+            var texture = TextureAssets.Item[Item.type].Value;
+            float scaledHeight = texture.Height * scale;
+            var position = Item.TopLeft - Main.screenPosition;
+            position.Y += Item.height - scaledHeight;
+            spriteBatch.Draw(texture, position, null, lightColor, rotation, Vector2.Zero, scale, SpriteEffects.None, 0f);
+            return false;
         }
 
         public override void AddRecipes()

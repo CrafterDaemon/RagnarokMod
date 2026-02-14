@@ -34,8 +34,8 @@ namespace RagnarokMod.Items.BardItems.Percussion
         {
             Item.damage = 2250;
             InspirationCost = 3;
-            Item.width = 65;
-            Item.height = 65;
+            Item.width = 60;
+            Item.height = 60;
             Item.useTime = 29;
             Item.useAnimation = 29;
             Item.useStyle = ItemUseStyleID.Swing;

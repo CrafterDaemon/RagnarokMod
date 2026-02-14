@@ -21,8 +21,8 @@ namespace RagnarokMod.Items.Materials
         public override void SetDefaults()
         {
             Item.DefaultToFood(22, 22, BuffID.WellFed2, 5 * 60 * 60);
-            Item.width = 64;
-            Item.height = 64;
+            Item.width = 16;
+            Item.height = 16;
             Item.maxStack = 9999;
             Item.value = CalamityGlobalItem.RarityLightRedBuyPrice;
             Item.rare = ItemRarityID.LightRed;

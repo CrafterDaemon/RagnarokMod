@@ -1,11 +1,13 @@
-﻿using Terraria.ModLoader;
-using Terraria;
-using ThoriumMod.Items.HealerItems;
-using Terraria.ID;
+﻿using CalamityMod.Items;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using RagnarokMod.Items.Materials;
 using RagnarokMod.Projectiles.HealerPro.Scythes;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 using ThoriumMod;
-using CalamityMod.Items;
+using ThoriumMod.Items.HealerItems;
 
 namespace RagnarokMod.Items.HealerItems.Scythes
 {
@@ -41,6 +43,13 @@ namespace RagnarokMod.Items.HealerItems.Scythes
             base.Item.value = CalamityGlobalItem.RarityOrangeBuyPrice;
             base.Item.rare = ItemRarityID.Orange;
             base.Item.shoot = ModContent.ProjectileType<MarbleScythePro>();
+        }
+
+
+        public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
+        {
+            scale = 1f;
+            return true;
         }
 
 

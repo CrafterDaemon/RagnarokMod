@@ -36,7 +36,7 @@ namespace RagnarokMod.Items.BardItems.Electronic
             Item.damage = 120;
             InspirationCost = 4;
             Item.width = 32;
-            Item.height = 118;
+            Item.height = 32;
             Item.scale = 0.6f;
             Item.useTime = 48;
             Item.useAnimation = 48;

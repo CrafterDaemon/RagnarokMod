@@ -862,6 +862,11 @@ Items: {
 			Anahita will sing along with your string instruments, firing additional water projectiles.
 			''' */
 	}
+
+	AuricGreatscythe: {
+		// DisplayName: Auric Greatscythe
+		// Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -946,6 +951,7 @@ Projectiles: {
 	BrimScythePro.DisplayName: Brim Scythe Pro
 	// AnahitaWaterNote.DisplayName: Anahita Water Note
 	// MiniAnahitaCompanion.DisplayName: Mini Anahita Companion
+	// AuricGreatscythePro.DisplayName: Auric Greatscythe Pro
 }
 
 Configs: {
@@ -1101,7 +1107,11 @@ Configs: {
 
 	UIConfig: {
 		DisplayName: UI 设置
-		Headers.UITweaks: UI 调整页
+
+		Headers: {
+			UITweaks: UI 调整页
+			// Debug: Debug Header
+		}
 
 		BardEmpowermentBarOffsetX: {
 			Label: 吟游诗人咒音增幅条向 X 轴偏移
@@ -1111,6 +1121,11 @@ Configs: {
 		BardEmpowermentBarOffsetY: {
 			Label: 吟游诗人咒音增幅条向 Y 轴偏移
 			Tooltip: 吟游诗人咒音增幅条向 Y 轴偏移，默认值应该可以解决和灾厄物品冷却条的问题
+		}
+
+		ShowItemHitboxes: {
+			// Label: Show Item Hitboxes
+			// Tooltip: ""
 		}
 	}
 

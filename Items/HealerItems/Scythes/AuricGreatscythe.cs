@@ -16,7 +16,7 @@ using ThoriumMod.Items.HealerItems;
 
 namespace RagnarokMod.Items.HealerItems.Scythes
 {
-    public class PhantasmalEdge : ScytheItem, ILocalizedModType
+    public class AuricGreatscythe : ScytheItem, ILocalizedModType
     {
         public override void SetStaticDefaults()
         {
@@ -26,13 +26,13 @@ namespace RagnarokMod.Items.HealerItems.Scythes
         public override void SetDefaults()
         {
             SetDefaultsToScythe();
-            base.Item.damage = 220;
-            scytheSoulCharge = 4;
-            base.Item.width = 76;
-            base.Item.height = 74;
+            base.Item.damage = 450;
+            scytheSoulCharge = 5;
+            base.Item.width = 52;
+            base.Item.height = 48;
             base.Item.value = CalamityGlobalItem.RarityPureGreenBuyPrice;
             base.Item.rare = ModContent.RarityType<PureGreen>();
-            base.Item.shoot = ModContent.ProjectileType<PhantasmalEdgePro1>();
+            base.Item.shoot = ModContent.ProjectileType<AuricGreatscythePro>();
             Item.reuseDelay = 8;
             Item.channel = true;
             Item.autoReuse = false;
@@ -47,19 +47,17 @@ namespace RagnarokMod.Items.HealerItems.Scythes
 
         public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
         {
-            type = ModContent.ProjectileType<PhantasmalEdgePro1>();
+            type = ModContent.ProjectileType<AuricGreatscythePro>();
 
             if (player.altFunctionUse == 2)
             {
-                type = ModContent.ProjectileType<PhantasmalEdgeHook>();
-                velocity *= 150;
             }
         }
 
 
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
         {
-            scale = 0.5f;
+            scale = 0.75f;
             var texture = TextureAssets.Item[Item.type].Value;
             float scaledHeight = texture.Height * scale;
             var position = Item.TopLeft - Main.screenPosition;

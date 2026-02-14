@@ -8,6 +8,7 @@ using Terraria.ModLoader;
 using ThoriumMod.Buffs.Healer;
 using ThoriumMod.Items.HealerItems;
 using ThoriumMod.Utilities;
+using XPT.Core.Audio.MP3Sharp.Decoding.Decoders.LayerIII;
 
 namespace ThoriumMod.Projectiles.Scythe;
 
@@ -22,6 +23,12 @@ public abstract class ScythePro2 : ThoriumProjectile
     public int dustType = -1;
 
     public int dustType2 = -1;
+
+    public float dustScale = 1f;
+
+    public bool dustNoGravity = true;
+
+    public Vector2 dustVel = Vector2.Zero;
 
     public int doubleDustCounter = 0;
 
@@ -85,6 +92,8 @@ public abstract class ScythePro2 : ThoriumProjectile
         scytheCount = 2;
         dustCount = 1;
         dustType = -1;
+        dustVel = Vector2.Zero;
+        dustNoGravity = true;
         SafeSetDefaults();
     }
 
@@ -170,12 +179,13 @@ public abstract class ScythePro2 : ThoriumProjectile
         SafeAI();
     }
 
-    private void SpawnDust()
+    public virtual void SpawnDust()
     {
         int num = dustCount;
         int num2 = scytheCount;
         int num3 = dustType;
         int num3again = dustType2;
+        Vector2 vel = dustVel;
         Vector2 dustCenter = DustCenter;
         if (num2 <= 0 || num <= 0 || num3 <= -1)
         {
@@ -194,13 +204,21 @@ public abstract class ScythePro2 : ThoriumProjectile
 
             spinningpoint = spinningpoint.RotatedBy(rotation + num4);
             Vector2 position = base.Projectile.Center + new Vector2(0f, base.Projectile.gfxOffY) + spinningpoint;
+            Vector2 outward = (position - Projectile.Center).SafeNormalize(Vector2.Zero);
+            Vector2 tangent = outward.RotatedBy(MathHelper.PiOver2 * Projectile.direction);
+            float speed = new Vector2(vel.X, vel.Y).Length();
+            speed = Math.Clamp(speed * rotationSpeed * 10f, 1f, 5f);
+            vel = tangent * speed;
+            vel.Y -= 2f;
+            vel.X *= 1.5f;
             if (num3again == -1)
             {
                 for (int j = 0; j < num; j++)
                 {
-                    Dust dust = Dust.NewDustPerfect(position, num3, Vector2.Zero);
-                    dust.noGravity = true;
+                    Dust dust = Dust.NewDustPerfect(position, num3, vel);
+                    dust.noGravity = dustNoGravity;
                     dust.noLight = true;
+                    dust.scale = dustScale;
                     ModifyDust(dust, position, i);
                 }
             }
@@ -212,16 +230,18 @@ public abstract class ScythePro2 : ThoriumProjectile
                     if (doubleDustCounter == 2)
                     {
                         doubleDustCounter = 0;
-                        Dust dust = Dust.NewDustPerfect(position, num3, Vector2.Zero);
-                        dust.noGravity = true;
+                        Dust dust = Dust.NewDustPerfect(position, num3, vel);
+                        dust.noGravity = dustNoGravity;
                         dust.noLight = true;
+                        dust.scale = dustScale;
                         ModifyDust(dust, position, i);
                     }
                     else
                     {
-                        Dust dust2 = Dust.NewDustPerfect(position, num3again, Vector2.Zero);
-                        dust2.noGravity = true;
+                        Dust dust2 = Dust.NewDustPerfect(position, num3again, vel);
+                        dust2.noGravity = dustNoGravity;
                         dust2.noLight = true;
+                        dust2.scale = dustScale;
                         ModifyDust(dust2, position, i);
                     }
                 }

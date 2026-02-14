@@ -1,16 +1,18 @@
+using CalamityMod;
+using CalamityMod.Items.Materials;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using RagnarokMod.Buffs;
+using RagnarokMod.Projectiles;
+using RagnarokMod.Projectiles.HealerPro.Other;
+using RagnarokMod.Projectiles.HealerPro.Scythes;
+using RagnarokMod.Utils;
+using Terraria;
 using Terraria.DataStructures;
+using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
 using ThoriumMod.Items.HealerItems;
-using CalamityMod.Items.Materials;
-using RagnarokMod.Projectiles.HealerPro.Scythes;
-using RagnarokMod.Projectiles.HealerPro.Other;
-using CalamityMod;
-using RagnarokMod.Projectiles;
-using RagnarokMod.Utils;
-using RagnarokMod.Buffs;
 
 namespace RagnarokMod.Items.HealerItems.Scythes
 {
@@ -26,8 +28,8 @@ namespace RagnarokMod.Items.HealerItems.Scythes
             SetDefaultsToScythe();
             base.Item.damage = 115;
             scytheSoulCharge = 2;
-            base.Item.width = 146;
-            base.Item.height = 176;
+            base.Item.width = 73;
+            base.Item.height = 88;
             base.Item.value = Item.sellPrice(0, 28, 0);
             base.Item.rare = ItemRarityID.Purple;
             base.Item.shoot = ModContent.ProjectileType<ElementalReaperPro>();
@@ -62,6 +64,18 @@ namespace RagnarokMod.Items.HealerItems.Scythes
             }
 
 
+            return false;
+        }
+
+
+        public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
+        {
+            scale = 0.5f;
+            var texture = TextureAssets.Item[Item.type].Value;
+            float scaledHeight = texture.Height * scale;
+            var position = Item.TopLeft - Main.screenPosition;
+            position.Y += Item.height - scaledHeight;
+            spriteBatch.Draw(texture, position, null, lightColor, rotation, Vector2.Zero, scale, SpriteEffects.None, 0f);
             return false;
         }
         public override void AddRecipes()

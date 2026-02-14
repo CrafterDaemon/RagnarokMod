@@ -1,19 +1,20 @@
-﻿using Terraria.ModLoader;
+﻿using CalamityMod.Items;
+using CalamityMod.Items.Materials;
+using CalamityMod.Rarities;
+using CalamityMod.Tiles.Furniture.CraftingStations;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using RagnarokMod.Items.HealerItems.Scythes;
+using RagnarokMod.Projectiles.HealerPro.Scythes;
 using Terraria;
 using Terraria.DataStructures;
-using ThoriumMod.Items.HealerItems;
-using CalamityMod.Rarities;
-using RagnarokMod.Projectiles.HealerPro.Scythes;
-using RagnarokMod.Items.HealerItems.Scythes;
-using CalamityMod.Items.Materials;
+using Terraria.GameContent;
 using Terraria.ID;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
-using ThoriumMod.Items.Terrarium;
+using Terraria.ModLoader;
 using ThoriumMod.Items.BossThePrimordials.Dream;
+using ThoriumMod.Items.HealerItems;
+using ThoriumMod.Items.Terrarium;
 using ThoriumMod.Items.Titan;
-using CalamityMod.Tiles.Furniture.CraftingStations;
-using CalamityMod.Items;
 
 namespace RagnarokMod.Items.HealerItems.Scythes
 {
@@ -33,12 +34,24 @@ namespace RagnarokMod.Items.HealerItems.Scythes
             base.Item.useAnimation = 100;
             base.Item.autoReuse = false;
             base.Item.reuseDelay = 50;
-            base.Item.width = 94;
-            base.Item.height = 106;
+            base.Item.width = 47;
+            base.Item.height = 53;
             base.Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
             base.Item.rare = ModContent.RarityType<BurnishedAuric>();
             base.Item.shoot = ModContent.ProjectileType<ExecutionerMark05Pro>();
 
+        }
+
+
+        public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
+        {
+            scale = 0.75f;
+            var texture = TextureAssets.Item[Item.type].Value;
+            float scaledHeight = texture.Height * scale;
+            var position = Item.TopLeft - Main.screenPosition;
+            position.Y += Item.height - scaledHeight;
+            spriteBatch.Draw(texture, position, null, lightColor, rotation, Vector2.Zero, scale, SpriteEffects.None, 0f);
+            return false;
         }
         public override void AddRecipes()
         {

@@ -1,13 +1,15 @@
-using Terraria.ModLoader;
-using Terraria;
+using CalamityMod.Items;
 using Microsoft.Xna.Framework;
-using Terraria.DataStructures;
-using ThoriumMod.Items.HealerItems;
-using Terraria.ID;
+using Microsoft.Xna.Framework.Graphics;
 using RagnarokMod.Items.Materials;
 using RagnarokMod.Projectiles.HealerPro.Scythes;
+using Terraria;
+using Terraria.DataStructures;
+using Terraria.GameContent;
+using Terraria.ID;
+using Terraria.ModLoader;
 using ThoriumMod;
-using CalamityMod.Items;
+using ThoriumMod.Items.HealerItems;
 
 namespace RagnarokMod.Items.HealerItems.Scythes
 {
@@ -34,15 +36,27 @@ namespace RagnarokMod.Items.HealerItems.Scythes
             base.Item.useStyle = 1;
             base.Item.UseSound = SoundID.Item1;
             base.Item.shootSpeed = 0.1f;
-            base.Item.damage = 80;
-            base.Item.width = 144;
-            base.Item.height = 164;
-			base.Item.value = CalamityGlobalItem.RarityPinkBuyPrice;
-			base.Item.rare = 5;
+            base.Item.damage = 40;
+            base.Item.width = 72;
+            base.Item.height = 82;
+            base.Item.value = CalamityGlobalItem.RarityPinkBuyPrice;
+            base.Item.rare = 5;
             base.Item.shoot = ModContent.ProjectileType<BrimScythePro>();
         }
-		
-		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) {
+
+
+        public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
+        {
+            scale = 0.5f;
+            var texture = TextureAssets.Item[Item.type].Value;
+            float scaledHeight = texture.Height * scale;
+            var position = Item.TopLeft - Main.screenPosition;
+            position.Y += Item.height - scaledHeight;
+            spriteBatch.Draw(texture, position, null, lightColor, rotation, Vector2.Zero, scale, SpriteEffects.None, 0f);
+            return false;
+        }
+
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) {
 			 Projectile.NewProjectileDirect(source, position, Vector2.Zero, ModContent.ProjectileType<BrimScytheFirePro>(), (int)(1.25f * damage), knockback, player.whoAmI);
 			 return true;
 		}

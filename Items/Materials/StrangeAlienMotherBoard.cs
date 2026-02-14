@@ -1,7 +1,10 @@
-﻿using Terraria.ID;
+﻿using CalamityMod.Items;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.GameContent;
+using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityMod.Items;
 
 namespace RagnarokMod.Items.Materials
 {
@@ -9,11 +12,22 @@ namespace RagnarokMod.Items.Materials
     {
         public override void SetDefaults()
         {
-            Item.width = 64;
-            Item.height = 64;
+            Item.width = 32;
+            Item.height = 32;
             Item.maxStack = 9999;
             Item.value = CalamityGlobalItem.RarityOrangeBuyPrice;
             Item.rare = ItemRarityID.Orange;
+        }
+
+        public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
+        {
+            scale = 0.5f;
+            var texture = TextureAssets.Item[Item.type].Value;
+            float scaledHeight = texture.Height * scale;
+            var position = Item.TopLeft - Main.screenPosition;
+            position.Y += Item.height - scaledHeight;
+            spriteBatch.Draw(texture, position, null, lightColor, rotation, Vector2.Zero, scale, SpriteEffects.None, 0f);
+            return false;
         }
     }
 }

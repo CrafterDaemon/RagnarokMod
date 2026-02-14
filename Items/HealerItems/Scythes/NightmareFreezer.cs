@@ -1,15 +1,17 @@
-using Terraria.DataStructures;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using ThoriumMod.Items.HealerItems;
+using CalamityMod.Items;
 using CalamityMod.Items.Materials;
-using RagnarokMod.Projectiles.HealerPro.Scythes;
-using System.CommandLine.Help;
 using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
-using CalamityMod.Items;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using RagnarokMod.Projectiles.HealerPro.Scythes;
+using System.CommandLine.Help;
+using Terraria;
+using Terraria.DataStructures;
+using Terraria.GameContent;
+using Terraria.ID;
+using Terraria.ModLoader;
+using ThoriumMod.Items.HealerItems;
 
 namespace RagnarokMod.Items.HealerItems.Scythes
 {
@@ -26,8 +28,8 @@ namespace RagnarokMod.Items.HealerItems.Scythes
             SetDefaultsToScythe();
             base.Item.damage = 320;
             scytheSoulCharge = 3;
-            base.Item.width = 110;
-            base.Item.height = 94;
+            base.Item.width = 55;
+            base.Item.height = 47;
             base.Item.useTime = 20;
 
             base.Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
@@ -35,37 +37,50 @@ namespace RagnarokMod.Items.HealerItems.Scythes
             base.Item.shoot = ModContent.ProjectileType<NightmareFreezerPro>();
             base.Item.shootSpeed = 0.1f;
         }
-        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) {
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
             Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
             Vector2 velocity2 = player.Center - Main.MouseWorld;
             Vector2 vel = velocity2.SafeNormalize(Vector2.UnitX);
             float multiplier = -20f;
             counter++;
-            
+
             Vector2 vel2 = vel.RotatedBy(MathHelper.ToRadians(8));
             Vector2 vel3 = vel.RotatedBy(MathHelper.ToRadians(-8));
             Vector2 vel4 = vel.RotatedBy(MathHelper.ToRadians(4));
             Vector2 vel5 = vel.RotatedBy(MathHelper.ToRadians(-4));
-            if (counter == 1) {
+            if (counter == 1)
+            {
                 Projectile.NewProjectileDirect(source, position, vel * multiplier, ModContent.ProjectileType<NightmareFreezerPro2>(), damage, knockback, player.whoAmI);
                 Projectile.NewProjectileDirect(source, position, vel2 * multiplier, ModContent.ProjectileType<NightmareFreezerPro2>(), damage, knockback, player.whoAmI);
                 Projectile.NewProjectileDirect(source, position, vel3 * multiplier, ModContent.ProjectileType<NightmareFreezerPro2>(), damage, knockback, player.whoAmI);
                 Projectile.NewProjectileDirect(source, position, vel4 * multiplier, ModContent.ProjectileType<NightmareFreezerPro3>(), damage, knockback, player.whoAmI);
-		        Projectile.NewProjectileDirect(source, position, vel5 * multiplier, ModContent.ProjectileType<NightmareFreezerPro3>(), damage, knockback, player.whoAmI);
+                Projectile.NewProjectileDirect(source, position, vel5 * multiplier, ModContent.ProjectileType<NightmareFreezerPro3>(), damage, knockback, player.whoAmI);
             }
-            if (counter == 2) {
+            if (counter == 2)
+            {
                 Projectile.NewProjectileDirect(source, position, vel * multiplier, ModContent.ProjectileType<NightmareFreezerPro3>(), damage, knockback, player.whoAmI);
                 Projectile.NewProjectileDirect(source, position, vel2 * multiplier, ModContent.ProjectileType<NightmareFreezerPro3>(), damage, knockback, player.whoAmI);
                 Projectile.NewProjectileDirect(source, position, vel3 * multiplier, ModContent.ProjectileType<NightmareFreezerPro3>(), damage, knockback, player.whoAmI);
                 Projectile.NewProjectileDirect(source, position, vel4 * multiplier, ModContent.ProjectileType<NightmareFreezerPro2>(), damage, knockback, player.whoAmI);
-		        Projectile.NewProjectileDirect(source, position, vel5 * multiplier, ModContent.ProjectileType<NightmareFreezerPro2>(), damage, knockback, player.whoAmI);
-                counter = 0;            
+                Projectile.NewProjectileDirect(source, position, vel5 * multiplier, ModContent.ProjectileType<NightmareFreezerPro2>(), damage, knockback, player.whoAmI);
+                counter = 0;
             }
-            
-    
-			return false;
-        
-		}
+
+
+            return false;
+
+        }
+        public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
+        {
+            scale = 0.5f;
+            var texture = TextureAssets.Item[Item.type].Value;
+            float scaledHeight = texture.Height * scale;
+            var position = Item.TopLeft - Main.screenPosition;
+            position.Y += Item.height - scaledHeight;
+            spriteBatch.Draw(texture, position, null, lightColor, rotation, Vector2.Zero, scale, SpriteEffects.None, 0f);
+            return false;
+        }
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();

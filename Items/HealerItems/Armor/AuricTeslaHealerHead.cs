@@ -65,7 +65,9 @@ namespace RagnarokMod.Items.HealerItems.Armor
 		    player.GetRagnarokModPlayer().tarraHealer = true;
 			player.GetRagnarokModPlayer().silvaHealer = true;
 			player.GetRagnarokModPlayer().bloodflareHealer  = true;
-			if (Main.myPlayer == player.whoAmI)
+            player.GetRagnarokModPlayer().nightfallen = true;
+            player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) += 0.5f;
+            if (Main.myPlayer == player.whoAmI)
 			{
 				int type = ModContent.ProjectileType<GuardianHealer>();
 				if (player.whoAmI == Main.myPlayer && player.ownedProjectileCounts[type] < 1)
@@ -82,9 +84,9 @@ namespace RagnarokMod.Items.HealerItems.Armor
             player.moveSpeed += 0.05f;
 			player.manaCost *= 0.75f;
 			ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
-		    player.GetDamage(DamageClass.Generic) -= 0.7f;
-			player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) += 1.4f;
-			thoriumPlayer.healBonus += 11;
+		    player.GetDamage(DamageClass.Generic) -= 0.8f;
+			player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) += 1.7f;
+			thoriumPlayer.healBonus += 10;
 			player.GetCritChance(ThoriumDamageBase<HealerDamage>.Instance) += 25f;
 			player.statManaMax2 += 100;
         }
@@ -97,6 +99,7 @@ namespace RagnarokMod.Items.HealerItems.Armor
 				AddIngredient<SilvaHeadHealer>().
 				AddIngredient<BloodflareHeadHealer>().
 				AddIngredient<TarragonCowl>().
+                AddIngredient<NightfallenHelmet>().
                 AddIngredient<AuricBar>(12).
                 AddTile<CosmicAnvil>().
                 Register();

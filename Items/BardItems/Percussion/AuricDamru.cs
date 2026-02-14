@@ -1,22 +1,24 @@
-using System;
-using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.Audio;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria.DataStructures;
-using ThoriumMod.Empowerments;
-using ThoriumMod.Projectiles.Bard;
-using ThoriumMod.Sounds;
-using ThoriumMod.Items.BardItems;
-using ThoriumMod.Items;
-using ThoriumMod;
+using CalamityMod;
+using CalamityMod.Items;
 using CalamityMod.Items.Materials;
 using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
-using CalamityMod.Items;
-using CalamityMod;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using RagnarokMod.Projectiles.BardPro.Percussion;
+using System;
+using Terraria;
+using Terraria.Audio;
+using Terraria.DataStructures;
+using Terraria.GameContent;
+using Terraria.ID;
+using Terraria.ModLoader;
+using ThoriumMod;
+using ThoriumMod.Empowerments;
+using ThoriumMod.Items;
+using ThoriumMod.Items.BardItems;
+using ThoriumMod.Projectiles.Bard;
+using ThoriumMod.Sounds;
 
 namespace RagnarokMod.Items.BardItems.Percussion
 {
@@ -45,8 +47,8 @@ namespace RagnarokMod.Items.BardItems.Percussion
         {
             Item.damage = 2000;
             InspirationCost = 2;
-            Item.width = 60;
-            Item.height = 60;
+            Item.width = 30;
+            Item.height = 30;
             Item.scale = 0.7f;
             Item.useTime = 30;
             Item.useAnimation = 30;
@@ -103,6 +105,7 @@ namespace RagnarokMod.Items.BardItems.Percussion
                 dust.noGravity = true;
             }
         }
+
         public override void AddRecipes(){
             Recipe recipe = CreateRecipe(1);
             recipe.AddIngredient(ModContent.ItemType<AuricBar>(), 5);
