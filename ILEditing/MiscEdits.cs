@@ -29,9 +29,9 @@ namespace RagnarokMod.ILEditing
                     {
                         if (item.type == ModContent.ItemType<PrimalTerror>() && item.favorited && Main.rand.NextBool(10000))
                         {
-                            style = new SoundStyle("CalamityMod/Sounds/Custom/Scare");
+                            SoundStyle scareStyle = new SoundStyle("CalamityMod/Sounds/Custom/Scare");
                             scareCooldown = 600;
-                            break;
+                            return orig(ref scareStyle, position, callback);
                         }
                     }
                 }
