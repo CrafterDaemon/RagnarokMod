@@ -160,22 +160,6 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
                     Projectile.owner
                 );
             }
-
-            // Death burst
-            for (int i = 0; i < 40; i++)
-            {
-                Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.PurpleTorch);
-                dust.velocity *= 4f;
-                dust.noGravity = true;
-                dust.scale = 2f;
-            }
-            for (int i = 0; i < 20; i++)
-            {
-                Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.BlueFairy);
-                dust.velocity *= 3f;
-                dust.noGravity = true;
-                dust.scale = 1.8f;
-            }
         }
     }
 }

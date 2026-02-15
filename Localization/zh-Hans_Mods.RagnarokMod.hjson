@@ -889,6 +889,11 @@ Items: {
 			Once it reaches critical mass, strike it with [c/FF5555:Irradiant Red] to unleash [c/CC44FF:Irradiant Purple]
 			''' */
 	}
+
+	PrimalTerror: {
+		// DisplayName: Primal Terror
+		// Tooltip: ""
+	}
 }
 
 Projectiles: {

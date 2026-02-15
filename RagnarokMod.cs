@@ -1,11 +1,12 @@
 using RagnarokMod.Buffs;
+using RagnarokMod.Items;
+using RagnarokMod.Sounds;
 using RagnarokMod.Utils;
 using System.IO;
 using Terraria;
-using Terraria.ID;
 using Terraria.Audio;
+using Terraria.ID;
 using Terraria.ModLoader;
-using RagnarokMod.Sounds;
 
 namespace RagnarokMod
 {
@@ -64,7 +65,21 @@ namespace RagnarokMod
                         ragnarokplayer.fretPlaying = false;
                     }
                     break;
+                case 2:
+                    byte myplayer = reader.ReadByte();
+                    Player player1 = Main.player[myplayer];
+                    bool hasFavorited = false;
+                    foreach (Item item in player1.inventory)
+                    {
+                        if (item.type == ItemID.None)
+                            continue;
+                        if (item.type == ModContent.ItemType<PrimalTerror>() && item.favorited) hasFavorited = true;
+                    }
+                    if (player1.HeldItem.type == ModContent.ItemType<PrimalTerror>() || hasFavorited)
+                        SoundEngine.PlaySound(new SoundStyle("CalamityMod/Sounds/Custom/Scare"));
+                    break;
             }
+
         }
 
         public override void Load()

@@ -49,10 +49,16 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
                 float dist = Main.rand.NextFloat(150f) * progress;
                 Vector2 pos = Projectile.Center + angle.ToRotationVector2() * dist;
 
-                Dust dust = Dust.NewDustPerfect(pos, DustID.PurpleTorch);
-                dust.noGravity = true;
-                dust.velocity = angle.ToRotationVector2() * Main.rand.NextFloat(2f, 6f);
-                dust.scale = Main.rand.NextFloat(1.5f, 2.5f);
+
+                // Death burst
+                    Dust dust = Dust.NewDustDirect(Projectile.position - new Vector2(Projectile.width/2, Projectile.height)/2, Projectile.width*2, Projectile.height*2, DustID.PurpleTorch);
+                    dust.velocity *= 4f;
+                    dust.noGravity = true;
+                    dust.scale = 2f;
+                    Dust dust2 = Dust.NewDustDirect(Projectile.position - new Vector2(Projectile.width/2, Projectile.height/2), Projectile.width * 2, Projectile.height*2, DustID.BlueFairy);
+                    dust2.velocity *= 3f;
+                    dust2.noGravity = true;
+                    dust2.scale = 1.8f;
             }
         }
 
