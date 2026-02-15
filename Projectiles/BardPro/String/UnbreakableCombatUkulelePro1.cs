@@ -38,8 +38,9 @@ namespace RagnarokMod.Projectiles.BardPro.String
             float direction = Projectile.velocity.ToRotation();
             direction += MathHelper.PiOver2;
             Projectile.rotation = direction;
-            if (counter == 5) {
-                Dust.NewDust(Projectile.Center, 25, 25, ModContent.DustType<TemplateDust>(), 0, 0, 255, new Color(236,164,172));
+            if (counter == 5)
+            {
+                Dust.NewDust(Projectile.Center, 25, 25, ModContent.DustType<TemplateDust>(), 0, 0, 255, new Color(236, 164, 172));
                 counter = 0;
             }
         }

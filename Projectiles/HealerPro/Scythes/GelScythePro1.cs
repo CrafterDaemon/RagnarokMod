@@ -36,7 +36,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             rotationSpeed = 0.25f;
             scytheCount = 2;
             Projectile.Size = new Vector2(92f, 84f);
-            
+
         }
     }
 }

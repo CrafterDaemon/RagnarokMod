@@ -36,7 +36,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             rotationSpeed = 0.33f;
             scytheCount = 2;
             Projectile.Size = new Vector2(168f, 208f);
-            dustOffset = new Vector2(0f,28f);
+            dustOffset = new Vector2(0f, 28f);
             dustCount = 4;
             dustType = 76;
 

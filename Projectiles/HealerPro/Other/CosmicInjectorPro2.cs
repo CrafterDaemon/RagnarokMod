@@ -23,7 +23,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
             Projectile.timeLeft = 200;
             Projectile.ignoreWater = true;
             Projectile.light = 1f;
-            
+
         }
         public override void AI()
         {

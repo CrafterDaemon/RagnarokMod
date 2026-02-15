@@ -51,7 +51,7 @@ namespace RagnarokMod.Items.BardItems.Brass
             Item.shootSpeed = 15f;
 
 
-            ((ModItem)this).Item.useStyle = 5;
+            ((ModItem)this).Item.useStyle = ItemUseStyleID.Shoot;
             if (!ModLoader.HasMod("Look"))
             {
                 ((ModItem)this).Item.holdStyle = 3;

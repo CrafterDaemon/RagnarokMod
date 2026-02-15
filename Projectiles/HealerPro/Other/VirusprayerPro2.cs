@@ -47,10 +47,10 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
             }
             if (Projectile.alpha >= 255)
             {
-                Dust.NewDust(Projectile.position, 32, 32, 18, default, default, 128, default, 1.25f);
-                Dust.NewDust(Projectile.position, 32, 32, 18, default, default, 128, default, 1.25f);
-                Dust.NewDust(Projectile.position, 32, 32, 18, default, default, 128, default, 1.25f);
-                Dust.NewDust(Projectile.position, 32, 32, 18, default, default, 128, default, 1.25f);
+                Dust.NewDust(Projectile.position, 32, 32, DustID.CorruptGibs, default, default, 128, default, 1.25f);
+                Dust.NewDust(Projectile.position, 32, 32, DustID.CorruptGibs, default, default, 128, default, 1.25f);
+                Dust.NewDust(Projectile.position, 32, 32, DustID.CorruptGibs, default, default, 128, default, 1.25f);
+                Dust.NewDust(Projectile.position, 32, 32, DustID.CorruptGibs, default, default, 128, default, 1.25f);
                 Projectile.Kill();
             }
         }
@@ -72,7 +72,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
-          modifiers.FinalDamage *= 1.5f;
+            modifiers.FinalDamage *= 1.5f;
         }
 
     }

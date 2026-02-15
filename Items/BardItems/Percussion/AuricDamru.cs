@@ -24,13 +24,7 @@ namespace RagnarokMod.Items.BardItems.Percussion
 {
     public class AuricDamru : BardItem
     {
-        public override BardInstrumentType InstrumentType
-        {
-            get
-            {
-                return BardInstrumentType.Percussion;
-            }
-        }
+        public override BardInstrumentType InstrumentType => BardInstrumentType.Percussion;
 
         public override void SetStaticDefaults()
         {
@@ -52,7 +46,7 @@ namespace RagnarokMod.Items.BardItems.Percussion
             Item.scale = 0.7f;
             Item.useTime = 30;
             Item.useAnimation = 30;
-            Item.useStyle = 5;
+            Item.useStyle = ItemUseStyleID.Shoot;
             Item.holdStyle = 3;
             Item.noMelee = true;
             Item.autoReuse = true;
@@ -83,12 +77,15 @@ namespace RagnarokMod.Items.BardItems.Percussion
 
         public override bool AltFunctionUse(Player player) => true;
 
-        public override bool BardShoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback){
-            if (player.altFunctionUse == 2){
+        public override bool BardShoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
+            if (player.altFunctionUse == 2)
+            {
                 Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<AuricDamruFlareBomb>(), (int)(damage * 1f), knockback, player.whoAmI);
                 return false;
             }
-            else{
+            else
+            {
                 Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<AuricDamruShock>(), damage, knockback, player.whoAmI);
                 return false;
             }
@@ -100,13 +97,14 @@ namespace RagnarokMod.Items.BardItems.Percussion
             for (int i = 0; i < num; i++)
             {
                 Vector2 vector = (-Vector2.UnitY.RotatedBy((double)(i * 6.2831855f / num), default)).RotatedBy((double)player.velocity.ToRotation(), default);
-                Dust dust = Dust.NewDustPerfect(player.Center + vector * 15f, 127, new Vector2?(vector * 4f), 0, default, 1f);
+                Dust dust = Dust.NewDustPerfect(player.Center + vector * 15f, DustID.Flare, new Vector2?(vector * 4f), 0, default, 1f);
                 dust.scale = 1.35f;
                 dust.noGravity = true;
             }
         }
 
-        public override void AddRecipes(){
+        public override void AddRecipes()
+        {
             Recipe recipe = CreateRecipe(1);
             recipe.AddIngredient(ModContent.ItemType<AuricBar>(), 5);
             recipe.AddIngredient(ModContent.ItemType<Bongos>(), 1);

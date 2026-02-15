@@ -53,9 +53,9 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                 }
             }
             bool ownerExists = Projectile.TryGetOwner(out var owner);
-            if (!fireballReleased && ownerExists && owner.channel) 
+            if (!fireballReleased && ownerExists && owner.channel)
             {
-                Projectile.velocity = owner.velocity + new Vector2(Main.rand.NextFloat()-0.5f, Main.rand.NextFloat() - 0.5f);
+                Projectile.velocity = owner.velocity + new Vector2(Main.rand.NextFloat() - 0.5f, Main.rand.NextFloat() - 0.5f);
             }
             if (timer <= 45)
             {

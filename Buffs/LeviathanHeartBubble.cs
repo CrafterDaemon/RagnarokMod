@@ -44,7 +44,7 @@ namespace RagnarokMod.Buffs
                 ModContent.ProjectileType<LeviathanHeartBubbleProj>(),
                 0, 0f,
                 player.whoAmI,
-                0f,          
+                0f,
                 corruptedFlag
             );
         }

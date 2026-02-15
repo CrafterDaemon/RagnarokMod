@@ -9,7 +9,7 @@ using Terraria.ModLoader;
 
 namespace RagnarokMod.Items.Materials
 {
-    public class VoidseerPearl: ModItem
+    public class VoidseerPearl : ModItem
     {
         public override void SetDefaults()
         {

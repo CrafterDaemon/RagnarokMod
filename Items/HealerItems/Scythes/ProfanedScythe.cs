@@ -45,11 +45,11 @@ namespace RagnarokMod.Items.HealerItems.Scythes
 
         public override void AddRecipes()
         {
-			Recipe recipe = Recipe.Create(Item.type);
-			recipe.AddIngredient(ModContent.ItemType<UelibloomBar>(), 10);
-			recipe.AddIngredient(ModContent.ItemType<DivineGeode>(), 4);
-			recipe.AddTile(TileID.LunarCraftingStation);
-			recipe.Register();
+            Recipe recipe = Recipe.Create(Item.type);
+            recipe.AddIngredient(ModContent.ItemType<UelibloomBar>(), 10);
+            recipe.AddIngredient(ModContent.ItemType<DivineGeode>(), 4);
+            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.Register();
         }
     }
 }

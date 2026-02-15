@@ -24,8 +24,10 @@ using RagnarokMod.Items.BardItems.Accessories;
 
 namespace RagnarokMod.Common.GlobalItems
 {
-    public class NewBossDrops : GlobalItem{
-        public override bool AppliesToEntity(Item item, bool lateInstantiation) {
+    public class NewBossDrops : GlobalItem
+    {
+        public override bool AppliesToEntity(Item item, bool lateInstantiation)
+        {
             return (
             item.type == ModContent.ItemType<TheGrandThunderBirdTreasureBag>()
             || item.type == ModContent.ItemType<QueenJellyfishTreasureBag>()
@@ -44,59 +46,74 @@ namespace RagnarokMod.Common.GlobalItems
             || item.type == ModContent.ItemType<YharonBag>()
             || item.type == ModContent.ItemType<BrimstoneElementalBag>()
             || item.type == ModContent.ItemType<LeviathanBag>()
-			|| item.type == ModContent.ItemType<DesertScourgeBag>()
+            || item.type == ModContent.ItemType<DesertScourgeBag>()
             );
         }
-        public override void ModifyItemLoot(Item item, ItemLoot itemLoot){
+        public override void ModifyItemLoot(Item item, ItemLoot itemLoot)
+        {
             //changing lootbag drops
-            if (item.type == ModContent.ItemType<TheGrandThunderBirdTreasureBag>()){
+            if (item.type == ModContent.ItemType<TheGrandThunderBirdTreasureBag>())
+            {
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<StormFeather>(), 1, 1, 4));
             }
-            if (item.type == ModContent.ItemType<QueenJellyfishTreasureBag>()){
+            if (item.type == ModContent.ItemType<QueenJellyfishTreasureBag>())
+            {
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<QueenJelly>(), 1, 4, 16));
             }
-            if (item.type == ModContent.ItemType<StarScouterTreasureBag>()){
+            if (item.type == ModContent.ItemType<StarScouterTreasureBag>())
+            {
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<StrangeAlienMotherBoard>(), 1, 4, 6));
             }
-            if (item.type == ModContent.ItemType<GraniteEnergyStormTreasureBag>()){
+            if (item.type == ModContent.ItemType<GraniteEnergyStormTreasureBag>())
+            {
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<EmpoweredGranite>(), 1, 1, 10));
             }
-            if (item.type == ModContent.ItemType<BuriedChampionTreasureBag>()){
+            if (item.type == ModContent.ItemType<BuriedChampionTreasureBag>())
+            {
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<EnchantedMarble>(), 1, 1, 10));
             }
-            if (item.type == ModContent.ItemType<BoreanStriderTreasureBag>()){
+            if (item.type == ModContent.ItemType<BoreanStriderTreasureBag>())
+            {
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<StriderFang>(), 1, 1, 10));
             }
-            if (item.type == ModContent.ItemType<PerforatorBag>()){
+            if (item.type == ModContent.ItemType<PerforatorBag>())
+            {
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<EquivalentExchange>(), 3));
             }
-            if (item.type == ModContent.ItemType<CalamitasCloneBag>()){
+            if (item.type == ModContent.ItemType<CalamitasCloneBag>())
+            {
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<CalamityBell>(), 3));
             }
-            if (item.type == ModContent.ItemType<ProvidenceBag>()){
+            if (item.type == ModContent.ItemType<ProvidenceBag>())
+            {
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<ProfanedBell>(), 3));
             }
-            if (item.type == ModContent.ItemType<FallenBeholderTreasureBag>()){
+            if (item.type == ModContent.ItemType<FallenBeholderTreasureBag>())
+            {
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<VoidseerPearl>()));
             }
-            if (item.type == ModContent.ItemType<ForgottenOneTreasureBag>()){
+            if (item.type == ModContent.ItemType<ForgottenOneTreasureBag>())
+            {
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<EldritchShellFragment>(), 1, 1, 3));
             }
-            if (item.type == ModContent.ItemType<PolterghastBag>()) {
+            if (item.type == ModContent.ItemType<PolterghastBag>())
+            {
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<PhantasmalEdge>()));
             }
-            if (item.type == ModContent.ItemType<CalamitasCoffer>()) {
+            if (item.type == ModContent.ItemType<CalamitasCoffer>())
+            {
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<Lamentation>(), 3));
             }
-            if (item.type == ModContent.ItemType<OldDukeBag>()){
+            if (item.type == ModContent.ItemType<OldDukeBag>())
+            {
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<Virusprayer>(), 3));
             }
             if (item.type == ModContent.ItemType<YharonBag>())
             {
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<DragonForce>(), 3));
             }
-			if (item.type == ModContent.ItemType<BrimstoneElementalBag>())
-			{
+            if (item.type == ModContent.ItemType<BrimstoneElementalBag>())
+            {
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<BrimScythe>(), 3));
             }
             if (item.type == ModContent.ItemType<LeviathanBag>())
@@ -104,8 +121,8 @@ namespace RagnarokMod.Common.GlobalItems
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<LeviathanHeart>(), 3));
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<SirenScale>(), 3));
             }
-			if (item.type == ModContent.ItemType<DesertScourgeBag>())
-			{
+            if (item.type == ModContent.ItemType<DesertScourgeBag>())
+            {
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<ScourgesFrets>(), 3));
             }
         }

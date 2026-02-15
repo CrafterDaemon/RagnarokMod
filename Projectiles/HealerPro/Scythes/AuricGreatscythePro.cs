@@ -60,8 +60,8 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             Projectile.timeLeft++;
             rotationSpeed = Math.Min(rotationSpeed + 0.001f, 0.6f);
             float t = (rotationSpeed) / (0.4f);
-            Projectile.idStaticNPCHitCooldown = Math.Max((int)MathHelper.Lerp(30, 3, t),3);
-            dustVel = new Vector2(rotationSpeed * 4, -rotationSpeed*4);
+            Projectile.idStaticNPCHitCooldown = Math.Max((int)MathHelper.Lerp(30, 3, t), 3);
+            dustVel = new Vector2(rotationSpeed * 4, -rotationSpeed * 4);
             Projectile.spriteDirection = Projectile.direction = player.direction;
             dustScale = Math.Min(rotationSpeed * 5, 2f);
             Lighting.AddLight(Projectile.Center, 1f, 1f, 1f);

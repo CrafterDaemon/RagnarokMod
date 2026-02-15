@@ -66,7 +66,7 @@ namespace RagnarokMod.Items.HealerItems.Scythes
         {
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient(ItemID.SunplateBlock, 8);
-			recipe.AddIngredient(ModContent.ItemType<AerialiteBar>(), 10);
+            recipe.AddIngredient(ModContent.ItemType<AerialiteBar>(), 10);
             recipe.AddTile(TileID.Anvils);
             recipe.Register();
         }

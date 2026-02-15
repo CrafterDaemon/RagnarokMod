@@ -11,54 +11,55 @@ using Terraria.ModLoader;
 using RagnarokMod.Utils;
 #nullable disable
 using ThoriumMod;
+using Terraria.ID;
 namespace RagnarokMod.Projectiles.HealerPro.Other
 {
-  public class VerdurantBloomPro2 : ModProjectile, ILocalizedModType
-  {
-    public int timer = 0;
-    public int dustTimer = 0;
-    public override void SetDefaults()
+    public class VerdurantBloomPro2 : ModProjectile, ILocalizedModType
     {
-      this.Projectile.DamageType = (DamageClass) ThoriumDamageBase<HealerDamage>.Instance;
-      ((Entity) this.Projectile).width = 18;
-      ((Entity) this.Projectile).height = 14;
-      this.Projectile.aiStyle = -1;
-      this.Projectile.friendly = true;
-      this.Projectile.penetrate = 1;
-      this.Projectile.timeLeft = 250;
-    }
+        public int timer = 0;
+        public int dustTimer = 0;
+        public override void SetDefaults()
+        {
+            this.Projectile.DamageType = (DamageClass)ThoriumDamageBase<HealerDamage>.Instance;
+            ((Entity)this.Projectile).width = 18;
+            ((Entity)this.Projectile).height = 14;
+            this.Projectile.aiStyle = -1;
+            this.Projectile.friendly = true;
+            this.Projectile.penetrate = 1;
+            this.Projectile.timeLeft = 250;
+        }
 
-    public override Color? GetAlpha(Color lightColor)
-    {
-      return new Color?(new Color((int) byte.MaxValue, (int) byte.MaxValue, (int) byte.MaxValue, 150) * (1f * this.Projectile.Opacity));
-    }
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return new Color?(new Color((int)byte.MaxValue, (int)byte.MaxValue, (int)byte.MaxValue, 150) * (1f * this.Projectile.Opacity));
+        }
 
-    public override void AI()
-    {
-      timer++;
-      dustTimer++;
-      if (dustTimer == 3)
-      {
-        dustTimer = 0;
-        Dust.NewDust(Projectile.Center, 0, 0, 56);
-      }
-      Projectile.rotation = Projectile.velocity.ToRotation();
-      NPC npc = Projectile.FindNearestNPC(500);
-      if (npc != null)
-      {
-        timer = 0;
-        Projectile.HomeInOnTarget(npc, 15f, 0.15f);
-      }
-      if (timer >= 100 && npc == null) { Projectile.Kill(); }      
-    }
+        public override void AI()
+        {
+            timer++;
+            dustTimer++;
+            if (dustTimer == 3)
+            {
+                dustTimer = 0;
+                Dust.NewDust(Projectile.Center, 0, 0, DustID.BlueFairy);
+            }
+            Projectile.rotation = Projectile.velocity.ToRotation();
+            NPC npc = Projectile.FindNearestNPC(500);
+            if (npc != null)
+            {
+                timer = 0;
+                Projectile.HomeInOnTarget(npc, 15f, 0.15f);
+            }
+            if (timer >= 100 && npc == null) { Projectile.Kill(); }
+        }
 
-    public override void OnKill(int timeLeft)
-    {
-      for (int index1 = 0; index1 < 5; ++index1)
-      {
-        int index2 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 54, (float) Main.rand.Next(-2, 2), (float) Main.rand.Next(-2, 2), 0, new Color(80, 160, 80), 1f);
-        Main.dust[index2].noGravity = true;
-      }
+        public override void OnKill(int timeLeft)
+        {
+            for (int index1 = 0; index1 < 5; ++index1)
+            {
+                int index2 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Wraith, (float)Main.rand.Next(-2, 2), (float)Main.rand.Next(-2, 2), 0, new Color(80, 160, 80), 1f);
+                Main.dust[index2].noGravity = true;
+            }
+        }
     }
-  }
 }

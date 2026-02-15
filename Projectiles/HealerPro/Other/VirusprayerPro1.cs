@@ -47,10 +47,10 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
             }
             if (Projectile.alpha >= 255)
             {
-                Dust.NewDust(Projectile.position, 32, 32, 18, default, default, 128, default, 1.25f);
-                Dust.NewDust(Projectile.position, 32, 32, 18, default, default, 128, default, 1.25f);
-                Dust.NewDust(Projectile.position, 32, 32, 18, default, default, 128, default, 1.25f);
-                Dust.NewDust(Projectile.position, 32, 32, 18, default, default, 128, default, 1.25f);
+                Dust.NewDust(Projectile.position, 32, 32, DustID.CorruptGibs, default, default, 128, default, 1.25f);
+                Dust.NewDust(Projectile.position, 32, 32, DustID.CorruptGibs, default, default, 128, default, 1.25f);
+                Dust.NewDust(Projectile.position, 32, 32, DustID.CorruptGibs, default, default, 128, default, 1.25f);
+                Dust.NewDust(Projectile.position, 32, 32, DustID.CorruptGibs, default, default, 128, default, 1.25f);
                 Projectile.Kill();
             }
         }

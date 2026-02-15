@@ -51,7 +51,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                 Projectile.rotation = Projectile.velocity.ToRotation() + (float)Math.PI - MathHelper.ToRadians(45f);
                 Projectile.spriteDirection = Projectile.direction;
             }
-            Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, 312, 0f, 0f, 100, default, 1f);
+            Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.SnowSpray, 0f, 0f, 100, default, 1f);
             dust.scale = 0.1f + Main.rand.Next(5);
             dust.fadeIn = 1.5f + Main.rand.Next(5) * 0.1f;
             dust.noGravity = true;

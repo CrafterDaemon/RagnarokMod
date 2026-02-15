@@ -14,9 +14,9 @@ using CalamityMod.Items;
 
 namespace RagnarokMod.Items.HealerItems.Other
 {
-	public class EquivalentExchange : ThoriumItem
-	{
-		/*
+    public class EquivalentExchange : ThoriumItem
+    {
+        /*
 		public override void SetStaticDefaults()
 		{
 			base.DisplayName.SetDefault("Equivalent Exchange");
@@ -24,35 +24,35 @@ namespace RagnarokMod.Items.HealerItems.Other
 		}
 		*/
 
-		public override void SetDefaults()
-		{
-			base.Item.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
-			base.Item.damage = 19;
-			this.isHealer = true;
-			this.healDisplay = true;
-			this.radiantLifeCost = 2;
-			this.healType = HealType.LifeSteal;
-			this.healAmount = 4;
-			base.Item.width = 30;
-			base.Item.mana = 6;
-			base.Item.height = 30;
-			base.Item.useTime = 20;
-			base.Item.useAnimation = 20;
-			base.Item.useStyle = 5;
-			base.Item.noMelee = true;
-			base.Item.value = CalamityGlobalItem.RarityOrangeBuyPrice;
-			base.Item.rare = ItemRarityID.Orange;
-			base.Item.UseSound = new SoundStyle?(SoundID.Item8);
-			base.Item.shoot = ModContent.ProjectileType<BloodTransfusionPro>();
-			base.Item.shootSpeed = 9f;
-		}
+        public override void SetDefaults()
+        {
+            base.Item.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
+            base.Item.damage = 19;
+            this.isHealer = true;
+            this.healDisplay = true;
+            this.radiantLifeCost = 2;
+            this.healType = HealType.LifeSteal;
+            this.healAmount = 4;
+            base.Item.width = 30;
+            base.Item.mana = 6;
+            base.Item.height = 30;
+            base.Item.useTime = 20;
+            base.Item.useAnimation = 20;
+            base.Item.useStyle = ItemUseStyleID.Shoot;
+            base.Item.noMelee = true;
+            base.Item.value = CalamityGlobalItem.RarityOrangeBuyPrice;
+            base.Item.rare = ItemRarityID.Orange;
+            base.Item.UseSound = new SoundStyle?(SoundID.Item8);
+            base.Item.shoot = ModContent.ProjectileType<BloodTransfusionPro>();
+            base.Item.shootSpeed = 9f;
+        }
 
-		public override bool AltFunctionUse(Player player)
-		{
-			return true;
-		}
-		
-		/*
+        public override bool AltFunctionUse(Player player)
+        {
+            return true;
+        }
+
+        /*
 		public override void ModifyManaCost(Player player, ref float reduce, ref float mult)
 		{
 			if (Main.HoverItem != base.Item && player.altFunctionUse == 2)
@@ -61,31 +61,31 @@ namespace RagnarokMod.Items.HealerItems.Other
 			}
 		}
 		*/
-		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-		{
-			if (player.altFunctionUse == 2)
-			{
-				Projectile.NewProjectile(source, position.X, position.Y, velocity.X * 1.5f, velocity.Y * 1.5f, ModContent.ProjectileType<TheGoodBookPro>(), 0, 0f, player.whoAmI, 0f, 0f);
-				Projectile.NewProjectile(source, position.X, position.Y, velocity.X * 1.5f, velocity.Y * 1.5f, ModContent.ProjectileType<TheGoodBookPro>(), 0, 0f, player.whoAmI, 0f, 0f);
-			} 
-			else 
-			{
-				Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, type, damage, knockback, player.whoAmI, 0f, 0f);
-			}
-			return false;
-		}
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
+            if (player.altFunctionUse == 2)
+            {
+                Projectile.NewProjectile(source, position.X, position.Y, velocity.X * 1.5f, velocity.Y * 1.5f, ModContent.ProjectileType<TheGoodBookPro>(), 0, 0f, player.whoAmI, 0f, 0f);
+                Projectile.NewProjectile(source, position.X, position.Y, velocity.X * 1.5f, velocity.Y * 1.5f, ModContent.ProjectileType<TheGoodBookPro>(), 0, 0f, player.whoAmI, 0f, 0f);
+            }
+            else
+            {
+                Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, type, damage, knockback, player.whoAmI, 0f, 0f);
+            }
+            return false;
+        }
 
-		public override void AddRecipes()
-		{
-			Recipe recipe = Recipe.Create(Item.type);
-			recipe.AddIngredient(ModContent.ItemType<LeechBolt>());
-			recipe.AddIngredient(ModContent.ItemType<TheGoodBook>());
-			//recipe.AddIngredient(ModContent.ItemType<RecoveryWand>());
-			recipe.AddIngredient(ItemID.CrimtaneBar, 4);
-			recipe.AddIngredient(ItemID.TissueSample, 4);
-			recipe.AddIngredient(ModContent.ItemType<AerialiteBar>(), 8);
-			recipe.AddTile(TileID.Anvils);
-			recipe.Register();
-		}
-	}
+        public override void AddRecipes()
+        {
+            Recipe recipe = Recipe.Create(Item.type);
+            recipe.AddIngredient(ModContent.ItemType<LeechBolt>());
+            recipe.AddIngredient(ModContent.ItemType<TheGoodBook>());
+            //recipe.AddIngredient(ModContent.ItemType<RecoveryWand>());
+            recipe.AddIngredient(ItemID.CrimtaneBar, 4);
+            recipe.AddIngredient(ItemID.TissueSample, 4);
+            recipe.AddIngredient(ModContent.ItemType<AerialiteBar>(), 8);
+            recipe.AddTile(TileID.Anvils);
+            recipe.Register();
+        }
+    }
 }

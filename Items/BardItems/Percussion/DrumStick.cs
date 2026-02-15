@@ -13,6 +13,7 @@ using RagnarokMod.Items.BardItems.Percussion;
 using Microsoft.Xna.Framework;
 
 namespace RagnarokMod.Items.BardItems.Percussion;
+
 public class DrumStick : BardItem
 {
     //bonk bonk bonk bonk

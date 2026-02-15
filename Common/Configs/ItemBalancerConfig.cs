@@ -7,13 +7,13 @@ namespace RagnarokMod.Common.Configs
     {
         public override ConfigScope Mode => ConfigScope.ServerSide;
 
-       [Header("ItemBalanceChanges")]
-		
-		[DefaultValue(true)]
-		[ReloadRequired]
-		public bool genericweaponchanges;
-		
-		[DefaultValue(true)]
+        [Header("ItemBalanceChanges")]
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool genericweaponchanges;
+
+        [DefaultValue(true)]
         public bool OmegaCore;
     }
 }

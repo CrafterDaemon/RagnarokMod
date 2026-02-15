@@ -52,7 +52,7 @@ namespace RagnarokMod.Items
             Item.shoot = ModContent.ProjectileType<AnahitasArpeggioNote>();
             Item.shootSpeed = 13f;
 
-            ((ModItem)this).Item.useStyle = 5;
+            ((ModItem)this).Item.useStyle = ItemUseStyleID.Shoot;
             if (!ModLoader.HasMod("Look"))
             {
                 ((ModItem)this).Item.holdStyle = 3;

@@ -45,7 +45,7 @@ namespace Ragnarok.Items
             Item.shoot = ModContent.ProjectileType<AcidicReed>();
             Item.shootSpeed = 20f;
 
-            ((ModItem)this).Item.useStyle = 5;
+            ((ModItem)this).Item.useStyle = ItemUseStyleID.Shoot;
             if (!ModLoader.HasMod("Look"))
             {
                 ((ModItem)this).Item.holdStyle = 3;

@@ -72,7 +72,7 @@ namespace RagnarokMod.Items.HealerItems.Scythes
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-			recipe.AddIngredient(ModContent.ItemType<AstralBar>(), 10);
+            recipe.AddIngredient(ModContent.ItemType<AstralBar>(), 10);
             recipe.AddTile(TileID.LunarCraftingStation);
             recipe.Register();
         }

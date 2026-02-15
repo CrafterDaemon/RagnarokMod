@@ -16,6 +16,7 @@ using ThoriumMod;
 using ThoriumMod.Items;
 using ThoriumMod.Utilities;
 using ThoriumMod.Empowerments;
+using Terraria.ID;
 
 namespace RagnarokMod.Items.BardItems.Armor
 {
@@ -79,7 +80,7 @@ namespace RagnarokMod.Items.BardItems.Armor
         public override void AddRecipes()
         {
             CreateRecipe(1).AddIngredient<BloodstoneCore>(11).AddIngredient<RuinousSoul>(2)
-                .AddTile(412)
+                .AddTile(TileID.LunarCraftingStation)
                 .Register();
         }
     }

@@ -186,15 +186,15 @@ namespace RagnarokMod.Items.HealerItems.Other
 
             player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, rotation);
         }
-		
-		public override void AddRecipes()
-		{
-			base.CreateRecipe(1)
-				.AddIngredient<BloodstoneCore>(10)
-				.AddIngredient<RuinousSoul>(8)
-				.AddIngredient<CalamityMod.Items.Materials.BloodOrb>(100)
-				.AddTile(412)
-				.Register();
-		}
+
+        public override void AddRecipes()
+        {
+            base.CreateRecipe(1)
+                .AddIngredient<BloodstoneCore>(10)
+                .AddIngredient<RuinousSoul>(8)
+                .AddIngredient<CalamityMod.Items.Materials.BloodOrb>(100)
+                .AddTile(TileID.LunarCraftingStation)
+                .Register();
+        }
     }
 }

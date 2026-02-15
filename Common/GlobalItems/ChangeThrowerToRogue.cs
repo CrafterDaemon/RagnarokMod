@@ -39,7 +39,7 @@ namespace RagnarokMod.Common.GlobalItems
             ThoriumItem thisThoriumItem = getThoriumItem(item);
             if (thisThoriumItem != null)
             {
-				item.DamageType = ModContent.GetInstance<ThoriumRogueClass>();
+                item.DamageType = ModContent.GetInstance<ThoriumRogueClass>();
                 thisThoriumItem.isThrower = false;
             }
         }

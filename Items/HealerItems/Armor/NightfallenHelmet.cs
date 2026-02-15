@@ -16,57 +16,58 @@ using Terraria.Localization;
 
 namespace RagnarokMod.Items.HealerItems.Armor
 {
-	[AutoloadEquip(EquipType.Head)]
-	public class NightfallenHelmet : ModItem
-	{
-		public override void SetStaticDefaults() {
-			ArmorIDs.Head.Sets.DrawHead[Item.headSlot] = false; 
+    [AutoloadEquip(EquipType.Head)]
+    public class NightfallenHelmet : ModItem
+    {
+        public override void SetStaticDefaults()
+        {
+            ArmorIDs.Head.Sets.DrawHead[Item.headSlot] = false;
 
-		}
-		public override void SetDefaults()
-		{
-			base.Item.width = 24;
-			base.Item.height = 26;
-			base.Item.value = CalamityGlobalItem.RarityPureGreenBuyPrice;
-			base.Item.rare = ModContent.RarityType<PureGreen>();
-			base.Item.defense = 18;
-		}
+        }
+        public override void SetDefaults()
+        {
+            base.Item.width = 24;
+            base.Item.height = 26;
+            base.Item.value = CalamityGlobalItem.RarityPureGreenBuyPrice;
+            base.Item.rare = ModContent.RarityType<PureGreen>();
+            base.Item.defense = 18;
+        }
 
-		public override bool IsArmorSet(Item head, Item body, Item legs)
-		{
-			return body.type == ModContent.ItemType<NightfallenBreastplate>() && legs.type == ModContent.ItemType<NightfallenGreaves>();
-		}
+        public override bool IsArmorSet(Item head, Item body, Item legs)
+        {
+            return body.type == ModContent.ItemType<NightfallenBreastplate>() && legs.type == ModContent.ItemType<NightfallenGreaves>();
+        }
 
-		public override void ArmorSetShadows(Player player)
-		{
-			player.armorEffectDrawShadowSubtle = true;
-			player.armorEffectDrawOutlines = true;
-		}
+        public override void ArmorSetShadows(Player player)
+        {
+            player.armorEffectDrawShadowSubtle = true;
+            player.armorEffectDrawOutlines = true;
+        }
 
-		public override void UpdateArmorSet(Player player)
-		{
-			player.setBonus = Language.GetTextValue("Mods.RagnarokMod.Items.NightfallenHelmet.SetBonus");
-			ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
-			thoriumPlayer.healBonus += 4;
-			player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) += 0.33f;
-			player.GetRagnarokModPlayer().nightfallen = true;
-		}
+        public override void UpdateArmorSet(Player player)
+        {
+            player.setBonus = Language.GetTextValue("Mods.RagnarokMod.Items.NightfallenHelmet.SetBonus");
+            ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
+            thoriumPlayer.healBonus += 4;
+            player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) += 0.33f;
+            player.GetRagnarokModPlayer().nightfallen = true;
+        }
 
-		public override void UpdateEquip(Player player)
-		{
-			ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
-		    player.GetDamage(DamageClass.Generic) -= 0.35f;
-			player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) += 0.95f;
-			player.GetCritChance(ThoriumDamageBase<HealerDamage>.Instance) += 16f;
-			player.statManaMax2 += 60;
-		
-		}
+        public override void UpdateEquip(Player player)
+        {
+            ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
+            player.GetDamage(DamageClass.Generic) -= 0.35f;
+            player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) += 0.95f;
+            player.GetCritChance(ThoriumDamageBase<HealerDamage>.Instance) += 16f;
+            player.statManaMax2 += 60;
 
-		public override void AddRecipes()
-		{
-			base.CreateRecipe(1).AddIngredient<Lumenyl>(5).AddIngredient<ExodiumCluster>(100).AddIngredient<RuinousSoul>(5)
-				.AddTile(TileID.LunarCraftingStation)
-				.Register();
-		}
-	}
+        }
+
+        public override void AddRecipes()
+        {
+            base.CreateRecipe(1).AddIngredient<Lumenyl>(5).AddIngredient<ExodiumCluster>(100).AddIngredient<RuinousSoul>(5)
+                .AddTile(TileID.LunarCraftingStation)
+                .Register();
+        }
+    }
 }

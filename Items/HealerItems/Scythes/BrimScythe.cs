@@ -33,14 +33,14 @@ namespace RagnarokMod.Items.HealerItems.Scythes
             base.Item.useAnimation = 20;
             base.Item.maxStack = 1;
             base.Item.knockBack = 6.5f;
-            base.Item.useStyle = 1;
+            base.Item.useStyle = ItemUseStyleID.Swing;
             base.Item.UseSound = SoundID.Item1;
             base.Item.shootSpeed = 0.1f;
             base.Item.damage = 40;
             base.Item.width = 72;
             base.Item.height = 82;
             base.Item.value = CalamityGlobalItem.RarityPinkBuyPrice;
-            base.Item.rare = 5;
+            base.Item.rare = ItemRarityID.Pink;
             base.Item.shoot = ModContent.ProjectileType<BrimScythePro>();
         }
 
@@ -56,9 +56,10 @@ namespace RagnarokMod.Items.HealerItems.Scythes
             return false;
         }
 
-        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) {
-			 Projectile.NewProjectileDirect(source, position, Vector2.Zero, ModContent.ProjectileType<BrimScytheFirePro>(), (int)(1.25f * damage), knockback, player.whoAmI);
-			 return true;
-		}
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
+            Projectile.NewProjectileDirect(source, position, Vector2.Zero, ModContent.ProjectileType<BrimScytheFirePro>(), (int)(1.25f * damage), knockback, player.whoAmI);
+            return true;
+        }
     }
 }

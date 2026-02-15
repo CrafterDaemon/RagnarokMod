@@ -33,10 +33,10 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
             timerthing++;
             dustTimer++;
             Projectile.rotation += 0.5f;
-            if (dustTimer == 2) 
-            { 
+            if (dustTimer == 2)
+            {
                 dustTimer = 0;
-                Dust.NewDust(Projectile.Center, 0, 0, 56); 
+                Dust.NewDust(Projectile.Center, 0, 0, DustID.BlueFairy);
             }
             if (timerthing >= 40)
             {

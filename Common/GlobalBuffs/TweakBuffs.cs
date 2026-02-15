@@ -19,56 +19,56 @@ namespace RagnarokMod.Common.GlobalBuffs
 {
     public class TweakBuffs : GlobalBuff
     {
-		public override void Update (int type, Player player, ref int buffIndex)
-		{
-			ModLoader.TryGetMod("ThoriumMod", out Mod thorium);
-			if(player.HasBuff(ModContent.BuffType<GoldenScaleBuff>())) 
-			{
-				player.mount.SetMount(ModContent.MountType<GoldenScaleMount>(), player, false);
-				player.buffTime[buffIndex] = 10;
-				player.GetThoriumPlayer().transformGoldenScale = true;
-				player.GetThoriumPlayer().transformation = true;
-				var calamityPlayer = player.Calamity();
-				if (!calamityPlayer.ZoneAbyss)
-				{
-					if (player.breath <= player.breathMax + 2)
-					{
-						player.breath = player.breathMax + 3;
-					}	
-				} 
-			} 
-			if(player.HasBuff(ModContent.BuffType<DepthDiverAura>()))
-			{
-				var calamityPlayer = player.Calamity();
-				if (!calamityPlayer.ZoneAbyss)
-				{
-					if (player.breath <= player.breathMax + 2)
-					{
-						player.breath = player.breathMax + 3;
-					}	
-				} 
-				else 
-				{
-					player.moveSpeed += 0.2f;
-					player.statDefense += 10;
-					if(player.breath < player.breathMax - 25 && player.breath > 5) 
-					{	
-						Random rnd = new Random(); 
-						if(rnd.Next(1, 600) == 1) 
-						{
-							player.breath = player.breath + 20;
-						}
-					}
-				}
-			}
-		}
-		
-		public override void ModifyBuffText(int type, ref string buffName, ref string tip, ref int rare) 
-		{
-			if(type == ModContent.BuffType<GoldenScaleBuff>())
-			{
-				tip = "You've got gills and great cracker taste. Unfortunately goldfish do not like the Abyss";
-			}
-		}
-	}
+        public override void Update(int type, Player player, ref int buffIndex)
+        {
+            ModLoader.TryGetMod("ThoriumMod", out Mod thorium);
+            if (player.HasBuff(ModContent.BuffType<GoldenScaleBuff>()))
+            {
+                player.mount.SetMount(ModContent.MountType<GoldenScaleMount>(), player, false);
+                player.buffTime[buffIndex] = 10;
+                player.GetThoriumPlayer().transformGoldenScale = true;
+                player.GetThoriumPlayer().transformation = true;
+                var calamityPlayer = player.Calamity();
+                if (!calamityPlayer.ZoneAbyss)
+                {
+                    if (player.breath <= player.breathMax + 2)
+                    {
+                        player.breath = player.breathMax + 3;
+                    }
+                }
+            }
+            if (player.HasBuff(ModContent.BuffType<DepthDiverAura>()))
+            {
+                var calamityPlayer = player.Calamity();
+                if (!calamityPlayer.ZoneAbyss)
+                {
+                    if (player.breath <= player.breathMax + 2)
+                    {
+                        player.breath = player.breathMax + 3;
+                    }
+                }
+                else
+                {
+                    player.moveSpeed += 0.2f;
+                    player.statDefense += 10;
+                    if (player.breath < player.breathMax - 25 && player.breath > 5)
+                    {
+                        Random rnd = new Random();
+                        if (rnd.Next(1, 600) == 1)
+                        {
+                            player.breath = player.breath + 20;
+                        }
+                    }
+                }
+            }
+        }
+
+        public override void ModifyBuffText(int type, ref string buffName, ref string tip, ref int rare)
+        {
+            if (type == ModContent.BuffType<GoldenScaleBuff>())
+            {
+                tip = "You've got gills and great cracker taste. Unfortunately goldfish do not like the Abyss";
+            }
+        }
+    }
 }

@@ -15,12 +15,12 @@ using ThoriumMod.Utilities;
 namespace RagnarokMod.Items.HealerItems.Armor
 {
     [AutoloadEquip(EquipType.Head)]
-	public class VictideHeadHealer : ModItem
-	{
-		private readonly Mod calamity = ModLoader.GetMod("CalamityMod");
+    public class VictideHeadHealer : ModItem
+    {
+        private readonly Mod calamity = ModLoader.GetMod("CalamityMod");
         public override void SetStaticDefaults()
         {
-			ArmorIDs.Head.Sets.PreventBeardDraw[base.Item.headSlot] = true;
+            ArmorIDs.Head.Sets.PreventBeardDraw[base.Item.headSlot] = true;
             //DisplayName.SetDefault("Victide Hood");
             //Tooltip.SetDefault("5% increased radiant damage");
         }
@@ -33,37 +33,37 @@ namespace RagnarokMod.Items.HealerItems.Armor
             Item.rare = ItemRarityID.Green;
             Item.defense = 2;
         }
-		
-		public override bool IsArmorSet(Item head, Item body, Item legs)
-		{
-			return body.type == ModContent.ItemType<VictideBreastplate>() && legs.type == ModContent.ItemType<VictideGreaves>();
-		}
+
+        public override bool IsArmorSet(Item head, Item body, Item legs)
+        {
+            return body.type == ModContent.ItemType<VictideBreastplate>() && legs.type == ModContent.ItemType<VictideGreaves>();
+        }
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = Language.GetTextValue("Mods.RagnarokMod.Items.VictideHeadHealer.SetBonus"); 
+            player.setBonus = Language.GetTextValue("Mods.RagnarokMod.Items.VictideHeadHealer.SetBonus");
             player.Calamity().victideSet = true;
-			player.ignoreWater = true;
-			if (Collision.DrownCollision(player.position, player.width, player.height, player.gravDir, false))
-			{
-				player.GetDamage(DamageClass.Generic) -= 0.10f;
-				player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) += 0.2f;
-				player.lifeRegen += 3;
-			}
-			player.aggro -= 200;
+            player.ignoreWater = true;
+            if (Collision.DrownCollision(player.position, player.width, player.height, player.gravDir, false))
+            {
+                player.GetDamage(DamageClass.Generic) -= 0.10f;
+                player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) += 0.2f;
+                player.lifeRegen += 3;
+            }
+            player.aggro -= 200;
         }
 
         public override void UpdateEquip(Player player)
         {
-			player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) += 0.05f;
+            player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) += 0.05f;
         }
-		
+
         public override void AddRecipes()
         {
-			Recipe recipe = Recipe.Create(Item.type);
-			recipe.AddIngredient(ModContent.ItemType<SeaRemains>(), 3);
-			recipe.AddTile(16);
-			recipe.Register();
+            Recipe recipe = Recipe.Create(Item.type);
+            recipe.AddIngredient(ModContent.ItemType<SeaRemains>(), 3);
+            recipe.AddTile(TileID.Anvils);
+            recipe.Register();
         }
     }
 }

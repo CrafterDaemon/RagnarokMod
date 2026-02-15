@@ -12,23 +12,23 @@ using CalamityMod.Items;
 
 namespace RagnarokMod.Items.RevItems
 {
-	public class GoldenBatDroppings : ModItem
-	{
+    public class GoldenBatDroppings : ModItem
+    {
 
-		public override void SetDefaults()
-		{
-			base.Item.width = 26;
-			base.Item.height = 26;
-			base.Item.value = CalamityGlobalItem.RarityOrangeBuyPrice;
-			base.Item.rare = ItemRarityID.Orange;
-			base.Item.accessory = true;
-		}
+        public override void SetDefaults()
+        {
+            base.Item.width = 26;
+            base.Item.height = 26;
+            base.Item.value = CalamityGlobalItem.RarityOrangeBuyPrice;
+            base.Item.rare = ItemRarityID.Orange;
+            base.Item.accessory = true;
+        }
 
-		public override void UpdateAccessory(Player player, bool hideVisual)
-		{
-			ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
-			thoriumPlayer.statCoinDrops += 0.3f;
-			player.GetRagnarokModPlayer().batpoop = true;
-		}
-	}
+        public override void UpdateAccessory(Player player, bool hideVisual)
+        {
+            ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
+            thoriumPlayer.statCoinDrops += 0.3f;
+            player.GetRagnarokModPlayer().batpoop = true;
+        }
+    }
 }

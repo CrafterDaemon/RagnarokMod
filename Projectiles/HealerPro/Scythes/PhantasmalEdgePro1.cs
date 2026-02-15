@@ -63,8 +63,8 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             base.Projectile.Center = player.Center;
             base.Projectile.gfxOffY = player.gfxOffY;
             Vector2 spawnLoc = Vector2.Zero;
-            spawnLoc.X = Main.rand.Next(-Projectile.width/2, Projectile.width/2);
-            spawnLoc.Y = Main.rand.Next(-Projectile.height/2, Projectile.height/2);
+            spawnLoc.X = Main.rand.Next(-Projectile.width / 2, Projectile.width / 2);
+            spawnLoc.Y = Main.rand.Next(-Projectile.height / 2, Projectile.height / 2);
             if (Main.rand.Next(1, 34) == 33 && fireBallCounter != 15)
             {
                 Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center + spawnLoc, Vector2.Zero, ModContent.ProjectileType<PhantasmalEdgeBombs>(), Projectile.damage, Projectile.knockBack);

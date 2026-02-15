@@ -23,7 +23,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
             Projectile.penetrate = 1;
             Projectile.timeLeft = 200;
             Projectile.ignoreWater = true;
-            
+
         }
         public override void AI()
         {
@@ -31,19 +31,20 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
             if (timer == 4)
             {
                 timer = 0;
-                Dust.NewDust(Projectile.Center, 0, 0, 323);
+                Dust.NewDust(Projectile.Center, 0, 0, DustID.MoonBoulder);
             }
             Projectile.velocity *= 0.975f;
             Projectile.rotation += 0.5f;
-            if (Projectile.velocity.Length() < 0.5f) {
+            if (Projectile.velocity.Length() < 0.5f)
+            {
                 Vector2 launchVelocity1 = Projectile.velocity;
                 launchVelocity1 = Vector2.Normalize(launchVelocity1) * 15f;
                 Vector2 launchVelocity2 = launchVelocity1.RotatedBy(MathHelper.ToRadians(72));
                 Vector2 launchVelocity3 = launchVelocity1.RotatedBy(MathHelper.ToRadians(144));
                 Vector2 launchVelocity4 = launchVelocity1.RotatedBy(MathHelper.ToRadians(216));
                 Vector2 launchVelocity5 = launchVelocity1.RotatedBy(MathHelper.ToRadians(288));
-                
-                
+
+
                 Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, launchVelocity1, ModContent.ProjectileType<PrismaPro2>(), Projectile.damage, Projectile.knockBack, Main.myPlayer, 0, 1);
                 Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, launchVelocity2, ModContent.ProjectileType<PrismaPro2>(), Projectile.damage, Projectile.knockBack, Main.myPlayer, 0, 1);
                 Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, launchVelocity3, ModContent.ProjectileType<PrismaPro2>(), Projectile.damage, Projectile.knockBack, Main.myPlayer, 0, 1);
@@ -61,14 +62,14 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
             Vector2 launchVelocity3 = launchVelocity1.RotatedBy(MathHelper.ToRadians(144));
             Vector2 launchVelocity4 = launchVelocity1.RotatedBy(MathHelper.ToRadians(216));
             Vector2 launchVelocity5 = launchVelocity1.RotatedBy(MathHelper.ToRadians(288));
-                
-                
+
+
             Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, launchVelocity1, ModContent.ProjectileType<PrismaPro2>(), Projectile.damage, Projectile.knockBack, Main.myPlayer, 0, 1);
             Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, launchVelocity2, ModContent.ProjectileType<PrismaPro2>(), Projectile.damage, Projectile.knockBack, Main.myPlayer, 0, 1);
             Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, launchVelocity3, ModContent.ProjectileType<PrismaPro2>(), Projectile.damage, Projectile.knockBack, Main.myPlayer, 0, 1);
             Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, launchVelocity4, ModContent.ProjectileType<PrismaPro2>(), Projectile.damage, Projectile.knockBack, Main.myPlayer, 0, 1);
             Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, launchVelocity5, ModContent.ProjectileType<PrismaPro2>(), Projectile.damage, Projectile.knockBack, Main.myPlayer, 0, 1);
             Projectile.Kill();
-        }       
+        }
     }
 }

@@ -32,29 +32,35 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             Projectile.alpha = 50;
             Projectile.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
             Projectile.Size = new Vector2(24f, 10f);
-            
-        }
-        public override void AI() {
-            Projectile.rotation = Projectile.velocity.ToRotation();
-            
-		}
-        public override bool OnTileCollide(Vector2 oldVelocity) {
-			Projectile.penetrate--;
-			if (Projectile.penetrate <= 0) {
-				Projectile.Kill();
-			}
-			else {
-				Collision.HitTiles(Projectile.position, Projectile.velocity, Projectile.width, Projectile.height);
-				SoundEngine.PlaySound(SoundID.Item10, Projectile.position);
-				if (Math.Abs(Projectile.velocity.X - oldVelocity.X) > float.Epsilon) {
-					Projectile.velocity.X = -oldVelocity.X;
-				}
-				if (Math.Abs(Projectile.velocity.Y - oldVelocity.Y) > float.Epsilon) {
-					Projectile.velocity.Y = -oldVelocity.Y;
-				}
-			}
 
-			return false;
-		}
+        }
+        public override void AI()
+        {
+            Projectile.rotation = Projectile.velocity.ToRotation();
+
+        }
+        public override bool OnTileCollide(Vector2 oldVelocity)
+        {
+            Projectile.penetrate--;
+            if (Projectile.penetrate <= 0)
+            {
+                Projectile.Kill();
+            }
+            else
+            {
+                Collision.HitTiles(Projectile.position, Projectile.velocity, Projectile.width, Projectile.height);
+                SoundEngine.PlaySound(SoundID.Item10, Projectile.position);
+                if (Math.Abs(Projectile.velocity.X - oldVelocity.X) > float.Epsilon)
+                {
+                    Projectile.velocity.X = -oldVelocity.X;
+                }
+                if (Math.Abs(Projectile.velocity.Y - oldVelocity.Y) > float.Epsilon)
+                {
+                    Projectile.velocity.Y = -oldVelocity.Y;
+                }
+            }
+
+            return false;
+        }
     }
 }

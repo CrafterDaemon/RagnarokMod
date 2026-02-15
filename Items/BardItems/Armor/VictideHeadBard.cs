@@ -62,7 +62,7 @@ namespace RagnarokMod.Items.BardItems.Armor
         {
             Recipe recipe = Recipe.Create(Item.type);
             recipe.AddIngredient(ModContent.ItemType<SeaRemains>(), 3);
-            recipe.AddTile(16);
+            recipe.AddTile(TileID.Anvils);
             recipe.Register();
         }
     }

@@ -58,7 +58,7 @@ namespace RagnarokMod.Items.BardItems.Electronic
             recipe.AddIngredient(ModContent.ItemType<IdolsMicrophone>(), 1);
             recipe.AddIngredient(ModContent.ItemType<RuinousSoul>(), 2);
             recipe.AddIngredient(ModContent.ItemType<DarkPlasma>(), 1);
-            recipe.AddTile(412);
+            recipe.AddTile(TileID.LunarCraftingStation);
             recipe.Register();
         }
     }

@@ -85,7 +85,7 @@ namespace RagnarokMod.Items.HealerItems.Scythes
         {
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient(ModContent.ItemType<EndothermicEnergy>(), 10);
-			recipe.AddIngredient(ModContent.ItemType<NightmareFuel>(), 10);
+            recipe.AddIngredient(ModContent.ItemType<NightmareFuel>(), 10);
             recipe.AddTile<CosmicAnvil>();
             recipe.Register();
         }

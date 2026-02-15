@@ -27,7 +27,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
         {
             timer++;
             Projectile.rotation += 20;
-            if (timer % 3  == 0)
+            if (timer % 3 == 0)
             {
                 Dust.NewDust(Projectile.Center, 0, 0, ModContent.DustType<AstralBlue>());
             }

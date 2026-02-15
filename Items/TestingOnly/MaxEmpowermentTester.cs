@@ -10,6 +10,7 @@ using ThoriumMod.Empowerments;
 using ThoriumMod.Items;
 using ThoriumMod.Sounds;
 using ThoriumMod.Projectiles.Bard;
+using Terraria.ID;
 
 namespace RagnarokMod.Items.TestingOnly
 {
@@ -44,11 +45,11 @@ namespace RagnarokMod.Items.TestingOnly
             Item.useTime = 18;
             Item.useAnimation = 18;
             Item.autoReuse = true;
-            Item.useStyle = 5;
+            Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.knockBack = 4f;
             Item.value = Item.sellPrice(0, 2, 0, 0);
-            Item.rare = -1;
+            Item.rare = ItemRarityID.Gray;
             Item.UseSound = new SoundStyle?(ThoriumSounds.String_Sound);
             Item.shoot = ModContent.ProjectileType<AcousticWave>();
             Item.shootSpeed = 5f;

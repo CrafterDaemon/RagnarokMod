@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using System.Collections.Generic;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace RagnarokMod.Projectiles.HealerPro.Scythes
@@ -141,14 +142,14 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             for (int i = 0; i < 40; i++)
             {
                 Vector2 speed = Main.rand.NextVector2CircularEdge(8f, 8f);
-                Dust dust = Dust.NewDustDirect(center, 16, 16, 173,
+                Dust dust = Dust.NewDustDirect(center, 16, 16, DustID.ShadowbeamStaff,
                     speed.X, speed.Y, 100, default, 1.5f);
                 dust.noGravity = true;
             }
             for (int i = 0; i < 20; i++)
             {
                 Vector2 speed = Main.rand.NextVector2Circular(5f, 5f);
-                Dust dust = Dust.NewDustDirect(center, 16, 16, 229,
+                Dust dust = Dust.NewDustDirect(center, 16, 16, DustID.Vortex,
                     speed.X, speed.Y, 100, default, 1.2f);
                 dust.noGravity = true;
             }

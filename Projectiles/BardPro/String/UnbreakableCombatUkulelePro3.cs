@@ -59,7 +59,7 @@ namespace RagnarokMod.Projectiles.BardPro.String
                 for (int i = 0; i < 144; i++)
                 {
                     Vector2 position = Projectile.Center + new Vector2(64 * (onFives / 5), 0).RotatedBy(MathHelper.ToRadians(2.5f * (i + 1)));
-                    Dust dust = Dust.NewDustPerfect(position, 286, Vector2.Zero, default, default, 1.5f);
+                    Dust dust = Dust.NewDustPerfect(position, DustID.OrangeStainedGlass, Vector2.Zero, default, default, 1.5f);
                     dust.noGravity = true;
                 }
             }

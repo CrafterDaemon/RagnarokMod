@@ -56,7 +56,7 @@ namespace RagnarokMod.Items.BardItems.Wind
             Item.shootSpeed = 13f;
             Item.UseSound = RagnarokModSounds.Steampipes;
 
-            ((ModItem)this).Item.useStyle = 5;
+            ((ModItem)this).Item.useStyle = ItemUseStyleID.Shoot;
             if (!ModLoader.HasMod("Look"))
             {
                 ((ModItem)this).Item.holdStyle = 3;

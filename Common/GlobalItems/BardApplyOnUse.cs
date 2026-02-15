@@ -17,8 +17,7 @@ namespace RagnarokMod.Common.GlobalItems
         public override bool? UseItem(Item item, Player player)
         {
             var ragPlayer = player.GetModPlayer<RagnarokModPlayer>();
-            if (item.ModItem is BardItem bardItem
-                && bardItem.InstrumentType == BardInstrumentType.String
+            if (MiscHelper.MatchBardItem(item, BardInstrumentType.String)
                 && ragPlayer.sirenScale == true)
             {
                 ragPlayer.stringInstrumentUsed = true;

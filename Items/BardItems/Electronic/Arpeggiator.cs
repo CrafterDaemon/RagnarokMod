@@ -63,45 +63,53 @@ namespace RagnarokMod.Items.BardItems.Electronic
             Vector2 offset3 = Vector2.Normalize(offset) * 0;
             Vector2 offset4 = Vector2.Normalize(offset) * 15;
             Vector2 offset5 = Vector2.Normalize(offset) * 30;
-            if (counter == 1) {
-                Projectile.NewProjectileDirect(source, position+offset5, velocity, type, damage, knockback, player.whoAmI);
-                Projectile.NewProjectileDirect(source, position+offset1, velocity, ModContent.ProjectileType<ArpeggiatorPro2>(), damage, knockback, player.whoAmI);
+            if (counter == 1)
+            {
+                Projectile.NewProjectileDirect(source, position + offset5, velocity, type, damage, knockback, player.whoAmI);
+                Projectile.NewProjectileDirect(source, position + offset1, velocity, ModContent.ProjectileType<ArpeggiatorPro2>(), damage, knockback, player.whoAmI);
             }
-            if (counter == 2) {
-                Projectile.NewProjectileDirect(source, position+offset4, velocity, type, damage, knockback, player.whoAmI);
-                Projectile.NewProjectileDirect(source, position+offset2, velocity, ModContent.ProjectileType<ArpeggiatorPro2>(), damage, knockback, player.whoAmI);
+            if (counter == 2)
+            {
+                Projectile.NewProjectileDirect(source, position + offset4, velocity, type, damage, knockback, player.whoAmI);
+                Projectile.NewProjectileDirect(source, position + offset2, velocity, ModContent.ProjectileType<ArpeggiatorPro2>(), damage, knockback, player.whoAmI);
             }
-            if (counter == 3) {
-                Projectile.NewProjectileDirect(source, position+offset3, velocity, type, damage, knockback, player.whoAmI);
-                Projectile.NewProjectileDirect(source, position+offset3, velocity, ModContent.ProjectileType<ArpeggiatorPro2>(), damage, knockback, player.whoAmI);
+            if (counter == 3)
+            {
+                Projectile.NewProjectileDirect(source, position + offset3, velocity, type, damage, knockback, player.whoAmI);
+                Projectile.NewProjectileDirect(source, position + offset3, velocity, ModContent.ProjectileType<ArpeggiatorPro2>(), damage, knockback, player.whoAmI);
             }
-            if (counter == 4) {
-                Projectile.NewProjectileDirect(source, position+offset2, velocity, type, damage, knockback, player.whoAmI);
-                Projectile.NewProjectileDirect(source, position+offset4, velocity, ModContent.ProjectileType<ArpeggiatorPro2>(), damage, knockback, player.whoAmI);
+            if (counter == 4)
+            {
+                Projectile.NewProjectileDirect(source, position + offset2, velocity, type, damage, knockback, player.whoAmI);
+                Projectile.NewProjectileDirect(source, position + offset4, velocity, ModContent.ProjectileType<ArpeggiatorPro2>(), damage, knockback, player.whoAmI);
             }
-            if (counter == 5) {
-                Projectile.NewProjectileDirect(source, position+offset1, velocity, type, damage, knockback, player.whoAmI);
-                Projectile.NewProjectileDirect(source, position+offset5, velocity, ModContent.ProjectileType<ArpeggiatorPro2>(), damage, knockback, player.whoAmI);
+            if (counter == 5)
+            {
+                Projectile.NewProjectileDirect(source, position + offset1, velocity, type, damage, knockback, player.whoAmI);
+                Projectile.NewProjectileDirect(source, position + offset5, velocity, ModContent.ProjectileType<ArpeggiatorPro2>(), damage, knockback, player.whoAmI);
             }
-            if (counter == 6) {
-                Projectile.NewProjectileDirect(source, position+offset2, velocity, type, damage, knockback, player.whoAmI);
-                Projectile.NewProjectileDirect(source, position+offset4, velocity, ModContent.ProjectileType<ArpeggiatorPro2>(), damage, knockback, player.whoAmI);
+            if (counter == 6)
+            {
+                Projectile.NewProjectileDirect(source, position + offset2, velocity, type, damage, knockback, player.whoAmI);
+                Projectile.NewProjectileDirect(source, position + offset4, velocity, ModContent.ProjectileType<ArpeggiatorPro2>(), damage, knockback, player.whoAmI);
             }
-            if (counter == 7) {
-                Projectile.NewProjectileDirect(source, position+offset3, velocity, ModContent.ProjectileType<ArpeggiatorPro2>(), damage, knockback, player.whoAmI);
-                Projectile.NewProjectileDirect(source, position+offset3, velocity, type, damage, knockback, player.whoAmI);
-                
+            if (counter == 7)
+            {
+                Projectile.NewProjectileDirect(source, position + offset3, velocity, ModContent.ProjectileType<ArpeggiatorPro2>(), damage, knockback, player.whoAmI);
+                Projectile.NewProjectileDirect(source, position + offset3, velocity, type, damage, knockback, player.whoAmI);
+
             }
-            if (counter == 8) {
-                Projectile.NewProjectileDirect(source, position+offset4, velocity, type, damage, knockback, player.whoAmI);
-                Projectile.NewProjectileDirect(source, position+offset2, velocity, ModContent.ProjectileType<ArpeggiatorPro2>(), damage, knockback, player.whoAmI);
+            if (counter == 8)
+            {
+                Projectile.NewProjectileDirect(source, position + offset4, velocity, type, damage, knockback, player.whoAmI);
+                Projectile.NewProjectileDirect(source, position + offset2, velocity, ModContent.ProjectileType<ArpeggiatorPro2>(), damage, knockback, player.whoAmI);
                 counter = 0;
             }
             counter++;
-            
-            
 
-            
+
+
+
             return false;
 
         }

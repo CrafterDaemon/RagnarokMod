@@ -32,7 +32,7 @@ namespace RagnarokMod.Items.HealerItems.Scythes
             base.Item.useAnimation = 22;
             base.Item.maxStack = 1;
             base.Item.knockBack = 6.5f;
-            base.Item.useStyle = 1;
+            base.Item.useStyle = ItemUseStyleID.Swing;
             base.Item.UseSound = SoundID.Item1;
             base.Item.shootSpeed = 0.1f;
             //end

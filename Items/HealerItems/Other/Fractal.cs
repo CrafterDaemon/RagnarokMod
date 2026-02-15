@@ -24,43 +24,43 @@ using CalamityMod.Rarities;
 
 namespace RagnarokMod.Items.HealerItems.Other
 {
-	public class Fractal : ThoriumItem
-	{
-		public override void SetStaticDefaults()
-		{
-			Item.staff[Type] = true;
-		}
-		
+    public class Fractal : ThoriumItem
+    {
+        public override void SetStaticDefaults()
+        {
+            Item.staff[Type] = true;
+        }
 
-		public override void SetDefaults()
-		{
-			base.Item.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
-			base.Item.damage = 60;
-			this.isHealer = true;
-			this.healDisplay = true;
-			base.Item.width = 60;
-			base.Item.mana = 12;
-			base.Item.height = 66;
-			base.Item.useTime = 48;
-			base.Item.useAnimation = 48;
-			base.Item.autoReuse = true;
-			base.Item.useStyle = 5;
-			base.Item.noMelee = true;
-			base.Item.value = CalamityGlobalItem.RarityPureGreenBuyPrice;
-			base.Item.rare = ModContent.RarityType<PureGreen>();
+
+        public override void SetDefaults()
+        {
+            base.Item.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
+            base.Item.damage = 60;
+            this.isHealer = true;
+            this.healDisplay = true;
+            base.Item.width = 60;
+            base.Item.mana = 12;
+            base.Item.height = 66;
+            base.Item.useTime = 48;
+            base.Item.useAnimation = 48;
+            base.Item.autoReuse = true;
+            base.Item.useStyle = ItemUseStyleID.Shoot;
+            base.Item.noMelee = true;
+            base.Item.value = CalamityGlobalItem.RarityPureGreenBuyPrice;
+            base.Item.rare = ModContent.RarityType<PureGreen>();
             base.Item.UseSound = new SoundStyle?(SoundID.Item8);
-			base.Item.shoot = ModContent.ProjectileType<FractalOrb>();
-			base.Item.shootSpeed = 6f;
-		}
-		public override void AddRecipes()
+            base.Item.shoot = ModContent.ProjectileType<FractalOrb>();
+            base.Item.shootSpeed = 6f;
+        }
+        public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient(ModContent.ItemType<ExodiumCluster>(), 12);
-			recipe.AddIngredient(ModContent.ItemType<Lumenyl>(), 8);
-			recipe.AddIngredient(ModContent.ItemType<RuinousSoul>(), 4);
-			recipe.AddIngredient(ModContent.ItemType<Prisma>(), 1);
-            recipe.AddTile(412);
+            recipe.AddIngredient(ModContent.ItemType<Lumenyl>(), 8);
+            recipe.AddIngredient(ModContent.ItemType<RuinousSoul>(), 4);
+            recipe.AddIngredient(ModContent.ItemType<Prisma>(), 1);
+            recipe.AddTile(TileID.LunarCraftingStation);
             recipe.Register();
         }
-	}
+    }
 }

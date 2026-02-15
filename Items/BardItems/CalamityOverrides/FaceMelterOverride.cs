@@ -38,7 +38,7 @@ namespace RagnarokMod.Items
             Item.useStyle = ItemUseStyleID.Guitar;
             Item.noMelee = true;
             Item.knockBack = 5f;
-            
+
 
             Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
             Item.rare = ModContent.RarityType<CosmicPurple>();
@@ -113,7 +113,7 @@ namespace RagnarokMod.Items
         }
         public override void AddRecipes()
         {
-            CreateRecipe().AddIngredient(1305).AddIngredient(4715).AddIngredient<CosmiliteBar>(8)
+            CreateRecipe().AddIngredient(ItemID.TheAxe).AddIngredient(ItemID.SparkleGuitar).AddIngredient<CosmiliteBar>(8)
                 .AddIngredient<NightmareFuel>(20)
                 .AddTile<CosmicAnvil>()
                 .Register();

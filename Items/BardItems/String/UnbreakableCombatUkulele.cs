@@ -90,13 +90,13 @@ namespace RagnarokMod.Items.BardItems.String
             float knockback)
         {
             if (player.altFunctionUse != 2)
-                {            
+            {
                 return true;
-                }
+            }
             if (player.altFunctionUse == 2)
-                {
-                    Projectile.NewProjectile(source, position.X, position.Y, velocity.X * 1.25f, velocity.Y * 1.25f, ModContent.ProjectileType<UnbreakableCombatUkulelePro2>(), (int) ((double) damage * 1.25), 3f, ((Entity) player).whoAmI, 0.0f, 0.0f, 0.0f); 
-                }
+            {
+                Projectile.NewProjectile(source, position.X, position.Y, velocity.X * 1.25f, velocity.Y * 1.25f, ModContent.ProjectileType<UnbreakableCombatUkulelePro2>(), (int)((double)damage * 1.25), 3f, ((Entity)player).whoAmI, 0.0f, 0.0f, 0.0f);
+            }
             return false;
         }
         public override void AddRecipes()

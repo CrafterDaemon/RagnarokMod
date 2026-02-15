@@ -87,7 +87,7 @@ namespace RagnarokMod.Items.BardItems.Armor
 
             ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
             thoriumPlayer.bardResourceMax2 += 15;
-			player.GetDamage(ThoriumDamageBase<BardDamage>.Instance) += 0.2f;
+            player.GetDamage(ThoriumDamageBase<BardDamage>.Instance) += 0.2f;
             player.GetAttackSpeed((DamageClass)(object)ThoriumDamageBase<BardDamage>.Instance) += Damage / 100f;
             player.GetCritChance((DamageClass)(object)ThoriumDamageBase<BardDamage>.Instance) += Crit;
             thoriumPlayer.inspirationRegenBonus += InspirationRegen / 100f;

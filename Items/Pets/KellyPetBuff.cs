@@ -7,16 +7,20 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace RagnarokMod.Items.Pets{
+namespace RagnarokMod.Items.Pets
+{
 
-	public class KellyPetBuff : ModBuff{
-		public override void SetStaticDefaults(){
+    public class KellyPetBuff : ModBuff
+    {
+        public override void SetStaticDefaults()
+        {
             Main.buffNoTimeDisplay[Type] = true;
             Main.vanityPet[Type] = true;
         }
-        public override void Update(Player player, ref int buffIndex){
+        public override void Update(Player player, ref int buffIndex)
+        {
             bool unused = false;
             player.BuffHandle_SpawnPetIfNeededAndSetTime(buffIndex, ref unused, ModContent.ProjectileType<KellyPetProjectile>());
         }
-	}
+    }
 }

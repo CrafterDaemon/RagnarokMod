@@ -26,7 +26,7 @@ namespace RagnarokMod.Items.HealerItems.Armor
     [AutoloadEquip(EquipType.Head)]
     public class AuricTeslaHealerHead : ThoriumItem
     {
-     
+
         public override void SetStaticDefaults()
         {
             ArmorIDs.Head.Sets.PreventBeardDraw[this.Item.headSlot] = true;
@@ -62,19 +62,19 @@ namespace RagnarokMod.Items.HealerItems.Armor
             player.ignoreWater = true;
             player.crimsonRegen = true;
             player.GetRagnarokModPlayer().auricHealerSet = true;
-		    player.GetRagnarokModPlayer().tarraHealer = true;
-			player.GetRagnarokModPlayer().silvaHealer = true;
-			player.GetRagnarokModPlayer().bloodflareHealer  = true;
+            player.GetRagnarokModPlayer().tarraHealer = true;
+            player.GetRagnarokModPlayer().silvaHealer = true;
+            player.GetRagnarokModPlayer().bloodflareHealer = true;
             player.GetRagnarokModPlayer().nightfallen = true;
             player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) += 0.5f;
             if (Main.myPlayer == player.whoAmI)
-			{
-				int type = ModContent.ProjectileType<GuardianHealer>();
-				if (player.whoAmI == Main.myPlayer && player.ownedProjectileCounts[type] < 1)
-				{
-					Projectile.NewProjectile(player.GetSource_FromThis("tarraHealer"), player.Center, Vector2.Zero, type, 0, 0f, player.whoAmI, 0f, 0f, 0f);
-				}
-			}
+            {
+                int type = ModContent.ProjectileType<GuardianHealer>();
+                if (player.whoAmI == Main.myPlayer && player.ownedProjectileCounts[type] < 1)
+                {
+                    Projectile.NewProjectile(player.GetSource_FromThis("tarraHealer"), player.Center, Vector2.Zero, type, 0, 0f, player.whoAmI, 0f, 0f, 0f);
+                }
+            }
         }
 
         public override void UpdateEquip(Player player)
@@ -82,13 +82,13 @@ namespace RagnarokMod.Items.HealerItems.Armor
             var modPlayer = player.GetRagnarokModPlayer();
             modPlayer.auricBoost = true;
             player.moveSpeed += 0.05f;
-			player.manaCost *= 0.75f;
-			ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
-		    player.GetDamage(DamageClass.Generic) -= 0.8f;
-			player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) += 1.7f;
-			thoriumPlayer.healBonus += 10;
-			player.GetCritChance(ThoriumDamageBase<HealerDamage>.Instance) += 25f;
-			player.statManaMax2 += 100;
+            player.manaCost *= 0.75f;
+            ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
+            player.GetDamage(DamageClass.Generic) -= 0.8f;
+            player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) += 1.7f;
+            thoriumPlayer.healBonus += 10;
+            player.GetCritChance(ThoriumDamageBase<HealerDamage>.Instance) += 25f;
+            player.statManaMax2 += 100;
         }
 
         public override void AddRecipes()
@@ -96,9 +96,9 @@ namespace RagnarokMod.Items.HealerItems.Armor
             CreateRecipe().
                 AddIngredient<DreamWeaversHood>().
                 AddIngredient<DreamWeaversHelmet>().
-				AddIngredient<SilvaHeadHealer>().
-				AddIngredient<BloodflareHeadHealer>().
-				AddIngredient<TarragonCowl>().
+                AddIngredient<SilvaHeadHealer>().
+                AddIngredient<BloodflareHeadHealer>().
+                AddIngredient<TarragonCowl>().
                 AddIngredient<NightfallenHelmet>().
                 AddIngredient<AuricBar>(12).
                 AddTile<CosmicAnvil>().

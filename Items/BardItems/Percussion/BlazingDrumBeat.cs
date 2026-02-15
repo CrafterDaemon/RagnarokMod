@@ -15,6 +15,7 @@ using RagnarokMod.Projectiles.BardPro.Percussion;
 using CalamityMod.Items;
 
 namespace RagnarokMod.Items.BardItems.Percussion;
+
 public class BlazingDrumBeat : BigInstrumentItemBase
 {
     //flame slash go whoosh

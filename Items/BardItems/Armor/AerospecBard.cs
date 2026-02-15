@@ -65,9 +65,9 @@ namespace RagnarokMod.Items.BardItems.Armor
 
         public override void AddRecipes()
         {
-            CreateRecipe(1).AddIngredient<AerialiteBar>(5).AddIngredient(824, 3)
-            .AddIngredient(320, 1)
-            .AddTile(305)
+            CreateRecipe(1).AddIngredient<AerialiteBar>(5).AddIngredient(ItemID.SunplateBlock, 3)
+            .AddIngredient(ItemID.Feather, 1)
+            .AddTile(TileID.SkyMill)
             .Register();
         }
     }

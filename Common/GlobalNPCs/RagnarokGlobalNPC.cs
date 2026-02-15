@@ -41,7 +41,7 @@ namespace RagnarokMod.Common.GlobalNPCs
         }
         public void OnHitAny(NPC npc, Player player, NPC.HitInfo hit, int damageDone)
         {
-            if (debuffNightfallen) 
+            if (debuffNightfallen)
             {
                 hit.Damage = (int)(hit.Damage * 1.1f);
             }

@@ -27,7 +27,7 @@ namespace RagnarokMod.Projectiles.BardPro.String
             Projectile.penetrate = 1;
             Projectile.timeLeft = 200;
             Projectile.ignoreWater = true;
-            
+
         }
 
         public override BardInstrumentType InstrumentType => BardInstrumentType.String;
@@ -62,12 +62,12 @@ namespace RagnarokMod.Projectiles.BardPro.String
             Vector2 launchVelocity4 = launchVelocity1.RotatedBy(MathHelper.ToRadians(270));
             Vector2 launchVelocity5 = launchVelocity1.RotatedBy(MathHelper.ToRadians(360));
             target.AddBuff(ModContent.BuffType<Dragonfire>(), 300, false);
-                
+
             Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, launchVelocity2, ModContent.ProjectileType<DragonForcePro2>(), Projectile.damage, Projectile.knockBack, Main.myPlayer, 0, 1);
             Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, launchVelocity3, ModContent.ProjectileType<DragonForcePro2>(), Projectile.damage, Projectile.knockBack, Main.myPlayer, 0, 1);
             Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, launchVelocity4, ModContent.ProjectileType<DragonForcePro2>(), Projectile.damage, Projectile.knockBack, Main.myPlayer, 0, 1);
             Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, launchVelocity5, ModContent.ProjectileType<DragonForcePro2>(), Projectile.damage, Projectile.knockBack, Main.myPlayer, 0, 1);
             Projectile.Kill();
-        }    
+        }
     }
 }

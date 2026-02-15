@@ -34,7 +34,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
             if (dustTimer == 3)
             {
                 dustTimer = 0;
-                Dust.NewDust(Projectile.Center, 0, 0, 56);
+                Dust.NewDust(Projectile.Center, 0, 0, DustID.BlueFairy);
             }
 
             Projectile.rotation = Projectile.velocity.ToRotation();

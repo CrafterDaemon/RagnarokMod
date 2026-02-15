@@ -42,7 +42,7 @@ namespace RagnarokMod.Projectiles.BardPro.Electronic
             float direction = Projectile.velocity.ToRotation();
             direction += MathHelper.PiOver2;
             Projectile.rotation = direction;
-            
+
         }
     }
 }

@@ -31,8 +31,8 @@ namespace RagnarokMod.Buffs
         public override void Update(Player player, ref int buffIndex)
         {
             // Damage logic for Players
-                player.Hurt(PlayerDeathReason.ByCustomReason($"{player.name} fell into darkness."), 5, 0);
-                Dust.NewDust(player.position, player.width, player.height, DustID.Asphalt);
+            player.Hurt(PlayerDeathReason.ByCustomReason($"{player.name} fell into darkness."), 5, 0);
+            Dust.NewDust(player.position, player.width, player.height, DustID.Asphalt);
         }
     }
 }

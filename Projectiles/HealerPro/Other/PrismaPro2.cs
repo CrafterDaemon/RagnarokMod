@@ -22,7 +22,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
             Projectile.penetrate = 1;
             Projectile.timeLeft = 200;
             Projectile.ignoreWater = true;
-            
+
         }
         public override void AI()
         {
@@ -30,7 +30,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
             if (timer == 4)
             {
                 timer = 0;
-                Dust.NewDust(Projectile.Center, 0, 0, 323);
+                Dust.NewDust(Projectile.Center, 0, 0, DustID.MoonBoulder);
             }
             Projectile.rotation = Projectile.velocity.ToRotation();
         }

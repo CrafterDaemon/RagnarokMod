@@ -69,7 +69,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
-          modifiers.FinalDamage *= 0.7f;
+            modifiers.FinalDamage *= 0.7f;
         }
 
     }

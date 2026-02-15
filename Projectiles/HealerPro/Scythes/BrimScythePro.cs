@@ -17,9 +17,10 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
     public class BrimScythePro : ScythePro
     {
         public override void SafeSetStaticDefaults()
-        {}
+        { }
 
-        public override void SafeSetDefaults(){
+        public override void SafeSetDefaults()
+        {
             Projectile.aiStyle = 0;
             Projectile.friendly = true;
             Projectile.tileCollide = false;
@@ -32,7 +33,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             Projectile.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
             rotationSpeed = 0.25f;
             scytheCount = 2;
-            base.Projectile.Size = new Vector2(280,320);
+            base.Projectile.Size = new Vector2(280, 320);
         }
     }
 }

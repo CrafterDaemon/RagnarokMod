@@ -15,7 +15,7 @@ namespace RagnarokMod.Items.BardItems.Accessories
     {
         public override void SetBardDefaults()
         {
-            Item.width  = 28;
+            Item.width = 28;
             Item.height = 28;
             Item.accessory = true;
             Item.rare = ItemRarityID.Red;

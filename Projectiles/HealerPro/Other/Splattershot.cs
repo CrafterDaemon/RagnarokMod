@@ -7,6 +7,7 @@ using Terraria.Graphics.CameraModifiers;
 using Terraria.ModLoader;
 using ThoriumMod;
 using ThoriumMod.Projectiles;
+using Terraria.ID;
 namespace RagnarokMod.Projectiles.HealerPro.Other
 {
     public class Splattershot : ThoriumProjectile, ILocalizedModType
@@ -30,7 +31,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
             {
                 for (int i = 0; i < 2; i++)
                 {
-                    int blood = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, 5, 0f, 0f, 100, new Color(255, 0, 0), 1.5f);
+                    int blood = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.Blood, 0f, 0f, 100, new Color(255, 0, 0), 1.5f);
                     Main.dust[blood].noGravity = true;
                     Main.dust[blood].velocity *= 0f;
                 }

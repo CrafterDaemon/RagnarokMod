@@ -56,11 +56,11 @@ namespace RagnarokMod.Items.HealerItems.Scythes
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-			recipe.AddIngredient(ModContent.ItemType<MiracleMatter>(), 1);
+            recipe.AddIngredient(ModContent.ItemType<MiracleMatter>(), 1);
             recipe.AddIngredient(ModContent.ItemType<ProfanedScythe>(), 1);
-			recipe.AddIngredient(ModContent.ItemType<TerrariumHolyScythe>(), 1);
-			recipe.AddIngredient(ModContent.ItemType<RealitySlasher>(), 1);
-			recipe.AddIngredient(ModContent.ItemType<TitanScythe>(), 1);
+            recipe.AddIngredient(ModContent.ItemType<TerrariumHolyScythe>(), 1);
+            recipe.AddIngredient(ModContent.ItemType<RealitySlasher>(), 1);
+            recipe.AddIngredient(ModContent.ItemType<TitanScythe>(), 1);
             recipe.AddTile<DraedonsForge>();
             recipe.Register();
         }

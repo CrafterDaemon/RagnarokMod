@@ -36,11 +36,11 @@ namespace RagnarokMod.Items.BardItems.Accessories
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe(1);
-            recipe.AddIngredient(935, 1);
+            recipe.AddIngredient(ItemID.AvengerEmblem, 1);
             recipe.AddIngredient(ModContent.ItemType<BandKit>(), 1);
             recipe.AddIngredient(ModContent.ItemType<ScoriaBar>(), 5);
             recipe.AddIngredient(ModContent.ItemType<AshesofCalamity>(), 15);
-            recipe.AddTile(134);
+            recipe.AddTile(TileID.MythrilAnvil);
             recipe.Register();
         }
     }

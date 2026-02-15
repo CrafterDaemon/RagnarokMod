@@ -24,7 +24,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
 
         public override void SafeSetDefaults()
         {
-            base.Projectile.Size = new Vector2(204,182);
+            base.Projectile.Size = new Vector2(204, 182);
             dustOffset = new Vector2(-35f, 7f);
             dustCount = 4;
             dustType = DustID.BorealWood;

@@ -16,7 +16,8 @@ namespace RagnarokMod.Projectiles.BardPro.Wind
 {
     public class SteampipesPro : BardProjectile, ILocalizedModType
     {
-        public override void SetStaticDefaults(){
+        public override void SetStaticDefaults()
+        {
             Main.projFrames[Projectile.type] = 4;
         }
         public override void SetBardDefaults()
@@ -30,24 +31,25 @@ namespace RagnarokMod.Projectiles.BardPro.Wind
             Projectile.timeLeft = 200;
             Projectile.ignoreWater = true;
         }
-		public override BardInstrumentType InstrumentType
-		{
-			get
-			{
-				return BardInstrumentType.Wind;
-			}
-		}
+        public override BardInstrumentType InstrumentType
+        {
+            get
+            {
+                return BardInstrumentType.Wind;
+            }
+        }
 
         public override void AI()
         {
-            if (++Projectile.frameCounter >= 5){
+            if (++Projectile.frameCounter >= 5)
+            {
                 Projectile.frameCounter = 0;
                 if (++Projectile.frame >= Main.projFrames[Projectile.type])
                     Projectile.frame = 0;
             }
             Projectile.rotation = Projectile.velocity.ToRotation();
-            Dust.NewDust(Projectile.Center, 0, 0, 55);
-			WindHomingCommon(null, 384f, null, null, false);
+            Dust.NewDust(Projectile.Center, 0, 0, DustID.Pixie);
+            WindHomingCommon(null, 384f, null, null, false);
         }
         public override bool PreDraw(ref Color lightColor)
         {

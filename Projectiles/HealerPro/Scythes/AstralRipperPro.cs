@@ -36,9 +36,9 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             fadeOutSpeed = 30;
             rotationSpeed = 0.25f;
             scytheCount = 2;
-            Projectile.Size = new Vector2(222f,210f);
+            Projectile.Size = new Vector2(222f, 210f);
 
-            dustOffset = new Vector2(0f,30f);
+            dustOffset = new Vector2(0f, 30f);
             dustCount = 4;
             dustType = ModContent.DustType<AstralBlue>();
             dustType2 = ModContent.DustType<AstralOrange>();

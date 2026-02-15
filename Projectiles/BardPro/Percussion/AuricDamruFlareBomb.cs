@@ -56,7 +56,8 @@ namespace RagnarokMod.Projectiles.BardPro.Percussion
         }
 
 
-        public override bool PreDraw(ref Color lightColor){
+        public override bool PreDraw(ref Color lightColor)
+        {
             SpriteEffects spriteEffects = SpriteEffects.None;
             if (Projectile.spriteDirection == -1)
                 spriteEffects = SpriteEffects.FlipHorizontally;
@@ -75,11 +76,13 @@ namespace RagnarokMod.Projectiles.BardPro.Percussion
         }
 
 
-        public override void OnKill(int timeLeft){
+        public override void OnKill(int timeLeft)
+        {
             SoundEngine.PlaySound(SoundID.Item14, new Vector2?(Projectile.Center), null);
             Projectile.NewProjectile(Projectile.GetSource_FromThis(null), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<AuricDamruFlareBombBoom>(), (int)(Projectile.damage * 0.75f), 1f, Projectile.owner, 0f, 0f, 0f);
-            for (int j = 0; j < 30; j++){
-				
+            for (int j = 0; j < 30; j++)
+            {
+
                 Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Torch, Main.rand.Next(-15, 15), Main.rand.Next(-15, 15), 0, default, 2.5f).noGravity = true;
             }
 

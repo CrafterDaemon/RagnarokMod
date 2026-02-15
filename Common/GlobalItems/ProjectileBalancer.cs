@@ -11,25 +11,25 @@ namespace RagnarokMod.Common.GlobalItems
 {
     public class ProjectileBalancer : GlobalProjectile
     {
-		private static Mod thorium = ModLoader.GetMod("ThoriumMod");
-		
-		public override bool AppliesToEntity(Projectile projectile, bool lateInstantiation)
+        private static Mod thorium = ModLoader.GetMod("ThoriumMod");
+
+        public override bool AppliesToEntity(Projectile projectile, bool lateInstantiation)
         {
             return (
-			projectile.type == thorium.Find<ModProjectile>("LifeDeathPro1").Type
-			);
+            projectile.type == thorium.Find<ModProjectile>("LifeDeathPro1").Type
+            );
         }
-		
-		public override void SetDefaults(Projectile projectile)
-        {
-			if (projectile.type == thorium.Find<ModProjectile>("LifeDeathPro1").Type) 
-			{
-				projectile.usesLocalNPCImmunity = true;
-				projectile.localNPCHitCooldown = 15;
-				projectile.timeLeft = 120;
-				projectile.penetrate = 3;
 
-			}
-		}
-	}
+        public override void SetDefaults(Projectile projectile)
+        {
+            if (projectile.type == thorium.Find<ModProjectile>("LifeDeathPro1").Type)
+            {
+                projectile.usesLocalNPCImmunity = true;
+                projectile.localNPCHitCooldown = 15;
+                projectile.timeLeft = 120;
+                projectile.penetrate = 3;
+
+            }
+        }
+    }
 }
