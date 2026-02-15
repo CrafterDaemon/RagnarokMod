@@ -882,6 +882,17 @@ Items: {
 		DisplayName: Auric Greatscythe
 		Tooltip: ""
 	}
+
+	IrradiantInfinity: {
+		DisplayName: Irradiant Infinity
+		Tooltip:
+			'''
+			Left-Click fires an [c/FF5555:Irradiant Red] orb with massive knockback
+			Right-Click summons an [c/55AAFF:Irradiant Blue] orb that follows your cursor
+			[c/55AAFF:Irradiant Blue] pulls in nearby enemies and grows larger with each hit
+			Once it reaches critical mass, strike it with [c/FF5555:Irradiant Red] to unleash [c/CC44FF:Irradiant Purple]
+			'''
+	}
 }
 
 Projectiles: {
@@ -968,6 +979,10 @@ Projectiles: {
 	MiniAnahitaCompanion.DisplayName: Mini Anahita Companion
 	AuricGreatscythePro.DisplayName: Auric Greatscythe Pro
 	ScourgesFretsPro.DisplayName: Scourges Frets Pro
+	IrradiantBlue.DisplayName: Irradiant Blue
+	IrradiantExplosion.DisplayName: Irradiant Explosion
+	IrradiantPurple.DisplayName: Irradiant Purple
+	IrradiantRed.DisplayName: Irradiant Red
 }
 
 Configs: {

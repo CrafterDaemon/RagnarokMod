@@ -75,39 +75,39 @@ namespace RagnarokMod.Common.GlobalItems
         {
             if (item.type == ModContent.ItemType<OpalRing>())
             {
-                tooltips[3].Text = tooltips[3].Text + "\n3% increased symphonic damage";
+                tooltips.Add(new TooltipLine(RagnarokMod.mod, item.Name + " bonus", "3% increased symphonic damage"));
             }
             else if (item.type == ModContent.ItemType<RubyRing>())
             {
-                tooltips[3].Text = tooltips[3].Text + "\n3% increased melee damage";
+                tooltips.Add(new TooltipLine(RagnarokMod.mod, item.Name + " bonus", "3% increased melee damage"));
             }
             else if (item.type == ModContent.ItemType<AmberRing>())
             {
-                tooltips[3].Text = tooltips[3].Text + "\n3% increased summon damage";
+                tooltips.Add(new TooltipLine(RagnarokMod.mod, item.Name + " bonus", "3% increased summon damage"));
             }
             else if (item.type == ModContent.ItemType<TopazRing>())
             {
-                tooltips[3].Text = tooltips[3].Text + "\n3% increased rogue damage";
+                tooltips.Add(new TooltipLine(RagnarokMod.mod, item.Name + " bonus", "3% increased rogue damage"));
             }
             else if (item.type == ModContent.ItemType<EmeraldRing>())
             {
-                tooltips[3].Text = tooltips[3].Text + "\n3% increased ranged damage";
+                tooltips.Add(new TooltipLine(RagnarokMod.mod, item.Name + " bonus", "3% increased ranged damage"));
             }
             else if (item.type == ModContent.ItemType<AquamarineRing>())
             {
-                tooltips[3].Text = tooltips[3].Text + "\n3% increased radiant damage";
+                tooltips.Add(new TooltipLine(RagnarokMod.mod, item.Name + " bonus", "3% increased radiant damage"));
             }
             else if (item.type == ModContent.ItemType<SapphireRing>())
             {
-                tooltips[3].Text = tooltips[3].Text + "\n3% increased magic damage";
+                tooltips.Add(new TooltipLine(RagnarokMod.mod, item.Name + " bonus", "3% increased magic damage"));
             }
             else if (item.type == ModContent.ItemType<AmethystRing>())
             {
-                tooltips[3].Text = "Increases armor penetration by 2";
+                tooltips.Add(new TooltipLine(RagnarokMod.mod, item.Name + " bonus", "Increases armor penetration by 2"));
             }
             else if (item.type == ModContent.ItemType<TheRing>())
             {
-                tooltips[3].Text = "Increases armor penetration by 3\nIncreases damage by 4%";
+                tooltips.Add(new TooltipLine(RagnarokMod.mod, item.Name + " bonus", "Increases armor penetration by 3\nIncreases all damage by 4%"));
             }
 
         }

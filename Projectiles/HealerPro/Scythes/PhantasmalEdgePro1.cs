@@ -30,7 +30,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
 
         public override void SafeSetDefaults()
         {
-            Projectile.oldPos = new Vector2[trail]; // However many trail segments you want
+            Projectile.oldPos = new Vector2[trail];
             Projectile.oldRot = new float[trail];
             Projectile.aiStyle = 0;
             Projectile.friendly = true;
