@@ -57,7 +57,6 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
         public override void OnSpawn(IEntitySource source)
         {
             DamageThreshold *= Main.player[Projectile.owner].GetDamage(Projectile.DamageType).Additive;
-            Main.NewText(DamageThreshold.ToString());
             Projectile.damage /= 4;
             soundSlot = SoundEngine.PlaySound(RagnarokModSounds.Blue, Projectile.Center);
         }
