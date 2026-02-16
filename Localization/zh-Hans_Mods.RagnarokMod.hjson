@@ -20,8 +20,8 @@ Buffs: {
 	}
 
 	UniversalBlessing: {
-		Description: Mods.RagnarokMod.Buffs.UniversalBlessing.Description
 		DisplayName: 至上祝福
+		Description: Mods.RagnarokMod.Buffs.UniversalBlessing.Description
 	}
 
 	ElementalScytheCooldown: {
@@ -65,8 +65,8 @@ Buffs: {
 	}
 
 	KellyPetBuff: {
-		// Description: Kelly will follow you.
 		// DisplayName: Kelly!
+		// Description: Kelly will follow you.
 	}
 
 	NightfallenDebuff: {
@@ -76,7 +76,7 @@ Buffs: {
 
 	LeviathanHeartBubble: {
 		// DisplayName: Leviathan Heart Bubble
-		// Description: The Leviathan's Bubble grants you +5% Damage Reduction
+		// Description: The Leviathan's Bubble grants you +5% damage reduction
 	}
 
 	LeviathanHeartBubbleCorrupted: {
@@ -103,7 +103,7 @@ Tooltips: {
 			Healing spells heal 25% more hp.
 			Healing spells apply a protective bubble to their target,
 			granting +5% damage reduction for 5 seconds.
-			25% Increased Radiant attack speed.
+			25% increased radiant attack speed.
 			''' */
 		/* CorruptTooltip:
 			'''
@@ -111,7 +111,7 @@ Tooltips: {
 			All health costs are reduced by 1.
 			Spending health envelopes you in a corrupted bubble,
 			granting +10% damage, but you take 5% more damage.
-			25% Increased Radiant attack speed.
+			25% increased radiant attack speed.
 			''' */
 	}
 }
@@ -497,18 +497,18 @@ Items: {
 	}
 
 	ProfanedScythe: {
-		Tooltip: 一把神圣即地狱的镰刀
 		DisplayName: 亵渎之镰
+		Tooltip: 一把神圣即地狱的镰刀
 	}
 
 	MarbleScythe: {
-		Tooltip: 神奇的大理石让镰刀散发着额外的光芒。
 		DisplayName: 大理石之镰
+		Tooltip: 神奇的大理石让镰刀散发着额外的光芒。
 	}
 
 	ScoriaDualscythe: {
-		Tooltip: 熔渣通过排出的蒸汽使镰刀旋转得更快。
 		DisplayName: 熔渣之镰
+		Tooltip: 熔渣通过排出的蒸汽使镰刀旋转得更快。
 	}
 
 	InspirationEssence.DisplayName: 灵感精髓
@@ -654,6 +654,7 @@ Items: {
 	}
 
 	UniversalHeadset: {
+		DisplayName: 宇宙耳机
 		Tooltip:
 			'''
 			增加20%音波伤害
@@ -663,7 +664,6 @@ Items: {
 			最大灵感值增加5
 			每拥有一种咒音增幅使移动速度增加2%，音波演奏速度增加1%
 			'''
-		DisplayName: 宇宙耳机
 	}
 
 	GoldenBatDroppings: {
@@ -752,8 +752,8 @@ Items: {
 		// DisplayName: Brimscythe
 		/* Tooltip:
 			'''
-			While spinning, you are surrounded in a circle of Brimstone Flames, that deals constant damage
-			Enemies hit by the circle are also afflicted by Brimstone Flames for 5 seconds.
+			While spinning, you are surrounded in a circle of Brimstone Flames that deals constant damage
+			Enemies hit by the circle are also afflicted by Brimstone Flames for 5 seconds
 			While below 25% hp, killing an enemy with the fire circle will heal you for 3 + 5% of the enemy maximum health
 			''' */
 	}
@@ -812,18 +812,19 @@ Items: {
 	}
 
 	IntergelacticRobohelm: {
+		// DisplayName: Intergelactic Robohelm
 		/* Tooltip:
 			'''
-			Increases symphonic damage, critical strike chance and playing speed by 20%
+			Increases symphonic damage, critical strike chance, and playing speed by 20%
 			Increases inspiration regen by 15%
 			Increases max inspiration by 6
 			Increases empowerment duration by 3 seconds
 			Reduces damage taken by 12%
 			''' */
-		// DisplayName: Intergelactic Robohelm
 	}
 
 	IntergelacticRamhelm: {
+		// DisplayName: Intergelactic Ramhelm
 		/* Tooltip:
 			'''
 			Decreases non-radiant damage by 40%
@@ -833,17 +834,16 @@ Items: {
 			+60 maximum mana
 			Your healing spells will heal for an additional 5 life
 			''' */
-		// DisplayName: Intergelactic Ramhelm
 	}
 
 	KellyPet: {
+		// DisplayName: Wand of Anarchi
 		/* Tooltip:
 			'''
 			Summons Kelly to follow you
 			Donor Item by HayWire799
 			Sprites by Zenovia
 			''' */
-		// DisplayName: Wand of Anarchi
 	}
 
 	LeviathanHeart: {
@@ -857,34 +857,39 @@ Items: {
 			'''
 			The Siren sings along with your enchanting tune.
 
-			Symphonic Damage increased by 15%
-			Inspiration Regen rate increased by 20%
+			Symphonic damage increased by 15%
+			Inspiration regen rate increased by 20%
 			Anahita will sing along with your string instruments, firing additional water projectiles.
 			''' */
 	}
 
 	ScourgesFrets: {
+		// DisplayName: Scourge's Frets
 		/* Tooltip:
 			'''
 			Sends out bouncing sound waves that appear to be made out of sand
-			Right-Click to play the [c/34C9EB:Guardian of the Seas] riff!
+			Right-click to play the [c/34C9EB:Guardian of the Seas] riff!
 			While the riff is active, projectiles are twice as large and deal 25% more damage
 			Nearby allies gain +10% movement speed, +10% damage, and +15% attack speed
 			''' */
-		// DisplayName: Scourge's Frets
 	}
 
 	AuricGreatscythe: {
 		// DisplayName: Auric Greatscythe
-		// Tooltip: ""
+		/* Tooltip:
+			'''
+			This scythe charges up the longer you spin it,
+			accelerating to unbelievable speeds.
+			Right-click hurls a bolt of lightning.
+			''' */
 	}
 
 	IrradiantInfinity: {
 		// DisplayName: Irradiant Infinity
 		/* Tooltip:
 			'''
-			Left-Click fires an [c/FF5555:Irradiant Red] orb with massive knockback
-			Right-Click summons an [c/55AAFF:Irradiant Blue] orb that follows your cursor
+			Left-click fires an [c/FF5555:Irradiant Red] orb with massive knockback
+			Right-click summons an [c/55AAFF:Irradiant Blue] orb that follows your cursor
 			[c/55AAFF:Irradiant Blue] pulls in nearby enemies and grows larger with each hit
 			Once it reaches critical mass, strike it with [c/FF5555:Irradiant Red] to unleash [c/CC44FF:Irradiant Purple]
 			''' */
@@ -979,11 +984,13 @@ Projectiles: {
 	// AnahitaWaterNote.DisplayName: Anahita Water Note
 	// MiniAnahitaCompanion.DisplayName: Mini Anahita Companion
 	// AuricGreatscythePro.DisplayName: Auric Greatscythe Pro
-	// ScourgesFretsPro.DisplayName: Scourges Frets Pro
+	// ScourgesFretsPro.DisplayName: Scourge's Frets Pro
 	// IrradiantBlue.DisplayName: Irradiant Blue
 	// IrradiantExplosion.DisplayName: Irradiant Explosion
 	// IrradiantPurple.DisplayName: Irradiant Purple
 	// IrradiantRed.DisplayName: Irradiant Red
+	// AuricGreatscytheBolt.DisplayName: Auric Greatscythe Bolt
+	// AuricGreatscytheSwing.DisplayName: Auric Greatscythe Swing
 }
 
 Configs: {
@@ -1235,13 +1242,13 @@ Configs: {
 		}
 
 		strider: {
-			Tooltip: 选择使用那个模组的AI，关闭为原版状态. 如果未检测到其他模组的修改，则自动使用诸神的黄昏ai。
 			Label: 极地遁蛛AI
+			Tooltip: 选择使用那个模组的AI，关闭为原版状态. 如果未检测到其他模组的修改，则自动使用诸神的黄昏ai。
 		}
 
 		beholder: {
-			// Tooltip: Select, which AI rework should be used. Off for vanilla behaviour. Auto uses Ragnarok AI if no other rework is detected
 			// Label: Fallen Beholder AI
+			// Tooltip: Select which AI rework should be used. Off for vanilla behaviour. Auto uses Ragnarok AI if no other rework is detected.
 		}
 	}
 
@@ -1264,8 +1271,8 @@ Configs: {
 		}
 
 		Auto: {
-			// Tooltip: ""
 			// Label: Auto
+			// Tooltip: ""
 		}
 	}
 }

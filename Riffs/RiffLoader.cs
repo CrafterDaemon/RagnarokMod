@@ -20,9 +20,9 @@ namespace RagnarokMod.Riffs
             public override bool ShouldDisplay => true;
             public override LocalizedText DisplayName => Language.GetText("Mods.RagnarokMod.Riffs.Cooldown");
             public override string Texture => "RagnarokMod/Items/BardItems/Consumable/InspirationEssence";
-            public override Color OutlineColor => new Color(100, 200, 150);
-            public override Color CooldownStartColor => new Color(80, 180, 130);
-            public override Color CooldownEndColor => new Color(60, 160, 110);
+            public override Color OutlineColor => new Color(220, 50, 50);
+            public override Color CooldownStartColor => new Color(200, 30, 30);
+            public override Color CooldownEndColor => new Color(170, 10, 10);
         }
         private static Dictionary<byte, Riff> Riffs = new();
 

@@ -24,6 +24,7 @@ namespace RagnarokMod.Items.BardItems
         public abstract SoundStyle NormalSound { get; }
         public abstract byte RiffType { get; }
         public virtual float RiffRange => 1000f;
+        public virtual int CooldownReduction => 60;
 
         public sealed override void BardTooltips(List<TooltipLine> tooltips)
         {
@@ -89,6 +90,16 @@ namespace RagnarokMod.Items.BardItems
             }
             else if (player.altFunctionUse != 2)
             {
+                // Reduce riff cooldown on successful timing
+                if (success == 1 && ragnarokPlayer.fretPlaying)
+                {
+                    if (player.Calamity().cooldowns.TryGetValue(RiffLoader.Cooldown.ID, out var cooldown))
+                    {
+                        if (cooldown.timeLeft - CooldownReduction <= 0) cooldown.timeLeft = 1;
+                        else cooldown.timeLeft -= CooldownReduction;
+                    }
+                }
+
                 SafeRiffBardShoot(success, level, player, source, position, velocity, type, damage, knockback);
             }
         }

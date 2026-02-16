@@ -15,23 +15,23 @@ Buffs: {
 	}
 
 	GuardianHealerBeamBuff: {
-		DisplayName: Guardian Healers Blessing
-		Description: Addtional 10% damage reduction and 5 lifeRecovery for 20 seconds
+		DisplayName: Guardian Healer's Blessing
+		Description: Additional 10% damage reduction and 5 life recovery for 20 seconds
 	}
 
 	UniversalBlessing: {
-		Description: Mods.RagnarokMod.Buffs.UniversalBlessing.Description
 		DisplayName: Universal Blessing
+		Description: Mods.RagnarokMod.Buffs.UniversalBlessing.Description
 	}
 
 	ElementalScytheCooldown: {
 		DisplayName: Elemental Reaper Cooldown
-		Description: Elemental Reaper Right Click is on cooldown!
+		Description: Elemental Reaper right-click is on cooldown!
 	}
 
 	ScytheAirBuff: {
 		DisplayName: Blessing of the Air
-		Description: +20% Move Speed and Wing Time
+		Description: +20% move speed and wing time
 	}
 
 	ScytheBrimstoneBuff: {
@@ -41,7 +41,7 @@ Buffs: {
 
 	ScytheEarthBuff: {
 		DisplayName: Blessing of the Earth
-		Description: +10 Defense
+		Description: +10 defense
 	}
 
 	ScytheOasisBuff: {
@@ -51,12 +51,12 @@ Buffs: {
 
 	ScytheSandBuff: {
 		DisplayName: Blessing of the Sand
-		Description: All Damage Dealt increased by 5%
+		Description: All damage dealt increased by 5%
 	}
 
 	ScytheWaterBuff: {
 		DisplayName: Blessing of the Water
-		Description: All Attack Speed increased by 5%
+		Description: All attack speed increased by 5%
 	}
 
 	AuricSurge: {
@@ -65,8 +65,8 @@ Buffs: {
 	}
 
 	KellyPetBuff: {
-		Description: Kelly will follow you.
 		DisplayName: Kelly!
+		Description: Kelly will follow you.
 	}
 
 	NightfallenDebuff: {
@@ -76,7 +76,7 @@ Buffs: {
 
 	LeviathanHeartBubble: {
 		DisplayName: Leviathan Heart Bubble
-		Description: The Leviathan's Bubble grants you +5% Damage Reduction
+		Description: The Leviathan's Bubble grants you +5% damage reduction
 	}
 
 	LeviathanHeartBubbleCorrupted: {
@@ -103,7 +103,7 @@ Tooltips: {
 			Healing spells heal 25% more hp.
 			Healing spells apply a protective bubble to their target,
 			granting +5% damage reduction for 5 seconds.
-			25% Increased Radiant attack speed.
+			25% increased radiant attack speed.
 			'''
 		CorruptTooltip:
 			'''
@@ -111,7 +111,7 @@ Tooltips: {
 			All health costs are reduced by 1.
 			Spending health envelopes you in a corrupted bubble,
 			granting +10% damage, but you take 5% more damage.
-			25% Increased Radiant attack speed.
+			25% increased radiant attack speed.
 			'''
 	}
 }
@@ -127,7 +127,7 @@ Items: {
 		Tooltip:
 			'''
 			5% increased playing and inspiration regeneration speed
-			+2 second to empowerment duration
+			+2 seconds to empowerment duration
 			'''
 		SetBonus:
 			'''
@@ -144,7 +144,7 @@ Items: {
 			'''
 			20% decreased non-radiant damage
 			20% increased radiant damage
-			+20 maximum mana 
+			+20 maximum mana
 			'''
 		SetBonus:
 			'''
@@ -198,7 +198,7 @@ Items: {
 			Successfully timing hits will steadily increase its damage and empowerment level
 			Mistiming hits will decrease these bonuses greatly and cost 9 inspiration
 			These bonuses will stay between weapon swaps, but gradually fade while not your active weapon
-			Chaining two or more successes will let out a large flaming slash, 
+			Chaining two or more successes will let out a large flaming slash
 			Flaming slashes inflict all enemies in range with Holy Inferno
 			'''
 	}
@@ -216,7 +216,7 @@ Items: {
 			Doing symphonic damage will apply Burning Blood on enemies
 			You will build a blood lust, 2 points for every second for a maximum of 150 points
 			Upon reaching 100 points: 20% increased symphonic damage and strike chance, 25% increased movement speed
-			empowerments will be prolonged for an additional 3 seconds and 10% faster inspiration regen
+			Empowerments will be prolonged for an additional 3 seconds and 10% faster inspiration regen
 			You will lose 25 points upon getting hit
 			'''
 	}
@@ -236,7 +236,7 @@ Items: {
 			Doing radiant damage will apply Burning Blood on enemies
 			You will build a blood lust, 2 points for every second for a maximum of 150 points
 			Upon reaching 100 points: 20% increased radiant damage and strike chance, 20% increased movement speed
-			and your healing spells will for an additional 3 health
+			and your healing spells will heal for an additional 3 health
 			Additionally you get healed for a small fraction of your dealt damage
 			You will lose 25 points upon getting hit
 			'''
@@ -258,7 +258,7 @@ Items: {
 			'''
 			+10% increased inspiration regeneration speed
 			Pressing the 'Armor Ability' key will grant you and your allies attack speed and damage I for 15 seconds
-			You also will be granted the Antarctic Creativity Buff
+			You also will be granted the Antarctic Creativity buff
 			While buffed you will be granted +15% inspiration speed and 10% increased symphonic playing speed
 			Costs 12 inspiration
 			'''
@@ -306,9 +306,9 @@ Items: {
 			'''
 		SetBonus:
 			'''
-			Your healing spells will increased the life recovery and life recovery rate of your allies
+			Your healing spells will increase the life recovery and life recovery rate of your allies
 			Healed allies will be granted 50 more maximum health
-			Occasionally you will be blessed by heals or life shields.
+			Occasionally you will be blessed by heals or life shields
 			Will trigger more frequently on low health
 			'''
 	}
@@ -319,11 +319,11 @@ Items: {
 	}
 
 	StrangeAlienMotherBoard: {
-		DisplayName: Strange Alien Mother Board
+		DisplayName: Strange Alien Motherboard
 		Tooltip:
 			'''
 			The motherboard from the Star Scouter
-			This technology is beyond your knowlege
+			This technology is beyond your knowledge
 			'''
 	}
 
@@ -337,7 +337,7 @@ Items: {
 	}
 
 	AnahitasArpeggioOverride: {
-		DisplayName: Anahitas Arpeggio
+		DisplayName: Anahita's Arpeggio
 		Tooltip: Casts slow-moving treble clefs that confuse enemies
 	}
 
@@ -393,7 +393,7 @@ Items: {
 			Grants an extra jump and increased jump height
 			12% increased jump speed
 			Healing spells heal an additional 2 life
-			Maximum Mana increased by 20
+			Maximum mana increased by 20
 			5% decreased mana usage
 			'''
 	}
@@ -409,7 +409,7 @@ Items: {
 			'''
 			5% increased damage reduction
 			60% decreased non-radiant damage
-			40% increased radiant damage and 15% increased criticial radiant strike chance
+			40% increased radiant damage and 15% increased critical radiant strike chance
 			Bonus healing increased by 6
 			Maximum mana increased by 60
 			Mana usage reduced by 15%
@@ -421,7 +421,7 @@ Items: {
 		Tooltip:
 			'''
 			5% increased damage reduction
-			20% increased symphonic damage and 15% increased criticial symphonic strike chance
+			20% increased symphonic damage and 15% increased critical symphonic strike chance
 			15% increased playing speed
 			Greatly increased inspiration regen
 			+15% chance for inspiration notes to drop from enemies
@@ -447,7 +447,7 @@ Items: {
 		Tooltip:
 			'''
 			35% decreased non-radiant damage
-			60% increased radiant damage and 16% increased criticial radiant strike chance
+			60% increased radiant damage and 16% increased critical radiant strike chance
 			Maximum mana increased by 60
 			'''
 		SetBonus:
@@ -465,7 +465,7 @@ Items: {
 		Tooltip:
 			'''
 			45% decreased non-radiant damage
-			50% increased radiant damage and 12% increased criticial radiant strike chance
+			50% increased radiant damage and 12% increased critical radiant strike chance
 			'''
 	}
 
@@ -474,7 +474,7 @@ Items: {
 		Tooltip:
 			'''
 			35% decreased non-radiant damage
-			45% increased radiant damage and 8% increased criticial radiant strike chance
+			45% increased radiant damage and 8% increased critical radiant strike chance
 			20% decreased mana cost
 			'''
 	}
@@ -485,7 +485,7 @@ Items: {
 		SetBonus:
 			'''
 			Enemies are less likely to target you
-			+3 life regen and 10% increased symphonic while submerged in liquid
+			+3 life regen and 10% increased symphonic damage while submerged in liquid
 			When using any weapon you have a 10% chance to throw a returning seashell projectile
 			This seashell does true damage and does not benefit from any damage class
 			Provides increased underwater mobility and slightly reduces breath loss in the abyss
@@ -502,18 +502,18 @@ Items: {
 	}
 
 	ProfanedScythe: {
-		Tooltip: A holy inferno of a scythe
 		DisplayName: Profaned Scythe
+		Tooltip: A holy inferno of a scythe
 	}
 
 	MarbleScythe: {
-		Tooltip: The magic marble imbues the scythe head with extra radiance
 		DisplayName: Marble Scythe
+		Tooltip: The magic marble imbues the scythe head with extra radiance
 	}
 
 	ScoriaDualscythe: {
-		Tooltip: The scoria allows you to spin the scythe much faster by constantly expelling steam
 		DisplayName: Scoria Dualscythe
+		Tooltip: The scoria allows you to spin the scythe much faster by constantly expelling steam
 	}
 
 	InspirationEssence.DisplayName: Inspiration Essence
@@ -592,7 +592,7 @@ Items: {
 		Tooltip:
 			'''
 			It starts slow, but will continuously build speed
-			Once at maximum speed, It will launch itself into the nearest enemy and explode for a massive area of effect
+			Once at maximum speed, it will launch itself into the nearest enemy and explode for a massive area of effect
 			'The core of XM-05 Thanatos rebuilt as a scythe'
 			'''
 	}
@@ -606,9 +606,9 @@ Items: {
 		DisplayName: Splattercannon
 		Tooltip:
 			'''
-			Right-Click to add 4 rounds into the chamber
+			Right-click to add 4 rounds into the chamber
 			Can hold a maximum of 24 rounds in the chamber
-			Left-Click to release all rounds at once
+			Left-click to release all rounds at once
 			Hits have a chance to release homing healing blood splatters
 			Shots have increased chance to release blood splatters on enemy kill
 			Bonus healing is only 50% effective while held
@@ -630,7 +630,7 @@ Items: {
 		Tooltip:
 			'''
 			Bangs the bongos, dealing damage to all nearby enemies
-			Right click to shoot a Flare Bomb
+			Right-click to shoot a Flare Bomb
 			Flare Bombs apply Dragon Fire on enemies for 3 seconds
 			(Credit to Aeolus)
 			'''
@@ -658,6 +658,7 @@ Items: {
 	}
 
 	UniversalHeadset: {
+		DisplayName: Universal Headset
 		Tooltip:
 			'''
 			Increases symphonic damage by 20%
@@ -667,7 +668,6 @@ Items: {
 			Increases maximum inspiration by 5
 			Each unique empowerment you have increases movement speed by 2% and playing speed by 1%
 			'''
-		DisplayName: Universal Headset
 	}
 
 	GoldenBatDroppings: {
@@ -714,20 +714,20 @@ Items: {
 		DisplayName: Phantasmal Edge
 		Tooltip:
 			'''
-			Spinning this scythe creates many miniature fireballs that follow as you contiue to spin the scythe
+			Spinning this scythe creates many miniature fireballs that follow as you continue to spin the scythe
 			Once you stop spinning the scythe, the fireballs immediately seek out the nearest target and explode
 
-			Right Click to launch the scythe like a hook, pulling enemies towards you 
+			Right-click to launch the scythe like a hook, pulling enemies towards you
 			This does not work on bosses, and you are instead pulled towards the boss
 			'''
 	}
 
 	GodSlayersReap: {
-		DisplayName: God Slayers Reap
+		DisplayName: God Slayer's Reap
 		Tooltip:
 			'''
 			Creates a small hologram resembling the Devourer of Gods at the very edge of your scythe spin
-			Enemies hit by this take significantly more damage and are inflicted with Godslayer's Inferno
+			Enemies hit by this take significantly more damage and are inflicted with God Slayer's Inferno
 			'''
 	}
 
@@ -740,13 +740,13 @@ Items: {
 		DisplayName: Elemental Reaper
 		Tooltip:
 			'''
-			Spinning this scythes creates homing projectiles that inflict Elemental Inferno
-			Right Click grants you and all allies an Elemental Blessing for 10 seconds, with a 30 second cooldown
+			Spinning this scythe creates homing projectiles that inflict Elemental Inferno
+			Right-click grants you and all allies an Elemental Blessing for 10 seconds, with a 30 second cooldown
 			Elemental Blessings are as follows:
 			Sand: +5% attack damage
 			Water: +5% attack speed
-			Air: +20% mpvement speed and flight time
-			Earth: +10 Defense
+			Air: +20% movement speed and flight time
+			Earth: +10 defense
 			Brimstone: All attacks inflict Brimstone Flames
 			Oasis: Regenerate 50 hp over 10 seconds
 			'''
@@ -756,8 +756,8 @@ Items: {
 		DisplayName: Brimscythe
 		Tooltip:
 			'''
-			While spinning, you are surrounded in a circle of Brimstone Flames, that deals constant damage
-			Enemies hit by the circle are also afflicted by Brimstone Flames for 5 seconds.
+			While spinning, you are surrounded in a circle of Brimstone Flames that deals constant damage
+			Enemies hit by the circle are also afflicted by Brimstone Flames for 5 seconds
 			While below 25% hp, killing an enemy with the fire circle will heal you for 3 + 5% of the enemy maximum health
 			'''
 	}
@@ -771,8 +771,8 @@ Items: {
 		DisplayName: Unbreakable Combat Ukulele
 		Tooltip:
 			'''
-			Left Click to play the ukelele
-			Right Click to throw the ukelele
+			Left-click to play the ukulele
+			Right-click to throw the ukulele
 			'Does not make for a good apology'
 			'''
 	}
@@ -816,18 +816,19 @@ Items: {
 	}
 
 	IntergelacticRobohelm: {
+		DisplayName: Intergelactic Robohelm
 		Tooltip:
 			'''
-			Increases symphonic damage, critical strike chance and playing speed by 20%
+			Increases symphonic damage, critical strike chance, and playing speed by 20%
 			Increases inspiration regen by 15%
 			Increases max inspiration by 6
 			Increases empowerment duration by 3 seconds
 			Reduces damage taken by 12%
 			'''
-		DisplayName: Intergelactic Robohelm
 	}
 
 	IntergelacticRamhelm: {
+		DisplayName: Intergelactic Ramhelm
 		Tooltip:
 			'''
 			Decreases non-radiant damage by 40%
@@ -837,17 +838,16 @@ Items: {
 			+60 maximum mana
 			Your healing spells will heal for an additional 5 life
 			'''
-		DisplayName: Intergelactic Ramhelm
 	}
 
 	KellyPet: {
+		DisplayName: Wand of Anarchi
 		Tooltip:
 			'''
 			Summons Kelly to follow you
 			Donor Item by HayWire799
 			Sprites by Zenovia
 			'''
-		DisplayName: Wand of Anarchi
 	}
 
 	LeviathanHeart: {
@@ -861,34 +861,39 @@ Items: {
 			'''
 			The Siren sings along with your enchanting tune.
 
-			Symphonic Damage increased by 15%
-			Inspiration Regen rate increased by 20%
+			Symphonic damage increased by 15%
+			Inspiration regen rate increased by 20%
 			Anahita will sing along with your string instruments, firing additional water projectiles.
 			'''
 	}
 
 	ScourgesFrets: {
+		DisplayName: Scourge's Frets
 		Tooltip:
 			'''
 			Sends out bouncing sound waves that appear to be made out of sand
-			Right-Click to play the [c/34C9EB:Guardian of the Seas] riff!
+			Right-click to play the [c/34C9EB:Guardian of the Seas] riff!
 			While the riff is active, projectiles are twice as large and deal 25% more damage
 			Nearby allies gain +10% movement speed, +10% damage, and +15% attack speed
 			'''
-		DisplayName: Scourge's Frets
 	}
 
 	AuricGreatscythe: {
 		DisplayName: Auric Greatscythe
-		Tooltip: ""
+		Tooltip:
+			'''
+			This scythe charges up the longer you spin it,
+			accelerating to unbelievable speeds.
+			Right-click hurls a bolt of lightning.
+			'''
 	}
 
 	IrradiantInfinity: {
 		DisplayName: Irradiant Infinity
 		Tooltip:
 			'''
-			Left-Click fires an [c/FF5555:Irradiant Red] orb with massive knockback
-			Right-Click summons an [c/55AAFF:Irradiant Blue] orb that follows your cursor
+			Left-click fires an [c/FF5555:Irradiant Red] orb with massive knockback
+			Right-click summons an [c/55AAFF:Irradiant Blue] orb that follows your cursor
 			[c/55AAFF:Irradiant Blue] pulls in nearby enemies and grows larger with each hit
 			Once it reaches critical mass, strike it with [c/FF5555:Irradiant Red] to unleash [c/CC44FF:Irradiant Purple]
 			'''
@@ -949,8 +954,8 @@ Projectiles: {
 	KorobeinikiPro5.DisplayName: Korobeiniki Pro5
 	KorobeinikiPro6.DisplayName: Korobeiniki Pro6
 	KorobeinikiPro7.DisplayName: Korobeiniki Pro7
-	GraspofVoidPro1.DisplayName: Graspof Void Pro1
-	GraspofVoidPro2.DisplayName: Graspof Void Pro2
+	GraspofVoidPro1.DisplayName: Grasp of Void Pro1
+	GraspofVoidPro2.DisplayName: Grasp of Void Pro2
 	PhantasmalEdgePro1.DisplayName: Phantasmal Edge Pro1
 	PhantasmalEdgeBombs.DisplayName: Phantasmal Edge Bombs
 	PhantasmalEdgeHook.DisplayName: Phantasmal Edge Hook
@@ -973,21 +978,23 @@ Projectiles: {
 	VirusprayerPro1.DisplayName: Virusprayer Pro1
 	VirusprayerPro2.DisplayName: Virusprayer Pro2
 	KellyPetProjectile.DisplayName: Kelly Pet Projectile
-	GodSlayersReapPro1.DisplayName: God Slayers Reap Pro1
-	MiniDoGHead.DisplayName: Mini Do G Head
-	MiniDoGExplosion.DisplayName: Mini Do G Explosion
-	MiniDoGDeathRenderer.DisplayName: Mini Do G Death Renderer
+	GodSlayersReapPro1.DisplayName: God Slayer's Reap Pro1
+	MiniDoGHead.DisplayName: Mini DoG Head
+	MiniDoGExplosion.DisplayName: Mini DoG Explosion
+	MiniDoGDeathRenderer.DisplayName: Mini DoG Death Renderer
 	LeviathanHeartBubbleProj.DisplayName: Leviathan Heart Bubble Proj
 	BrimScytheFirePro.DisplayName: Brim Scythe Fire Pro
 	BrimScythePro.DisplayName: Brim Scythe Pro
 	AnahitaWaterNote.DisplayName: Anahita Water Note
 	MiniAnahitaCompanion.DisplayName: Mini Anahita Companion
 	AuricGreatscythePro.DisplayName: Auric Greatscythe Pro
-	ScourgesFretsPro.DisplayName: Scourges Frets Pro
+	ScourgesFretsPro.DisplayName: Scourge's Frets Pro
 	IrradiantBlue.DisplayName: Irradiant Blue
 	IrradiantExplosion.DisplayName: Irradiant Explosion
 	IrradiantPurple.DisplayName: Irradiant Purple
 	IrradiantRed.DisplayName: Irradiant Red
+	AuricGreatscytheBolt.DisplayName: Auric Greatscythe Bolt
+	AuricGreatscytheSwing.DisplayName: Auric Greatscythe Swing
 }
 
 Configs: {
@@ -1042,7 +1049,7 @@ Configs: {
 
 		CharredIdol: {
 			Label: Brimstone Elemental Recipe Change
-			Tooltip: Changes Charred Idol to require a Voidseer's Pearl. Defaults to true
+			Tooltip: Changes Charred Idol to require a Voidseer's Pearl. Defaults to True
 		}
 
 		Seafood: {
@@ -1067,7 +1074,7 @@ Configs: {
 
 		RuneOfKos: {
 			Label: Providence Spawning Changes
-			Tooltip: Changes Rune Of Kos Recipe to require Divine Geodes and Primordials Essences, and makes it no longer drop from Providence. Defaults to True
+			Tooltip: Changes Rune of Kos recipe to require Divine Geodes and Primordials Essences, and makes it no longer drop from Providence. Defaults to True
 		}
 	}
 
@@ -1117,7 +1124,7 @@ Configs: {
 
 		MeleeDamageModifier: {
 			Label: Melee Damage Modifier
-			Tooltip: Multiplier for melee damage. Multiplier applies after all other changes have been applied.
+			Tooltip: Multiplier for Melee damage. Multiplier applies after all other changes have been applied.
 		}
 
 		HealingBonusModifier: {
@@ -1145,18 +1152,18 @@ Configs: {
 		DisplayName: UI Config
 
 		Headers: {
-			UITweaks: U I Tweaks Header
+			UITweaks: UI Tweaks Header
 			Debug: Debug Header
 		}
 
 		BardEmpowermentBarOffsetX: {
 			Label: Bard Empowerment Bar Offset X
-			Tooltip: X Offset of the bard empowerment bar. Default value should already fix the overlap with Calamity item cooldowns
+			Tooltip: X offset of the bard empowerment bar. Default value should already fix the overlap with Calamity item cooldowns.
 		}
 
 		BardEmpowermentBarOffsetY: {
 			Label: Bard Empowerment Bar Offset Y
-			Tooltip: Y Offset of the bard empowerment bar. Default value should already fix the overlap with Calamity item cooldowns
+			Tooltip: Y offset of the bard empowerment bar. Default value should already fix the overlap with Calamity item cooldowns.
 		}
 
 		ShowItemHitboxes: {
@@ -1171,7 +1178,7 @@ Configs: {
 
 		item_deduplication_mode: {
 			Label: Calamity Bard & Healer item deduplication
-			Tooltip: Select, which item recipes of duplicate items are loaded. Off enables both mod versions.
+			Tooltip: Select which item recipes of duplicate items are loaded. Off enables both mod versions.
 		}
 	}
 
@@ -1200,52 +1207,52 @@ Configs: {
 
 		bird: {
 			Label: Grand Thunderbird AI
-			Tooltip: Select, which AI rework should be used. Off for default behaviour
+			Tooltip: Select which AI rework should be used. Off for default behaviour.
 		}
 
 		jelly: {
-			Label: Queen Jellygfish AI
-			Tooltip: Select, which AI rework should be used. This setting.Off for default behaviour
+			Label: Queen Jellyfish AI
+			Tooltip: Select which AI rework should be used. Off for default behaviour.
 		}
 
 		bossstatstweak: {
 			Label: Boss Stat Tweak
-			Tooltip: Select, if Thorium Bosses receive stat tweaks (Attack Damage, Health, Defense Damage, Damage Reduction) for Calamity scaling
+			Tooltip: Select if Thorium bosses receive stat tweaks (attack damage, health, defense, damage reduction) for Calamity scaling.
 		}
 
 		bossrush: {
 			Label: Thorium Boss Rush
-			Tooltip: Select, which bossrush mode should be used. Off disables bossrush
+			Tooltip: Select which boss rush mode should be used. Off disables boss rush.
 		}
 
 		viscount: {
 			Label: Viscount AI
-			Tooltip: Select, which AI rework should be used. Off for vanilla behaviour. Auto uses Ragnarok AI if no other rework is detected
+			Tooltip: Select which AI rework should be used. Off for vanilla behaviour. Auto uses Ragnarok AI if no other rework is detected.
 		}
 
 		granite: {
-			Label: Granite Enegy Storm AI
-			Tooltip: Select, which AI rework should be used. Off for vanilla behaviour. Auto uses Ragnarok AI if no other rework is detected
+			Label: Granite Energy Storm AI
+			Tooltip: Select which AI rework should be used. Off for vanilla behaviour. Auto uses Ragnarok AI if no other rework is detected.
 		}
 
 		champion: {
 			Label: Buried Champion AI
-			Tooltip: Select, which AI rework should be used. Off for vanilla behaviour. Auto uses Ragnarok AI if no other rework is detected
+			Tooltip: Select which AI rework should be used. Off for vanilla behaviour. Auto uses Ragnarok AI if no other rework is detected.
 		}
 
 		scouter: {
 			Label: Star Scouter AI
-			Tooltip: Select, which AI rework should be used. Off for vanilla behaviour. Auto uses Ragnarok AI if no other rework is detected
+			Tooltip: Select which AI rework should be used. Off for vanilla behaviour. Auto uses Ragnarok AI if no other rework is detected.
 		}
 
 		strider: {
-			Tooltip: Select, which AI rework should be used. Off for vanilla behaviour. Auto uses Ragnarok AI if no other rework is detected
 			Label: Borean Strider AI
+			Tooltip: Select which AI rework should be used. Off for vanilla behaviour. Auto uses Ragnarok AI if no other rework is detected.
 		}
 
 		beholder: {
-			Tooltip: Select, which AI rework should be used. Off for vanilla behaviour. Auto uses Ragnarok AI if no other rework is detected
 			Label: Fallen Beholder AI
+			Tooltip: Select which AI rework should be used. Off for vanilla behaviour. Auto uses Ragnarok AI if no other rework is detected.
 		}
 	}
 
@@ -1268,8 +1275,8 @@ Configs: {
 		}
 
 		Auto: {
-			Tooltip: ""
 			Label: Auto
+			Tooltip: ""
 		}
 	}
 }

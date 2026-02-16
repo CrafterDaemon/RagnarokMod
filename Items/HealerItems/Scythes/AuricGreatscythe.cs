@@ -27,15 +27,16 @@ namespace RagnarokMod.Items.HealerItems.Scythes
         {
             SetDefaultsToScythe();
             base.Item.damage = 450;
-            scytheSoulCharge = 5;
+            scytheSoulCharge = 1;
             base.Item.width = 52;
             base.Item.height = 48;
             base.Item.value = CalamityGlobalItem.RarityPureGreenBuyPrice;
-            base.Item.rare = ModContent.RarityType<PureGreen>();
+            base.Item.rare = ModContent.RarityType<BurnishedAuric>();
             base.Item.shoot = ModContent.ProjectileType<AuricGreatscythePro>();
             Item.reuseDelay = 8;
             Item.channel = true;
             Item.autoReuse = false;
+            Item.noUseGraphic = true;
         }
 
         public override bool AltFunctionUse(Player player) => true;
@@ -45,12 +46,41 @@ namespace RagnarokMod.Items.HealerItems.Scythes
             player.Calamity().rightClickListener = true;
         }
 
+        public override bool CanUseItem(Player player)
+        {
+            if (player.altFunctionUse == 2)
+            {
+                // Slow, heavy swing into lightning bolt
+                Item.channel = false;
+                Item.useTime = 40;
+                Item.useAnimation = 40;
+                Item.reuseDelay = 20;
+                Item.UseSound = SoundID.Item71;
+            }
+            else
+            {
+                // Normal channeled scythe swing
+                Item.channel = true;
+                Item.useTime = 20;
+                Item.useAnimation = 20;
+                Item.reuseDelay = 8;
+                Item.UseSound = null;
+            }
+            return base.CanUseItem(player);
+        }
+
         public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
         {
             type = ModContent.ProjectileType<AuricGreatscythePro>();
 
             if (player.altFunctionUse == 2)
             {
+                type = ModContent.ProjectileType<AuricGreatscytheSwing>();
+                damage = (int)(damage * 12f);
+                knockback *= 2f;
+                // Normalize the bolt direction and pass it through velocity
+                // The swing projectile will extract this for the bolt launch
+                velocity = velocity.SafeNormalize(Vector2.UnitX);
             }
         }
 
