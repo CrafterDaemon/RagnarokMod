@@ -42,6 +42,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = -1;
             Projectile.Center = Projectile.position;
+            Projectile.scale = 3;
         }
         public override void AI()
         {

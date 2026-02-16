@@ -21,7 +21,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
         public override void SafeSetDefaults()
         {
             base.Projectile.Size = new Vector2(362, 384);
-            dustOffset = new Vector2(-35f, 7f);
+            dustOffset = new Vector2(-80f, 32f);
             dustCount = 4;
             dustType = 87;
             base.rotationSpeed = 0.25f;
@@ -31,7 +31,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
 
         public override void SafeOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<HolyFlames>(), 180);
+            target.AddBuff(ModContent.BuffType<HolyFlames>(), 300);
         }
     }
 }

@@ -22,7 +22,7 @@ namespace RagnarokMod.Items.HealerItems.Scythes
         public override void SetDefaults()
         {
             SetDefaultsToScythe();
-            base.Item.damage = 145;
+            base.Item.damage = 170;
             scytheSoulCharge = 2;
             base.Item.width = 40;
             base.Item.height = 38;
@@ -56,6 +56,73 @@ namespace RagnarokMod.Items.HealerItems.Scythes
             }
 
             return false;
+        }
+
+        public override bool? UseItem(Player player)
+        {
+            if (player.itemAnimation == Item.useAnimation)
+            {
+                FireProjectiles(player);
+            }
+
+            if (player.itemAnimation == Item.useAnimation / 2)
+            {
+                FireProjectiles(player);
+            }
+
+            return base.UseItem(player);
+        }
+
+
+        private void FireProjectiles(Player player)
+        {
+            var source = player.GetSource_ItemUse(Item);
+
+            Vector2 position = player.Center;
+            Vector2 velocity = Vector2.Normalize(Main.MouseWorld - position) * Item.shootSpeed;
+
+            Projectile.NewProjectile(
+                source,
+                position,
+                velocity,
+                Item.shoot,
+                Item.damage,
+                Item.knockBack,
+                player.whoAmI
+            );
+
+            float num = velocity.Length();
+
+            for (int i = 0; i < 2; i++)
+            {
+                float fallspeedmult = 50f;
+                float projSpeed = num * Main.rand.NextFloat(0.7f, 1.4f);
+
+                float x = Main.MouseWorld.X + Main.rand.NextFloat(-50f, 50f);
+                float y = Main.MouseWorld.Y - Main.rand.NextFloat(650f, 850f);
+
+                Vector2 vector = new Vector2(x, y);
+                Vector2 vel = Main.MouseWorld - vector;
+
+                vel.X += Main.rand.NextFloat(-130f, 130f);
+                vel.Y += Main.rand.NextFloat(-260f, 260f);
+
+                float n = vel.Length();
+                n = projSpeed / n;
+
+                vel.X *= n;
+                vel.Y *= n * fallspeedmult;
+
+                Projectile.NewProjectileDirect(
+                    source,
+                    vector,
+                    vel,
+                    ModContent.ProjectileType<AstralRipperStarPro>(),
+                    Item.damage,
+                    Item.knockBack,
+                    player.whoAmI
+                );
+            }
         }
 
 

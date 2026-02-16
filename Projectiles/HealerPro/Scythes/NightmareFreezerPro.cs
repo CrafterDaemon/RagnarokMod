@@ -1,5 +1,6 @@
 
 using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.Buffs.StatDebuffs;
 using Microsoft.Xna.Framework;
 using RagnarokMod.Dusts;
 using System;
@@ -40,6 +41,8 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
         public override void SafeOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.AddBuff(ModContent.BuffType<Nightwither>(), 180);
+            target.AddBuff(ModContent.BuffType<GlacialState>(), 60);
+            target.AddBuff(BuffID.Frostburn2, 300);
         }
     }
 }

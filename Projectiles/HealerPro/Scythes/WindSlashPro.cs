@@ -38,6 +38,8 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             Projectile.alpha = 60;
             Projectile.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
             Projectile.Size = new Vector2(50f, 70f);
+
+            Projectile.scale = 3;
         }
         public override void AI()
         {
@@ -57,17 +59,46 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
         {
             Texture2D texture = TextureAssets.Projectile[Type].Value;
 
-            // Redraw the projectile with the color not influenced by light
-            Vector2 drawOrigin = new Vector2(texture.Width * 0.5f, Projectile.height * 0.5f);
+            Vector2 origin = texture.Size() / 2f;
+
             for (int k = 0; k < Projectile.oldPos.Length; k++)
             {
-                Vector2 drawPos = (Projectile.oldPos[k] - Main.screenPosition) + drawOrigin + new Vector2(0f, Projectile.gfxOffY);
-                Color color = Projectile.GetAlpha(lightColor) * ((Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
-                Main.EntitySpriteDraw(texture, drawPos, null, color, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0);
+                Vector2 drawPos =
+                    Projectile.oldPos[k]
+                    + Projectile.Size / 2f
+                    - Main.screenPosition
+                    + new Vector2(0f, Projectile.gfxOffY);
+
+                Color color =
+                    Projectile.GetAlpha(lightColor) *
+                    ((Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
+
+                Main.EntitySpriteDraw(
+                    texture,
+                    drawPos,
+                    null,
+                    color,
+                    Projectile.rotation,
+                    origin,
+                    Projectile.scale,
+                    SpriteEffects.None,
+                    0
+                );
             }
 
-            return true;
-        }
+            Main.EntitySpriteDraw(
+                texture,
+                Projectile.Center - Main.screenPosition,
+                null,
+                Projectile.GetAlpha(lightColor),
+                Projectile.rotation,
+                origin,
+                Projectile.scale,
+                SpriteEffects.None,
+                0
+            );
 
+            return false;
+        }
     }
 }

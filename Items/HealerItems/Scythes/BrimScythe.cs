@@ -23,7 +23,7 @@ namespace RagnarokMod.Items.HealerItems.Scythes
         public override void SetDefaults()
         {
             SetDefaultsToScythe();
-            scytheSoulCharge = 1;
+            scytheSoulCharge = 2;
             isHealer = true;
             base.Item.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
             base.Item.noMelee = true;

@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.Buffs.StatDebuffs;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RagnarokMod.Dusts;
 using System;
@@ -50,6 +52,13 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                 counter = 0;
             }
 
+        }
+
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            target.AddBuff(ModContent.BuffType<Nightwither>(), 60);
+            target.AddBuff(ModContent.BuffType<GlacialState>(), 30);
+            target.AddBuff(BuffID.Frostburn2, 300);
         }
 
         public override bool PreDraw(ref Color lightColor)

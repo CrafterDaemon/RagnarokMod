@@ -1,11 +1,15 @@
+using CalamityMod.Buffs.DamageOverTime;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Terraria.ModLoader;
+using Terraria;
 using ThoriumMod;
 using ThoriumMod.Projectiles.Scythe;
+using Terraria.ID;
 
 namespace RagnarokMod.Projectiles.HealerPro.Scythes
 {
@@ -36,6 +40,18 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             dustOffset = new Vector2(-33f, 6f);
             dustCount = 4;
             dustType = 303;
+        }
+
+        public override void OnHitPlayer(Player target, Player.HurtInfo info)
+        {
+            target.AddBuff((BuffID.OnFire3), 180);
+            target.AddBuff(ModContent.BuffType<CrushDepth>(), 180);
+        }
+
+        public override void SafeOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            target.AddBuff((BuffID.OnFire3), 180);
+            target.AddBuff(ModContent.BuffType<CrushDepth>(), 180);
         }
     }
 }

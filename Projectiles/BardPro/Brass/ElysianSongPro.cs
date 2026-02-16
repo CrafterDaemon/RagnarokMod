@@ -9,6 +9,7 @@ using CalamityMod.Buffs.StatDebuffs;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
 using ThoriumMod.Projectiles.Bard;
+using CalamityMod.Buffs.DamageOverTime;
 
 namespace RagnarokMod.Projectiles.BardPro.Brass
 {
@@ -29,15 +30,26 @@ namespace RagnarokMod.Projectiles.BardPro.Brass
             Projectile.friendly = true;
             Projectile.DamageType = ThoriumDamageBase<BardDamage>.Instance;
             Projectile.tileCollide = false;
-            Projectile.penetrate = 7;
+            Projectile.penetrate = 20;
             Projectile.timeLeft = 200;
             Projectile.ignoreWater = true;
-
+            Projectile.scale = 1.5f;
         }
         public override void AI()
         {
             Projectile.rotation = Projectile.velocity.ToRotation();
         }
+
+        public override void BardOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            target.AddBuff(ModContent.BuffType<HolyFlames>(), 180);
+        }
+
+        public override void OnHitPlayer(Player target, Player.HurtInfo info)
+        {
+            target.AddBuff(ModContent.BuffType<HolyFlames>(), 180);
+        }
+
         public override bool PreDraw(ref Color lightColor)
         {
             SpriteEffects spriteEffects = SpriteEffects.None;

@@ -33,11 +33,11 @@ namespace RagnarokMod.Items.BardItems.Percussion
         public override void SetBardDefaults()
         {
             Item.damage = 165;
-            InspirationCost = 3;
+            InspirationCost = 2;
             Item.width = 40;
             Item.height = 40;
-            Item.useTime = 25;
-            Item.useAnimation = 25;
+            Item.useTime = 40;
+            Item.useAnimation = 40;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.noMelee = true;
             Item.autoReuse = true;
@@ -46,7 +46,7 @@ namespace RagnarokMod.Items.BardItems.Percussion
             Item.rare = ItemRarityID.Lime;
             Item.UseSound = RagnarokModSounds.calamitybell;
             Item.shoot = ModContent.ProjectileType<CalamityBellPro>();
-            Item.shootSpeed = 11f;
+            Item.shootSpeed = 20f;
 
         }
         /*

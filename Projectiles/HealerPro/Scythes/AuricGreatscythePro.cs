@@ -1,4 +1,5 @@
-﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
+﻿using CalamityMod.Buffs.DamageOverTime;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
@@ -67,7 +68,15 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             SpawnDust();
         }
 
+        public override void SafeOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            target.AddBuff(ModContent.BuffType<AuricRebuke>(), 60, false);
+        }
 
+        public override void OnHitPlayer(Player target, Player.HurtInfo info)
+        {
+            target.AddBuff(ModContent.BuffType<AuricRebuke>(), 60, false);
+        }
 
         public override bool PreDraw(ref Color lightColor)
         {

@@ -32,7 +32,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
 
         public override void SafeSetDefaults()
         {
-            Projectile.Size = new Vector2(222f, 304f);
+            Projectile.Size = new Vector2(304f, 304f);
             Projectile.timeLeft = 20;
             Projectile.idStaticNPCHitCooldown = 21;
             rotationSpeed = 0.15f;
@@ -92,19 +92,56 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
 
         public override bool PreDraw(ref Color lightColor)
         {
-            Texture2D texture = TextureAssets.Projectile[Type].Value;
-            Vector2 drawOrigin = Projectile.Size / 2;
+            Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
+
+            // TRUE texture center
+            Vector2 origin = texture.Size() / 2f;
+
+            SpriteEffects effects =
+                Projectile.spriteDirection == 1
+                ? SpriteEffects.None
+                : SpriteEffects.FlipHorizontally;
+
+            // === Draw Trail ===
             for (int k = 0; k < Projectile.oldPos.Length; k++)
             {
-                Vector2 pos = Projectile.oldPos[k] + drawOrigin;
-                Color drawColor = lightColor * (1 / ((float)k + 1));
-                SpriteEffects flipped;
-                if (Projectile.oldDirection == 1) { flipped = SpriteEffects.None; }
-                else { flipped = SpriteEffects.FlipHorizontally; }
-                Main.EntitySpriteDraw(texture, pos - Main.screenPosition, null, drawColor, Projectile.oldRot[k], drawOrigin, Projectile.scale, flipped);
+                Vector2 drawPos =
+                    Projectile.oldPos[k]
+                    + Projectile.Size / 2f
+                    - Main.screenPosition
+                    + new Vector2(0f, Projectile.gfxOffY);
+
+                Color drawColor =
+                    Projectile.GetAlpha(lightColor) *
+                    (1f - k / (float)Projectile.oldPos.Length);
+
+                Main.EntitySpriteDraw(
+                    texture,
+                    drawPos,
+                    null,
+                    drawColor,
+                    Projectile.oldRot[k],
+                    origin,
+                    Projectile.scale,
+                    effects,
+                    0
+                );
             }
-            lightColor = Color.White;
-            return true;
+
+            // === Draw Current Projectile ===
+            Main.EntitySpriteDraw(
+                texture,
+                Projectile.Center - Main.screenPosition,
+                null,
+                Projectile.GetAlpha(lightColor),
+                Projectile.rotation,
+                origin,
+                Projectile.scale,
+                effects,
+                0
+            );
+
+            return false; // prevent vanilla draw
         }
     }
 }

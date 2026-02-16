@@ -11,6 +11,7 @@ using CalamityMod.Items;
 using CalamityMod.Buffs.StatDebuffs;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
+using CalamityMod.Buffs.DamageOverTime;
 
 namespace RagnarokMod.Projectiles.BardPro.Wind
 {
@@ -51,6 +52,19 @@ namespace RagnarokMod.Projectiles.BardPro.Wind
             Dust.NewDust(Projectile.Center, 0, 0, DustID.Pixie);
             WindHomingCommon(null, 384f, null, null, false);
         }
+
+        public override void BardOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            target.AddBuff((BuffID.OnFire3), 180);
+            target.AddBuff(ModContent.BuffType<CrushDepth>(), 180);
+        }
+
+        public override void OnHitPlayer(Player target, Player.HurtInfo info)
+        {
+            target.AddBuff((BuffID.OnFire3), 180);
+            target.AddBuff(ModContent.BuffType<CrushDepth>(), 180);
+        }
+
         public override bool PreDraw(ref Color lightColor)
         {
             SpriteEffects spriteEffects = SpriteEffects.None;

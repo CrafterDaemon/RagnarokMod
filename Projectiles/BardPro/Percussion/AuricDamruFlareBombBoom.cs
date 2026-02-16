@@ -26,6 +26,8 @@ namespace RagnarokMod.Projectiles.BardPro.Percussion
             Projectile.tileCollide = false;
             Projectile.timeLeft = 1;
             Projectile.DamageType = ThoriumDamageBase<BardDamage>.Instance;
+
+            Projectile.scale = 2;
         }
 
         public override BardInstrumentType InstrumentType => BardInstrumentType.Percussion;

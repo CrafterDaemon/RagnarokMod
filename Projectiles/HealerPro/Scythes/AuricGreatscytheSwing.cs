@@ -1,3 +1,4 @@
+using CalamityMod.Buffs.DamageOverTime;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -200,6 +201,16 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
         {
             Player player = Owner;
             return player.Center - Main.screenPosition;
+        }
+
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            target.AddBuff(ModContent.BuffType<AuricRebuke>(), 60, false);
+        }
+
+        public override void OnHitPlayer(Player target, Player.HurtInfo info)
+        {
+            target.AddBuff(ModContent.BuffType<AuricRebuke>(), 60, false);
         }
 
         public override bool PreDraw(ref Color lightColor)

@@ -33,13 +33,13 @@ namespace RagnarokMod.Items.BardItems.Brass
 
         public override void SetBardDefaults()
         {
-            Item.damage = 315;
+            Item.damage = 340;
             InspirationCost = 2;
             Item.width = 42;
             Item.height = 25;
             Item.scale = 0.6f;
-            Item.useTime = 24;
-            Item.useAnimation = 24;
+            Item.useTime = 12;
+            Item.useAnimation = 12;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.autoReuse = true;

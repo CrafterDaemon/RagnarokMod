@@ -22,8 +22,8 @@ namespace RagnarokMod.Riffs.RiffTypes
         }
         public override void SafeUpdate(Player bardPlayer, Player target)
         {
-            target.GetAttackSpeed(DamageClass.Generic) += 0.15f;
-            target.GetDamage(DamageClass.Generic) += 0.1f;
+            target.GetAttackSpeed(DamageClass.Generic) += 0.05f;
+            target.GetDamage(DamageClass.Generic) += 0.05f;
             target.moveSpeed += 0.1f;
             for (int i = 0; i < 24; i++)
             {

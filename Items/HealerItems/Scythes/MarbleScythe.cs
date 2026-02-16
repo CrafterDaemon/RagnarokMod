@@ -36,7 +36,7 @@ namespace RagnarokMod.Items.HealerItems.Scythes
             base.Item.UseSound = SoundID.Item1;
             base.Item.shootSpeed = 0.1f;
             //end
-            base.Item.damage = 18;
+            base.Item.damage = 21;
             scytheSoulCharge = 2;
             base.Item.width = 54;
             base.Item.height = 42;

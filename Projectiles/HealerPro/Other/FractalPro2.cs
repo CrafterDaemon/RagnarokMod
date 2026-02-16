@@ -8,6 +8,7 @@ using CalamityMod.Items;
 using CalamityMod.Buffs.StatDebuffs;
 using RagnarokMod.Utils;
 using System.Threading;
+using CalamityMod.Buffs.DamageOverTime;
 
 namespace RagnarokMod.Projectiles.HealerPro.Other
 {
@@ -27,6 +28,12 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
             Projectile.ignoreWater = true;
 
         }
+
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            target.AddBuff(ModContent.BuffType<Nightwither>(), 180, false);
+        }
+
         public override void AI()
         {
             timer++;

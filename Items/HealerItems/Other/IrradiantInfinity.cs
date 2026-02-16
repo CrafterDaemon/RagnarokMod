@@ -63,6 +63,13 @@ namespace RagnarokMod.Items.HealerItems.Other
             }
             else
             {
+                foreach (Projectile p in Main.projectile)
+                {
+                    if (p.active && p.owner == player.whoAmI &&
+                        (p.type == ModContent.ProjectileType<IrradiantPurple>()))
+                        return false;
+                }
+
                 Item.UseSound = RagnarokModSounds.Red;
                 Item.shoot = ModContent.ProjectileType<IrradiantRed>();
                 Item.shootSpeed = 18f;

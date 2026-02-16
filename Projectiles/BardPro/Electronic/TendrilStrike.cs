@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using RagnarokMod.Sounds;
 using Terraria;
 using Terraria.Audio;
+using Terraria.ID;
 using Terraria.ModLoader;
 using ThoriumMod;
 using ThoriumMod.Projectiles.Bard;
@@ -29,7 +30,7 @@ namespace RagnarokMod.Projectiles.BardPro.Electronic
             Projectile.tileCollide = false;
             Projectile.ownerHitCheck = true;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 8;
+            Projectile.localNPCHitCooldown = 20;
         }
         public override void AI()
         {
@@ -62,6 +63,8 @@ namespace RagnarokMod.Projectiles.BardPro.Electronic
 
             AdjustPlayerItemFrameValues(player);
         }
+
+
         public void AdjustPlayerPositionValues(Player player)
         {
             Projectile.Center = player.Center;
@@ -75,6 +78,17 @@ namespace RagnarokMod.Projectiles.BardPro.Electronic
             Projectile.spriteDirection = player.direction;
             player.heldProj = Projectile.whoAmI;
         }
+
+        public override void BardOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            target.AddBuff((BuffID.CursedInferno), 180);
+        }
+
+        public override void OnHitPlayer(Player target, Player.HurtInfo info)
+        {
+            target.AddBuff((BuffID.CursedInferno), 180);
+        }
+
         public override bool PreDraw(ref Color lightColor)
         {
             int sheetwidth = 366;

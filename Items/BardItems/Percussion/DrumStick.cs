@@ -26,12 +26,12 @@ public class DrumStick : BardItem
 
     public override void SetBardDefaults()
     {
-        Item.damage = 100;
+        Item.damage = 110;
         InspirationCost = 1;
         Item.width = 25;
         Item.height = 30;
-        Item.useTime = 20;
-        Item.useAnimation = 20;
+        Item.useTime = 16;
+        Item.useAnimation = 16;
         Item.autoReuse = true;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.noMelee = false;

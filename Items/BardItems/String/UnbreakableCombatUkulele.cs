@@ -30,7 +30,7 @@ namespace RagnarokMod.Items.BardItems.String
 
         public override void SetBardDefaults()
         {
-            Item.damage = 385;
+            Item.damage = 1000;
             InspirationCost = 1;
             Item.width = 60;
             Item.height = 60;
@@ -48,6 +48,8 @@ namespace RagnarokMod.Items.BardItems.String
             Item.shootSpeed = 20;
 
             ((ModItem)this).Item.holdStyle = 5;
+
+            ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
         }
 
         public override Vector2? HoldoutOffset()
@@ -65,6 +67,16 @@ namespace RagnarokMod.Items.BardItems.String
             Vector2 offset = new Vector2(-10, 11f) * player.Directions;
 
             player.itemLocation += offset;
+        }
+
+        public override float UseTimeMultiplier(Player player)
+        {
+            return player.altFunctionUse == 2 ? 2f : 1f;
+        }
+
+        public override float UseAnimationMultiplier(Player player)
+        {
+            return player.altFunctionUse == 2 ? 2f : 1f;
         }
 
         public override bool AltFunctionUse(Player player) => true;

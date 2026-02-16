@@ -8,6 +8,7 @@ using CalamityMod.Items;
 using CalamityMod.Buffs.StatDebuffs;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
+using CalamityMod.Buffs.DamageOverTime;
 
 namespace RagnarokMod.Projectiles.HealerPro.Other
 {
@@ -53,6 +54,11 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
                 Dust.NewDust(Projectile.position, 32, 32, DustID.CorruptGibs, default, default, 128, default, 1.25f);
                 Projectile.Kill();
             }
+        }
+
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            target.AddBuff(ModContent.BuffType<Irradiated>(), 180);
         }
 
         public override bool PreDraw(ref Color lightColor)

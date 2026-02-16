@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,11 +28,12 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             Projectile.tileCollide = true;
             Projectile.ownerHitCheck = true;
             Projectile.ignoreWater = true;
-            Projectile.penetrate = 3;
+            Projectile.penetrate = 5;
             Projectile.timeLeft = 120;
             Projectile.alpha = 50;
             Projectile.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
             Projectile.Size = new Vector2(24f, 10f);
+            Projectile.scale = 1.5f;
 
         }
         public override void AI()
@@ -59,6 +61,27 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                     Projectile.velocity.Y = -oldVelocity.Y;
                 }
             }
+
+            return false;
+        }
+
+        public override bool PreDraw(ref Color lightColor)
+        {
+            Texture2D texture = Terraria.GameContent.TextureAssets.Projectile[Projectile.type].Value;
+
+            Vector2 origin = texture.Size() / 2f; // True center
+
+            Main.EntitySpriteDraw(
+                texture,
+                Projectile.Center - Main.screenPosition,
+                null,
+                lightColor,
+                Projectile.rotation,
+                origin,
+                Projectile.scale,
+                SpriteEffects.None,
+                0
+            );
 
             return false;
         }

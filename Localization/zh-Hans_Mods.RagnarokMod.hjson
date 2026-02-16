@@ -870,7 +870,7 @@ Items: {
 			Sends out bouncing sound waves that appear to be made out of sand
 			Right-click to play the [c/34C9EB:Guardian of the Seas] riff!
 			While the riff is active, projectiles are twice as large and deal 25% more damage
-			Nearby allies gain +10% movement speed, +10% damage, and +15% attack speed
+			Nearby allies gain +10% movement speed, +5% damage, and +5% attack speed
 			''' */
 	}
 
@@ -991,6 +991,9 @@ Projectiles: {
 	// IrradiantRed.DisplayName: Irradiant Red
 	// AuricGreatscytheBolt.DisplayName: Auric Greatscythe Bolt
 	// AuricGreatscytheSwing.DisplayName: Auric Greatscythe Swing
+	// RadioMicPro.DisplayName: Radio Mic Pro
+	// RadioMicShadowBurst.DisplayName: Radio Mic Shadow Burst
+	// PlayerBrimstoneBarrage.DisplayName: Player Brimstone Barrage
 }
 
 Configs: {

@@ -20,11 +20,13 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
             Projectile.friendly = true;
             Projectile.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
             Projectile.tileCollide = false;
-            Projectile.penetrate = -1;
+            Projectile.penetrate = 6;
             Projectile.timeLeft = 200;
             Projectile.ignoreWater = true;
             Projectile.light = 0.5f;
 
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 40;
         }
         public override void AI()
         {

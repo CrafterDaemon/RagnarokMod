@@ -25,6 +25,8 @@ namespace RagnarokMod.Items.BardItems.Electronic
     {
         public override BardInstrumentType InstrumentType => BardInstrumentType.Electronic;
 
+        public override bool AltFunctionUse(Player player) => true;
+
         public override void SetStaticDefaults()
         {
             Empowerments.AddInfo<EmpowermentProlongation>(4, 0);
@@ -33,13 +35,13 @@ namespace RagnarokMod.Items.BardItems.Electronic
 
         public override void SetBardDefaults()
         {
-            Item.damage = 120;
-            InspirationCost = 4;
+            Item.damage = 435;
+            InspirationCost = 2;
             Item.width = 32;
             Item.height = 32;
             Item.scale = 0.6f;
-            Item.useTime = 48;
-            Item.useAnimation = 48;
+            Item.useTime = 24;
+            Item.useAnimation = 24;
             Item.useStyle = ItemUseStyleID.RaiseLamp;
             Item.noMelee = true;
             Item.autoReuse = true;
@@ -50,7 +52,50 @@ namespace RagnarokMod.Items.BardItems.Electronic
             Item.shoot = ModContent.ProjectileType<TendrilStrike>();
             Item.shootSpeed = 10f;
 
+            ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
         }
+
+        public override float UseTimeMultiplier(Player player)
+        {
+            return player.altFunctionUse == 2 ? 1f : 2f;
+        }
+
+        public override float UseAnimationMultiplier(Player player)
+        {
+            return player.altFunctionUse == 2 ? 1f : 2f;
+        }
+
+        public override bool BardShoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
+            if (player.altFunctionUse == 2)
+            {
+                int numberProjectiles = 5;
+                float rotation = MathHelper.ToRadians(12);
+
+                for (int i = 0; i < numberProjectiles; i++)
+                {
+                    Vector2 perturbedSpeed =
+                        velocity.RotatedBy(
+                            MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles - 1f))
+                        );
+
+                    Projectile.NewProjectile(
+                        source,
+                        position,
+                        perturbedSpeed,
+                        ModContent.ProjectileType<RadioMicPro>(),
+                        damage,
+                        knockback,
+                        player.whoAmI
+                    );
+                }
+
+                return false;
+            }
+
+            return true;
+        }
+
 
         public override void AddRecipes()
         {

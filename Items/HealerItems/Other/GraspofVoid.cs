@@ -34,7 +34,7 @@ namespace RagnarokMod.Items.HealerItems.Other
         public override void SetDefaults()
         {
             base.Item.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
-            base.Item.damage = 420;
+            base.Item.damage = 150;
             this.isHealer = true;
             this.healDisplay = true;
             this.radiantLifeCost = 4;

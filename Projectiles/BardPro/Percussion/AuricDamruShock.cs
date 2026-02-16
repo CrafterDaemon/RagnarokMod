@@ -28,6 +28,8 @@ namespace RagnarokMod.Projectiles.BardPro.Percussion
             Projectile.timeLeft = 10;
             Projectile.friendly = true;
             Projectile.tileCollide = false;
+
+            Projectile.scale = 1.9f;
         }
 
         public override bool PreDraw(ref Color lightColor)
@@ -37,7 +39,7 @@ namespace RagnarokMod.Projectiles.BardPro.Percussion
             vector.Y += player.gfxOffY;
             Texture2D value = TextureAssets.Projectile[Projectile.type].Value;
             Vector2 vector2 = value.Size() / 2f;
-            Main.EntitySpriteDraw(value, vector, null, new Color(255, 255, 255, 0) * (0.02f * Projectile.timeLeft), Projectile.rotation, vector2, 1.7f, 0, 0f);
+            Main.EntitySpriteDraw(value, vector, null, new Color(255, 255, 255, 0) * (0.02f * Projectile.timeLeft), Projectile.rotation, vector2, 3.4f, 0, 0f);
             return false;
         }
 

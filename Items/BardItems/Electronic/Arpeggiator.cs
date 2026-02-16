@@ -36,13 +36,13 @@ namespace RagnarokMod.Items.BardItems.Electronic
 
         public override void SetBardDefaults()
         {
-            Item.damage = 140;
+            Item.damage = 275;
             InspirationCost = 1;
             Item.width = 50;
             Item.height = 26;
             Item.scale = 1f;
             Item.useTime = 5;
-            Item.useAnimation = 16;
+            Item.useAnimation = 5;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.autoReuse = true;

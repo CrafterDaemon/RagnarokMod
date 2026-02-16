@@ -26,7 +26,7 @@ namespace RagnarokMod.Items.BardItems.String
 
         public override void SetBardDefaults()
         {
-            Item.damage = 275;
+            Item.damage = 150;
             InspirationCost = 1;
             Item.width = 86;
             Item.height = 92;

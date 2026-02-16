@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 using Terraria.Audio;
 using ThoriumMod;
 using CalamityMod.Dusts;
+using CalamityMod.Buffs.DamageOverTime;
 
 namespace RagnarokMod.Projectiles.HealerPro.Scythes
 {
@@ -35,6 +36,16 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             {
                 Dust.NewDust(Projectile.Center, 0, 0, ModContent.DustType<AstralOrange>());
             }
+        }
+
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            target.AddBuff(ModContent.BuffType<AstralInfectionDebuff>(), 60);
+        }
+
+        public override void OnHitPlayer(Player target, Player.HurtInfo info)
+        {
+            target.AddBuff(ModContent.BuffType<AstralInfectionDebuff>(), 60);
         }
     }
 }

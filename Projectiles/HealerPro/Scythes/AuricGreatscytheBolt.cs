@@ -1,3 +1,4 @@
+using CalamityMod.Buffs.DamageOverTime;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -162,6 +163,13 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                 dust.noGravity = true;
                 dust.velocity = Main.rand.NextVector2Circular(6f, 6f);
             }
+
+            target.AddBuff(ModContent.BuffType<AuricRebuke>(), 60, false);
+        }
+
+        public override void OnHitPlayer(Player target, Player.HurtInfo info)
+        {
+            target.AddBuff(ModContent.BuffType<AuricRebuke>(), 60, false);
         }
 
         public override void OnKill(int timeLeft)

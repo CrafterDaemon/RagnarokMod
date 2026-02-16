@@ -33,12 +33,12 @@ namespace RagnarokMod.Items.BardItems.Percussion
 
         public override void SetBardDefaults()
         {
-            Item.damage = 395;
-            InspirationCost = 3;
+            Item.damage = 600;
+            InspirationCost = 2;
             Item.width = 60;
             Item.height = 60;
-            Item.useTime = 28;
-            Item.useAnimation = 28;
+            Item.useTime = 21;
+            Item.useAnimation = 21;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.noMelee = true;
             Item.autoReuse = true;

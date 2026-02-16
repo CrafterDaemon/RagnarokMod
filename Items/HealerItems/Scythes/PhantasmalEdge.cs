@@ -26,7 +26,7 @@ namespace RagnarokMod.Items.HealerItems.Scythes
         public override void SetDefaults()
         {
             SetDefaultsToScythe();
-            base.Item.damage = 220;
+            base.Item.damage = 320;
             scytheSoulCharge = 4;
             base.Item.width = 76;
             base.Item.height = 74;

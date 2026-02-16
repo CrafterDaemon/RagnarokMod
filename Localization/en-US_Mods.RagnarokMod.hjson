@@ -92,26 +92,26 @@ Buffs: {
 Tooltips: {
 	WhiteDwarfSetBonus:
 		'''
-		Critical strikes will unleash ivory flares from the cosmos.
+		Critical strikes will unleash ivory flares from the cosmos
 		Ivory flares inflict the target's contact damage back at them,
-		if it is less than your base weapon damage, it will deal that instead.
+		if it is less than your base weapon damage, it will deal that instead
 		'''
 
 	LeviathanHeart: {
 		NormalTooltip:
 			'''
-			Healing spells heal 25% more hp.
+			Healing spells heal 25% more hp
 			Healing spells apply a protective bubble to their target,
-			granting +5% damage reduction for 5 seconds.
-			25% increased radiant attack speed.
+			granting +5% damage reduction for 5 seconds
+			25% increased radiant attack speed
 			'''
 		CorruptTooltip:
 			'''
 			The Leviathan's Bubble reacts to your dark energy!
-			All health costs are reduced by 1.
+			All health costs are reduced by 1
 			Spending health envelopes you in a corrupted bubble,
-			granting +10% damage, but you take 5% more damage.
-			25% increased radiant attack speed.
+			granting +10% damage, but you take 5% more damage
+			25% increased radiant attack speed
 			'''
 	}
 }
@@ -244,7 +244,7 @@ Items: {
 
 	CalamityBell: {
 		DisplayName: Calamity Bell
-		Tooltip: Hit enemies are afflicted by Brimstone Flames for 2 seconds
+		Tooltip: Shoots homing brimstone fireblasts that inflict brimstone flames on hit
 	}
 
 	DaedalusHeadBard: {
@@ -527,7 +527,8 @@ Items: {
 		DisplayName: Radio Mic
 		Tooltip:
 			'''
-			Singing into it allows the user to create shadowy tendrils that strike nearby enemies
+			Left click to sing a song to create shadowy tendrils that strike nearby enemies
+			Right click to sing a song that creates a spread of shadowflame sound waves
 			'The microphone of a long-dead demon'
 			'''
 	}
@@ -807,7 +808,7 @@ Items: {
 
 	Lamentation: {
 		DisplayName: Lamentation
-		Tooltip: Shoots homing brimstone fireblasts
+		Tooltip: Shoots homing brimstone gigablasts that inflict brimstone flames on hit
 	}
 
 	Virusprayer: {
@@ -863,7 +864,7 @@ Items: {
 
 			Symphonic damage increased by 15%
 			Inspiration regen rate increased by 20%
-			Anahita will sing along with your string instruments, firing additional water projectiles.
+			Anahita will sing along with your string instruments, firing additional water projectiles
 			'''
 	}
 
@@ -874,7 +875,7 @@ Items: {
 			Sends out bouncing sound waves that appear to be made out of sand
 			Right-click to play the [c/34C9EB:Guardian of the Seas] riff!
 			While the riff is active, projectiles are twice as large and deal 25% more damage
-			Nearby allies gain +10% movement speed, +10% damage, and +15% attack speed
+			Nearby allies gain +10% movement speed, +5% damage, and +5% attack speed
 			'''
 	}
 
@@ -995,6 +996,9 @@ Projectiles: {
 	IrradiantRed.DisplayName: Irradiant Red
 	AuricGreatscytheBolt.DisplayName: Auric Greatscythe Bolt
 	AuricGreatscytheSwing.DisplayName: Auric Greatscythe Swing
+	RadioMicPro.DisplayName: Radio Mic Pro
+	RadioMicShadowBurst.DisplayName: Radio Mic Shadow Burst
+	PlayerBrimstoneBarrage.DisplayName: Player Brimstone Barrage
 }
 
 Configs: {

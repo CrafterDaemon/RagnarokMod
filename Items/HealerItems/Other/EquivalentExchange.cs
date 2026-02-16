@@ -19,7 +19,7 @@ namespace RagnarokMod.Items.HealerItems.Other
         public override void SetDefaults()
         {
             base.Item.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
-            base.Item.damage = 19;
+            base.Item.damage = 34;
             this.isHealer = true;
             this.healDisplay = true;
             this.radiantLifeCost = 2;
@@ -36,7 +36,7 @@ namespace RagnarokMod.Items.HealerItems.Other
             base.Item.rare = ItemRarityID.Orange;
             base.Item.UseSound = new SoundStyle?(SoundID.Item8);
             base.Item.shoot = ModContent.ProjectileType<BloodTransfusionPro>();
-            base.Item.shootSpeed = 9f;
+            base.Item.shootSpeed = 13f;
         }
 
         public override bool AltFunctionUse(Player player)

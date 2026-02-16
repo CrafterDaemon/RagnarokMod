@@ -33,7 +33,20 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             Projectile.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
             rotationSpeed = 0.25f;
             scytheCount = 2;
-            base.Projectile.Size = new Vector2(280, 320);
+            base.Projectile.Size = new Vector2(320, 320);
+
+            dustCount = 2;
+            dustType = 60;
+            Projectile.light = 1f;
+            fadeOutTime = 10;
+            fadeOutSpeed = 30;
+            dustOffset = new Vector2(-280f, 40f);
+        }
+
+        public override void ModifyDust(Dust dust, Vector2 position, int scytheIndex)
+        {
+            dust.scale = 2.0f;
+            dust.noLight = false;
         }
     }
 }

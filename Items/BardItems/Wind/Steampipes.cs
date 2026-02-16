@@ -53,7 +53,7 @@ namespace RagnarokMod.Items.BardItems.Wind
             Item.value = CalamityGlobalItem.RarityYellowBuyPrice;
             Item.rare = ItemRarityID.Yellow;
             Item.shoot = ModContent.ProjectileType<SteampipesPro>();
-            Item.shootSpeed = 13f;
+            Item.shootSpeed = 20f;
             Item.UseSound = RagnarokModSounds.Steampipes;
 
             ((ModItem)this).Item.useStyle = ItemUseStyleID.Shoot;

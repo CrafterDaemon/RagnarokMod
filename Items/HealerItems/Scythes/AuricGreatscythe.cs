@@ -37,6 +37,8 @@ namespace RagnarokMod.Items.HealerItems.Scythes
             Item.channel = true;
             Item.autoReuse = false;
             Item.noUseGraphic = true;
+
+            ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
         }
 
         public override bool AltFunctionUse(Player player) => true;

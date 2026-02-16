@@ -17,6 +17,8 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
     {
         private int trail = 8;
         private const float CollisionRadius = 60f;
+        private bool hasHit = false;
+
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[base.Projectile.type] = trail;
@@ -95,7 +97,11 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            Projectile.ThoriumHeal(5, radius: 1000, specificPlayer: Projectile.owner);
+            if (!hasHit)
+            {
+                Projectile.ThoriumHeal(5, radius: 1000, specificPlayer: Projectile.owner);
+                hasHit = true;
+            }
         }
 
         public override bool PreDraw(ref Color lightColor)

@@ -8,6 +8,7 @@ using CalamityMod.Items;
 using CalamityMod.Buffs.StatDebuffs;
 using System.Security.Cryptography.X509Certificates;
 using System;
+using CalamityMod.Buffs.DamageOverTime;
 
 namespace RagnarokMod.Projectiles.HealerPro.Other
 {
@@ -51,6 +52,11 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
                 Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, launchVelocity5, ModContent.ProjectileType<FractalPro1>(), Projectile.damage, Projectile.knockBack, Main.myPlayer, 0, 1);
 
             }
+        }
+
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            target.AddBuff(ModContent.BuffType<Nightwither>(), 180, false);
         }
 
         public override void OnKill(int timeLeft)

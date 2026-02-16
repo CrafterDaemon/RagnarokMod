@@ -96,7 +96,7 @@ namespace RagnarokMod.Projectiles.BardPro.String
         }
         public override void BardOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<UnbreakableCombatUkulelePro3>(), default, default);
+            Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<UnbreakableCombatUkulelePro3>(), Projectile.damage, default);
             this.Projectile.Kill();
         }
 

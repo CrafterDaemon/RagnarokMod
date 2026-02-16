@@ -16,6 +16,7 @@ using RagnarokMod.Utils;
 using Terraria.DataStructures;
 using Terraria.Audio;
 using CalamityMod.Sounds;
+using CalamityMod.Buffs.DamageOverTime;
 
 namespace RagnarokMod.Projectiles.HealerPro.Scythes
 {
@@ -67,6 +68,16 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                 SoundEngine.PlaySound(Sounds.RagnarokModSounds.TSL);
                 Projectile.Kill();
             }
+        }
+
+        public override void SafeOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            target.AddBuff(ModContent.BuffType<MiracleBlight>(), 300);
+        }
+
+        public override void OnHitPlayer(Player target, Player.HurtInfo info)
+        {
+            target.AddBuff(ModContent.BuffType<MiracleBlight>(), 300);
         }
     }
 }

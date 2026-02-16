@@ -29,11 +29,11 @@ namespace RagnarokMod.Projectiles.BardPro.Percussion
         {
             Projectile.width = 72;
             Projectile.height = 196;
-            Projectile.penetrate = 1;
+            Projectile.penetrate = 3;
             Projectile.friendly = true;
             Projectile.tileCollide = true;
             Projectile.timeLeft = 240;
-            Projectile.scale = 0.33f;
+            Projectile.scale = 0.66f;
             Projectile.DamageType = ThoriumDamageBase<BardDamage>.Instance;
         }
 

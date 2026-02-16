@@ -6,6 +6,7 @@ using Terraria.Audio;
 using ThoriumMod;
 using CalamityMod.Items;
 using CalamityMod.Buffs.StatDebuffs;
+using CalamityMod.Buffs.DamageOverTime;
 
 namespace RagnarokMod.Projectiles.HealerPro.Other
 {
@@ -27,6 +28,12 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
             Projectile.localNPCHitCooldown = -1;
 
         }
+
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            target.AddBuff(ModContent.BuffType<Nightwither>(), 180, false);
+        }
+
         public override void AI()
         {
             timerthing++;

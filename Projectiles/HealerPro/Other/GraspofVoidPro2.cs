@@ -28,6 +28,9 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
             this.Projectile.penetrate = -1;
             this.Projectile.timeLeft = 40;
             this.Projectile.extraUpdates = 2;
+
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 40;
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
