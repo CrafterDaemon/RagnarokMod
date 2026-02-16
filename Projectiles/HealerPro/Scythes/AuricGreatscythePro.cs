@@ -29,28 +29,15 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
 
         public override void SafeSetDefaults()
         {
-            Projectile.oldPos = new Vector2[trail]; // However many trail segments you want
+            Projectile.oldPos = new Vector2[trail];
             Projectile.oldRot = new float[trail];
-            Projectile.aiStyle = 0;
-            Projectile.friendly = true;
-            Projectile.tileCollide = false;
-            Projectile.ownerHitCheck = true;
-            Projectile.ignoreWater = true;
-            Projectile.penetrate = -1;
-            Projectile.usesIDStaticNPCImmunity = true;
-            Projectile.idStaticNPCHitCooldown = 32;
-            Projectile.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
-            scytheCount = 2;
             Projectile.Size = new Vector2(206f, 190f);
             Projectile.timeLeft = 20;
+            Projectile.light = 1f;
+            Projectile.idStaticNPCHitCooldown = 32;
             rotationSpeed = 0.1f;
-            fadeOutSpeed = 30;
-            fadeOutTime = 10;
             dustCount = 64;
             dustType = DustID.Electric;
-            Projectile.light = 1f;
-            fadeOutTime = 10;
-            fadeOutSpeed = 30;
             dustOffset = new Vector2(-100f, 220f);
             dustNoGravity = false;
         }

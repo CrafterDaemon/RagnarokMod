@@ -28,17 +28,16 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
         }
         public override void SafeSetDefaults()
         {
-            base.Projectile.Size = new Vector2(188, 212);
+            Projectile.Size = new Vector2(188, 212);
+            Projectile.timeLeft = 151;
+            Projectile.light = 1f;
+            Projectile.idStaticNPCHitCooldown = 48;
+            rotationSpeed = 0.025f;
+            scytheCount = 1;
             dustOffset = new Vector2(-35f, 7f);
             dustCount = 24;
             dustType = DustID.GemSapphire;
             dustType2 = DustID.GemRuby;
-            base.rotationSpeed = 0.025f;
-            Projectile.light = 1f;
-            scytheCount = 1;
-            this.Projectile.idStaticNPCHitCooldown = 48;
-            base.Projectile.timeLeft = 151;
-
         }
         public override void OnSpawn(IEntitySource source)
         {

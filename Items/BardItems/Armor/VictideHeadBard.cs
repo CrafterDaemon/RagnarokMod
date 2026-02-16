@@ -1,16 +1,10 @@
-﻿using Microsoft.Xna.Framework;
-using System.Collections.Generic;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using CalamityMod;
 using CalamityMod.Items;
 using CalamityMod.Items.Armor.Victide;
 using CalamityMod.Items.Materials;
-using CalamityMod.CalPlayer;
-using CalamityMod.Items.Materials;
-using CalamityMod.Rarities;
 using CalamityMod.CalPlayer;
 using ThoriumMod;
 
@@ -20,12 +14,6 @@ namespace RagnarokMod.Items.BardItems.Armor
     public class VictideHeadBard : ModItem
     {
         private readonly Mod calamity = ModLoader.GetMod("CalamityMod");
-        public override void SetStaticDefaults()
-        {
-            //DisplayName.SetDefault("Victide Hat");
-            //Tooltip.SetDefault("5% increased symphonic damage");
-        }
-
         public override void SetDefaults()
         {
             Item.width = 18;

@@ -1,29 +1,16 @@
 ﻿using ThoriumMod;
-using ThoriumMod.Items;
 using ThoriumMod.Empowerments;
-using ThoriumMod.Projectiles.Bard;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 using Terraria.Audio;
-using Terraria.DataStructures;
-using CalamityMod;
 using CalamityMod.Items;
 using CalamityMod.Rarities;
-using CalamityMod.Items.Materials;
-using RagnarokMod.Sounds;
 using ThoriumMod.Items.BardItems;
-using ThoriumMod.Sounds;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using CalamityMod.Tiles.Furniture.CraftingStations;
-using static Mono.CompilerServices.SymbolWriter.CodeBlockEntry;
-using RagnarokMod.Projectiles.BardPro.Electronic;
-using CalamityMod.Items.Placeables.Ores;
-using RagnarokMod.Projectiles.BardPro.Wind;
 using RagnarokMod.Projectiles.BardPro.String;
-using RagnarokMod.Projectiles.HealerPro.Other;
+using ThoriumMod.Items;
+using Terraria.DataStructures;
 
 
 namespace RagnarokMod.Items.BardItems.String

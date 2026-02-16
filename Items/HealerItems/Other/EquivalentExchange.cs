@@ -16,14 +16,6 @@ namespace RagnarokMod.Items.HealerItems.Other
 {
     public class EquivalentExchange : ThoriumItem
     {
-        /*
-		public override void SetStaticDefaults()
-		{
-			base.DisplayName.SetDefault("Equivalent Exchange");
-			base.Tooltip.SetDefault("Sends out a bolt of life stealing blood\nRight click to send out a medium ranged healing pulse\nThis spell will heal twice");
-		}
-		*/
-
         public override void SetDefaults()
         {
             base.Item.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
@@ -52,15 +44,6 @@ namespace RagnarokMod.Items.HealerItems.Other
             return true;
         }
 
-        /*
-		public override void ModifyManaCost(Player player, ref float reduce, ref float mult)
-		{
-			if (Main.HoverItem != base.Item && player.altFunctionUse == 2)
-			{
-				mult = 0.5f;
-			}
-		}
-		*/
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             if (player.altFunctionUse == 2)
@@ -80,7 +63,6 @@ namespace RagnarokMod.Items.HealerItems.Other
             Recipe recipe = Recipe.Create(Item.type);
             recipe.AddIngredient(ModContent.ItemType<LeechBolt>());
             recipe.AddIngredient(ModContent.ItemType<TheGoodBook>());
-            //recipe.AddIngredient(ModContent.ItemType<RecoveryWand>());
             recipe.AddIngredient(ItemID.CrimtaneBar, 4);
             recipe.AddIngredient(ItemID.TissueSample, 4);
             recipe.AddIngredient(ModContent.ItemType<AerialiteBar>(), 8);

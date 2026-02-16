@@ -90,4 +90,25 @@ namespace RagnarokMod.Utils
                   .Register();
         }
     }
+
+    internal static class RecipeTileHelper
+    {
+        public static void Tileswitcher(Recipe recipe, int tileOld, int tileNew)
+        {
+            recipe.RemoveTile(tileOld);
+            recipe.AddTile(tileNew);
+        }
+
+        public static void SwitchTilesForItems(GetRecipe finder, int[] itemTypes, int stack, int tileOld, int tileNew)
+        {
+            foreach (int itemType in itemTypes)
+            {
+                finder.LookFor(itemType, stack);
+                foreach (Recipe recipe in finder.Search())
+                {
+                    Tileswitcher(recipe, tileOld, tileNew);
+                }
+            }
+        }
+    }
 }

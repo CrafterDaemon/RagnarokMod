@@ -281,11 +281,5 @@ namespace RagnarokMod.Common.ModSystems
             }
 
         }
-
-        public void Tileswitcher(Recipe recipe, int tileold, int tilenew)
-        {
-            recipe.RemoveTile(tileold);
-            recipe.AddTile(tilenew);
-        }
     }
 }

@@ -35,7 +35,6 @@ using ThoriumMod.Projectiles.Healer;
 using ThoriumMod.Projectiles.Thrower;
 using ThoriumMod.Sounds;
 using ThoriumMod.Utilities;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace RagnarokMod.Utils
 {

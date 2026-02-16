@@ -21,28 +21,12 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
 
         public override void SafeSetDefaults()
         {
-            Projectile.aiStyle = 0;
-            Projectile.light = 0.5f;
-            Projectile.friendly = true;
-            Projectile.tileCollide = false;
-            Projectile.ownerHitCheck = true;
-            Projectile.ignoreWater = true;
-            Projectile.penetrate = -1;
-            Projectile.timeLeft = 26;
-            Projectile.usesIDStaticNPCImmunity = true;
-            Projectile.idStaticNPCHitCooldown = 10;
-            Projectile.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
-            fadeOutTime = 10;
-            fadeOutSpeed = 30;
-            rotationSpeed = 0.25f;
-            scytheCount = 2;
             Projectile.Size = new Vector2(222f, 210f);
-
+            Projectile.light = 0.5f;
             dustOffset = new Vector2(0f, 30f);
             dustCount = 4;
             dustType = ModContent.DustType<AstralBlue>();
             dustType2 = ModContent.DustType<AstralOrange>();
-
         }
     }
 }

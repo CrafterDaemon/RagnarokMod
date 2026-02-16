@@ -6,7 +6,6 @@ using Terraria.Audio;
 using ThoriumMod;
 using CalamityMod.Items;
 using CalamityMod.Buffs.StatDebuffs;
-using System.Security.Cryptography.X509Certificates;
 
 namespace RagnarokMod.Projectiles.HealerPro.Other
 {

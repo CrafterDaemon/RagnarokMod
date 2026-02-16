@@ -1,6 +1,5 @@
 ﻿
 using System;
-using System.Text.RegularExpressions;
 using Microsoft.Xna.Framework;
 using RagnarokMod.Utils;
 using Terraria;
@@ -8,7 +7,6 @@ using Terraria.ModLoader;
 using ThoriumMod.Buffs.Healer;
 using ThoriumMod.Items.HealerItems;
 using ThoriumMod.Utilities;
-using XPT.Core.Audio.MP3Sharp.Decoding.Decoders.LayerIII;
 
 namespace ThoriumMod.Projectiles.Scythe;
 

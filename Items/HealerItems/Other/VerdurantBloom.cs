@@ -28,14 +28,6 @@ namespace RagnarokMod.Items.HealerItems.Other
 {
     public class VerdurantBloom : ThoriumItem
     {
-        /*
-		public override void SetStaticDefaults()
-		{
-			base.DisplayName.SetDefault("Equivalent Exchange");
-			base.Tooltip.SetDefault("Sends out a bolt of life stealing blood\nRight click to send out a medium ranged healing pulse\nThis spell will heal twice");
-		}
-		*/
-
         public override void SetDefaults()
         {
             this.Item.DamageType = (DamageClass)ThoriumDamageBase<HealerDamage>.Instance;

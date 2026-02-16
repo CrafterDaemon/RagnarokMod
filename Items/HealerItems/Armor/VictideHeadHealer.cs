@@ -21,8 +21,6 @@ namespace RagnarokMod.Items.HealerItems.Armor
         public override void SetStaticDefaults()
         {
             ArmorIDs.Head.Sets.PreventBeardDraw[base.Item.headSlot] = true;
-            //DisplayName.SetDefault("Victide Hood");
-            //Tooltip.SetDefault("5% increased radiant damage");
         }
 
         public override void SetDefaults()

@@ -4,8 +4,8 @@ using CalamityMod.Rarities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RagnarokMod.Projectiles.HealerPro.Scythes;
+using RagnarokMod.Utils;
 using Terraria;
-using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 using ThoriumMod.Items.HealerItems;
@@ -33,13 +33,7 @@ namespace RagnarokMod.Items.HealerItems.Scythes
 
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
         {
-            scale = 0.5f;
-            var texture = TextureAssets.Item[Item.type].Value;
-            float scaledHeight = texture.Height * scale;
-            var position = Item.TopLeft - Main.screenPosition;
-            position.Y += Item.height - scaledHeight;
-            spriteBatch.Draw(texture, position, null, lightColor, rotation, Vector2.Zero, scale, SpriteEffects.None, 0f);
-            return false;
+            return DrawHelper.DrawItemInWorldScaled(Item, spriteBatch, lightColor, ref rotation, ref scale, 0.5f);
         }
 
         public override void AddRecipes()

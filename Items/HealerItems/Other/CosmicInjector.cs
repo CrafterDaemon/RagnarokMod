@@ -28,13 +28,6 @@ namespace RagnarokMod.Items.HealerItems.Other
 {
     public class CosmicInjector : ThoriumItem
     {
-        /*
-		public override void SetStaticDefaults()
-		{
-			base.DisplayName.SetDefault("Equivalent Exchange");
-			base.Tooltip.SetDefault("Sends out a bolt of life stealing blood\nRight click to send out a medium ranged healing pulse\nThis spell will heal twice");
-		}
-		*/
         private int counter = 0;
         public override void SetDefaults()
         {
