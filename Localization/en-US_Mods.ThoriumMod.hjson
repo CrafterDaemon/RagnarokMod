@@ -61,6 +61,56 @@ Buffs: {
 }
 
 Items: {
+	AmberRing: {
+		DisplayName: Amber Ring
+		Tooltip: 3% increased summon damage
+	}
+
+	AmethystRing: {
+		DisplayName: Amethyst Ring
+		Tooltip: Increases armor penetration by 2
+	}
+
+	AquamarineRing: {
+		DisplayName: Aquamarine Ring
+		Tooltip: 3% increased radiant damage
+	}
+
+	EmeraldRing: {
+		DisplayName: Emerald Ring
+		Tooltip: 3% increased ranged damage
+	}
+
+	OpalRing: {
+		DisplayName: Opal Ring
+		Tooltip: 3% increased symphonic damage
+	}
+
+	RubyRing: {
+		DisplayName: Ruby Ring
+		Tooltip: 3% increased melee damage
+	}
+
+	SapphireRing: {
+		DisplayName: Sapphire Ring
+		Tooltip: 3% increased magic damage
+	}
+
+	TheRing: {
+		DisplayName: The Ring
+		Tooltip:
+			'''
+			Increases all damage by 4%
+			Increases armor penetration by 3
+			Increases critical strike chance by 4%
+			'''
+	}
+
+	TopazRing: {
+		DisplayName: Topaz Ring
+		Tooltip: Increases rogue damage by 1
+	}
+
 	FlightMail: {
 		DisplayName: Flight Mail
 		Tooltip:
@@ -78,11 +128,6 @@ Items: {
 			5% increased rogue damage
 			6% increased rogue critical strike chance
 			'''
-	}
-
-	TopazRing: {
-		DisplayName: Topaz Ring
-		Tooltip: Increases rogue damage by 1
 	}
 
 	BronzeBreastplate: {

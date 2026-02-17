@@ -92,26 +92,26 @@ Buffs: {
 Tooltips: {
 	/* WhiteDwarfSetBonus:
 		'''
-		Critical strikes will unleash ivory flares from the cosmos.
+		Critical strikes will unleash ivory flares from the cosmos
 		Ivory flares inflict the target's contact damage back at them,
-		if it is less than your base weapon damage, it will deal that instead.
+		if it is less than your base weapon damage, it will deal that instead
 		''' */
 
 	LeviathanHeart: {
 		/* NormalTooltip:
 			'''
-			Healing spells heal 25% more hp.
+			Healing spells heal 25% more hp
 			Healing spells apply a protective bubble to their target,
-			granting +5% damage reduction for 5 seconds.
-			25% increased radiant attack speed.
+			granting +5% damage reduction for 5 seconds
+			25% increased radiant attack speed
 			''' */
 		/* CorruptTooltip:
 			'''
 			The Leviathan's Bubble reacts to your dark energy!
-			All health costs are reduced by 1.
+			All health costs are reduced by 1
 			Spending health envelopes you in a corrupted bubble,
-			granting +10% damage, but you take 5% more damage.
-			25% increased radiant attack speed.
+			granting +10% damage, but you take 5% more damage
+			25% increased radiant attack speed
 			''' */
 	}
 }
@@ -859,7 +859,7 @@ Items: {
 
 			Symphonic damage increased by 15%
 			Inspiration regen rate increased by 20%
-			Anahita will sing along with your string instruments, firing additional water projectiles.
+			Anahita will sing along with your string instruments, firing additional water projectiles
 			''' */
 	}
 
@@ -868,9 +868,9 @@ Items: {
 		/* Tooltip:
 			'''
 			Sends out bouncing sound waves that appear to be made out of sand
-			Right-click to play the [c/34C9EB:Guardian of the Seas] riff!
-			While the riff is active, projectiles are twice as large and deal 25% more damage
-			Nearby allies gain +10% movement speed, +5% damage, and +5% attack speed
+			Right-click to play the [c/34C9EB:Guardian of the Former Seas] riff!
+			While the riff is active, attacks from this guitar are twice as large and deal 25% more damage
+			Time your attacks during the riff to reduce the cooldown
 			''' */
 	}
 
@@ -898,6 +898,16 @@ Items: {
 	PrimalTerror: {
 		// DisplayName: Primal Terror
 		// Tooltip: Keep me favorited ;P
+	}
+
+	DevourerOfSines: {
+		// DisplayName: Devourer Of Sines
+		/* Tooltip:
+			'''
+			Channel this weapon to create a massive sine wave.
+			Right-click to play the [c/501eb4:Universal Collapse] riff!
+			While the riff is active, all players in range have unlimited flight and inspiration.
+			''' */
 	}
 }
 
@@ -994,6 +1004,9 @@ Projectiles: {
 	// RadioMicPro.DisplayName: Radio Mic Pro
 	// RadioMicShadowBurst.DisplayName: Radio Mic Shadow Burst
 	// PlayerBrimstoneBarrage.DisplayName: Player Brimstone Barrage
+	// DevourerRiffSine.DisplayName: Devourer Riff Sine
+	// ScourgesFretsWorm.DisplayName: Scourges Frets Worm
+	// DevourerSineBeam.DisplayName: Devourer Sine Beam
 }
 
 Configs: {

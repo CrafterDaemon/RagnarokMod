@@ -24,15 +24,15 @@ namespace RagnarokMod.Riffs
             SetStaticDefaults();
         }
 
-        public void OnStart(Player bardPlayer)
+        public void OnStart(Player bardPlayer, Player target)
         {
             bardPlayer.AddCooldown(RiffLoader.Cooldown.ID, CooldownTicks);
-            SafeOnStart(bardPlayer);
+            SafeOnStart(bardPlayer, target);
         }
 
-        public void OnEnd(Player bardPlayer)
+        public void OnEnd(Player bardPlayer, Player target)
         {
-            SafeOnEnd(bardPlayer);
+            SafeOnEnd(bardPlayer, target);
         }
 
         // Override this in subclasses to point to the nested Cooldown class
@@ -42,8 +42,8 @@ namespace RagnarokMod.Riffs
             SafeUpdate(bardPlayer, target);
         }
 
-        public virtual void SafeOnStart(Player bardPlayer) { }
-        public virtual void SafeOnEnd(Player bardPlayer) { }
+        public virtual void SafeOnStart(Player bardPlayer, Player target) { }
+        public virtual void SafeOnEnd(Player bardPlayer, Player target) { }
         public virtual void SafeUpdate(Player bardPlayer, Player target) { }
     }
 }

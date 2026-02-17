@@ -47,15 +47,17 @@ namespace RagnarokMod.Riffs
             Riffs.Clear();
         }
 
-        // Call this from RagnarokModPlayer.PostUpdateEquips
         public static void UpdateRiffs(Player player)
         {
             var ragnarokPlayer = player.GetRagnarokModPlayer();
+
+            // Music volume handling
             if (ragnarokPlayer.fretPlaying)
             {
                 if (ragnarokPlayer.savedMusicVolume < 0f)
                     ragnarokPlayer.savedMusicVolume = Main.musicVolume;
             }
+
             if (!ragnarokPlayer.fretPlaying)
             {
                 // Restore volume every frame until back to normal
@@ -68,13 +70,27 @@ namespace RagnarokMod.Riffs
                         ragnarokPlayer.savedMusicVolume = -1f;
                     }
                 }
+
+                // Call OnEnd for all tracked targets when riff stops
+                if (ragnarokPlayer.activeRiffTargets.Count > 0)
+                {
+                    Riff riff = GetRiff(ragnarokPlayer.activeRiffType);
+                    if (riff != null)
+                    {
+                        foreach (int targetIndex in ragnarokPlayer.activeRiffTargets)
+                        {
+                            if (targetIndex >= 0 && targetIndex < Main.maxPlayers)
+                                riff.OnEnd(player, Main.player[targetIndex]);
+                        }
+                    }
+                    ragnarokPlayer.activeRiffTargets.Clear();
+                }
+
                 return;
             }
 
             // Fade down while riff is active
             Main.musicVolume = MathHelper.Lerp(Main.musicVolume, 0.1f, 0.1f);
-            if (!ragnarokPlayer.fretPlaying)
-                return;
 
             Riff activeRiff = GetRiff(ragnarokPlayer.activeRiffType);
             if (activeRiff == null)
@@ -83,10 +99,22 @@ namespace RagnarokMod.Riffs
             ThoriumPlayer bardThorium = player.GetThoriumPlayer();
             short duration = (short)((300 + bardThorium.bardBuffDuration) * bardThorium.bardBuffDurationX);
 
+            HashSet<int> currentTargets = new HashSet<int>();
+
             void ApplyToTarget(Player target)
             {
+                currentTargets.Add(target.whoAmI);
+
+                // Call OnStart for new targets
+                if (!ragnarokPlayer.activeRiffTargets.Contains(target.whoAmI))
+                {
+                    activeRiff.OnStart(player, target);
+                }
+
+                // Update all targets
                 activeRiff.Update(player, target);
 
+                // Apply empowerments
                 ThoriumPlayer targetThorium = target.GetThoriumPlayer();
                 foreach ((byte type, byte level) in activeRiff.Empowerments)
                     EmpowermentHelper.ApplyEmpowerment(bardThorium, targetThorium, type, level, duration);
@@ -94,8 +122,19 @@ namespace RagnarokMod.Riffs
 
             foreach (Player target in MiscHelper.GetPlayersInRange(player, activeRiff.Range))
                 ApplyToTarget(target);
-
             ApplyToTarget(player); // apply to self
+
+            // Call OnEnd for targets that left range
+            foreach (int targetIndex in ragnarokPlayer.activeRiffTargets)
+            {
+                if (!currentTargets.Contains(targetIndex))
+                {
+                    if (targetIndex >= 0 && targetIndex < Main.maxPlayers)
+                        activeRiff.OnEnd(player, Main.player[targetIndex]);
+                }
+            }
+
+            ragnarokPlayer.activeRiffTargets = currentTargets;
         }
     }
 }

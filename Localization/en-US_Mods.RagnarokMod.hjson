@@ -873,9 +873,9 @@ Items: {
 		Tooltip:
 			'''
 			Sends out bouncing sound waves that appear to be made out of sand
-			Right-click to play the [c/34C9EB:Guardian of the Seas] riff!
-			While the riff is active, projectiles are twice as large and deal 25% more damage
-			Nearby allies gain +10% movement speed, +5% damage, and +5% attack speed
+			Right-click to play the [c/34C9EB:Guardian of the Former Seas] riff!
+			While the riff is active, attacks from this guitar are twice as large and deal 25% more damage
+			Time your attacks during the riff to reduce the cooldown
 			'''
 	}
 
@@ -903,6 +903,16 @@ Items: {
 	PrimalTerror: {
 		DisplayName: Primal Terror
 		Tooltip: Keep me favorited ;P
+	}
+
+	DevourerOfSines: {
+		DisplayName: Devourer Of Sines
+		Tooltip:
+			'''
+			Channel this weapon to create a massive sine wave.
+			Right-click to play the [c/501eb4:Universal Collapse] riff!
+			While the riff is active, all players in range have unlimited flight and inspiration.
+			'''
 	}
 }
 
@@ -999,6 +1009,9 @@ Projectiles: {
 	RadioMicPro.DisplayName: Radio Mic Pro
 	RadioMicShadowBurst.DisplayName: Radio Mic Shadow Burst
 	PlayerBrimstoneBarrage.DisplayName: Player Brimstone Barrage
+	DevourerRiffSine.DisplayName: Devourer Riff Sine
+	ScourgesFretsWorm.DisplayName: Scourges Frets Worm
+	DevourerSineBeam.DisplayName: Devourer Sine Beam
 }
 
 Configs: {

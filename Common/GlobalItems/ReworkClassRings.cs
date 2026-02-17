@@ -70,46 +70,5 @@ namespace RagnarokMod.Common.GlobalItems
 
             }
         }
-
-        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
-        {
-            if (item.type == ModContent.ItemType<OpalRing>())
-            {
-                tooltips.Add(new TooltipLine(RagnarokMod.mod, item.Name + " bonus", "3% increased symphonic damage"));
-            }
-            else if (item.type == ModContent.ItemType<RubyRing>())
-            {
-                tooltips.Add(new TooltipLine(RagnarokMod.mod, item.Name + " bonus", "3% increased melee damage"));
-            }
-            else if (item.type == ModContent.ItemType<AmberRing>())
-            {
-                tooltips.Add(new TooltipLine(RagnarokMod.mod, item.Name + " bonus", "3% increased summon damage"));
-            }
-            else if (item.type == ModContent.ItemType<TopazRing>())
-            {
-                tooltips.Add(new TooltipLine(RagnarokMod.mod, item.Name + " bonus", "3% increased rogue damage"));
-            }
-            else if (item.type == ModContent.ItemType<EmeraldRing>())
-            {
-                tooltips.Add(new TooltipLine(RagnarokMod.mod, item.Name + " bonus", "3% increased ranged damage"));
-            }
-            else if (item.type == ModContent.ItemType<AquamarineRing>())
-            {
-                tooltips.Add(new TooltipLine(RagnarokMod.mod, item.Name + " bonus", "3% increased radiant damage"));
-            }
-            else if (item.type == ModContent.ItemType<SapphireRing>())
-            {
-                tooltips.Add(new TooltipLine(RagnarokMod.mod, item.Name + " bonus", "3% increased magic damage"));
-            }
-            else if (item.type == ModContent.ItemType<AmethystRing>())
-            {
-                tooltips.Add(new TooltipLine(RagnarokMod.mod, item.Name + " bonus", "Increases armor penetration by 2"));
-            }
-            else if (item.type == ModContent.ItemType<TheRing>())
-            {
-                tooltips.Add(new TooltipLine(RagnarokMod.mod, item.Name + " bonus", "Increases armor penetration by 3\nIncreases all damage by 4%"));
-            }
-
-        }
     }
 }

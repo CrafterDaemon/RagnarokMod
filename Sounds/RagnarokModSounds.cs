@@ -23,5 +23,7 @@ namespace RagnarokMod.Sounds
         public static readonly SoundStyle Blue = new("RagnarokMod/Sounds/Blue") { Volume = 1f, MaxInstances = 0 };
         public static readonly SoundStyle PurpleCharge = new("RagnarokMod/Sounds/PurpleCharge") { Volume = 1f, MaxInstances = 0 };
         public static readonly SoundStyle PurpleExplode = new("RagnarokMod/Sounds/PurpleExplode") { Volume = 1f, MaxInstances = 0 };
+        public static readonly SoundStyle devourerriff = new("RagnarokMod/Sounds/devourerriff") { Volume = 0.4f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
+        public static readonly SoundStyle devourersine = new("RagnarokMod/Sounds/devourersine") { Volume = 0.6f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.ReplaceOldest };
     }
 }

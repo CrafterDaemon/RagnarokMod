@@ -18,12 +18,13 @@ using ThoriumMod.Items.BardItems;
 
 namespace RagnarokMod.Items.BardItems
 {
-    public abstract class RiffInstrumentBase : BardItem
+    public abstract class BigRiffInstrumentBase : BigInstrumentItemBase
     {
         public abstract SoundStyle RiffSound { get; }
         public abstract SoundStyle NormalSound { get; }
         public abstract byte RiffType { get; }
         public virtual float RiffRange => 1000f;
+        public virtual int CooldownReduction => 60;
 
         public sealed override void BardTooltips(List<TooltipLine> tooltips)
         {
@@ -79,7 +80,8 @@ namespace RagnarokMod.Items.BardItems
         }
 
         public sealed override bool AltFunctionUse(Player player) => true;
-        public sealed override bool BardShoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+
+        public sealed override void SafeBardShoot(int success, int level, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             var ragnarokPlayer = player.GetRagnarokModPlayer();
             if (player.altFunctionUse == 2 && !ragnarokPlayer.fretPlaying)
@@ -88,9 +90,18 @@ namespace RagnarokMod.Items.BardItems
             }
             else if (player.altFunctionUse != 2)
             {
-                SafeRiffBardShoot(player, source, position, velocity, type, damage, knockback);
+                // Reduce riff cooldown on successful timing
+                if (success == 1 && ragnarokPlayer.fretPlaying)
+                {
+                    if (player.Calamity().cooldowns.TryGetValue(RiffLoader.Cooldown.ID, out var cooldown))
+                    {
+                        if (cooldown.timeLeft - CooldownReduction <= 0) cooldown.timeLeft = 1;
+                        else cooldown.timeLeft -= CooldownReduction;
+                    }
+                }
+
+                SafeRiffBardShoot(success, level, player, source, position, velocity, type, damage, knockback);
             }
-            return true;
         }
 
         public sealed override void BardHoldItem(Player player)
@@ -116,7 +127,7 @@ namespace RagnarokMod.Items.BardItems
 
         // Safe overrides for subclasses
         public virtual bool SafeCanPlayInstrument(Player player) => true;
-        public virtual void SafeRiffBardShoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) { }
+        public virtual void SafeRiffBardShoot(int success, int level, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) { }
         public virtual void SafeBardHoldItem(Player player) { }
 
         public virtual void ModifyRiffInstDamage(ThoriumPlayer bard, ref StatModifier damage) { }

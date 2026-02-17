@@ -17,7 +17,7 @@ using ThoriumMod.Items.BardItems;
 
 namespace RagnarokMod.Items.BardItems.String
 {
-    public class ScourgesFrets : RiffInstrumentBase
+    public class ScourgesFrets : BigRiffInstrumentBase
     {
         public override BardInstrumentType InstrumentType => BardInstrumentType.String;
         public override SoundStyle RiffSound => RagnarokModSounds.fretsriff;

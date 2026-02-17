@@ -48,6 +48,7 @@ namespace RagnarokMod.Utils
         public bool brimstoneFlamesOnHit = false;
         public byte activeRiffType;
         public float savedMusicVolume = -1f;
+        public HashSet<int> activeRiffTargets = new HashSet<int>();
         public static List<Action<Player, Player>> OnHealEffects = [];
         public bool stringInstrumentUsed = false;
         public bool batpoop = false;

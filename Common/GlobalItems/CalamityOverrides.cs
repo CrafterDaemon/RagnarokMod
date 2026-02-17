@@ -1,7 +1,9 @@
-﻿using CalamityMod.Items.Accessories;
+﻿using CalamityMod;
+using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Accessories.Wings;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Magic;
+using CalamityMod.Items.Weapons.Melee;
 using CalamityMod.Systems;
 using Ragnarok.Items;
 using RagnarokMod.Items;
@@ -16,13 +18,16 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using ThoriumMod;
 using ThoriumMod.Items.BardItems;
 using ThoriumMod.Items.Consumable;
 using ThoriumMod.Items.Depths;
 using ThoriumMod.Items.Donate;
 using ThoriumMod.Items.HealerItems;
+using ThoriumMod.Items.Placeable;
 using ThoriumMod.Items.Terrarium;
 using ThoriumMod.Items.ThrownItems;
+using ThoriumMod.Utilities;
 
 namespace RagnarokMod.Common.GlobalItems
 {
@@ -31,7 +36,25 @@ namespace RagnarokMod.Common.GlobalItems
         public override bool AppliesToEntity(Item item, bool lateInstantiation)
         {
             //fetch me their SOULS
-            return item.ModItem is FaceMelter or AnahitasArpeggio or BelchingSaxophone;
+            return item.ModItem is FaceMelter or AnahitasArpeggio or BelchingSaxophone or DragonRage;
+        }
+
+        public override void HoldItem(Item item, Player player)
+        {
+            if (item.type == ModContent.ItemType<DragonRage>())
+            {
+                ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
+                if (player.HighestClass() == ThoriumDamageBase<HealerDamage>.Instance)
+                {
+                    item.damage = 565;
+                    item.DamageType = ModContent.GetInstance<HealerDamage>();
+                }
+                else
+                {
+                    item.damage = 1075;
+                    item.DamageType = ModContent.GetInstance<TrueMeleeDamageClass>();
+                }
+            }
         }
         public override void AddRecipes()
         {

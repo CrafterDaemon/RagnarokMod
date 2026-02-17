@@ -1,14 +1,15 @@
+using CalamityMod;
+using CalamityMod.Items;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using RagnarokMod.Utils;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using ThoriumMod;
-using ThoriumMod.Utilities;
 using ThoriumMod.Projectiles.Bard;
-using CalamityMod.Items;
-using CalamityMod;
-using Terraria.DataStructures;
-using RagnarokMod.Utils;
+using ThoriumMod.Utilities;
 
 namespace RagnarokMod.Projectiles.BardPro.String
 {
@@ -23,12 +24,10 @@ namespace RagnarokMod.Projectiles.BardPro.String
         }
         public override void SetBardDefaults()
         {
-            Projectile.width = 20;
-            Projectile.height = 20;
+            Projectile.width = 30;
+            Projectile.height = 30;
             Projectile.friendly = true;
             Projectile.DamageType = ThoriumDamageBase<BardDamage>.Instance;
-            base.Projectile.width = 20;
-            base.Projectile.height = 20;
             base.Projectile.aiStyle = ProjAIStyleID.Arrow;
             base.Projectile.alpha = 75;
             base.Projectile.penetrate = -1;
@@ -45,8 +44,8 @@ namespace RagnarokMod.Projectiles.BardPro.String
             Player owner = Main.player[Projectile.owner];
             if (owner.GetRagnarokModPlayer().fretPlaying)
             {
-                Projectile.width = 40;
-                Projectile.height = 40;
+                Projectile.width = 60;
+                Projectile.height = 60;
                 Projectile.scale = 2f;
                 DrawOffsetX = -10;
                 DrawOriginOffsetY = -20;
@@ -90,5 +89,26 @@ namespace RagnarokMod.Projectiles.BardPro.String
 
         public int collide;
         public int collideMax = 1;
+
+        public override bool PreDraw(ref Color lightColor)
+        {
+            Texture2D texture = Terraria.GameContent.TextureAssets.Projectile[Projectile.type].Value;
+
+            Vector2 origin = texture.Size() / 2f; // True center
+
+            Main.EntitySpriteDraw(
+                texture,
+                Projectile.Center - Main.screenPosition,
+                null,
+                lightColor,
+                Projectile.rotation,
+                origin,
+                Projectile.scale,
+                SpriteEffects.None,
+                0
+            );
+
+            return false;
+        }
     }
 }

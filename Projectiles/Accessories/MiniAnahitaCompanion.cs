@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RagnarokMod.Items.BardItems.Accessories;
 using RagnarokMod.Utils;
+using Steamworks;
 using System;
 using Terraria;
 using Terraria.Audio;
@@ -101,7 +102,9 @@ namespace RagnarokMod.Projectiles.Accessories
             {
                 Vector2 toMouse = Main.MouseWorld - Projectile.Center;
                 SoundStyle sound = new("CalamityMod/Sounds/Item/HarpEnd");
-                sound.Pitch = (toMouse.Distance(Vector2.Zero) * 1.5f / Main.screenHeight - 1);
+                float pitch = 0f;
+                ModifyPitch(player.Center, Main.MouseWorld, ref pitch);
+                sound.Pitch = pitch;
                 sound.Volume = 0.5f;
                 sound.MaxInstances = 9;
                 SoundEngine.PlaySound(sound, Projectile.Center);
@@ -152,6 +155,18 @@ namespace RagnarokMod.Projectiles.Accessories
             );
 
             return false;
+        }
+
+        internal static void ModifyPitch(Vector2 from, Vector2 to, ref float pitch)
+        {
+            Vector2 vector = to - from;
+            pitch = (vector / new Vector2((float)Main.screenWidth * 0.4f, (float)Main.screenHeight * 0.4f)).Length();
+            if (pitch > 1f)
+            {
+                pitch = 1f;
+            }
+
+            pitch = pitch * 2f - 1f;
         }
     }
 }
