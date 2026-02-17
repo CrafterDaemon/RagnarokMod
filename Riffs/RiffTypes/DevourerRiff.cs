@@ -24,14 +24,15 @@ namespace RagnarokMod.Riffs.RiffTypes
 
         public override void SetStaticDefaults()
         {
-            Empowerments.Add<Damage>(5);
-            Empowerments.Add<DamageReduction>(5);
+            Empowerments.Add<Damage>(4);
+            Empowerments.Add<DamageReduction>(4);
             Empowerments.Add<ResourceMaximum>(5);
+            Empowerments.Add<ResourceRegen>(5);
         }
         public override void SafeUpdate(Player bardPlayer, Player target)
         {
             target.Calamity().infiniteFlight = true;
-            target.GetThoriumPlayer().bardResource = target.GetThoriumPlayer().bardResourceMax;
+            //target.GetThoriumPlayer().bardResource = target.GetThoriumPlayer().bardResourceMax;
         }
 
         public override void SafeOnStart(Player bardPlayer, Player target)

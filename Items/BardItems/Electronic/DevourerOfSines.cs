@@ -35,7 +35,7 @@ namespace RagnarokMod.Items.BardItems.Electronic
 
         public override void SetBardDefaults()
         {
-            Item.damage = 2112;
+            Item.damage = 1771;
             InspirationCost = 1;
             Item.width = 88;
             Item.height = 88;
