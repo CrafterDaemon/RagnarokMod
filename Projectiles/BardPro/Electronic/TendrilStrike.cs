@@ -40,9 +40,9 @@ namespace RagnarokMod.Projectiles.BardPro.Electronic
                 Projectile.Kill();
 
             player.ChangeDir(Projectile.direction);
-            player.heldProj = Projectile.whoAmI;
+            //player.heldProj = Projectile.whoAmI;
 
-            AdjustPlayerPositionValues(player);
+            //AdjustPlayerPositionValues(player);
 
             Projectile.ai[0]++;
             if (Projectile.ai[0] >= 8)
@@ -61,7 +61,7 @@ namespace RagnarokMod.Projectiles.BardPro.Electronic
             }
             Projectile.frame = (int)Projectile.ai[1];
 
-            AdjustPlayerItemFrameValues(player);
+            //AdjustPlayerItemFrameValues(player);
         }
 
 

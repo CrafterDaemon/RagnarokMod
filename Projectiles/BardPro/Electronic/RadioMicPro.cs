@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RagnarokMod.Sounds;
+using System.Runtime.CompilerServices;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -17,6 +18,8 @@ namespace RagnarokMod.Projectiles.BardPro.Electronic
 
         public override BardInstrumentType InstrumentType => BardInstrumentType.Electronic;
 
+        public bool hasHit = false;
+
         public override void SetBardDefaults()
         {
             Projectile.width = 20;
@@ -28,6 +31,9 @@ namespace RagnarokMod.Projectiles.BardPro.Electronic
             Projectile.timeLeft = 120;
             Projectile.friendly = true;
             Projectile.DamageType = ThoriumDamageBase<BardDamage>.Instance;
+
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 40;
         }
 
         public override bool PreDraw(ref Color lightColor)
@@ -42,8 +48,16 @@ namespace RagnarokMod.Projectiles.BardPro.Electronic
 
             if (Projectile.ai[1] >= 0f)
             {
-                // Always use pink dust
-                int dustType = DustID.PinkTorch;
+                int dustType;
+
+                if (Projectile.ai[0] == 1f)
+                {
+                    dustType = DustID.GreenTorch;
+                }
+                else
+                {
+                    dustType = DustID.PinkTorch;
+                }
 
                 Projectile.scale += 0.4f;
 
@@ -68,24 +82,55 @@ namespace RagnarokMod.Projectiles.BardPro.Electronic
 
         public override void BardOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            for (int i = 0; i < 4; i++) // 4 projectiles
+            if (Projectile.ai[0] == 1f)
             {
-                Vector2 velocity = Main.rand.NextVector2Unit() * 6f;
-                Projectile.NewProjectile(
-                    Projectile.GetSource_FromThis(),
-                    target.Center,
-                    velocity,
-                    ModContent.ProjectileType<RadioMicShadowBurst>(),
-                    Projectile.damage / 10,
-                    1f,
-                    Projectile.owner
-                );
-            }
-            target.AddBuff(BuffID.ShadowFlame, 180);
+                if (!hasHit)
+                {
+                    Projectile.NewProjectile(
+                        Projectile.GetSource_FromThis(),
+                        target.Center,
+                        Vector2.Zero,
+                        ModContent.ProjectileType<TendrilStrike>(),
+                        Projectile.damage,
+                        Projectile.knockBack,
+                        Projectile.owner
+                    );
+                    hasHit = true;
 
-            SoundEngine.PlaySound(SoundID.Item20, target.Center);
+                    SoundEngine.PlaySound(RagnarokModSounds.RadioDemon, target.Center);
+                }
+
+                target.AddBuff((BuffID.CursedInferno), 180);
+            }
+            else
+            {
+                // Normal pink behavior
+                for (int i = 0; i < 2; i++)
+                {
+                    Vector2 velocity = Main.rand.NextVector2Unit() * 6f;
+
+                    Projectile.NewProjectile(
+                        Projectile.GetSource_FromThis(),
+                        target.Center,
+                        velocity,
+                        ModContent.ProjectileType<RadioMicShadowBurst>(),
+                        Projectile.damage / 10,
+                        1f,
+                        Projectile.owner
+                    );
+                }
+
+                target.AddBuff(BuffID.ShadowFlame, 180);
+                SoundEngine.PlaySound(SoundID.Item20, target.Center);
+            }
         }
 
-        public override Color? GetAlpha(Color lightColor) => Color.HotPink;
+        public override Color? GetAlpha(Color lightColor)
+        {
+            if (Projectile.ai[0] == 1f)
+                return Color.LimeGreen;
+
+            return Color.HotPink;
+        }
     }
 }

@@ -527,8 +527,9 @@ Items: {
 		DisplayName: Radio Mic
 		Tooltip:
 			'''
-			Left click to sing a song to create shadowy tendrils that strike nearby enemies
-			Right click to sing a song that creates a spread of shadowflame sound waves
+			Sing a song that creates a spread of shadowflame sound waves
+			The centre sound wave will instead be cursed
+			The cursed sound will summon a tendril to attack the first enemy hit
 			'The microphone of a long-dead demon'
 			'''
 	}
