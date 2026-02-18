@@ -1,12 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "meSJlYkqp6s=",
+  "dgSpecHash": "zxRC524pm1sbgM2t+l90r7EKzaVc30skMpXdb2mX4Jz5OJe/smOcHIl6Qq2NbaFNu81RgoNvq47Xebq04G6liQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Mould\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\RagnarokMod\\RagnarokMod.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\Mould\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.24\\microsoft.windowsdesktop.app.ref.8.0.24.nupkg.sha512",
-    "C:\\Users\\Mould\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.24\\microsoft.netcore.app.ref.8.0.24.nupkg.sha512",
-    "C:\\Users\\Mould\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.24\\microsoft.aspnetcore.app.ref.8.0.24.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Users\\rcber\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\RagnarokMod\\RagnarokMod.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }

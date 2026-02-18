@@ -1,11 +1,17 @@
 
 <Project Sdk="Microsoft.NET.Sdk">
+
   <Import Project="..\tModLoader.targets" />
+
   <PropertyGroup>
+
     <AssemblyName>RagnarokMod</AssemblyName>
     <LangVersion>latest</LangVersion>
+
   </PropertyGroup>
+
   <ItemGroup>
+
     <None Remove="Items\AuricTeslaFrilledHelmet.png" />
     <None Remove="Items\AuricTeslaFrilledHelmet_Head.png" />
     <None Remove="Items\BardItems\hi_to_anyone_reading_this.png" />
@@ -15,13 +21,19 @@
     <None Remove="Projectiles\HealerPro\Scythes\PhantasmalEdgeHook.png" />
     <None Remove="Projectiles\HealerPro\Scythes\WapBamBoom.png" />
     <None Remove="Projectiles\NoProj.png" />
+    
   </ItemGroup>
+
   <ItemGroup>
-	<Reference Include="CalamityMod">
-	  <HintPath>..\CalamityMod.dll</HintPath>
-	</Reference>
+
+		<Reference Include="CalamityMod">
+		  <HintPath>..\ModAssemblies\CalamityMod_v2.1.dll</HintPath>
+		</Reference>
+
     <Reference Include="ThoriumMod">
-      <HintPath>..\ThoriumMod.dll</HintPath>
-    </Reference>
+			<HintPath>..\ModAssemblies\ThoriumMod_v1.7.2.5.dll</HintPath>
+		</Reference>
+
   </ItemGroup>
+
 </Project>

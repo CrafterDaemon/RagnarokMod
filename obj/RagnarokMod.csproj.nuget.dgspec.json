@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Mould\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\RagnarokMod\\RagnarokMod.csproj": {}
+    "C:\\Users\\rcber\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\RagnarokMod\\RagnarokMod.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Mould\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\RagnarokMod\\RagnarokMod.csproj": {
+    "C:\\Users\\rcber\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\RagnarokMod\\RagnarokMod.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Mould\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\RagnarokMod\\RagnarokMod.csproj",
+        "projectUniqueName": "C:\\Users\\rcber\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\RagnarokMod\\RagnarokMod.csproj",
         "projectName": "RagnarokMod",
-        "projectPath": "C:\\Users\\Mould\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\RagnarokMod\\RagnarokMod.csproj",
-        "packagesPath": "C:\\Users\\Mould\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Mould\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\RagnarokMod\\obj\\",
+        "projectPath": "C:\\Users\\rcber\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\RagnarokMod\\RagnarokMod.csproj",
+        "packagesPath": "C:\\Users\\rcber\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\rcber\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\RagnarokMod\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Mould\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\rcber\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -34,13 +32,7 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "10.0.100"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -56,26 +48,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.24, 8.0.24]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.24, 8.0.24]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[8.0.24, 8.0.24]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.124/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
