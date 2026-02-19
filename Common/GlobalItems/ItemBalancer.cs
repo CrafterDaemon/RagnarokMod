@@ -462,45 +462,15 @@ namespace RagnarokMod.Common.GlobalItems
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            if (item.defense > 0)
-            {
-                if (item.type == depthDiverHelmetType)
-                {
-                    for (int i = 0; i < tooltips.Count; i++)
-                    {
-                        if (tooltips[i].Text.Contains("breath underwater"))
-                        {
-                            tooltips[i].Text = tooltips[i].Text + "\nDoes not work in the Abyss but instead grants you and your allies +10 defense and +20% movement speed\nYou also randomly get some oxygen back";
-                            break;
-                        }
-                    }
-                }
-                if (item.type == nagaSkinMaskType)
-                {
-                    for (int i = 0; i < tooltips.Count; i++)
-                    {
-                        if (tooltips[i].Text.Contains("breath underwater"))
-                        {
-                            tooltips[i].Text = tooltips[i].Text + "\nUnderwater breath does not work in the Abyss";
-                            break;
-                        }
-                    }
-                }
-            }
             if (item.type == shinobiSigilType)
             {
                 for (int i = 0; i < tooltips.Count; i++)
                 {
                     if (tooltips[i].Text.Contains("basic damage"))
                     {
-                        tooltips[i].Text = "25% basic damage";
+                        tooltips[i].Text = "25% " + Language.GetTextValue("Mods.RagnarokMod.Compat.BasicDamage");
                     }
                 }
-                var newLine = new TooltipLine(Mod, "shinobisigil", "Projectile damage caps at 500")
-                {
-                    OverrideColor = Color.Red
-                };
-                tooltips.Add(newLine);
             }
             if (item.type == plagueLordFlaskType)
             {
@@ -508,14 +478,9 @@ namespace RagnarokMod.Common.GlobalItems
                 {
                     if (tooltips[i].Text.Contains("basic damage"))
                     {
-                        tooltips[i].Text = "75% basic damage";
+                        tooltips[i].Text = "75% " + Language.GetTextValue("Mods.RagnarokMod.Compat.BasicDamage");
                     }
                 }
-                var newLine = new TooltipLine(Mod, "plaguelordflask", "Projectile damage caps at 2000")
-                {
-                    OverrideColor = Color.Red
-                };
-                tooltips.Add(newLine);
             }
             if (item.type == throwingGuideType)
             {
@@ -523,10 +488,10 @@ namespace RagnarokMod.Common.GlobalItems
                 {
                     if (tooltips[i].Text.Contains("duplicated"))
                     {
-                        tooltips[i].Text = "12.5% of your rogue damage is duplicated";
+                        tooltips[i].Text = "12.5% " + Language.GetTextValue("Mods.RagnarokMod.Compat.DupeDamage");
                     }
                 }
-                var newLine = new TooltipLine(Mod, "throwingguide", "Duplication damage caps at 50. Effect does not stack with other Guides")
+                var newLine = new TooltipLine(Mod, "throwingguide", Language.GetTextValue("Mods.RagnarokMod.Compat.DupeCap") + " 50." + "\n" + Language.GetTextValue("Mods.RagnarokMod.Compat.NoGuideStack"))
                 {
                     OverrideColor = Color.Red
                 };
@@ -538,10 +503,10 @@ namespace RagnarokMod.Common.GlobalItems
                 {
                     if (tooltips[i].Text.Contains("duplicated"))
                     {
-                        tooltips[i].Text = "15% of your rogue damage is duplicated";
+                        tooltips[i].Text = "15% " + Language.GetTextValue("Mods.RagnarokMod.Compat.DupeDamage");
                     }
                 }
-                var newLine = new TooltipLine(Mod, "throwingguide2", "Duplication damage caps at 100. Effect does not stack with other Guides")
+                var newLine = new TooltipLine(Mod, "throwingguide", Language.GetTextValue("Mods.RagnarokMod.Compat.DupeCap") + " 100." + "\n" + Language.GetTextValue("Mods.RagnarokMod.Compat.NoGuideStack"))
                 {
                     OverrideColor = Color.Red
                 };
@@ -553,10 +518,10 @@ namespace RagnarokMod.Common.GlobalItems
                 {
                     if (tooltips[i].Text.Contains("duplicated"))
                     {
-                        tooltips[i].Text = "17.5% of your rogue damage is duplicated";
+                        tooltips[i].Text = "17.5% " + Language.GetTextValue("Mods.RagnarokMod.Compat.DupeDamage");
                     }
                 }
-                var newLine = new TooltipLine(Mod, "throwingguide2", "Duplication damage caps at 200. Effect does not stack with other Guides")
+                var newLine = new TooltipLine(Mod, "throwingguide", Language.GetTextValue("Mods.RagnarokMod.Compat.DupeCap") + " 200." + "\n" + Language.GetTextValue("Mods.RagnarokMod.Compat.NoGuideStack"))
                 {
                     OverrideColor = Color.Red
                 };

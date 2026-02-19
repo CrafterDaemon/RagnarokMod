@@ -58,6 +58,11 @@ Buffs: {
 		DisplayName: 弱点打击
 		Description: 你的攻击必定造成暴击
 	}
+
+	GoldenScaleBuff: {
+		// DisplayName: Goldfish
+		// Description: You've got gills and a great cracker taste.\nUnfortunately, goldfish do not like the Abyss.
+	}
 }
 
 Items: {
@@ -592,6 +597,34 @@ Items: {
 			增加10%盗贼弹幕速度
 			手持盗贼物品时增加10%移动速度
 			'''
+	}
+
+	DepthDiverHelmet: {
+		// DisplayName: Depth Diver's Helmet
+		/* Tooltip:
+			'''
+			'Become a selfless protector'
+			Critical strike chance increased by 6%
+			''' */
+		/* SetBonus:
+			'''
+			You and nearby allies gain {0}% increased damage, {1}% movement speed.
+			You and nearby allies can also breathe underwater while outside of the Abyss.
+			In the Abyss, You and your allies +10 defense and +20% movement speed instead.
+			You will also randomly get some oxygen back while in the Abyss.
+			''' */
+	}
+
+	NagaSkinMask: {
+		// DisplayName: Naga-Skin Mask
+		/* Tooltip:
+			'''
+			'Garb of the original aquatic casters'
+			Maximum mana increased by 60.
+			Allows you to breathe underwater.
+			Does not work in the Abyss.
+			''' */
+		// SetBonus: Every {0} mana spent will dramatically increase your magic damage and casting speed briefly
 	}
 }
 
