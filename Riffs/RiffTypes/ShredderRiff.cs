@@ -15,7 +15,7 @@ namespace RagnarokMod.Riffs.RiffTypes
     public class ShredderRiff : Riff
     {
         public override float Range => 1200f;
-        public override int CooldownTicks => 54;
+        public override int CooldownTicks => 5400;
 
         public override void SetStaticDefaults()
         {

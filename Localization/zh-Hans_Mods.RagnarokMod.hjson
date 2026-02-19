@@ -928,6 +928,11 @@ Items: {
 			While the riff is active, all players in range have life steal
 			''' */
 	}
+
+	SquirrelScarf: {
+		// DisplayName: Squirrel Scarf
+		// Tooltip: ""
+	}
 }
 
 Projectiles: {
