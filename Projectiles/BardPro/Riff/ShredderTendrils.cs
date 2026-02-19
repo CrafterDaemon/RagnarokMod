@@ -14,9 +14,9 @@ namespace RagnarokMod.Projectiles.Riffs
     {
         public override string Texture => $"Terraria/Images/Item_{ItemID.CrimstoneBlock}";
 
-        private const int TendrilCount = 8;
-        private const int SegmentsPerTendril = 12;
-        private const float TendrilLength = 640f;
+        private const int TendrilCount = 6;
+        private const int SegmentsPerTendril = 6;
+        private const float TendrilLength = 320f;
         private const float SegmentSpacing = TendrilLength / SegmentsPerTendril;
 
         // Store random seeds for each tendril so they twitch independently
