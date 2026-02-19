@@ -99,6 +99,7 @@ namespace RagnarokMod.Common.GlobalItems
             if (item.type == ModContent.ItemType<PolterghastBag>())
             {
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<PhantasmalEdge>()));
+                itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<Ectambourine>()));
             }
             if (item.type == ModContent.ItemType<CalamitasCoffer>())
             {
