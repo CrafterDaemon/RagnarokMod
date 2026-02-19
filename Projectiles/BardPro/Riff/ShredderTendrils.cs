@@ -15,16 +15,9 @@ namespace RagnarokMod.Projectiles.Riffs
     public class ShredderTendrils : ModProjectile
     {
         public override string Texture => $"Terraria/Images/Item_{ItemID.CrimstoneBlock}";
-
-<<<<<<< HEAD
-        private const int TendrilCount = 8;
-        private const int SegmentsPerTendril = 12;
-        private const float TendrilLength = 640f;
-=======
         private const int TendrilCount = 6;
         private const int SegmentsPerTendril = 12;
         private const float TendrilLength = 320f;
->>>>>>> 0e2a5dfd4a70bcbabefd53b2976f0dfe969e7e7d
         private const float SegmentSpacing = TendrilLength / SegmentsPerTendril;
 
         // Store random seeds for each tendril so they twitch independently
