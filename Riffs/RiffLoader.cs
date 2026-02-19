@@ -20,6 +20,7 @@ namespace RagnarokMod.Riffs
             public static new string ID => "RiffCooldown";
             public override bool ShouldDisplay => true;
             public override bool SavedWithPlayer => true;
+            public override bool PersistsThroughDeath => true;
             public override LocalizedText DisplayName => Language.GetText("Mods.RagnarokMod.Riffs.Cooldown");
             public override string Texture => "RagnarokMod/Items/BardItems/Consumable/InspirationEssence";
             public override Color OutlineColor => new Color(220, 50, 50);
