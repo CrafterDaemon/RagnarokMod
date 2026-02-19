@@ -1,5 +1,6 @@
-displayName = Ragnarok
+displayName = Ragnarok Mod
 author = CrafterDaemon & The Ragnarok Team
+icon = icon_small.png
 version = 1.5
 modReferences = ThoriumMod, CalamityMod
 sortAfter = ThoriumMod, CalamityMod

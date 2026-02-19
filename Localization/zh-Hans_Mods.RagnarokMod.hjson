@@ -944,9 +944,14 @@ Items: {
 		/* Tooltip:
 			'''
 			As fluffy as a squirrel's tail
-				Increase your max number of sentries by 1
-				Increases summon damage by 5%
+			Increases your max number of sentries by 1
+			Increases summon damage by 5%
 			''' */
+	}
+
+	RiffTester: {
+		// DisplayName: Riff Tester
+		// Tooltip: ""
 	}
 }
 

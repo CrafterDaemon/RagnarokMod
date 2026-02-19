@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using ThoriumMod.Empowerments;
 
@@ -31,7 +32,7 @@ namespace RagnarokMod.Buffs
         public override void Update(Player player, ref int buffIndex)
         {
             // Damage logic for Players
-            player.Hurt(PlayerDeathReason.ByCustomReason($"{player.name} fell into darkness."), 5, 0);
+            player.Hurt(PlayerDeathReason.ByCustomReason(NetworkText.FromLiteral($"{player.name} " + Language.GetTextValue("Mods.RagnarokMod.Compat.Darkness"))), 5, 0);
             Dust.NewDust(player.position, player.width, player.height, DustID.Asphalt);
         }
     }

@@ -1,17 +1,10 @@
-﻿using Microsoft.Xna.Framework;
-using System.Collections.Generic;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using CalamityMod;
 using CalamityMod.Items;
 using CalamityMod.Items.Armor.Aerospec;
 using CalamityMod.Items.Materials;
-using CalamityMod.CalPlayer;
-using CalamityMod.Items.Materials;
-using CalamityMod.Rarities;
-using CalamityMod.CalPlayer;
 using ThoriumMod;
 using ThoriumMod.Utilities;
 
@@ -20,7 +13,6 @@ namespace RagnarokMod.Items.BardItems.Armor
     [AutoloadEquip(EquipType.Head)]
     public class AerospecBard : ModItem
     {
-        private readonly Mod calamity = ModLoader.GetMod("CalamityMod");
         public override void SetStaticDefaults()
         {
 

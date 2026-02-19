@@ -1,27 +1,13 @@
-using CalamityMod.Items.Accessories;
-using CalamityMod.Items.Accessories.Wings;
-using CalamityMod.Items.Materials;
-using CalamityMod.Items.Weapons.Magic;
-using CalamityMod.Systems;
-using CalamityMod;
 using Ragnarok.Items;
 using RagnarokMod.Items;
-using RagnarokMod.Items.BardItems;
 using RagnarokMod.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.Config;
 using System.Reflection;
 using RagnarokMod.Items.BardItems.Armor;
 using RagnarokMod.Items.HealerItems.Armor;
-using RagnarokMod.Items;
 using RagnarokMod.Common.Configs;
 
 namespace RagnarokMod.Common.ModSystems

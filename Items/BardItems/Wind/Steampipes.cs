@@ -1,29 +1,15 @@
 using ThoriumMod;
 using ThoriumMod.Items;
 using ThoriumMod.Empowerments;
-using ThoriumMod.Projectiles.Bard;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
-using Terraria.Audio;
-using Terraria.DataStructures;
-using CalamityMod;
 using CalamityMod.Items;
-using CalamityMod.Rarities;
 using RagnarokMod.Sounds;
 using ThoriumMod.Items.BardItems;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using RagnarokMod.Projectiles.HealerPro;
 using CalamityMod.Items.Materials;
 using RagnarokMod.Projectiles.BardPro.Wind;
-using System.Collections.Generic;
-using ThoriumMod.Items;
-using ThoriumMod.Empowerments;
-using ThoriumMod.Sounds;
-using CalamityMod.Items;
-using CalamityMod.Rarities;
 
 
 namespace RagnarokMod.Items.BardItems.Wind

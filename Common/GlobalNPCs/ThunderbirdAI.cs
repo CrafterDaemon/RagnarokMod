@@ -1,16 +1,11 @@
 using Microsoft.Xna.Framework;
-using System.IO;
 using System;
 using System.Collections.Generic;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.GameContent;
-using ThoriumMod;
-using ThoriumMod.NPCs;
 using ThoriumMod.NPCs.BossTheGrandThunderBird;
 using ThoriumMod.Projectiles.Boss;
 using ThoriumMod.Projectiles;
@@ -19,7 +14,6 @@ using ThoriumMod.Sounds;
 using RagnarokMod.Utils;
 using RagnarokMod.Common.ModSystems;
 using RagnarokMod.Common.Configs;
-using RagnarokMod.Utils;
 
 namespace RagnarokMod.Common.GlobalNPCs
 {

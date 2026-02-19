@@ -1,17 +1,12 @@
-using System;
 using CalamityMod.Rarities;
-using CalamityMod.Tiles.Furniture.CraftingStations;
 using Terraria;
 using Terraria.ModLoader;
 using RagnarokMod.Utils;
 using CalamityMod;
 using CalamityMod.Items;
-using CalamityMod.Items.Armor;
 using CalamityMod.Items.Materials;
 using CalamityMod.CalPlayer;
-using CalamityMod.Rarities;
 using CalamityMod.Items.Armor.Bloodflare;
-using CalamityMod.Items.Placeables;
 using ThoriumMod;
 using ThoriumMod.Items;
 using ThoriumMod.Utilities;
@@ -23,13 +18,6 @@ namespace RagnarokMod.Items.BardItems.Armor
     [AutoloadEquip(EquipType.Head)]
     public class BloodflareHeadBard : BardItem
     {
-        public string LocalizationCategory
-        {
-            get
-            {
-                return "Items.Armor.PostMoonLord";
-            }
-        }
 
         public override void SetBardDefaults()
         {

@@ -75,7 +75,7 @@ namespace RagnarokMod.Projectiles.BardPro.Percussion
 
             if (Main.rand.NextBool(4))
             {
-                Dust d = Dust.NewDustPerfect(Projectile.Center, 60);
+                Dust d = Dust.NewDustPerfect(Projectile.Center, DustID.RedTorch);
                 d.noGravity = true;
                 d.velocity = Projectile.velocity * 0.2f;
                 d.scale = 0.8f;

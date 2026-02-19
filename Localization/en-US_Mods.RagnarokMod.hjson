@@ -124,6 +124,10 @@ Compat: {
 	DupeCap: Duplication damage caps at
 	NoGuideStack: Effect does not stack with other Guides
 	Power: % Power
+	Smited: was smited.
+	Darkness: fell into darkness.
+	TurnedToAmmo: was converted into ammunition.
+	Recoil: could not handle the recoil.
 }
 
 Items: {
@@ -955,9 +959,14 @@ Items: {
 		Tooltip:
 			'''
 			As fluffy as a squirrel's tail
-				Increase your max number of sentries by 1
-				Increases summon damage by 5%
+			Increases your max number of sentries by 1
+			Increases summon damage by 5%
 			'''
+	}
+
+	RiffTester: {
+		DisplayName: Riff Tester
+		Tooltip: ""
 	}
 }
 
@@ -1066,7 +1075,7 @@ Projectiles: {
 Configs: {
 	BossProgressionConfig: {
 		DisplayName: Boss Progression Config
-		Headers.BossProgressionChanges: Boss Progression Changes Header
+		Headers.BossProgressionChanges: Boss Progression Changes
 
 		GrandFlareGun: {
 			Label: Grand Thunder Bird Recipe Change
@@ -1239,7 +1248,7 @@ Configs: {
 	}
 
 	ModCompatConfig: {
-		DisplayName: Mod Compat Config
+		DisplayName: Mod Compatibility Config
 		Headers.ModCompat: Mod Compat Header
 
 		item_deduplication_mode: {
@@ -1257,7 +1266,7 @@ Configs: {
 		}
 
 		Ragnarok: {
-			Label: Ragnarok
+			Label: Ragnarok Mod
 			Tooltip: ""
 		}
 
@@ -1269,7 +1278,7 @@ Configs: {
 
 	BossConfig: {
 		DisplayName: Boss Config
-		Headers.BossChanges: Boss Changes Header
+		Headers.BossChanges: Boss Changes
 
 		bird: {
 			Label: Grand Thunderbird AI
@@ -1350,14 +1359,8 @@ Configs: {
 		DisplayName: Client Config
 
 		Headers: {
-			Audio: Audio Header
-			UITweaks: U I Tweaks Header
-			Debug: Debug Header
-		}
-
-		EnableRiffMusic: {
-			Label: Enable Riff Music
-			Tooltip: ""
+			Audio: Audio
+			UITweaks: UI Tweaks
 		}
 
 		BardEmpowermentBarOffsetX: {
@@ -1367,11 +1370,6 @@ Configs: {
 
 		BardEmpowermentBarOffsetY: {
 			Label: Bard Empowerment Bar Offset Y
-			Tooltip: ""
-		}
-
-		ShowItemHitboxes: {
-			Label: Show Item Hitboxes
 			Tooltip: ""
 		}
 

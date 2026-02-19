@@ -20,6 +20,7 @@ using Terraria.Graphics.CameraModifiers;
 using ThoriumMod.Utilities;
 using RagnarokMod.Projectiles.HealerPro.Other;
 using RagnarokMod.Projectiles;
+using Terraria.Localization;
 
 namespace RagnarokMod.Items.HealerItems.Other
 {
@@ -72,7 +73,7 @@ namespace RagnarokMod.Items.HealerItems.Other
                 {
                     if (player.statLife <= 0)
                     {
-                        PlayerDeathReason pdr = PlayerDeathReason.ByCustomReason(player.name.ToString() + " was converted into ammunition.");
+                        PlayerDeathReason pdr = PlayerDeathReason.ByCustomReason(NetworkText.FromLiteral(player.name.ToString() + " " + Language.GetTextValue("Mods.RagnarokMod.Compat.TurnedToAmmo")));
                         player.KillMe(pdr, 1000.0, 0, false);
                         return false;
                     }
@@ -97,7 +98,7 @@ namespace RagnarokMod.Items.HealerItems.Other
                 }
                 if (player.statLife <= 0)
                 {
-                    PlayerDeathReason pdr = PlayerDeathReason.ByCustomReason(player.name.ToString() + " could not handle the recoil.");
+                    PlayerDeathReason pdr = PlayerDeathReason.ByCustomReason(NetworkText.FromLiteral(player.name.ToString() + " " + Language.GetTextValue("Mods.RagnarokMod.Compat.Recoil")));
                     player.KillMe(pdr, 1000.0, 0, false);
                     return false;
                 }
