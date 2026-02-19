@@ -915,6 +915,15 @@ Items: {
 			While the riff is active, all players in range have unlimited flight
 			'''
 	}
+
+	Ectambourine: {
+		DisplayName: Ectambourine
+		Tooltip:
+			'''
+			Throw an endless amount of ghostly tambourines
+			Right click to jingle the thrown tambourines, damaging nearby enemies
+			'''
+	}
 }
 
 Projectiles: {
@@ -1013,6 +1022,8 @@ Projectiles: {
 	DevourerRiffSine.DisplayName: Devourer Riff Sine
 	ScourgesFretsWorm.DisplayName: Scourges Frets Worm
 	DevourerSineBeam.DisplayName: Devourer Sine Beam
+	EctambourinePro.DisplayName: Ectambourine Projectile
+	EctambourineProJingle.DisplayName: Ectambourine Jingle
 }
 
 Configs: {
