@@ -1,5 +1,6 @@
 ﻿using CalamityMod;
 using Microsoft.Xna.Framework;
+using RagnarokMod.Common.Configs;
 using RagnarokMod.Riffs;
 using RagnarokMod.Sounds;
 using RagnarokMod.Utils;
@@ -153,17 +154,18 @@ namespace RagnarokMod.Items.BardItems
             {
                 if (!SoundEngine.TryGetActiveSound(ragnarokPlayer.fretSlot, out var sound) || !sound.IsPlaying)
                 {
-                    ragnarokPlayer.fretSlot = SoundEngine.PlaySound(RiffSound, player.Center);
+                    ragnarokPlayer.fretSlot = SoundEngine.PlaySound(
+                        RiffSound.WithVolumeScale(ModContent.GetInstance<ClientConfig>().RiffMusicVolume),
+                        player.Center
+                    );
                     ragnarokPlayer.fretPlaying = true;
                     ragnarokPlayer.activeRiffType = RiffType;
-                    // OnStart is now called by UpdateRiffs for each target
                 }
             }
             else
             {
                 if (SoundEngine.TryGetActiveSound(ragnarokPlayer.fretSlot, out var sound))
                     sound.Stop();
-                // OnEnd is now called by UpdateRiffs for each target
                 ragnarokPlayer.fretPlaying = false;
                 ragnarokPlayer.activeRiffType = 0;
             }

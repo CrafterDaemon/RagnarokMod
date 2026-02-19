@@ -23,7 +23,7 @@ namespace RagnarokMod.Common.GlobalItems
 
         public override void PostDrawInWorld(Item item, SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
-            if (ModContent.GetInstance<UIConfig>().ShowItemHitboxes)
+            if (ModContent.GetInstance<ClientConfig>().ShowItemHitboxes)
             {
                 var rect = new Rectangle((int)(item.position.X - Main.screenPosition.X), (int)(item.position.Y - Main.screenPosition.Y), item.width, item.height);
                 spriteBatch.Draw(TextureAssets.MagicPixel.Value, rect, Color.Red * 0.5f);

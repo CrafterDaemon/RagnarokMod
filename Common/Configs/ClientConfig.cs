@@ -3,9 +3,17 @@ using Terraria.ModLoader.Config;
 
 namespace RagnarokMod.Common.Configs
 {
-    public class UIConfig : ModConfig
+    public class ClientConfig : ModConfig
     {
         public override ConfigScope Mode => ConfigScope.ClientSide;
+
+        [Header("Audio")]
+
+        [Range(0f, 1f)]
+        [Increment(0.05f)]
+        [DefaultValue(1f)]
+        [Slider]
+        public float RiffMusicVolume { get; set; }
 
         [Header("UITweaks")]
 

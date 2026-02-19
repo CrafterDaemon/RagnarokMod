@@ -71,7 +71,6 @@ namespace RagnarokMod.Utils
         public bool sirenScale = false;
         public ThoriumItem lastHeldItem;
         public int origLifeCost = 0;
-        private int lastSeenHeal = 0;
         public int godslayerBardcurrentemp = 0;
         public int godslayerBardcurrentemplevel = 0;
         public int intergelacticBardcurrentemp = 0;
@@ -88,6 +87,8 @@ namespace RagnarokMod.Utils
         public bool throwGuide2Fix = false;
         public bool throwGuide3Fix = false;
         public bool auricBoost;
+        public bool shredderLifesteal = false;
+        public int shredderLifestealCooldown = 0;
 
         public SlotId fretSlot;
         public bool fretPlaying;
@@ -580,6 +581,8 @@ namespace RagnarokMod.Utils
             {
                 fretPlaying = false;
             }
+            if (shredderLifestealCooldown > 0)
+                shredderLifestealCooldown--;
         }
 
         // Function to add stealth to thorium throwing armors
@@ -818,6 +821,7 @@ namespace RagnarokMod.Utils
             auricBoost = false;
             leviathanHeart = false;
             sirenScale = false;
+            shredderLifesteal = false;
         }
         public override void ResetEffects()
         {
@@ -848,6 +852,16 @@ namespace RagnarokMod.Utils
             if (nightfallen)
             {
                 npc.AddBuff(ModContent.BuffType<NightfallenDebuff>(), 240);
+            }
+            if (shredderLifesteal && shredderLifestealCooldown <= 0)
+            {
+                Player.statLife += 1;
+                Player.HealEffect(1);
+
+                if (Player.statLife > Player.statLifeMax2)
+                    Player.statLife = Player.statLifeMax2;
+
+                shredderLifestealCooldown = 6;
             }
         }
 

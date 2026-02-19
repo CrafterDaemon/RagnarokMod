@@ -441,13 +441,13 @@ namespace RagnarokMod.ILEditing
                 return;
             }
             c.Emit(OpCodes.Pop);
-            c.Emit(OpCodes.Ldc_R4, (float)ModContent.GetInstance<UIConfig>().BardEmpowermentBarOffsetX);
+            c.Emit(OpCodes.Ldc_R4, (float)ModContent.GetInstance<ClientConfig>().BardEmpowermentBarOffsetX);
             if (!c.TryGotoNext(MoveType.After, i => i.MatchLdcI4(76)))
             {
                 return;
             }
             c.Emit(OpCodes.Pop);
-            c.Emit(OpCodes.Ldc_I4, (int)ModContent.GetInstance<UIConfig>().BardEmpowermentBarOffsetY);
+            c.Emit(OpCodes.Ldc_I4, (int)ModContent.GetInstance<ClientConfig>().BardEmpowermentBarOffsetY);
         }
 
         private void tweakNagaSkinMask(ILContext il)

@@ -1013,6 +1013,7 @@ Projectiles: {
 	// ScourgesFretsWorm.DisplayName: Scourges Frets Worm
 	// DevourerSineBeam.DisplayName: Devourer Sine Beam
 	// ShredderTendrils.DisplayName: Shredder Tendrils
+	// ShredderPro.DisplayName: Shredder Pro
 }
 
 Configs: {
@@ -1294,6 +1295,41 @@ Configs: {
 
 		Auto: {
 			// Label: Auto
+			// Tooltip: ""
+		}
+	}
+
+	ClientConfig: {
+		// DisplayName: Client Config
+
+		Headers: {
+			// Audio: Audio Header
+			// UITweaks: U I Tweaks Header
+			// Debug: Debug Header
+		}
+
+		EnableRiffMusic: {
+			// Label: Enable Riff Music
+			// Tooltip: ""
+		}
+
+		BardEmpowermentBarOffsetX: {
+			// Label: Bard Empowerment Bar Offset X
+			// Tooltip: ""
+		}
+
+		BardEmpowermentBarOffsetY: {
+			// Label: Bard Empowerment Bar Offset Y
+			// Tooltip: ""
+		}
+
+		ShowItemHitboxes: {
+			// Label: Show Item Hitboxes
+			// Tooltip: ""
+		}
+
+		RiffMusicVolume: {
+			// Label: Riff Music Volume
 			// Tooltip: ""
 		}
 	}
