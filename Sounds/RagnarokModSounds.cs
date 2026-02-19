@@ -27,5 +27,7 @@ namespace RagnarokMod.Sounds
         public static readonly SoundStyle devourersine = new("RagnarokMod/Sounds/devourersine") { Volume = 0.6f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.ReplaceOldest };
         public static readonly SoundStyle shredderriff = new("RagnarokMod/Sounds/Music/Riffs/shredderriff") { Volume = 0.4f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
         public static readonly SoundStyle shredder = new("RagnarokMod/Sounds/shredder") { Volume = 0.5f, MaxInstances = 0 };
+		public static readonly SoundStyle aureusriff = new("RagnarokMod/Sounds/Music/Riffs/aureusriff") { Volume = 0.6f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
+		public static readonly SoundStyle stellarriff = new("RagnarokMod/Sounds/stellarriff") { Volume = 0.5f, MaxInstances = 0 };
     }
 }

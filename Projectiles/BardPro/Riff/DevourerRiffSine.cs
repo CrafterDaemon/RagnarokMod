@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RagnarokMod.Utils;
+using RagnarokMod.Riffs;
+using RagnarokMod.Riffs.RiffTypes;
 using System;
 using Terraria;
 using Terraria.GameContent;
@@ -34,7 +36,7 @@ namespace RagnarokMod.Projectiles.BardPro.Riff
         // ai[0] = target player index
         public override void AI()
         {
-            if (Main.player[Projectile.owner].GetRagnarokModPlayer().fretPlaying)
+            if (Main.player[Projectile.owner].GetRagnarokModPlayer().activeRiffType == RiffLoader.RiffType<DevourerRiff>())
                 Projectile.timeLeft++;
 
             int targetIndex = (int)Projectile.ai[0];

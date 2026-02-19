@@ -87,11 +87,12 @@ namespace RagnarokMod.Utils
         public bool throwGuide2Fix = false;
         public bool throwGuide3Fix = false;
         public bool auricBoost;
+		
         public bool shredderLifesteal = false;
         public int shredderLifestealCooldown = 0;
 
-        public SlotId fretSlot;
-        public bool fretPlaying;
+        public SlotId riffSlot;
+        public bool riffPlaying;
 
         public void EnsureMiniAnahita()
         {
@@ -569,17 +570,17 @@ namespace RagnarokMod.Utils
 
         public override void PostUpdate()
         {
-            if (!fretPlaying)
+            if (!riffPlaying)
             {
                 return;
             }
-            if (SoundEngine.TryGetActiveSound(fretSlot, out var sound))
+            if (SoundEngine.TryGetActiveSound(riffSlot, out var sound))
             {
                 sound.Position = Player.Center;
             }
             else
             {
-                fretPlaying = false;
+                riffPlaying = false;
             }
             if (shredderLifestealCooldown > 0)
                 shredderLifestealCooldown--;

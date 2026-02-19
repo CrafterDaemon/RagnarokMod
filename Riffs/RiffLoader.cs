@@ -56,7 +56,7 @@ namespace RagnarokMod.Riffs
             var ragnarokPlayer = player.GetRagnarokModPlayer();
 
             // Fade out music while riff is active (only if riff volume > 0)
-            if (ragnarokPlayer.fretPlaying && ModContent.GetInstance<ClientConfig>().RiffMusicVolume > 0f)
+            if (ragnarokPlayer.riffPlaying && ModContent.GetInstance<ClientConfig>().RiffMusicVolume > 0f)
             {
                 if (Main.musicFade[Main.curMusic] > 0.1f)
                     Main.musicFade[Main.curMusic] = Math.Max(0.1f, Main.musicFade[Main.curMusic] - 0.02f);
@@ -68,7 +68,7 @@ namespace RagnarokMod.Riffs
                     Main.musicFade[Main.curMusic] = Math.Min(1f, Main.musicFade[Main.curMusic] + 0.02f);
             }
 
-            if (!ragnarokPlayer.fretPlaying)
+            if (!ragnarokPlayer.riffPlaying)
             {
                 // Call OnEnd for all tracked targets when riff stops
                 if (ragnarokPlayer.activeRiffTargets.Count > 0)

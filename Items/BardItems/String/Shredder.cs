@@ -32,7 +32,7 @@ namespace RagnarokMod.Items.BardItems.String
 
         public override void SafeSetBardDefaults()
         {
-            Item.damage = 40;
+            Item.damage = 65;
             InspirationCost = 1;
             Item.width = 88;
             Item.height = 88;
@@ -52,44 +52,28 @@ namespace RagnarokMod.Items.BardItems.String
         {
             var ragnarokPlayer = player.GetRagnarokModPlayer();
 
-            Vector2 forwardOffset = Vector2.Normalize(velocity) * 1f;
-            Vector2 downwardOffset = new Vector2(0f, 14f);
-
-            Vector2 spawnPos = player.MountedCenter + forwardOffset + downwardOffset;
-
-            if (ragnarokPlayer.fretPlaying)
+            if (ragnarokPlayer.activeRiffType == RiffType)
             {
-                float spreadAngle = MathHelper.ToRadians(8f);
+                // Shoot 3 projectiles in a narrow spread
+                float spreadAngle = MathHelper.ToRadians(8f); // 8 degrees total spread
 
-                // Center
-                Projectile.NewProjectile(source, spawnPos, velocity, type, damage, knockback, player.whoAmI);
+                // Center projectile
+                Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
 
-                // Left
-                Projectile.NewProjectile(
-                    source,
-                    spawnPos,
-                    velocity.RotatedBy(-spreadAngle),
-                    type,
-                    damage,
-                    knockback,
-                    player.whoAmI);
+                // Left projectile
+                Vector2 leftVelocity = velocity.RotatedBy(-spreadAngle);
+                Projectile.NewProjectile(source, position, leftVelocity, type, damage, knockback, player.whoAmI);
 
-                // Right
-                Projectile.NewProjectile(
-                    source,
-                    spawnPos,
-                    velocity.RotatedBy(spreadAngle),
-                    type,
-                    damage,
-                    knockback,
-                    player.whoAmI);
+                // Right projectile
+                Vector2 rightVelocity = velocity.RotatedBy(spreadAngle);
+                Projectile.NewProjectile(source, position, rightVelocity, type, damage, knockback, player.whoAmI);
             }
             else
             {
-                Projectile.NewProjectile(source, spawnPos, velocity, type, damage, knockback, player.whoAmI);
+                // Normal single shot
+                Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
             }
         }
-
         public override Vector2? HoldoutOffset() => new Vector2(-18, 20);
 
         public override void HoldItemFrame(Player player)

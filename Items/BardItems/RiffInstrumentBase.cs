@@ -69,11 +69,11 @@ namespace RagnarokMod.Items.BardItems
                 if (player.Calamity().cooldowns.ContainsKey(RiffLoader.Cooldown.ID))
                     return false;
 
-                if (SoundEngine.TryGetActiveSound(ragnarokPlayer.fretSlot, out var sound) && sound.IsPlaying)
+                if (SoundEngine.TryGetActiveSound(ragnarokPlayer.riffSlot, out var sound) && sound.IsPlaying)
                     return false;
 
                 foreach (Player other in MiscHelper.GetPlayersInRange(player, RiffRange))
-                    if (other.GetRagnarokModPlayer().fretPlaying)
+                    if (other.GetRagnarokModPlayer().riffPlaying)
                         return false;
             }
             return SafeCanPlayInstrument(player) && base.CanPlayInstrument(player);
@@ -83,7 +83,7 @@ namespace RagnarokMod.Items.BardItems
         public sealed override bool BardShoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             var ragnarokPlayer = player.GetRagnarokModPlayer();
-            if (player.altFunctionUse == 2 && !ragnarokPlayer.fretPlaying)
+            if (player.altFunctionUse == 2 && !ragnarokPlayer.riffPlaying)
             {
                 SyncRiffSound(player, true);
             }
@@ -103,9 +103,9 @@ namespace RagnarokMod.Items.BardItems
 
             var ragnarokPlayer = player.GetRagnarokModPlayer();
 
-            if (ragnarokPlayer.fretPlaying)
+            if (ragnarokPlayer.riffPlaying)
             {
-                if (!SoundEngine.TryGetActiveSound(ragnarokPlayer.fretSlot, out var sound) || !sound.IsPlaying)
+                if (!SoundEngine.TryGetActiveSound(ragnarokPlayer.riffSlot, out var sound) || !sound.IsPlaying)
                     SyncRiffSound(player, false);
             }
 
@@ -131,7 +131,7 @@ namespace RagnarokMod.Items.BardItems
         private void SoundHandler(Player player)
         {
             var ragnarokPlayer = player.GetRagnarokModPlayer();
-            Item.UseSound = (player.altFunctionUse == 2 || ragnarokPlayer.fretPlaying)
+            Item.UseSound = (player.altFunctionUse == 2 || ragnarokPlayer.riffPlaying)
                 ? RagnarokModSounds.none
                 : NormalSound;
         }
@@ -141,21 +141,21 @@ namespace RagnarokMod.Items.BardItems
             var ragnarokPlayer = player.GetModPlayer<RagnarokModPlayer>();
             if (start)
             {
-                if (!SoundEngine.TryGetActiveSound(ragnarokPlayer.fretSlot, out var sound) || !sound.IsPlaying)
+                if (!SoundEngine.TryGetActiveSound(ragnarokPlayer.riffSlot, out var sound) || !sound.IsPlaying)
                 {
-                    ragnarokPlayer.fretSlot = SoundEngine.PlaySound(
+                    ragnarokPlayer.riffSlot = SoundEngine.PlaySound(
                         RiffSound.WithVolumeScale(ModContent.GetInstance<ClientConfig>().RiffMusicVolume),
                         player.Center
                     );
-                    ragnarokPlayer.fretPlaying = true;
+                    ragnarokPlayer.riffPlaying = true;
                     ragnarokPlayer.activeRiffType = RiffType;
                 }
             }
             else
             {
-                if (SoundEngine.TryGetActiveSound(ragnarokPlayer.fretSlot, out var sound))
+                if (SoundEngine.TryGetActiveSound(ragnarokPlayer.riffSlot, out var sound))
                     sound.Stop();
-                ragnarokPlayer.fretPlaying = false;
+                ragnarokPlayer.riffPlaying = false;
                 ragnarokPlayer.activeRiffType = 0;
             }
             if (Main.netMode == NetmodeID.MultiplayerClient)

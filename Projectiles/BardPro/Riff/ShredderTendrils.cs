@@ -1,6 +1,8 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RagnarokMod.Utils;
+using RagnarokMod.Riffs;
+using RagnarokMod.Riffs.RiffTypes;
 using System;
 using Terraria;
 using Terraria.Audio;
@@ -14,9 +16,9 @@ namespace RagnarokMod.Projectiles.Riffs
     {
         public override string Texture => $"Terraria/Images/Item_{ItemID.CrimstoneBlock}";
 
-        private const int TendrilCount = 6;
-        private const int SegmentsPerTendril = 6;
-        private const float TendrilLength = 320f;
+        private const int TendrilCount = 8;
+        private const int SegmentsPerTendril = 12;
+        private const float TendrilLength = 640f;
         private const float SegmentSpacing = TendrilLength / SegmentsPerTendril;
 
         // Store random seeds for each tendril so they twitch independently
@@ -82,7 +84,7 @@ namespace RagnarokMod.Projectiles.Riffs
             // Check if should retract
             bool shouldRetract = false;
 
-            if (Main.player[Projectile.owner].GetRagnarokModPlayer().fretPlaying)
+            if (Main.player[Projectile.owner].GetRagnarokModPlayer().activeRiffType == RiffLoader.RiffType<ShredderRiff>())
                 Projectile.timeLeft++;
             else
                 shouldRetract = true;
@@ -105,7 +107,7 @@ namespace RagnarokMod.Projectiles.Riffs
             int targetIndex = (int)Projectile.ai[0];
             if (targetIndex >= 0 && targetIndex < Main.maxPlayers && Main.player[targetIndex].active)
             {
-                if (!Main.player[targetIndex].GetRagnarokModPlayer().fretPlaying)
+                if (Main.player[targetIndex].GetRagnarokModPlayer().activeRiffType != RiffLoader.RiffType<ShredderRiff>())
                 {
                     return;
                 }

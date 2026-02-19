@@ -17,24 +17,24 @@ using ThoriumMod.Items.BardItems;
 
 namespace RagnarokMod.Items.BardItems.String
 {
-    public class ScourgesFrets : BigRiffInstrumentBase
+    public class StellarRiff : BigRiffInstrumentBase
     {
         public override BardInstrumentType InstrumentType => BardInstrumentType.String;
-        public override SoundStyle RiffSound => RagnarokModSounds.fretsriff;
-        public override SoundStyle NormalSound => RagnarokModSounds.scourgesfrets;
-        public override byte RiffType => RiffLoader.RiffType<ScourgeRiff>();
+        public override SoundStyle RiffSound => RagnarokModSounds.aureusriff;
+        public override SoundStyle NormalSound => RagnarokModSounds.stellarriff;
+        public override byte RiffType => RiffLoader.RiffType<AureusRiff>();
 
-        public override void SafeSetStaticDefaults()
-        {
-            Empowerments.AddInfo<LifeRegeneration>(1, 0);
+        public override void SafeSetStaticDefaults(){
+            Empowerments.AddInfo<Defense>(2, 0);
+			Empowerments.AddInfo<JumpHeight>(2, 0);
         }
 
         public override void SafeSetBardDefaults()
         {
-            Item.damage = 21;
+            Item.damage = 105;
             InspirationCost = 1;
-            Item.width = 88;
-            Item.height = 88;
+            Item.width = 58;
+            Item.height = 66;
             Item.useTime = 23;
             Item.useAnimation = 23;
             Item.useStyle = ItemUseStyleID.Guitar;
@@ -42,31 +42,26 @@ namespace RagnarokMod.Items.BardItems.String
             Item.noMelee = true;
             Item.autoReuse = true;
             Item.knockBack = 3f;
-            Item.value = CalamityGlobalItem.RarityGreenBuyPrice;
-            Item.rare = ItemRarityID.Green;
-            Item.shoot = ModContent.ProjectileType<ScourgesFretsPro>();
-            Item.shootSpeed = 11f;
-        }
-        public override void ModifyInstrumentDamage(ThoriumPlayer bard, ref StatModifier damage)
-        {
-            Player player = bard.Player;
-            if (player.GetRagnarokModPlayer().activeRiffType == RiffType)
-                damage += 0.25f;
+			Item.value = CalamityGlobalItem.RarityLimeBuyPrice;
+            Item.rare = 7;
+            Item.shoot = ModContent.ProjectileType<StellarRiffPro>();
+            Item.shootSpeed = 14f;
         }
         public override void SafeRiffBardShoot(int success, int level, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
         }
-        public override Vector2? HoldoutOffset() => new Vector2(-18, 20);
+		
+        public override Vector2? HoldoutOffset() => new Vector2(-10, 12);
 
         public override void HoldItemFrame(Player player)
         {
-            player.itemLocation += new Vector2(-18, 20) * player.Directions;
+            player.itemLocation += new Vector2(-10, 12) * player.Directions;
         }
 
         public override void UseStyle(Player player, Rectangle heldItemFrame)
         {
-            player.itemLocation += new Vector2(-18, 20) * player.Directions;
+            player.itemLocation += new Vector2(-10, 12) * player.Directions;
         }
     }
 }

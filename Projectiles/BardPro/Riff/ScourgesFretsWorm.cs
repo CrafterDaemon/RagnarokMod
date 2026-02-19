@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RagnarokMod.Utils;
+using RagnarokMod.Riffs;
+using RagnarokMod.Riffs.RiffTypes;
 using ReLogic.Content;
 using System;
 using Terraria;
@@ -95,7 +97,7 @@ namespace RagnarokMod.Projectiles.Riffs
             if (!dying)
                 Fade(true);
             int targetIndex = (int)Projectile.ai[0];
-            if (targetIndex < 0 || targetIndex >= Main.maxPlayers || !Main.player[targetIndex].active || Main.player[targetIndex].dead || !Main.player[targetIndex].GetRagnarokModPlayer().fretPlaying)
+            if (targetIndex < 0 || targetIndex >= Main.maxPlayers || !Main.player[targetIndex].active || Main.player[targetIndex].dead || Main.player[targetIndex].GetRagnarokModPlayer().activeRiffType != RiffLoader.RiffType<ScourgeRiff>())
             {
                 Fade(false);
             }
