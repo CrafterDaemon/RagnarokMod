@@ -41,14 +41,8 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             Projectile.light = 1f;
             fadeOutTime = 5;
             fadeOutSpeed = 60;
-            dustOffset = new Vector2(-135f, 40f);
+            dustOffset = new Vector2(-350f, 0f);
         }
-
-        public override bool? CanHitNPC(NPC target)
-        {
-            return true;
-        }
-
 
         public override void ModifyDust(Dust dust, Vector2 position, int scytheIndex)
         {
