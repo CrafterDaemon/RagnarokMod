@@ -108,7 +108,8 @@ namespace RagnarokMod.Common.GlobalItems
             {
                 itemLoot.Add(DropHelper.CalamityStyle(DropHelper.BagWeaponDropRateFraction, new int[]
                 {
-                    ModContent.ItemType<PhantasmalEdge>()
+                    ModContent.ItemType<PhantasmalEdge>(),
+                    ModContent.ItemType<Ectambourine>()
                 }));
             }
 

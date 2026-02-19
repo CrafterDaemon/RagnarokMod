@@ -921,9 +921,24 @@ Items: {
 			'''
 	}
 
+	Ectambourine: {
+		DisplayName: Ectambourine
+		Tooltip:
+			'''
+			Throw an endless amount of ghostly tambourines
+			Right click to jingle the thrown tambourines, damaging nearby enemies
+			'''
+	}
+}
+
 	Shredder: {
 		DisplayName: Shredder
-		Tooltip: ""
+		Tooltip:
+			'''
+			Sends out bloody shockwaves
+			Right-click to play the [c/AA1111:Blood Coagulant] riff!
+			While the riff is active, all players in range have life steal
+			'''
 	}
 }
 
@@ -1023,6 +1038,8 @@ Projectiles: {
 	DevourerRiffSine.DisplayName: Devourer Riff Sine
 	ScourgesFretsWorm.DisplayName: Scourges Frets Worm
 	DevourerSineBeam.DisplayName: Devourer Sine Beam
+	EctambourinePro.DisplayName: Ectambourine Projectile
+	EctambourineProJingle.DisplayName: Ectambourine Jingle
 	ShredderTendrils.DisplayName: Shredder Tendrils
 	ShredderPro.DisplayName: Shredder Pro
 }

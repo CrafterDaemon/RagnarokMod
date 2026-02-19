@@ -910,9 +910,19 @@ Items: {
 			''' */
 	}
 
+<<<<<<< HEAD
 	Shredder: {
 		// DisplayName: Shredder
 		// Tooltip: ""
+=======
+	Ectambourine: {
+		// DisplayName: Ectambourine
+		/* Tooltip:
+			'''
+			Throw an endless amount of ghostly tambourines
+			Right click to jingle the thrown tambourines, damaging nearby enemies
+			''' */
+>>>>>>> 0783b6bcbfd695e12d5b14c90ea6784bceaef1e3
 	}
 }
 
@@ -1012,8 +1022,13 @@ Projectiles: {
 	// DevourerRiffSine.DisplayName: Devourer Riff Sine
 	// ScourgesFretsWorm.DisplayName: Scourges Frets Worm
 	// DevourerSineBeam.DisplayName: Devourer Sine Beam
+<<<<<<< HEAD
 	// ShredderTendrils.DisplayName: Shredder Tendrils
 	// ShredderPro.DisplayName: Shredder Pro
+=======
+	// EctambourinePro.DisplayName: Ectambourine Projectile
+	// EctambourineProJingle.DisplayName: Ectambourine Jingle
+>>>>>>> 0783b6bcbfd695e12d5b14c90ea6784bceaef1e3
 }
 
 Configs: {
