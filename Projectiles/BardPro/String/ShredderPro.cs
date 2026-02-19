@@ -24,9 +24,9 @@ namespace RagnarokMod.Projectiles.BardPro.String
         }
         public override void SetBardDefaults()
         {
-            Projectile.width = 40;
-            Projectile.height = 40;
-            Projectile.scale = 2f;
+            Projectile.width = 30;
+            Projectile.height = 30;
+            Projectile.scale = 1.5f;
             Projectile.friendly = true;
             Projectile.DamageType = ThoriumDamageBase<BardDamage>.Instance;
             base.Projectile.aiStyle = ProjAIStyleID.Arrow;
@@ -34,8 +34,8 @@ namespace RagnarokMod.Projectiles.BardPro.String
             base.Projectile.penetrate = -1;
             base.Projectile.timeLeft = 120;
             base.AIType = ProjectileID.Bullet;
-            DrawOffsetX = -10;
-            DrawOriginOffsetY = -20;
+            DrawOffsetX = -7;
+            DrawOriginOffsetY = -15;
             this.fadeOutTime = 30;
             this.fadeOutSpeed = 7;
         }
@@ -80,7 +80,7 @@ namespace RagnarokMod.Projectiles.BardPro.String
         {
             for (int i = 0; i < 15; i++)
             {
-                Dust.NewDustDirect(base.Projectile.position, base.Projectile.width, base.Projectile.height, DustID.Sand, (float)Main.rand.Next(-4, 5), (float)Main.rand.Next(-4, 5), 0, default(Color), 1.5f).noGravity = true;
+                Dust.NewDustDirect(base.Projectile.position, base.Projectile.width, base.Projectile.height, DustID.Blood, (float)Main.rand.Next(-4, 5), (float)Main.rand.Next(-4, 5), 0, default(Color), 1.5f).noGravity = true;
             }
         }
 
