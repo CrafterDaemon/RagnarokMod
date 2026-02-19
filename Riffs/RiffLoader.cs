@@ -32,7 +32,7 @@ namespace RagnarokMod.Riffs
 
         public static void AddRiff(Riff riff)
         {
-            riff.RiffType = (byte)Riffs.Count;
+            riff.RiffType = (byte)(Riffs.Count + 1);
             Riffs[riff.RiffType] = riff;
         }
 

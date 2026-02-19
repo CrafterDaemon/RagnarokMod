@@ -17,19 +17,19 @@ using ThoriumMod.Items.BardItems;
 
 namespace RagnarokMod.Items.BardItems.String
 {
-    public class StellarRiff : BigRiffInstrumentBase
+    public class StellarRiff : RiffInstrumentBase
     {
         public override BardInstrumentType InstrumentType => BardInstrumentType.String;
         public override SoundStyle RiffSound => RagnarokModSounds.aureusriff;
         public override SoundStyle NormalSound => RagnarokModSounds.stellarriff;
         public override byte RiffType => RiffLoader.RiffType<AureusRiff>();
 
-        public override void SafeSetStaticDefaults(){
-            Empowerments.AddInfo<Defense>(2, 0);
-			Empowerments.AddInfo<JumpHeight>(2, 0);
+        public override void SetStaticDefaults(){
+            Empowerments.AddInfo<Defense>(1, 0);
+			Empowerments.AddInfo<JumpHeight>(3, 0);
         }
 
-        public override void SafeSetBardDefaults()
+        public override void SetBardDefaults()
         {
             Item.damage = 105;
             InspirationCost = 1;
@@ -46,10 +46,6 @@ namespace RagnarokMod.Items.BardItems.String
             Item.rare = 7;
             Item.shoot = ModContent.ProjectileType<StellarRiffPro>();
             Item.shootSpeed = 14f;
-        }
-        public override void SafeRiffBardShoot(int success, int level, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-        {
-            Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
         }
 		
         public override Vector2? HoldoutOffset() => new Vector2(-10, 12);

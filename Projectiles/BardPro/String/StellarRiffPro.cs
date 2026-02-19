@@ -33,24 +33,17 @@ namespace RagnarokMod.Projectiles.BardPro.String
 			ProjectileID.Sets.TrailingMode[base.Type] = 0;
 		}
         public override void SetBardDefaults() {
-            Projectile.width = 20;
-            Projectile.height = 20;
-			Projectile.scale = 2f;
+            Projectile.width = 25;
+            Projectile.height = 25;
             Projectile.friendly = true;
             Projectile.DamageType = ThoriumDamageBase<BardDamage>.Instance;
 			base.Projectile.ignoreWater = true;
 			base.Projectile.tileCollide = true;
 			base.Projectile.alpha = 255;
-			base.Projectile.penetrate = 0;
+			base.Projectile.penetrate = 1;
 			base.Projectile.timeLeft = 180;
         }
-
-        public override void OnSpawn(IEntitySource source){
-			DrawOffsetX = -10;
-            DrawOriginOffsetY = -20;
-            Projectile.position.Y -= Projectile.height / 2;
-        }
-		
+	
 		private Vector2 SafeDirectionTo(Vector2 from, Vector2 to, Vector2 fallback){
             Vector2 direction = to - from;
             if (direction == Vector2.Zero)
@@ -66,19 +59,15 @@ namespace RagnarokMod.Projectiles.BardPro.String
         }
 
         public override void AI(){
-			if (base.Projectile.ai[0] == 1f){
-				base.Projectile.extraUpdates = 2;
-				float maxVelocity = 3f;
-				if (base.Projectile.velocity.Length() < maxVelocity){
-					base.Projectile.velocity *= 1.015f;
-					if (base.Projectile.velocity.Length() > maxVelocity){
-						base.Projectile.velocity.Normalize();
-						base.Projectile.velocity *= maxVelocity;
-					}
+			if (Projectile.alpha > 0){
+				Projectile.alpha -= 25;
+				if (Projectile.alpha < 0) {
+					Projectile.alpha = 0;
 				}
 			}
-			else if (Vector2.Distance(new Vector2(base.Projectile.ai[0], base.Projectile.ai[1]), base.Projectile.Center) < 80f){
-				base.Projectile.tileCollide = true;
+			 
+			if (base.Projectile.ai[0] == 1f){
+				base.Projectile.extraUpdates = 2;
 			}
 			base.Projectile.frameCounter++;
 			if (base.Projectile.frameCounter > 4){
@@ -94,24 +83,60 @@ namespace RagnarokMod.Projectiles.BardPro.String
 			if (base.Projectile.alpha < 0){
 				base.Projectile.alpha = 0;
 			}
-			base.Projectile.rotation = (float)Math.Atan2((double)base.Projectile.velocity.Y, (double)base.Projectile.velocity.X) + 1.5707964f;
+			base.Projectile.rotation = (float)Math.Atan2((double)base.Projectile.velocity.Y, (double)base.Projectile.velocity.X) + MathHelper.PiOver2;
 			
-			 // Homing
-            float inertia = 90f;
-            float homeSpeed = 20f;
-            float minDist = 40f;
+			Projectile.localAI[0]++;
+			float homingDelay = 20f;
+			if (Projectile.localAI[0] > homingDelay){
+				float inertia = 16f;
+				float homeSpeed = 9f;
+				float minDist = 40f;
+				
+				Player player = Main.player[Projectile.owner];
+				if (player.GetRagnarokModPlayer().activeRiffType == RiffLoader.RiffType<AureusRiff>()){ 
+					homeSpeed = 11f;
+					inertia = 12f;
+				}
+				NPC target = Projectile.FindNearestNPC(800f);
+				if (target != null && Projectile.Distance(target.Center) > minDist){
+					Vector2 desiredVelocity = Projectile.DirectionTo(target.Center) * homeSpeed;
+					Projectile.velocity = (Projectile.velocity * (inertia - 1) + desiredVelocity) / inertia;
+				}
+			}
+		}
+		
+		public override void BardOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone){
+			// Prevent children from splitting again
+			if (Projectile.ai[2] == 1f) {
+				return;
+			}
 
-			NPC target = Projectile.FindNearestNPC(800f);
-            if (target != null && Projectile.Center.Distance(target.Center) > minDist){
-                Vector2 direction = SafeDirectionTo(Projectile.Center, target.Center, Vector2.UnitY);
-                Projectile.velocity = (Projectile.velocity * (inertia - 1f) + direction * homeSpeed) / inertia;
-            }
+			int numberProjectiles = 2;
+			float speed = 8f;
+			Player player = Main.player[Projectile.owner];
+			if (player.GetRagnarokModPlayer().activeRiffType == RiffLoader.RiffType<AureusRiff>()){ 
+				numberProjectiles = 4;
+			}
+			
+			for (int i = 0; i < numberProjectiles; i++){
+				float angle = MathHelper.ToRadians(90f * i);
+				Vector2 velocity = angle.ToRotationVector2() * speed;
+	
+				Projectile newProj = Projectile.NewProjectileDirect(
+					Projectile.GetSource_FromThis(),
+					Projectile.Center,
+					velocity,
+					Projectile.type,
+					Projectile.damage / 4,
+					Projectile.knockBack,
+					Projectile.owner
+				);
+				newProj.scale = 0.6f;
+				newProj.ai[2] = 1f;
+				newProj.timeLeft = 300;
+			}
 		}
 
-        public override void ModifyDamageHitbox(ref Rectangle hitbox){
-            hitbox.Inflate(5, 5);
-        }
-		
 		public override Color? GetAlpha(Color lightColor)
 		{
 			return new Color?(new Color(255, 255, 255, base.Projectile.alpha));
@@ -119,8 +144,9 @@ namespace RagnarokMod.Projectiles.BardPro.String
 		
         public override void OnKill(int timeLeft)
         {
-            for (int i = 0; i < 15; i++){
+            for (int i = 0; i < 8; i++){
                 Dust.NewDustDirect(base.Projectile.position, base.Projectile.width, base.Projectile.height, ModContent.DustType<AstralOrange>(), (float)Main.rand.Next(-4, 5), (float)Main.rand.Next(-4, 5), 0, default(Color), 1.5f).noGravity = true;
+				Dust.NewDustDirect(base.Projectile.position, base.Projectile.width, base.Projectile.height, ModContent.DustType<AstralBlue>(), (float)Main.rand.Next(-4, 5), (float)Main.rand.Next(-4, 5), 0, default(Color), 1.5f).noGravity = true;
             }
         }
     }
