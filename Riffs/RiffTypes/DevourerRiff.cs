@@ -20,7 +20,7 @@ namespace RagnarokMod.Riffs.RiffTypes
     public class DevourerRiff : Riff
     {
         public override float Range => 1200f;
-        public override int CooldownTicks => 120 * 60;
+        public override int CooldownTicks => 120*60;
 
         public override void SetStaticDefaults()
         {

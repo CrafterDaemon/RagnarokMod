@@ -537,9 +537,9 @@ Items: {
 		Tooltip: 偶尔释放出风刃。
 	}
 
-	SquirrelScarf: {
-		DisplayName: 松鼠式围巾
-		Tooltip: 调试，不是真正的游戏玩法。增加999哨兵槽
+	TrueSquirrelScarf: {
+		// DisplayName: True Squirrel Scarf
+		// Tooltip: The true, original form of the squirrel scarf.\nGrants +999 Sentry Slots
 	}
 
 	Prisma: {
@@ -904,10 +904,15 @@ Items: {
 		// DisplayName: Devourer of Sines
 		/* Tooltip:
 			'''
-			Channel this weapon to create a massive sine wave.
+			Channel this weapon to create a massive sine wave
 			Right-click to play the [c/501eb4:Universal Collapse] riff!
-			While the riff is active, all players in range have unlimited flight.
+			While the riff is active, all players in range have unlimited flight
 			''' */
+	}
+
+	Shredder: {
+		// DisplayName: Shredder
+		// Tooltip: ""
 	}
 }
 
@@ -1007,6 +1012,7 @@ Projectiles: {
 	// DevourerRiffSine.DisplayName: Devourer Riff Sine
 	// ScourgesFretsWorm.DisplayName: Scourges Frets Worm
 	// DevourerSineBeam.DisplayName: Devourer Sine Beam
+	// ShredderTendrils.DisplayName: Shredder Tendrils
 }
 
 Configs: {

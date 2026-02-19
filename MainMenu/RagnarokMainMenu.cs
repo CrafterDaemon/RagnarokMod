@@ -52,7 +52,7 @@ namespace RagnarokMod.MainMenu
                 if (yScale > xScale)
                 {
                     scale = yScale;
-                    drawOffset.X -= (background.Width * scale - Main.screenWidth) * 0.5f;
+                    drawOffset.X -= ((background.Width * scale - Main.screenWidth) * 0.5f) + 1;
                 }
                 else
                     drawOffset.Y -= (background.Height * scale - Main.screenHeight) * 0.5f;
@@ -64,10 +64,10 @@ namespace RagnarokMod.MainMenu
 
             spriteBatch.Draw(background, drawOffset, null, Color.White, 0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
 
-            // --- Particles ---
+            // Particles
             // Spawn new particles from the bottom
             float spawnX = Main.rand.NextFloat(0.0f, Main.screenWidth);
-            int life = Main.rand.Next(120, 240);
+            int life = Main.rand.Next(120, 360);
             Color particleColor = Main.rand.NextBool()
                 ? Color.Lerp(new Color(180, 80, 255), new Color(100, 40, 200), Main.rand.NextFloat())
                 : Color.Lerp(new Color(220, 150, 255), new Color(255, 200, 255), Main.rand.NextFloat());
@@ -75,8 +75,8 @@ namespace RagnarokMod.MainMenu
             Particles.Add(new Particle
             {
                 Position = new Vector2(spawnX, Main.screenHeight + 10f),
-                Velocity = new Vector2(Main.rand.NextFloat(-0.6f, 0.6f), Main.rand.NextFloat(-2.5f, -1.2f)),
-                Scale = Main.rand.NextFloat(0.15f, 0.4f),
+                Velocity = new Vector2(Main.rand.NextFloat(-0.6f, 0.6f), Main.rand.NextFloat(-3f, -1.2f)),
+                Scale = Main.rand.NextFloat(0.25f, 0.5f),
                 Alpha = 0f,
                 AlphaDecay = 1f / life,
                 Color = particleColor,
