@@ -32,7 +32,7 @@ namespace RagnarokMod.Items.BardItems.Percussion
 
         public override void SetBardDefaults()
         {
-            Item.damage = 165;
+            Item.damage = 180;
             InspirationCost = 2;
             Item.width = 40;
             Item.height = 40;
