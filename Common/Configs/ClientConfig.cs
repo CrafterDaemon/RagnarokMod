@@ -32,10 +32,5 @@ namespace RagnarokMod.Common.Configs
         [Increment(1)]
         [DrawTicks]
         public int BardEmpowermentBarOffsetY { get; set; }
-
-        [Header("Debug")]
-
-        [DefaultValue(false)]
-        public bool ShowItemHitboxes { get; set; }
     }
 }

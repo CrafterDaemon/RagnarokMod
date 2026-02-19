@@ -116,6 +116,16 @@ Tooltips: {
 	}
 }
 
+Compat: {
+	// TechPoints: Increases your maximum technique points by
+	// Recharge: and recharge by
+	// BasicDamage: basic damage
+	// DupeDamage: of your rogue damage is duplicated
+	// DupeCap: Duplication damage caps at
+	// NoGuideStack: Effect does not stack with other Guides
+	// Power: % Power
+}
+
 Items: {
 	DrumStick: {
 		DisplayName: 鼓槌
@@ -931,7 +941,12 @@ Items: {
 
 	SquirrelScarf: {
 		// DisplayName: Squirrel Scarf
-		// Tooltip: ""
+		/* Tooltip:
+			'''
+			As fluffy as a squirrel's tail
+				Increase your max number of sentries by 1
+				Increases summon damage by 5%
+			''' */
 	}
 }
 
