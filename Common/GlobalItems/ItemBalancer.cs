@@ -9,22 +9,17 @@ using Terraria.DataStructures;
 using CalamityMod;
 using ThoriumMod;
 using ThoriumMod.Utilities;
-using ThoriumMod.Items.Depths;
-using ThoriumMod.Items;
 using ThoriumMod.Projectiles;
 using ThoriumMod.Buffs;
 using RagnarokMod.Common.Configs;
 using RagnarokMod.Utils;
-using ThoriumMod.Items.MagicItems;
 using ThoriumMod.Items.ThrownItems;
 
 namespace RagnarokMod.Common.GlobalItems
 {
     public class ItemBalancer : GlobalItem
     {
-        private static bool print_message = true;
         private static Mod thorium = ModLoader.GetMod("ThoriumMod");
-        private static Mod calamity = ModLoader.GetMod("CalamityMod");
 
         public override bool AppliesToEntity(Item item, bool lateInstantiation)
         {

@@ -92,7 +92,6 @@ namespace RagnarokMod.Common.GlobalNPCs
                 {
                     return true;
                 }
-                return false;
             }
             else
             {

@@ -21,7 +21,6 @@ namespace RagnarokMod.Items.BardItems.String
     public class UnbreakableCombatUkulele : BardItem
     {
         public override BardInstrumentType InstrumentType => BardInstrumentType.String;
-        private int counter = 1;
         public override void SetStaticDefaults()
         {
             Empowerments.AddInfo<LifeRegeneration>(3, 0);

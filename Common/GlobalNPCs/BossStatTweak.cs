@@ -346,13 +346,11 @@ namespace RagnarokMod.Common.GlobalNPCs
 
             // Total HP Modifier without the CalamityHPBoost;
             double TotalHPModifier = 1;
-            double TotalDamageModifier = 1;
 
             // DeathMode has to be checked first
             if (CalamityGamemodeCheck.isDeath)
             {
                 TotalHPModifier *= 1.2;
-                TotalDamageModifier = 1.35;
                 if (npc.type == thorium.Find<ModNPC>("TheGrandThunderBirdv2").Type)
                 {
                     TotalHPModifier += 0.3;
@@ -361,7 +359,6 @@ namespace RagnarokMod.Common.GlobalNPCs
             else if (CalamityGamemodeCheck.isRevengeance)
             {
                 TotalHPModifier *= 1.2;
-                TotalDamageModifier = 1.2;
                 if (npc.type == thorium.Find<ModNPC>("TheGrandThunderBirdv2").Type)
                 {
                     TotalHPModifier += 0.3;

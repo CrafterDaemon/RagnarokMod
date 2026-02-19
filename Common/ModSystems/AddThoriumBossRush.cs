@@ -31,7 +31,6 @@ namespace RagnarokMod.Common.ModSystems
                 {
                     List<ValueTuple<int, int, Action<int>, int, bool, float, int[], ValueTuple<int[]>>> list = calamity.Call(new object[] { "GetBossRushEntries" }) as List<ValueTuple<int, int, Action<int>, int, bool, float, int[], ValueTuple<int[]>>>;
                     List<ValueTuple<int, int, Action<int>, int, bool, float, int[], ValueTuple<int[]>>> bossRushEntries = new List<ValueTuple<int, int, Action<int>, int, bool, float, int[], ValueTuple<int[]>>>();
-                    Action<int> action_old;
                     foreach (ValueTuple<int, int, Action<int>, int, bool, float, int[], ValueTuple<int[]>> entry in list)
                     {
                         if (entry.Item1 == 50) // Before King Slime add Grand Thunderbird

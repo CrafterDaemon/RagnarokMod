@@ -15,7 +15,7 @@ namespace RagnarokMod.Projectiles.Riffs
         public override string Texture => $"Terraria/Images/Item_{ItemID.CrimstoneBlock}";
 
         private const int TendrilCount = 6;
-        private const int SegmentsPerTendril = 6;
+        private const int SegmentsPerTendril = 12;
         private const float TendrilLength = 320f;
         private const float SegmentSpacing = TendrilLength / SegmentsPerTendril;
 
@@ -206,7 +206,7 @@ namespace RagnarokMod.Projectiles.Riffs
                     float alpha = (1f - progress * 0.2f) * easedGrowth;
 
                     // Thickness with random variation for lumpy organic look
-                    float baseThickness = MathHelper.Lerp(48f, 8f, progress);
+                    float baseThickness = MathHelper.Lerp(36f, 8f, progress);
                     float thicknessVariation = (float)Math.Sin((seed + segmentIndex) * 11.4f) * 2f;
                     float thickness = (baseThickness + thicknessVariation) * easedGrowth;
 

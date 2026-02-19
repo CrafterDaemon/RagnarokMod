@@ -1,25 +1,14 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Audio;
 using ThoriumMod;
-using ThoriumMod.Utilities;
 using ThoriumMod.Projectiles.Bard;
-using CalamityMod.Items;
-using CalamityMod.Buffs.StatDebuffs;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria.GameContent;
-using Terraria.ModLoader.Utilities;
-using RagnarokMod.Projectiles.HealerPro.Scythes;
 
 namespace RagnarokMod.Projectiles.BardPro.String
 {
     public class UnbreakableCombatUkulelePro2 : BardProjectile, ILocalizedModType
     {
-        int counter = 0;
-
         public override BardInstrumentType InstrumentType => BardInstrumentType.String;
 
         public override void SetBardDefaults()

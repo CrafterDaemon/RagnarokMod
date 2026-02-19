@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace RagnarokMod.Buffs
@@ -30,7 +31,7 @@ namespace RagnarokMod.Buffs
             // Damage logic for Players
             if (Main.rand.NextBool(4)) // Deals damage every 15 ticks (~0.25 seconds).
             {
-                player.Hurt(PlayerDeathReason.ByCustomReason($"{player.name} was smited."), 10, 0);
+                player.Hurt(PlayerDeathReason.ByCustomReason(NetworkText.FromLiteral($"{player.name} " + Language.GetTextValue("Mods.RagnarokMod.Compat.Smited"))), 10, 0);
                 Dust.NewDust(player.position, player.width, player.height, DustID.Electric);
             }
         }

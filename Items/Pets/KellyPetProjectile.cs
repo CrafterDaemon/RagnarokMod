@@ -16,7 +16,6 @@ namespace RagnarokMod.Items.Pets
         private bool _isIdling;
         private bool _isWalking;
         private bool _isFlying;
-        private int _oldFrame;
         private Vector2 _breathingScale;
 
         private Asset<Texture2D> _outlineTextureAsset;
