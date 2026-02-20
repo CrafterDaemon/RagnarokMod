@@ -1,8 +1,8 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
-using System;
-using System.Collections.Generic;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
@@ -27,7 +27,7 @@ namespace RagnarokMod.MainMenu
         private static List<Particle> Particles = new();
         private static int timer = 0;
 
-        public override string DisplayName => "Ragnarok";
+        public override string DisplayName => "Ragnarok Style";
 
         public override Asset<Texture2D> Logo => ModContent.Request<Texture2D>("RagnarokMod/MainMenu/Logo");
         public override Asset<Texture2D> SunTexture => ModContent.Request<Texture2D>("CalamityMod/Backgrounds/BlankPixel");
