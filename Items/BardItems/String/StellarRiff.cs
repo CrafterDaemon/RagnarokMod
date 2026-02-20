@@ -35,15 +35,15 @@ namespace RagnarokMod.Items.BardItems.String
             InspirationCost = 1;
             Item.width = 58;
             Item.height = 66;
-            Item.useTime = 23;
-            Item.useAnimation = 23;
+            Item.useTime = 28;
+            Item.useAnimation = 28;
             Item.useStyle = ItemUseStyleID.Guitar;
             Item.holdStyle = 5;
             Item.noMelee = true;
             Item.autoReuse = true;
             Item.knockBack = 3f;
 			Item.value = CalamityGlobalItem.RarityLimeBuyPrice;
-            Item.rare = 7;
+            Item.rare = ItemRarityID.Purple;
             Item.shoot = ModContent.ProjectileType<StellarRiffPro>();
             Item.shootSpeed = 14f;
         }

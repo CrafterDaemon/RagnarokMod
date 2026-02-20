@@ -968,6 +968,11 @@ Items: {
 		DisplayName: Riff Tester
 		Tooltip: ""
 	}
+
+	StellarRiff: {
+		DisplayName: Stellar Riff
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -1070,6 +1075,9 @@ Projectiles: {
 	EctambourineProJingle.DisplayName: Ectambourine Jingle
 	ShredderTendrils.DisplayName: Shredder Tendrils
 	ShredderPro.DisplayName: Shredder Pro
+	StellarRiffPro.DisplayName: Stellar Riff Pro
+	StellarAurora.DisplayName: Stellar Aurora
+	StellarShootingStar.DisplayName: Stellar Shooting Star
 }
 
 Configs: {

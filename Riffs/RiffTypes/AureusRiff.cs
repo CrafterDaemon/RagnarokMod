@@ -2,6 +2,8 @@
 using CalamityMod.Cooldowns;
 using CalamityMod.Dusts;
 using Microsoft.Xna.Framework;
+using RagnarokMod.Projectiles.BardPro.Riffs;
+using RagnarokMod.Projectiles.Riffs;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -20,25 +22,20 @@ namespace RagnarokMod.Riffs.RiffTypes
         {
             Empowerments.Add<FlightTime>(3);
             Empowerments.Add<DamageReduction>(3);
-			Empowerments.Add<LifeRegeneration>(3);
+            Empowerments.Add<LifeRegeneration>(3);
+            Empowerments.Add<MovementSpeed>(2);
+            Empowerments.Add<AttackSpeed>(2);
+            Empowerments.Add<Damage>(2);
         }
         public override void SafeUpdate(Player bardPlayer, Player target)
         {
-            target.GetAttackSpeed(DamageClass.Generic) += 0.15f;
-            target.GetDamage(DamageClass.Generic) += 0.1f;
-            target.moveSpeed += 0.1f;
-            for (int i = 0; i < 24; i++){
-				float angle = MathHelper.TwoPi * i / 24f + Main.GameUpdateCount * 0.05f;
-				Vector2 pos = target.Center + Vector2.UnitX.RotatedBy(angle) * 60f;
-			
-				int dustType = (i % 2 == 0)
-					? ModContent.DustType<AstralOrange>()
-					: ModContent.DustType<AstralBlue>();
-			
-				Dust dust = Dust.NewDustPerfect(pos, dustType);
-				dust.noGravity = true;
-				dust.velocity = Vector2.Zero;
-			}
+
+        }
+
+        public override void SafeOnStart(Player bardPlayer, Player target)
+        {
+            if (target == bardPlayer)
+            Projectile.NewProjectile(bardPlayer.GetSource_FromThis(), bardPlayer.Center, Vector2.Zero, ModContent.ProjectileType<StellarAurora>(), 0, 0f, bardPlayer.whoAmI, bardPlayer.whoAmI);
         }
     }
 }

@@ -124,6 +124,10 @@ Compat: {
 	// DupeCap: Duplication damage caps at
 	// NoGuideStack: Effect does not stack with other Guides
 	// Power: % Power
+	// Smited: was smited.
+	// Darkness: fell into darkness.
+	// TurnedToAmmo: was converted into ammunition.
+	// Recoil: could not handle the recoil.
 }
 
 Items: {
@@ -953,6 +957,11 @@ Items: {
 		// DisplayName: Riff Tester
 		// Tooltip: ""
 	}
+
+	StellarRiff: {
+		// DisplayName: Stellar Riff
+		// Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -1055,6 +1064,9 @@ Projectiles: {
 	// EctambourineProJingle.DisplayName: Ectambourine Jingle
 	// ShredderTendrils.DisplayName: Shredder Tendrils
 	// ShredderPro.DisplayName: Shredder Pro
+	// StellarRiffPro.DisplayName: Stellar Riff Pro
+	// StellarAurora.DisplayName: Stellar Aurora
+	// StellarShootingStar.DisplayName: Stellar Shooting Star
 }
 
 Configs: {
@@ -1344,14 +1356,8 @@ Configs: {
 		// DisplayName: Client Config
 
 		Headers: {
-			// Audio: Audio Header
-			// UITweaks: U I Tweaks Header
-			// Debug: Debug Header
-		}
-
-		EnableRiffMusic: {
-			// Label: Enable Riff Music
-			// Tooltip: ""
+			// Audio: Audio
+			// UITweaks: UI Tweaks
 		}
 
 		BardEmpowermentBarOffsetX: {
@@ -1361,11 +1367,6 @@ Configs: {
 
 		BardEmpowermentBarOffsetY: {
 			// Label: Bard Empowerment Bar Offset Y
-			// Tooltip: ""
-		}
-
-		ShowItemHitboxes: {
-			// Label: Show Item Hitboxes
 			// Tooltip: ""
 		}
 
