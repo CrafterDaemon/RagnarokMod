@@ -20,6 +20,13 @@ namespace RagnarokMod.Common.Configs
         [Slider]
         public float RiffMusicVolume { get; set; }
 
+        [Header("Visual")]
+        [Range(0f, 1f)]
+        [DefaultValue(1f)]
+        [Increment(0.01f)]
+        [Slider]
+        public float RiffScreenEffectIntensity { get; set; } = 100f;
+
         [Header("UITweaks")]
 
         [DefaultValue(32)]

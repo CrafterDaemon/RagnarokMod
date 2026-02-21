@@ -952,7 +952,8 @@ Items: {
 			Whistles out a cursed burst of noise
 			Has a chance to shoot vile spit
 			Right-click to play the [c/50477e:Filthy Mind] riff!
-			While the riff is active, all players __
+			While the riff is active, infected pustules spawn around you.
+			Infected pustules will spew cursed fire at the nearest enemy.
 			'''
 	}
 
@@ -1107,6 +1108,9 @@ Projectiles: {
 	StellarAurora.DisplayName: Stellar Aurora
 	StellarShootingStar.DisplayName: Stellar Shooting Star
 	DragonForceRiffBeam.DisplayName: Dragon Force Riff Beam
+	InfectedPustule.DisplayName: Infected Pustule
+	InfectedSporeCloud.DisplayName: Infected Spore Cloud
+	InfectedSporeFire.DisplayName: Infected Spore Fire
 }
 
 Configs: {
@@ -1399,6 +1403,7 @@ Configs: {
 			Audio: Audio
 			UITweaks: UI Tweaks
 			WelcomeText: Welcome Text Header
+			Visual: Visual Header
 		}
 
 		BardEmpowermentBarOffsetX: {
@@ -1418,6 +1423,11 @@ Configs: {
 
 		StartText: {
 			Label: Start Text
+			Tooltip: ""
+		}
+
+		RiffScreenEffectIntensity: {
+			Label: Riff Screen Effect Intensity
 			Tooltip: ""
 		}
 	}

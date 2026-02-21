@@ -19,7 +19,6 @@ namespace RagnarokMod.Items.BardItems.Wind
 {
     public class InfectedOcarina : RiffInstrumentBase
     {
-        // This is the same tier as the forest ocarina
         public override BardInstrumentType InstrumentType => BardInstrumentType.Wind;
         public override SoundStyle RiffSound => RagnarokModSounds.HiveMindRiff;
         public override SoundStyle NormalSound => SoundID.Item42;
@@ -63,6 +62,16 @@ namespace RagnarokMod.Items.BardItems.Wind
             if (MiscHelper.CanHitLine(position, position + vector))
             {
                 position += vector;
+            }
+            if (player.GetRagnarokModPlayer().activeRiffType == RiffLoader.RiffType<HiveMindRiff>())
+            {
+                Item.useTime = 12;
+                Item.useAnimation = 12;
+            }
+            else
+            {
+                Item.useTime = 16;
+                Item.useAnimation = 16;
             }
         }
     }

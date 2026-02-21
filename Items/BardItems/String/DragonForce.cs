@@ -43,7 +43,8 @@ namespace RagnarokMod.Items.BardItems.String
             Item.useAnimation = 6;
             Item.useStyle = ItemUseStyleID.Guitar;
             Item.noMelee = true;
-            Item.autoReuse = true;
+            Item.autoReuse = false;
+            Item.reuseDelay = 40;
             Item.knockBack = 20f;
             Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
             Item.rare = ModContent.RarityType<BurnishedAuric>();

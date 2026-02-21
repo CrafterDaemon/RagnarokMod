@@ -577,18 +577,23 @@ namespace RagnarokMod.Utils
 
         public override void PostUpdate()
         {
+            // If the riff sound has stopped, the riff is over
             if (!riffPlaying)
             {
-                return;
+                activeRiffType = 0;
+                activeRiffTargets.Clear();
             }
-            if (SoundEngine.TryGetActiveSound(riffSlot, out var sound))
+            else if (SoundEngine.TryGetActiveSound(riffSlot, out var sound))
             {
                 sound.Position = Player.Center;
             }
             else
             {
                 riffPlaying = false;
+                activeRiffType = 0;
+                activeRiffTargets.Clear();
             }
+
             if (shredderLifestealCooldown > 0)
                 shredderLifestealCooldown--;
         }
@@ -847,6 +852,9 @@ namespace RagnarokMod.Utils
         public override void UpdateDead()
         {
             SetFalse();
+            activeRiffType = 0;
+            activeRiffTargets.Clear();
+
         }
 
         public override void ModifyWeaponKnockback(Item item, ref StatModifier knockback)

@@ -132,7 +132,7 @@ namespace RagnarokMod.Projectiles.BardPro.Electronic
 
             // Check if NPC center falls within the wave's swept area
             Vector2 npcRelative = targetHitbox.Center() - owner.Center;
-            float xProgress = (npcRelative.X + BeamHalfLength) / (BeamHalfLength * 2f);
+            float xProgress = (npcRelative.X + BeamHalfLength) / (BeamHalfLength * 2f); 
 
             // NPC is outside the beam's horizontal range
             if (xProgress < 0f || xProgress > 1f)
