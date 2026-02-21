@@ -21,8 +21,8 @@ namespace RagnarokMod.Projectiles.Accessories
         private bool isPopping = false;
         private int popTimer = 0;
 
-        // ai[0] — time alive
-        // ai[1] — 0f = teal (normal), 1f = purple (corrupted)
+        // ai[0] time alive
+        // ai[1] 0f = teal (normal), 1f = purple (corrupted)
         private ref float TimeAlive => ref Projectile.ai[0];
         private ref float IsCorrupted => ref Projectile.ai[1];
 
@@ -101,7 +101,7 @@ namespace RagnarokMod.Projectiles.Accessories
             // Inner ring for depth
             DrawWobblyRing(spriteBatch, center, BaseRadius * 0.7f, radiusScale, innerColor, 1f, wobbleScale: 0.75f);
 
-            // Glass sheen — fades out with the bubble during pop
+            // Glass sheen, fades out with the bubble during pop
             if (!isPopping || popTimer < PopDuration / 2)
                 DrawSheen(spriteBatch, center, opacity * (isPopping ? 1f - popTimer / (float)PopDuration : 1f));
 
@@ -133,7 +133,7 @@ namespace RagnarokMod.Projectiles.Accessories
             for (int i = 0; i <= Resolution; i++)
             {
                 float angle = (i / (float)Resolution) * MathHelper.TwoPi;
-                // Slow, gentle wobble — soap bubble feel
+                // soap bubble feels
                 float wobble1 = (float)Math.Sin(angle * 2f + TimeAlive * 0.015f) * 1.5f * wobbleScale;
                 float wobble2 = (float)Math.Sin(angle * 3f - TimeAlive * 0.022f) * 0.8f * wobbleScale;
                 float r = (radius + wobble1 + wobble2) * radiusScale;
@@ -159,8 +159,7 @@ namespace RagnarokMod.Projectiles.Accessories
             Color sheenColor = Color.White * opacity * 0.35f;
 
             float rx = 7f;   // horizontal radius of highlight
-            float ry = 3.5f; // vertical radius — squished to look like a glint
-
+            float ry = 3.5f; // vertical radius
             const int sheenRes = 32;
             for (int i = 0; i < sheenRes; i++)
             {

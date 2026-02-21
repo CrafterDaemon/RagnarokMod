@@ -52,7 +52,7 @@ namespace RagnarokMod.Items.HealerItems.Scythes
         {
             if (player.altFunctionUse == 2)
             {
-                // Slow, heavy swing into lightning bolt
+                // heavy swing into lightning bolt
                 Item.channel = false;
                 Item.useTime = 40;
                 Item.useAnimation = 40;
