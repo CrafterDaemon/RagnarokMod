@@ -52,6 +52,7 @@ namespace RagnarokMod.Utils
         public static List<Action<Player, Player>> OnHealEffects = [];
         public bool stringInstrumentUsed = false;
         public bool batpoop = false;
+        public bool redglassMonocle = false;
 
         public bool auricBardSet = false;
         public bool auricHealerSet = false;
@@ -262,6 +263,13 @@ namespace RagnarokMod.Utils
         public override void PostUpdateMiscEffects()
         {
             HandleTextChatMessages();
+            if (redglassMonocle)
+            {
+                ThoriumPlayer tp = Player.GetThoriumPlayer();
+                byte flatDmgLevel = tp.GetEmpTimer<FlatDamage>().level;
+                if (flatDmgLevel > 0)
+                    Player.GetDamage(DamageClass.Generic).Flat += flatDmgLevel; // add it again = doubled
+            }
             if (tarraBard)
             {
                 ThoriumPlayer thoriumPlayer = ThoriumMod.Utilities.PlayerHelper.GetThoriumPlayer(base.Player);
@@ -835,6 +843,7 @@ namespace RagnarokMod.Utils
             leviathanHeart = false;
             sirenScale = false;
             shredderLifesteal = false;
+            this.redglassMonocle = false;
         }
         public override void ResetEffects()
         {

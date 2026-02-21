@@ -2,10 +2,13 @@
 using CalamityMod.Items.SummonItems;
 using CalamityMod.Items.TreasureBags;
 using CalamityMod.Items.Weapons.Magic;
+using CalamityMod.NPCs.AstrumAureus;
 using CalamityMod.NPCs.AstrumDeus;
 using CalamityMod.NPCs.BrimstoneElemental;
 using CalamityMod.NPCs.CalClone;
 using CalamityMod.NPCs.DesertScourge;
+using CalamityMod.NPCs.DevourerofGods;
+using CalamityMod.NPCs.HiveMind;
 using CalamityMod.NPCs.Leviathan;
 using CalamityMod.NPCs.OldDuke;
 using CalamityMod.NPCs.Perforator;
@@ -20,6 +23,7 @@ using RagnarokMod.Common.Configs;
 using RagnarokMod.Items.BardItems.Accessories;
 using RagnarokMod.Items.BardItems.Percussion;
 using RagnarokMod.Items.BardItems.String;
+using RagnarokMod.Items.BardItems.Wind;
 using RagnarokMod.Items.HealerItems.Accessories;
 using RagnarokMod.Items.HealerItems.Other;
 using RagnarokMod.Items.HealerItems.Scythes;
@@ -188,6 +192,20 @@ namespace RagnarokMod.Common.GlobalNPCs
             {
                 LeadingConditionRule notExpert = new LeadingConditionRule(new Conditions.NotExpert());
                 notExpert.OnSuccess(ItemDropRule.Common(ModContent.ItemType<ScourgesFrets>(), 4));
+                npcLoot.Add(notExpert);
+            }
+
+            if (npc.type == ModContent.NPCType<HiveMind>())
+            {
+                LeadingConditionRule notExpert = new LeadingConditionRule(new Conditions.NotExpert());
+                notExpert.OnSuccess(ItemDropRule.Common(ModContent.ItemType<InfectedOcarina>(), 4));
+                npcLoot.Add(notExpert);
+            }
+
+            if (npc.type == ModContent.NPCType<AstrumAureus>())
+            {
+                LeadingConditionRule notExpert = new LeadingConditionRule(new Conditions.NotExpert());
+                notExpert.OnSuccess(ItemDropRule.Common(ModContent.ItemType<StellarRiff>(), 4));
                 npcLoot.Add(notExpert);
             }
 

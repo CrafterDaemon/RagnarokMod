@@ -1,30 +1,31 @@
-﻿using ThoriumMod;
-using ThoriumMod.Items;
-using ThoriumMod.Empowerments;
-using ThoriumMod.Projectiles.Bard;
-using Terraria;
-using Terraria.ModLoader;
-using Terraria.ID;
-using Terraria.Audio;
-using Terraria.DataStructures;
-using CalamityMod;
+﻿using CalamityMod;
 using CalamityMod.Items;
-using CalamityMod.Rarities;
 using CalamityMod.Items.Materials;
-using RagnarokMod.Sounds;
-using ThoriumMod.Items.BardItems;
-using ThoriumMod.Items.Donate;
+using CalamityMod.Rarities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using RagnarokMod.Projectiles.BardPro.Electronic;
+using RagnarokMod.Sounds;
+using RagnarokMod.Utils;
+using System;
+using Terraria;
+using Terraria.Audio;
+using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.ModLoader;
+using ThoriumMod;
+using ThoriumMod.Empowerments;
+using ThoriumMod.Items;
+using ThoriumMod.Items.BardItems;
+using ThoriumMod.Items.Donate;
+using ThoriumMod.Projectiles.Bard;
+using ThoriumMod.Utilities;
 
 namespace RagnarokMod.Items.BardItems.Electronic
 {
     public class RadioMic : BardItem
     {
         public override BardInstrumentType InstrumentType => BardInstrumentType.Electronic;
-
         public override void SetStaticDefaults()
         {
             Empowerments.AddInfo<EmpowermentProlongation>(4, 0);
@@ -33,7 +34,7 @@ namespace RagnarokMod.Items.BardItems.Electronic
 
         public override void SetBardDefaults()
         {
-            Item.damage = 435;
+            Item.damage = 485;
             InspirationCost = 2;
             Item.width = 32;
             Item.height = 32;
@@ -50,12 +51,31 @@ namespace RagnarokMod.Items.BardItems.Electronic
             Item.shoot = ModContent.ProjectileType<TendrilStrike>();
             Item.shootSpeed = 10f;
         }
+        public override void ModifyInspirationCost(Player player, ref int cost)
+        {
+            if (player.GetRagnarokModPlayer().redglassMonocle)
+                cost = 2;
+            else
+                cost = 4;
+        }
 
+        public override void ModifyEmpowerment(
+            ThoriumPlayer player,
+            ThoriumPlayer target,
+            byte type,
+            ref byte level,
+            ref short duration)
+        {
+            if (player.Player.GetRagnarokModPlayer().redglassMonocle)
+            {
+                if (type == EmpowermentLoader.EmpowermentType<Damage>())
+                    level += 1;
+            }
+        }
         public override bool BardShoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             int numberProjectiles = 5;
             float rotation = MathHelper.ToRadians(12);
-
             for (int i = 0; i < numberProjectiles; i++)
             {
                 Vector2 perturbedSpeed =

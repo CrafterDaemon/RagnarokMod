@@ -4,6 +4,7 @@ using CalamityMod.NPCs.CalClone;
 using RagnarokMod.Items.BardItems.Accessories;
 using RagnarokMod.Items.BardItems.Percussion;
 using RagnarokMod.Items.BardItems.String;
+using RagnarokMod.Items.BardItems.Wind;
 using RagnarokMod.Items.HealerItems.Accessories;
 using RagnarokMod.Items.HealerItems.Other;
 using RagnarokMod.Items.HealerItems.Scythes;
@@ -48,6 +49,8 @@ namespace RagnarokMod.Common.GlobalItems
             || item.type == ModContent.ItemType<BrimstoneElementalBag>()
             || item.type == ModContent.ItemType<LeviathanBag>()
             || item.type == ModContent.ItemType<DesertScourgeBag>()
+            || item.type == ModContent.ItemType<HiveMindBag>()
+            || item.type == ModContent.ItemType<AstrumAureusBag>()
             );
         }
 
@@ -159,6 +162,22 @@ namespace RagnarokMod.Common.GlobalItems
                 itemLoot.Add(DropHelper.CalamityStyle(DropHelper.BagWeaponDropRateFraction, new int[]
                 {
                     ModContent.ItemType<ScourgesFrets>()
+                }));
+            }
+
+            if (item.type == ModContent.ItemType<HiveMindBag>())
+            {
+                itemLoot.Add(DropHelper.CalamityStyle(DropHelper.BagWeaponDropRateFraction, new int[]
+                {
+                    ModContent.ItemType<InfectedOcarina>()
+                }));
+            }
+
+            if (item.type == ModContent.ItemType<AstrumAureusBag>())
+            {
+                itemLoot.Add(DropHelper.CalamityStyle(DropHelper.BagWeaponDropRateFraction, new int[]
+                {
+                    ModContent.ItemType<StellarRiff>()
                 }));
             }
         }

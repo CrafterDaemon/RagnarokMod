@@ -988,6 +988,32 @@ Items: {
 			Hold Shift to see a list of past and current developers
 			''' */
 	}
+
+	ProfanityFilter: {
+		// DisplayName: Profanity Filter
+		/* Tooltip:
+			'''
+			Electronic weapons have 10% reduced damage, but 50% increased playing speed
+			15% increased symphonic damage for weapons that are not Electronic
+			10% increased symphonic critical chance
+			Increases maximum inspiration by 4
+			Symphonic damage has a 10% chance to increase the level of one of your active empowerments. 
+			This effect can only trigger once every 2.5 seconds.
+			''' */
+	}
+
+	RedglassMonocle: {
+		// DisplayName: Redglass Monocle
+		/* Tooltip:
+			'''
+			Once worn by an infamous underworld native.
+			25% increased symphonic damage
+			Flat Damage empowerment is twice as effective on you
+			Reduces the inspiration cost of Radio Mic by 2
+			Increases the Damage empowerment level from Radio Mic by 1
+			Radio Mic now inflicts Charmed for 5 seconds
+			''' */
+	}
 }
 
 Projectiles: {

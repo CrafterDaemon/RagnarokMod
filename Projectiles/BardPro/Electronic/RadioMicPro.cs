@@ -2,12 +2,14 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RagnarokMod.Sounds;
+using RagnarokMod.Utils;
 using System.Runtime.CompilerServices;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using ThoriumMod;
+using ThoriumMod.Buffs;
 using ThoriumMod.Projectiles.Bard;
 
 namespace RagnarokMod.Projectiles.BardPro.Electronic
@@ -86,21 +88,24 @@ namespace RagnarokMod.Projectiles.BardPro.Electronic
             {
                 if (!hasHit)
                 {
-                    Projectile.NewProjectile(
+                    int proj = Projectile.NewProjectile(
                         Projectile.GetSource_FromThis(),
                         target.Center,
                         Vector2.Zero,
                         ModContent.ProjectileType<TendrilStrike>(),
                         Projectile.damage,
-                        Projectile.knockBack,
+                        0f,
                         Projectile.owner
                     );
+                    Main.projectile[proj].ai[1] = target.whoAmI;
                     hasHit = true;
 
                     SoundEngine.PlaySound(RagnarokModSounds.RadioDemon, target.Center);
                 }
 
                 target.AddBuff((BuffID.CursedInferno), 180);
+                if (Main.player[Projectile.owner].GetRagnarokModPlayer().redglassMonocle)
+                    target.AddBuff(ModContent.BuffType<Charmed>(), 300);
             }
             else
             {
