@@ -517,7 +517,7 @@ Items: {
 			'''
 			The scoria allows you to spin the scythe much faster by constantly expelling steam
 			Right click to throw the scythe, which will curve on it's way back
-		The scythe deals 20% more damage when thrown
+			The scythe deals 20% more damage when thrown
 			'''
 	}
 
@@ -929,6 +929,17 @@ Items: {
 			Right click to jingle the thrown tambourines, damaging nearby enemies
 			'''
 	}
+
+	InfectedOcarina: {
+		DisplayName: Infected Ocarina
+		Tooltip:
+			'''
+			Whistles out a cursed burst of noise
+			Has a chance to shoot vile spit
+			Right-click to play the [c/50477e:Filthy Mind] riff!
+			While the riff is active, all players __
+			'''
+	}
 }
 
 Projectiles: {
@@ -1029,6 +1040,8 @@ Projectiles: {
 	DevourerSineBeam.DisplayName: Devourer Sine Beam
 	EctambourinePro.DisplayName: Ectambourine Projectile
 	EctambourineProJingle.DisplayName: Ectambourine Jingle
+	InfectedOcarinaPro.DisplayName: Infected Ocarina Pro
+	VileSpitFriendly.DisplayName: Vile Spit Friendly
 }
 
 Configs: {
