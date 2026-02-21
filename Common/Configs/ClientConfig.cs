@@ -7,6 +7,11 @@ namespace RagnarokMod.Common.Configs
     {
         public override ConfigScope Mode => ConfigScope.ClientSide;
 
+        [Header("WelcomeText")]
+
+        [DefaultValue(true)]
+        public bool StartText { get; set; }
+
         [Header("Audio")]
 
         [Range(0f, 1f)]

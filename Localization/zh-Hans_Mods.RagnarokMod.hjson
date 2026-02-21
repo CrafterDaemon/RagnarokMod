@@ -1373,6 +1373,7 @@ Configs: {
 		Headers: {
 			// Audio: Audio
 			// UITweaks: UI Tweaks
+			// WelcomeText: Welcome Text Header
 		}
 
 		BardEmpowermentBarOffsetX: {
@@ -1389,8 +1390,18 @@ Configs: {
 			// Label: Riff Music Volume
 			// Tooltip: ""
 		}
+
+		StartText: {
+			// Label: Start Text
+			// Tooltip: ""
+		}
 	}
 }
 
+// WikiMessage: "[i:RagnarokMod/EquivalentExchange][c/FF2929:Help us complete the official ][c/B428FF:Ragnarok Mod][c/FF2929: wiki at ][c/3898FF:ragnarokmod.wiki.gg][c/FF2929:!][i:RagnarokMod/CorrosiveFlux]"
+// FandomWarning: "[i:GolfCupFlagRed][c/B428FF:Ragnarok Mod ][c/FF2929:has never had a Fandom wiki. Any information from Fandom may be inaccurate!][i:GolfCupFlagRed]"
+// DiscordInvite: "[i:WireKite][c/9696FF:Join the official ][c/B428FF:Ragnarok Mod][c/9696FF: Discord! ][c/3898FF:discord.gg/UBAQwtKCbf][i:WireKite]"
+// PatreonAd: "[i:LuckyCoin][c/96FF96:If you enjoy the mod, consider supporting us on Patreon: ][c/3898FF:patreon.com/c/DevTeamRagnarok][i:LuckyCoin]"
+// DisableMe: "[i:Wrench][c/FFFF0A:If you would like to stop getting these messages, you can disable them in the config in your pause menu!][i:Wrench]"
 // Riffs.Cooldown: Riff Cooldown
 DamageClasses.ThoriumRogueClass.DisplayName: 盗贼伤害

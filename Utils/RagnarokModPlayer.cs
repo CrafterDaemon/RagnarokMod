@@ -43,7 +43,7 @@ namespace RagnarokMod.Utils
         private static Mod thorium = ModLoader.GetMod("ThoriumMod");
         private static Mod calamity = ModLoader.GetMod("CalamityMod");
 
-
+        private static int startMessageDisplayDelay = -1;
         public float oneTimeDamageReduction = 0;
         public bool brimstoneFlamesOnHit = false;
         public byte activeRiffType = 0;
@@ -87,7 +87,7 @@ namespace RagnarokMod.Utils
         public bool throwGuide2Fix = false;
         public bool throwGuide3Fix = false;
         public bool auricBoost;
-		
+
         public bool shredderLifesteal = false;
         public int shredderLifestealCooldown = 0;
 
@@ -131,6 +131,12 @@ namespace RagnarokMod.Utils
                 2f,
                 Player.whoAmI
             );
+        }
+
+        public override void OnEnterWorld()
+        {
+            if (ModContent.GetInstance<ClientConfig>().StartText)
+                startMessageDisplayDelay = Main.rand.Next(15*60, 60*60 + 1);
         }
         public override void OnHurt(Player.HurtInfo info)
         {
@@ -255,6 +261,7 @@ namespace RagnarokMod.Utils
 
         public override void PostUpdateMiscEffects()
         {
+            HandleTextChatMessages();
             if (tarraBard)
             {
                 ThoriumPlayer thoriumPlayer = ThoriumMod.Utilities.PlayerHelper.GetThoriumPlayer(base.Player);
@@ -871,6 +878,29 @@ namespace RagnarokMod.Utils
             OnHealEffects?.Clear();
             OnHealEffects = null;
             base.Unload();
+        }
+
+        private void HandleTextChatMessages()
+        {
+            if (Player.whoAmI != Main.myPlayer || Main.dedServ)
+                return;
+
+            if (startMessageDisplayDelay >= 0)
+            {
+                if (startMessageDisplayDelay == 0)
+                {
+                    if (ModContent.GetInstance<ClientConfig>().StartText)
+                    {
+                        CalamityUtils.BroadcastLocalizedText("Mods.RagnarokMod.FandomWarning");
+                        CalamityUtils.BroadcastLocalizedText("Mods.RagnarokMod.WikiMessage");
+                        CalamityUtils.BroadcastLocalizedText("Mods.RagnarokMod.DiscordInvite");
+                        CalamityUtils.BroadcastLocalizedText("Mods.RagnarokMod.PatreonAd");
+                        CalamityUtils.BroadcastLocalizedText("Mods.RagnarokMod.DisableMe");
+                    }
+                }
+
+                --startMessageDisplayDelay;
+            }
         }
     }
 }
