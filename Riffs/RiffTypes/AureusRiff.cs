@@ -29,7 +29,6 @@ namespace RagnarokMod.Riffs.RiffTypes
         }
         public override void SafeUpdate(Player bardPlayer, Player target)
         {
-
         }
 
         public override void SafeOnStart(Player bardPlayer, Player target)

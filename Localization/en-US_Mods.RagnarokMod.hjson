@@ -966,12 +966,17 @@ Items: {
 
 	RiffTester: {
 		DisplayName: Riff Tester
-		Tooltip: ""
+		Tooltip: Clears Riff Cooldowns. Use Responsibly.
 	}
 
 	StellarRiff: {
 		DisplayName: Stellar Riff
-		Tooltip: ""
+		Tooltip:
+			'''
+			Sends out homing stars, that split into homing shards.
+			Right-click to play the [c/00FFC8:Interstellar Stomper] riff!
+			While the riff is active, all players in range have life steal
+			'''
 	}
 
 	FateoftheGods: {
