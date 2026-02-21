@@ -958,9 +958,8 @@ Items: {
 		// DisplayName: Squirrel Scarf
 		/* Tooltip:
 			'''
-			As fluffy as a squirrel's tail
+			'As fluffy as a squirrel's tail'
 			Increases your max number of sentries by 1
-			Increases summon damage by 5%
 			''' */
 	}
 
