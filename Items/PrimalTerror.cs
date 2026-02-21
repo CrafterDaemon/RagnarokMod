@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CalamityMod.Rarities;
+using Microsoft.Xna.Framework;
 using RagnarokMod.Sounds;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,7 @@ namespace RagnarokMod.Items
             Item.useStyle = ItemUseStyleID.MowTheLawn;
             Item.holdStyle = ItemHoldStyleID.HoldGuitar;
             Item.noMelee = true;
+            Item.rare = ModContent.RarityType<CosmicPurple>();
         }
 
         public override bool? UseItem(Player player)

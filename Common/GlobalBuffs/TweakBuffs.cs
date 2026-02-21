@@ -62,13 +62,5 @@ namespace RagnarokMod.Common.GlobalBuffs
                 }
             }
         }
-
-        public override void ModifyBuffText(int type, ref string buffName, ref string tip, ref int rare)
-        {
-            if (type == ModContent.BuffType<GoldenScaleBuff>())
-            {
-                tip = "You've got gills and great cracker taste. Unfortunately goldfish do not like the Abyss";
-            }
-        }
     }
 }

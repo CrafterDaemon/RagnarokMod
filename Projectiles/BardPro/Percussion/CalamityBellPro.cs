@@ -119,7 +119,7 @@ namespace RagnarokMod.Projectiles.BardPro.Percussion
             return false;
         }
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             // Spawn explosion dust and play sound as before
             for (int i = 0; i < 18; i++)

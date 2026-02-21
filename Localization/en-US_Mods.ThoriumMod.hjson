@@ -58,6 +58,11 @@ Buffs: {
 		DisplayName: True Strike
 		Description: Your damage has a 100% chance to critically strike
 	}
+
+	GoldenScaleBuff: {
+		DisplayName: Goldfish
+		Description: You've got gills and a great cracker taste.\nUnfortunately, goldfish do not like the Abyss.
+	}
 }
 
 Items: {
@@ -187,6 +192,7 @@ Items: {
 			10% increased rogue weapon speed
 			Using a rogue item has a 20% chance to unleash two Blight Daggers
 			Blight Daggers home in on enemies and apply a highly contagious disease
+			[c/FF0000:Projectile damage caps at 2000.]
 			'''
 	}
 
@@ -196,6 +202,7 @@ Items: {
 			'''
 			6% increased rogue critical strike chance
 			Dealing two consecutive rogue attack critical strikes will discharge dark lightning and increase rogue attack speed briefly
+			[c/FF0000:Projectile damage caps at 500.]
 			'''
 	}
 
@@ -578,6 +585,34 @@ Items: {
 			10% increased rogue velocity
 			10% increased movement speed while holding a rogue item
 			'''
+	}
+
+	DepthDiverHelmet: {
+		DisplayName: Depth Diver's Helmet
+		Tooltip:
+			'''
+			'Become a selfless protector'
+			Critical strike chance increased by 6%
+			'''
+		SetBonus:
+			'''
+			You and nearby allies gain {0}% increased damage, {1}% movement speed.
+			You and nearby allies can also breathe underwater while outside of the Abyss.
+			In the Abyss, You and your allies +10 defense and +20% movement speed instead.
+			You will also randomly get some oxygen back while in the Abyss.
+			'''
+	}
+
+	NagaSkinMask: {
+		DisplayName: Naga-Skin Mask
+		Tooltip:
+			'''
+			'Garb of the original aquatic casters'
+			Maximum mana increased by 60.
+			Allows you to breathe underwater.
+			Does not work in the Abyss.
+			'''
+		SetBonus: Every {0} mana spent will dramatically increase your magic damage and casting speed briefly
 	}
 }
 

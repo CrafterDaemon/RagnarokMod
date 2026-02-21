@@ -1,6 +1,4 @@
 using System.IO;
-using System.Collections.Generic;
-using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
@@ -9,10 +7,7 @@ using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.GameContent;
 using Terraria.ModLoader.IO;
-using ThoriumMod;
-using ThoriumMod.NPCs;
 using ThoriumMod.Buffs;
 using ThoriumMod.Projectiles.Boss;
 using ThoriumMod.Core.EntitySources;
@@ -20,7 +15,6 @@ using ThoriumMod.NPCs.BossViscount;
 using RagnarokMod.Utils;
 using RagnarokMod.Common.ModSystems;
 using RagnarokMod.Common.Configs;
-using RagnarokMod.Utils;
 
 namespace RagnarokMod.Common.GlobalNPCs
 {

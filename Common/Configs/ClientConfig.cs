@@ -3,9 +3,22 @@ using Terraria.ModLoader.Config;
 
 namespace RagnarokMod.Common.Configs
 {
-    public class UIConfig : ModConfig
+    public class ClientConfig : ModConfig
     {
         public override ConfigScope Mode => ConfigScope.ClientSide;
+
+        [Header("WelcomeText")]
+
+        [DefaultValue(true)]
+        public bool StartText { get; set; }
+
+        [Header("Audio")]
+
+        [Range(0f, 1f)]
+        [Increment(0.05f)]
+        [DefaultValue(1f)]
+        [Slider]
+        public float RiffMusicVolume { get; set; }
 
         [Header("UITweaks")]
 
@@ -24,10 +37,5 @@ namespace RagnarokMod.Common.Configs
         [Increment(1)]
         [DrawTicks]
         public int BardEmpowermentBarOffsetY { get; set; }
-
-        [Header("Debug")]
-
-        [DefaultValue(false)]
-        public bool ShowItemHitboxes { get; set; }
     }
 }

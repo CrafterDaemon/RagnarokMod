@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace RagnarokMod.Items.TestingOnly
 {
-    public class SquirrelScarf : ModItem
+    public class TrueSquirrelScarf : ModItem
     {
         public override void SetDefaults()
         {

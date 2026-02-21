@@ -56,38 +56,50 @@ namespace RagnarokMod.Common.GlobalItems
                 }
             }
         }
-
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
             if (item.defense > 0)
             {
+                string tooltipText = "";
+
                 foreach (var compareditem in rogue_armor_add_tech_points)
                 {
                     if (item.type == calamity.Find<ModItem>(compareditem.Key).Type)
                     {
-                        tooltips[3].Text = tooltips[3].Text + "\nIncreases your maximum technique points by " + compareditem.Value;
+                        tooltipText += Language.GetTextValue("Mods.RagnarokMod.Compat.TechPoints") + " " + compareditem.Value;
                         break;
                     }
                 }
+
                 if (item.type == calamity.Find<ModItem>("BloodflareHeadRogue").Type)
                 {
-                    tooltips[3].Text = tooltips[3].Text + " and recharge by 15%";
+                    tooltipText += " " + Language.GetTextValue("Mods.RagnarokMod.Compat.Recharge") + " 15%";
                 }
                 else if (item.type == calamity.Find<ModItem>("GodSlayerHeadRogue").Type)
                 {
-                    tooltips[3].Text = tooltips[3].Text + " and recharge by 20%";
+                    tooltipText += " " + Language.GetTextValue("Mods.RagnarokMod.Compat.Recharge") + " 20%";
                 }
                 else if (item.type == calamity.Find<ModItem>("AuricTeslaPlumedHelm").Type)
                 {
-                    tooltips[3].Text = tooltips[3].Text + " and recharge by 30%";
+                    tooltipText += " " + Language.GetTextValue("Mods.RagnarokMod.Compat.Recharge") + " 30%";
                 }
+
                 // Catalyst
                 if (ModLoader.TryGetMod("CatalystMod", out Mod CatalystMod))
                 {
                     if (item.type == CatalystMod.Find<ModItem>("IntergelacticHeadRogue").Type)
                     {
-                        tooltips[3].Text = tooltips[3].Text + "\nIncreases your maximum technique points by and recharge by 15%";
+                        tooltipText = Language.GetTextValue("Mods.RagnarokMod.Compat.TechPoints") + " 2 " +
+                                      Language.GetTextValue("Mods.RagnarokMod.Compat.Recharge") + " 15%";
                     }
+                }
+
+                if (!string.IsNullOrEmpty(tooltipText))
+                {
+                    int index = tooltips.FindLastIndex(x => x.Mod == "Terraria" && x.Name.StartsWith("Tooltip"));
+                    if (index == -1) index = tooltips.Count - 1;
+
+                    tooltips.Insert(index + 1, new TooltipLine(Mod, "TechPoints", tooltipText));
                 }
             }
         }

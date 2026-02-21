@@ -116,6 +116,20 @@ Tooltips: {
 	}
 }
 
+Compat: {
+	TechPoints: Increases your maximum technique points by
+	Recharge: and recharge by
+	BasicDamage: basic damage
+	DupeDamage: of your rogue damage is duplicated
+	DupeCap: Duplication damage caps at
+	NoGuideStack: Effect does not stack with other Guides
+	Power: % Power
+	Smited: was smited.
+	Darkness: fell into darkness.
+	TurnedToAmmo: was converted into ammunition.
+	Recoil: could not handle the recoil.
+}
+
 Items: {
 	DrumStick: {
 		DisplayName: Drum Stick
@@ -517,7 +531,7 @@ Items: {
 			'''
 			The scoria allows you to spin the scythe much faster by constantly expelling steam
 			Right click to throw the scythe, which will curve on it's way back
-			The scythe deals 20% more damage when thrown
+				The scythe deals 20% more damage when thrown
 			'''
 	}
 
@@ -549,9 +563,9 @@ Items: {
 		Tooltip: Releases an occasional wind slice when spun
 	}
 
-	SquirrelScarf: {
-		DisplayName: Squirrel Scarf
-		Tooltip: debug, not for actual gameplay. +999 Sentry Slots
+	TrueSquirrelScarf: {
+		DisplayName: True Squirrel Scarf
+		Tooltip: The true, original form of the squirrel scarf.\nGrants +999 Sentry Slots
 	}
 
 	Prisma: {
@@ -807,8 +821,9 @@ Items: {
 		DisplayName: Dragon Force
 		Tooltip:
 			'''
-			Shoots a fiery slash that splits into infernal notes
-			'Through the Fire and the Flames!'
+			Consumes inspiration rapidly as you channel an inferno to your cursor.
+			Right-click to play the [c/FF4500:Roar of the Jungle Dragon] riff!
+			While the riff is active, the inferno this weapon unleases is amplified.
 			'''
 	}
 
@@ -940,6 +955,51 @@ Items: {
 			While the riff is active, all players __
 			'''
 	}
+
+	Shredder: {
+		DisplayName: Shredder
+		Tooltip:
+			'''
+			Sends out bloody shockwaves
+			Right-click to play the [c/AA1111:Blood Coagulant] riff!
+			While the riff is active, all players in range have life steal
+			'''
+	}
+
+	SquirrelScarf: {
+		DisplayName: Squirrel Scarf
+		Tooltip:
+			'''
+			As fluffy as a squirrel's tail
+			Increases your max number of sentries by 1
+			Increases summon damage by 5%
+			'''
+	}
+
+	RiffTester: {
+		DisplayName: Riff Tester
+		Tooltip: Clears Riff Cooldowns. Use Responsibly.
+	}
+
+	StellarRiff: {
+		DisplayName: Stellar Riff
+		Tooltip:
+			'''
+			Sends out homing stars, that split into homing shards.
+			Right-click to play the [c/00FFC8:Interstellar Stomper] riff!
+			While the riff is active, stars rain down from above.
+			'''
+	}
+
+	FateoftheGods: {
+		DisplayName: Fate of the Gods
+		Tooltip:
+			'''
+			Thanks to the entire team, everyone who supported, and those who all play the mod and keep it alive!
+			The confines of this painting is not enough to fit the entire team
+			Hold Shift to see a list of past and current developers
+			'''
+	}
 }
 
 Projectiles: {
@@ -1042,12 +1102,18 @@ Projectiles: {
 	EctambourineProJingle.DisplayName: Ectambourine Jingle
 	InfectedOcarinaPro.DisplayName: Infected Ocarina Pro
 	VileSpitFriendly.DisplayName: Vile Spit Friendly
+	ShredderTendrils.DisplayName: Shredder Tendrils
+	ShredderPro.DisplayName: Shredder Pro
+	StellarRiffPro.DisplayName: Stellar Riff Pro
+	StellarAurora.DisplayName: Stellar Aurora
+	StellarShootingStar.DisplayName: Stellar Shooting Star
+	DragonForceRiffBeam.DisplayName: Dragon Force Riff Beam
 }
 
 Configs: {
 	BossProgressionConfig: {
 		DisplayName: Boss Progression Config
-		Headers.BossProgressionChanges: Boss Progression Changes Header
+		Headers.BossProgressionChanges: Boss Progression Changes
 
 		GrandFlareGun: {
 			Label: Grand Thunder Bird Recipe Change
@@ -1220,7 +1286,7 @@ Configs: {
 	}
 
 	ModCompatConfig: {
-		DisplayName: Mod Compat Config
+		DisplayName: Mod Compatibility Config
 		Headers.ModCompat: Mod Compat Header
 
 		item_deduplication_mode: {
@@ -1238,7 +1304,7 @@ Configs: {
 		}
 
 		Ragnarok: {
-			Label: Ragnarok
+			Label: Ragnarok Mod
 			Tooltip: ""
 		}
 
@@ -1250,7 +1316,7 @@ Configs: {
 
 	BossConfig: {
 		DisplayName: Boss Config
-		Headers.BossChanges: Boss Changes Header
+		Headers.BossChanges: Boss Changes
 
 		bird: {
 			Label: Grand Thunderbird AI
@@ -1326,7 +1392,42 @@ Configs: {
 			Tooltip: ""
 		}
 	}
+
+	ClientConfig: {
+		DisplayName: Client Config
+
+		Headers: {
+			Audio: Audio
+			UITweaks: UI Tweaks
+			WelcomeText: Welcome Text Header
+		}
+
+		BardEmpowermentBarOffsetX: {
+			Label: Bard Empowerment Bar Offset X
+			Tooltip: ""
+		}
+
+		BardEmpowermentBarOffsetY: {
+			Label: Bard Empowerment Bar Offset Y
+			Tooltip: ""
+		}
+
+		RiffMusicVolume: {
+			Label: Riff Music Volume
+			Tooltip: ""
+		}
+
+		StartText: {
+			Label: Start Text
+			Tooltip: ""
+		}
+	}
 }
 
+WikiMessage: "[i:RagnarokMod/EquivalentExchange][c/FF2929:Help us complete the official ][c/B428FF:Ragnarok Mod][c/FF2929: wiki at ][c/3898FF:ragnarokmod.wiki.gg][c/FF2929:!][i:RagnarokMod/CorrosiveFlux]"
+FandomWarning: "[i:GolfCupFlagRed][c/B428FF:Ragnarok Mod ][c/FF2929:has never had a Fandom wiki. Any information from Fandom may be inaccurate!][i:GolfCupFlagRed]"
+DiscordInvite: "[i:WireKite][c/9696FF:Join the official ][c/B428FF:Ragnarok Mod][c/9696FF: Discord! ][c/3898FF:discord.gg/UBAQwtKCbf][i:WireKite]"
+PatreonAd: "[i:LuckyCoin][c/96FF96:If you enjoy the mod, consider supporting us on Patreon: ][c/3898FF:patreon.com/c/DevTeamRagnarok][i:LuckyCoin]"
+DisableMe: "[i:Wrench][c/FFFF0A:If you would like to stop getting these messages, you can disable them in the config in your pause menu!][i:Wrench]"
 Riffs.Cooldown: Riff Cooldown
 DamageClasses.ThoriumRogueClass.DisplayName: rogue damage

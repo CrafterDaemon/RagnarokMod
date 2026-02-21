@@ -42,7 +42,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             direction += MathHelper.PiOver2;
             Projectile.rotation = direction;
 
-            NPC npc = Projectile.FindNearestNPCIgnoreTiles(600);
+            NPC npc = Projectile.FindNearestNPCIgnoreTiles(1200);
             if (npc != null)
             {
                 Projectile.HomeInOnTarget(npc, 15f, 0.12f);

@@ -1,6 +1,7 @@
-displayName = Ragnarok
+displayName = Ragnarok Mod
 author = CrafterDaemon & The Ragnarok Team
-version = 1.4.5
+icon = icon_small.png
+version = 1.5
 modReferences = ThoriumMod, CalamityMod
 sortAfter = ThoriumMod, CalamityMod
 buildIgnore = .vs\*, Properties\*, *.csproj, *.user, obj\*, bin\*, *.config, .git\*, .github\*, LICENSE, README.md, .editorconfig, .gitignore, .gitattributes, lib\*

@@ -47,22 +47,22 @@ namespace RagnarokMod
                     var ragnarokplayer = player.GetModPlayer<RagnarokModPlayer>();
                     if (start)
                     {
-                        if (!SoundEngine.TryGetActiveSound(ragnarokplayer.fretSlot, out var sound) || !sound.IsPlaying)
+                        if (!SoundEngine.TryGetActiveSound(ragnarokplayer.riffSlot, out var sound) || !sound.IsPlaying)
                         {
-                            ragnarokplayer.fretSlot = SoundEngine.PlaySound(
+                            ragnarokplayer.riffSlot = SoundEngine.PlaySound(
                                 RagnarokModSounds.fretsriff,
                                 player.Center
                             );
-                            ragnarokplayer.fretPlaying = true;
+                            ragnarokplayer.riffPlaying = true;
                         }
                     }
                     else
                     {
-                        if (SoundEngine.TryGetActiveSound(ragnarokplayer.fretSlot, out var sound))
+                        if (SoundEngine.TryGetActiveSound(ragnarokplayer.riffSlot, out var sound))
                         {
                             sound.Stop();
                         }
-                        ragnarokplayer.fretPlaying = false;
+                        ragnarokplayer.riffPlaying = false;
                     }
                     break;
                 case 2:

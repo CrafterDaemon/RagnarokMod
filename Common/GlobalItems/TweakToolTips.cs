@@ -31,7 +31,7 @@ namespace RagnarokMod.Common.GlobalItems
                         tooltips[i].Text = System.Text.RegularExpressions.Regex.Replace(
                         tooltips[i].Text,
                         @"\d+% Power",
-                        $"{CalamityEdits.calculateCommunityPower() * 100}% Power"
+                        $"{Math.Round(CalamityEdits.calculateCommunityPower() * 100)}" + Language.GetTextValue("Mods.RagnarokMod.Compat.Power")
                         );
                     }
                 }

@@ -1,28 +1,18 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Collections.Generic;
-using Terraria.DataStructures;
 using Terraria.ModLoader;
 using Terraria;
 using System.Reflection;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
-using Mono.Cecil;
 using MonoMod.RuntimeDetour;
-using MonoMod.RuntimeDetour.HookGen;
 using CalamityMod;
-using RagnarokMod.Common.Configs;
 using Terraria.ID;
-using Terraria.Chat;
-using Terraria.Localization;
 
 namespace RagnarokMod.ILEditing
 {
     public class CalamityEdits : ModSystem
     {
-        private short timer = 0;
-        private static int downedBosses = 0;
 
         private static Mod Thorium => ModLoader.GetMod("ThoriumMod");
         private static Mod Calamity = ModLoader.GetMod("CalamityMod");
@@ -42,7 +32,6 @@ namespace RagnarokMod.ILEditing
             {
                 if (Calamity != null)
                 {
-                    downedBosses = getBossSlayCount();
                     foreach (Type type in calamityAssembly.GetTypes())
                     {
                         if (type.Name == "TheCommunity")
@@ -176,7 +165,6 @@ namespace RagnarokMod.ILEditing
             int count = getBossSlayCount();
             if (count > oldcount)
             {
-                downedBosses = count;
                 return true;
             }
             else { return false; }

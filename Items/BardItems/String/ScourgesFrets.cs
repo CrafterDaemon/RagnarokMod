@@ -50,7 +50,7 @@ namespace RagnarokMod.Items.BardItems.String
         public override void ModifyInstrumentDamage(ThoriumPlayer bard, ref StatModifier damage)
         {
             Player player = bard.Player;
-            if (player.GetRagnarokModPlayer().fretPlaying)
+            if (player.GetRagnarokModPlayer().activeRiffType == RiffType)
                 damage += 0.25f;
         }
         public override void SafeRiffBardShoot(int success, int level, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

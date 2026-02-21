@@ -22,13 +22,6 @@ namespace RagnarokMod.Items.HealerItems.Armor
     [AutoloadEquip(EquipType.Head)]
     public class BloodflareHeadHealer : ThoriumItem
     {
-        public string LocalizationCategory
-        {
-            get
-            {
-                return "Items.Armor.PostMoonLord";
-            }
-        }
 
         public override void SetDefaults()
         {

@@ -1,42 +1,46 @@
-﻿using CalamityMod.Items.Weapons.Magic;
-using CalamityMod;
+﻿using CalamityMod;
+using CalamityMod.Items.SummonItems;
+using CalamityMod.Items.TreasureBags;
+using CalamityMod.Items.Weapons.Magic;
+using CalamityMod.NPCs.AstrumDeus;
+using CalamityMod.NPCs.BrimstoneElemental;
+using CalamityMod.NPCs.CalClone;
+using CalamityMod.NPCs.DesertScourge;
+using CalamityMod.NPCs.Leviathan;
+using CalamityMod.NPCs.OldDuke;
+using CalamityMod.NPCs.Perforator;
+using CalamityMod.NPCs.Polterghast;
+using CalamityMod.NPCs.Providence;
 using CalamityMod.NPCs.SulphurousSea;
+using CalamityMod.NPCs.SupremeCalamitas;
+using CalamityMod.NPCs.Yharon;
+using CalamityMod.World;
+using Ragnarok.Items;
+using RagnarokMod.Common.Configs;
+using RagnarokMod.Items.BardItems.Accessories;
+using RagnarokMod.Items.BardItems.Percussion;
+using RagnarokMod.Items.BardItems.String;
+using RagnarokMod.Items.HealerItems.Accessories;
+using RagnarokMod.Items.HealerItems.Other;
+using RagnarokMod.Items.HealerItems.Scythes;
 using RagnarokMod.Items.Materials;
+using RagnarokMod.Items.RevItems;
+using RagnarokMod.Utils;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ModLoader;
-using ThoriumMod.NPCs.BossStarScouter;
-using ThoriumMod.NPCs.BossTheGrandThunderBird;
-using Ragnarok.Items;
-using ThoriumMod.NPCs.BossGraniteEnergyStorm;
-using ThoriumMod.NPCs.BossBuriedChampion;
-using ThoriumMod.NPCs.BossBoreanStrider;
 using ThoriumMod.Items.BardItems;
 using ThoriumMod.Items.HealerItems;
 using ThoriumMod.Items.ThrownItems;
-using CalamityMod.NPCs.Perforator;
-using RagnarokMod.Items.HealerItems.Other;
-using CalamityMod.NPCs.AstrumDeus;
-using CalamityMod.NPCs.CalClone;
-using CalamityMod.NPCs.SupremeCalamitas;
+using ThoriumMod.NPCs.BossBoreanStrider;
+using ThoriumMod.NPCs.BossBuriedChampion;
 using ThoriumMod.NPCs.BossFallenBeholder;
-using ThoriumMod.NPCs.BossQueenJellyfish;
 using ThoriumMod.NPCs.BossForgottenOne;
+using ThoriumMod.NPCs.BossGraniteEnergyStorm;
+using ThoriumMod.NPCs.BossQueenJellyfish;
+using ThoriumMod.NPCs.BossStarScouter;
+using ThoriumMod.NPCs.BossTheGrandThunderBird;
 using ThoriumMod.NPCs.BossViscount;
-using CalamityMod.NPCs.Providence;
-using CalamityMod.Items.SummonItems;
-using CalamityMod.World;
-using RagnarokMod.Common.Configs;
-using RagnarokMod.Utils;
-using RagnarokMod.Items.RevItems;
-using RagnarokMod.Items.BardItems.Percussion;
-using CalamityMod.NPCs.Polterghast;
-using CalamityMod.NPCs.OldDuke;
-using CalamityMod.NPCs.Yharon;
-using CalamityMod.NPCs.BrimstoneElemental;
-using CalamityMod.NPCs.DesertScourge;
-using RagnarokMod.Items.HealerItems.Scythes;
-using RagnarokMod.Items.BardItems.String;
 
 namespace RagnarokMod.Common.GlobalNPCs
 {
@@ -65,33 +69,141 @@ namespace RagnarokMod.Common.GlobalNPCs
             || npc.type == ModContent.NPCType<Yharon>()
             || npc.type == ModContent.NPCType<BrimstoneElemental>()
             || npc.type == ModContent.NPCType<DesertScourgeHead>()
+            || npc.type == ModContent.NPCType<Anahita>()
+            || npc.type == ModContent.NPCType<Leviathan>()
             );
         }
 
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
         {
-            //changing non-lootbag drops
-            if (npc.type == ModContent.NPCType<TheGrandThunderBird>() && !Main.expertMode)
+            // Thorium Bosses
+            if (npc.type == ModContent.NPCType<TheGrandThunderBird>())
             {
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<StormFeather>()));
+                LeadingConditionRule notExpert = new LeadingConditionRule(new Conditions.NotExpert());
+                notExpert.OnSuccess(ItemDropRule.Common(ModContent.ItemType<StormFeather>()));
+                npcLoot.Add(notExpert);
             }
+
+            if (npc.type == ModContent.NPCType<QueenJellyfish>())
+            {
+                LeadingConditionRule notExpert = new LeadingConditionRule(new Conditions.NotExpert());
+                notExpert.OnSuccess(ItemDropRule.Common(ModContent.ItemType<QueenJelly>(), 1, 4, 16));
+                npcLoot.Add(notExpert);
+            }
+
+            if (npc.type == ModContent.NPCType<StarScouter>())
+            {
+                LeadingConditionRule notExpert = new LeadingConditionRule(new Conditions.NotExpert());
+                notExpert.OnSuccess(ItemDropRule.Common(ModContent.ItemType<StrangeAlienMotherBoard>(), 1, 4, 6));
+                npcLoot.Add(notExpert);
+            }
+
+            if (npc.type == ModContent.NPCType<GraniteEnergyStorm>())
+            {
+                LeadingConditionRule notExpert = new LeadingConditionRule(new Conditions.NotExpert());
+                notExpert.OnSuccess(ItemDropRule.Common(ModContent.ItemType<EmpoweredGranite>(), 1, 3, 6));
+                npcLoot.Add(notExpert);
+            }
+
+            if (npc.type == ModContent.NPCType<BuriedChampion>())
+            {
+                LeadingConditionRule notExpert = new LeadingConditionRule(new Conditions.NotExpert());
+                notExpert.OnSuccess(ItemDropRule.Common(ModContent.ItemType<EnchantedMarble>(), 1, 3, 6));
+                npcLoot.Add(notExpert);
+            }
+
+            if (npc.type == ModContent.NPCType<BoreanStrider>())
+            {
+                LeadingConditionRule notExpert = new LeadingConditionRule(new Conditions.NotExpert());
+                notExpert.OnSuccess(ItemDropRule.Common(ModContent.ItemType<StriderFang>(), 1, 1, 4));
+                npcLoot.Add(notExpert);
+            }
+
+            if (npc.type == ModContent.NPCType<FallenBeholder>())
+            {
+                LeadingConditionRule notExpert = new LeadingConditionRule(new Conditions.NotExpert());
+                notExpert.OnSuccess(ItemDropRule.Common(ModContent.ItemType<VoidseerPearl>()));
+                npcLoot.Add(notExpert);
+            }
+
+            if (npc.type == ModContent.NPCType<ForgottenOne>())
+            {
+                LeadingConditionRule notExpert = new LeadingConditionRule(new Conditions.NotExpert());
+                notExpert.OnSuccess(ItemDropRule.Common(ModContent.ItemType<EldritchShellFragment>(), 1, 1, 3));
+                npcLoot.Add(notExpert);
+            }
+
+            // Calamity Bosses
+            if (npc.type == ModContent.NPCType<PerforatorHive>())
+            {
+                LeadingConditionRule notExpert = new LeadingConditionRule(new Conditions.NotExpert());
+                notExpert.OnSuccess(ItemDropRule.Common(ModContent.ItemType<EquivalentExchange>(), 4));
+                notExpert.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Shredder>(), 4));
+                npcLoot.Add(notExpert);
+            }
+
+            if (npc.type == ModContent.NPCType<CalamitasClone>())
+            {
+                LeadingConditionRule notExpert = new LeadingConditionRule(new Conditions.NotExpert());
+                notExpert.OnSuccess(ItemDropRule.Common(ModContent.ItemType<CalamityBell>(), 4));
+                npcLoot.Add(notExpert);
+            }
+
+            if (npc.type == ModContent.NPCType<Polterghast>())
+            {
+                LeadingConditionRule notExpert = new LeadingConditionRule(new Conditions.NotExpert());
+                notExpert.OnSuccess(ItemDropRule.Common(ModContent.ItemType<PhantasmalEdge>(), 4));
+                npcLoot.Add(notExpert);
+            }
+
+            if (npc.type == ModContent.NPCType<OldDuke>())
+            {
+                LeadingConditionRule notExpert = new LeadingConditionRule(new Conditions.NotExpert());
+                notExpert.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Virusprayer>(), 4));
+                npcLoot.Add(notExpert);
+            }
+
+            if (npc.type == ModContent.NPCType<SupremeCalamitas>())
+            {
+                LeadingConditionRule notExpert = new LeadingConditionRule(new Conditions.NotExpert());
+                notExpert.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Lamentation>(), 4));
+                npcLoot.Add(notExpert);
+            }
+
+            if (npc.type == ModContent.NPCType<Yharon>())
+            {
+                LeadingConditionRule notExpert = new LeadingConditionRule(new Conditions.NotExpert());
+                notExpert.OnSuccess(ItemDropRule.Common(ModContent.ItemType<DragonForce>(), 4));
+                npcLoot.Add(notExpert);
+            }
+
+            if (npc.type == ModContent.NPCType<BrimstoneElemental>())
+            {
+                LeadingConditionRule notExpert = new LeadingConditionRule(new Conditions.NotExpert());
+                notExpert.OnSuccess(ItemDropRule.Common(ModContent.ItemType<BrimScythe>(), 4));
+                npcLoot.Add(notExpert);
+            }
+
+            if (npc.type == ModContent.NPCType<DesertScourgeHead>())
+            {
+                LeadingConditionRule notExpert = new LeadingConditionRule(new Conditions.NotExpert());
+                notExpert.OnSuccess(ItemDropRule.Common(ModContent.ItemType<ScourgesFrets>(), 4));
+                npcLoot.Add(notExpert);
+            }
+
+            // Special cases
             if (npc.type == ModContent.NPCType<Viscount>())
             {
                 npcLoot.AddIf(() => CalamityWorld.revenge, ModContent.ItemType<GoldenBatDroppings>(), 1, 1, 1, true, null);
             }
-            if (npc.type == ModContent.NPCType<QueenJellyfish>() && !Main.expertMode)
+
+            if (npc.type == ModContent.NPCType<BelchingCoral>())
             {
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<QueenJelly>(), 1, 4, 16));
-            }
-            if (npc.type == ModContent.NPCType<StarScouter>() && !Main.expertMode)
-            {
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<StrangeAlienMotherBoard>(), 1, 4, 6));
-            }
-            if (npc.type == ModContent.NPCType<BelchingCoral>() && !Main.expertMode)
-            {
+                LeadingConditionRule notExpert = new LeadingConditionRule(new Conditions.NotExpert());
+
                 if (ModContent.GetInstance<ModCompatConfig>().item_deduplication_mode == CalamityBardHealer_selection_mode.Ragnarok)
                 {
-                    npcLoot.Add(ModContent.ItemType<BelchingSaxophoneOverride>(), 10);
+                    notExpert.OnSuccess(ItemDropRule.Common(ModContent.ItemType<BelchingSaxophoneOverride>(), 10));
                     if (ModLoader.TryGetMod("CalamityBardHealer", out Mod CalamityBardHealer))
                     {
                         try
@@ -107,54 +219,28 @@ namespace RagnarokMod.Common.GlobalNPCs
                 }
                 else if (ModContent.GetInstance<ModCompatConfig>().item_deduplication_mode == CalamityBardHealer_selection_mode.Off)
                 {
-                    npcLoot.Add(ModContent.ItemType<BelchingSaxophoneOverride>(), 10);
+                    notExpert.OnSuccess(ItemDropRule.Common(ModContent.ItemType<BelchingSaxophoneOverride>(), 10));
                 }
                 npcLoot.Remove(ItemDropRule.Common(ModContent.ItemType<BelchingSaxophone>(), 10));
+                npcLoot.Add(notExpert);
             }
-            if (npc.type == ModContent.NPCType<GraniteEnergyStorm>() && !Main.expertMode)
-            {
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<EmpoweredGranite>(), 1, 3, 6));
-            }
-            if (npc.type == ModContent.NPCType<BuriedChampion>() && !Main.expertMode)
-            {
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<EnchantedMarble>(), 1, 3, 6));
-            }
-            if (npc.type == ModContent.NPCType<BoreanStrider>() && !Main.expertMode)
-            {
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<StriderFang>(), 1, 1, 4));
-            }
-            if (npc.type == ModContent.NPCType<FallenBeholder>() && !Main.expertMode)
-            {
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<VoidseerPearl>()));
-            }
-            if (npc.type == ModContent.NPCType<PerforatorHive>() && !Main.expertMode)
-            {
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<EquivalentExchange>(), 4));
-            }
-            if (npc.type == ModContent.NPCType<CalamitasClone>() && !Main.expertMode)
-            {
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<CalamityBell>(), 4));
-            }
-            if (npc.type == ModContent.NPCType<Providence>() && !Main.expertMode)
-            {
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ProfanedBell>(), 4));
-            }
-            if (npc.type == ModContent.NPCType<ForgottenOne>() && !Main.expertMode)
-            {
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<EldritchShellFragment>(), 1, 1, 3));
-            }
+
             if (npc.type == ModContent.NPCType<AstrumDeusHead>())
             {
                 LeadingConditionRule lastWorm = npcLoot.DefineConditionalDropSet((DropAttemptInfo info) => !AstrumDeusHead.ShouldNotDropThings(info.npc));
-                lastWorm.Add(DropHelper.NormalVsExpertQuantity(ModContent.ItemType<CelestialFragment>(), 1, 16, 24, 20, 32), false);
-                lastWorm.Add(DropHelper.NormalVsExpertQuantity(ModContent.ItemType<ShootingStarFragment>(), 1, 16, 24, 20, 32), false);
-                lastWorm.Add(DropHelper.NormalVsExpertQuantity(ModContent.ItemType<WhiteDwarfFragment>(), 1, 16, 24, 20, 32), false);
+                lastWorm.OnSuccess(DropHelper.NormalVsExpertQuantity(ModContent.ItemType<CelestialFragment>(), 1, 16, 24, 20, 32));
+                lastWorm.OnSuccess(DropHelper.NormalVsExpertQuantity(ModContent.ItemType<ShootingStarFragment>(), 1, 16, 24, 20, 32));
+                lastWorm.OnSuccess(DropHelper.NormalVsExpertQuantity(ModContent.ItemType<WhiteDwarfFragment>(), 1, 16, 24, 20, 32));
             }
-            if (ModContent.GetInstance<BossProgressionConfig>().RuneOfKos)
+
+            if (npc.type == ModContent.NPCType<Providence>())
             {
-                if (npc.type == ModContent.NPCType<Providence>())
+                LeadingConditionRule notExpert = new LeadingConditionRule(new Conditions.NotExpert());
+                notExpert.OnSuccess(ItemDropRule.Common(ModContent.ItemType<ProfanedBell>(), 4));
+                npcLoot.Add(notExpert);
+
+                if (ModContent.GetInstance<BossProgressionConfig>().RuneOfKos)
                 {
-                    // Remove Rune of Kos
                     IItemDropRule itemDrop = ItemDropRule.Common(ModContent.ItemType<MarkofProvidence>());
                     bool waitingForChange = true;
                     while (waitingForChange && DownedBossSystem.downedProvidence)
@@ -171,29 +257,14 @@ namespace RagnarokMod.Common.GlobalNPCs
                     }
                 }
             }
-            if (npc.type == ModContent.NPCType<Polterghast>() && !Main.expertMode)
+
+            if (npc.type == ModContent.NPCType<Leviathan>())
             {
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PhantasmalEdge>(), 4));
-            }
-            if (npc.type == ModContent.NPCType<OldDuke>() && !Main.expertMode)
-            {
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Virusprayer>(), 4));
-            }
-            if (npc.type == ModContent.NPCType<SupremeCalamitas>() && !Main.expertMode)
-            {
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Lamentation>(), 4));
-            }
-            if (npc.type == ModContent.NPCType<Yharon>() && !Main.expertMode)
-            {
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DragonForce>(), 4));
-            }
-            if (npc.type == ModContent.NPCType<BrimstoneElemental>() && !Main.expertMode)
-            {
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BrimScythe>(), 4));
-            }
-            if (npc.type == ModContent.NPCType<DesertScourgeHead>() && !Main.expertMode)
-            {
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ScourgesFrets>(), 4));
+                LeadingConditionRule notExpert = new LeadingConditionRule(new Conditions.NotExpert());
+                LeadingConditionRule lastAlive = (LeadingConditionRule)notExpert.OnSuccess(npcLoot.DefineConditionalDropSet(Leviathan.LastAnLStanding));
+                lastAlive.OnSuccess(ItemDropRule.Common(ModContent.ItemType<LeviathanHeart>(), 4));
+                lastAlive.OnSuccess(ItemDropRule.Common(ModContent.ItemType<SirenScale>(), 4));
+                npcLoot.Add(notExpert);
             }
         }
     }

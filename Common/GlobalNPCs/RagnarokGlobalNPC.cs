@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CalamityMod.Items.Placeables.Furniture.Paintings;
+using RagnarokMod.Items.Placeables.Paintings;
 using Terraria;
+using Terraria.GameContent.ItemDropRules;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace RagnarokMod.Common.GlobalNPCs
@@ -35,16 +34,24 @@ namespace RagnarokMod.Common.GlobalNPCs
             Player player = Main.player[projectile.owner];
             OnHitAny(npc, player, hit, damageDone);
         }
+
         public override void OnHitByItem(NPC npc, Player player, Item item, NPC.HitInfo hit, int damageDone)
         {
             OnHitAny(npc, player, hit, damageDone);
         }
-        public void OnHitAny(NPC npc, Player player, NPC.HitInfo hit, int damageDone)
+
+        private void OnHitAny(NPC npc, Player player, NPC.HitInfo hit, int damageDone)
         {
             if (debuffNightfallen)
             {
                 hit.Damage = (int)(hit.Damage * 1.1f);
             }
+        }
+
+        public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
+        {
+            if (npc.boss && npc.type != NPCID.TorchGod) //anything that is considered a boss from (except Torch God lol) will have a 1/100 chance to drop Ragnarok's painting directly
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<FateoftheGods>(), ThankYouPainting.DropInt));
         }
     }
 }

@@ -3,6 +3,8 @@ using CalamityMod.Items;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RagnarokMod.Utils;
+using RagnarokMod.Riffs;
+using RagnarokMod.Riffs.RiffTypes;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -42,7 +44,7 @@ namespace RagnarokMod.Projectiles.BardPro.String
         public override void OnSpawn(IEntitySource source)
         {
             Player owner = Main.player[Projectile.owner];
-            if (owner.GetRagnarokModPlayer().fretPlaying)
+            if (owner.GetRagnarokModPlayer().activeRiffType == RiffLoader.RiffType<ScourgeRiff>())
             {
                 Projectile.width = 60;
                 Projectile.height = 60;

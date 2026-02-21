@@ -20,7 +20,7 @@ namespace RagnarokMod.Riffs.RiffTypes
         {
             Empowerments.Add<LifeRegeneration>(2);
             Empowerments.Add<InvincibilityFrames>(2);
-            Empowerments.Add<Damage>(1);
+            Empowerments.Add<Defense>(1);
             Empowerments.Add<AttackSpeed>(1);
             Empowerments.Add<MovementSpeed>(1);
         }

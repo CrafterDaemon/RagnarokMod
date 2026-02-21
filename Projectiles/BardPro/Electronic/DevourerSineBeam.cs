@@ -19,10 +19,6 @@ namespace RagnarokMod.Projectiles.BardPro.Electronic
     public class DevourerSineBeam : ModProjectile
     {
         public override string Texture => "Terraria/Images/Projectile_0";
-
-        // ai[0] = pitch (0f to 1f)
-
-        // Beam extends this far in each horizontal direction from the player
         private float BeamHalfLength = (Main.screenWidth - 50) / 2;
         private float BeamThickness = 12f;
         private float MaxAmplitude = (float)Main.screenHeight / 4f;
@@ -78,7 +74,7 @@ namespace RagnarokMod.Projectiles.BardPro.Electronic
             }
 
             pitcha = pitcha * 2f - 1f;
-            SoundStyle riffin = (owner.GetRagnarokModPlayer().fretPlaying || owner.altFunctionUse == 2)
+            SoundStyle riffin = (owner.GetRagnarokModPlayer().riffPlaying || owner.altFunctionUse == 2)
                 ? RagnarokModSounds.none
                 : RagnarokModSounds.devourersine;
             if (!SoundEngine.TryGetActiveSound(soundSlot, out var active) || !active.IsPlaying)

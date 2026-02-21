@@ -1,5 +1,6 @@
 ﻿using CalamityMod.Cooldowns;
 using Microsoft.Xna.Framework;
+using RagnarokMod.Common.Configs;
 using RagnarokMod.Utils;
 using System;
 using System.Collections.Generic;
@@ -18,17 +19,20 @@ namespace RagnarokMod.Riffs
         {
             public static new string ID => "RiffCooldown";
             public override bool ShouldDisplay => true;
+            public override bool SavedWithPlayer => true;
+            public override bool PersistsThroughDeath => true;
             public override LocalizedText DisplayName => Language.GetText("Mods.RagnarokMod.Riffs.Cooldown");
             public override string Texture => "RagnarokMod/Items/BardItems/Consumable/InspirationEssence";
             public override Color OutlineColor => new Color(220, 50, 50);
             public override Color CooldownStartColor => new Color(200, 30, 30);
             public override Color CooldownEndColor => new Color(170, 10, 10);
         }
+
         private static Dictionary<byte, Riff> Riffs = new();
 
         public static void AddRiff(Riff riff)
         {
-            riff.RiffType = (byte)Riffs.Count;
+            riff.RiffType = (byte)(Riffs.Count + 1);
             Riffs[riff.RiffType] = riff;
         }
 
@@ -51,26 +55,21 @@ namespace RagnarokMod.Riffs
         {
             var ragnarokPlayer = player.GetRagnarokModPlayer();
 
-            // Music volume handling
-            if (ragnarokPlayer.fretPlaying)
+            // Fade out music while riff is active (only if riff volume > 0)
+            if (ragnarokPlayer.riffPlaying && ModContent.GetInstance<ClientConfig>().RiffMusicVolume > 0f)
             {
-                if (ragnarokPlayer.savedMusicVolume < 0f)
-                    ragnarokPlayer.savedMusicVolume = Main.musicVolume;
+                if (Main.musicFade[Main.curMusic] > 0.1f)
+                    Main.musicFade[Main.curMusic] = Math.Max(0.1f, Main.musicFade[Main.curMusic] - 0.02f);
+            }
+            else
+            {
+                // Restore music fade
+                if (Main.musicFade[Main.curMusic] < 1f)
+                    Main.musicFade[Main.curMusic] = Math.Min(1f, Main.musicFade[Main.curMusic] + 0.02f);
             }
 
-            if (!ragnarokPlayer.fretPlaying)
+            if (!ragnarokPlayer.riffPlaying)
             {
-                // Restore volume every frame until back to normal
-                if (ragnarokPlayer.savedMusicVolume >= 0f)
-                {
-                    Main.musicVolume = MathHelper.Lerp(Main.musicVolume, ragnarokPlayer.savedMusicVolume, 0.1f);
-                    if (Math.Abs(Main.musicVolume - ragnarokPlayer.savedMusicVolume) < 0.01f)
-                    {
-                        Main.musicVolume = ragnarokPlayer.savedMusicVolume;
-                        ragnarokPlayer.savedMusicVolume = -1f;
-                    }
-                }
-
                 // Call OnEnd for all tracked targets when riff stops
                 if (ragnarokPlayer.activeRiffTargets.Count > 0)
                 {
@@ -88,9 +87,6 @@ namespace RagnarokMod.Riffs
 
                 return;
             }
-
-            // Fade down while riff is active
-            Main.musicVolume = MathHelper.Lerp(Main.musicVolume, 0.1f, 0.1f);
 
             Riff activeRiff = GetRiff(ragnarokPlayer.activeRiffType);
             if (activeRiff == null)
