@@ -821,8 +821,9 @@ Items: {
 		DisplayName: Dragon Force
 		Tooltip:
 			'''
-			Shoots a fiery slash that splits into infernal notes
-			'Through the Fire and the Flames!'
+			Consumes inspiration rapidly as you channel an inferno to your cursor.
+			Right-click to play the [c/FF4500:Roar of the Jungle Dragon] riff!
+			While the riff is active, the inferno this weapon unleases is amplified.
 			'''
 	}
 
@@ -975,7 +976,7 @@ Items: {
 			'''
 			Sends out homing stars, that split into homing shards.
 			Right-click to play the [c/00FFC8:Interstellar Stomper] riff!
-			While the riff is active, all players in range have life steal
+			While the riff is active, stars rain down from above.
 			'''
 	}
 
@@ -1093,6 +1094,7 @@ Projectiles: {
 	StellarRiffPro.DisplayName: Stellar Riff Pro
 	StellarAurora.DisplayName: Stellar Aurora
 	StellarShootingStar.DisplayName: Stellar Shooting Star
+	DragonForceRiffBeam.DisplayName: Dragon Force Riff Beam
 }
 
 Configs: {

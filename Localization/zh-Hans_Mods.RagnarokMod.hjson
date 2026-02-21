@@ -1082,6 +1082,7 @@ Projectiles: {
 	// StellarRiffPro.DisplayName: Stellar Riff Pro
 	// StellarAurora.DisplayName: Stellar Aurora
 	// StellarShootingStar.DisplayName: Stellar Shooting Star
+	// DragonForceRiffBeam.DisplayName: Dragon Force Riff Beam
 }
 
 Configs: {

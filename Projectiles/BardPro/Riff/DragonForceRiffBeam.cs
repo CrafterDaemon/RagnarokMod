@@ -1,18 +1,17 @@
 ﻿using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.Graphics.Primitives;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RagnarokMod.Items.BardItems.String;
+using RagnarokMod.Projectiles.BardPro.String;
 using RagnarokMod.Riffs;
 using RagnarokMod.Riffs.RiffTypes;
-using RagnarokMod.Sounds;
 using RagnarokMod.Utils;
-using ReLogic.Utilities;
 using System;
+using System.IO;
 using Terraria;
 using Terraria.Audio;
-using Terraria.DataStructures;
-using Terraria.GameContent;
 using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -20,36 +19,36 @@ using ThoriumMod;
 using ThoriumMod.Items;
 using ThoriumMod.Projectiles.Bard;
 
-namespace RagnarokMod.Projectiles.BardPro.String
+namespace RagnarokMod.Projectiles.BardPro.Riff
 {
-    public class DragonForcePro1 : BardProjectile, ILocalizedModType
+    public class DragonForceRiffBeam : BardProjectile, ILocalizedModType
     {
-        public override string Texture => $"Terraria/Images/Projectile_{ProjectileID.ShadowBeamFriendly}";
+        public override string Texture => "CalamityMod/Projectiles/InvisibleProj";
 
-        private const float MaxBeamLength = 900f;
-        private const int RingCooldownMax = 30;
+        private const float MaxBeamLength = 1200f;
+        private const int DrawPointCount = 12;
+        private const int RingCooldownMax = 20;
         private int ringCooldown = 0;
-
+        private int inspirationDrainTimer = 0;
+        private const int InspirationDrainRate = 16;
         private float beamWidth = 0f;
-        private const float MaxBeamWidth = 1f;
-        private const int ChargeUpFrames = 15;
-        private const int FadeOutFrames = 10;
+        private const float MaxBeamWidth = 1.5f;
+        private const int ChargeUpFrames = 20;
+        private const int FadeOutFrames = 12;
         private bool fadingOut = false;
         private float fadeProgress = 1f;
-
+        private int savedDamage = -1;
         private Vector2 beamStart;
         private Vector2 beamEnd;
         private float beamLength;
         private Vector2 beamDir;
-        private int inspirationDrainTimer = 0;
-        private const int InspirationDrainRate = 12; // drain 1 inspiration every 12 frames
-        private static readonly Rectangle PixelRect = new Rectangle(0, 0, 1, 1);
-        private static readonly Vector2 PixelOriginLeft = new Vector2(0, 0.5f);
-        private static readonly Vector2 PixelOriginCenter = new Vector2(0.5f, 0.5f);
 
-        private int savedDamage = -1;
-        private SlotId soundSlot;
         public override BardInstrumentType InstrumentType => BardInstrumentType.String;
+
+        public override void SetStaticDefaults()
+        {
+            ProjectileID.Sets.DrawScreenCheckFluff[Type] = 2400;
+        }
 
         public override void SetBardDefaults()
         {
@@ -63,13 +62,9 @@ namespace RagnarokMod.Projectiles.BardPro.String
             Projectile.ignoreWater = true;
             Projectile.alpha = 255;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 6;
+            Projectile.localNPCHitCooldown = 5;
         }
 
-        /// <summary>
-        /// Returns true if the owner is actively holding use on this weapon.
-        /// Bypasses Terraria's channel system entirely.
-        /// </summary>
         private bool OwnerIsChanneling()
         {
             Player owner = Main.player[Projectile.owner];
@@ -79,36 +74,22 @@ namespace RagnarokMod.Projectiles.BardPro.String
                 && !owner.CCed
                 && owner.controlUseItem
                 && owner.HeldItem.type == ModContent.ItemType<DragonForce>()
-                && owner.GetRagnarokModPlayer().activeRiffType != RiffLoader.RiffType<DragonRiff>();
+                && owner.GetRagnarokModPlayer().activeRiffType == RiffLoader.RiffType<DragonRiff>();
         }
 
         public override void AI()
         {
             Player owner = Main.player[Projectile.owner];
-            Vector2 vector = owner.Center - Main.MouseWorld;
-            float pitcha = (vector / new Vector2((float)Main.screenWidth * 0.4f, (float)Main.screenHeight * 0.4f)).Length();
-            if (pitcha > 1f)
-            {
-                pitcha = 1f;
-            }
-
-            pitcha = pitcha * 2f - 1f;
-            SoundStyle riffin = (owner.GetRagnarokModPlayer().riffPlaying || owner.altFunctionUse == 2)
-                ? RagnarokModSounds.none
-                : RagnarokModSounds.dragonforce;
-            if (!SoundEngine.TryGetActiveSound(soundSlot, out var active) || !active.IsPlaying)
-                soundSlot = SoundEngine.PlaySound(riffin.WithVolumeScale((owner.whoAmI == Main.myPlayer) ? ThoriumConfigClient.Instance.InstrumentSoundVolume : ThoriumConfigClient.Instance.OthersInstrumentSoundVolume).WithPitchOffset(pitcha), owner.Center);
-            else
-                active.Pitch = pitcha;
             if (savedDamage == -1)
                 savedDamage = Projectile.damage;
             Projectile.damage = savedDamage;
             Projectile.penetrate = -1;
+
+
             if (!fadingOut)
             {
                 if (OwnerIsChanneling())
                 {
-                    Projectile.timeLeft = 600;
                     inspirationDrainTimer++;
                     if (inspirationDrainTimer >= InspirationDrainRate)
                     {
@@ -116,9 +97,8 @@ namespace RagnarokMod.Projectiles.BardPro.String
                         var thoriumPlayer = owner.GetModPlayer<ThoriumMod.ThoriumPlayer>();
                         if (!BardItem.ConsumeInspiration(owner, 2))
                             fadingOut = true;
-                        
                     }
-                    // Lock the player into use animation so the item doesn't re-fire
+                    Projectile.timeLeft = 600;
                     owner.itemTime = owner.HeldItem.useTime;
                     owner.itemAnimation = owner.HeldItem.useAnimation;
                     owner.ChangeDir((Main.MouseWorld.X > owner.Center.X) ? 1 : -1);
@@ -142,8 +122,6 @@ namespace RagnarokMod.Projectiles.BardPro.String
                 beamWidth = MaxBeamWidth * Math.Max(fadeProgress, 0f);
                 if (fadeProgress <= 0f)
                 {
-                    if (active != null)
-                        active.Stop();
                     Projectile.Kill();
                     return;
                 }
@@ -166,20 +144,21 @@ namespace RagnarokMod.Projectiles.BardPro.String
             SpawnBeamParticles();
 
             float intensity = beamWidth / MaxBeamWidth;
-            for (float d = 0; d < beamLength; d += 60f)
+            for (float d = 0; d < beamLength; d += 50f)
             {
                 Vector2 lightPos = beamStart + beamDir * d;
-                Lighting.AddLight(lightPos, 0.9f * intensity, 0.35f * intensity, 0.05f * intensity);
+                Lighting.AddLight(lightPos, 1.2f * intensity, 0.5f * intensity, 0.08f * intensity);
             }
         }
 
         private void SpawnBeamParticles()
         {
             float intensity = beamWidth / MaxBeamWidth;
-            if (intensity < 0.2f)
+            if (intensity < 0.15f)
                 return;
 
-            int particleCount = (int)(beamLength / 35f * intensity);
+            // Heavy ember stream along the beam
+            int particleCount = (int)(beamLength / 25f * intensity);
             for (int i = 0; i < particleCount; i++)
             {
                 if (!Main.rand.NextBool(3))
@@ -189,38 +168,50 @@ namespace RagnarokMod.Projectiles.BardPro.String
                 Vector2 pos = Vector2.Lerp(beamStart, beamEnd, t);
 
                 Vector2 perp = new Vector2(-beamDir.Y, beamDir.X);
-                pos += perp * Main.rand.NextFloat(-18f, 18f) * intensity;
+                pos += perp * Main.rand.NextFloat(-30f, 30f) * intensity;
 
-                Vector2 vel = perp * Main.rand.NextFloat(-1.5f, 1.5f) + beamDir * Main.rand.NextFloat(-0.5f, 2f);
+                Vector2 vel = perp * Main.rand.NextFloat(-2f, 2f) + beamDir * Main.rand.NextFloat(-1f, 3f);
 
-                Dust fire = Dust.NewDustPerfect(pos, DustID.Torch, vel, 100, default, Main.rand.NextFloat(1.0f, 2.2f) * intensity);
+                Dust fire = Dust.NewDustPerfect(pos, DustID.Torch, vel, 80, default, Main.rand.NextFloat(1.2f, 2.8f) * intensity);
                 fire.noGravity = true;
-                fire.fadeIn = 0.3f;
+                fire.fadeIn = 0.4f;
             }
 
+            // Thick smoke plumes
             if (Main.rand.NextBool(2))
             {
-                float t = Main.rand.NextFloat(0.1f, 0.9f);
+                float t = Main.rand.NextFloat(0.05f, 0.95f);
                 Vector2 pos = Vector2.Lerp(beamStart, beamEnd, t);
                 Vector2 perp = new Vector2(-beamDir.Y, beamDir.X);
-                pos += perp * Main.rand.NextFloat(-15f, 15f);
+                pos += perp * Main.rand.NextFloat(-20f, 20f);
 
-                Dust smoke = Dust.NewDustPerfect(pos, DustID.Smoke, new Vector2(Main.rand.NextFloat(-0.5f, 0.5f), Main.rand.NextFloat(-2f, -0.5f)), 150, new Color(40, 20, 10), Main.rand.NextFloat(1.5f, 2.5f));
+                Dust smoke = Dust.NewDustPerfect(pos, DustID.Smoke,
+                    new Vector2(Main.rand.NextFloat(-1f, 1f), Main.rand.NextFloat(-3f, -1f)),
+                    180, new Color(50, 25, 8), Main.rand.NextFloat(2f, 3.5f));
                 smoke.noGravity = true;
             }
 
-            if (Main.rand.NextBool(3))
+            // Heavy falling embers
+            if (Main.rand.NextBool(2))
             {
-                float t = Main.rand.NextFloat(0.2f, 1f);
+                float t = Main.rand.NextFloat(0.1f, 1f);
                 Vector2 pos = Vector2.Lerp(beamStart, beamEnd, t);
-                Dust ember = Dust.NewDustPerfect(pos, DustID.Torch, new Vector2(Main.rand.NextFloat(-1.5f, 1.5f), Main.rand.NextFloat(1f, 4f)), 0, default, Main.rand.NextFloat(0.8f, 1.5f));
+                Dust ember = Dust.NewDustPerfect(pos, DustID.Torch,
+                    new Vector2(Main.rand.NextFloat(-2f, 2f), Main.rand.NextFloat(2f, 6f)),
+                    0, default, Main.rand.NextFloat(1f, 2f));
                 ember.noGravity = false;
             }
 
-            if (Main.rand.NextBool(2))
+            // Violent sparks at the tip
+            for (int i = 0; i < 2; i++)
             {
-                Vector2 tipPos = beamEnd + Main.rand.NextVector2Circular(12f, 12f);
-                Dust spark = Dust.NewDustPerfect(tipPos, DustID.Torch, Main.rand.NextVector2Unit() * Main.rand.NextFloat(3f, 7f), 0, default, Main.rand.NextFloat(1.2f, 2f));
+                if (!Main.rand.NextBool(2))
+                    continue;
+
+                Vector2 tipPos = beamEnd + Main.rand.NextVector2Circular(20f, 20f);
+                Dust spark = Dust.NewDustPerfect(tipPos, DustID.Torch,
+                    Main.rand.NextVector2Unit() * Main.rand.NextFloat(4f, 10f),
+                    0, default, Main.rand.NextFloat(1.5f, 2.5f));
                 spark.noGravity = true;
             }
         }
@@ -230,7 +221,8 @@ namespace RagnarokMod.Projectiles.BardPro.String
             if (beamWidth < 0.1f)
                 return false;
 
-            float collisionRadius = 20f * (beamWidth / MaxBeamWidth);
+            // Wider collision than the normal beam
+            float collisionRadius = 36f * (beamWidth / MaxBeamWidth);
             float _ = 0f;
 
             if (Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), beamStart, beamEnd, collisionRadius, ref _))
@@ -241,15 +233,15 @@ namespace RagnarokMod.Projectiles.BardPro.String
 
         public override void BardOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<Dragonfire>(), 300, false);
+            target.AddBuff(ModContent.BuffType<Dragonfire>(), 420, false);
 
             if (ringCooldown <= 0)
             {
                 ringCooldown = RingCooldownMax;
 
                 Player owner = Main.player[Projectile.owner];
-                int ringCount = 4;
-                float ringRadius = 80f;
+                int ringCount = 6; // more fireballs than normal beam
+                float ringRadius = 90f;
 
                 SoundEngine.PlaySound(SoundID.DD2_BetsyFireballShot, owner.Center);
 
@@ -257,7 +249,7 @@ namespace RagnarokMod.Projectiles.BardPro.String
                 {
                     float angle = MathHelper.TwoPi * i / ringCount;
                     Vector2 spawnPos = owner.Center + new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * ringRadius;
-                    Vector2 velocity = Vector2.Normalize(spawnPos - owner.Center) * 8f;
+                    Vector2 velocity = Vector2.Normalize(spawnPos - owner.Center) * 10f;
 
                     Projectile.NewProjectile(
                         Projectile.GetSource_FromThis(),
@@ -270,13 +262,48 @@ namespace RagnarokMod.Projectiles.BardPro.String
                     );
                 }
 
-                for (int i = 0; i < 20; i++)
+                for (int i = 0; i < 30; i++)
                 {
-                    Vector2 vel = Main.rand.NextVector2Unit() * Main.rand.NextFloat(4f, 10f);
-                    Dust ring = Dust.NewDustPerfect(owner.Center, DustID.Torch, vel, 0, default, Main.rand.NextFloat(1.5f, 2.5f));
+                    Vector2 vel = Main.rand.NextVector2Unit() * Main.rand.NextFloat(5f, 14f);
+                    Dust ring = Dust.NewDustPerfect(owner.Center, DustID.Torch, vel, 0, default, Main.rand.NextFloat(1.8f, 3f));
                     ring.noGravity = true;
                 }
             }
+        }
+
+
+        internal float WidthFunction(float completionRatio, Vector2 vertexPos)
+        {
+            completionRatio = 1f - completionRatio;
+            float intensity = beamWidth / MaxBeamWidth;
+            float taper = MathHelper.Lerp(1f, 0.5f, completionRatio);
+            float width = 80f * taper * intensity;
+
+            // Organic pulsing
+            float time = Main.GlobalTimeWrappedHourly;
+            width += (float)Math.Sin(time * 11f + completionRatio * 12f) * 6f * intensity;
+            width += (float)Math.Sin(time * 11f - completionRatio * 12f) * 6f * intensity;
+
+            return Math.Max(width, 2f);
+        }
+
+        internal Color ColorFunction(float completionRatio, Vector2 vertexPos)
+        {
+            completionRatio = 1f - completionRatio;
+            float intensity = beamWidth / MaxBeamWidth;
+
+            // Gradient along the beam, darker at tip
+            Color rootColor = new Color(180, 50, 5);
+            Color midColor = new Color(255, 130, 15);
+            Color tipColor = new Color(200, 60, 5);
+
+            Color result;
+            if (completionRatio < 0.5f)
+                result = Color.Lerp(rootColor, midColor, completionRatio * 2f);
+            else
+                result = Color.Lerp(midColor, tipColor, (completionRatio - 0.5f) * 2f);
+
+            return result * intensity;
         }
 
         public override bool PreDraw(ref Color lightColor)
@@ -284,51 +311,39 @@ namespace RagnarokMod.Projectiles.BardPro.String
             if (beamWidth < 0.01f || beamLength < 1f)
                 return false;
 
-            SpriteBatch sb = Main.spriteBatch;
-            Texture2D pixel = TextureAssets.MagicPixel.Value;
-
             float intensity = beamWidth / MaxBeamWidth;
-            float time = Main.GameUpdateCount * 0.04f;
 
-            sb.End();
-            sb.Begin(SpriteSortMode.Deferred, BlendState.Additive, Main.DefaultSamplerState,
-                DepthStencilState.None, Main.Rasterizer, null, Main.GameViewMatrix.TransformationMatrix);
+            // Bordernado shader with Perlin noise
+            Main.spriteBatch.EnterShaderRegion();
 
-            float rotation = beamDir.ToRotation();
+            GameShaders.Misc["CalamityMod:Bordernado"].UseSaturation(-0.3f);
+            GameShaders.Misc["CalamityMod:Bordernado"].UseOpacity(intensity);
+            GameShaders.Misc["CalamityMod:Bordernado"].SetShaderTexture(ModContent.Request<Texture2D>("Terraria/Images/Misc/Perlin"));
 
-            // Layer 1: Dark heat distortion
-            DrawBeamLayer(sb, pixel, rotation, time,
-                outerWidth: 64f * intensity,
-                color: new Color(80, 20, 5) * 0.12f * intensity,
-                waveAmplitude: 10f,
-                waveFrequency: 2.5f,
-                segmentStep: 8f);
+            // Build draw points along the beam direction
+            Vector2[] drawPoints = new Vector2[DrawPointCount];
+            Vector2 perp = new Vector2(-beamDir.Y, beamDir.X);
+            float time = Main.GlobalTimeWrappedHourly;
 
-            // Layer 2: Deep crimson outer fire
-            DrawBeamLayer(sb, pixel, rotation, time,
-                outerWidth: 40f * intensity,
-                color: new Color(140, 30, 5) * 0.3f * intensity,
-                waveAmplitude: 6f,
-                waveFrequency: 4f,
-                segmentStep: 6f);
+            for (int i = 0; i < DrawPointCount; i++)
+            {
+                float t = i / (float)(DrawPointCount - 1);
+                Vector2 basePos = Vector2.Lerp(beamStart, beamEnd, t);
 
-            // Layer 3: Fiery orange core
-            DrawBeamLayer(sb, pixel, rotation, time,
-                outerWidth: 22f * intensity,
-                color: new Color(230, 90, 10) * 0.5f * intensity,
-                waveAmplitude: 4f,
-                waveFrequency: 6f,
-                segmentStep: 5f);
+                // Add organic lateral sway that increases toward the tip
+                float sway = (float)Math.Sin(time * 4f + t * 10f) * 8f * t * intensity;
+                sway += (float)Math.Sin(time * 7f - t * 6f) * 5f * t * t * intensity;
 
-            // Layer 4: Hot inner core
-            DrawBeamLayer(sb, pixel, rotation, time,
-                outerWidth: 10f * intensity,
-                color: new Color(255, 140, 30) * 0.65f * intensity,
-                waveAmplitude: 2f,
-                waveFrequency: 8f,
-                segmentStep: 4f);
+                drawPoints[i] = basePos + perp * sway;
+            }
+            Array.Reverse(drawPoints);
 
+            PrimitiveRenderer.RenderTrail(drawPoints, new(WidthFunction, ColorFunction,
+                shader: GameShaders.Misc["CalamityMod:Bordernado"]), 60);
 
+            Main.spriteBatch.ExitShaderRegion();
+
+            // beam origin DoGPortal shader
             Main.spriteBatch.EnterShaderRegion();
 
             Texture2D vortexNoise = ModContent.Request<Texture2D>("CalamityMod/ExtraTextures/GreyscaleGradients/Cracks").Value;
@@ -345,7 +360,7 @@ namespace RagnarokMod.Projectiles.BardPro.String
                 Color drawColor = Color.White * intensity;
                 drawColor.A = 0;
                 Vector2 drawPosition = beamStart - Main.screenPosition + angle.ToRotationVector2() * 4f;
-                float vortexScale = 0.6f * intensity;
+                float vortexScale = 1.2f * intensity;
 
                 Main.EntitySpriteDraw(vortexNoise, drawPosition, null, drawColor,
                     angle + MathHelper.PiOver2, vortexNoise.Size() * 0.5f,
@@ -354,7 +369,7 @@ namespace RagnarokMod.Projectiles.BardPro.String
 
             Main.spriteBatch.ExitShaderRegion();
 
-            // === IMPACT VORTEX at beam tip - same shader, smaller ===
+            // beam tip same shader, smaller
             Main.spriteBatch.EnterShaderRegion();
 
             GameShaders.Misc["CalamityMod:DoGPortal"].UseOpacity(intensity * 0.7f);
@@ -368,7 +383,7 @@ namespace RagnarokMod.Projectiles.BardPro.String
                 Color drawColor = Color.White * intensity * 0.8f;
                 drawColor.A = 0;
                 Vector2 drawPosition = beamEnd - Main.screenPosition + angle.ToRotationVector2() * 3f;
-                float vortexScale = 0.3f * intensity;
+                float vortexScale = 0.8f * intensity;
 
                 Main.EntitySpriteDraw(vortexNoise, drawPosition, null, drawColor,
                     angle + MathHelper.PiOver2, vortexNoise.Size() * 0.5f,
@@ -377,48 +392,27 @@ namespace RagnarokMod.Projectiles.BardPro.String
 
             Main.spriteBatch.ExitShaderRegion();
 
-            sb.End();
-            sb.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState,
-                DepthStencilState.None, Main.Rasterizer, null, Main.GameViewMatrix.TransformationMatrix);
-
             return false;
-        }
-
-        private void DrawBeamLayer(SpriteBatch sb, Texture2D pixel, float rotation,
-            float time, float outerWidth, Color color, float waveAmplitude, float waveFrequency, float segmentStep)
-        {
-            Vector2 perp = new Vector2(-beamDir.Y, beamDir.X);
-
-            for (float d = 0; d < beamLength; d += segmentStep)
-            {
-                float t = d / beamLength;
-
-                float envelope = (float)Math.Sin(t * MathHelper.Pi);
-                envelope = Math.Max(envelope, (1f - t) * 0.4f);
-
-                float wobble = (float)Math.Sin(time * waveFrequency + d * 0.05f) * waveAmplitude;
-                float wobble2 = (float)Math.Sin(time * waveFrequency * 1.7f - d * 0.08f) * waveAmplitude * 0.5f;
-
-                float width = outerWidth * envelope + wobble + wobble2;
-                if (width < 1f) width = 1f;
-
-                Vector2 pos = beamStart + beamDir * d + perp * (wobble * 0.3f);
-
-                sb.Draw(pixel, pos - Main.screenPosition, PixelRect,
-                    color, rotation, PixelOriginLeft,
-                    new Vector2(segmentStep, width),
-                    SpriteEffects.None, 0f);
-            }
         }
 
         public override void OnKill(int timeLeft)
         {
-            for (int i = 0; i < 25; i++)
+            // Massive death burst along the beam path
+            for (int i = 0; i < 40; i++)
             {
                 Vector2 pos = Vector2.Lerp(beamStart, beamEnd, Main.rand.NextFloat());
-                Vector2 vel = Main.rand.NextVector2Unit() * Main.rand.NextFloat(2f, 8f);
-                Dust d = Dust.NewDustPerfect(pos, DustID.Torch, vel, 0, default, Main.rand.NextFloat(1f, 2f));
+                Vector2 vel = Main.rand.NextVector2Unit() * Main.rand.NextFloat(3f, 10f);
+                Dust d = Dust.NewDustPerfect(pos, DustID.Torch, vel, 60, default, Main.rand.NextFloat(1.5f, 3f));
                 d.noGravity = true;
+            }
+
+            for (int i = 0; i < 15; i++)
+            {
+                Vector2 pos = Vector2.Lerp(beamStart, beamEnd, Main.rand.NextFloat());
+                Dust smoke = Dust.NewDustPerfect(pos, DustID.Smoke,
+                    Main.rand.NextVector2Unit() * Main.rand.NextFloat(2f, 5f),
+                    150, new Color(50, 25, 10), Main.rand.NextFloat(2f, 4f));
+                smoke.noGravity = true;
             }
         }
     }
