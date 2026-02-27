@@ -300,6 +300,7 @@ namespace RagnarokMod.Common.GlobalNPCs
             {
                 LeadingConditionRule notExpert = new LeadingConditionRule(new Conditions.NotExpert());
                 notExpert.OnSuccess(ItemDropRule.Common(ModContent.ItemType<CorroslimeBass>(), 4));
+				notExpert.OnSuccess(ItemDropRule.Common(ModContent.ItemType<CrimslimeOboe>(), 4));
                 npcLoot.Add(notExpert);
             }
         }

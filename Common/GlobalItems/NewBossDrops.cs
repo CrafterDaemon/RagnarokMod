@@ -186,7 +186,8 @@ namespace RagnarokMod.Common.GlobalItems
             {
                 itemLoot.Add(DropHelper.CalamityStyle(DropHelper.BagWeaponDropRateFraction, new int[]
                 {
-                    ModContent.ItemType<CorroslimeBass>()
+                    ModContent.ItemType<CorroslimeBass>(),
+					ModContent.ItemType<CrimslimeOboe>()
                 }));
             }
         }

@@ -1059,6 +1059,15 @@ Items: {
 			'''
 		DisplayName: Corroslime Bass
 	}
+
+	CrimslimeOboe: {
+		DisplayName: Crimslime Oboe
+		Tooltip:
+		'''
+		Shoots sticky crimslime darts.
+		After {0} seconds the darts will explode.
+		'''
+	}
 }
 
 Projectiles: {
@@ -1172,6 +1181,7 @@ Projectiles: {
 	InfectedSporeFire.DisplayName: Infected Spore Fire
 	RelicOfConvergenceCrystalOverride.DisplayName: Relic Of Convergence Crystal Override
 	CorroslimeBassPro.DisplayName: Corroslime Bass Pro
+	CrimslimeOboePro.DisplayName: Crimslime Oboe Pro
 }
 
 Configs: {
@@ -1489,6 +1499,41 @@ Configs: {
 
 		RiffScreenEffectIntensity: {
 			Label: Riff Screen Effect Intensity
+			Tooltip: ""
+		}
+	}
+
+	DebugConfig: {
+		DisplayName: Debug Config
+		Headers.Debugging: Debugging Header
+
+		ItemHoldOffsetX: {
+			Label: Item Hold Offset X
+			Tooltip: ""
+		}
+
+		ItemHoldOffsetY: {
+			Label: Item Hold Offset Y
+			Tooltip: ""
+		}
+
+		ItemUseStylePerpendicular: {
+			Label: Item Use Style Perpendicular
+			Tooltip: ""
+		}
+
+		ShootOffsetForward: {
+			Label: Shoot Offset Forward
+			Tooltip: ""
+		}
+
+		ShootOffsetPerpendicular: {
+			Label: Shoot Offset Perpendicular
+			Tooltip: ""
+		}
+
+		ItemHoldPerpendicular: {
+			Label: Item Hold Perpendicular
 			Tooltip: ""
 		}
 	}

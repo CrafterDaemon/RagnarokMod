@@ -19,6 +19,7 @@ namespace RagnarokMod.Sounds
         public static readonly SoundStyle fretsriff = new("RagnarokMod/Sounds/Music/Riffs/fretsriff") { Volume = 0.6f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
         public static readonly SoundStyle scourgesfrets = new("RagnarokMod/Sounds/scourgesfrets") { Volume = 0.5f, MaxInstances = 0 };
 		public static readonly SoundStyle corroslimebass = new("RagnarokMod/Sounds/corroslimebass") { Volume = 0.75f, MaxInstances = 0 };
+		public static readonly SoundStyle crimslimeoboe = new("RagnarokMod/Sounds/crimslimeoboe") { Volume = 0.75f, MaxInstances = 0 };
         public static readonly SoundStyle none = new("RagnarokMod/Sounds/empty") { Volume = 0.75f, MaxInstances = 0 };
         public static readonly SoundStyle Red = new("RagnarokMod/Sounds/Red") { Volume = 0.6f, MaxInstances = 0 };
         public static readonly SoundStyle Blue = new("RagnarokMod/Sounds/Blue") { Volume = 1f, MaxInstances = 0 };

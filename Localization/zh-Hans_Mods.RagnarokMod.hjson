@@ -1044,8 +1044,18 @@ Items: {
 	}
 
 	CorroslimeBass: {
-		// Tooltip: ""
+		/* Tooltip:
+			'''
+			Sends out bouncing corroslime balls.
+			Right click to split balls into {0} smaller balls.
+			This process can be done {1} times.
+			''' */
 		// DisplayName: Corroslime Bass
+	}
+
+	CrimslimeOboe: {
+		// DisplayName: Crimslime Oboe
+		// Tooltip: ""
 	}
 }
 
@@ -1160,6 +1170,7 @@ Projectiles: {
 	InfectedSporeFire.DisplayName: Infected Spore Fire
 	// RelicOfConvergenceCrystalOverride.DisplayName: Relic Of Convergence Crystal Override
 	// CorroslimeBassPro.DisplayName: Corroslime Bass Pro
+	// CrimslimeOboePro.DisplayName: Crimslime Oboe Pro
 }
 
 Configs: {
@@ -1478,6 +1489,41 @@ Configs: {
 		RiffScreenEffectIntensity: {
 			Label: 即兴演奏视觉效果强度
 			Tooltip: ""
+		}
+	}
+
+	DebugConfig: {
+		// DisplayName: Debug Config
+		// Headers.Debugging: Debugging Header
+
+		ItemHoldOffsetX: {
+			// Label: Item Hold Offset X
+			// Tooltip: ""
+		}
+
+		ItemHoldOffsetY: {
+			// Label: Item Hold Offset Y
+			// Tooltip: ""
+		}
+
+		ItemUseStylePerpendicular: {
+			// Label: Item Use Style Perpendicular
+			// Tooltip: ""
+		}
+
+		ShootOffsetForward: {
+			// Label: Shoot Offset Forward
+			// Tooltip: ""
+		}
+
+		ShootOffsetPerpendicular: {
+			// Label: Shoot Offset Perpendicular
+			// Tooltip: ""
+		}
+
+		ItemHoldPerpendicular: {
+			// Label: Item Hold Perpendicular
+			// Tooltip: ""
 		}
 	}
 }
