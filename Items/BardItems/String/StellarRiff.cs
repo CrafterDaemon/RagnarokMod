@@ -31,12 +31,12 @@ namespace RagnarokMod.Items.BardItems.String
 
         public override void SafeSetBardDefaults()
         {
-            Item.damage = 85;
+            Item.damage = 65;
             InspirationCost = 1;
             Item.width = 58;
             Item.height = 66;
-            Item.useTime = 28;
-            Item.useAnimation = 28;
+            Item.useTime = 24;
+            Item.useAnimation = 24;
             Item.useStyle = ItemUseStyleID.Guitar;
             Item.holdStyle = 5;
             Item.noMelee = true;
@@ -45,14 +45,33 @@ namespace RagnarokMod.Items.BardItems.String
 			Item.value = CalamityGlobalItem.RarityLimeBuyPrice;
             Item.rare = ItemRarityID.Purple;
             Item.shoot = ModContent.ProjectileType<StellarRiffPro>();
-            Item.shootSpeed = 20f;
+            Item.shootSpeed = 17f;
         }
 		
         public override Vector2? HoldoutOffset() => new Vector2(-10, 12);
 
         public override void SafeRiffBardShoot(int success, int level, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
+			int starchildprojectiles = 1;
+			if (success >= 25){
+				starchildprojectiles = 3;
+			}
+			else if (success >= 15){
+				starchildprojectiles = 2;
+			}
+			
+			int proj = Projectile.NewProjectile(
+				source,
+				position,
+				velocity,
+				type,
+				damage,
+				knockback,
+				player.whoAmI
+			);
+			if (Main.projectile[proj].ModProjectile is StellarRiffPro modProj){
+				modProj.StarchildCount = starchildprojectiles;
+			}
         }
 
         public override void HoldItemFrame(Player player)

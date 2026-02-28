@@ -60,55 +60,55 @@ Buffs: {
 	}
 
 	GoldenScaleBuff: {
-		// DisplayName: Goldfish
-		// Description: You've got gills and a great cracker taste.\nUnfortunately, goldfish do not like the Abyss.
+		DisplayName: 金鱼
+		Description: 你长着鳃，还带着一股金鱼饼干般的香脆味。\n可惜金鱼并不喜欢深渊
 	}
 }
 
 Items: {
 	AmberRing: {
-		// DisplayName: Amber Ring
-		// Tooltip: 3% increased summon damage
+		DisplayName: 琥珀戒指
+		Tooltip: 增加3%召唤伤害
 	}
 
 	AmethystRing: {
-		// DisplayName: Amethyst Ring
-		// Tooltip: Increases armor penetration by 2
+		DisplayName: 紫晶戒指
+		Tooltip: 盔甲穿透增加2
 	}
 
 	AquamarineRing: {
-		// DisplayName: Aquamarine Ring
-		// Tooltip: 3% increased radiant damage
+		DisplayName: 海蓝宝石戒指
+		Tooltip: 增加3%光辉伤害
 	}
 
 	EmeraldRing: {
-		// DisplayName: Emerald Ring
-		// Tooltip: 3% increased ranged damage
+		DisplayName: 翡翠戒指
+		Tooltip: 增加3%远程伤害
 	}
 
 	OpalRing: {
-		// DisplayName: Opal Ring
-		// Tooltip: 3% increased symphonic damage
+		DisplayName: 欧珀戒指
+		Tooltip: 增加3%音波伤害
 	}
 
 	RubyRing: {
-		// DisplayName: Ruby Ring
-		// Tooltip: 3% increased melee damage
+		DisplayName: 红玉戒指
+		Tooltip: 增加3%近战伤害
 	}
 
 	SapphireRing: {
-		// DisplayName: Sapphire Ring
-		// Tooltip: 3% increased magic damage
+		DisplayName: 蓝玉戒指
+		Tooltip: 增加3%魔法伤害
 	}
 
 	TheRing: {
-		// DisplayName: The Ring
-		/* Tooltip:
+		DisplayName: 魔戒
+		Tooltip:
 			'''
-			Increases all damage by 4%
-			Increases armor penetration by 3
-			Increases critical strike chance by 4%
-			''' */
+			增加4点所有伤害
+			增加3点盔甲穿透
+			增加4%暴击率
+			'''
 	}
 
 	TopazRing: {
@@ -120,7 +120,7 @@ Items: {
 		DisplayName: 飞羽胸甲
 		Tooltip:
 			'''
-			'天空是你的飞行场地'
+			“天空是你的飞行场地”
 			增加10%盗贼伤害
 			'''
 	}
@@ -129,7 +129,7 @@ Items: {
 		DisplayName: 飞羽帽子
 		Tooltip:
 			'''
-			'天空是你的飞行场地'
+			“天空是你的飞行场地”
 			增加5%盗贼伤害
 			增加6%盗贼暴击率
 			'''
@@ -419,7 +419,7 @@ Items: {
 			'''
 			拾取盗贼物品时有25%概率复制它
 			此效果只能在脱战时每半秒触发一次
-			(荒漠侍僧出售）
+			（荒漠侍僧出售）
 			'''
 	}
 
@@ -504,7 +504,7 @@ Items: {
 			激活秘技后造成盗贼伤害可以充能技巧值
 			如果未持续造成伤害技巧值会随时间衰减
 			按下“{$Keybinds.ThrowingTechnique.DisplayName}”键 使用你的秘技卷轴
-			(荒漠侍僧出售）
+			（荒漠侍僧出售）
 			'''
 	}
 
@@ -513,7 +513,7 @@ Items: {
 		Tooltip:
 			'''
 			被盗贼伤害击杀的敌怪最多可以额外掉落2银币
-			(荒漠侍僧出售）
+			（荒漠侍僧出售）
 			'''
 	}
 
@@ -522,7 +522,7 @@ Items: {
 		Tooltip:
 			'''
 			复制15%的盗贼伤害
-			(克苏鲁之眼后，荒漠侍僧出售）
+			（克苏鲁之眼后，荒漠侍僧出售）
 			'''
 	}
 
@@ -600,31 +600,31 @@ Items: {
 	}
 
 	DepthDiverHelmet: {
-		// DisplayName: Depth Diver's Helmet
-		/* Tooltip:
+		DisplayName: 深海潜游者头盔
+		Tooltip:
 			'''
-			'Become a selfless protector'
-			Critical strike chance increased by 6%
-			''' */
-		/* SetBonus:
+			“成为无私的保护者”
+			增加6%暴击率
 			'''
-			You and nearby allies gain {0}% increased damage, {1}% movement speed.
-			You and nearby allies can also breathe underwater while outside of the Abyss.
-			In the Abyss, You and your allies +10 defense and +20% movement speed instead.
-			You will also randomly get some oxygen back while in the Abyss.
-			''' */
+		SetBonus:
+			'''
+			你和附近的队友会获得{0}%伤害提升，{1}%移动速度
+			你和附近的队友可以在深渊以外的水下呼吸
+			在深渊中，你和队友转而获得10点防御力和20%移动速度
+			在深渊中时，你会随机恢复少量氧气
+			'''
 	}
 
 	NagaSkinMask: {
-		// DisplayName: Naga-Skin Mask
-		/* Tooltip:
+		DisplayName: 娜迦面具
+		Tooltip:
 			'''
-			'Garb of the original aquatic casters'
-			Maximum mana increased by 60.
-			Allows you to breathe underwater.
-			Does not work in the Abyss.
-			''' */
-		// SetBonus: Every {0} mana spent will dramatically increase your magic damage and casting speed briefly
+			“原始海洋法师的装束”
+			最大魔力值增加60
+			允许你水下呼吸
+			在深渊中无效
+			'''
+		SetBonus: 每消耗{0}魔力会短暂地大幅增加你的魔法伤害和施法速度
 	}
 }
 

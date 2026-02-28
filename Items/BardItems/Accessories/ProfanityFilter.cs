@@ -32,12 +32,12 @@ namespace RagnarokMod.Items.BardItems.Accessories
             if (player.HeldItem.ModItem is BardItem bardItem && bardItem.InstrumentType == BardInstrumentType.Electronic)
             {
                 player.GetDamage(ThoriumDamageBase<BardDamage>.Instance) -= 0.1f;
-                player.GetAttackSpeed(ThoriumDamageBase<BardDamage>.Instance) += 0.5f;
+                player.GetAttackSpeed(ThoriumDamageBase<BardDamage>.Instance) += 0.35f;
                 thoriumPlayer.bardBuffDuration -= 60;
             }
             else
                 player.GetDamage(ThoriumDamageBase<BardDamage>.Instance) += 0.15f;
-            player.GetCritChance(ThoriumDamageBase<BardDamage>.Instance) += 10f;
+            player.GetCritChance(ThoriumDamageBase<BardDamage>.Instance) += 5f;
             thoriumPlayer.bardResourceMax2 += 4;
             thoriumPlayer.accAutoTuner = true;
         }

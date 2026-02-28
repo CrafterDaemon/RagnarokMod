@@ -47,7 +47,7 @@ namespace RagnarokMod.Items.HealerItems.Armor
             CalamityPlayer calamityPlayer = player.Calamity();
             calamityPlayer.bloodflareSet = true;
             //calamityPlayer.bloodflareMage = true;
-            player.setBonus = ILocalizedModTypeExtensions.GetLocalizedValue(this, "SetBonus") + "\n" + CalamityUtils.GetTextValueFromModItem<BloodflareBodyArmor>("CommonSetBonus");
+            player.setBonus = this.GetLocalizedValue("SetBonus") + "\n" + CalamityUtils.GetTextValueFromModItem<BloodflareBodyArmor>("CommonSetBonus");
             player.crimsonRegen = true;
             player.GetRagnarokModPlayer().bloodflareHealer = true;
         }

@@ -1,4 +1,5 @@
 ﻿using CalamityMod;
+using CalamityMod.Items.Tools;
 using CalamityMod.Items.SummonItems;
 using CalamityMod.Items.TreasureBags;
 using CalamityMod.Items.Weapons.Magic;
@@ -13,7 +14,9 @@ using CalamityMod.NPCs.Leviathan;
 using CalamityMod.NPCs.OldDuke;
 using CalamityMod.NPCs.Perforator;
 using CalamityMod.NPCs.Polterghast;
+using CalamityMod.NPCs.ProfanedGuardians;
 using CalamityMod.NPCs.Providence;
+using CalamityMod.NPCs.SlimeGod;
 using CalamityMod.NPCs.SulphurousSea;
 using CalamityMod.NPCs.SupremeCalamitas;
 using CalamityMod.NPCs.Yharon;
@@ -29,6 +32,7 @@ using RagnarokMod.Items.HealerItems.Other;
 using RagnarokMod.Items.HealerItems.Scythes;
 using RagnarokMod.Items.Materials;
 using RagnarokMod.Items.RevItems;
+using RagnarokMod.Items.HealerItems.CalamityOverrides;
 using RagnarokMod.Utils;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
@@ -75,6 +79,8 @@ namespace RagnarokMod.Common.GlobalNPCs
             || npc.type == ModContent.NPCType<DesertScourgeHead>()
             || npc.type == ModContent.NPCType<Anahita>()
             || npc.type == ModContent.NPCType<Leviathan>()
+			|| npc.type == ModContent.NPCType<ProfanedGuardianHealer>()
+			|| npc.type == ModContent.NPCType<SlimeGodCore>()
             );
         }
 
@@ -251,6 +257,12 @@ namespace RagnarokMod.Common.GlobalNPCs
                 lastWorm.OnSuccess(DropHelper.NormalVsExpertQuantity(ModContent.ItemType<WhiteDwarfFragment>(), 1, 16, 24, 20, 32));
             }
 
+			if (npc.type == ModContent.NPCType<ProfanedGuardianHealer>()){
+                npcLoot.RemoveWhere(rule => rule is CommonDrop drop && drop.itemId == ModContent.ItemType<RelicOfConvergence>());
+				npcLoot.Add(ModContent.ItemType<RelicOfConvergenceOverride>(), 4, 1, 1);
+            }
+
+
             if (npc.type == ModContent.NPCType<Providence>())
             {
                 LeadingConditionRule notExpert = new LeadingConditionRule(new Conditions.NotExpert());
@@ -282,6 +294,13 @@ namespace RagnarokMod.Common.GlobalNPCs
                 LeadingConditionRule lastAlive = (LeadingConditionRule)notExpert.OnSuccess(npcLoot.DefineConditionalDropSet(Leviathan.LastAnLStanding));
                 lastAlive.OnSuccess(ItemDropRule.Common(ModContent.ItemType<LeviathanHeart>(), 4));
                 lastAlive.OnSuccess(ItemDropRule.Common(ModContent.ItemType<SirenScale>(), 4));
+                npcLoot.Add(notExpert);
+            }
+			if (npc.type == ModContent.NPCType<SlimeGodCore>())
+            {
+                LeadingConditionRule notExpert = new LeadingConditionRule(new Conditions.NotExpert());
+                notExpert.OnSuccess(ItemDropRule.Common(ModContent.ItemType<CorroslimeBass>(), 4));
+				notExpert.OnSuccess(ItemDropRule.Common(ModContent.ItemType<CrimslimeOboe>(), 4));
                 npcLoot.Add(notExpert);
             }
         }

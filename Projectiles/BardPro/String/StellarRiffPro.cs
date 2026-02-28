@@ -25,6 +25,7 @@ namespace RagnarokMod.Projectiles.BardPro.String
         public override BardInstrumentType InstrumentType => BardInstrumentType.String;
         public int spawnTime = 0;
         public int spawnFreq = 60;
+		public int StarchildCount = 1;
         private Color astralRed = new Color(237, 93, 83);
         private Color astralCyan = new Color(66, 189, 181);
         public override void SetStaticDefaults()
@@ -58,8 +59,7 @@ namespace RagnarokMod.Projectiles.BardPro.String
 
         public override void AI()
         {
-            if (Projectile.alpha > 0)
-            {
+            if (Projectile.alpha > 0){
                 Projectile.alpha -= 25;
                 if (Projectile.alpha < 0)
                 {
@@ -67,42 +67,32 @@ namespace RagnarokMod.Projectiles.BardPro.String
                 }
             }
 
-            if (Projectile.ai[0] == 1f)
-            {
+            if (Projectile.ai[0] == 1f){
                 Projectile.extraUpdates = 2;
             }
             Projectile.frameCounter++;
-            if (Projectile.frameCounter > 4)
-            {
+            if (Projectile.frameCounter > 4){
                 Projectile.frame++;
                 Projectile.frameCounter = 0;
             }
-            if (Projectile.frame > 3)
-            {
+            if (Projectile.frame > 3){
                 Projectile.frame = 0;
             }
             Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + MathHelper.PiOver2;
             if (spawnTime < spawnFreq)
                 spawnTime++;
-            else
-            {
+            else{
                 spawnTime = 0;
                 if (Projectile.ai[2] != 1f) SpawnChild();
             }
             Projectile.localAI[0]++;
             float homingDelay = 20f;
-            if (Projectile.localAI[0] > homingDelay)
-            {
+            if (Projectile.localAI[0] > homingDelay){
                 float inertia = 16f;
                 float homeSpeed = 12f;
                 float minDist = 40f;
 
                 Player player = Main.player[Projectile.owner];
-                if (player.GetRagnarokModPlayer().activeRiffType == RiffLoader.RiffType<AureusRiff>())
-                {
-                    homeSpeed = 11f;
-                    inertia = 12f;
-                }
                 NPC target = Projectile.FindNearestNPCIgnoreTiles(800f);
                 if (target != null && Projectile.Distance(target.Center) > minDist)
                 {
@@ -132,20 +122,15 @@ namespace RagnarokMod.Projectiles.BardPro.String
         private void SpawnChild()
         {
             float speed = 8f;
-            // Use the raw velocity angle, NOT Projectile.rotation. rotation has +PiOver2 baked
-            // in for sprite drawing and would offset every child direction by 90 degrees.
             float baseAngle = Projectile.velocity.ToRotation();
-            for (int i = 0; i < RiffProjCount(); i++)
-            {
-                float angle;
-                Player player = Main.player[Projectile.owner];
-                if (player.GetRagnarokModPlayer().activeRiffType == RiffLoader.RiffType<AureusRiff>())
-                    angle = MathHelper.ToRadians((90f * (i - 1)) - 90f) + baseAngle;
-                else
-                    angle = MathHelper.ToRadians((180f * (i - 1)) - 90f) + baseAngle;
-
-                Vector2 velocity = angle.ToRotationVector2() * speed;
-
+			int projcount = StarchildCount;
+			Player player = Main.player[Projectile.owner];
+			if (player.GetRagnarokModPlayer().activeRiffType == RiffLoader.RiffType<AureusRiff>()){
+                projcount = projcount * 2;
+            }
+            for (int i = 0; i <  projcount; i++){
+                float angle = MathHelper.ToRadians((360f /  projcount) * i) + baseAngle;
+				Vector2 velocity = angle.ToRotationVector2() * speed;
                 Projectile newProj = Projectile.NewProjectileDirect(
                     Projectile.GetSource_FromThis(),
                     Projectile.Center,
@@ -162,28 +147,28 @@ namespace RagnarokMod.Projectiles.BardPro.String
             }
         }
 
-        private int RiffProjCount()
-        {
-            Player player = Main.player[Projectile.owner];
-            if (player.GetRagnarokModPlayer().activeRiffType == RiffLoader.RiffType<AureusRiff>())
-            {
-                return 4;
+		/*
+        private int RiffProjCount(){
+            int count = (int)Projectile.ai[3];
+			if (count <= 0) 
+				count = 1;
+			
+            if (player.GetRagnarokModPlayer().activeRiffType == RiffLoader.RiffType<AureusRiff>()){
+                count += 1;
             }
-            else return 2;
+            return count;
         }
+		*/
 
-        public override void OnKill(int timeLeft)
-        {
-            for (int i = 0; i < 4; i++)
-            {
+        public override void OnKill(int timeLeft){
+            for (int i = 0; i < 4; i++){
                 Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<AstralOrange>(), Main.rand.Next(-2, 3), Main.rand.Next(-2, 3), 0, default, 1.5f).noGravity = true;
                 Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<AstralBlue>(), Main.rand.Next(-2, 3), Main.rand.Next(-2, 3), 0, default, 1.5f).noGravity = true;
             }
         }
 
-
-        public override bool PreDraw(ref Color lightColor)
-        {
+		/*
+        public override bool PreDraw(ref Color lightColor){
             SpriteBatch spriteBatch = Main.spriteBatch;
 
             // Use a round texture instead of pixel
@@ -224,5 +209,48 @@ namespace RagnarokMod.Projectiles.BardPro.String
 
             return false;
         }
+		*/
+		
+		public override bool PreDraw(ref Color lightColor)
+		{
+			SpriteBatch spriteBatch = Main.spriteBatch;
+			Texture2D glowTexture = TextureAssets.Extra[ExtrasID.ThePerfectGlow].Value;
+		
+			spriteBatch.End();
+			spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.Additive, Main.DefaultSamplerState,
+				DepthStencilState.None, Main.Rasterizer, null, Main.GameViewMatrix.TransformationMatrix);
+		
+			Color starColor = (Main.GameUpdateCount % 20 < 10) ? astralRed : astralCyan;
+			float opacity = (255 - Projectile.alpha) / 255f;
+			Vector2 drawPos = Projectile.Center - Main.screenPosition;
+			Vector2 origin = glowTexture.Size() / 2f;
+		
+			int count = StarchildCount;
+			Player player = Main.player[Projectile.owner];
+			if (player.GetRagnarokModPlayer().activeRiffType == RiffLoader.RiffType<AureusRiff>()){
+                count = count * 2;
+            }
+			// Angle step between each child corner
+			float angleStep = MathHelper.TwoPi / count;
+		
+			for (int i = 0; i < count; i++){
+				float angleOffset = angleStep * i;
+		
+				// Outer glow
+				spriteBatch.Draw(glowTexture, drawPos, null, starColor * opacity * 0.5f, Projectile.rotation + angleOffset, origin, 1.5f, SpriteEffects.None, 0f);
+		
+				// Mid glow
+				spriteBatch.Draw(glowTexture, drawPos, null, starColor * opacity * 0.8f, Projectile.rotation + angleOffset, origin, 1f, SpriteEffects.None, 0f);
+		
+				// Bright core
+				spriteBatch.Draw(glowTexture, drawPos, null, Color.White * opacity, Projectile.rotation + angleOffset, origin, 0.5f, SpriteEffects.None, 0f);
+			}
+		
+			spriteBatch.End();
+			spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState,
+				DepthStencilState.None, Main.Rasterizer, null, Main.GameViewMatrix.TransformationMatrix);
+		
+			return false;
+		}
     }
 }

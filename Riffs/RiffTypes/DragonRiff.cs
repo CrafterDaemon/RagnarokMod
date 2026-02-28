@@ -22,9 +22,9 @@ namespace RagnarokMod.Riffs.RiffTypes
         public override void SetStaticDefaults()
         {
             Empowerments.Add<FlatDamage>(10);
-            Empowerments.Add<Damage>(8);
-            Empowerments.Add<AttackSpeed>(8);
-            Empowerments.Add<CriticalStrikeChance>(8);
+            Empowerments.Add<Damage>(6);
+            Empowerments.Add<AttackSpeed>(6);
+            Empowerments.Add<CriticalStrikeChance>(6);
             Empowerments.Add<FlightTime>(6);
             Empowerments.Add<ResourceMaximum>(6);
         }

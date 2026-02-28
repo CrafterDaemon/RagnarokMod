@@ -261,6 +261,8 @@ Items: {
 		Tooltip: Shoots homing brimstone fireblasts that inflict brimstone flames on hit
 	}
 
+	CelestialManaCost: 20% decreased mana cost
+
 	DaedalusHeadBard: {
 		DisplayName: Daedalus Headgear
 		Tooltip:
@@ -324,6 +326,10 @@ Items: {
 			Healed allies will be granted 50 more maximum health
 			Occasionally you will be blessed by heals or life shields
 			Will trigger more frequently on low health
+			+3 HP/s life regen
+			5% increased max run speed and acceleration
+			Taking fatal damage will revive you and make you invulnerable to all damage for 5 seconds
+			This effect has a 5 minute cooldown, which does not decrement if any bosses or events are active
 			'''
 	}
 
@@ -424,9 +430,9 @@ Items: {
 			5% increased damage reduction
 			60% decreased non-radiant damage
 			40% increased radiant damage and 15% increased critical radiant strike chance
-			Bonus healing increased by 6
+			Bonus healing increased by 7
 			Maximum mana increased by 60
-			Mana usage reduced by 15%
+			Mana usage reduced by 20%
 			'''
 	}
 
@@ -986,8 +992,11 @@ Items: {
 		Tooltip:
 			'''
 			Sends out homing stars, that split into homing shards.
+			Playing success will increase the number of shards.
 			Right-click to play the [c/00FFC8:Interstellar Stomper] riff!
 			While the riff is active, stars rain down from above.
+			Homings shard count is doubled while the riff is active.
+			Time your attacks during the riff to reduce the cooldown.
 			'''
 	}
 
@@ -1025,6 +1034,39 @@ Items: {
 			Increases the Damage empowerment level from Radio Mic by 1
 			Radio Mic now inflicts Charmed for 5 seconds
 			'''
+	}
+
+	RelicOfConvergenceOverride: {
+		Tooltip:
+			'''
+			Creates a profaned crystal at the cursor that channels a healing aura before shattering
+			All players within the area of effect are healed for {0} + 4x healing bonus HP
+			Allies gain 50% extra healing
+			Holding out the crystal decreases defense and increases incoming damage
+			[c/FF8C00:Never once had I known kindness. Neither my peers or family had a shred of compassion for me.]
+			[c/FF8C00:I wished for someone I could confide. A presence that cleansed me of anxiety.]
+			[c/FF8C00:And when I saw Her radiant smile when we met, I knew I had finally found it.]
+			'''
+		DisplayName: Relic of Convergence
+	}
+
+	CorroslimeBass: {
+		Tooltip:
+			'''
+			Sends out bouncing corroslime balls.
+			Right click to split balls into {0} smaller balls.
+			This process can be done {1} times.
+			'''
+		DisplayName: Corroslime Bass
+	}
+
+	CrimslimeOboe: {
+		DisplayName: Crimslime Oboe
+		Tooltip:
+		'''
+		Shoots sticky crimslime darts.
+		After {0} seconds the darts will explode.
+		'''
 	}
 }
 
@@ -1137,6 +1179,9 @@ Projectiles: {
 	InfectedPustule.DisplayName: Infected Pustule
 	InfectedSporeCloud.DisplayName: Infected Spore Cloud
 	InfectedSporeFire.DisplayName: Infected Spore Fire
+	RelicOfConvergenceCrystalOverride.DisplayName: Relic Of Convergence Crystal Override
+	CorroslimeBassPro.DisplayName: Corroslime Bass Pro
+	CrimslimeOboePro.DisplayName: Crimslime Oboe Pro
 }
 
 Configs: {
@@ -1454,6 +1499,41 @@ Configs: {
 
 		RiffScreenEffectIntensity: {
 			Label: Riff Screen Effect Intensity
+			Tooltip: ""
+		}
+	}
+
+	DebugConfig: {
+		DisplayName: Debug Config
+		Headers.Debugging: Debugging Header
+
+		ItemHoldOffsetX: {
+			Label: Item Hold Offset X
+			Tooltip: ""
+		}
+
+		ItemHoldOffsetY: {
+			Label: Item Hold Offset Y
+			Tooltip: ""
+		}
+
+		ItemUseStylePerpendicular: {
+			Label: Item Use Style Perpendicular
+			Tooltip: ""
+		}
+
+		ShootOffsetForward: {
+			Label: Shoot Offset Forward
+			Tooltip: ""
+		}
+
+		ShootOffsetPerpendicular: {
+			Label: Shoot Offset Perpendicular
+			Tooltip: ""
+		}
+
+		ItemHoldPerpendicular: {
+			Label: Item Hold Perpendicular
 			Tooltip: ""
 		}
 	}

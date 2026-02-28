@@ -29,7 +29,7 @@ namespace RagnarokMod.Items.BardItems.String
         public override void SetStaticDefaults()
         {
             Empowerments.AddInfo<Damage>(6);
-            Empowerments.AddInfo<AttackSpeed>(6);
+            Empowerments.AddInfo<AttackSpeed>(5);
         }
 
         public override void SetBardDefaults()

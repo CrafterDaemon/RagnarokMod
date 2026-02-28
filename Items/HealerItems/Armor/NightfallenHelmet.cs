@@ -46,7 +46,7 @@ namespace RagnarokMod.Items.HealerItems.Armor
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = Language.GetTextValue("Mods.RagnarokMod.Items.NightfallenHelmet.SetBonus");
+            player.setBonus = this.GetLocalizedValue("SetBonus");
             ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
             thoriumPlayer.healBonus += 4;
             player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) += 0.33f;

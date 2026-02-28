@@ -72,7 +72,9 @@ namespace RagnarokMod.Items.HealerItems.Accessories
 
         private void UpdateNormal(Player player, ThoriumPlayer thoriumPlayer)
         {
-            thoriumPlayer.healBonus = Math.Max((int)Math.Ceiling(thoriumPlayer.healBonus * 1.33), 2);
+            thoriumPlayer.healBonus = Math.Max((int)Math.Ceiling(thoriumPlayer.healBonus * 1.25), 2);
+
+            player.GetAttackSpeed(ThoriumDamageBase<HealerDamage>.Instance) += 0.10f;
         }
 
         private void UpdateCorrupted(Player player, ThoriumPlayer thoriumPlayer)
@@ -99,7 +101,7 @@ namespace RagnarokMod.Items.HealerItems.Accessories
                 }
             }
 
-            player.GetAttackSpeed(ThoriumDamageBase<HealerDamage>.Instance) += 0.25f;
+            player.GetAttackSpeed(ThoriumDamageBase<HealerDamage>.Instance) += 0.10f;
         }
 
         public static void OnHealAlly(Player healer, Player target)

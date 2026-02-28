@@ -60,80 +60,80 @@ Buffs: {
 	}
 
 	AuricSurge: {
-		// DisplayName: Auric Surge
-		// Description: Mods.RagnarokMod.Buffs.AuricSurge.Description
+		DisplayName: 金源浪涌
+		Description: Mods.RagnarokMod.Buffs.AuricSurge.Description
 	}
 
 	KellyPetBuff: {
-		// DisplayName: Kelly!
-		// Description: Kelly will follow you.
+		DisplayName: 凯莉！
+		Description: 凯莉会跟随你
 	}
 
 	NightfallenDebuff: {
-		// DisplayName: Nightfallen Debuff
-		// Description: Mods.RagnarokMod.Buffs.NightfallenDebuff.Description
+		DisplayName: 苍帷减益
+		Description: Mods.RagnarokMod.Buffs.NightfallenDebuff.Description
 	}
 
 	LeviathanHeartBubble: {
-		// DisplayName: Leviathan Heart Bubble
-		// Description: The Leviathan's Bubble grants you +5% damage reduction
+		DisplayName: 利维坦泡泡心
+		Description: 利维坦的泡泡给予你5%伤害减免
 	}
 
 	LeviathanHeartBubbleCorrupted: {
-		// DisplayName: Corrupted Leviathan Heart Bubble
-		/* Description:
+		DisplayName: 利维坦的腐坏泡泡心
+		Description:
 			'''
-			The Corrupted Leviathan's Bubble grants you +10% damage
-			But you take 5% more damage
-			''' */
+			腐坏的利维坦泡泡增加你10%的伤害
+			但你受到的伤害提升5%
+			'''
 	}
 }
 
 Tooltips: {
-	/* WhiteDwarfSetBonus:
+	WhiteDwarfSetBonus:
 		'''
-		Critical strikes will unleash ivory flares from the cosmos
-		Ivory flares inflict the target's contact damage back at them,
-		if it is less than your base weapon damage, it will deal that instead
-		''' */
+		暴击会从星宇释放象牙状火焰
+		象牙状火焰会将目标的接触伤害反弹给其自身，
+		若该数值低于你的基础武器伤害，则改为造成你的基础武器伤害
+		'''
 
 	LeviathanHeart: {
-		/* NormalTooltip:
+		NormalTooltip:
 			'''
-			Healing spells heal 25% more hp
-			Healing spells apply a protective bubble to their target,
-			granting +5% damage reduction for 5 seconds
-			25% increased radiant attack speed
-			''' */
-		/* CorruptTooltip:
+			治疗法术的治疗量提升25%
+			治疗法术会为目标施加一层防护气泡
+			使其+5%伤害减免，持续5秒
+			光辉攻击速度提升25%
 			'''
-			The Leviathan's Bubble reacts to your dark energy!
-			All health costs are reduced by 1
-			Spending health envelopes you in a corrupted bubble,
-			granting +10% damage, but you take 5% more damage
-			25% increased radiant attack speed
-			''' */
+		CorruptTooltip:
+			'''
+			利维坦泡泡回应了你的暗能量！
+			所有生命值消耗减少1点
+			消耗生命值时会将你包裹于腐化气泡之中
+			获得+10%伤害，但受到的伤害提高5%
+			光辉攻击速度提升25%
+			'''
 	}
 }
 
 Compat: {
-	// TechPoints: Increases your maximum technique points by
-	// Recharge: and recharge by
-	// BasicDamage: basic damage
-	// DupeDamage: of your rogue damage is duplicated
-	// DupeCap: Duplication damage caps at
-	// NoGuideStack: Effect does not stack with other Guides
-	// Power: % Power
-	// Smited: was smited.
-	// Darkness: fell into darkness.
-	// TurnedToAmmo: was converted into ammunition.
-	// Recoil: could not handle the recoil.
+	TechPoints: 将你的最大技巧值提高
+	Recharge: 以及回复速度
+	BasicDamage: 基础伤害
+	DupeDamage: 的盗贼伤害会被复制
+	DupeCap: 复制伤害上限为
+	NoGuideStack: 效果不与其他指南叠加
+	Power: %威力
+	Smited: 被毁灭了。
+	Darkness: 坠入黑暗。
+	TurnedToAmmo: 被转化为弹药。
+	Recoil: 无法承受后坐力。
 }
 
 Items: {
 	DrumStick: {
 		DisplayName: 鼓槌
-		Tooltip: 你的敌人就是你的鼓
+		Tooltip: “你的敌人就是你的鼓”
 	}
 
 	AerospecBard: {
@@ -182,7 +182,7 @@ Items: {
 		SetBonus:
 			'''
 			拥有狂想独奏帽/狂想启迪盔, 弑神者兜帽, 血嚎尖芒盔, 龙蒿魂罩的套装效果
-			按下“盔甲能力”键将触发的两个狂想套装效果
+			按下“盔甲能力”键将触发两个狂想套装效果
 			'''
 	}
 
@@ -190,18 +190,18 @@ Items: {
 		DisplayName: 金煌圣祗盔
 		Tooltip:
 			'''
-			降低70%非光辉伤害
-			增加70%光辉伤害
+			增加100%光辉伤害，降低80%非光辉伤害
 			增加25%光辉暴击率
 			增加5%移动速度
 			魔力消耗减少25%
-			治疗法术会额外治疗11生命值
+			治疗法术会额外治疗10生命值
 			最大魔力值增加100
 			'''
 		SetBonus:
 			'''
-			拥有梦境编织者兜帽/梦境编织者头盔, 始源林海覆面盔, 血恸幽冥盔, 龙蒿风帽的套装效果
-			按下“盔甲能力”键将触发的两个梦境编织者套装效果
+			拥有梦境编织者兜帽/梦境编织者头盔, 始源林海覆面盔, 血恸幽冥盔, 龙蒿风帽，苍帷头盔的套装效果
+			按下“盔甲能力”键将触发两个梦境编织者套装效果
+			增加50%光辉伤害
 			'''
 	}
 
@@ -258,8 +258,10 @@ Items: {
 
 	CalamityBell: {
 		DisplayName: 灾厄之铃
-		Tooltip: 被击中的敌人会被硫磺火灼烧，持续2秒
+		Tooltip: 发射追踪的无际裂变弹幕，被击中的敌人会被硫磺火灼烧
 	}
+
+	// CelestialManaCost: 20% decreased mana cost
 
 	DaedalusHeadBard: {
 		DisplayName: 代达罗斯风帽
@@ -309,12 +311,11 @@ Items: {
 	}
 
 	SilvaHeadHealer: {
-		DisplayName: 始源林海覆面盔
+		DisplayName: 始源林海覆面
 		Tooltip:
 			'''
 			魔力消耗减少25%
-			降低70%非光辉伤害
-			增加55%光辉伤害
+			增加55%光辉伤害，降低70%非光辉伤害
 			增加20%光辉暴击率
 			治疗法术会额外治疗7生命值
 			最大魔力值增加80
@@ -335,22 +336,35 @@ Items: {
 
 	StrangeAlienMotherBoard: {
 		DisplayName: 奇怪的外星主板
-		Tooltip: 从星际监察者身上掉落下来的主板，这个物品蕴含的科技超出了你的认知。
+		Tooltip:
+			'''
+			从星际监察者身上掉落下来的主板
+			这个物品蕴含的科技超出了你的认知。
+			'''
 	}
 
 	BelchingSaxophoneOverride: {
-		DisplayName: "{$Mods.CalamityMod.Items.Weapons.Magic.BelchingSaxophone.DisplayName}"
-		Tooltip: "{$Mods.CalamityMod.Items.Weapons.Magic.BelchingSaxophone.Tooltip}"
+		DisplayName: 喷嗝萨克斯
+		Tooltip:
+			'''
+			发射一串哨片、音符和硫磺气泡
+			“嘟嘟”
+			'''
 	}
 
 	AnahitasArpeggioOverride: {
-		DisplayName: "{$Mods.CalamityMod.Items.Weapons.Magic.AnahitasArpeggio.DisplayName}"
-		Tooltip: "{$Mods.CalamityMod.Items.Weapons.Magic.AnahitasArpeggio.Tooltip}"
+		DisplayName: 阿娜希塔琶音
+		Tooltip: 发射缓慢移动的高音音符诱惑敌人
 	}
 
 	FaceMelterOverride: {
-		DisplayName: "{$Mods.CalamityMod.Items.Weapons.Magic.FaceMelter.DisplayName}"
-		Tooltip: "{$Mods.CalamityMod.Items.Weapons.Magic.FaceMelter.Tooltip}"
+		DisplayName: 变脸熔炉
+		Tooltip:
+			'''
+			奏响音符
+			右键召唤一个会向光标位置发射音波的扩音器
+			“喔哦哦！幻想世界！！！”
+			'''
 	}
 
 	EmpoweredGranite: {
@@ -433,11 +447,7 @@ Items: {
 
 	VictideHeadHealer: {
 		DisplayName: 胜潮绵帽
-		Tooltip:
-			'''
-			降低5%非光辉伤害
-			增加5%光辉伤害
-			'''
+		Tooltip: 增加5%光辉伤害，降低5%非光辉伤害
 		SetBonus:
 			'''
 			敌人将不太可能以你为目标
@@ -453,18 +463,17 @@ Items: {
 		Tooltip:
 			'''
 			降低35%非光辉伤害
-			增加35%光辉伤害和16%光辉暴击率
-			治疗法术会额外治疗1生命值
+			增加60%光辉伤害和16%光辉暴击率
 			最大魔力值增加60
 			'''
-		/* SetBonus:
+		SetBonus:
 			'''
-			Healing spells will heal an additional 4 life
-			33% increased radiant damage
-			All attacks inflict Nightfallen
-			Nightfallen deals 100 damage per second
-			Nightfallen increases all damage taken by the target by 10%
-			''' */
+			治疗法术会额外治疗4生命值
+			增加33%光辉伤害
+			你的所有攻击都会施加苍帷减益
+			苍帷减益每秒造成100伤害
+			苍帷减益会使得目标受到的所有伤害提高10%
+			'''
 	}
 
 	NightfallenBreastplate: {
@@ -472,8 +481,7 @@ Items: {
 		Tooltip:
 			'''
 			降低45%非光辉伤害
-			增加45%光辉伤害和12%光辉暴击率
-			治疗法术会额外治疗2生命值
+			增加50%光辉伤害和12%光辉暴击率
 			'''
 	}
 
@@ -482,9 +490,8 @@ Items: {
 		Tooltip:
 			'''
 			降低35%非光辉伤害
-			增加35%光辉伤害和8%光辉暴击率
+			增加45%光辉伤害和8%光辉暴击率
 			魔力消耗减少20%
-			治疗法术会额外治疗1生命值
 			'''
 	}
 
@@ -505,8 +512,8 @@ Items: {
 		DisplayName: 等价交换
 		Tooltip:
 			'''
-			你必须遵守等价交换的规则。
-			你得到的只能等于你投入的。
+			“你必须遵守等价交换的规则”
+			“你得到的只能等于你投入的”
 			'''
 	}
 
@@ -517,12 +524,17 @@ Items: {
 
 	MarbleScythe: {
 		DisplayName: 大理石之镰
-		Tooltip: 神奇的大理石让镰刀散发着额外的光芒。
+		Tooltip: 神奇的大理石让镰刀散发着额外的光芒
 	}
 
 	ScoriaDualscythe: {
-		DisplayName: 熔渣之镰
-		Tooltip: 熔渣通过排出的蒸汽使镰刀旋转得更快。
+		DisplayName: 熔渣双头镰
+		Tooltip:
+			'''
+			熔渣通过排出的蒸汽使镰刀旋转得更快
+			右键投掷巨镰，回程时会划出弧线折返
+			投掷时，巨镰造成的伤害提高20%
+			'''
 	}
 
 	InspirationEssence.DisplayName: 灵感精髓
@@ -536,8 +548,10 @@ Items: {
 		DisplayName: 无线电麦克风
 		Tooltip:
 			'''
-			远古凋亡恶魔的麦克风
-			对着它演唱可以召唤出阴影卷须来攻击敌人
+			吟唱一曲，释放扩散开的暗影焰声波
+			中心的声波将转化为诅咒之音
+			诅咒之音会召唤阴影卷须攻击首个命中的敌人
+			“远古凋亡恶魔的麦克风”
 			'''
 	}
 
@@ -548,7 +562,7 @@ Items: {
 
 	WindReaver: {
 		DisplayName: 风暴掠夺者
-		Tooltip: 偶尔释放出风刃。
+		Tooltip: 偶尔释放出风刃
 	}
 
 	TrueSquirrelScarf: {
@@ -570,8 +584,8 @@ Items: {
 		DisplayName: 虚兆珠
 		Tooltip:
 			'''
-			这个美物据说来自虚空注视者的眼球里。
-			我不认为他们是字面上的意思。
+			“他们说真正的美丽在虚空注视者的眼球之中”
+			“我不认为是字面意思”
 			'''
 	}
 
@@ -581,8 +595,8 @@ Items: {
 			'''
 			恢复 100 生命值
 			所有属性中幅提升
-			一种美味的水母胶体。
-			可以说它可以制作海上最美味的三明治。
+			“一种美味的水母胶体”
+			“据说它可以制作海上最美味的三明治”
 			'''
 	}
 
@@ -593,17 +607,16 @@ Items: {
 
 	ElysianSong: {
 		DisplayName: 极乐之歌
-		Tooltip: 宛若天使手中的号角，却又差之千里......
+		Tooltip: “宛若天使手中的号角，却又差之千里……”
 	}
 
 	ExecutionerMark05: {
 		DisplayName: 圣裁之镰: Mark 05
 		Tooltip:
 			'''
-			用XM-05“塔纳托斯”的核心制作的一把镰刀
-			一开始很慢，但会不断加快速度。
-			镰刀达到最高速度，会把镰刀发射到光标所在的方向，
-			如果发射到敌人身上会造成爆炸圈并对周围的敌人造成伤害。
+			以慢速启动，但会不断积蓄速度
+			一旦达到最高速度，会把镰刀发射向最近的敌怪，并造成大范围爆炸
+			“XM-05 塔纳托斯的核心，被重铸为一柄凶镰”
 			'''
 	}
 
@@ -616,13 +629,13 @@ Items: {
 		DisplayName: 飞溅加农
 		Tooltip:
 			'''
-			右键填充4发子弹
-			最多填充24发子弹
+			右键填充8发子弹
+			最多填充64发子弹
 			左键释放所有子弹
 			命中有几率释放追踪的治疗血弹
 			射击会增加击杀敌人时释放鲜血飞溅的几率
 			手持时治疗只有 50% 的效果
-			血 液 是 弹 药！
+			“血 液 即 弹 药！”
 			'''
 	}
 
@@ -631,7 +644,7 @@ Items: {
 		Tooltip:
 			'''
 			释放圣之爆焱
-			击中的敌人获得神圣之火减益持续3秒
+			对击中的敌人施加持续3秒的神圣之火减益
 			'''
 	}
 
@@ -648,12 +661,12 @@ Items: {
 
 	NewLichRequirement: {
 		DisplayName: 新巫妖要求
-		Tooltip: 你不应该看到这个.
+		Tooltip: 呃……你不应该看到这个
 	}
 
 	EldritchShellFragment: {
 		DisplayName: 诡异的贝壳碎片
-		Tooltip: 从旧潮汐神的监狱里取出的魔法碎片。
+		Tooltip: 从旧潮汐神的监狱里取出的魔法碎片
 	}
 
 	SigilOfACruelWorld: {
@@ -684,16 +697,16 @@ Items: {
 		DisplayName: 金蝙蝠粪便
 		Tooltip:
 			'''
-			"你没有疯……你真是疯了!"
 			增加30%来自敌人的金币
-			基于持有的钱币增加伤害(仅限存钱罐)
+			基于持有的钱币增加伤害(仅限钱币栏)
+			“你不是贪婪……你是彻头彻尾的疯子！”
 			复仇模式专属
 			'''
 	}
 
 	VerdurantBloom: {
 		DisplayName: 常春之瓣
-		Tooltip: 点燃各种各样的花瓣。
+		Tooltip: 发射一串多样的花瓣
 	}
 
 	CosmicInjector: {
@@ -710,14 +723,14 @@ Items: {
 		DisplayName: 俄罗斯方块
 		Tooltip:
 			'''
-			一个普通的游戏机.
-			四格拼板从天而落.
+			四格拼板从天而落
+			“一个普通的游戏机”
 			'''
 	}
 
 	GraspofVoid: {
 		DisplayName: 虚空之握
-		Tooltip: 发射暗能量并生成暗影焰。
+		Tooltip: 发射虚空精华，命中时造成暗影焰减益
 	}
 
 	PhantasmalEdge: {
@@ -728,7 +741,7 @@ Items: {
 			停止旋转镰刀火球立即攻击最近的目标
 
 			右键释放钩子把敌人拉向你。
-			对BOSS不起作用，反而会把你拉向BOSS。
+			对BOSS不起作用，反而会把你拉向BOSS
 			'''
 	}
 
@@ -736,14 +749,14 @@ Items: {
 		DisplayName: 弑神收割
 		Tooltip:
 			'''
-			镰刀旋转时在边缘生成一个类似于小神明吞噬者的全息图。
-			受到此攻击的敌人会受到更多伤害并受到弑神怒焰减益的伤害。
+			镰刀旋转时在边缘生成一个类似于小神明吞噬者的全息图
+			受到此攻击的敌人会受到更多伤害，并受到弑神怒焰减益
 			'''
 	}
 
 	Arpeggiator: {
 		DisplayName: 琶音器
-		Tooltip: 以琶音形式快速发射的弹幕。
+		Tooltip: 以琶音形式快速发射的弹幕
 	}
 
 	ElementalReaper: {
@@ -763,18 +776,18 @@ Items: {
 	}
 
 	BrimScythe: {
-		// DisplayName: Brimscythe
-		/* Tooltip:
+		DisplayName: 硫炎镰刀
+		Tooltip:
 			'''
-			While spinning, you are surrounded in a circle of Brimstone Flames that deals constant damage
-			Enemies hit by the circle are also afflicted by Brimstone Flames for 5 seconds
-			While below 25% hp, killing an enemy with the fire circle will heal you for 3 + 5% of the enemy maximum health
-			''' */
+			旋转时，你会被一圈硫火环绕，对周围持续造成伤害
+			被火圈命中的敌人将受到硫磺火减益，持续5秒
+			当生命值低于25%时，若以火圈击杀敌人，将回复3点生命值，并额外回复该敌人最大生命值的5%
+			'''
 	}
 
 	MaxEmpowermentTester: {
 		DisplayName: 最大咒音增幅测试仪
-		Tooltip: 在物品中指定的级别授予所有咒音增幅
+		Tooltip: 在物品源码中指定的级别授予所有咒音增幅嘻嘻
 	}
 
 	UnbreakableCombatUkulele: {
@@ -783,7 +796,7 @@ Items: {
 			'''
 			左键播放尤克里里
 			右键投掷尤克里里
-			这可算不上一个好的道歉。
+			“这可算不上一个好的道歉”
 			'''
 	}
 
@@ -791,9 +804,9 @@ Items: {
 		DisplayName: 噩梦制冷工
 		Tooltip:
 			'''
-			周期性地释放出一连串冰冷的飞镖。
-			在万圣节和圣诞节找到的。
-			嘿，你可以把它拍成电影！
+			镰刀旋转时周期性地释放出一连串冰冷的飞镖
+			“在万圣节和圣诞节中间的某个时间点找到的”
+			“嘿，你可以把它拍成电影！”
 			'''
 	}
 
@@ -810,209 +823,239 @@ Items: {
 		DisplayName: 圣龙之力
 		Tooltip:
 			'''
-			释放炽热之刃然后分裂
-			攻击后会在敌人身上生成火焰和烈焰
+			快速消耗灵感，将圣龙之火引导至光标位置
+			右键即兴演奏[c/FF4500:丛林龙之怒吼]！
+			即兴演奏生效期间，本武器释放的圣龙之火将得到强化
 			'''
 	}
 
 	Lamentation: {
 		DisplayName: 嗟叹
-		Tooltip: 发射带有追踪功能的硫磺火
+		Tooltip: 发射追踪的深渊炙炎，命中时造成硫磺火减益
 	}
 
 	Virusprayer: {
 		DisplayName: 病毒喷雾器
-		Tooltip: ""
+		Tooltip: 发射一簇酸液泡泡
 	}
 
 	IntergelacticRobohelm: {
-		// DisplayName: Intergelactic Robohelm
-		/* Tooltip:
+		DisplayName: 异宇星凝机冠
+		Tooltip:
 			'''
-			Increases symphonic damage, critical strike chance, and playing speed by 20%
-			Increases inspiration regen by 15%
-			Increases max inspiration by 6
-			Increases empowerment duration by 3 seconds
-			Reduces damage taken by 12%
-			''' */
+			增加20%的音波伤害，暴击率和演奏速度
+			增加15%的灵感恢复速率
+			增加6点灵感值上限
+			你的咒音增幅额外持续3秒
+			增加12%伤害减免
+			'''
 	}
 
 	IntergelacticRamhelm: {
-		// DisplayName: Intergelactic Ramhelm
-		/* Tooltip:
+		DisplayName: 异宇星凝角铠
+		Tooltip:
 			'''
-			Decreases non-radiant damage by 40%
-			Increases radiant damage by 30%
-			Increases radiant critical strike chance and attack speed by 15%
-			10% decreased mana usage
-			+60 maximum mana
-			Your healing spells will heal for an additional 5 life
-			''' */
+			降低40%非光辉伤害
+			增加30%光辉伤害
+			增加15%光辉暴击率和攻击速度
+			魔力消耗减少10%
+			最大魔力值增加60
+			治疗法术会额外治疗5生命值
+			'''
 	}
 
 	KellyPet: {
-		// DisplayName: Wand of Anarchi
-		/* Tooltip:
+		DisplayName: 无主魔杖
+		Tooltip:
 			'''
-			Summons Kelly to follow you
-			Donor Item by HayWire799
-			Sprites by Zenovia
-			''' */
+			召唤凯莉跟随你
+			HayWire799的捐赠者物品
+			由Zenovia绘制
+			'''
 	}
 
 	LeviathanHeart: {
-		// DisplayName: Leviathan Heart
-		// Tooltip: ""
+		DisplayName: 利维坦之心
+		Tooltip: ""
 	}
 
 	SirenScale: {
-		// DisplayName: Siren Scale
-		/* Tooltip:
+		DisplayName: 塞壬之鳞
+		Tooltip:
 			'''
-			The Siren sings along with your enchanting tune.
+			人鱼的歌喉为你的旋律附上魔法
 
-			Symphonic damage increased by 15%
-			Inspiration regen rate increased by 20%
-			Anahita will sing along with your string instruments, firing additional water projectiles
-			''' */
+			增加15%音波伤害
+			增加20%灵感恢复速度
+			阿娜希塔会随你的弦乐器一同吟唱，额外发射水流弹幕
+			'''
 	}
 
 	ScourgesFrets: {
-		// DisplayName: Scourge's Frets
-		/* Tooltip:
+		DisplayName: 祸弦灾品
+		Tooltip:
 			'''
-			Sends out bouncing sound waves that appear to be made out of sand
-			Right-click to play the [c/34C9EB:Guardian of the Former Seas] riff!
-			While the riff is active, attacks from this guitar are twice as large and deal 25% more damage
-			Time your attacks during the riff to reduce the cooldown
-			''' */
+			发射会反弹的沙尘声波
+			右键即兴演奏[c/34C9EB:旧日之海的守卫者]！
+			即兴演奏期间，此吉他的弹幕尺寸扩大为两倍，并额外造成25%伤害
+			在即兴演奏期间成功在计时区域击中，会缩短冷却时间
+			'''
 	}
 
 	AuricGreatscythe: {
-		// DisplayName: Auric Greatscythe
-		/* Tooltip:
+		DisplayName: 金源巨镰
+		Tooltip:
 			'''
-			This scythe charges up the longer you spin it,
-			accelerating to unbelievable speeds.
-			Right-click hurls a bolt of lightning.
-			''' */
+			这把巨镰在持续旋转时会不断蓄势，
+			直至加速至难以置信的速度。
+			右键投掷一道闪电
+			'''
 	}
 
 	IrradiantInfinity: {
-		// DisplayName: Irradiant Infinity
-		/* Tooltip:
+		DisplayName: 辐辉无量
+		Tooltip:
 			'''
-			Left-click fires an [c/FF5555:Irradiant Red] orb with massive knockback
-			Right-click summons an [c/55AAFF:Irradiant Blue] orb that follows your cursor
-			[c/55AAFF:Irradiant Blue] pulls in nearby enemies and grows larger with each hit
-			Once it reaches critical mass, strike it with [c/FF5555:Irradiant Red] to unleash [c/CC44FF:Irradiant Purple]
-			''' */
+			左键发射一枚[c/FF5555:辉光赫]光球，拥有极强击退力
+			右键召唤一枚跟随光标移动的[c/55AAFF:辉光苍]光球
+			[c/55AAFF:辉光苍]会牵引附近敌人，并在每次命中后逐渐变大
+			当其达到临界质量时，用[c/FF5555:辉光赫]击中它以释放[c/CC44FF:辉光茈]
+			'''
 	}
 
 	PrimalTerror: {
-		// DisplayName: Primal Terror
-		// Tooltip: Keep me favorited ;P
+		DisplayName: 始源恐惧
+		Tooltip: 一定要收藏我，嘻嘻
 	}
 
 	DevourerOfSines: {
-		// DisplayName: Devourer of Sines
-		/* Tooltip:
+		DisplayName: 正弦噬音
+		Tooltip:
 			'''
-			Channel this weapon to create a massive sine wave
-			Right-click to play the [c/501eb4:Universal Collapse] riff!
-			While the riff is active, all players in range have unlimited flight
-			''' */
+			持续引导此武器，创造一道巨大的正弦波
+			右键即兴演奏[c/501eb4:寰宇碎灭]！
+			即兴演奏期间，范围内所有玩家获得无限飞行
+			'''
 	}
 
 	Ectambourine: {
-		// DisplayName: Ectambourine
-		/* Tooltip:
+		DisplayName: 幽界铃鼓
+		Tooltip:
 			'''
-			Throw an endless amount of ghostly tambourines
-			Right click to jingle the thrown tambourines, damaging nearby enemies
-			''' */
+			投掷无穷无尽的幽灵铃鼓
+			右键摇响已投出的铃鼓，对附近敌人造成伤害
+			'''
 	}
 
 	InfectedOcarina: {
-		// DisplayName: Infected Ocarina
-		/* Tooltip:
+		DisplayName: 邪染陶笛
+		Tooltip:
 			'''
-			Whistles out a cursed burst of noise
-			Has a chance to shoot vile spit
-			Right-click to play the [c/50477e:Filthy Mind] riff!
-			While the riff is active, infected pustules spawn around you.
-			Infected pustules will spew cursed fire at the nearest enemy.
-			''' */
+			吹奏出一阵诅咒噪音
+			有概率喷吐毒唾液
+			右键即兴演奏[c/50477e:污秽之心]！
+			即兴演奏期间，你周围会生成感染脓疱
+			感染脓疱会向最近的敌人喷吐诅咒焰
+			'''
 	}
 
 	Shredder: {
-		// DisplayName: Shredder
-		/* Tooltip:
+		DisplayName: 裂肉扫弦
+		Tooltip:
 			'''
-			Sends out bloody shockwaves
-			Right-click to play the [c/AA1111:Blood Coagulant] riff!
-			While the riff is active, all players in range have life steal
-			''' */
+			释放血腥冲击波
+			右键即兴演奏[c/AA1111:血肉凝聚剂]！
+			即兴演奏期间，范围内所有玩家获得生命汲取效果
+			'''
 	}
 
 	SquirrelScarf: {
-		// DisplayName: Squirrel Scarf
-		/* Tooltip:
+		DisplayName: 松鼠围巾
+		Tooltip:
 			'''
-			'As fluffy as a squirrel's tail'
-			Increases your max number of sentries by 1
-			''' */
+			“如松鼠尾巴般蓬松柔软”
+			哨兵数量上限+1
+			'''
 	}
 
 	RiffTester: {
-		// DisplayName: Riff Tester
-		// Tooltip: Clears Riff Cooldowns. Use Responsibly.
+		DisplayName: 即兴演奏测试器
+		Tooltip: 清除即兴演奏冷却时间。请妥善使用。
 	}
 
 	StellarRiff: {
-		// DisplayName: Stellar Riff
-		/* Tooltip:
+		DisplayName: 星界狂想
+		Tooltip:
 			'''
-			Sends out homing stars, that split into homing shards.
-			Right-click to play the [c/00FFC8:Interstellar Stomper] riff!
-			While the riff is active, stars rain down from above.
-			''' */
+			发射会自动追踪的星辰，命中后分裂为追踪碎星
+			右键即兴演奏[c/00FFC8:星际践踏者]！
+			即兴演奏期间，群星自天穹坠落
+			'''
 	}
 
 	FateoftheGods: {
-		// DisplayName: Fate of the Gods
-		/* Tooltip:
+		DisplayName: 众神命数
+		Tooltip:
 			'''
-			Thanks to the entire team, everyone who supported, and those who all play the mod and keep it alive!
-			The confines of this painting is not enough to fit the entire team
-			Hold Shift to see a list of past and current developers
-			''' */
+			感谢整个团队、所有支持者，以及每一位游玩并让本模组延续至今的玩家！
+			这幅画的大小无法容纳整个团队
+			长按SHIFT键可以查看以前和当前的开发者
+			'''
 	}
 
 	ProfanityFilter: {
-		// DisplayName: Profanity Filter
-		/* Tooltip:
+		DisplayName: 亵渎话语过滤器
+		Tooltip:
 			'''
-			Electronic weapons have 10% reduced damage, but 50% increased playing speed
-			15% increased symphonic damage for weapons that are not Electronic
-			10% increased symphonic critical chance
-			Increases maximum inspiration by 4
-			Symphonic damage has a 10% chance to increase the level of one of your active empowerments. 
-			This effect can only trigger once every 2.5 seconds.
-			''' */
+			电子乐器伤害降低10%，但演奏速度提升50%
+			非电子乐器的音波伤害提升15%
+			增加10%音波暴击率
+			增加4点最大灵感值
+			音波伤害有10%概率提升一个生效中的咒音增幅等级
+			该效果每2.5秒仅能触发一次
+			'''
 	}
 
 	RedglassMonocle: {
-		// DisplayName: Redglass Monocle
+		DisplayName: 熔晶单片镜
+		Tooltip:
+			'''
+			曾为一位臭名昭著的地狱原住民所佩戴
+			增加25%音波伤害
+			基础伤害咒音增幅对你的效果提升至两倍
+			无线电麦克风的灵感值消耗减少2点
+			无线电麦克风赋予的伤害咒音增幅提升1级
+			无线电麦克风现在会施加魅惑减益，持续5秒
+			'''
+	}
+
+	RelicOfConvergenceOverride: {
 		/* Tooltip:
 			'''
-			Once worn by an infamous underworld native.
-			25% increased symphonic damage
-			Flat Damage empowerment is twice as effective on you
-			Reduces the inspiration cost of Radio Mic by 2
-			Increases the Damage empowerment level from Radio Mic by 1
-			Radio Mic now inflicts Charmed for 5 seconds
+			Creates a profaned crystal at the cursor that channels a healing aura before shattering
+			All players within the area of effect are healed for {0} + 4x healing bonus HP
+			Allies gain 50% extra healing
+			Holding out the crystal decreases defense and increases incoming damage
+			[c/FF8C00:Never once had I known kindness. Neither my peers or family had a shred of compassion for me.]
+			[c/FF8C00:I wished for someone I could confide. A presence that cleansed me of anxiety.]
+			[c/FF8C00:And when I saw Her radiant smile when we met, I knew I had finally found it.]
 			''' */
+		// DisplayName: Relic of Convergence
+	}
+
+	CorroslimeBass: {
+		/* Tooltip:
+			'''
+			Sends out bouncing corroslime balls.
+			Right click to split balls into {0} smaller balls.
+			This process can be done {1} times.
+			''' */
+		// DisplayName: Corroslime Bass
+	}
+
+	CrimslimeOboe: {
+		// DisplayName: Crimslime Oboe
+		// Tooltip: ""
 	}
 }
 
@@ -1089,42 +1132,45 @@ Projectiles: {
 	VirusprayerPro1.DisplayName: Virusprayer Pro1
 	VirusprayerPro2.DisplayName: Virusprayer Pro2
 	KellyPetProjectile.DisplayName: Kelly Pet Projectile
-	GodSlayersReapPro1.DisplayName: God Slayers Reap Pro1
-	MiniDoGHead.DisplayName: Mini Do G Head
-	MiniDoGExplosion.DisplayName: Mini Do G Explosion
-	MiniDoGDeathRenderer.DisplayName: Mini Do G Death Renderer
+	GodSlayersReapPro1.DisplayName: God Slayer's Reap Pro1
+	MiniDoGHead.DisplayName: Mini DoG Head
+	MiniDoGExplosion.DisplayName: Mini DoG Explosion
+	MiniDoGDeathRenderer.DisplayName: Mini DoG Death Renderer
 	LeviathanHeartBubbleProj.DisplayName: Leviathan Heart Bubble Proj
 	BrimScytheFirePro.DisplayName: Brim Scythe Fire Pro
 	BrimScythePro.DisplayName: Brim Scythe Pro
-	// AnahitaWaterNote.DisplayName: Anahita Water Note
-	// MiniAnahitaCompanion.DisplayName: Mini Anahita Companion
-	// AuricGreatscythePro.DisplayName: Auric Greatscythe Pro
-	// ScourgesFretsPro.DisplayName: Scourge's Frets Pro
-	// IrradiantBlue.DisplayName: Irradiant Blue
-	// IrradiantExplosion.DisplayName: Irradiant Explosion
-	// IrradiantPurple.DisplayName: Irradiant Purple
-	// IrradiantRed.DisplayName: Irradiant Red
-	// AuricGreatscytheBolt.DisplayName: Auric Greatscythe Bolt
-	// AuricGreatscytheSwing.DisplayName: Auric Greatscythe Swing
-	// RadioMicPro.DisplayName: Radio Mic Pro
-	// RadioMicShadowBurst.DisplayName: Radio Mic Shadow Burst
-	// PlayerBrimstoneBarrage.DisplayName: Player Brimstone Barrage
-	// DevourerRiffSine.DisplayName: Devourer Riff Sine
-	// ScourgesFretsWorm.DisplayName: Scourges Frets Worm
-	// DevourerSineBeam.DisplayName: Devourer Sine Beam
-	// EctambourinePro.DisplayName: Ectambourine Projectile
-	// EctambourineProJingle.DisplayName: Ectambourine Jingle
-	// InfectedOcarinaPro.DisplayName: Infected Ocarina Pro
-	// VileSpitFriendly.DisplayName: Vile Spit Friendly
-	// ShredderTendrils.DisplayName: Shredder Tendrils
-	// ShredderPro.DisplayName: Shredder Pro
-	// StellarRiffPro.DisplayName: Stellar Riff Pro
-	// StellarAurora.DisplayName: Stellar Aurora
-	// StellarShootingStar.DisplayName: Stellar Shooting Star
-	// DragonForceRiffBeam.DisplayName: Dragon Force Riff Beam
-	// InfectedPustule.DisplayName: Infected Pustule
-	// InfectedSporeCloud.DisplayName: Infected Spore Cloud
-	// InfectedSporeFire.DisplayName: Infected Spore Fire
+	AnahitaWaterNote.DisplayName: Anahita Water Note
+	MiniAnahitaCompanion.DisplayName: Mini Anahita Companion
+	AuricGreatscythePro.DisplayName: Auric Greatscythe Pro
+	ScourgesFretsPro.DisplayName: Scourge's Frets Pro
+	IrradiantBlue.DisplayName: Irradiant Blue
+	IrradiantExplosion.DisplayName: Irradiant Explosion
+	IrradiantPurple.DisplayName: Irradiant Purple
+	IrradiantRed.DisplayName: Irradiant Red
+	AuricGreatscytheBolt.DisplayName: Auric Greatscythe Bolt
+	AuricGreatscytheSwing.DisplayName: Auric Greatscythe Swing
+	RadioMicPro.DisplayName: Radio Mic Pro
+	RadioMicShadowBurst.DisplayName: Radio Mic Shadow Burst
+	PlayerBrimstoneBarrage.DisplayName: Player Brimstone Barrage
+	DevourerRiffSine.DisplayName: Devourer Riff Sine
+	ScourgesFretsWorm.DisplayName: Scourges Frets Worm
+	DevourerSineBeam.DisplayName: Devourer Sine Beam
+	EctambourinePro.DisplayName: Ectambourine Projectile
+	EctambourineProJingle.DisplayName: Ectambourine Jingle
+	InfectedOcarinaPro.DisplayName: Infected Ocarina Pro
+	VileSpitFriendly.DisplayName: Vile Spit Friendly
+	ShredderTendrils.DisplayName: Shredder Tendrils
+	ShredderPro.DisplayName: Shredder Pro
+	StellarRiffPro.DisplayName: Stellar Riff Pro
+	StellarAurora.DisplayName: Stellar Aurora
+	StellarShootingStar.DisplayName: Stellar Shooting Star
+	DragonForceRiffBeam.DisplayName: Dragon Force Riff Beam
+	InfectedPustule.DisplayName: Infected Pustule
+	InfectedSporeCloud.DisplayName: Infected Spore Cloud
+	InfectedSporeFire.DisplayName: Infected Spore Fire
+	// RelicOfConvergenceCrystalOverride.DisplayName: Relic Of Convergence Crystal Override
+	// CorroslimeBassPro.DisplayName: Corroslime Bass Pro
+	// CrimslimeOboePro.DisplayName: Crimslime Oboe Pro
 }
 
 Configs: {
@@ -1213,7 +1259,7 @@ Configs: {
 		Headers.Other: 其他
 
 		wip: {
-			Label: 正在制作......
+			Label: 未完工
 			Tooltip: ""
 		}
 	}
@@ -1258,8 +1304,8 @@ Configs: {
 		}
 
 		HealingBonusModifier: {
-			// Label: Healing Bonus Modifier
-			// Tooltip: ""
+			Label: 额外治疗量倍率
+			Tooltip: ""
 		}
 	}
 
@@ -1283,7 +1329,7 @@ Configs: {
 
 		Headers: {
 			UITweaks: UI 调整页
-			// Debug: Debug Header
+			Debug: 调试页
 		}
 
 		BardEmpowermentBarOffsetX: {
@@ -1297,8 +1343,8 @@ Configs: {
 		}
 
 		ShowItemHitboxes: {
-			// Label: Show Item Hitboxes
-			// Tooltip: ""
+			Label: 显示Hitbox
+			Tooltip: ""
 		}
 	}
 
@@ -1308,7 +1354,7 @@ Configs: {
 
 		item_deduplication_mode: {
 			Label: 非灾厄官方吟游诗人，牧师武器武器重复项目
-			Tooltip: 选择加载那个模组的物品项目，关闭则同时加载两个模组项目
+			Tooltip: 选择加载哪个模组的物品项目，关闭则同时加载两个模组项目
 		}
 	}
 
@@ -1317,17 +1363,17 @@ Configs: {
 
 		Off: {
 			Label: 关闭
-			// Tooltip: ""
+			Tooltip: ""
 		}
 
 		Ragnarok: {
 			Label: 诸神的黄昏
-			// Tooltip: ""
+			Tooltip: ""
 		}
 
 		CalamityBardHealer: {
-			Label: 非灾厄官方吟游诗人，牧师武器
-			// Tooltip: ""
+			Label: 非灾厄官方吟游诗人&牧师武器
+			Tooltip: ""
 		}
 	}
 
@@ -1337,12 +1383,12 @@ Configs: {
 
 		bird: {
 			Label: 惊雷王鹰AI
-			Tooltip: 选择使用那个模组的AI，关闭为默认状态
+			Tooltip: 选择使用哪个模组的AI，关闭为原版状态. 如果未检测到其他重做模组，则自动使用诸神的黄昏AI。
 		}
 
 		jelly: {
 			Label: 水母皇后AI
-			Tooltip: 选择使用那个模组的AI，关闭为默认状态
+			Tooltip: 选择使用哪个模组的AI，关闭为原版状态. 如果未检测到其他重做模组，则自动使用诸神的黄昏AI。
 		}
 
 		bossstatstweak: {
@@ -1352,37 +1398,37 @@ Configs: {
 
 		bossrush: {
 			Label: 瑟银BOSS RUSH
-			Tooltip: 选择使用那个模组的BOSS RUSH,关闭则禁用BOSS RUSH
+			Tooltip: 选择使用哪个模组的BOSS RUSH,关闭则禁用BOSS RUSH
 		}
 
 		viscount: {
 			Label: 蝙蝠子爵AI
-			Tooltip: 选择使用那个模组的AI，关闭为默认状态
+			Tooltip: 选择使用哪个模组的AI，关闭为原版状态. 如果未检测到其他重做模组，则自动使用诸神的黄昏AI。
 		}
 
 		granite: {
 			Label: 花岗岩流能风暴AI
-			Tooltip: 选择使用那个模组的AI，关闭为默认状态
+			Tooltip: 选择使用哪个模组的AI，关闭为原版状态. 如果未检测到其他重做模组，则自动使用诸神的黄昏AI。
 		}
 
 		champion: {
 			Label: 英灵遗骸AI
-			Tooltip: 选择使用那个模组的AI，关闭为默认状态
+			Tooltip: 选择使用哪个模组的AI，关闭为原版状态. 如果未检测到其他重做模组，则自动使用诸神的黄昏AI。
 		}
 
 		scouter: {
 			Label: 星际监察者AI
-			Tooltip: 选择使用那个模组的AI，关闭为默认状态
+			Tooltip: 选择使用哪个模组的AI，关闭为原版状态. 如果未检测到其他重做模组，则自动使用诸神的黄昏AI。
 		}
 
 		strider: {
 			Label: 极地遁蛛AI
-			Tooltip: 选择使用那个模组的AI，关闭为原版状态. 如果未检测到其他模组的修改，则自动使用诸神的黄昏ai。
+			Tooltip: 选择使用哪个模组的AI，关闭为原版状态. 如果未检测到其他重做模组，则自动使用诸神的黄昏AI。
 		}
 
 		beholder: {
-			// Label: Fallen Beholder AI
-			// Tooltip: Select which AI rework should be used. Off for vanilla behaviour. Auto uses Ragnarok AI if no other rework is detected.
+			Label: 堕落注视者AI
+			Tooltip: 选择使用哪个模组的AI，关闭为原版状态. 如果未检测到其他重做模组，则自动使用诸神的黄昏AI。
 		}
 	}
 
@@ -1391,66 +1437,101 @@ Configs: {
 
 		Off: {
 			Label: 关闭
-			// Tooltip: ""
+			Tooltip: ""
 		}
 
 		Ragnarok: {
 			Label: 诸神的黄昏
-			// Tooltip: ""
+			Tooltip: ""
 		}
 
 		ThoriumBossRework: {
 			Label: 瑟银BOSS重置
-			// Tooltip: ""
+			Tooltip: ""
 		}
 
 		Auto: {
-			// Label: Auto
-			// Tooltip: ""
+			Label: 自动
+			Tooltip: ""
 		}
 	}
 
 	ClientConfig: {
-		// DisplayName: Client Config
+		DisplayName: 客户端设置
 
 		Headers: {
-			// Audio: Audio
-			// UITweaks: UI Tweaks
-			// WelcomeText: Welcome Text Header
-			// Visual: Visual Header
+			Audio: 音频
+			UITweaks: UI 设置
+			WelcomeText: 进入世界讯息
+			Visual: 视效
 		}
 
 		BardEmpowermentBarOffsetX: {
-			// Label: Bard Empowerment Bar Offset X
-			// Tooltip: ""
+			Label: 吟游诗人咒音增幅条向 X 轴偏移
+			Tooltip: ""
 		}
 
 		BardEmpowermentBarOffsetY: {
-			// Label: Bard Empowerment Bar Offset Y
-			// Tooltip: ""
+			Label: 吟游诗人咒音增幅条向 Y 轴偏移
+			Tooltip: ""
 		}
 
 		RiffMusicVolume: {
-			// Label: Riff Music Volume
-			// Tooltip: ""
+			Label: 即兴演奏音乐音量
+			Tooltip: ""
 		}
 
 		StartText: {
-			// Label: Start Text
-			// Tooltip: ""
+			Label: 起始讯息
+			Tooltip: ""
 		}
 
 		RiffScreenEffectIntensity: {
-			// Label: Riff Screen Effect Intensity
+			Label: 即兴演奏视觉效果强度
+			Tooltip: ""
+		}
+	}
+
+	DebugConfig: {
+		// DisplayName: Debug Config
+		// Headers.Debugging: Debugging Header
+
+		ItemHoldOffsetX: {
+			// Label: Item Hold Offset X
+			// Tooltip: ""
+		}
+
+		ItemHoldOffsetY: {
+			// Label: Item Hold Offset Y
+			// Tooltip: ""
+		}
+
+		ItemUseStylePerpendicular: {
+			// Label: Item Use Style Perpendicular
+			// Tooltip: ""
+		}
+
+		ShootOffsetForward: {
+			// Label: Shoot Offset Forward
+			// Tooltip: ""
+		}
+
+		ShootOffsetPerpendicular: {
+			// Label: Shoot Offset Perpendicular
+			// Tooltip: ""
+		}
+
+		ItemHoldPerpendicular: {
+			// Label: Item Hold Perpendicular
 			// Tooltip: ""
 		}
 	}
 }
 
-// WikiMessage: "[i:RagnarokMod/EquivalentExchange][c/FF2929:Help us complete the official ][c/B428FF:Ragnarok Mod][c/FF2929: wiki at ][c/3898FF:ragnarokmod.wiki.gg][c/FF2929:!][i:RagnarokMod/CorrosiveFlux]"
-// FandomWarning: "[i:GolfCupFlagRed][c/B428FF:Ragnarok Mod ][c/FF2929:has never had a Fandom wiki. Any information from Fandom may be inaccurate!][i:GolfCupFlagRed]"
-// DiscordInvite: "[i:WireKite][c/9696FF:Join the official ][c/B428FF:Ragnarok Mod][c/9696FF: Discord! ][c/3898FF:discord.gg/UBAQwtKCbf][i:WireKite]"
-// PatreonAd: "[i:LuckyCoin][c/96FF96:If you enjoy the mod, consider supporting us on Patreon: ][c/3898FF:patreon.com/c/DevTeamRagnarok][i:LuckyCoin]"
-// DisableMe: "[i:Wrench][c/FFFF0A:If you would like to stop getting these messages, you can disable them in the config in your pause menu!][i:Wrench]"
-// Riffs.Cooldown: Riff Cooldown
+WikiMessage: "[i:RagnarokMod/EquivalentExchange][c/FF2929:欢迎帮助我们完善官方][c/B428FF:诸神的黄昏][c/FF2929:维基][c/3898FF:ragnarokmod.wiki.gg][c/FF2929:！][i:RagnarokMod/CorrosiveFlux]"
+FandomWarning: "[i:GolfCupFlagRed][c/B428FF:诸神的黄昏][c/FF2929:没有Fandom维基。来自Fandom的任何信息都可能不准确！][i:GolfCupFlagRed]"
+DiscordInvite: "[i:WireKite][c/9696FF:欢迎加入][c/B428FF:诸神的黄昏][c/9696FF: Discord频道！][c/3898FF:discord.gg/UBAQwtKCbf][i:WireKite]"
+PatreonAd: "[i:LuckyCoin][c/96FF96:如果你喜欢本模组，欢迎考虑在Patreon上支持我们：][c/3898FF:patreon.com/c/DevTeamRagnarok][i:LuckyCoin]"
+DisableMe: "[i:Wrench][c/FFFF0A:如果你不想再看到这些消息，可以在暂停菜单的配置中将其关闭！][i:Wrench]"
+Riffs.Cooldown: 即兴演奏冷却
 DamageClasses.ThoriumRogueClass.DisplayName: 盗贼伤害

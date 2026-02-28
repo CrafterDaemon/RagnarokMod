@@ -31,7 +31,7 @@ namespace RagnarokMod.Items
 
         public override bool? UseItem(Player player)
         {
-            String text = "The Primordial Wyrm has awoken!";
+            String text = Language.GetTextValue("Mods.RagnarokMod.Items.PrimalTerror.HasAwoken");
             Color color = new Color(175, 75, 255);
             if (Main.netMode != NetmodeID.MultiplayerClient)
             {

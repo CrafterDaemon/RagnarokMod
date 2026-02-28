@@ -39,7 +39,7 @@ namespace RagnarokMod.Items.HealerItems.Armor
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = Language.GetTextValue("Mods.RagnarokMod.Items.VictideHeadHealer.SetBonus");
+            player.setBonus = this.GetLocalizedValue("SetBonus") + "\n" + CalamityUtils.GetTextValueFromModItem<VictideBreastplate>("CommonSetBonus");
             player.Calamity().victideSet = true;
             player.ignoreWater = true;
             if (Collision.DrownCollision(player.position, player.width, player.height, player.gravDir, false))

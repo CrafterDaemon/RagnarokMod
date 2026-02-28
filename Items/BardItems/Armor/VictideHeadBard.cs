@@ -30,7 +30,7 @@ namespace RagnarokMod.Items.BardItems.Armor
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "Enemies are less likely to target you\n+3 life regen and 10% increased symphonic damage while submerged in liquid\nWhen using any weapon you have a 10% chance to throw a returning seashell projectile\nThis seashell does true damage and does not benefit from any damage class\nProvides increased underwater mobility and slightly reduces breath loss in the abyss";
+            player.setBonus = this.GetLocalizedValue("SetBonus") + "\n" + CalamityUtils.GetTextValueFromModItem<VictideBreastplate>("CommonSetBonus");
             player.Calamity().victideSet = true;
             player.ignoreWater = true;
             if (Collision.DrownCollision(player.position, player.width, player.height, player.gravDir, false))

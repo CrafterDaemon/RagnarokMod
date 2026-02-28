@@ -51,6 +51,7 @@ namespace RagnarokMod.Common.GlobalItems
             || item.type == ModContent.ItemType<DesertScourgeBag>()
             || item.type == ModContent.ItemType<HiveMindBag>()
             || item.type == ModContent.ItemType<AstrumAureusBag>()
+			|| item.type == ModContent.ItemType<SlimeGodBag>()
             );
         }
 
@@ -178,6 +179,15 @@ namespace RagnarokMod.Common.GlobalItems
                 itemLoot.Add(DropHelper.CalamityStyle(DropHelper.BagWeaponDropRateFraction, new int[]
                 {
                     ModContent.ItemType<StellarRiff>()
+                }));
+            }
+			
+			if (item.type == ModContent.ItemType<SlimeGodBag>())
+            {
+                itemLoot.Add(DropHelper.CalamityStyle(DropHelper.BagWeaponDropRateFraction, new int[]
+                {
+                    ModContent.ItemType<CorroslimeBass>(),
+					ModContent.ItemType<CrimslimeOboe>()
                 }));
             }
         }

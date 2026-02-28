@@ -22,14 +22,6 @@ namespace RagnarokMod.Items.HealerItems.Armor
     [AutoloadEquip(EquipType.Head)]
     public class SilvaHeadHealer : ThoriumItem
     {
-        public override string LocalizationCategory
-        {
-            get
-            {
-                return "Items.Armor.PostMoonLord";
-            }
-        }
-
         public override void SetDefaults()
         {
             base.Item.width = 24;
@@ -53,11 +45,8 @@ namespace RagnarokMod.Items.HealerItems.Armor
         {
             CalamityPlayer calamityPlayer = player.Calamity();
             calamityPlayer.silvaSet = true;
-            //calamityPlayer.silvaMage = true;
-            player.setBonus = ILocalizedModTypeExtensions.GetLocalizedValue(this, "SetBonus") + "\n" + CalamityUtils.GetTextValueFromModItem<SilvaArmor>("CommonSetBonus");
             player.GetRagnarokModPlayer().silvaHealer = true;
         }
-
 
         public override void UpdateEquip(Player player)
         {
