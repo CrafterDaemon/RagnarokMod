@@ -18,7 +18,6 @@ using CalamityMod.Items;
 using RagnarokMod.Projectiles.BardPro.Wind;
 using RagnarokMod.Sounds;
 using RagnarokMod.Utils;
-using RagnarokMod.Common.Configs;
 
 namespace RagnarokMod.Items.BardItems.Wind
 {
@@ -62,7 +61,7 @@ namespace RagnarokMod.Items.BardItems.Wind
 			Vector2 forward = Vector2.Normalize(velocity);
 			Vector2 perpendicular = forward.RotatedBy(MathHelper.PiOver2);
 			position += forward * 75f;
-			position += perpendicular * ModContent.GetInstance<DebugConfig>().ShootOffsetPerpendicular;
+			position += perpendicular * -7f;
 		}
 		
         public override Vector2? HoldoutOffset(){
