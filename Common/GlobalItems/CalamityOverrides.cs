@@ -36,8 +36,15 @@ namespace RagnarokMod.Common.GlobalItems
         public override bool AppliesToEntity(Item item, bool lateInstantiation)
         {
             //fetch me their SOULS
-            return item.ModItem is FaceMelter or AnahitasArpeggio or BelchingSaxophone or DragonRage;
+            return item.ModItem is FaceMelter or AnahitasArpeggio or BelchingSaxophone or DragonRage or EldritchSoulArtifact;
         }
+		
+		public override void UpdateAccessory(Item item,Player player, bool hideVisual) {
+			if (item.type == ModContent.ItemType<EldritchSoulArtifact>()){
+				ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
+				thoriumPlayer.bardResourceMax2 += 2;
+			}
+		}
 
         public override void HoldItem(Item item, Player player)
         {
