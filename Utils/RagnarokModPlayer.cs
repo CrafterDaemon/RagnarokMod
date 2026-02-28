@@ -262,6 +262,8 @@ namespace RagnarokMod.Utils
 
         public override void PostUpdateMiscEffects()
         {
+            OnHealEffects ??= [];
+            OnHealEffects.Clear();
             HandleTextChatMessages();
             if (redglassMonocle)
             {
@@ -417,7 +419,6 @@ namespace RagnarokMod.Utils
                 var healerThorium = healer.GetModPlayer<ThoriumPlayer>();
                 if (healerThorium.darkAura)
                     return;
-
 
                 if (target.whoAmI == Main.myPlayer)
                 {

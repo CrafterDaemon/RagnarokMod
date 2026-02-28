@@ -1,0 +1,152 @@
+Ragnarok. A great calamity in norse mythology, Is now a mod that intends to allow Thorium and Calamity to be used together with minimal issues. 
+Adds more content for Thorium classes, Merges Thrower + Rogue, and creates a more coherent experience throughout all stages of the game.
+[hr][/hr]
+[h1]Update 1.5[/h1]
+[b][u]Ragnarok: Riffs & Recalibration[/u][/b]
+[hr][/hr]
+[h3][b]This update is the largest one yet, so this changelog will be split into sections.[/b][/h3]
+[hr][/hr]
+[h2][b][u]New Content[/u][/b][/h2]
+[h3][b]New Title Screen[/b][/h3]
+Ragnarok now has its own title screen!
+Thanks to Kyou for the epic title screen art!
+[h3][b]New Bard Mechanic: Riff[/b][/h3]
+Using a Riff weapon will initiate a Riff, granting bonuses or effects to all nearby players
+Riff Volume and Riff Screen Effects are controllable client-side via config
+There are 6 Riff weapons in this update.
+They are listed below (spoilers)
+[list]
+	[*][spoiler]Scourge's Frets - Dropped by Desert Scourge[/spoiler]
+	[*][spoiler]Infected Ocarina - Dropped by Hive Mind[/spoiler]
+	[*][spoiler]Shredder - Dropped by Perforator Hive[/spoiler]
+	[*][spoiler]Stellar Riff - Dropped by Astrum Aureus[/spoiler]
+	[*][spoiler]Devourer of Sines - Crafted Post-DoG[/spoiler]
+	[*][spoiler]Dragon Force - Dropped from Yharon[/spoiler]
+[/list]
+[h3][b]New Items[/b][/h3]
+[list]
+	[*][spoiler]Godslayer's Reap (Scythe)[/spoiler]
+	[*][spoiler]Leviathan Heart (Accessory)[/spoiler]
+	[*][spoiler]Siren Scale (Accessory)[/spoiler]
+	[*][spoiler]Irradiant Infinity  (Weapon)[/spoiler]
+	[*][spoiler]Primal Terror (Misc)[/spoiler]
+	[*][spoiler]Auric Greatscythe  (Scythe)[/spoiler]
+	[*][spoiler]Ectambourine (Percussion)[/spoiler]
+	[*][spoiler]Fate of the Gods Painting (Tile)[/spoiler]
+	[*][spoiler]Redglass Monocle (Accessory)[/spoiler]
+	[*][spoiler]Profanity Filter (Accessory)[/spoiler]
+	[*][spoiler]Brimscythe (Scythe)[/spoiler]
+	[*][spoiler]Squirrel Scarf (Accessory)[/spoiler]
+[/list]
+[h2][b][u]Changes and Fixes[/u][/b][/h2]
+[h3][b]Localization[/b][/h3]
+Changed all hard-coded text to use localization
+[h3][b]Bug Fixes[/b][/h3]
+[list]
+	[*]Nightfallen Armor now has a proper Set Bonus
+	[*]White Dwarf armor set bonus rework has been properly applies
+	[*]Profaned Scythe now inflicts the correct debuff
+	[*]Lich Phylactery now properly accepts 3x Essence of Havoc
+	[*]Anahita's Arpeggio now matches Calamity 2.1 Functionality
+	[*]All dropped items have been properly scaled
+	[*]Tarragon Healer Set Bonus now moves fluidly
+	[*]Verduant Bloom no longer unintentionally self-heals
+	[*]Items now only drop from bosses when they are meant to
+[/list]
+[h3][b]Balancing[/b][/h3]
+Splattercannon significantly buffed:
+[list]
+	[*]usage time reduced by 50%
+	[*]auto-reuse on right click enabled
+	[*]projectiles loaded per right-click increased from 4 to 8
+	[*]max chambered projectiles increased from 24 to 64
+[/list]
+Calamity Bell and Lamentation buffed:
+[list]
+	[*]Now function like SCals Brimstone Fire and Gigablasts
+[/list]
+Astral Ripper buffed:
+[list]
+	[*]Now spawns falling stars twice as often
+[/list]
+Radio Mic overhauled:
+[list]
+	[*]Primary fire changed to match the Idol Mic
+	[*]Center projectile strikes target with shadowy tendrils
+[/list]
+The Executioner Mark 05 
+[list]
+	[*]Improved explosion visuals and hit detection
+[/list]
+Fractal
+[list]
+	[*]Homing now ignores tiles
+[/list]
+Auric Tesla Irradiant Visage
+[list]
+	[*]Increased radiant damage from set bonus, reduced bonus healing, now includes Nightfallen Set Bonus
+[/list]
+Stat Changes: 
+[list]
+	[*]Prisma - damage nerfed 13 -> 8
+	[*]Equivalent Exchange - damage buffed 19 -> 34, fire rate nerfed 9 -> 13
+	[*]Wind Reaver - damage nerfed 36 -> 26, Wind Slicer scale buffed 1x -> 3x
+	[*]Marble Scythe - damage buffed 18 -> 21, scale buffed 1 -> 1.75
+	[*]Jelly Slicer - damage nerfed 47 -> 20, projectile pierce buffed 3 -> 5, scythe scale buffed 1 -> 1.5, gel blob scale buffed 1 -> 1.5
+	[*]Drum Stick - damage buffed 100 -> 110, attack speed buffed 20 -> 16
+	[*]Steampipes - shot speed nerfed 13 -> 20
+	[*]Astral Ripper - damage buffed 145 -> 170
+	[*]Verdurant Bloom - damage nerfed 165 -> 150
+	[*]Profaned Bell - damage buffed 370 -> 600, pierce buffed 1 -> 3, scale buffed 0.33 -> 0.66, inspiration cost buffed 3 -> 2, attack speed buffed 28 -> 21
+	[*]Elysian Song - attack speed buffed 24 -> 12, pierce buffed 7 -> 20, scale buffed 1 -> 1.5, damage buffed 315 -> 340
+	[*]Radio Mic - damage buffed 120 -> 485
+	[*]Phantasmal Edge - damage buffed 220 -> 320
+	[*]Unbreakable Combat Ukelele - damage buffed 385 -> 1000, right click is now repeatable, scales with base damage, but is only usable at half the speed
+	[*]Grasp of Void - damage nerfed 420 -> 150, pierce nerfed inf -> 6, tendrils are now local iframes
+	[*]Cosmic Injector - damage nerfed 180 -> 120
+	[*]Nightmare Freezer - damage nerfed 320 -> 210
+	[*]Arpeggiator - damage buffed 140 -> 275, use time buffed 16 -> 5
+	[*]Korobeiniki - damage nerfed 425 -> 250
+	[*]Auric Damru - scale buffed 1 -> 1.9
+[/list]
+Added Debuffs: 
+[list]
+	[*]Corrosive flux - Inflicts Irradiated for 3 seconds
+	[*]Marble Scythe - Inflicts Holy Glare for 3 seconds
+	[*]Scoria Dualscythe - Inflicts Hellfire and Crush Depth for 3 seconds
+	[*]Steampipes - Inflicts Hellfire and Crush Depth for 3 seconds
+	[*]Astral Ripper - Inflicts Now inflicts astral infection for 3 seconds melee, 1 second stars
+	[*]Elysian Song - Inflicts Now inflicts holy flames for 3 seconds
+	[*]Radio Mic - Inflicts cursed flamed for 3 seconds, right click inflicts Shadowflame for 3 seconds
+	[*]Fractal - Inflicts Nightwither for 3 seconds
+	[*]Virussprayer - Inflicts Irradiated for 3 seconds
+	[*]Nightmare Freezer - Inflicts glacial state for 1 second (half second for projectiles), frostburn for 5 seconds
+	[*]Executioner Mark 05 - Inflicts Miracle Blight for 5 seconds (1 on explosion)
+[/list]
+[h3][b]Recipes, Drops, and Visuals[/b][/h3]
+[list]
+	[*]Star Scouter now drops more Strange Alien Motherboards, anywhere from 4 - 6
+	[*]Overloaded Sludge Empowered Granite and Enchanted Marble requirement reduced 5 -> 2
+	[*]Removed Seafood recipe change
+	[*]Removed Eye of Desolation recipe change
+	[*]Corrected Death Whistle recipe (Cursed Cloth 50 -> 5)
+	[*]Removed Eldritch Shell Fragments from Doom Sayer Coin recipe
+	[*]Removed Luminite and Galactica Singularity from Universal Headset recipe
+	[*]Nightfallen Helmet now added to Auric Tesla Irradiant Visage recipe
+	[*]Jelly Slicer - added dust
+	[*]Marble Scythe - changed dust to match holy glare debuff
+	[*]Small mod icon added
+[/list]
+[hr][/hr]
+[h1][b]Links[/b][/h1]
+
+[url=https://discord.com/invite/UBAQwtKCbf] Ragnarok Discord [/url]
+
+
+[url=https://ragnarokmod.wiki.gg] The Official Ragnarok Mod Wiki [/url]
+
+
+[url=https://www.patreon.com/devteamragnarok/membership] Patreon [/url]
+
+
+[url=https://github.com/CrafterDaemon/RagnarokMod] Github [/url]

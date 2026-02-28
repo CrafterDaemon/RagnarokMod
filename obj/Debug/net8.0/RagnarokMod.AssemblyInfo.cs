@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RagnarokMod")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+512591fc821170b812de14d84fd228365f2df8ca")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+01c6aff197079c4c57daecb6c79f7a7024099eb8")]
 [assembly: System.Reflection.AssemblyProductAttribute("RagnarokMod")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RagnarokMod")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

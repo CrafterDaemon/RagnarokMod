@@ -83,7 +83,7 @@ namespace RagnarokMod.Projectiles.BardPro.Percussion
         }
 
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             // Explosion dust on death
             for (int i = 0; i < 8; i++)
