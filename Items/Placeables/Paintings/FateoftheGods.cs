@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using CalamityMod;
+using CalamityMod.Rarities;
 using RagnarokMod.Tiles.Paintings;
 using Terraria;
 using Terraria.ID;
@@ -22,7 +23,7 @@ namespace RagnarokMod.Items.Placeables.Paintings
             Item.useStyle = ItemUseStyleID.Swing;
             Item.consumable = true;
             Item.value = Item.buyPrice(0, 2, 0, 0); ;
-            Item.rare = ItemRarityID.White;
+            Item.rare = ModContent.RarityType<CalamityRed>();
             Item.createTile = ModContent.TileType<FateoftheGodsTile>();
             Item.Calamity().donorItem = true;
         }
@@ -34,54 +35,48 @@ namespace RagnarokMod.Items.Placeables.Paintings
 
             string tooltip = "";
 
-            int namesPerLine = 8;
             for (int i = 0; i < devList.Count; i++)
             {
                 tooltip += devList[i];
 
                 if (i == devList.Count - 1)
                     break;
-
-                if (i % namesPerLine == 0 && i != 0)
-                    tooltip += "\n";
-                else
-                    tooltip += ", ";
             }
-            tooltip += "\n";
 
             TooltipLine line = tooltips.FirstOrDefault(t => t.Mod == "Terraria" && t.Name == "Tooltip2");
             if (line != null)
                 line.Text = tooltip;
         }
 
-        public static IList<string> devList = new List<string>()
+        public IList<string> devList = new List<string>()
         {
-            //Donors
-            "fireflamejoe", 
-            "HayWire799",
-            "aeolus",
+            "\n[c/96FF96:Donors]:\n",
+            "FireFlameJoe, ",
+            "TheUnknownNerd, ",
+            "HayWire799, ",
+            "Aeolus",
 
-            //Artists
-            "Ochette", 
-            "Kyou", 
-            "Delly", 
-            "e³", 
-            "bence", 
-            "TheStormQueen", 
-            "imonthatgudkush",
+            "\n[c/FFFF0A:Artists]:\n",
+            "Ochette, ",
+            "Kyou, ",
+            "Delly, ",
+            "e³, ",
+            "Bence, ",
+            "TheStormQueen, ",
+            "Imonthatgudkush",
 
-            //Programmers
-            "CrafterDaemon", 
-            "Patrick1234", 
-            "frogleader", 
-            "Akira", 
-            "WardrobeHummus", 
+            "\n[c/FF2864:Programmers]:\n",
+            "CrafterDaemon, ",
+            "Patrick1234, ",
+            "Frogleader, ",
+            "Akira, ",
+            "WardrobeHummus, ",
             "Ropro0923",
 
-            //Other Developers
-            "TelosRyu", 
-            "Deeno", 
-            "moon_ditch"
+            "\n[c/9696FF:Other Developers]:\n",
+            "TelosRyu, ",
+            "Deeno, ",
+            "Moon_Ditch"
         };
     }
 }

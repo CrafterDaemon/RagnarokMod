@@ -7,6 +7,11 @@ namespace RagnarokMod.Common.Configs
     {
         public override ConfigScope Mode => ConfigScope.ClientSide;
 
+        [Header("WelcomeText")]
+
+        [DefaultValue(true)]
+        public bool StartText { get; set; }
+
         [Header("Audio")]
 
         [Range(0f, 1f)]
@@ -14,6 +19,13 @@ namespace RagnarokMod.Common.Configs
         [DefaultValue(1f)]
         [Slider]
         public float RiffMusicVolume { get; set; }
+
+        [Header("Visual")]
+        [Range(0f, 1f)]
+        [DefaultValue(1f)]
+        [Increment(0.01f)]
+        [Slider]
+        public float RiffScreenEffectIntensity { get; set; } = 100f;
 
         [Header("UITweaks")]
 

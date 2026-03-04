@@ -261,6 +261,8 @@ Items: {
 		Tooltip: Shoots homing brimstone fireblasts that inflict brimstone flames on hit
 	}
 
+	CelestialManaCost: 20% decreased mana cost
+
 	DaedalusHeadBard: {
 		DisplayName: Daedalus Headgear
 		Tooltip:
@@ -324,6 +326,10 @@ Items: {
 			Healed allies will be granted 50 more maximum health
 			Occasionally you will be blessed by heals or life shields
 			Will trigger more frequently on low health
+			+3 HP/s life regen
+			5% increased max run speed and acceleration
+			Taking fatal damage will revive you and make you invulnerable to all damage for 5 seconds
+			This effect has a 5 minute cooldown, which does not decrement if any bosses or events are active
 			'''
 	}
 
@@ -424,9 +430,9 @@ Items: {
 			5% increased damage reduction
 			60% decreased non-radiant damage
 			40% increased radiant damage and 15% increased critical radiant strike chance
-			Bonus healing increased by 6
+			Bonus healing increased by 7
 			Maximum mana increased by 60
-			Mana usage reduced by 15%
+			Mana usage reduced by 20%
 			'''
 	}
 
@@ -531,7 +537,7 @@ Items: {
 			'''
 			The scoria allows you to spin the scythe much faster by constantly expelling steam
 			Right click to throw the scythe, which will curve on it's way back
-			The scythe deals 20% more damage when thrown
+				The scythe deals 20% more damage when thrown
 			'''
 	}
 
@@ -821,8 +827,9 @@ Items: {
 		DisplayName: Dragon Force
 		Tooltip:
 			'''
-			Shoots a fiery slash that splits into infernal notes
-			'Through the Fire and the Flames!'
+			Consumes inspiration rapidly as you channel an inferno to your cursor.
+			Right-click to play the [c/FF4500:Roar of the Jungle Dragon] riff!
+			While the riff is active, the inferno this weapon unleases is amplified.
 			'''
 	}
 
@@ -944,6 +951,18 @@ Items: {
 			'''
 	}
 
+	InfectedOcarina: {
+		DisplayName: Infected Ocarina
+		Tooltip:
+			'''
+			Whistles out a cursed burst of noise
+			Has a chance to shoot vile spit
+			Right-click to play the [c/50477e:Filthy Mind] riff!
+			While the riff is active, infected pustules spawn around you.
+			Infected pustules will spew cursed fire at the nearest enemy.
+			'''
+	}
+
 	Shredder: {
 		DisplayName: Shredder
 		Tooltip:
@@ -958,20 +977,27 @@ Items: {
 		DisplayName: Squirrel Scarf
 		Tooltip:
 			'''
-			As fluffy as a squirrel's tail
+			'As fluffy as a squirrel's tail'
 			Increases your max number of sentries by 1
-			Increases summon damage by 5%
 			'''
 	}
 
 	RiffTester: {
 		DisplayName: Riff Tester
-		Tooltip: ""
+		Tooltip: Clears Riff Cooldowns. Use Responsibly.
 	}
 
 	StellarRiff: {
 		DisplayName: Stellar Riff
-		Tooltip: ""
+		Tooltip:
+			'''
+			Sends out homing stars, that split into homing shards.
+			Playing success will increase the number of shards.
+			Right-click to play the [c/00FFC8:Interstellar Stomper] riff!
+			While the riff is active, stars rain down from above.
+			Homings shard count is doubled while the riff is active.
+			Time your attacks during the riff to reduce the cooldown.
+			'''
 	}
 
 	FateoftheGods: {
@@ -982,6 +1008,65 @@ Items: {
 			The confines of this painting is not enough to fit the entire team
 			Hold Shift to see a list of past and current developers
 			'''
+	}
+
+	ProfanityFilter: {
+		DisplayName: Profanity Filter
+		Tooltip:
+			'''
+			Electronic weapons have 10% reduced damage, but 50% increased playing speed
+			15% increased symphonic damage for weapons that are not Electronic
+			10% increased symphonic critical chance
+			Increases maximum inspiration by 4
+			Symphonic damage has a 10% chance to increase the level of one of your active empowerments. 
+			This effect can only trigger once every 2.5 seconds.
+			'''
+	}
+
+	RedglassMonocle: {
+		DisplayName: Redglass Monocle
+		Tooltip:
+			'''
+			Once worn by an infamous underworld native.
+			25% increased symphonic damage
+			Flat Damage empowerment is twice as effective on you
+			Reduces the inspiration cost of Radio Mic by 2
+			Increases the Damage empowerment level from Radio Mic by 1
+			Radio Mic now inflicts Charmed for 5 seconds
+			'''
+	}
+
+	RelicOfConvergenceOverride: {
+		Tooltip:
+			'''
+			Creates a profaned crystal at the cursor that channels a healing aura before shattering
+			All players within the area of effect are healed for {0} + 4x healing bonus HP
+			Allies gain 50% extra healing
+			Holding out the crystal decreases defense and increases incoming damage
+			[c/FF8C00:Never once had I known kindness. Neither my peers or family had a shred of compassion for me.]
+			[c/FF8C00:I wished for someone I could confide. A presence that cleansed me of anxiety.]
+			[c/FF8C00:And when I saw Her radiant smile when we met, I knew I had finally found it.]
+			'''
+		DisplayName: Relic of Convergence
+	}
+
+	CorroslimeBass: {
+		Tooltip:
+			'''
+			Sends out bouncing corroslime balls.
+			Right click to split balls into {0} smaller balls.
+			This process can be done {1} times.
+			'''
+		DisplayName: Corroslime Bass
+	}
+
+	CrimslimeOboe: {
+		DisplayName: Crimslime Oboe
+		Tooltip:
+		'''
+		Shoots sticky crimslime darts.
+		After {0} seconds the darts will explode.
+		'''
 	}
 }
 
@@ -1083,11 +1168,20 @@ Projectiles: {
 	DevourerSineBeam.DisplayName: Devourer Sine Beam
 	EctambourinePro.DisplayName: Ectambourine Projectile
 	EctambourineProJingle.DisplayName: Ectambourine Jingle
+	InfectedOcarinaPro.DisplayName: Infected Ocarina Pro
+	VileSpitFriendly.DisplayName: Vile Spit Friendly
 	ShredderTendrils.DisplayName: Shredder Tendrils
 	ShredderPro.DisplayName: Shredder Pro
 	StellarRiffPro.DisplayName: Stellar Riff Pro
 	StellarAurora.DisplayName: Stellar Aurora
 	StellarShootingStar.DisplayName: Stellar Shooting Star
+	DragonForceRiffBeam.DisplayName: Dragon Force Riff Beam
+	InfectedPustule.DisplayName: Infected Pustule
+	InfectedSporeCloud.DisplayName: Infected Spore Cloud
+	InfectedSporeFire.DisplayName: Infected Spore Fire
+	RelicOfConvergenceCrystalOverride.DisplayName: Relic Of Convergence Crystal Override
+	CorroslimeBassPro.DisplayName: Corroslime Bass Pro
+	CrimslimeOboePro.DisplayName: Crimslime Oboe Pro
 }
 
 Configs: {
@@ -1379,6 +1473,8 @@ Configs: {
 		Headers: {
 			Audio: Audio
 			UITweaks: UI Tweaks
+			WelcomeText: Welcome Text Header
+			Visual: Visual Header
 		}
 
 		BardEmpowermentBarOffsetX: {
@@ -1395,8 +1491,58 @@ Configs: {
 			Label: Riff Music Volume
 			Tooltip: ""
 		}
+
+		StartText: {
+			Label: Start Text
+			Tooltip: ""
+		}
+
+		RiffScreenEffectIntensity: {
+			Label: Riff Screen Effect Intensity
+			Tooltip: ""
+		}
+	}
+
+	DebugConfig: {
+		DisplayName: Debug Config
+		Headers.Debugging: Debugging Header
+
+		ItemHoldOffsetX: {
+			Label: Item Hold Offset X
+			Tooltip: ""
+		}
+
+		ItemHoldOffsetY: {
+			Label: Item Hold Offset Y
+			Tooltip: ""
+		}
+
+		ItemUseStylePerpendicular: {
+			Label: Item Use Style Perpendicular
+			Tooltip: ""
+		}
+
+		ShootOffsetForward: {
+			Label: Shoot Offset Forward
+			Tooltip: ""
+		}
+
+		ShootOffsetPerpendicular: {
+			Label: Shoot Offset Perpendicular
+			Tooltip: ""
+		}
+
+		ItemHoldPerpendicular: {
+			Label: Item Hold Perpendicular
+			Tooltip: ""
+		}
 	}
 }
 
+WikiMessage: "[i:RagnarokMod/EquivalentExchange][c/FF2929:Help us complete the official ][c/B428FF:Ragnarok Mod][c/FF2929: wiki at ][c/3898FF:ragnarokmod.wiki.gg][c/FF2929:!][i:RagnarokMod/CorrosiveFlux]"
+FandomWarning: "[i:GolfCupFlagRed][c/B428FF:Ragnarok Mod ][c/FF2929:has never had a Fandom wiki. Any information from Fandom may be inaccurate!][i:GolfCupFlagRed]"
+DiscordInvite: "[i:WireKite][c/9696FF:Join the official ][c/B428FF:Ragnarok Mod][c/9696FF: Discord! ][c/3898FF:discord.gg/UBAQwtKCbf][i:WireKite]"
+PatreonAd: "[i:LuckyCoin][c/96FF96:If you enjoy the mod, consider supporting us on Patreon: ][c/3898FF:patreon.com/c/DevTeamRagnarok][i:LuckyCoin]"
+DisableMe: "[i:Wrench][c/FFFF0A:If you would like to stop getting these messages, you can disable them in the config in your pause menu!][i:Wrench]"
 Riffs.Cooldown: Riff Cooldown
 DamageClasses.ThoriumRogueClass.DisplayName: rogue damage

@@ -102,7 +102,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                 ? SpriteEffects.None
                 : SpriteEffects.FlipHorizontally;
 
-            // === Draw Trail ===
+            // Draw Trail
             for (int k = 0; k < Projectile.oldPos.Length; k++)
             {
                 Vector2 drawPos =
@@ -128,7 +128,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                 );
             }
 
-            // === Draw Current Projectile ===
+            // Draw Current Projectile
             Main.EntitySpriteDraw(
                 texture,
                 Projectile.Center - Main.screenPosition,

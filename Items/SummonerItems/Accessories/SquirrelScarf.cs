@@ -27,7 +27,6 @@ namespace RagnarokMod.Items.SummonerItems.Accessories
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.maxTurrets += 1;
-            player.GetDamage(DamageClass.Summon) += 0.05f;
         }
 
         public override void AddRecipes()

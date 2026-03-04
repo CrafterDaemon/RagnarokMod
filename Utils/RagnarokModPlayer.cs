@@ -13,6 +13,8 @@ using RagnarokMod.Items.HealerItems.Accessories;
 using RagnarokMod.Projectiles.Accessories;
 using RagnarokMod.Riffs;
 using RagnarokMod.Sounds;
+using RagnarokMod.Projectiles.CalamityOverrides;
+using RagnarokMod.Items.HealerItems.CalamityOverrides;
 using ReLogic.Utilities;
 using System;
 using System.Collections.Generic;
@@ -43,7 +45,7 @@ namespace RagnarokMod.Utils
         private static Mod thorium = ModLoader.GetMod("ThoriumMod");
         private static Mod calamity = ModLoader.GetMod("CalamityMod");
 
-
+        private static int startMessageDisplayDelay = -1;
         public float oneTimeDamageReduction = 0;
         public bool brimstoneFlamesOnHit = false;
         public byte activeRiffType = 0;
@@ -52,6 +54,7 @@ namespace RagnarokMod.Utils
         public static List<Action<Player, Player>> OnHealEffects = [];
         public bool stringInstrumentUsed = false;
         public bool batpoop = false;
+        public bool redglassMonocle = false;
 
         public bool auricBardSet = false;
         public bool auricHealerSet = false;
@@ -87,7 +90,7 @@ namespace RagnarokMod.Utils
         public bool throwGuide2Fix = false;
         public bool throwGuide3Fix = false;
         public bool auricBoost;
-		
+
         public bool shredderLifesteal = false;
         public int shredderLifestealCooldown = 0;
 
@@ -132,6 +135,12 @@ namespace RagnarokMod.Utils
                 Player.whoAmI
             );
         }
+
+        public override void OnEnterWorld()
+        {
+            if (ModContent.GetInstance<ClientConfig>().StartText)
+                startMessageDisplayDelay = Main.rand.Next(15*60, 60*60 + 1);
+        }
         public override void OnHurt(Player.HurtInfo info)
         {
             if (bloodflareHealer || bloodflareBard)
@@ -140,13 +149,14 @@ namespace RagnarokMod.Utils
             }
         }
 
-        public override void ModifyHitByNPC(NPC npc, ref Player.HurtModifiers modifiers)
-        {
-            if (oneTimeDamageReduction != 0)
-            {
+        public override void ModifyHitByNPC(NPC npc, ref Player.HurtModifiers modifiers){
+            if (oneTimeDamageReduction != 0){
                 modifiers.FinalDamage *= (1 - oneTimeDamageReduction);
                 oneTimeDamageReduction = 0;
             }
+			if (this.Player.ownedProjectileCounts[ModContent.ProjectileType<RelicOfConvergenceCrystalOverride>()] > 0 && this.Player.HeldItem.type == ModContent.ItemType<RelicOfConvergenceOverride>()){
+				modifiers.FinalDamage *= RelicOfConvergenceOverride.IncomingDamageMultiplier;
+			}
         }
 
         public override void ProcessTriggers(TriggersSet triggersSet)
@@ -255,6 +265,16 @@ namespace RagnarokMod.Utils
 
         public override void PostUpdateMiscEffects()
         {
+            OnHealEffects ??= [];
+            OnHealEffects.Clear();
+            HandleTextChatMessages();
+            if (redglassMonocle)
+            {
+                ThoriumPlayer tp = Player.GetThoriumPlayer();
+                byte flatDmgLevel = tp.GetEmpTimer<FlatDamage>().level;
+                if (flatDmgLevel > 0)
+                    Player.GetDamage(DamageClass.Generic).Flat += flatDmgLevel; // add it again = doubled
+            }
             if (tarraBard)
             {
                 ThoriumPlayer thoriumPlayer = ThoriumMod.Utilities.PlayerHelper.GetThoriumPlayer(base.Player);
@@ -402,7 +422,6 @@ namespace RagnarokMod.Utils
                 var healerThorium = healer.GetModPlayer<ThoriumPlayer>();
                 if (healerThorium.darkAura)
                     return;
-
 
                 if (target.whoAmI == Main.myPlayer)
                 {
@@ -570,20 +589,28 @@ namespace RagnarokMod.Utils
 
         public override void PostUpdate()
         {
-            if (!riffPlaying)
-            {
-                return;
+            // If the riff sound has stopped, the riff is over
+            if (!riffPlaying){
+                activeRiffType = 0;
+                activeRiffTargets.Clear();
             }
-            if (SoundEngine.TryGetActiveSound(riffSlot, out var sound))
-            {
+            else if (SoundEngine.TryGetActiveSound(riffSlot, out var sound)){
                 sound.Position = Player.Center;
             }
-            else
-            {
+            else{
                 riffPlaying = false;
+                activeRiffType = 0;
+                activeRiffTargets.Clear();
             }
+
             if (shredderLifestealCooldown > 0)
                 shredderLifestealCooldown--;
+			
+			
+			if (this.Player.ownedProjectileCounts[ModContent.ProjectileType<RelicOfConvergenceCrystalOverride>()] > 0 && this.Player.HeldItem.type == ModContent.ItemType<RelicOfConvergenceOverride>()){
+				Player player = this.Player;
+				player.statDefense *= RelicOfConvergenceOverride.DefenseMultiplier;
+			}
         }
 
         // Function to add stealth to thorium throwing armors
@@ -823,6 +850,7 @@ namespace RagnarokMod.Utils
             leviathanHeart = false;
             sirenScale = false;
             shredderLifesteal = false;
+            this.redglassMonocle = false;
         }
         public override void ResetEffects()
         {
@@ -840,6 +868,9 @@ namespace RagnarokMod.Utils
         public override void UpdateDead()
         {
             SetFalse();
+            activeRiffType = 0;
+            activeRiffTargets.Clear();
+
         }
 
         public override void ModifyWeaponKnockback(Item item, ref StatModifier knockback)
@@ -871,6 +902,29 @@ namespace RagnarokMod.Utils
             OnHealEffects?.Clear();
             OnHealEffects = null;
             base.Unload();
+        }
+
+        private void HandleTextChatMessages()
+        {
+            if (Player.whoAmI != Main.myPlayer || Main.dedServ)
+                return;
+
+            if (startMessageDisplayDelay >= 0)
+            {
+                if (startMessageDisplayDelay == 0)
+                {
+                    if (ModContent.GetInstance<ClientConfig>().StartText)
+                    {
+                        CalamityUtils.BroadcastLocalizedText("Mods.RagnarokMod.FandomWarning");
+                        CalamityUtils.BroadcastLocalizedText("Mods.RagnarokMod.WikiMessage");
+                        CalamityUtils.BroadcastLocalizedText("Mods.RagnarokMod.DiscordInvite");
+                        CalamityUtils.BroadcastLocalizedText("Mods.RagnarokMod.PatreonAd");
+                        CalamityUtils.BroadcastLocalizedText("Mods.RagnarokMod.DisableMe");
+                    }
+                }
+
+                --startMessageDisplayDelay;
+            }
         }
     }
 }

@@ -18,6 +18,8 @@ namespace RagnarokMod.Sounds
         public static readonly SoundStyle HookRetract = new("RagnarokMod/Sounds/HookRetract") { Volume = 0.75f, MaxInstances = 0 };
         public static readonly SoundStyle fretsriff = new("RagnarokMod/Sounds/Music/Riffs/fretsriff") { Volume = 0.6f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
         public static readonly SoundStyle scourgesfrets = new("RagnarokMod/Sounds/scourgesfrets") { Volume = 0.5f, MaxInstances = 0 };
+		public static readonly SoundStyle corroslimebass = new("RagnarokMod/Sounds/corroslimebass") { Volume = 0.75f, MaxInstances = 0 };
+		public static readonly SoundStyle crimslimeoboe = new("RagnarokMod/Sounds/crimslimeoboe") { Volume = 0.75f, MaxInstances = 0 };
         public static readonly SoundStyle none = new("RagnarokMod/Sounds/empty") { Volume = 0.75f, MaxInstances = 0 };
         public static readonly SoundStyle Red = new("RagnarokMod/Sounds/Red") { Volume = 0.6f, MaxInstances = 0 };
         public static readonly SoundStyle Blue = new("RagnarokMod/Sounds/Blue") { Volume = 1f, MaxInstances = 0 };
@@ -25,9 +27,12 @@ namespace RagnarokMod.Sounds
         public static readonly SoundStyle PurpleExplode = new("RagnarokMod/Sounds/PurpleExplode") { Volume = 1f, MaxInstances = 0 };
         public static readonly SoundStyle devourerriff = new("RagnarokMod/Sounds/Music/Riffs/devourerriff") { Volume = 0.4f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
         public static readonly SoundStyle devourersine = new("RagnarokMod/Sounds/devourersine") { Volume = 0.6f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.ReplaceOldest };
+        public static readonly SoundStyle HiveMindRiff = new("RagnarokMod/Sounds/HiveMindRiff") { Volume = 0.4f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
         public static readonly SoundStyle shredderriff = new("RagnarokMod/Sounds/Music/Riffs/shredderriff") { Volume = 0.4f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
         public static readonly SoundStyle shredder = new("RagnarokMod/Sounds/shredder") { Volume = 0.5f, MaxInstances = 0 };
 		public static readonly SoundStyle aureusriff = new("RagnarokMod/Sounds/Music/Riffs/aureusriff") { Volume = 0.6f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
 		public static readonly SoundStyle stellarriff = new("RagnarokMod/Sounds/stellarriff") { Volume = 0.5f, MaxInstances = 0 };
+        public static readonly SoundStyle rotjdriff = new("RagnarokMod/Sounds/Music/Riffs/rotjdriff") { Volume = 0.6f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
+        public static readonly SoundStyle dragonforce = new("RagnarokMod/Sounds/dragonforce") { Volume = 0.2f, MaxInstances = 0 };
     }
 }

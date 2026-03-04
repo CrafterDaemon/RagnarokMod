@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CalamityMod.Rarities;
+using Microsoft.Xna.Framework;
 using RagnarokMod.Sounds;
 using System;
 using System.Collections.Generic;
@@ -25,11 +26,12 @@ namespace RagnarokMod.Items
             Item.useStyle = ItemUseStyleID.MowTheLawn;
             Item.holdStyle = ItemHoldStyleID.HoldGuitar;
             Item.noMelee = true;
+            Item.rare = ModContent.RarityType<CosmicPurple>();
         }
 
         public override bool? UseItem(Player player)
         {
-            String text = "The Primordial Wyrm has awoken!";
+            String text = Language.GetTextValue("Mods.RagnarokMod.Items.PrimalTerror.HasAwoken");
             Color color = new Color(175, 75, 255);
             if (Main.netMode != NetmodeID.MultiplayerClient)
             {

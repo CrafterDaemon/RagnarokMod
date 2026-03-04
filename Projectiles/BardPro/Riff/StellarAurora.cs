@@ -157,7 +157,7 @@ namespace RagnarokMod.Projectiles.BardPro.Riffs
                 Vector2 toTarget = Vector2.Normalize(target.Center - spawnPos);
 
                 Player owner = Main.player[Projectile.owner];
-                int damage = 50;
+                int damage = 35;
                 if (owner.GetThoriumPlayer() != null)
                     damage = (int)(damage * owner.GetTotalDamage(ThoriumDamageBase<BardDamage>.Instance).Additive);
 

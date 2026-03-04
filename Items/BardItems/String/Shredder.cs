@@ -1,6 +1,7 @@
 using CalamityMod.Items;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Mono.Cecil;
 using RagnarokMod.Projectiles.BardPro.String;
 using RagnarokMod.Riffs;
 using RagnarokMod.Riffs.RiffTypes;
@@ -32,12 +33,12 @@ namespace RagnarokMod.Items.BardItems.String
 
         public override void SafeSetBardDefaults()
         {
-            Item.damage = 65;
+            Item.damage = 58;
             InspirationCost = 1;
             Item.width = 88;
             Item.height = 88;
-            Item.useTime = 18;
-            Item.useAnimation = 18;
+            Item.useTime = 27;
+            Item.useAnimation = 27;
             Item.useStyle = ItemUseStyleID.Guitar;
             Item.holdStyle = 5;
             Item.noMelee = true;
@@ -46,32 +47,31 @@ namespace RagnarokMod.Items.BardItems.String
             Item.value = CalamityGlobalItem.RarityGreenBuyPrice;
             Item.rare = ItemRarityID.Green;
             Item.shoot = ModContent.ProjectileType<ShredderPro>();
-            Item.shootSpeed = 11f;
+            Item.shootSpeed = 16f;
         }
         public override void SafeRiffBardShoot(int success, int level, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
+            var ragnarokPlayer = player.GetRagnarokModPlayer();
+            if (ragnarokPlayer.activeRiffType == RiffType)
+                success++;
+            Projectile newProj = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
+            newProj.ai[0] = Main.MouseWorld.X;
+            newProj.ai[1] = Main.MouseWorld.Y;
+        }
+
+        public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
         {
             var ragnarokPlayer = player.GetRagnarokModPlayer();
 
             if (ragnarokPlayer.activeRiffType == RiffType)
             {
-                // Shoot 3 projectiles in a narrow spread
-                float spreadAngle = MathHelper.ToRadians(8f); // 8 degrees total spread
-
-                // Center projectile
-                Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
-
-                // Left projectile
-                Vector2 leftVelocity = velocity.RotatedBy(-spreadAngle);
-                Projectile.NewProjectile(source, position, leftVelocity, type, damage, knockback, player.whoAmI);
-
-                // Right projectile
-                Vector2 rightVelocity = velocity.RotatedBy(spreadAngle);
-                Projectile.NewProjectile(source, position, rightVelocity, type, damage, knockback, player.whoAmI);
+                Item.useTime = 9;
+                Item.useAnimation = 9;
             }
             else
             {
-                // Normal single shot
-                Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
+                Item.useTime = 27;
+                Item.useAnimation = 27;
             }
         }
         public override Vector2? HoldoutOffset() => new Vector2(-18, 20);

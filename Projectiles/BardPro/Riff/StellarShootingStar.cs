@@ -52,7 +52,7 @@ namespace RagnarokMod.Projectiles.BardPro.Riffs
                 }
             }
 
-            // Trail particles - more frequent and visible
+            // Trail particles
             if (Main.rand.NextBool())
             {
                 Color color = Main.rand.NextBool() ? astralRed : astralCyan;
@@ -99,7 +99,7 @@ namespace RagnarokMod.Projectiles.BardPro.Riffs
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.Additive, Main.DefaultSamplerState,
                 DepthStencilState.None, Main.Rasterizer, null, Main.GameViewMatrix.TransformationMatrix);
 
-            // Alternating color star - much brighter
+            // Alternating color star
             Color starColor = (Main.GameUpdateCount % 20 < 10) ? astralRed : astralCyan;
 
             // Draw star with bloom

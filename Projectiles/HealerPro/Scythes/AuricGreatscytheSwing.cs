@@ -98,7 +98,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             Projectile.gfxOffY = player.gfxOffY;
 
             // Calculate swing rotation
-            // Start angle: behind the player, sweep forward
+            // Start angle behind the player, sweep forward
             float startAngle = -SwingArc / 2f;
             float currentAngle = startAngle + SwingArc * EasedProgress;
             Projectile.rotation = currentAngle * player.direction;

@@ -37,7 +37,7 @@ namespace RagnarokMod.Items.BardItems.Armor
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "Increased heart pickup range\nEnemies have a chance to drop extra hearts on death\nAll buff duration enhancements are prolonged for additional 50%\nSet bonus of Ornate armor";
+            player.setBonus = this.GetLocalizedValue("SetBonus");
             CalamityPlayer calamityPlayer = player.Calamity();
             calamityPlayer.tarraSet = true;
             player.GetRagnarokModPlayer().tarraBard = true;

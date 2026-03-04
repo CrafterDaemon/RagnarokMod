@@ -20,16 +20,15 @@ namespace RagnarokMod.Riffs.RiffTypes
 
         public override void SetStaticDefaults()
         {
-            Empowerments.Add<FlightTime>(3);
+            Empowerments.Add<FlightTime>(2);
             Empowerments.Add<DamageReduction>(3);
-            Empowerments.Add<LifeRegeneration>(3);
-            Empowerments.Add<MovementSpeed>(2);
+            Empowerments.Add<LifeRegeneration>(2);
+            Empowerments.Add<MovementSpeed>(1);
             Empowerments.Add<AttackSpeed>(2);
             Empowerments.Add<Damage>(2);
         }
         public override void SafeUpdate(Player bardPlayer, Player target)
         {
-
         }
 
         public override void SafeOnStart(Player bardPlayer, Player target)
