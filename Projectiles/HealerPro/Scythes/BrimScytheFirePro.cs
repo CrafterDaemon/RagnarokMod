@@ -2,13 +2,7 @@
 using Microsoft.Xna.Framework;
 using RagnarokMod.Dusts;
 using RagnarokMod.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 using ThoriumMod;
 using ThoriumMod.Utilities;
@@ -35,7 +29,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             Projectile.idStaticNPCHitCooldown = 40;
             Projectile.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
             rotationSpeed = 0.25f;
-            base.Projectile.Size = new Vector2(800, 800);
+            Projectile.Size = new Vector2(800, 800);
             dustCount = 1;
             dustType = 60;
             Projectile.light = 1f;

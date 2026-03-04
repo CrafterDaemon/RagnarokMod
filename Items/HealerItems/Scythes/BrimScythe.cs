@@ -1,7 +1,6 @@
 using CalamityMod.Items;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using RagnarokMod.Items.Materials;
 using RagnarokMod.Projectiles.HealerPro.Scythes;
 using RagnarokMod.Utils;
 using Terraria;
@@ -25,23 +24,23 @@ namespace RagnarokMod.Items.HealerItems.Scythes
             SetDefaultsToScythe();
             scytheSoulCharge = 2;
             isHealer = true;
-            base.Item.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
-            base.Item.noMelee = true;
-            base.Item.noUseGraphic = true;
-            base.Item.autoReuse = true;
-            base.Item.useTime = 20;
-            base.Item.useAnimation = 20;
-            base.Item.maxStack = 1;
-            base.Item.knockBack = 6.5f;
-            base.Item.useStyle = ItemUseStyleID.Swing;
-            base.Item.UseSound = SoundID.Item1;
-            base.Item.shootSpeed = 0.1f;
-            base.Item.damage = 40;
-            base.Item.width = 72;
-            base.Item.height = 82;
-            base.Item.value = CalamityGlobalItem.RarityPinkBuyPrice;
-            base.Item.rare = ItemRarityID.Pink;
-            base.Item.shoot = ModContent.ProjectileType<BrimScythePro>();
+            Item.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
+            Item.noMelee = true;
+            Item.noUseGraphic = true;
+            Item.autoReuse = true;
+            Item.useTime = 20;
+            Item.useAnimation = 20;
+            Item.maxStack = 1;
+            Item.knockBack = 6.5f;
+            Item.useStyle = ItemUseStyleID.Swing;
+            Item.UseSound = SoundID.Item1;
+            Item.shootSpeed = 0.1f;
+            Item.damage = 40;
+            Item.width = 72;
+            Item.height = 82;
+            Item.value = CalamityGlobalItem.RarityPinkBuyPrice;
+            Item.rare = ItemRarityID.Pink;
+            Item.shoot = ModContent.ProjectileType<BrimScythePro>();
         }
 
 
