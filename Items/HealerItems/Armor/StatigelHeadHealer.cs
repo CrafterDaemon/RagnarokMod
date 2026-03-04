@@ -1,24 +1,14 @@
-﻿using Microsoft.Xna.Framework;
-using System.Collections.Generic;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using RagnarokMod;
-using RagnarokMod.Utils;
 using CalamityMod;
 using CalamityMod.Items;
-using CalamityMod.Items.Armor;
 using CalamityMod.Items.Materials;
-using CalamityMod.CalPlayer;
-using CalamityMod.Rarities;
 using CalamityMod.Items.Armor.Statigel;
 using CalamityMod.ExtraJumps;
-using CalamityMod.Tiles.Furniture.CraftingStations;
 using ThoriumMod;
 using ThoriumMod.Items;
 using ThoriumMod.Utilities;
-using CalamityMod.Tiles.FurnitureStatigel;
 
 namespace RagnarokMod.Items.HealerItems.Armor
 {
@@ -62,8 +52,10 @@ namespace RagnarokMod.Items.HealerItems.Armor
 
         public override void AddRecipes()
         {
-            base.CreateRecipe(1).AddIngredient<PurifiedGel>(5).AddIngredient<BlightedGel>(5)
-                .AddTile<StaticRefiner>()
+            CreateRecipe()
+                .AddIngredient<PurifiedGel>(5)
+                .AddIngredient<BlightedGel>(5)
+                .AddTile(TileID.Solidifier)
                 .Register();
         }
     }
