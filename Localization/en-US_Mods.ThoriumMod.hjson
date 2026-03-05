@@ -113,7 +113,7 @@ Items: {
 
 	TopazRing: {
 		DisplayName: Topaz Ring
-		Tooltip: Increases rogue damage by 1
+		Tooltip: Increases rogue damage by 3%
 	}
 
 	FlightMail: {

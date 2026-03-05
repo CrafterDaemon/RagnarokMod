@@ -12,6 +12,7 @@ using Terraria.DataStructures;
 using Terraria.GameInput;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 using ThoriumMod;
 using ThoriumMod.Empowerments;
 using ThoriumMod.Items;
@@ -40,7 +41,8 @@ namespace RagnarokMod.Items.BardItems
             int index = tooltips.FindLastIndex(tt => tt.Mod.Equals("Terraria") && tt.Name.StartsWith("Tooltip")) + 1;
             if (index == 0) index = tooltips.Count;
 
-            tooltips.Insert(index++, new TooltipLine(Mod, "RiffHeader", "Riff Empowerments:")
+            string headerText = Language.GetTextValue("Mods.RagnarokMod.Riffs.EmpowermentsHeader");
+            tooltips.Insert(index++, new TooltipLine(Mod, "RiffHeader", headerText)
             {
                 OverrideColor = new Color(255, 40, 100)
             });

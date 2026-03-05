@@ -182,7 +182,7 @@ Items: {
 		SetBonus:
 			'''
 			Tarragon, Bloodflare, God Slayer, and Rhapsodist armor effects
-			Pressing the 'Armor Ability' key will trigger both Rhapsodist armor abilities
+			Pressing the '{$ThoriumMod.Keybinds.ArmorAbility.DisplayName}' key will trigger both Rhapsodist armor abilities
 			'''
 	}
 
@@ -200,7 +200,7 @@ Items: {
 		SetBonus:
 			'''
 			Tarragon, Bloodflare, Silva, Nightfallen, and Dreamweaver armor effects
-			Pressing the 'Armor Ability' key will trigger both Dreamweaver armor abilities
+			Pressing the '{$ThoriumMod.Keybinds.ArmorAbility.DisplayName}' key will trigger both Dreamweaver armor abilities
 			50% increased radiant damage
 			'''
 	}
@@ -273,7 +273,7 @@ Items: {
 		SetBonus:
 			'''
 			+10% increased inspiration regeneration speed
-			Pressing the 'Armor Ability' key will grant you and your allies attack speed and damage I for 15 seconds
+			Pressing the '{$ThoriumMod.Keybinds.ArmorAbility.DisplayName}' key will grant you and your allies attack speed and damage I for 15 seconds
 			You also will be granted the Antarctic Creativity buff
 			While buffed you will be granted +15% inspiration speed and 10% increased symphonic playing speed
 			Costs 12 inspiration
@@ -292,7 +292,7 @@ Items: {
 		SetBonus:
 			'''
 			Healing spells heal an additional 3 life
-			Pressing the 'Armor Ability' key will shield you for 50 life and grants you the Antarctic Reinforcement buff for 15 seconds
+			Pressing the '{$ThoriumMod.Keybinds.ArmorAbility.DisplayName}' key will shield you for 50 life and grants you the Antarctic Reinforcement buff for 15 seconds
 			While buffed you will be granted +8 defense and your healing spells will heal for an additional 2 life
 			Costs 100 mana
 			'''
@@ -343,42 +343,33 @@ Items: {
 		Tooltip:
 			'''
 			The motherboard from the Star Scouter
-			This technology is beyond your knowledge
+			'This technology is beyond your knowledge'
 			'''
 	}
 
 	BelchingSaxophoneOverride: {
-		DisplayName: Belching Saxophone
-		Tooltip:
-			'''
-			Fires an array of dirty reeds, music notes, and sulphuric bubbles
-			'Doot'
-			'''
+		DisplayName: "{$CalamityMod.Items.Weapons.Magic.BelchingSaxophone.DisplayName}"
+		Tooltip: "{$CalamityMod.Items.Weapons.Magic.BelchingSaxophone.Tooltip}"
 	}
 
 	AnahitasArpeggioOverride: {
-		DisplayName: Anahita's Arpeggio
+		DisplayName: "{$CalamityMod.Items.Weapons.Magic.AnahitasArpeggio.DisplayName}"
 		Tooltip: Casts slow-moving treble clefs that confuse enemies
 	}
 
 	FaceMelterOverride: {
-		DisplayName: Face Melter
-		Tooltip:
-			'''
-			Fires music notes
-			Press <right> to summon an amplifier that shoots towards your mouse
-			'WOOO!! FAAAAAAANTASYY WORLDDDDD!'
-			'''
+		DisplayName: "{$CalamityMod.Items.Weapons.Magic.FaceMelter.DisplayName}"
+		Tooltip: "{$CalamityMod.Items.Weapons.Magic.FaceMelter.Tooltip}"
 	}
 
 	EmpoweredGranite: {
 		DisplayName: Empowered Granite
-		Tooltip: Granite block charged full of energy from the Granite Energy Storm
+		Tooltip: "'Granite block charged full of energy from the Granite Energy Storm'"
 	}
 
 	EnchantedMarble: {
 		DisplayName: Enchanted Marble
-		Tooltip: Special marble, imbued with ancient holy magic
+		Tooltip: "'Special marble, imbued with ancient holy magic'"
 	}
 
 	StatigelHeadBard: {
@@ -420,7 +411,7 @@ Items: {
 
 	StriderFang: {
 		DisplayName: Strider Fang
-		Tooltip: An icy fang straight from the Borean Strider's mouth
+		Tooltip: "'An icy fang straight from the Borean Strider's mouth'"
 	}
 
 	TarragonCowl: {
@@ -433,6 +424,13 @@ Items: {
 			Bonus healing increased by 7
 			Maximum mana increased by 60
 			Mana usage reduced by 20%
+			'''
+		SetBonus:
+			'''
+			A Guardian healer will assist you in healing your allies
+			Heals ally life equal to your bonus healing + 5 health
+			and grants them the Guardian Healers Blessing for 20 seconds
+			{$CalamityMod.Items.Armor.PostMoonLord.TarragonBreastplate.CommonSetBonus}
 			'''
 	}
 
@@ -447,6 +445,13 @@ Items: {
 			+15% chance for inspiration notes to drop from enemies
 			+4 maximum inspiration
 			'''
+		SetBonus:
+			'''
+			A Guardian healer will assist you in healing your allies
+			Heals ally life equal to your bonus healing + 5 health
+			and grants them the Guardian Healers Blessing for 20 seconds
+			{$CalamityMod.Items.Armor.PostMoonLord.TarragonBreastplate.CommonSetBonus}
+			'''
 	}
 
 	VictideHeadHealer: {
@@ -456,9 +461,6 @@ Items: {
 			'''
 			Enemies are less likely to target you
 			+3 life regen and 10% increased radiant but 10% decreased non-radiant damage while submerged in liquid
-			When using any weapon you have a 10% chance to throw a returning seashell projectile
-			This seashell does true damage and does not benefit from any damage class
-			Provides increased underwater mobility and slightly reduces breath loss in the abyss
 			'''
 	}
 
@@ -506,9 +508,6 @@ Items: {
 			'''
 			Enemies are less likely to target you
 			+3 life regen and 10% increased symphonic damage while submerged in liquid
-			When using any weapon you have a 10% chance to throw a returning seashell projectile
-			This seashell does true damage and does not benefit from any damage class
-			Provides increased underwater mobility and slightly reduces breath loss in the abyss
 			'''
 	}
 
@@ -516,8 +515,8 @@ Items: {
 		DisplayName: Equivalent Exchange
 		Tooltip:
 			'''
-			'You must follow the law of equivalent exchange'
-			'You can only get out equal to what you put in'
+			'You must follow the law of equivalent exchange
+			You can only get out equal to what you put in'
 			'''
 	}
 
@@ -537,7 +536,7 @@ Items: {
 			'''
 			The scoria allows you to spin the scythe much faster by constantly expelling steam
 			Right click to throw the scythe, which will curve on it's way back
-				The scythe deals 20% more damage when thrown
+			The scythe deals 20% more damage when thrown
 			'''
 	}
 
@@ -571,7 +570,11 @@ Items: {
 
 	TrueSquirrelScarf: {
 		DisplayName: True Squirrel Scarf
-		Tooltip: The true, original form of the squirrel scarf.\nGrants +999 Sentry Slots
+		Tooltip:
+			'''
+			The true, original form of the squirrel scarf.
+			Grants +999 Sentry Slots
+			'''
 	}
 
 	Prisma: {
@@ -588,8 +591,8 @@ Items: {
 		DisplayName: Voidseer Pearl
 		Tooltip:
 			'''
-			'They say beauty is in the eye of the beholder'
-			'I don't think they meant that literally'
+			'They say beauty is in the eye of the beholder
+			I don't think they meant that literally'
 			'''
 	}
 
@@ -599,8 +602,8 @@ Items: {
 			'''
 			Restores 100 life
 			Medium improvements to all stats
-			'A delicious jellyfish jelly'
-			'One could say it makes the tastiest sandwich in the sea'
+			'A delicious jellyfish jelly
+			One could say it makes the tastiest sandwich in the sea'
 			'''
 	}
 
@@ -670,7 +673,7 @@ Items: {
 
 	EldritchShellFragment: {
 		DisplayName: Eldritch Shell Fragment
-		Tooltip: An enchanted shard from the prison of an ancient god
+		Tooltip: "'An enchanted shard from the prison of an ancient god'"
 	}
 
 	SigilOfACruelWorld: {
@@ -809,8 +812,8 @@ Items: {
 		Tooltip:
 			'''
 			Spinning the scythe periodically releases a barrage of chilling darts
-			'Found somewhere between Halloween and Christmas'
-			'Hey, you could make a movie about that!'
+			'Found somewhere between Halloween and Christmas
+			Hey, you could make a movie about that!'
 			'''
 	}
 
@@ -888,7 +891,6 @@ Items: {
 		Tooltip:
 			'''
 			The Siren sings along with your enchanting tune.
-
 			Symphonic damage increased by 15%
 			Inspiration regen rate increased by 20%
 			Anahita will sing along with your string instruments, firing additional water projectiles
@@ -930,6 +932,7 @@ Items: {
 	PrimalTerror: {
 		DisplayName: Primal Terror
 		Tooltip: Keep me favorited ;P
+		HasAwoken: The Primordial Wyrm has awoken!
 	}
 
 	DevourerOfSines: {
@@ -977,8 +980,8 @@ Items: {
 		DisplayName: Squirrel Scarf
 		Tooltip:
 			'''
-			'As fluffy as a squirrel's tail'
 			Increases your max number of sentries by 1
+			'As fluffy as a squirrel's tail'
 			'''
 	}
 
@@ -1006,8 +1009,12 @@ Items: {
 			'''
 			Thanks to the entire team, everyone who supported, and those who all play the mod and keep it alive!
 			The confines of this painting is not enough to fit the entire team
-			Hold Shift to see a list of past and current developers
+			Hold "Left Shift" to see a list of past and current developers
 			'''
+		Donors: Donors
+		Artists: Artists
+		Programmers: Programmers
+		OtherDevelopers: Other Developers
 	}
 
 	ProfanityFilter: {
@@ -1261,7 +1268,7 @@ Configs: {
 
 		RuneOfKos: {
 			Label: Providence Spawning Changes
-			Tooltip: Changes Rune of Kos recipe to require Divine Geodes and Primordials Essences, and makes it no longer drop from Providence. Defaults to True
+			Tooltip: Changes Mark of Providence recipe to require Divine Geodes and Primordials Essences, and makes it no longer drop from Providence. Defaults to True
 		}
 	}
 
@@ -1544,5 +1551,8 @@ FandomWarning: "[i:GolfCupFlagRed][c/B428FF:Ragnarok Mod ][c/FF2929:has never ha
 DiscordInvite: "[i:WireKite][c/9696FF:Join the official ][c/B428FF:Ragnarok Mod][c/9696FF: Discord! ][c/3898FF:discord.gg/UBAQwtKCbf][i:WireKite]"
 PatreonAd: "[i:LuckyCoin][c/96FF96:If you enjoy the mod, consider supporting us on Patreon: ][c/3898FF:patreon.com/c/DevTeamRagnarok][i:LuckyCoin]"
 DisableMe: "[i:Wrench][c/FFFF0A:If you would like to stop getting these messages, you can disable them in the config in your pause menu!][i:Wrench]"
-Riffs.Cooldown: Riff Cooldown
+Riffs: {
+	Cooldown: Riff Cooldown
+	EmpowermentsHeader: "Riff Empowerments:"
+}
 DamageClasses.ThoriumRogueClass.DisplayName: rogue damage
