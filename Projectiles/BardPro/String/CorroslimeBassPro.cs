@@ -34,6 +34,10 @@ namespace RagnarokMod.Projectiles.BardPro.String
             Projectile.tileCollide = true;
             Projectile.penetrate = -1;
             Projectile.timeLeft = 420;
+
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 40;
+            Projectile.usesIDStaticNPCImmunity = false;
         }
 
         public override bool OnTileCollide(Vector2 oldVelocity){
@@ -62,7 +66,7 @@ namespace RagnarokMod.Projectiles.BardPro.String
 					Projectile.Center,
 					newVelocity,
 					Projectile.type,
-					Projectile.damage / 2,
+					((Projectile.damage / 3) * 2),
 					Projectile.knockBack,
 					Projectile.owner
 				);

@@ -37,6 +37,8 @@ namespace RagnarokMod.Items.HealerItems.Other
             base.Item.UseSound = new SoundStyle?(SoundID.Item8);
             base.Item.shoot = ModContent.ProjectileType<BloodTransfusionPro>();
             base.Item.shootSpeed = 13f;
+
+            ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
         }
 
         public override bool AltFunctionUse(Player player)
@@ -49,13 +51,22 @@ namespace RagnarokMod.Items.HealerItems.Other
             if (player.altFunctionUse == 2)
             {
                 Projectile.NewProjectile(source, position.X, position.Y, velocity.X * 1.5f, velocity.Y * 1.5f, ModContent.ProjectileType<TheGoodBookPro>(), 0, 0f, player.whoAmI, 0f, 0f);
-                Projectile.NewProjectile(source, position.X, position.Y, velocity.X * 1.5f, velocity.Y * 1.5f, ModContent.ProjectileType<TheGoodBookPro>(), 0, 0f, player.whoAmI, 0f, 0f);
             }
             else
             {
                 Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, type, damage, knockback, player.whoAmI, 0f, 0f);
             }
             return false;
+        }
+
+        public override float UseTimeMultiplier(Player player)
+        {
+            return player.altFunctionUse == 2 ? 0.75f : 1f;
+        }
+
+        public override float UseAnimationMultiplier(Player player)
+        {
+            return player.altFunctionUse == 2 ? 0.75f : 1f;
         }
 
         public override void AddRecipes()
