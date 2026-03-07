@@ -1070,6 +1070,21 @@ Items: {
 			After {0} seconds the darts will explode
 			'''
 	}
+
+	StringsofOblivion: {
+		DisplayName: Stringsof Oblivion
+		Tooltip: ""
+	}
+
+	WulfrumGuitar: {
+		Tooltip:
+			'''
+			Shoots bouncing sound waves.
+			Right click to return the waves.
+			Returning waves will ignore tiles.
+			'''
+		DisplayName: Wulfrum Guitar
+	}
 }
 
 Projectiles: {
@@ -1184,6 +1199,7 @@ Projectiles: {
 	RelicOfConvergenceCrystalOverride.DisplayName: Relic Of Convergence Crystal Override
 	CorroslimeBassPro.DisplayName: Corroslime Bass Pro
 	CrimslimeOboePro.DisplayName: Crimslime Oboe Pro
+	WulfrumGuitarPro.DisplayName: Wulfrum Guitar Pro
 }
 
 Configs: {

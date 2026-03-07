@@ -1061,6 +1061,16 @@ Items: {
 			After {0} seconds the darts will explode
 			''' */
 	}
+
+	StringsofOblivion: {
+		// DisplayName: Stringsof Oblivion
+		// Tooltip: ""
+	}
+
+	WulfrumGuitar: {
+		// DisplayName: Wulfrum Guitar
+		// Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -1175,6 +1185,7 @@ Projectiles: {
 	// RelicOfConvergenceCrystalOverride.DisplayName: Relic Of Convergence Crystal Override
 	// CorroslimeBassPro.DisplayName: Corroslime Bass Pro
 	// CrimslimeOboePro.DisplayName: Crimslime Oboe Pro
+	// WulfrumGuitarPro.DisplayName: Wulfrum Guitar Pro
 }
 
 Configs: {
