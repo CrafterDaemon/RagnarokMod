@@ -33,7 +33,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             Projectile.tileCollide = false;
             Projectile.ownerHitCheck = true;
             Projectile.ignoreWater = true;
-            Projectile.penetrate = 3;
+            Projectile.penetrate = 10;
             Projectile.timeLeft = 100;
             Projectile.alpha = 60;
             Projectile.DamageType = ThoriumDamageBase<HealerDamage>.Instance;

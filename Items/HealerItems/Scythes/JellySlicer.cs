@@ -21,7 +21,7 @@ namespace RagnarokMod.Items.HealerItems.Scythes
         public override void SetDefaults()
         {
             SetDefaultsToScythe();
-            base.Item.damage = 20;
+            base.Item.damage = 22;
             scytheSoulCharge = 2;
             base.Item.width = 48;
             base.Item.height = 44;
@@ -37,13 +37,28 @@ namespace RagnarokMod.Items.HealerItems.Scythes
             Vector2 vel = velocity2.SafeNormalize(Vector2.UnitX);
             float multiplier = -14f;
 
-            Projectile.NewProjectileDirect(source, position, vel * multiplier, ModContent.ProjectileType<GelScythePro2>(), damage, knockback, player.whoAmI);
+            int count = 3;
+            float spread = MathHelper.ToRadians(15f); // total spread angle
 
+            for (int i = 0; i < count; i++)
+            {
+                float rotation = MathHelper.Lerp(-spread, spread, i / (float)(count - 1));
+                Vector2 perturbedSpeed = (vel * multiplier).RotatedBy(rotation);
 
+                Projectile.NewProjectileDirect(
+                    source,
+                    position,
+                    perturbedSpeed,
+                    ModContent.ProjectileType<GelScythePro2>(),
+                    damage,
+                    knockback,
+                    player.whoAmI
+                );
+            }
 
             return false;
-
         }
+
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();

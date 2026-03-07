@@ -516,6 +516,8 @@ Items: {
 		DisplayName: Equivalent Exchange
 		Tooltip:
 			'''
+			Fires a life stealing bolt
+			Right Click to fire fast moving healing bolts instead
 			'You must follow the law of equivalent exchange'
 			'You can only get out equal to what you put in'
 			'''
@@ -536,7 +538,7 @@ Items: {
 		Tooltip:
 			'''
 			The scoria allows you to spin the scythe much faster by constantly expelling steam
-			Right click to throw the scythe, which will curve on it's way back
+			Right Click to throw the scythe, which will curve on it's way back
 				The scythe deals 20% more damage when thrown
 			'''
 	}
@@ -827,9 +829,9 @@ Items: {
 		DisplayName: Dragon Force
 		Tooltip:
 			'''
-			Consumes inspiration rapidly as you channel an inferno to your cursor.
+			Consumes inspiration rapidly as you channel an inferno to your cursor
 			Right-click to play the [c/FF4500:Roar of the Jungle Dragon] riff!
-			While the riff is active, the inferno this weapon unleases is amplified.
+			While the riff is active, the inferno this weapon unleases is amplified
 			'''
 	}
 
@@ -887,7 +889,7 @@ Items: {
 		DisplayName: Siren Scale
 		Tooltip:
 			'''
-			The Siren sings along with your enchanting tune.
+			The Siren sings along with your enchanting tune
 
 			Symphonic damage increased by 15%
 			Inspiration regen rate increased by 20%
@@ -911,8 +913,8 @@ Items: {
 		Tooltip:
 			'''
 			This scythe charges up the longer you spin it,
-			accelerating to unbelievable speeds.
-			Right-click hurls a bolt of lightning.
+			accelerating to unbelievable speeds
+			Right-click hurls a bolt of lightning
 			'''
 	}
 
@@ -947,7 +949,7 @@ Items: {
 		Tooltip:
 			'''
 			Throw an endless amount of ghostly tambourines
-			Right click to jingle the thrown tambourines, damaging nearby enemies
+			Right Click to jingle the thrown tambourines, damaging nearby enemies
 			'''
 	}
 
@@ -958,8 +960,8 @@ Items: {
 			Whistles out a cursed burst of noise
 			Has a chance to shoot vile spit
 			Right-click to play the [c/50477e:Filthy Mind] riff!
-			While the riff is active, infected pustules spawn around you.
-			Infected pustules will spew cursed fire at the nearest enemy.
+			While the riff is active, infected pustules spawn around you
+			Infected pustules will spew cursed fire at the nearest enemy
 			'''
 	}
 
@@ -991,12 +993,12 @@ Items: {
 		DisplayName: Stellar Riff
 		Tooltip:
 			'''
-			Sends out homing stars, that split into homing shards.
-			Playing success will increase the number of shards.
+			Sends out homing stars, that split into homing shards
+			Playing success will increase the number of shards
 			Right-click to play the [c/00FFC8:Interstellar Stomper] riff!
-			While the riff is active, stars rain down from above.
-			Homings shard count is doubled while the riff is active.
-			Time your attacks during the riff to reduce the cooldown.
+			While the riff is active, stars rain down from above
+			Homings shard count is doubled while the riff is active
+			Time your attacks during the riff to reduce the cooldown
 			'''
 	}
 
@@ -1018,8 +1020,8 @@ Items: {
 			15% increased symphonic damage for weapons that are not Electronic
 			10% increased symphonic critical chance
 			Increases maximum inspiration by 4
-			Symphonic damage has a 10% chance to increase the level of one of your active empowerments. 
-			This effect can only trigger once every 2.5 seconds.
+			Symphonic damage has a 10% chance to increase the level of one of your active empowerments
+			This effect can only trigger once every 2.5 seconds
 			'''
 	}
 
@@ -1027,7 +1029,7 @@ Items: {
 		DisplayName: Redglass Monocle
 		Tooltip:
 			'''
-			Once worn by an infamous underworld native.
+			Once worn by an infamous underworld native
 			25% increased symphonic damage
 			Flat Damage empowerment is twice as effective on you
 			Reduces the inspiration cost of Radio Mic by 2
@@ -1053,9 +1055,9 @@ Items: {
 	CorroslimeBass: {
 		Tooltip:
 			'''
-			Sends out bouncing corroslime balls.
-			Right click to split balls into {0} smaller balls.
-			This process can be done {1} times.
+			Sends out bouncing corroslime balls
+			Right Click to split balls into {0} smaller balls
+			This process can be done {1} times
 			'''
 		DisplayName: Corroslime Bass
 	}
@@ -1063,10 +1065,10 @@ Items: {
 	CrimslimeOboe: {
 		DisplayName: Crimslime Oboe
 		Tooltip:
-		'''
-		Shoots sticky crimslime darts.
-		After {0} seconds the darts will explode.
-		'''
+			'''
+			Shoots sticky crimslime darts
+			After {0} seconds the darts will explode
+			'''
 	}
 }
 

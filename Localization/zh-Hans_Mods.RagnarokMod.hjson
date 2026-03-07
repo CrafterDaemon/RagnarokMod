@@ -1046,16 +1046,20 @@ Items: {
 	CorroslimeBass: {
 		/* Tooltip:
 			'''
-			Sends out bouncing corroslime balls.
-			Right click to split balls into {0} smaller balls.
-			This process can be done {1} times.
+			Sends out bouncing corroslime balls
+			Right Click to split balls into {0} smaller balls
+			This process can be done {1} times
 			''' */
 		// DisplayName: Corroslime Bass
 	}
 
 	CrimslimeOboe: {
 		// DisplayName: Crimslime Oboe
-		// Tooltip: ""
+		/* Tooltip:
+			'''
+			Shoots sticky crimslime darts
+			After {0} seconds the darts will explode
+			''' */
 	}
 }
 

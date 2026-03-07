@@ -37,10 +37,10 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             fadeOutSpeed = 30;
             rotationSpeed = 0.25f;
             scytheCount = 2;
-            Projectile.Size = new Vector2(274f, 304f);
+            Projectile.Size = new Vector2(300, 300);
             dustCount = 4;
             dustType = DustID.RainbowTorch;
-            dustOffset = new Vector2(-20f, 0f);
+            dustOffset = new Vector2(-80f, 0f);
 
         }
         public override void SafeModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
