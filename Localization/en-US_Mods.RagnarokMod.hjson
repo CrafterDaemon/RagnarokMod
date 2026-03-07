@@ -1071,6 +1071,21 @@ Items: {
 			'''
 	}
 
+	StringsofOblivion: {
+		DisplayName: Stringsof Oblivion
+		Tooltip: ""
+	}
+
+	WulfrumGuitar: {
+		Tooltip:
+			'''
+			Shoots bouncing sound waves.
+			Right click to return the waves.
+			Returning waves will ignore tiles.
+			'''
+		DisplayName: Wulfrum Guitar
+	}
+
 	MenuMusicBox: {
 		DisplayName: Music Box (Ragnarok Title)
 		Tooltip: Plays 'Menu Theme' by CrafterDaemon
@@ -1189,6 +1204,7 @@ Projectiles: {
 	RelicOfConvergenceCrystalOverride.DisplayName: Relic Of Convergence Crystal Override
 	CorroslimeBassPro.DisplayName: Corroslime Bass Pro
 	CrimslimeOboePro.DisplayName: Crimslime Oboe Pro
+	WulfrumGuitarPro.DisplayName: Wulfrum Guitar Pro
 }
 
 Configs: {
