@@ -1,18 +1,13 @@
 ﻿using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.CalPlayer;
-using CalamityMod.Cooldowns;
 using Microsoft.Xna.Framework;
 using RagnarokMod.Buffs;
 using RagnarokMod.Common.Configs;
-using RagnarokMod.ILEditing;
 using RagnarokMod.Items.BardItems.Accessories;
 using RagnarokMod.Items.BardItems.Armor;
-using RagnarokMod.Items.HealerItems;
-using RagnarokMod.Items.HealerItems.Accessories;
 using RagnarokMod.Projectiles.Accessories;
 using RagnarokMod.Riffs;
-using RagnarokMod.Sounds;
 using RagnarokMod.Projectiles.CalamityOverrides;
 using RagnarokMod.Items.HealerItems.CalamityOverrides;
 using ReLogic.Utilities;
@@ -31,12 +26,12 @@ using ThoriumMod.Buffs.Healer;
 using ThoriumMod.Buffs.Thrower;
 using ThoriumMod.Empowerments;
 using ThoriumMod.Items;
-using ThoriumMod.Items.BossThePrimordials.Dream;
 using ThoriumMod.Items.BossThePrimordials.Rhapsodist;
 using ThoriumMod.Projectiles.Healer;
 using ThoriumMod.Projectiles.Thrower;
 using ThoriumMod.Sounds;
 using ThoriumMod.Utilities;
+using System.Security.Cryptography.Pkcs;
 
 namespace RagnarokMod.Utils
 {
@@ -96,6 +91,7 @@ namespace RagnarokMod.Utils
 
         public SlotId riffSlot;
         public bool riffPlaying;
+        public int riffItemType = -1;
 
         public void EnsureMiniAnahita()
         {
@@ -437,7 +433,7 @@ namespace RagnarokMod.Utils
             });
 
             // Fixes the RogueUseTime problem, that occurs, because Thorium implements features like buffs that can effect item use times, which is incompatible with the Calamity Rogue usetime / attackspeed check.
-            this.ApplyRogueUseTimeFix();
+            ApplyRogueUseTimeFix();
 
             // Fixes problems with thorium thrower accessories by disablng the thoriumplayer flags for the setbonuses and reimplementing it
             ThoriumPlayer thoriumPlayer2 = ThoriumMod.Utilities.PlayerHelper.GetThoriumPlayer(base.Player);
@@ -466,16 +462,26 @@ namespace RagnarokMod.Utils
                 thoriumPlayer2.throwGuide3 = false;
                 throwGuide3Fix = true;
             }
+        
+            if (Player.HeldItem.type != riffItemType && riffPlaying && activeRiffType != 0)
+            {
+                if (SoundEngine.TryGetActiveSound(riffSlot, out var sound))
+                    sound.Stop();
+                riffPlaying = false;
+                activeRiffType = 0;
+                riffItemType = -1;
+                PlayerHelper.ClearAllEmpowerments(Player);
+            }
 
             // Applies the damage modifiers from the Configs
             // This code always has to be a the end of this function (except debug functions) to properly calculate the effective damage!!!
-            base.Player.GetDamage(ThoriumDamageBase<BardDamage>.Instance) *= ModContent.GetInstance<ClassBalancerConfig>().BardDamageModifier;
-            base.Player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) *= ModContent.GetInstance<ClassBalancerConfig>().HealerDamageModifier;
-            base.Player.GetDamage(DamageClass.Throwing) *= ModContent.GetInstance<ClassBalancerConfig>().RogueDamageModifier;
-            base.Player.GetDamage(DamageClass.Magic) *= ModContent.GetInstance<ClassBalancerConfig>().MagicDamageModifier;
-            base.Player.GetDamage(DamageClass.Summon) *= ModContent.GetInstance<ClassBalancerConfig>().SummonDamageModifier;
-            base.Player.GetDamage(DamageClass.Ranged) *= ModContent.GetInstance<ClassBalancerConfig>().RangedDamageModifier;
-            base.Player.GetDamage(DamageClass.Melee) *= ModContent.GetInstance<ClassBalancerConfig>().MeleeDamageModifier;
+            Player.GetDamage(ThoriumDamageBase<BardDamage>.Instance) *= ModContent.GetInstance<ClassBalancerConfig>().BardDamageModifier;
+            Player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) *= ModContent.GetInstance<ClassBalancerConfig>().HealerDamageModifier;
+            Player.GetDamage(DamageClass.Throwing) *= ModContent.GetInstance<ClassBalancerConfig>().RogueDamageModifier;
+            Player.GetDamage(DamageClass.Magic) *= ModContent.GetInstance<ClassBalancerConfig>().MagicDamageModifier;
+            Player.GetDamage(DamageClass.Summon) *= ModContent.GetInstance<ClassBalancerConfig>().SummonDamageModifier;
+            Player.GetDamage(DamageClass.Ranged) *= ModContent.GetInstance<ClassBalancerConfig>().RangedDamageModifier;
+            Player.GetDamage(DamageClass.Melee) *= ModContent.GetInstance<ClassBalancerConfig>().MeleeDamageModifier;
 
             // Apply Healing Multiplier
             thoriumPlayer2.healBonus = (int)Math.Round(thoriumPlayer2.healBonus * ModContent.GetInstance<ClassBalancerConfig>().HealingBonusModifier);

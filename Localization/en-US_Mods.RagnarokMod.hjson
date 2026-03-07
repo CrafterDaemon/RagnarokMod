@@ -1070,6 +1070,11 @@ Items: {
 			After {0} seconds the darts will explode
 			'''
 	}
+
+	MenuMusicBox: {
+		DisplayName: Music Box (Ragnarok Title)
+		Tooltip: Plays 'Menu Theme' by CrafterDaemon
+	}
 }
 
 Projectiles: {
@@ -1548,3 +1553,4 @@ PatreonAd: "[i:LuckyCoin][c/96FF96:If you enjoy the mod, consider supporting us 
 DisableMe: "[i:Wrench][c/FFFF0A:If you would like to stop getting these messages, you can disable them in the config in your pause menu!][i:Wrench]"
 Riffs.Cooldown: Riff Cooldown
 DamageClasses.ThoriumRogueClass.DisplayName: rogue damage
+Tiles.MenuMusicBoxTile.MapEntry: Menu Music Box Tile

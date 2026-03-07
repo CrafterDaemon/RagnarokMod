@@ -1061,6 +1061,11 @@ Items: {
 			After {0} seconds the darts will explode
 			''' */
 	}
+
+	MenuMusicBox: {
+		// DisplayName: Music Box (Ragnarok Title)
+		// Tooltip: Plays 'Menu Theme' by CrafterDaemon
+	}
 }
 
 Projectiles: {
@@ -1539,3 +1544,4 @@ PatreonAd: "[i:LuckyCoin][c/96FF96:如果你喜欢本模组，欢迎考虑在Pat
 DisableMe: "[i:Wrench][c/FFFF0A:如果你不想再看到这些消息，可以在暂停菜单的配置中将其关闭！][i:Wrench]"
 Riffs.Cooldown: 即兴演奏冷却
 DamageClasses.ThoriumRogueClass.DisplayName: 盗贼伤害
+// Tiles.MenuMusicBoxTile.MapEntry: Menu Music Box Tile

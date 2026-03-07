@@ -1,6 +1,4 @@
 using CalamityMod;
-using RagnarokMod.Utils;
-using System;
 using Terraria;
 using Terraria.ModLoader;
 using ThoriumMod.Empowerments;
