@@ -228,7 +228,7 @@ Items: {
 		SetBonus:
 			'''
 			Doing symphonic damage will apply Burning Blood on enemies
-			You will build a blood lust, 2 points for every hit enemy (can only occur 4 times a second)
+			You will build a blood lust, 2 points for every hit enemy (can only occur 3 times a second)
 			Upon reaching 100 points: 20% increased symphonic damage and strike chance, 25% increased movement speed
 			Empowerments will be prolonged for an additional 3 seconds and 10% faster inspiration regen
 			Pressing the 'Armor Ability' key will consume 20 points to replenish 10 inspiration
@@ -249,7 +249,7 @@ Items: {
 		SetBonus:
 			'''
 			Doing radiant damage will apply Burning Blood on enemies
-			You will build a blood lust, 2 points for every hit enemy (can only occur 4 times a second)
+			You will build a blood lust, 2 points for every hit enemy (can only occur 3 times a second)
 			Upon reaching 100 points: 20% increased radiant damage and strike chance, 20% increased movement speed
 			and your healing spells will heal for an additional 3 health
 			Additionally you get healed for a small fraction of your dealt damage

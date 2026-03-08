@@ -186,13 +186,13 @@ namespace RagnarokMod.Utils
                     ThoriumPlayer thoriumPlayer = ThoriumMod.Utilities.PlayerHelper.GetThoriumPlayer(base.Player);
                     thoriumPlayer.shieldHealth += 100;
                 }
-				if(bloodflareBard){
+				if(bloodflareBard && !auricBardSet ){
 					if(bloodflarebloodlust >= 20) {
 						RemoveBloodFlareBloodlustPoints(20);
 						base.Player.GetModPlayer<ThoriumPlayer>().HealInspiration(10, false);
 					}
 				}
-				if(bloodflareHealer){
+				if(bloodflareHealer && !auricHealerSet){
 					if(bloodflarebloodlust >= 20){
 						RemoveBloodFlareBloodlustPoints(20);
 						ThoriumPlayer thoriumPlayer = ThoriumMod.Utilities.PlayerHelper.GetThoriumPlayer(base.Player);
@@ -700,7 +700,7 @@ namespace RagnarokMod.Utils
             }
 			if(bloodflareonhitcooldown <= 0) {
 				AddBloodFlareBloodlustPoints(2);
-				bloodflareonhitcooldown = 15;
+				bloodflareonhitcooldown = 20;
 			}	
         }
         public void RemoveBloodFlareBloodlustPoints(int points){
