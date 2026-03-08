@@ -74,10 +74,12 @@ namespace RagnarokMod.Utils
         public int intergelacticBardcurrentemp = 0;
         public int intergelacticBardcurrentemplevel = 0;
         public int asteroidexhaustioncounter = 0;
-        private int bloodflarebloodlust = 0;
-        private int bloodflarepointtimer = 0;
-        public int elementalReaperCD = 0;
+        public int bloodflarebloodlust = 0;
+        private int bloodflarepointreductiontimer = 0;
+		private int bloodflarelastonhittimer = 0;
         private const int maxbloodlustpoints = 150;
+		private int bloodflareonhitcooldown = 0;
+		public int elementalReaperCD = 0;
         public int elementalReaperIndex = 0;
         public bool accShinobiSigilFix = false;
         public bool blightAccFix = false;
@@ -93,58 +95,36 @@ namespace RagnarokMod.Utils
         public bool riffPlaying;
         public int riffItemType = -1;
 
-        public void EnsureMiniAnahita()
-        {
+        public void EnsureMiniAnahita(){
             if (Player.whoAmI != Main.myPlayer)
                 return;
-
             int type = ModContent.ProjectileType<MiniAnahitaCompanion>();
-            for (int i = 0; i < Main.maxProjectiles; i++)
-            {
+            for (int i = 0; i < Main.maxProjectiles; i++){
                 Projectile p = Main.projectile[i];
-                if (p.active && p.owner == Player.whoAmI && p.type == type)
-                {
+                if (p.active && p.owner == Player.whoAmI && p.type == type){
                     return; // already exists
                 }
             }
-
             Item scale = null;
-            foreach (Item item in Player.armor)
-            {
-                if (item.type == ModContent.ItemType<SirenScale>())
-                {
+            foreach (Item item in Player.armor){
+                if (item.type == ModContent.ItemType<SirenScale>()){
                     scale = item;
                     break;
                 }
             }
-
             if (scale == null)
                 return;
-            int index = Projectile.NewProjectile(
-                Player.GetSource_Accessory(scale),
-                Player.Center,
-                Microsoft.Xna.Framework.Vector2.Zero,
-                type,
-                // Damage scaled from player's bard damage
-                (int)(Player.HeldItem.damage),
-                2f,
-                Player.whoAmI
-            );
+            int index = Projectile.NewProjectile(Player.GetSource_Accessory(scale),Player.Center,Microsoft.Xna.Framework.Vector2.Zero,type,(int)(Player.HeldItem.damage),2f,Player.whoAmI);
         }
-
-        public override void OnEnterWorld()
-        {
+        public override void OnEnterWorld(){
             if (ModContent.GetInstance<ClientConfig>().StartText)
                 startMessageDisplayDelay = Main.rand.Next(15*60, 60*60 + 1);
         }
-        public override void OnHurt(Player.HurtInfo info)
-        {
-            if (bloodflareHealer || bloodflareBard)
-            {
+        public override void OnHurt(Player.HurtInfo info){
+            if (bloodflareHealer || bloodflareBard){
                 RemoveBloodFlareBloodlustPoints(25);
             }
         }
-
         public override void ModifyHitByNPC(NPC npc, ref Player.HurtModifiers modifiers){
             if (oneTimeDamageReduction != 0){
                 modifiers.FinalDamage *= (1 - oneTimeDamageReduction);
@@ -154,44 +134,33 @@ namespace RagnarokMod.Utils
 				modifiers.FinalDamage *= RelicOfConvergenceOverride.IncomingDamageMultiplier;
 			}
         }
-
-        public override void ProcessTriggers(TriggersSet triggersSet)
-        {
-            if (ThoriumHotkeySystem.ArmorKey.JustPressed)
-            {
-                if (auricBardSet && !((ModPlayer)this).Player.HasBuff(ModContent.BuffType<CreativeBlock>()) && BardItem.ConsumeInspiration(((ModPlayer)this).Player, 20))
-                {
+        public override void ProcessTriggers(TriggersSet triggersSet){
+            if (ThoriumHotkeySystem.ArmorKey.JustPressed){
+                if (auricBardSet && !((ModPlayer)this).Player.HasBuff(ModContent.BuffType<CreativeBlock>()) && BardItem.ConsumeInspiration(((ModPlayer)this).Player, 20)){
                     SoundEngine.PlaySound(ThoriumSounds.PassbySurge, (Vector2?)null, (SoundUpdateCallback)null);
                     ((ModPlayer)this).Player.AddBuff(ModContent.BuffType<SoloistsHatSetBuff>(), 600, true, false);
                     ModContent.GetInstance<InspiratorsHelmet>().NetApplyEmpowerments(((ModPlayer)this).Player, 0);
                     ((ModPlayer)this).Player.AddBuff(ModContent.BuffType<CreativeBlock>(), 2400, true, false);
-                    for (int l = 0; l < 5; l++)
-                    {
+                    for (int l = 0; l < 5; l++){
                         Vector2 offset3 = new Vector2(Main.rand.Next(-50, 51), Main.rand.Next(-50, 51));
                         Dust obj4 = Dust.NewDustDirect(((Entity)((ModPlayer)this).Player).position + offset3, ((Entity)((ModPlayer)this).Player).width, ((Entity)((ModPlayer)this).Player).height, DustID.GemTopaz, 0f, 0f, 0, default(Color), 2f);
                         obj4.noGravity = true;
                         obj4.velocity = -offset3 * 0.075f;
                     }
                 }
-
-                if (auricHealerSet && !base.Player.HasBuff(ModContent.BuffType<DreamWeaversHoodDebuff>()) && base.Player.CheckMana(200, true, false))
-                {
+                if (auricHealerSet && !base.Player.HasBuff(ModContent.BuffType<DreamWeaversHoodDebuff>()) && base.Player.CheckMana(200, true, false)){
                     base.Player.AddBuff(ModContent.BuffType<DreamWeaversHoodDreamBuff>(), 600, true, false);
                     base.Player.AddBuff(ModContent.BuffType<DreamWeaversMaskBuff>(), 900, true, false);
                     base.Player.AddBuff(ModContent.BuffType<DreamWeaversHoodDebuff>(), 3660, true, false);
                     SoundEngine.PlaySound(ThoriumSounds.PassbySurge, (Vector2?)null, (SoundUpdateCallback)null);
-                    for (int n = 0; n < 20; n++)
-                    {
+                    for (int n = 0; n < 20; n++){
                         Dust.NewDustDirect(base.Player.position, base.Player.width, base.Player.height, DustID.ShadowbeamStaff, (float)Main.rand.Next(-8, 9), (float)Main.rand.Next(-8, 9), 0, default(Color), 2f).noGravity = true;
                     }
-                    for (int k2 = 0; k2 < 10; k2++)
-                    {
+                    for (int k2 = 0; k2 < 10; k2++){
                         Dust.NewDustDirect(base.Player.position, base.Player.width, base.Player.height, DustID.DemonTorch, (float)Main.rand.Next(-8, 9), (float)Main.rand.Next(-8, 9), 0, default(Color), 1.4f).noGravity = true;
                     }
                 }
-
-                if (daedalusHealer && !base.Player.HasBuff(ModContent.BuffType<AntarcticExhaustionDebuff>()) && base.Player.CheckMana(100, true, false))
-                {
+                if (daedalusHealer && !base.Player.HasBuff(ModContent.BuffType<AntarcticExhaustionDebuff>()) && base.Player.CheckMana(100, true, false)){
                     SoundEngine.PlaySound(ThoriumSounds.PassbySurge, (Vector2?)null, (SoundUpdateCallback)null);
                     ThoriumPlayer thoriumPlayer = ThoriumMod.Utilities.PlayerHelper.GetThoriumPlayer(base.Player);
                     this.Player.AddBuff(ModContent.BuffType<AntarcticExhaustionDebuff>(), 3600, true, false);
@@ -199,91 +168,83 @@ namespace RagnarokMod.Utils
                     thoriumPlayer.shieldHealth += 50;
                     this.Player.statLife += 50;
                 }
-
-                if (daedalusBard && !base.Player.HasBuff(ModContent.BuffType<AntarcticExhaustionDebuff>()) && BardItem.ConsumeInspiration(((ModPlayer)this).Player, 12))
-                {
+                if (daedalusBard && !base.Player.HasBuff(ModContent.BuffType<AntarcticExhaustionDebuff>()) && BardItem.ConsumeInspiration(((ModPlayer)this).Player, 12)){
                     SoundEngine.PlaySound(ThoriumSounds.PassbySurge, (Vector2?)null, (SoundUpdateCallback)null);
                     ModContent.GetInstance<DaedalusHeadBard>().NetApplyEmpowerments(base.Player, 0);
                     this.Player.AddBuff(ModContent.BuffType<AntarcticExhaustionDebuff>(), 3600, true, false);
                     this.Player.AddBuff(ModContent.BuffType<AntarcticCreativityBuff>(), 900, true, false);
                 }
-
-                if (intergelacticBard && asteroidexhaustioncounter == 0)
-                {
+                if (intergelacticBard && asteroidexhaustioncounter == 0){
                     asteroidexhaustioncounter = 1800;
                     SoundEngine.PlaySound(ThoriumSounds.PassbySurge, (Vector2?)null, (SoundUpdateCallback)null);
                     base.Player.GetModPlayer<ThoriumPlayer>().HealInspiration(100, false);
                 }
-                if (intergelacticHealer && asteroidexhaustioncounter == 0)
-                {
+                if (intergelacticHealer && asteroidexhaustioncounter == 0){
                     asteroidexhaustioncounter = 1800;
                     SoundEngine.PlaySound(ThoriumSounds.PassbySurge, (Vector2?)null, (SoundUpdateCallback)null);
                     this.Player.statLife += 50;
                     ThoriumPlayer thoriumPlayer = ThoriumMod.Utilities.PlayerHelper.GetThoriumPlayer(base.Player);
                     thoriumPlayer.shieldHealth += 100;
                 }
+				if(bloodflareBard){
+					if(bloodflarebloodlust >= 20) {
+						RemoveBloodFlareBloodlustPoints(20);
+						base.Player.GetModPlayer<ThoriumPlayer>().HealInspiration(10, false);
+					}
+				}
+				if(bloodflareHealer){
+					if(bloodflarebloodlust >= 20){
+						RemoveBloodFlareBloodlustPoints(20);
+						ThoriumPlayer thoriumPlayer = ThoriumMod.Utilities.PlayerHelper.GetThoriumPlayer(base.Player);
+						Player.Heal(25 + thoriumPlayer.healBonus);
+					}
+				}
             }
         }
-
-        public override void PreUpdateBuffs()
-        {
-            if (base.Player.HasBuff(ModContent.BuffType<LastStandBuff>()))
-            {
+        public override void PreUpdateBuffs(){
+            if (base.Player.HasBuff(ModContent.BuffType<LastStandBuff>())){
                 int bufftypeindex = -100;
-                for (int i = 0; i < base.Player.buffType.Length; i++)
-                {
-                    if (base.Player.buffType[i] == ModContent.BuffType<LastStandBuff>())
-                    {
+                for (int i = 0; i < base.Player.buffType.Length; i++){
+                    if (base.Player.buffType[i] == ModContent.BuffType<LastStandBuff>()){
                         bufftypeindex = i;
                     }
                 }
-                if (base.Player.buffTime[bufftypeindex] > 480 && bufftypeindex != -100)
-                {
+                if (base.Player.buffTime[bufftypeindex] > 480 && bufftypeindex != -100){
                     base.Player.buffTime[bufftypeindex] = 480;
                 }
             }
-            else if (base.Player.HasBuff(ModContent.BuffType<OceansBuffer>()))
-            {
+            else if (base.Player.HasBuff(ModContent.BuffType<OceansBuffer>())){
                 int bufftypeindex = -100;
-                for (int i = 0; i < base.Player.buffType.Length; i++)
-                {
-                    if (base.Player.buffType[i] == ModContent.BuffType<OceansBuffer>())
-                    {
+                for (int i = 0; i < base.Player.buffType.Length; i++){
+                    if (base.Player.buffType[i] == ModContent.BuffType<OceansBuffer>()){
                         bufftypeindex = i;
                     }
                 }
-                if (base.Player.buffTime[bufftypeindex] > 360 && bufftypeindex != -100)
-                {
+                if (base.Player.buffTime[bufftypeindex] > 360 && bufftypeindex != -100){
                     base.Player.buffTime[bufftypeindex] = 360;
                 }
             }
         }
-
-        public override void PostUpdateMiscEffects()
-        {
+        public override void PostUpdateMiscEffects(){
             OnHealEffects ??= [];
             OnHealEffects.Clear();
             HandleTextChatMessages();
-            if (redglassMonocle)
-            {
+            if (redglassMonocle){
                 ThoriumPlayer tp = Player.GetThoriumPlayer();
                 byte flatDmgLevel = tp.GetEmpTimer<FlatDamage>().level;
                 if (flatDmgLevel > 0)
                     Player.GetDamage(DamageClass.Generic).Flat += flatDmgLevel; // add it again = doubled
             }
-            if (tarraBard)
-            {
+            if (tarraBard){
                 ThoriumPlayer thoriumPlayer = ThoriumMod.Utilities.PlayerHelper.GetThoriumPlayer(base.Player);
                 thoriumPlayer.setOrnate = true;
                 thoriumPlayer.bardBuffDurationX *= 1.5f;
                 thoriumPlayer.bardBuffDurationXDisplay *= 1.5f;
             }
-            if (godslayerBard && base.Player.HeldItem.DamageType == ThoriumDamageBase<BardDamage>.Instance)
-            {
+            if (godslayerBard && base.Player.HeldItem.DamageType == ThoriumDamageBase<BardDamage>.Instance){
                 Random rnd = new Random();
                 int num = rnd.Next(180);
-                if (num == 0)
-                {
+                if (num == 0){
                     godslayerBardcurrentemp = rnd.Next(1, 18);
                     godslayerBardcurrentemplevel = rnd.Next(1, 4);
                     ModContent.GetInstance<GodSlayerHeadBard>().NetApplyEmpowerments(((ModPlayer)this).Player, 0);
@@ -291,56 +252,49 @@ namespace RagnarokMod.Utils
                     godslayerBardcurrentemplevel = 0;
                 }
             }
-            if (silvaHealer)
-            {
+            if (silvaHealer){
                 ThoriumPlayer thoriumPlayer = ThoriumMod.Utilities.PlayerHelper.GetThoriumPlayer(base.Player);
                 thoriumPlayer.setBlooming = true;
                 thoriumPlayer.setLifeBinder = true;
                 Random rnd = new Random();
                 int triggerchance = 400;
-                if (base.Player.statLife >= 0.8 * base.Player.statLifeMax2 && base.Player.statLife < 0.9 * base.Player.statLifeMax2)
-                {
+                if (base.Player.statLife >= 0.8 * base.Player.statLifeMax2 && base.Player.statLife < 0.9 * base.Player.statLifeMax2){
                     triggerchance = 360;
                 }
-                else if (base.Player.statLife >= 0.5 * base.Player.statLifeMax2 && base.Player.statLife < 0.8 * base.Player.statLifeMax2)
-                {
+                else if (base.Player.statLife >= 0.5 * base.Player.statLifeMax2 && base.Player.statLife < 0.8 * base.Player.statLifeMax2){
                     triggerchance = 240;
                 }
-                else if (base.Player.statLife >= 0.2 * base.Player.statLifeMax2 && base.Player.statLife < 0.5 * base.Player.statLifeMax2)
-                {
+                else if (base.Player.statLife >= 0.2 * base.Player.statLifeMax2 && base.Player.statLife < 0.5 * base.Player.statLifeMax2){
                     triggerchance = 160;
                 }
-                else if (base.Player.statLife < 0.2 * base.Player.statLifeMax2)
-                {
+                else if (base.Player.statLife < 0.2 * base.Player.statLifeMax2){
                     triggerchance = 80;
                 }
                 int num = rnd.Next(triggerchance);
-                if (num == 1)
-                {
-                    if (thoriumPlayer.shieldHealth + 7 <= 50)
-                    {
+                if (num == 1){
+                    if (thoriumPlayer.shieldHealth + 7 <= 50){
                         thoriumPlayer.shieldHealth += 7;
                         this.Player.statLife += 7;
                     }
                 }
-                else if (num == 2)
-                {
+                else if (num == 2){
                     this.Player.Heal(12);
                 }
             }
-            if (bloodflareHealer)
-            {
-                if (bloodflarepointtimer == 0)
-                {
-                    bloodflarepointtimer = 30;
-                    AddBloodFlareBloodlustPoints(1);
-                }
-                else
-                {
-                    bloodflarepointtimer--;
-                }
-                if (bloodflarebloodlust >= 100)
-                {
+			if(bloodflareBard || bloodflareHealer){
+				if(bloodflarelastonhittimer > 0){
+					bloodflarelastonhittimer--;
+				} 
+				else {
+					bloodflarepointreductiontimer--;
+					if (bloodflarepointreductiontimer <= 0){
+						bloodflarepointreductiontimer = 10;
+						RemoveBloodFlareBloodlustPoints(1);
+					}
+				}
+			}
+			if (bloodflareHealer){
+                if (bloodflarebloodlust >= 100){
                     base.Player.moveSpeed += 0.2f;
                     ThoriumPlayer thoriumPlayer = ThoriumMod.Utilities.PlayerHelper.GetThoriumPlayer(base.Player);
                     thoriumPlayer.healBonus += 3;
@@ -350,17 +304,7 @@ namespace RagnarokMod.Utils
             }
             if (bloodflareBard)
             {
-                if (bloodflarepointtimer == 0)
-                {
-                    bloodflarepointtimer = 30;
-                    AddBloodFlareBloodlustPoints(1);
-                }
-                else
-                {
-                    bloodflarepointtimer--;
-                }
-                if (bloodflarebloodlust >= 100)
-                {
+                if (bloodflarebloodlust >= 100){
                     base.Player.moveSpeed += 0.25f;
                     ThoriumPlayer thoriumPlayer = ThoriumMod.Utilities.PlayerHelper.GetThoriumPlayer(base.Player);
                     thoriumPlayer.inspirationRegenBonus += 0.1f;
@@ -387,16 +331,12 @@ namespace RagnarokMod.Utils
                     asteroidexhaustioncounter = 0;
                 }
             }
-
-            if (batpoop)
-            {
+            if (batpoop){
                 long effectivecoinvalue = 0;
                 // for every possible coin the 4 coin slots
-                for (int i = 50; i < 54; i++)
-                {
+                for (int i = 50; i < 54; i++){
                     // is it a coin?
-                    if (base.Player.inventory[i].type >= ItemID.CopperCoin && base.Player.inventory[i].type <= ItemID.PlatinumCoin)
-                    {
+                    if (base.Player.inventory[i].type >= ItemID.CopperCoin && base.Player.inventory[i].type <= ItemID.PlatinumCoin){
                         effectivecoinvalue += (long)(Math.Pow(100, base.Player.inventory[i].type - 71) * base.Player.inventory[i].stack);
                     }
                 }
@@ -404,13 +344,11 @@ namespace RagnarokMod.Utils
                 base.Player.GetDamage(DamageClass.Generic) += damagemodifier;
             }
 
-            if (elementalReaperCD > 0)
-            {
+            if (elementalReaperCD > 0){
                 elementalReaperCD--;
             }
 
-            OnHealEffects.Add((healer, target) =>
-            {
+            OnHealEffects.Add((healer, target) =>{
                 var ragHealer = healer.GetModPlayer<RagnarokModPlayer>();
                 if (!ragHealer.leviathanHeart)
                     return;
@@ -419,12 +357,10 @@ namespace RagnarokMod.Utils
                 if (healerThorium.darkAura)
                     return;
 
-                if (target.whoAmI == Main.myPlayer)
-                {
+                if (target.whoAmI == Main.myPlayer){
                     target.AddBuff(ModContent.BuffType<LeviathanHeartBubble>(), 5 * 60);
                 }
-                else
-                {
+                else{
                     ModPacket packet = ModContent.GetInstance<RagnarokMod>().GetPacket();
                     packet.Write((byte)0);
                     packet.Write((byte)target.whoAmI);
@@ -437,34 +373,28 @@ namespace RagnarokMod.Utils
 
             // Fixes problems with thorium thrower accessories by disablng the thoriumplayer flags for the setbonuses and reimplementing it
             ThoriumPlayer thoriumPlayer2 = ThoriumMod.Utilities.PlayerHelper.GetThoriumPlayer(base.Player);
-            if (thoriumPlayer2.accShinobiSigil)
-            {
+            if (thoriumPlayer2.accShinobiSigil){
                 thoriumPlayer2.accShinobiSigil = false;
                 accShinobiSigilFix = true;
             }
-            if (thoriumPlayer2.blightAcc)
-            {
+            if (thoriumPlayer2.blightAcc){
                 thoriumPlayer2.blightAcc = false;
                 blightAccFix = true;
             }
-            if (thoriumPlayer2.throwGuide)
-            {
+            if (thoriumPlayer2.throwGuide){
                 thoriumPlayer2.throwGuide = false;
                 throwGuideFix = true;
             }
-            if (thoriumPlayer2.throwGuide2)
-            {
+            if (thoriumPlayer2.throwGuide2){
                 thoriumPlayer2.throwGuide2 = false;
                 throwGuide2Fix = true;
             }
-            if (thoriumPlayer2.throwGuide3)
-            {
+            if (thoriumPlayer2.throwGuide3){
                 thoriumPlayer2.throwGuide3 = false;
                 throwGuide3Fix = true;
             }
         
-            if (Player.HeldItem.type != riffItemType && riffPlaying && activeRiffType != 0)
-            {
+            if (Player.HeldItem.type != riffItemType && riffPlaying && activeRiffType != 0){
                 if (SoundEngine.TryGetActiveSound(riffSlot, out var sound))
                     sound.Stop();
                 riffPlaying = false;
@@ -488,15 +418,13 @@ namespace RagnarokMod.Utils
         }
 
         // Fixes the RogueUseTime problem, that occurs, because Thorium implements features like buffs that can effect item use times, which is incompatible with the Calamity Rogue Stealthmode usetime / attackspeed check.
-        private void ApplyRogueUseTimeFix()
-        {
+        private void ApplyRogueUseTimeFix(){
             var calamityPlayer = base.Player.Calamity();
             Item it = !Main.mouseItem.IsAir ? Main.mouseItem : Player.HeldItem;
             if (!calamityPlayer.wearingRogueArmor || it.useAnimation == it.useTime) // When the player does not wear a rogue armor or the item animation and usetime is the same, the fix does not have to be applied.
             {
                 return;
             }
-
             bool flag = it.damage > 0;
             bool hasHitboxes = !it.noMelee || it.shoot > ProjectileID.None;
             bool flag2 = it.pick > 0;
@@ -516,10 +444,8 @@ namespace RagnarokMod.Utils
             int adjustedUseTime = (int)(it.useTime / attackSpeed); // Calculates the effective use time
 
             bool animationCheck = (base.Player.itemTime == adjustedUseTime);
-            if (!calamityPlayer.stealthStrikeThisFrame && animationCheck)
-            {
-                if (calamityPlayer.StealthStrikeAvailable())
-                {
+            if (!calamityPlayer.stealthStrikeThisFrame && animationCheck){
+                if (calamityPlayer.StealthStrikeAvailable()){
                     calamityPlayer.ConsumeStealthByAttacking();
                     return;
                 }
@@ -527,8 +453,7 @@ namespace RagnarokMod.Utils
             }
         }
 
-        public override void PostUpdateEquips()
-        {
+        public override void PostUpdateEquips(){
             RiffLoader.UpdateRiffs(Player);
             if (base.Player.armor[0].type == thorium.Find<ModItem>("SandStoneHelmet").Type
            && base.Player.armor[1].type == thorium.Find<ModItem>("SandStoneMail").Type
@@ -593,8 +518,7 @@ namespace RagnarokMod.Utils
             }
         }
 
-        public override void PostUpdate()
-        {
+        public override void PostUpdate(){
             // If the riff sound has stopped, the riff is over
             if (!riffPlaying){
                 activeRiffType = 0;
@@ -612,60 +536,63 @@ namespace RagnarokMod.Utils
             if (shredderLifestealCooldown > 0)
                 shredderLifestealCooldown--;
 			
-			
 			if (this.Player.ownedProjectileCounts[ModContent.ProjectileType<RelicOfConvergenceCrystalOverride>()] > 0 && this.Player.HeldItem.type == ModContent.ItemType<RelicOfConvergenceOverride>()){
 				Player player = this.Player;
 				player.statDefense *= RelicOfConvergenceOverride.DefenseMultiplier;
 			}
+			
+			if(bloodflareHealer || bloodflareBard) {
+				if(bloodflarebloodlust >= 100){
+					if (Main.rand.NextBool(4)){
+						Vector2 pos = Player.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), -Player.height * 0.45f - 25f);
+						Dust dust = Dust.NewDustDirect(pos, 4, 4, DustID.Blood);
+						dust.velocity.X = Main.rand.NextFloat(-0.6f, 0.6f);
+						dust.velocity.Y = Main.rand.NextFloat(1.25f, 2.0f);
+						dust.scale = Main.rand.NextFloat(1.3f, 2.1f);
+						dust.noGravity = false;
+					}
+				}
+				if(bloodflareonhitcooldown > 0) {
+					bloodflareonhitcooldown--;
+				}
+			}
         }
-
+		
         // Function to add stealth to thorium throwing armors
-        public void AddStealth(int stealth)
-        {
+        public void AddStealth(int stealth){
             CalamityPlayer calamityPlayer = base.Player.Calamity();
             calamityPlayer.rogueStealthMax += ((float)stealth / 100);
             base.Player.Calamity().wearingRogueArmor = true;
             base.Player.setBonus = base.Player.setBonus + "\n+" + stealth + " maximum stealth";
         }
 
-        public void InstrumentRotationModifier(float modifier)
-        {
+        public void InstrumentRotationModifier(float modifier){
             ThoriumPlayer thoriumPlayer = ThoriumMod.Utilities.PlayerHelper.GetThoriumPlayer(base.Player);
-            if (!thoriumPlayer.bardBigInstrumentRotationShift)
-            {
+            if (!thoriumPlayer.bardBigInstrumentRotationShift){
                 thoriumPlayer.bardBigInstrumentRotation -= (1f - modifier) * thoriumPlayer.bardBigInstrumentRotationSpeed;
             }
-            else
-            {
+            else{
                 thoriumPlayer.bardBigInstrumentRotation += (1f - modifier) * thoriumPlayer.bardBigInstrumentRotationSpeed;
             }
         }
 
-        public override void OnHitNPCWithProj(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
-        {
-            if (brimstoneFlamesOnHit)
-            {
+        public override void OnHitNPCWithProj(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone){
+            if (brimstoneFlamesOnHit){
                 target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 300);
             }
-            if (this.bloodflareHealer && projectile.DamageType == ThoriumDamageBase<HealerDamage>.Instance)
-            {
+            if (this.bloodflareHealer && projectile.DamageType == ThoriumDamageBase<HealerDamage>.Instance){
                 ApplyBloodFlareOnHit(target, damageDone);
             }
-            if (this.bloodflareBard && projectile.DamageType == ThoriumDamageBase<BardDamage>.Instance)
-            {
+            if (this.bloodflareBard && projectile.DamageType == ThoriumDamageBase<BardDamage>.Instance){
                 ApplyBloodFlareOnHit(target, damageDone);
             }
-            if (this.intergelacticBard)
-            {
+            if (this.intergelacticBard){
                 ModProjectile modProjectile = projectile.ModProjectile;
-                if (((modProjectile != null) ? modProjectile.Mod.Name : null) == "CatalystMod")
-                {
+                if (((modProjectile != null) ? modProjectile.Mod.Name : null) == "CatalystMod"){
                     ModProjectile modProjectile2 = projectile.ModProjectile;
-                    if (((modProjectile2 != null) ? modProjectile2.Name : null) == "AstralRocksProj")
-                    {
+                    if (((modProjectile2 != null) ? modProjectile2.Name : null) == "AstralRocksProj"){
                         Random rnd = new Random();
-                        if (rnd.Next(0, 20) == 0)
-                        {
+                        if (rnd.Next(0, 20) == 0){
                             intergelacticBardcurrentemp = rnd.Next(1, 18);
                             intergelacticBardcurrentemplevel = rnd.Next(1, 4);
                             ModContent.GetInstance<IntergelacticRobohelm>().NetApplyEmpowerments(((ModPlayer)this).Player, 0);
@@ -675,42 +602,32 @@ namespace RagnarokMod.Utils
                     }
                 }
             }
-            if (intergelacticHealer)
-            {
+            if (intergelacticHealer){
                 ModProjectile modProjectile = projectile.ModProjectile;
-                if (((modProjectile != null) ? modProjectile.Mod.Name : null) == "CatalystMod")
-                {
+                if (((modProjectile != null) ? modProjectile.Mod.Name : null) == "CatalystMod"){
                     ModProjectile modProjectile2 = projectile.ModProjectile;
-                    if (((modProjectile2 != null) ? modProjectile2.Name : null) == "AstralRocksProj")
-                    {
+                    if (((modProjectile2 != null) ? modProjectile2.Name : null) == "AstralRocksProj"){
                         Random rnd = new Random();
-                        if (rnd.Next(0, 20) == 0)
-                        {
+                        if (rnd.Next(0, 20) == 0){
                             Projectile astralrock = modProjectile2.Projectile;
                             Projectile.NewProjectile(astralrock.GetSource_FromThis(), astralrock.Center, Vector2.Zero, ModContent.ProjectileType<HeartWandPro2>(), 0, 0, astralrock.owner);
                         }
                     }
                 }
             }
-            if (projectile.IsThrown())
-            {
-                if (accShinobiSigilFix)
-                {
+            if (projectile.IsThrown()){
+                if (accShinobiSigilFix){
                     ThoriumPlayer thoriumplayer = ThoriumMod.Utilities.PlayerHelper.GetThoriumPlayer(base.Player);
-                    if (hit.Crit)
-                    {
+                    if (hit.Crit){
                         int shinobi = ModContent.ProjectileType<ShinobiSigilPro>();
-                        if (projectile.type != shinobi)
-                        {
+                        if (projectile.type != shinobi){
                             thoriumplayer.accShinobiSigilCrit++;
-                            if (thoriumplayer.accShinobiSigilCrit >= 2)
-                            {
+                            if (thoriumplayer.accShinobiSigilCrit >= 2){
                                 thoriumplayer.accShinobiSigilCrit = 0;
                                 SoundEngine.PlaySound(SoundID.Item103, new Vector2?(projectile.Center), null);
                                 this.Player.AddBuff(ModContent.BuffType<ThrowingSpeed>(), 300, true, false);
                                 int shinobiDamage = (int)((float)projectile.damage * 0.25f);
-                                if (shinobiDamage > 500)
-                                {
+                                if (shinobiDamage > 500){
                                     shinobiDamage = 500;
                                 }
                                 IEntitySource source = projectile.GetSource_OnHit(target, null);
@@ -722,51 +639,40 @@ namespace RagnarokMod.Utils
                             }
                         }
                     }
-                    else
-                    {
+                    else{
                         thoriumplayer.accShinobiSigilCrit = 0;
                     }
                 }
                 int guideDamage = 0;
-                if (throwGuide3Fix)
-                {
+                if (throwGuide3Fix){
                     guideDamage = (int)((double)projectile.damage * 0.175);
-                    if (guideDamage > 200)
-                    {
+                    if (guideDamage > 200){
                         guideDamage = 200;
                     }
                 }
-                else if (throwGuide2Fix)
-                {
+                else if (throwGuide2Fix){
                     guideDamage = (int)((double)projectile.damage * 0.15);
-                    if (guideDamage > 100)
-                    {
+                    if (guideDamage > 100){
                         guideDamage = 100;
                     }
                 }
-                else if (throwGuideFix)
-                {
+                else if (throwGuideFix){
                     guideDamage = (int)((double)projectile.damage * 0.125);
-                    if (guideDamage > 50)
-                    {
+                    if (guideDamage > 50){
                         guideDamage = 50;
                     }
                 }
-                if (guideDamage > 0)
-                {
+                if (guideDamage > 0){
                     IEntitySource source = projectile.GetSource_OnHit(target, null);
                     Projectile.NewProjectile(source, target.Center, Vector2.Zero, ModContent.ProjectileType<ThrowingGuideFollowup>(), guideDamage, 0f, projectile.owner, (float)target.whoAmI, 0f, 0f);
                 }
             }
-            if (WhiteDwarf && hit.Crit)
-            {
+            if (WhiteDwarf && hit.Crit){
                 int damage;
-                if (Player.GetWeaponDamage(Player.HeldItem) > target.damage)
-                {
+                if (Player.GetWeaponDamage(Player.HeldItem) > target.damage){
                     damage = Player.GetWeaponDamage(Player.HeldItem);
                 }
-                else
-                {
+                else{
                     damage = target.damage;
                 }
                 SoundEngine.PlaySound(SoundID.Item92, target.position);
@@ -774,63 +680,47 @@ namespace RagnarokMod.Utils
             }
             OnHitNPCWithAny(target, hit, damageDone);
         }
-
-        public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone)
-        {
-            if (brimstoneFlamesOnHit)
-            {
+        public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone){
+            if (brimstoneFlamesOnHit){
                 target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 300);
             }
-            if (this.bloodflareHealer && item.DamageType == ThoriumDamageBase<HealerDamage>.Instance)
-            {
+            if (this.bloodflareHealer && item.DamageType == ThoriumDamageBase<HealerDamage>.Instance){
                 ApplyBloodFlareOnHit(target, damageDone);
             }
-            if (this.bloodflareBard && item.DamageType == ThoriumDamageBase<BardDamage>.Instance)
-            {
+            if (this.bloodflareBard && item.DamageType == ThoriumDamageBase<BardDamage>.Instance){
                 ApplyBloodFlareOnHit(target, damageDone);
             }
             OnHitNPCWithAny(target, hit, damageDone);
         }
-
-        public void ApplyBloodFlareOnHit(NPC target, int damageDone)
-        {
+        public void ApplyBloodFlareOnHit(NPC target, int damageDone){
             target.AddBuff(ModContent.BuffType<BurningBlood>(), 240, false);
-            if (bloodflarebloodlust > 100 && this.bloodflareHealer)
-            {
+			bloodflarelastonhittimer = 300;
+            if (bloodflarebloodlust >= 100 && this.bloodflareHealer){
                 this.Player.Heal((int)Math.Sqrt(damageDone / 100));
             }
+			if(bloodflareonhitcooldown <= 0) {
+				AddBloodFlareBloodlustPoints(2);
+				bloodflareonhitcooldown = 15;
+			}	
         }
-
-        public void RemoveBloodFlareBloodlustPoints(int points)
-        {
-            if (bloodflarebloodlust - points >= 0)
-            {
+        public void RemoveBloodFlareBloodlustPoints(int points){
+            if (bloodflarebloodlust - points >= 0){
                 bloodflarebloodlust -= points;
             }
-            else
-            {
+            else{
                 bloodflarebloodlust = 0;
             }
         }
-
-        public void AddBloodFlareBloodlustPoints(int points)
-        {
-            if (bloodflarebloodlust + points <= maxbloodlustpoints)
-            {
+        public void AddBloodFlareBloodlustPoints(int points){
+            if (bloodflarebloodlust + points <= maxbloodlustpoints){
                 bloodflarebloodlust += points;
             }
-            else
-            {
+            else{
                 bloodflarebloodlust = maxbloodlustpoints;
-            }
-            if (bloodflarebloodlust == 100)
-            {
-                SoundEngine.PlaySound(SoundID.NPCHit13, (Vector2?)null, (SoundUpdateCallback)null);
             }
         }
 
-        private void SetFalse()
-        {
+        private void SetFalse(){
             this.brimstoneFlamesOnHit = false;
             this.tarraHealer = false;
             this.tarraBard = false;
@@ -858,69 +748,49 @@ namespace RagnarokMod.Utils
             shredderLifesteal = false;
             this.redglassMonocle = false;
         }
-        public override void ResetEffects()
-        {
-            if (lastHeldItem != null)
-            {
+        public override void ResetEffects(){
+            if (lastHeldItem != null){
                 lastHeldItem.radiantLifeCost = origLifeCost;
                 lastHeldItem = null;
                 origLifeCost = 0;
             }
-            if (this.tarraBard == false && this.tarraHealer == false)
+            if (this.bloodflareHealer == false && this.bloodflareBard == false)
                 bloodflarebloodlust = 0;
             SetFalse();
         }
-
-        public override void UpdateDead()
-        {
+        public override void UpdateDead(){
             SetFalse();
             activeRiffType = 0;
             activeRiffTargets.Clear();
-
         }
-
-        public override void ModifyWeaponKnockback(Item item, ref StatModifier knockback)
-        {
+        public override void ModifyWeaponKnockback(Item item, ref StatModifier knockback){
             if (auricBoost)
                 knockback.Flat += item.knockBack * 0.5f;
         }
-
-        public void OnHitNPCWithAny(NPC npc, NPC.HitInfo hit, int damageDone)
-        {
-            if (nightfallen)
-            {
+        public void OnHitNPCWithAny(NPC npc, NPC.HitInfo hit, int damageDone){
+            if (nightfallen){
                 npc.AddBuff(ModContent.BuffType<NightfallenDebuff>(), 240);
             }
-            if (shredderLifesteal && shredderLifestealCooldown <= 0)
-            {
+            if (shredderLifesteal && shredderLifestealCooldown <= 0){
                 Player.statLife += 1;
                 Player.HealEffect(1);
-
                 if (Player.statLife > Player.statLifeMax2)
                     Player.statLife = Player.statLifeMax2;
-
                 shredderLifestealCooldown = 6;
             }
         }
-
-        public override void Unload()
-        {
+        public override void Unload(){
             OnHealEffects?.Clear();
             OnHealEffects = null;
             base.Unload();
         }
-
-        private void HandleTextChatMessages()
-        {
+        private void HandleTextChatMessages(){
             if (Player.whoAmI != Main.myPlayer || Main.dedServ)
                 return;
 
-            if (startMessageDisplayDelay >= 0)
-            {
-                if (startMessageDisplayDelay == 0)
-                {
-                    if (ModContent.GetInstance<ClientConfig>().StartText)
-                    {
+            if (startMessageDisplayDelay >= 0){
+                if (startMessageDisplayDelay == 0){
+                    if (ModContent.GetInstance<ClientConfig>().StartText){
                         CalamityUtils.BroadcastLocalizedText("Mods.RagnarokMod.FandomWarning");
                         CalamityUtils.BroadcastLocalizedText("Mods.RagnarokMod.WikiMessage");
                         CalamityUtils.BroadcastLocalizedText("Mods.RagnarokMod.DiscordInvite");
@@ -928,7 +798,6 @@ namespace RagnarokMod.Utils
                         CalamityUtils.BroadcastLocalizedText("Mods.RagnarokMod.DisableMe");
                     }
                 }
-
                 --startMessageDisplayDelay;
             }
         }
