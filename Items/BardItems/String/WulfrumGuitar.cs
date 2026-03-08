@@ -28,7 +28,7 @@ namespace RagnarokMod.Items.BardItems.String
         }
 
         public override void SetBardDefaults(){
-            base.Item.damage = 12;
+            base.Item.damage = 15;
 			base.InspirationCost = 2;
 			base.Item.width = 30;
 			base.Item.height = 30;
@@ -70,6 +70,15 @@ namespace RagnarokMod.Items.BardItems.String
                 return false;
             }
         }
+		
+		public override float UseTimeMultiplier(Player player){
+            return player.altFunctionUse == 2 ? 0.5f : 1f;
+        }
+
+        public override float UseAnimationMultiplier(Player player){
+            return player.altFunctionUse == 2 ? 0.5f : 1f;
+        }
+		
         public override void AddRecipes(){
            base.CreateRecipe(1).AddIngredient<WulfrumMetalScrap>(10).AddTile(16).Register();
         }
