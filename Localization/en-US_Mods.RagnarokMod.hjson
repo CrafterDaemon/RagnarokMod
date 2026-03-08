@@ -1081,9 +1081,9 @@ Items: {
 	WulfrumGuitar: {
 		Tooltip:
 			'''
-			Shoots bouncing sound waves.
-			Right click to return the waves.
-			Returning waves will ignore tiles.
+			Shoots bouncing sound waves
+			Right Click to return the waves
+			Returning waves will ignore tiles
 			'''
 		DisplayName: Wulfrum Guitar
 	}
