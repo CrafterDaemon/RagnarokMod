@@ -59,7 +59,7 @@ namespace RagnarokMod.Projectiles.BardPro.String
 			base.Projectile.penetrate = -1; 
 			base.Projectile.timeLeft = 300;
 			Projectile.usesLocalNPCImmunity = true;
-			Projectile.localNPCHitCooldown = 10;
+			Projectile.localNPCHitCooldown = 5;
 		}
 
         public override void AI(){

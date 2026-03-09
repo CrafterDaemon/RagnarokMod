@@ -5,7 +5,7 @@ using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Items.Weapons.Melee;
 using CalamityMod.Systems;
-using Ragnarok.Items;
+using RagnarokMod.Items.BardItems.CalamityOverrides;
 using RagnarokMod.Items;
 using RagnarokMod.Items.BardItems;
 using RagnarokMod.Utils;
