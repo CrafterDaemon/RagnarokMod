@@ -218,7 +218,7 @@ namespace RagnarokMod.Common.GlobalNPCs
             // Special cases
             if (npc.type == ModContent.NPCType<Viscount>())
             {
-                npcLoot.AddIf(() => CalamityWorld.revenge, ModContent.ItemType<GoldenBatDroppings>(), 1, 1, 1, true, null);
+                //npcLoot.AddIf(() => CalamityWorld.revenge, ModContent.ItemType<GoldenBatDroppings>(), 1, 1, 1, true, null);
             }
 
             if (npc.type == ModContent.NPCType<BelchingCoral>())

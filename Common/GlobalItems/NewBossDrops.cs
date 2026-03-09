@@ -1,6 +1,7 @@
 ﻿using CalamityMod;
 using CalamityMod.Items.TreasureBags;
 using CalamityMod.NPCs.CalClone;
+using CalamityMod.World;
 using RagnarokMod.Items.BardItems.Accessories;
 using RagnarokMod.Items.BardItems.Percussion;
 using RagnarokMod.Items.BardItems.String;
@@ -63,6 +64,9 @@ namespace RagnarokMod.Common.GlobalItems
 
             if (item.type == ModContent.ItemType<QueenJellyfishTreasureBag>())
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<QueenJelly>(), 1, 4, 16));
+
+            if (item.type == ModContent.ItemType<ViscountTreasureBag>())
+                itemLoot.AddIf(() => CalamityWorld.revenge || CalamityWorld.death, ModContent.ItemType<GoldenBatDroppings>(), 10);
 
             if (item.type == ModContent.ItemType<StarScouterTreasureBag>())
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<StrangeAlienMotherBoard>(), 1, 4, 6));

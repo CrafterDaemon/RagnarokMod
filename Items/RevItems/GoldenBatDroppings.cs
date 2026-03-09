@@ -1,14 +1,11 @@
-using System;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
 using RagnarokMod.Utils;
 using ThoriumMod;
 using ThoriumMod.Utilities;
-using System.Collections.Generic;
-using CalamityMod.Rarities;
 using CalamityMod.Items;
+using CalamityMod;
 
 namespace RagnarokMod.Items.RevItems
 {
@@ -17,11 +14,13 @@ namespace RagnarokMod.Items.RevItems
 
         public override void SetDefaults()
         {
-            base.Item.width = 26;
-            base.Item.height = 26;
-            base.Item.value = CalamityGlobalItem.RarityOrangeBuyPrice;
-            base.Item.rare = ItemRarityID.Orange;
-            base.Item.accessory = true;
+            Item.width = 26;
+            Item.height = 26;
+            Item.value = CalamityGlobalItem.RarityOrangeBuyPrice;
+            Item.rare = ItemRarityID.Orange;
+            Item.accessory = true;
+
+            Item.Calamity().revengeanceItem = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
