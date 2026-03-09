@@ -74,8 +74,39 @@ namespace RagnarokMod
                     if (player1.HeldItem.type == ModContent.ItemType<PrimalTerror>() || hasFavorited)
                         SoundEngine.PlaySound(new SoundStyle("CalamityMod/Sounds/Custom/Scare"));
                     break;
+                case 3:
+                    ThoriumEmpowermentMsg sub = (ThoriumEmpowermentMsg)reader.ReadByte();
+                    switch (sub)
+                    {
+                        case ThoriumEmpowermentMsg.ClearEmpowerments:
+                            {
+                                int plr = reader.ReadByte();
+                                if (plr >= 0 && plr < Main.maxPlayers)
+                                {
+                                    Player target = Main.player[plr];
+                                    PlayerHelper.ClearAllEmpowerments(target);
+
+                                    // relay to others if server
+                                    if (Main.netMode == NetmodeID.Server)
+                                    {
+                                        ModPacket p = GetPacket();
+                                        p.Write((byte)3);
+                                        p.Write((byte)ThoriumEmpowermentMsg.ClearEmpowerments);
+                                        p.Write((byte)plr);
+                                        p.Send(-1, whoAmI);
+                                    }
+                                }
+                                break;
+                            }
+                    }
+                    break;
             }
 
+        }
+
+        public enum ThoriumEmpowermentMsg : byte
+        {
+            ClearEmpowerments = 1
         }
 
         public override void Load()

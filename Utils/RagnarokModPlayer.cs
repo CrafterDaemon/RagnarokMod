@@ -32,6 +32,7 @@ using ThoriumMod.Projectiles.Thrower;
 using ThoriumMod.Sounds;
 using ThoriumMod.Utilities;
 using System.Security.Cryptography.Pkcs;
+using static RagnarokMod.RagnarokMod;
 
 namespace RagnarokMod.Utils
 {
@@ -471,6 +472,15 @@ namespace RagnarokMod.Utils
                 activeRiffType = 0;
                 riffItemType = -1;
                 PlayerHelper.ClearAllEmpowerments(Player);
+
+                if (Main.netMode == NetmodeID.MultiplayerClient)
+                {
+                    ModPacket p = Mod.GetPacket();
+                    p.Write((byte)3);
+                    p.Write((byte)ThoriumEmpowermentMsg.ClearEmpowerments);
+                    p.Write((byte)Player.whoAmI);
+                    p.Send();
+                }
             }
 
             // Applies the damage modifiers from the Configs
