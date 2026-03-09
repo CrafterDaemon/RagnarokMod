@@ -26,8 +26,8 @@ namespace RagnarokMod.Projectiles.BardPro.String
 		bool storedRotationSet = false;
 		int returnTimer = 0;
         public override void SetBardDefaults(){
-            Projectile.width = 30;
-            Projectile.height = 30;
+            Projectile.width = 42;
+            Projectile.height = 20;
             Projectile.friendly = true;
             Projectile.DamageType = ThoriumDamageBase<BardDamage>.Instance;
             base.Projectile.aiStyle = ProjAIStyleID.Arrow;

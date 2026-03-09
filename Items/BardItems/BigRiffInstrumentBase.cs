@@ -160,6 +160,7 @@ namespace RagnarokMod.Items.BardItems
                     );
                     ragnarokPlayer.riffPlaying = true;
                     ragnarokPlayer.activeRiffType = RiffType;
+					ragnarokPlayer.riffItemType = Type;
                 }
             }
             else

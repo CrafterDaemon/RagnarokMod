@@ -1067,14 +1067,19 @@ Items: {
 		// Tooltip: ""
 	}
 
+	WulfrumGuitar: {
+		/* Tooltip:
+			'''
+			Shoots bouncing sound waves
+			Right Click to return the waves
+			Returning waves will ignore tiles
+			''' */
+		// DisplayName: Wulfrum Guitar
+	}
+
 	MenuMusicBox: {
 		// DisplayName: Music Box (Ragnarok Title)
 		// Tooltip: Plays 'Menu Theme' by CrafterDaemon
-	}
-
-	WulfrumGuitar: {
-		// DisplayName: Wulfrum Guitar
-		// Tooltip: ""
 	}
 }
 
