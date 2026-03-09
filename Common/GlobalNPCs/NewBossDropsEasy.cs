@@ -21,7 +21,7 @@ using CalamityMod.NPCs.SulphurousSea;
 using CalamityMod.NPCs.SupremeCalamitas;
 using CalamityMod.NPCs.Yharon;
 using CalamityMod.World;
-using Ragnarok.Items;
+using RagnarokMod.Items.BardItems.CalamityOverrides;
 using RagnarokMod.Common.Configs;
 using RagnarokMod.Items.BardItems.Accessories;
 using RagnarokMod.Items.BardItems.Percussion;
