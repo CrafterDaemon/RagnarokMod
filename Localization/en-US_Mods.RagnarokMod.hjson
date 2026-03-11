@@ -705,8 +705,10 @@ Items: {
 		DisplayName: Golden Bat Droppings
 		Tooltip:
 			'''
-			+30% coins from enemies
+			+25% coins from enemies (50% while in rage mode)
 			Increases damage based on held coins (coinslots only)
+			This bonus is increased by 50% while in adrenaline mode.
+			You will lose 25% of your coins permanently upon death (50% on death or master mode)
 			"You're not greedy... you're batshit insane!"
 			'''
 	}
@@ -1206,6 +1208,8 @@ Projectiles: {
 	CorroslimeBassPro.DisplayName: Corroslime Bass Pro
 	CrimslimeOboePro.DisplayName: Crimslime Oboe Pro
 	WulfrumGuitarPro.DisplayName: Wulfrum Guitar Pro
+	AcidicSaxBubbleOverride.DisplayName: Acidic Sax Bubble Override
+	AcidicReedOverride.DisplayName: Acidic Reed Override
 }
 
 Configs: {
