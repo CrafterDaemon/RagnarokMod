@@ -341,7 +341,11 @@ namespace RagnarokMod.Utils
                         effectivecoinvalue += (long)(Math.Pow(100, base.Player.inventory[i].type - 71) * base.Player.inventory[i].stack);
                     }
                 }
-                float damagemodifier = (float)Math.Pow(((float)effectivecoinvalue / 10000000), 0.2) / 10;
+                float damagemodifier = (float)Math.Pow(((float)effectivecoinvalue / 20000000), 0.2) / 10;
+				CalamityPlayer calamityPlayer = base.Player.Calamity();
+				if(calamityPlayer.adrenalineModeActive) {
+					damagemodifier *= 1.5f;
+				}
                 base.Player.GetDamage(DamageClass.Generic) += damagemodifier;
             }
 
@@ -769,6 +773,30 @@ namespace RagnarokMod.Utils
                 bloodflarebloodlust = 0;
             SetFalse();
         }
+		
+		public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource){
+			if (batpoop){
+				long totalCoins = Terraria.Utils.CoinsCount(out _, Player.inventory);
+				long remainingCoins;
+				if(CalamityGamemodeCheck.isDeath || Main.masterMode) {
+					remainingCoins = (long)(totalCoins * 0.5);
+				} else {
+					remainingCoins = (long)(totalCoins * 0.75);
+				}
+				for (int i = 0; i < Player.inventory.Length; i++){
+					if (Player.inventory[i].IsACoin)
+						Player.inventory[i].TurnToAir();
+				}
+				int[] coins = Terraria.Utils.CoinsSplit(remainingCoins);
+				for (int i = 0; i < coins.Length; i++){
+					if (coins[i] > 0){
+						Player.QuickSpawnItem(Player.GetSource_Misc("CoinRestore"), ItemID.CopperCoin + i, coins[i]);
+					}
+				}	
+			}
+			return true;
+		}
+		
         public override void UpdateDead(){
             SetFalse();
             activeRiffType = 0;

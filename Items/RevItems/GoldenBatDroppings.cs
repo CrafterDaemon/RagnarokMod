@@ -6,6 +6,7 @@ using ThoriumMod;
 using ThoriumMod.Utilities;
 using CalamityMod.Items;
 using CalamityMod;
+using CalamityMod.CalPlayer;
 
 namespace RagnarokMod.Items.RevItems
 {
@@ -19,15 +20,18 @@ namespace RagnarokMod.Items.RevItems
             Item.value = CalamityGlobalItem.RarityOrangeBuyPrice;
             Item.rare = ItemRarityID.Orange;
             Item.accessory = true;
-
             Item.Calamity().revengeanceItem = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
-            thoriumPlayer.statCoinDrops += 0.3f;
+            thoriumPlayer.statCoinDrops += 0.25f;
             player.GetRagnarokModPlayer().batpoop = true;
+			CalamityPlayer calamityPlayer = player.Calamity();
+            if(calamityPlayer.rageModeActive) {
+				thoriumPlayer.statCoinDrops += 0.25f;
+			}
         }
     }
 }
