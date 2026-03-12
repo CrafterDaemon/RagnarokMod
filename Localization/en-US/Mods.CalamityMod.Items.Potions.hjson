@@ -1,0 +1,9 @@
+StarBeamRye: {
+	DisplayName: Star Beam Rye
+	Tooltip:
+		'''
+		Increases Mana regeneration, even while using an item
+		Magic and Radiant weapons deal {0}x damage
+		{$Common.AlcoholWarning}
+		'''
+}

@@ -33,6 +33,7 @@ using ThoriumMod.Sounds;
 using ThoriumMod.Utilities;
 using System.Security.Cryptography.Pkcs;
 using static RagnarokMod.RagnarokMod;
+using CalamityMod.Items.Potions.Alcohol;
 
 namespace RagnarokMod.Utils
 {
@@ -347,6 +348,11 @@ namespace RagnarokMod.Utils
 					damagemodifier *= 1.5f;
 				}
                 base.Player.GetDamage(DamageClass.Generic) += damagemodifier;
+            }
+
+            if (Player.Calamity().starBeamRye)
+            {
+                Player.GetDamage<HealerDamage>() *= 0.9f;
             }
 
             if (elementalReaperCD > 0){

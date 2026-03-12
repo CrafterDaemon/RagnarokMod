@@ -1196,6 +1196,8 @@ Projectiles: {
 	// CorroslimeBassPro.DisplayName: Corroslime Bass Pro
 	// CrimslimeOboePro.DisplayName: Crimslime Oboe Pro
 	// WulfrumGuitarPro.DisplayName: Wulfrum Guitar Pro
+	// AcidicSaxBubbleOverride.DisplayName: Acidic Sax Bubble Override
+	// AcidicReedOverride.DisplayName: Acidic Reed Override
 }
 
 Configs: {
@@ -1291,7 +1293,11 @@ Configs: {
 
 	ClassBalancerConfig: {
 		DisplayName: 职业平衡设置
-		Headers.ClassBalanceChanges: 职业平衡设置页
+
+		Headers: {
+			ClassBalanceChanges: 职业平衡设置页
+			// ClassMechanicChanges: Class Mechanic Changes Header
+		}
 
 		HealerDamageModifier: {
 			Label: 牧师伤害倍率
@@ -1331,6 +1337,11 @@ Configs: {
 		HealingBonusModifier: {
 			Label: 额外治疗量倍率
 			Tooltip: ""
+		}
+
+		RiffsRequireRiffInstrumentToBeHeld: {
+			// Label: Riffs Require Riff Instrument To Be Held
+			// Tooltip: ""
 		}
 	}
 

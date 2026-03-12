@@ -1305,7 +1305,11 @@ Configs: {
 
 	ClassBalancerConfig: {
 		DisplayName: Class Balancer Config
-		Headers.ClassBalanceChanges: Class Balance Changes Header
+
+		Headers: {
+			ClassBalanceChanges: Class Balance Changes Header
+			ClassMechanicChanges: Class Mechanic Changes Header
+		}
 
 		HealerDamageModifier: {
 			Label: Healer Damage Modifier
@@ -1344,6 +1348,11 @@ Configs: {
 
 		HealingBonusModifier: {
 			Label: Healing Bonus Modifier
+			Tooltip: ""
+		}
+
+		RiffsRequireRiffInstrumentToBeHeld: {
+			Label: Riffs Require Riff Instrument To Be Held
 			Tooltip: ""
 		}
 	}
