@@ -395,7 +395,8 @@ namespace RagnarokMod.Utils
                 throwGuide3Fix = true;
             }
         
-            if (Player.HeldItem.type != riffItemType && riffPlaying && activeRiffType != 0){
+            if (Player.HeldItem.type != riffItemType && riffPlaying && activeRiffType != 0 && ClassBalancerConfig.Instance.RiffsRequireRiffInstrumentToBeHeld)
+            {
                 if (SoundEngine.TryGetActiveSound(riffSlot, out var sound))
                     sound.Stop();
                 riffPlaying = false;
