@@ -693,15 +693,16 @@ Items: {
 			'''
 	}
 
-	GoldenBatDroppings: {
-		DisplayName: 金蝙蝠粪便
-		Tooltip:
+	GoldenxBatDroppings: {
+		// DisplayName: Golden Bat Droppings
+		/* Tooltip:
 			'''
-			增加30%来自敌人的金币
-			基于持有的钱币增加伤害(仅限钱币栏)
-			“你不是贪婪……你是彻头彻尾的疯子！”
-			复仇模式专属
-			'''
+			+25% coins from enemies (50% while in rage mode)
+			Increases damage based on held coins (coinslots only)
+			This bonus is increased by 50% while in adrenaline mode.
+			You will lose 25% of your coins permanently upon death (50% on death or master mode)
+			"You're not greedy... you're batshit insane!"
+			''' */
 	}
 
 	VerdurantBloom: {
@@ -1080,6 +1081,17 @@ Items: {
 	MenuMusicBox: {
 		// DisplayName: Music Box (Ragnarok Title)
 		// Tooltip: Plays 'Menu Theme' by CrafterDaemon
+	}
+
+	GoldenBatDroppings: {
+		DisplayName: 金蝙蝠粪便
+		Tooltip:
+			'''
+			增加30%来自敌人的金币
+			基于持有的钱币增加伤害(仅限钱币栏)
+			“你不是贪婪……你是彻头彻尾的疯子！”
+			复仇模式专属
+			'''
 	}
 }
 

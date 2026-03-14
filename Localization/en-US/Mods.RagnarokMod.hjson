@@ -592,8 +592,8 @@ Items: {
 		DisplayName: Voidseer Pearl
 		Tooltip:
 			'''
-			'They say beauty is in the eye of the beholder'
-			'I don't think they meant that literally'
+			Can be sold for a very good price to shops
+			'They say beauty is in the eye of the beholder... I don't think they meant that literally'
 			'''
 	}
 
@@ -701,7 +701,7 @@ Items: {
 			'''
 	}
 
-	GoldenBatDroppings: {
+	GoldenxBatDroppings: {
 		DisplayName: Golden Bat Droppings
 		Tooltip:
 			'''
@@ -1093,6 +1093,11 @@ Items: {
 		DisplayName: Music Box (Ragnarok Title)
 		Tooltip: Plays 'Menu Theme' by CrafterDaemon
 	}
+
+	GoldenBatDroppings: {
+		DisplayName: Golden Bat Droppings
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -1264,7 +1269,7 @@ Configs: {
 
 		CharredIdol: {
 			Label: Brimstone Elemental Recipe Change
-			Tooltip: Changes Charred Idol to require a Voidseer's Pearl. Defaults to True
+			Tooltip: Changes Charred Idol to require a Void Heart. Defaults to True
 		}
 
 		Seafood: {

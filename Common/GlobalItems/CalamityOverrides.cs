@@ -28,6 +28,7 @@ using ThoriumMod.Items.Placeable;
 using ThoriumMod.Items.Terrarium;
 using ThoriumMod.Items.ThrownItems;
 using ThoriumMod.Utilities;
+using RagnarokMod.Items.Materials;
 
 namespace RagnarokMod.Common.GlobalItems
 {
@@ -121,6 +122,12 @@ namespace RagnarokMod.Common.GlobalItems
             {
                 RecipeHelper helper = new(item);
                 helper.Add(ModContent.ItemType<LivingShard>(), 12);
+            }
+            finder.LookFor(ModContent.ItemType<EldritchSoulArtifact>(), 1);
+            foreach (Recipe item in finder.Search())
+            {
+                RecipeHelper helper = new(item);
+                helper.Add(ModContent.ItemType<EldritchShellFragment>(), 1);
             }
 
             //ew multiple leather recipes
