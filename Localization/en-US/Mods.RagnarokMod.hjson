@@ -103,7 +103,7 @@ Tooltips: {
 			Healing spells heal 25% more hp
 			Healing spells apply a protective bubble to their target,
 			granting +5% damage reduction for 5 seconds
-			25% increased radiant attack speed
+			10% increased radiant attack speed
 			'''
 		CorruptTooltip:
 			'''
@@ -111,7 +111,7 @@ Tooltips: {
 			All health costs are reduced by 1
 			Spending health envelopes you in a corrupted bubble,
 			granting +10% damage, but you take 5% more damage
-			25% increased radiant attack speed
+			10% increased radiant attack speed
 			'''
 	}
 }

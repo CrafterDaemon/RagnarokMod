@@ -1,12 +1,8 @@
-using CalamityMod.Items;
-using Microsoft.Xna.Framework;
 using RagnarokMod.Buffs;
 using RagnarokMod.Utils;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using Terraria;
-using Terraria.Audio;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -27,6 +23,7 @@ namespace RagnarokMod.Items.HealerItems.Accessories
             Item.accessory = true;
             Item.rare = ItemRarityID.Red;
             Item.value = Item.buyPrice(gold: 15);
+            isHealer = true;
             base.SetDefaults();
         }
 
@@ -36,14 +33,14 @@ namespace RagnarokMod.Items.HealerItems.Accessories
             {
                 if (rag.darkAura)
                 {
+                    isHealer = false;
                     isDarkHealer = true;
-                    isHealer = new bool();
                     tooltips.Add(new TooltipLine(Mod, "tooltip", Language.GetTextValue("Mods.RagnarokMod.Tooltips.LeviathanHeart.CorruptTooltip")));
                 }
                 else
                 {
                     isHealer = true;
-                    isDarkHealer = new bool();
+                    isDarkHealer = false;
                     tooltips.Add(new TooltipLine(Mod, "tooltip", Language.GetTextValue("Mods.RagnarokMod.Tooltips.LeviathanHeart.NormalTooltip")));
                 }
             }
@@ -74,7 +71,7 @@ namespace RagnarokMod.Items.HealerItems.Accessories
         {
             thoriumPlayer.healBonus = Math.Max((int)Math.Ceiling(thoriumPlayer.healBonus * 1.25), 2);
 
-            player.GetAttackSpeed(ThoriumDamageBase<HealerDamage>.Instance) += 0.10f;
+            player.GetAttackSpeed(ThoriumDamageBase<HealerDamage>.Instance) += 0.1f;
         }
 
         private void UpdateCorrupted(Player player, ThoriumPlayer thoriumPlayer)
@@ -101,7 +98,7 @@ namespace RagnarokMod.Items.HealerItems.Accessories
                 }
             }
 
-            player.GetAttackSpeed(ThoriumDamageBase<HealerDamage>.Instance) += 0.10f;
+            player.GetAttackSpeed(ThoriumDamageBase<HealerDamage>.Instance) += 0.1f;
         }
 
         public static void OnHealAlly(Player healer, Player target)
