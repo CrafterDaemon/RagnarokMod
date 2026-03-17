@@ -26,7 +26,7 @@ namespace RagnarokMod.Items.HealerItems.Scythes
         public override void SetDefaults()
         {
             SetDefaultsToScythe();
-            base.Item.damage = 450;
+            base.Item.damage = 600;
             scytheSoulCharge = 1;
             base.Item.width = 52;
             base.Item.height = 48;
@@ -78,7 +78,7 @@ namespace RagnarokMod.Items.HealerItems.Scythes
             if (player.altFunctionUse == 2)
             {
                 type = ModContent.ProjectileType<AuricGreatscytheSwing>();
-                damage = (int)(damage * 20f);
+                damage = (int)(damage * 1f);
                 knockback *= 2f;
                 // Normalize the bolt direction and pass it through velocity
                 // The swing projectile will extract this for the bolt launch
