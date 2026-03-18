@@ -109,7 +109,7 @@ namespace RagnarokMod.Items.BardItems.String
             recipe.AddIngredient(ModContent.ItemType<Ukulele>(), 1);
             recipe.AddIngredient(ModContent.ItemType<RuinousSoul>(), 8);
             recipe.AddIngredient(ModContent.ItemType<ExodiumCluster>(), 30);
-            recipe.AddTile<CosmicAnvil>();
+            recipe.AddTile(TileID.LunarCraftingStation);
             recipe.Register();
 
         }
