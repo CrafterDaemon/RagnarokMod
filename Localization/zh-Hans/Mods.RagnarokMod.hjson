@@ -430,6 +430,13 @@ Items: {
 			最大魔力值增加60
 			魔力消耗减少15%
 			'''
+		/* SetBonus:
+			'''
+			A Guardian healer will assist you in healing your allies
+			Heals ally life equal to your bonus healing + 5 health
+			and grants them the Guardian Healers Blessing for 20 seconds
+			{$CalamityMod.Items.Armor.PostMoonLord.TarragonBreastplate.CommonSetBonus}
+			''' */
 	}
 
 	TarragonShroud: {
@@ -443,6 +450,13 @@ Items: {
 			增加15%的灵感音符掉率
 			最大灵感值增加4
 			'''
+		/* SetBonus:
+			'''
+			A Guardian healer will assist you in healing your allies
+			Heals ally life equal to your bonus healing + 5 health
+			and grants them the Guardian Healers Blessing for 20 seconds
+			{$CalamityMod.Items.Armor.PostMoonLord.TarragonBreastplate.CommonSetBonus}
+			''' */
 	}
 
 	VictideHeadHealer: {

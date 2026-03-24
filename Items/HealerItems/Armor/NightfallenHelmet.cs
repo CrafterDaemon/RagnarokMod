@@ -1,10 +1,6 @@
-using System;
 using RagnarokMod.Utils;
-using CalamityMod.CalPlayer;
 using CalamityMod.Items;
 using CalamityMod.Items.Materials;
-using CalamityMod.Items.Placeables;
-using CalamityMod.Items.Armor.Daedalus;
 using CalamityMod.Rarities;
 using ThoriumMod;
 using ThoriumMod.Utilities;
@@ -12,12 +8,12 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 using CalamityMod.Items.Placeables.Ores;
-using Terraria.Localization;
+using ThoriumMod.Items;
 
 namespace RagnarokMod.Items.HealerItems.Armor
 {
     [AutoloadEquip(EquipType.Head)]
-    public class NightfallenHelmet : ModItem
+    public class NightfallenHelmet : ThoriumItem
     {
         public override void SetStaticDefaults()
         {
@@ -26,11 +22,12 @@ namespace RagnarokMod.Items.HealerItems.Armor
         }
         public override void SetDefaults()
         {
-            base.Item.width = 24;
-            base.Item.height = 26;
-            base.Item.value = CalamityGlobalItem.RarityPureGreenBuyPrice;
-            base.Item.rare = ModContent.RarityType<PureGreen>();
-            base.Item.defense = 18;
+            Item.width = 24;
+            Item.height = 26;
+            Item.value = CalamityGlobalItem.RarityPureGreenBuyPrice;
+            Item.rare = ModContent.RarityType<PureGreen>();
+            Item.defense = 18;
+            isDarkHealer = true;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -49,17 +46,18 @@ namespace RagnarokMod.Items.HealerItems.Armor
             player.setBonus = this.GetLocalizedValue("SetBonus");
             ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
             thoriumPlayer.healBonus += 4;
-            player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) += 0.33f;
+            thoriumPlayer.darkAura = true;
             player.GetRagnarokModPlayer().nightfallen = true;
         }
 
         public override void UpdateEquip(Player player)
         {
             ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
-            player.GetDamage(DamageClass.Generic) -= 0.35f;
-            player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) += 0.95f;
+            player.GetDamage(DamageClass.Generic) -= 0.33f;
+            player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) += 0.66f;
             player.GetCritChance(ThoriumDamageBase<HealerDamage>.Instance) += 16f;
             player.statManaMax2 += 60;
+            player.manaCost -= 0.2f;
 
         }
 

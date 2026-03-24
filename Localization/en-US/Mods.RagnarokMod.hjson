@@ -233,6 +233,7 @@ Items: {
 			Empowerments will be prolonged for an additional 3 seconds and 10% faster inspiration regen
 			Pressing the 'Armor Ability' key will consume 20 points to replenish 10 inspiration
 			You will lose 25 points upon getting hit and rapidly points when not hitting enemies for more than 5 seconds
+			Your points are also reset when a boss is spawned
 			'''
 	}
 
@@ -255,6 +256,7 @@ Items: {
 			Additionally you get healed for a small fraction of your dealt damage
 			Pressing the 'Armor Ability' key will consume 20 points to replenish 25 + bonus heal life 
 			You will lose 25 points upon getting hit and rapidly points when not hitting enemies for more than 5 seconds
+			Your points are also reset when a boss is spawned
 			'''
 	}
 
@@ -436,6 +438,13 @@ Items: {
 			Maximum mana increased by 60
 			Mana usage reduced by 20%
 			'''
+		SetBonus:
+			'''
+			A Guardian healer will assist you in healing your allies
+			Heals ally life equal to your bonus healing + 5 health
+			and grants them the Guardian Healers Blessing for 20 seconds
+			{$CalamityMod.Items.Armor.PostMoonLord.TarragonBreastplate.CommonSetBonus}
+			'''
 	}
 
 	TarragonShroud: {
@@ -448,6 +457,13 @@ Items: {
 			Greatly increased inspiration regen
 			+15% chance for inspiration notes to drop from enemies
 			+4 maximum inspiration
+			'''
+		SetBonus:
+			'''
+			A Guardian healer will assist you in healing your allies
+			Heals ally life equal to your bonus healing + 5 health
+			and grants them the Guardian Healers Blessing for 20 seconds
+			{$CalamityMod.Items.Armor.PostMoonLord.TarragonBreastplate.CommonSetBonus}
 			'''
 	}
 
@@ -468,14 +484,16 @@ Items: {
 		DisplayName: Nightfallen Helmet
 		Tooltip:
 			'''
-			35% decreased non-radiant damage
-			60% increased radiant damage and 16% increased critical radiant strike chance
+			Corrupts your radiant powers
+			33% decreased non-radiant damage
+			33% increased radiant damage
+			16% increased radiant critical strike chance
+			25% decreased mana cost
 			Maximum mana increased by 60
 			'''
 		SetBonus:
 			'''
 			Healing spells will heal an additional 4 life
-			33% increased radiant damage
 			All attacks inflict Nightfallen
 			Nightfallen deals 100 damage per second
 			Nightfallen increases all damage taken by the target by 10%
@@ -486,8 +504,10 @@ Items: {
 		DisplayName: Nightfallen Breastplate
 		Tooltip:
 			'''
-			45% decreased non-radiant damage
-			50% increased radiant damage and 12% increased critical radiant strike chance
+			25% decreased non-radiant damage
+			25% increased radiant damage
+			16% increased radiant critical strike chance
+			20% decreased mana cost
 			'''
 	}
 
@@ -495,9 +515,11 @@ Items: {
 		DisplayName: Nightfallen Greaves
 		Tooltip:
 			'''
-			35% decreased non-radiant damage
-			45% increased radiant damage and 8% increased critical radiant strike chance
+			20% decreased non-radiant damage
+			20% increased radiant damage
+			12% increased radiant critical strike chance
 			20% decreased mana cost
+			20% increased movement speed
 			'''
 	}
 

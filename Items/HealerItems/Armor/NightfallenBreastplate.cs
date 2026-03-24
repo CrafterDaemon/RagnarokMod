@@ -12,19 +12,21 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 using CalamityMod.Items.Placeables.Ores;
+using ThoriumMod.Items;
 
 namespace RagnarokMod.Items.HealerItems.Armor
 {
     [AutoloadEquip(EquipType.Body)]
-    public class NightfallenBreastplate : ModItem
+    public class NightfallenBreastplate : ThoriumItem
     {
         public override void SetDefaults()
         {
-            base.Item.width = 38;
-            base.Item.height = 20;
-            base.Item.value = CalamityGlobalItem.RarityPureGreenBuyPrice;
-            base.Item.rare = ModContent.RarityType<PureGreen>();
-            base.Item.defense = 28;
+            Item.width = 38;
+            Item.height = 20;
+            Item.value = CalamityGlobalItem.RarityPureGreenBuyPrice;
+            Item.rare = ModContent.RarityType<PureGreen>();
+            Item.defense = 28;
+            isHealer = true;
         }
 
         public override void ArmorSetShadows(Player player)
@@ -36,10 +38,10 @@ namespace RagnarokMod.Items.HealerItems.Armor
         public override void UpdateEquip(Player player)
         {
             ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
-            player.GetDamage(DamageClass.Generic) -= 0.35f;
-            player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) += 0.85f;
+            player.GetDamage(DamageClass.Generic) -= 0.25f;
+            player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) += 0.5f;
             player.GetCritChance(ThoriumDamageBase<HealerDamage>.Instance) += 12f;
-
+            player.manaCost -= 0.2f;
         }
 
         public override void AddRecipes()

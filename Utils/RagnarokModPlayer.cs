@@ -79,7 +79,7 @@ namespace RagnarokMod.Utils
         public int bloodflarebloodlust = 0;
         private int bloodflarepointreductiontimer = 0;
 		private int bloodflarelastonhittimer = 0;
-        private const int maxbloodlustpoints = 150;
+        private const int maxbloodlustpoints = 100;
 		private int bloodflareonhitcooldown = 0;
 		public int elementalReaperCD = 0;
         public int elementalReaperIndex = 0;
@@ -283,8 +283,9 @@ namespace RagnarokMod.Utils
                     this.Player.Heal(12);
                 }
             }
-			if(bloodflareBard || bloodflareHealer){
-				if(bloodflarelastonhittimer > 0){
+			if (bloodflareBard || bloodflareHealer)
+            {
+				if (bloodflarelastonhittimer > 0) {
 					bloodflarelastonhittimer--;
 				} 
 				else {
@@ -716,8 +717,11 @@ namespace RagnarokMod.Utils
         public void ApplyBloodFlareOnHit(NPC target, int damageDone){
             target.AddBuff(ModContent.BuffType<BurningBlood>(), 240, false);
 			bloodflarelastonhittimer = 300;
-            if (bloodflarebloodlust >= 100 && this.bloodflareHealer){
-                this.Player.Heal((int)Math.Sqrt(damageDone / 100));
+            if (bloodflarebloodlust >= 100 && bloodflareHealer && Player.lifeSteal >= 0){
+                Player.Heal((int)Math.Sqrt(damageDone / 100));
+                Player.lifeSteal -= damageDone;
+                if (Player.lifeSteal <= -70)
+                    Player.lifeSteal = -70;
             }
 			if(bloodflareonhitcooldown <= 0) {
 				AddBloodFlareBloodlustPoints(2);

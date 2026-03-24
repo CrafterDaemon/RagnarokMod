@@ -1,11 +1,6 @@
 ﻿using CalamityMod.Rarities;
 using Microsoft.Xna.Framework;
-using RagnarokMod.Sounds;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.Audio;
 using Terraria.Chat;
