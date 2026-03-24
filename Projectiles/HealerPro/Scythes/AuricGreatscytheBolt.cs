@@ -31,7 +31,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             Projectile.timeLeft = 180;
             Projectile.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 15;
+            Projectile.localNPCHitCooldown = 60;
             Projectile.extraUpdates = 2;
             Projectile.alpha = 255;
         }
