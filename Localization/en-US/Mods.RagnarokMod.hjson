@@ -549,7 +549,12 @@ Items: {
 
 	ProfanedScythe: {
 		DisplayName: Profaned Scythe
-		Tooltip: A holy inferno of a scythe
+		Tooltip:
+			'''
+			A holy inferno of a scythe
+			Right Click to throw the scythe, which will curve on it's way back
+			The scythe deals 20% more damage when thrown and flings molten blobs during flight
+			'''
 	}
 
 	MarbleScythe: {
@@ -563,7 +568,7 @@ Items: {
 			'''
 			The scoria allows you to spin the scythe much faster by constantly expelling steam
 			Right Click to throw the scythe, which will curve on it's way back
-				The scythe deals 20% more damage when thrown
+			The scythe deals 20% more damage when thrown
 			'''
 	}
 

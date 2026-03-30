@@ -395,9 +395,8 @@ Items: {
 		DisplayName: Multiclasser's Emblem
 		Tooltip:
 			'''
-			8% increased damage
-			5% increased critical strike chance 
-			5% increased attack speed
+			10% increased damage
+			2% increased critical strike chance
 			'''
 	}
 
