@@ -1606,6 +1606,66 @@ Configs: {
 			Tooltip: ""
 		}
 	}
+
+	AprilChaos: {
+		DisplayName: April Chaos
+
+		Headers: {
+			AprilChaos: April Chaos
+			RadiantMage: Radiant Mage
+			MeleeSummoner: Melee Summoner
+			RogueRanger: Rogue Ranger
+			ObnoxiousBard: Obnoxious Bard
+		}
+
+		MasterToggle: {
+			Label: Master Toggle
+			Tooltip: Disables/Enables all options below.
+		}
+
+		RadMage: {
+			Label: Radiant Mage
+			Tooltip:
+				'''
+				Healer just felt like an extension of mage.
+				So we fixed that.
+				By replacing Mage with Healer.
+				Setting to 1 enables this.
+				Setting to 0 disables this.
+				Setting to -1 inverts this.
+				'''
+		}
+
+		MelSum: {
+			Label: Melee Summoner
+			Tooltip:
+				'''
+				Summoner had some unfortunate progression gaps.
+				So we fixed that.
+				By giving all of Melee to Summoner.
+				Setting to 1 enables this.
+				Setting to 0 disables this.
+				Setting to -1 inverts this.
+				'''
+		}
+
+		RogRan: {
+			Label: Rogue Ranger
+			Tooltip:
+				'''
+				Rogue is taking back its roots.
+				By absorbing Ranger.
+				Setting to 1 enables this.
+				Setting to 0 disables this.
+				Setting to -1 inverts this.
+				'''
+		}
+
+		ObBard: {
+			Label: Obnoxious Bard
+			Tooltip: Makes your riffs... less riffin
+		}
+	}
 }
 
 WikiMessage: "[i:RagnarokMod/EquivalentExchange][c/FF2929:Help us complete the official ][c/B428FF:Ragnarok Mod][c/FF2929: wiki at ][c/3898FF:ragnarokmod.wiki.gg][c/FF2929:!][i:RagnarokMod/CorrosiveFlux]"

@@ -19,7 +19,7 @@ using ThoriumMod.Items.BardItems;
 
 namespace RagnarokMod.Items.BardItems
 {
-    public abstract class RiffInstrumentBase : BardItem
+    public abstract partial class RiffInstrumentBase : BardItem
     {
         public abstract SoundStyle RiffSound { get; }
         public abstract SoundStyle NormalSound { get; }
@@ -136,15 +136,17 @@ namespace RagnarokMod.Items.BardItems
                 : NormalSound;
         }
 
+        private static bool ObBard => ModContent.GetInstance<Common.Configs.AprilChaos>().ObBard;
         protected void SyncRiffSound(Player player, bool start)
         {
+            SoundStyle soundToPlay = ObBard ? GetRandomRiffSound(RiffSound) : RiffSound;
             var ragnarokPlayer = player.GetModPlayer<RagnarokModPlayer>();
             if (start)
             {
                 if (!SoundEngine.TryGetActiveSound(ragnarokPlayer.riffSlot, out var sound) || !sound.IsPlaying)
                 {
                     ragnarokPlayer.riffSlot = SoundEngine.PlaySound(
-                        RiffSound.WithVolumeScale(ModContent.GetInstance<ClientConfig>().RiffMusicVolume),
+                        soundToPlay.WithVolumeScale(ModContent.GetInstance<ClientConfig>().RiffMusicVolume),
                         player.Center
                     );
                     ragnarokPlayer.riffPlaying = true;
