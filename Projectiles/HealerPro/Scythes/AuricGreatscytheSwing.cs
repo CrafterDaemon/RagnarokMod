@@ -155,11 +155,17 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
 
             SoundEngine.PlaySound(SoundID.Item94, Projectile.Center);
 
-            Vector2 velocity = boltDirection * 14f;
-            int boltDamage = Projectile.damage; // already 3x from ModifyShootStats
+            Vector2 spawnPos = GetSwingTip() - new Vector2(0, 50);
+
+            Vector2 mouseWorld = Main.MouseWorld;
+            Vector2 direction = (mouseWorld - spawnPos).SafeNormalize(Vector2.UnitX * player.direction);
+            Vector2 velocity = direction * 14f;
+
+            int boltDamage = (Projectile.damage * 10);
+
             Projectile.NewProjectile(
                 Projectile.GetSource_FromThis(),
-                GetSwingTip() - new Vector2(0,50),
+                spawnPos,
                 velocity,
                 ModContent.ProjectileType<AuricGreatscytheBolt>(),
                 boltDamage,

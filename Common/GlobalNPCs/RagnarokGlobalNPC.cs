@@ -1,9 +1,14 @@
-﻿using CalamityMod.Items.Placeables.Furniture.Paintings;
+﻿using CalamityMod.Buffs.StatBuffs;
+using CalamityMod.CalPlayer;
+using CalamityMod;
+using CalamityMod.Items.Placeables.Furniture.Paintings;
 using RagnarokMod.Items.Placeables.Paintings;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
+using RagnarokMod.Utils;
 
 namespace RagnarokMod.Common.GlobalNPCs
 {
@@ -15,6 +20,20 @@ namespace RagnarokMod.Common.GlobalNPCs
         public override void ResetEffects(NPC npc)
         {
             debuffNightfallen = false;
+        }
+
+        public override void OnSpawn(NPC npc, IEntitySource source)
+        {
+            if (npc.boss)
+            {
+                foreach (Player player in Main.player)
+                {
+                    if (player.active && !player.dead)
+                    {
+                        player.GetRagnarokModPlayer().bloodflarebloodlust = 0;
+                    }
+                }
+            }
         }
 
         public override void UpdateLifeRegen(NPC npc, ref int damage)

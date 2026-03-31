@@ -21,7 +21,7 @@ using CalamityMod.NPCs.SulphurousSea;
 using CalamityMod.NPCs.SupremeCalamitas;
 using CalamityMod.NPCs.Yharon;
 using CalamityMod.World;
-using Ragnarok.Items;
+using RagnarokMod.Items.BardItems.CalamityOverrides;
 using RagnarokMod.Common.Configs;
 using RagnarokMod.Items.BardItems.Accessories;
 using RagnarokMod.Items.BardItems.Percussion;
@@ -218,7 +218,7 @@ namespace RagnarokMod.Common.GlobalNPCs
             // Special cases
             if (npc.type == ModContent.NPCType<Viscount>())
             {
-                npcLoot.AddIf(() => CalamityWorld.revenge, ModContent.ItemType<GoldenBatDroppings>(), 1, 1, 1, true, null);
+                //npcLoot.AddIf(() => CalamityWorld.revenge, ModContent.ItemType<GoldenBatDroppings>(), 1, 1, 1, true, null);
             }
 
             if (npc.type == ModContent.NPCType<BelchingCoral>())

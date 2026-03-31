@@ -1,4 +1,4 @@
-using Ragnarok.Items;
+using RagnarokMod.Items.BardItems.CalamityOverrides;
 using RagnarokMod.Items;
 using RagnarokMod.Utils;
 using Terraria;

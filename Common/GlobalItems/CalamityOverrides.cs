@@ -5,7 +5,7 @@ using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Items.Weapons.Melee;
 using CalamityMod.Systems;
-using Ragnarok.Items;
+using RagnarokMod.Items.BardItems.CalamityOverrides;
 using RagnarokMod.Items;
 using RagnarokMod.Items.BardItems;
 using RagnarokMod.Utils;
@@ -28,6 +28,7 @@ using ThoriumMod.Items.Placeable;
 using ThoriumMod.Items.Terrarium;
 using ThoriumMod.Items.ThrownItems;
 using ThoriumMod.Utilities;
+using RagnarokMod.Items.Materials;
 
 namespace RagnarokMod.Common.GlobalItems
 {
@@ -36,8 +37,15 @@ namespace RagnarokMod.Common.GlobalItems
         public override bool AppliesToEntity(Item item, bool lateInstantiation)
         {
             //fetch me their SOULS
-            return item.ModItem is FaceMelter or AnahitasArpeggio or BelchingSaxophone or DragonRage;
+            return item.ModItem is FaceMelter or AnahitasArpeggio or BelchingSaxophone or DragonRage or EldritchSoulArtifact;
         }
+		
+		public override void UpdateAccessory(Item item,Player player, bool hideVisual) {
+			if (item.type == ModContent.ItemType<EldritchSoulArtifact>()){
+				ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
+				thoriumPlayer.bardResourceMax2 += 2;
+			}
+		}
 
         public override void HoldItem(Item item, Player player)
         {
@@ -114,6 +122,12 @@ namespace RagnarokMod.Common.GlobalItems
             {
                 RecipeHelper helper = new(item);
                 helper.Add(ModContent.ItemType<LivingShard>(), 12);
+            }
+            finder.LookFor(ModContent.ItemType<EldritchSoulArtifact>(), 1);
+            foreach (Recipe item in finder.Search())
+            {
+                RecipeHelper helper = new(item);
+                helper.Add(ModContent.ItemType<EldritchShellFragment>(), 1);
             }
 
             //ew multiple leather recipes

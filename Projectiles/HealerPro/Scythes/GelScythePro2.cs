@@ -35,6 +35,9 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             Projectile.Size = new Vector2(24f, 10f);
             Projectile.scale = 1.5f;
 
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 40;
+            Projectile.usesIDStaticNPCImmunity = false;
         }
         public override void AI()
         {

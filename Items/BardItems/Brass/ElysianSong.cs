@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RagnarokMod.Projectiles.BardPro.Brass;
 using RagnarokMod.Sounds;
+using RagnarokMod.Common.Configs;
 using System;
 using Terraria;
 using Terraria.Audio;
@@ -57,6 +58,14 @@ namespace RagnarokMod.Items.BardItems.Brass
                 ((ModItem)this).Item.holdStyle = 3;
             }
         }
+		
+		public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback){
+			Vector2 forward = Vector2.Normalize(velocity);
+			Vector2 perpendicular = forward.RotatedBy(MathHelper.PiOver2);
+			position += forward *  70f;
+			position += perpendicular * 2f;
+			
+		}
 
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
         {

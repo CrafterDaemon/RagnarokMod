@@ -65,5 +65,10 @@ namespace RagnarokMod.Projectiles.BardPro.Percussion
             Projectile.height = 40;
             fadeOutTime = 30;
         }
+
+        public override void BardOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            Projectile.damage -= (Projectile.damage / 20);
+        }
     }
 }

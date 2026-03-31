@@ -39,6 +39,7 @@ namespace RagnarokMod.Items.BardItems.Percussion
             // Code sampled from Thorium's Shadewood Tambourine, as there is not much of a reason to remake code that does the same thing
             if (player.altFunctionUse == 2)
             {
+                Item.noUseGraphic = true;
                 for (int i = 0; i < Main.maxProjectiles; i++)
                 {
                     Projectile projectile = Main.projectile[i];
@@ -50,6 +51,7 @@ namespace RagnarokMod.Items.BardItems.Percussion
                 }
                 return false;
             }
+            Item.noUseGraphic = false;
             return true;
         }
         public override void AddRecipes() { }

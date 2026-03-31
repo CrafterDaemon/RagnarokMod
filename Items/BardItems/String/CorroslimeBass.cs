@@ -56,6 +56,8 @@ namespace RagnarokMod.Items.BardItems.String
             Item.shoot = ModContent.ProjectileType<CorroslimeBassPro>();
             Item.shootSpeed = 20;
             ((ModItem)this).Item.holdStyle = 5;
+
+            ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
         }
 		public override bool AltFunctionUse(Player player) => true;
 		public override bool BardShoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback){
@@ -80,6 +82,17 @@ namespace RagnarokMod.Items.BardItems.String
                 return false;
             }
         }
+
+        public override float UseTimeMultiplier(Player player)
+        {
+            return player.altFunctionUse == 2 ? 0.5f : 1f;
+        }
+
+        public override float UseAnimationMultiplier(Player player)
+        {
+            return player.altFunctionUse == 2 ? 0.5f : 1f;
+        }
+
         public override Vector2? HoldoutOffset(){
             return new Vector2(-15, 16);
         }

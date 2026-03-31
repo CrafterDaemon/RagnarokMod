@@ -1,0 +1,1618 @@
+Buffs: {
+	AntarcticCreativityBuff: {
+		DisplayName: Antarctic Creativity
+		Description: +15% inspiration regeneration rate and +10% increased symphonic playing speed
+	}
+
+	AntarcticReinforcementBuff: {
+		DisplayName: Antarctic Reinforcement
+		Description: +8 defense, your healing spells will heal for an additional 2 life
+	}
+
+	AntarcticExhaustionDebuff: {
+		DisplayName: Antarctic Exhaustion
+		Description: You can not buff again
+	}
+
+	GuardianHealerBeamBuff: {
+		DisplayName: Guardian Healer's Blessing
+		Description: Additional 10% damage reduction and 5 life recovery for 20 seconds
+	}
+
+	UniversalBlessing: {
+		DisplayName: Universal Blessing
+		Description: Mods.RagnarokMod.Buffs.UniversalBlessing.Description
+	}
+
+	ElementalScytheCooldown: {
+		DisplayName: Elemental Reaper Cooldown
+		Description: Elemental Reaper right-click is on cooldown!
+	}
+
+	ScytheAirBuff: {
+		DisplayName: Blessing of the Air
+		Description: +20% move speed and wing time
+	}
+
+	ScytheBrimstoneBuff: {
+		DisplayName: Blessing of the Brimstone
+		Description: Apply Brimstone Flames on hit
+	}
+
+	ScytheEarthBuff: {
+		DisplayName: Blessing of the Earth
+		Description: +10 defense
+	}
+
+	ScytheOasisBuff: {
+		DisplayName: Blessing of the Oasis
+		Description: Natural regen increased by 15 hp per second
+	}
+
+	ScytheSandBuff: {
+		DisplayName: Blessing of the Sand
+		Description: All damage dealt increased by 5%
+	}
+
+	ScytheWaterBuff: {
+		DisplayName: Blessing of the Water
+		Description: All attack speed increased by 5%
+	}
+
+	AuricSurge: {
+		DisplayName: Auric Surge
+		Description: Mods.RagnarokMod.Buffs.AuricSurge.Description
+	}
+
+	KellyPetBuff: {
+		DisplayName: Kelly!
+		Description: Kelly will follow you.
+	}
+
+	NightfallenDebuff: {
+		DisplayName: Nightfallen Debuff
+		Description: Mods.RagnarokMod.Buffs.NightfallenDebuff.Description
+	}
+
+	LeviathanHeartBubble: {
+		DisplayName: Leviathan Heart Bubble
+		Description: The Leviathan's Bubble grants you +5% damage reduction
+	}
+
+	LeviathanHeartBubbleCorrupted: {
+		DisplayName: Corrupted Leviathan Heart Bubble
+		Description:
+			'''
+			The Corrupted Leviathan's Bubble grants you +10% damage
+			But you take 5% more damage
+			'''
+	}
+}
+
+Tooltips: {
+	WhiteDwarfSetBonus:
+		'''
+		Critical strikes will unleash ivory flares from the cosmos
+		Ivory flares inflict the target's contact damage back at them,
+		if it is less than your base weapon damage, it will deal that instead
+		'''
+
+	LeviathanHeart: {
+		NormalTooltip:
+			'''
+			Healing spells heal 25% more hp
+			Healing spells apply a protective bubble to their target,
+			granting +5% damage reduction for 5 seconds
+			10% increased radiant attack speed
+			'''
+		CorruptTooltip:
+			'''
+			The Leviathan's Bubble reacts to your dark energy!
+			All health costs are reduced by 1
+			Spending health envelopes you in a corrupted bubble,
+			granting +10% damage, but you take 5% more damage
+			10% increased radiant attack speed
+			'''
+	}
+}
+
+Compat: {
+	TechPoints: Increases your maximum technique points by
+	Recharge: and recharge by
+	BasicDamage: basic damage
+	DupeDamage: of your rogue damage is duplicated
+	DupeCap: Duplication damage caps at
+	NoGuideStack: Effect does not stack with other Guides
+	Power: % Power
+	Smited: was smited.
+	Darkness: fell into darkness.
+	TurnedToAmmo: was converted into ammunition.
+	Recoil: could not handle the recoil.
+}
+
+Items: {
+	DrumStick: {
+		DisplayName: Drum Stick
+		Tooltip: "'Your enemies are your drums!'"
+	}
+
+	AerospecBard: {
+		DisplayName: Aerospec Shovel Hat
+		Tooltip:
+			'''
+			5% increased playing and inspiration regeneration speed
+			+2 seconds to empowerment duration
+			'''
+		SetBonus:
+			'''
+			Taking over 25 damage in one hit will cause a spread of homing feathers to fall
+			Allows you to fall more quickly and disables fall damage
+			6% increased symphonic damage
+			7% increased movement speed
+			'''
+	}
+
+	AerospecHealer: {
+		DisplayName: Aerospec Hood
+		Tooltip:
+			'''
+			20% decreased non-radiant damage
+			20% increased radiant damage
+			+20 maximum mana
+			'''
+		SetBonus:
+			'''
+			Taking over 25 damage in one hit will cause a spread of homing feathers to fall
+			Allows you to fall more quickly and disables fall damage
+			Healing spells heal an additional 2 life
+			10% increased movement speed
+			'''
+	}
+
+	AuricTeslaFrilledHelmet: {
+		DisplayName: Auric Tesla Frilled Helmet
+		Tooltip:
+			'''
+			20% increased symphonic damage, critical strike chance, and wind instrument homing speed
+			5% increased movement speed
+			30% increased inspiration regeneration
+			+15 max inspiration
+			+2 string instrument projectile bounces
+			'''
+		SetBonus:
+			'''
+			Tarragon, Bloodflare, God Slayer, and Rhapsodist armor effects
+			Pressing the 'Armor Ability' key will trigger both Rhapsodist armor abilities
+			'''
+	}
+
+	AuricTeslaHealerHead: {
+		DisplayName: Auric Tesla Irradiant Visage
+		Tooltip:
+			'''
+			100% increased radiant damage but 80% decreased non-radiant damage
+			25% increased radiant critical strike chance
+			5% increased movement speed
+			25% decreased mana usage
+			Healing spells heal an additional 10 life
+			+100 maximum mana
+			'''
+		SetBonus:
+			'''
+			Tarragon, Bloodflare, Silva, Nightfallen, and Dreamweaver armor effects
+			Pressing the 'Armor Ability' key will trigger both Dreamweaver armor abilities
+			50% increased radiant damage
+			'''
+	}
+
+	BlazingDrumBeat: {
+		DisplayName: Emblazoned Drum Stick
+		Tooltip:
+			'''
+			Successfully timing hits will steadily increase its damage and empowerment level
+			Mistiming hits will decrease these bonuses greatly and cost 9 inspiration
+			These bonuses will stay between weapon swaps, but gradually fade while not your active weapon
+			Chaining two or more successes will let out a large flaming slash
+			Flaming slashes inflict all enemies in range with Holy Inferno
+			'''
+	}
+
+	BloodflareHeadBard: {
+		DisplayName: Bloodflare Spiked Helmet
+		Tooltip:
+			'''
+			20% increased symphonic damage and 12% increased symphonic critical strike chance
+			+15% increased inspiration regeneration and +6 maximum inspiration
+			+15% chance for inspiration notes to drop from enemies
+			'''
+		SetBonus:
+			'''
+			Doing symphonic damage will apply Burning Blood on enemies
+			You will build a blood lust, 2 points for every hit enemy (can only occur 3 times a second)
+			Upon reaching 100 points: 20% increased symphonic damage and strike chance, 25% increased movement speed
+			Empowerments will be prolonged for an additional 3 seconds and 10% faster inspiration regen
+			Pressing the 'Armor Ability' key will consume 20 points to replenish 10 inspiration
+			You will lose 25 points upon getting hit and rapidly points when not hitting enemies for more than 5 seconds
+			Your points are also reset when a boss is spawned
+			'''
+	}
+
+	BloodflareHeadHealer: {
+		DisplayName: Bloodflare Grim Visage
+		Tooltip:
+			'''
+			20% reduced mana usage
+			70% decreased non-radiant damage and 50% increased radiant damage
+			20% increased radiant critical strike chance
+			Healing spells will heal for an additional 7 life
+			+60 maximum mana
+			'''
+		SetBonus:
+			'''
+			Doing radiant damage will apply Burning Blood on enemies
+			You will build a blood lust, 2 points for every hit enemy (can only occur 3 times a second)
+			Upon reaching 100 points: 20% increased radiant damage and strike chance, 20% increased movement speed
+			and your healing spells will heal for an additional 3 health
+			Additionally you get healed for a small fraction of your dealt damage
+			Pressing the 'Armor Ability' key will consume 20 points to replenish 25 + bonus heal life 
+			You will lose 25 points upon getting hit and rapidly points when not hitting enemies for more than 5 seconds
+			Your points are also reset when a boss is spawned
+			'''
+	}
+
+	CalamityBell: {
+		DisplayName: Calamity Bell
+		Tooltip: Shoots homing brimstone fireblasts that inflict brimstone flames on hit
+	}
+
+	CelestialManaCost: 20% decreased mana cost
+
+	DaedalusHeadBard: {
+		DisplayName: Daedalus Headgear
+		Tooltip:
+			'''
+			12% increased symphonic damage and 5% increased symphonic critical strike chance
+			+2 max inspiration
+			'''
+		SetBonus:
+			'''
+			+10% increased inspiration regeneration speed
+			Pressing the 'Armor Ability' key will grant you and your allies attack speed and damage I for 15 seconds
+			You also will be granted the Antarctic Creativity buff
+			While buffed you will be granted +15% inspiration speed and 10% increased symphonic playing speed
+			Costs 12 inspiration
+			'''
+	}
+
+	DaedalusHeadHealer: {
+		DisplayName: Daedalus Visage
+		Tooltip:
+			'''
+			10% reduced mana usage
+			15% decreased non-radiant damage
+			15% increased radiant damage and 7% increased radiant critical strike chance
+			+40 maximum mana
+			'''
+		SetBonus:
+			'''
+			Healing spells heal an additional 3 life
+			Pressing the 'Armor Ability' key will shield you for 50 life and grants you the Antarctic Reinforcement buff for 15 seconds
+			While buffed you will be granted +8 defense and your healing spells will heal for an additional 2 life
+			Costs 100 mana
+			'''
+	}
+
+	GodSlayerHeadBard: {
+		DisplayName: God Slayer Tricorn Helm
+		Tooltip:
+			'''
+			25% increased symphonic damage and 15% increased symphonic critical strike chance
+			15% increased inspiration regeneration
+			+7 max inspiration
+			+15% chance for inspiration notes to drop from enemies
+			'''
+		SetBonus: While you are holding an instrument you will apply random empowerments
+	}
+
+	SilvaHeadHealer: {
+		DisplayName: Silva Wreathed Helmet
+		Tooltip:
+			'''
+			25% reduced mana usage
+			70% decreased non-radiant damage and 55% increased radiant damage
+			20% increased radiant critical strike chance
+			Healing spells will heal for an additional 9 life
+			+80 maximum mana
+			'''
+		SetBonus:
+			'''
+			Your healing spells will increase the life recovery and life recovery rate of your allies
+			Healed allies will be granted 50 more maximum health
+			Occasionally you will be blessed by heals or life shields
+			Will trigger more frequently on low health
+			+3 HP/s life regen
+			5% increased max run speed and acceleration
+			Taking fatal damage will revive you and make you invulnerable to all damage for 5 seconds
+			This effect has a 5 minute cooldown, which does not decrement if any bosses or events are active
+			'''
+	}
+
+	StormFeather: {
+		DisplayName: Storm Feather
+		Tooltip: A feather fallen from the Grand Thunder Bird, it crackles with lightning
+	}
+
+	StrangeAlienMotherBoard: {
+		DisplayName: Strange Alien Motherboard
+		Tooltip:
+			'''
+			The motherboard from the Star Scouter
+			This technology is beyond your knowledge
+			'''
+	}
+
+	BelchingSaxophoneOverride: {
+		DisplayName: Belching Saxophone
+		Tooltip:
+			'''
+			Fires an array of dirty reeds, music notes, and sulphuric bubbles
+			'Doot'
+			'''
+	}
+
+	AnahitasArpeggioOverride: {
+		DisplayName: Anahita's Arpeggio
+		Tooltip: Casts slow-moving treble clefs that confuse enemies
+	}
+
+	FaceMelterOverride: {
+		DisplayName: Face Melter
+		Tooltip:
+			'''
+			Fires music notes
+			Press <right> to summon an amplifier that shoots towards your mouse
+			'WOOO!! FAAAAAAANTASYY WORLDDDDD!'
+			'''
+	}
+
+	EmpoweredGranite: {
+		DisplayName: Empowered Granite
+		Tooltip: Granite block charged full of energy from the Granite Energy Storm
+	}
+
+	EnchantedMarble: {
+		DisplayName: Enchanted Marble
+		Tooltip: Special marble, imbued with ancient holy magic
+	}
+
+	StatigelHeadBard: {
+		DisplayName: Statigel Hat
+		Tooltip:
+			'''
+			10% increased symphonic damage
+			7% increased symphonic critical strike chance
+			'''
+		SetBonus:
+			'''
+			When you take over 100 damage in one hit you become immune to damage for an extended period of time
+			Grants an extra jump and increased jump height
+			12% increased jump speed
+			+10% inspiration note drop chance
+			+5% inspiration regeneration rate
+			Symphonic empowerments last 2 seconds longer
+			'''
+	}
+
+	StatigelHeadHealer: {
+		DisplayName: Statigel Headpiece
+		Tooltip:
+			'''
+			10% decreased non-radiant damage
+			10% increased radiant damage
+			7% increased radiant critical strike chance
+			'''
+		SetBonus:
+			'''
+			When you take over 100 damage in one hit you become immune to damage for an extended period of time
+			Grants an extra jump and increased jump height
+			12% increased jump speed
+			Healing spells heal an additional 2 life
+			Maximum mana increased by 20
+			5% decreased mana usage
+			'''
+	}
+
+	StriderFang: {
+		DisplayName: Strider Fang
+		Tooltip: An icy fang straight from the Borean Strider's mouth
+	}
+
+	TarragonCowl: {
+		DisplayName: Tarragon Cowl
+		Tooltip:
+			'''
+			5% increased damage reduction
+			60% decreased non-radiant damage
+			40% increased radiant damage and 15% increased critical radiant strike chance
+			Bonus healing increased by 7
+			Maximum mana increased by 60
+			Mana usage reduced by 20%
+			'''
+		SetBonus:
+			'''
+			A Guardian healer will assist you in healing your allies
+			Heals ally life equal to your bonus healing + 5 health
+			and grants them the Guardian Healers Blessing for 20 seconds
+			{$CalamityMod.Items.Armor.PostMoonLord.TarragonBreastplate.CommonSetBonus}
+			'''
+	}
+
+	TarragonShroud: {
+		DisplayName: Tarragon Shroud
+		Tooltip:
+			'''
+			5% increased damage reduction
+			20% increased symphonic damage and 15% increased critical symphonic strike chance
+			15% increased playing speed
+			Greatly increased inspiration regen
+			+15% chance for inspiration notes to drop from enemies
+			+4 maximum inspiration
+			'''
+		SetBonus:
+			'''
+			A Guardian healer will assist you in healing your allies
+			Heals ally life equal to your bonus healing + 5 health
+			and grants them the Guardian Healers Blessing for 20 seconds
+			{$CalamityMod.Items.Armor.PostMoonLord.TarragonBreastplate.CommonSetBonus}
+			'''
+	}
+
+	VictideHeadHealer: {
+		DisplayName: Victide Sponge Hood
+		Tooltip: 5% increased radiant damage but 5% decreased non-radiant damage
+		SetBonus:
+			'''
+			Enemies are less likely to target you
+			+3 life regen and 10% increased radiant but 10% decreased non-radiant damage while submerged in liquid
+			When using any weapon you have a 10% chance to throw a returning seashell projectile
+			This seashell does true damage and does not benefit from any damage class
+			Provides increased underwater mobility and slightly reduces breath loss in the abyss
+			'''
+	}
+
+	NightfallenHelmet: {
+		DisplayName: Nightfallen Helmet
+		Tooltip:
+			'''
+			Corrupts your radiant powers
+			33% decreased non-radiant damage
+			33% increased radiant damage
+			16% increased radiant critical strike chance
+			25% decreased mana cost
+			Maximum mana increased by 60
+			'''
+		SetBonus:
+			'''
+			Healing spells will heal an additional 4 life
+			All attacks inflict Nightfallen
+			Nightfallen deals 100 damage per second
+			Nightfallen increases all damage taken by the target by 10%
+			'''
+	}
+
+	NightfallenBreastplate: {
+		DisplayName: Nightfallen Breastplate
+		Tooltip:
+			'''
+			25% decreased non-radiant damage
+			25% increased radiant damage
+			16% increased radiant critical strike chance
+			20% decreased mana cost
+			'''
+	}
+
+	NightfallenGreaves: {
+		DisplayName: Nightfallen Greaves
+		Tooltip:
+			'''
+			20% decreased non-radiant damage
+			20% increased radiant damage
+			12% increased radiant critical strike chance
+			20% decreased mana cost
+			20% increased movement speed
+			'''
+	}
+
+	VictideHeadBard: {
+		DisplayName: Victide Hatanemone
+		Tooltip: 5% increased symphonic damage
+		SetBonus:
+			'''
+			Enemies are less likely to target you
+			+3 life regen and 10% increased symphonic damage while submerged in liquid
+			When using any weapon you have a 10% chance to throw a returning seashell projectile
+			This seashell does true damage and does not benefit from any damage class
+			Provides increased underwater mobility and slightly reduces breath loss in the abyss
+			'''
+	}
+
+	EquivalentExchange: {
+		DisplayName: Equivalent Exchange
+		Tooltip:
+			'''
+			Fires a life stealing bolt
+			Right Click to fire fast moving healing bolts instead
+			'You must follow the law of equivalent exchange'
+			'You can only get out equal to what you put in'
+			'''
+	}
+
+	ProfanedScythe: {
+		DisplayName: Profaned Scythe
+		Tooltip:
+			'''
+			A holy inferno of a scythe
+			Right Click to throw the scythe, which will curve on it's way back
+			The scythe deals 20% more damage when thrown and flings molten blobs during flight
+			'''
+	}
+
+	MarbleScythe: {
+		DisplayName: Marble Scythe
+		Tooltip: The magic marble imbues the scythe head with extra radiance
+	}
+
+	ScoriaDualscythe: {
+		DisplayName: Scoria Dualscythe
+		Tooltip:
+			'''
+			The scoria allows you to spin the scythe much faster by constantly expelling steam
+			Right Click to throw the scythe, which will curve on it's way back
+			The scythe deals 20% more damage when thrown
+			'''
+	}
+
+	InspirationEssence.DisplayName: Inspiration Essence
+
+	AstralRipper: {
+		DisplayName: Astral Ripper
+		Tooltip: Use the infection among the stars to rain hell upon your foes!
+	}
+
+	RadioMic: {
+		DisplayName: Radio Mic
+		Tooltip:
+			'''
+			Sing a song that creates a spread of shadowflame sound waves
+			The centre sound wave will instead be cursed
+			The cursed sound will summon a tendril to attack the first enemy hit
+			'The microphone of a long-dead demon'
+			'''
+	}
+
+	CorrosiveFlux: {
+		DisplayName: Corrosive Flux
+		Tooltip: Fires 3 toxic bubbles
+	}
+
+	WindReaver: {
+		DisplayName: Wind Reaver
+		Tooltip: Releases an occasional wind slice when spun
+	}
+
+	TrueSquirrelScarf: {
+		DisplayName: True Squirrel Scarf
+		Tooltip: The true, original form of the squirrel scarf.\nGrants +999 Sentry Slots
+	}
+
+	Prisma: {
+		DisplayName: Prisma
+		Tooltip: Fire a holy water sea star that shatters into 5 spikes
+	}
+
+	Fractal: {
+		DisplayName: Fractal
+		Tooltip: Fire a ball of holy magic that splits, and splits, and splits
+	}
+
+	VoidseerPearl: {
+		DisplayName: Voidseer Pearl
+		Tooltip:
+			'''
+			Can be sold for a very good price to shops
+			'They say beauty is in the eye of the beholder... I don't think they meant that literally'
+			'''
+	}
+
+	QueenJelly: {
+		DisplayName: Queen Jelly
+		Tooltip:
+			'''
+			Restores 100 life
+			Medium improvements to all stats
+			'A delicious jellyfish jelly'
+			'One could say it makes the tastiest sandwich in the sea'
+			'''
+	}
+
+	Steampipes: {
+		DisplayName: Steampipes
+		Tooltip: Steam-Powered Bagpipes!
+	}
+
+	ElysianSong: {
+		DisplayName: Elysian Song
+		Tooltip: "'So close to an angel's trumpet, yet so far...'"
+	}
+
+	ExecutionerMark05: {
+		DisplayName: The Executioner: Mark 05
+		Tooltip:
+			'''
+			It starts slow, but will continuously build speed
+			Once at maximum speed, it will launch itself into the nearest enemy and explode for a massive area of effect
+			'The core of XM-05 Thanatos rebuilt as a scythe'
+			'''
+	}
+
+	JellySlicer: {
+		DisplayName: Jelly Slicer
+		Tooltip: Shoots a bouncing slime projectile when swung
+	}
+
+	Splattercannon: {
+		DisplayName: Splattercannon
+		Tooltip:
+			'''
+			Right-click to add 4 rounds into the chamber
+			Can hold a maximum of 24 rounds in the chamber
+			Left-click to release all rounds at once
+			Hits have a chance to release homing healing blood splatters
+			Shots have increased chance to release blood splatters on enemy kill
+			Bonus healing is only 50% effective while held
+			'BLOOD IS FUEL'
+			'''
+	}
+
+	ProfanedBell: {
+		DisplayName: Profaned Bell
+		Tooltip:
+			'''
+			Shoots holy flame blasts
+			Hit enemies are afflicted by Holy Flames for 3 seconds
+			'''
+	}
+
+	AuricDamru: {
+		DisplayName: Auric Damru
+		Tooltip:
+			'''
+			Bangs the bongos, dealing damage to all nearby enemies
+			Right-click to shoot a Flare Bomb
+			Flare Bombs apply Dragon Fire on enemies for 3 seconds
+			(Credit to Aeolus)
+			'''
+	}
+
+	NewLichRequirement: {
+		DisplayName: New Lich Requirement
+		Tooltip: you're uhhhh... not supposed to see this
+	}
+
+	EldritchShellFragment: {
+		DisplayName: Eldritch Shell Fragment
+		Tooltip: An enchanted shard from the prison of an ancient god
+	}
+
+	SigilOfACruelWorld: {
+		DisplayName: Sigil of a Cruel World
+		Tooltip:
+			'''
+			Increases symphonic damage by 15%
+			Increases symphonic playing speed by 8%
+			Increases inspiration regeneration rate by 8%
+			Increases maximum inspiration by 3
+			'''
+	}
+
+	UniversalHeadset: {
+		DisplayName: Universal Headset
+		Tooltip:
+			'''
+			Increases symphonic damage by 20%
+			Increases symphonic critical strike chance by 7%
+			Increases symphonic playing speed by 10%
+			Increases inspiration regeneration rate by 10%
+			Increases maximum inspiration by 5
+			Each unique empowerment you have increases movement speed by 2% and playing speed by 1%
+			'''
+	}
+
+	GoldenxBatDroppings: {
+		DisplayName: Golden Bat Droppings
+		Tooltip:
+			'''
+			+25% coins from enemies (50% while in rage mode)
+			Increases damage based on held coins (coinslots only)
+			This bonus is increased by 50% while in adrenaline mode.
+			You will lose 25% of your coins permanently upon death (50% on death or master mode)
+			"You're not greedy... you're batshit insane!"
+			'''
+	}
+
+	VerdurantBloom: {
+		DisplayName: Verdurant Bloom
+		Tooltip: Fire a spread of various flower petals
+	}
+
+	CosmicInjector: {
+		DisplayName: Cosmic Injector
+		Tooltip:
+			'''
+			Rapid fires both healing and damaging needles
+			Inflicts God Slayer's Inferno on hit
+			Uses Syringes as ammo
+			'''
+	}
+
+	Korobeiniki: {
+		DisplayName: Korobeiniki
+		Tooltip:
+			'''
+			Causes Tetriminos to fall from the sky
+			'A non-descript game console'
+			'''
+	}
+
+	GraspofVoid: {
+		DisplayName: Grasp of Void
+		Tooltip: Fires a shard of void essence, inflicting shadowflame on hit
+	}
+
+	PhantasmalEdge: {
+		DisplayName: Phantasmal Edge
+		Tooltip:
+			'''
+			Spinning this scythe creates many miniature fireballs that follow as you continue to spin the scythe
+			Once you stop spinning the scythe, the fireballs immediately seek out the nearest target and explode
+
+			Right-click to launch the scythe like a hook, pulling enemies towards you
+			This does not work on bosses, and you are instead pulled towards the boss
+			'''
+	}
+
+	GodSlayersReap: {
+		DisplayName: God Slayer's Reap
+		Tooltip:
+			'''
+			Creates a small hologram resembling the Devourer of Gods at the very edge of your scythe spin
+			Enemies hit by this take significantly more damage and are inflicted with God Slayer's Inferno
+			'''
+	}
+
+	Arpeggiator: {
+		DisplayName: Arpeggiator
+		Tooltip: Rapid-fires projectiles in an arpeggio pattern
+	}
+
+	ElementalReaper: {
+		DisplayName: Elemental Reaper
+		Tooltip:
+			'''
+			Spinning this scythe creates homing projectiles that inflict Elemental Inferno
+			Right-click grants you and all allies an Elemental Blessing for 10 seconds, with a 30 second cooldown
+			Elemental Blessings are as follows:
+			Sand: +5% attack damage
+			Water: +5% attack speed
+			Air: +20% movement speed and flight time
+			Earth: +10 defense
+			Brimstone: All attacks inflict Brimstone Flames
+			Oasis: Regenerate 50 hp over 10 seconds
+			'''
+	}
+
+	BrimScythe: {
+		DisplayName: Brimscythe
+		Tooltip:
+			'''
+			While spinning, you are surrounded in a circle of Brimstone Flames that deals constant damage
+			Enemies hit by the circle are also afflicted by Brimstone Flames for 5 seconds
+			While below 25% hp, killing an enemy with the fire circle will heal you for 3 + 5% of the enemy maximum health
+			'''
+	}
+
+	MaxEmpowermentTester: {
+		DisplayName: Max Empowerment Tester
+		Tooltip: Grants all empowerments at a level specified in item code :P
+	}
+
+	UnbreakableCombatUkulele: {
+		DisplayName: Unbreakable Combat Ukulele
+		Tooltip:
+			'''
+			Left-click to play the ukulele
+			Right-click to throw the ukulele
+			'Does not make for a good apology'
+			'''
+	}
+
+	NightmareFreezer: {
+		DisplayName: Nightmare Freezer
+		Tooltip:
+			'''
+			Spinning the scythe periodically releases a barrage of chilling darts
+			'Found somewhere between Halloween and Christmas'
+			'Hey, you could make a movie about that!'
+			'''
+	}
+
+	Armor: {
+		PostMoonLord: {
+			SilvaHeadHealer: {
+				DisplayName: Silva Head Healer
+				Tooltip: ""
+			}
+		}
+	}
+
+	DragonForce: {
+		DisplayName: Dragon Force
+		Tooltip:
+			'''
+			Consumes inspiration rapidly as you channel an inferno to your cursor
+			Right-click to play the [c/FF4500:Roar of the Jungle Dragon] riff!
+			While the riff is active, the inferno this weapon unleases is amplified
+			'''
+	}
+
+	Lamentation: {
+		DisplayName: Lamentation
+		Tooltip: Shoots homing brimstone gigablasts that inflict brimstone flames on hit
+	}
+
+	Virusprayer: {
+		DisplayName: Virusprayer
+		Tooltip: Shoots a barrage of acid bubbles
+	}
+
+	IntergelacticRobohelm: {
+		DisplayName: Intergelactic Robohelm
+		Tooltip:
+			'''
+			Increases symphonic damage, critical strike chance, and playing speed by 20%
+			Increases inspiration regen by 15%
+			Increases max inspiration by 6
+			Increases empowerment duration by 3 seconds
+			Reduces damage taken by 12%
+			'''
+	}
+
+	IntergelacticRamhelm: {
+		DisplayName: Intergelactic Ramhelm
+		Tooltip:
+			'''
+			Decreases non-radiant damage by 40%
+			Increases radiant damage by 30%
+			Increases radiant critical strike chance and attack speed by 15%
+			10% decreased mana usage
+			+60 maximum mana
+			Your healing spells will heal for an additional 5 life
+			'''
+	}
+
+	KellyPet: {
+		DisplayName: Wand of Anarchi
+		Tooltip:
+			'''
+			Summons Kelly to follow you
+			Donor Item by HayWire799
+			Sprites by Zenovia
+			'''
+	}
+
+	LeviathanHeart: {
+		DisplayName: Leviathan Heart
+		Tooltip: ""
+	}
+
+	SirenScale: {
+		DisplayName: Siren Scale
+		Tooltip:
+			'''
+			The Siren sings along with your enchanting tune
+
+			Symphonic damage increased by 15%
+			Inspiration regen rate increased by 20%
+			Anahita will sing along with your string instruments, firing additional water projectiles
+			'''
+	}
+
+	ScourgesFrets: {
+		DisplayName: Scourge's Frets
+		Tooltip:
+			'''
+			Sends out bouncing sound waves that appear to be made out of sand
+			Right-click to play the [c/34C9EB:Guardian of the Former Seas] riff!
+			While the riff is active, attacks from this guitar are twice as large and deal 25% more damage
+			Time your attacks during the riff to reduce the cooldown
+			'''
+	}
+
+	AuricGreatscythe: {
+		DisplayName: Auric Greatscythe
+		Tooltip:
+			'''
+			This scythe charges up the longer you spin it,
+			accelerating to unbelievable speeds
+			Right-click hurls a bolt of lightning
+			'''
+	}
+
+	IrradiantInfinity: {
+		DisplayName: Irradiant Infinity
+		Tooltip:
+			'''
+			Left-click fires an [c/FF5555:Irradiant Red] orb with massive knockback
+			Right-click summons an [c/55AAFF:Irradiant Blue] orb that follows your cursor
+			[c/55AAFF:Irradiant Blue] pulls in nearby enemies and grows larger with each hit
+			Once it reaches critical mass, strike it with [c/FF5555:Irradiant Red] to unleash [c/CC44FF:Irradiant Purple]
+			'''
+	}
+
+	PrimalTerror: {
+		DisplayName: Primal Terror
+		Tooltip: Keep me favorited ;P
+	}
+
+	DevourerOfSines: {
+		DisplayName: Devourer of Sines
+		Tooltip:
+			'''
+			Channel this weapon to create a massive sine wave
+			Right-click to play the [c/501eb4:Universal Collapse] riff!
+			While the riff is active, all players in range have unlimited flight
+			'''
+	}
+
+	Ectambourine: {
+		DisplayName: Ectambourine
+		Tooltip:
+			'''
+			Throw an endless amount of ghostly tambourines
+			Right Click to jingle the thrown tambourines, damaging nearby enemies
+			'''
+	}
+
+	InfectedOcarina: {
+		DisplayName: Infected Ocarina
+		Tooltip:
+			'''
+			Whistles out a cursed burst of noise
+			Has a chance to shoot vile spit
+			Right-click to play the [c/50477e:Filthy Mind] riff!
+			While the riff is active, infected pustules spawn around you
+			Infected pustules will spew cursed fire at the nearest enemy
+			'''
+	}
+
+	Shredder: {
+		DisplayName: Shredder
+		Tooltip:
+			'''
+			Sends out bloody shockwaves
+			Right-click to play the [c/AA1111:Blood Coagulant] riff!
+			While the riff is active, all players in range have life steal
+			'''
+	}
+
+	SquirrelScarf: {
+		DisplayName: Squirrel Scarf
+		Tooltip:
+			'''
+			'As fluffy as a squirrel's tail'
+			Increases your max number of sentries by 1
+			'''
+	}
+
+	RiffTester: {
+		DisplayName: Riff Tester
+		Tooltip: Clears Riff Cooldowns. Use Responsibly.
+	}
+
+	StellarRiff: {
+		DisplayName: Stellar Riff
+		Tooltip:
+			'''
+			Sends out homing stars, that split into homing shards
+			Playing success will increase the number of shards
+			Right-click to play the [c/00FFC8:Interstellar Stomper] riff!
+			While the riff is active, stars rain down from above
+			Homings shard count is doubled while the riff is active
+			Time your attacks during the riff to reduce the cooldown
+			'''
+	}
+
+	FateoftheGods: {
+		DisplayName: Fate of the Gods
+		Tooltip:
+			'''
+			Thanks to the entire team, everyone who supported, and those who all play the mod and keep it alive!
+			The confines of this painting is not enough to fit the entire team
+			Hold Shift to see a list of past and current developers
+			'''
+	}
+
+	ProfanityFilter: {
+		DisplayName: Profanity Filter
+		Tooltip:
+			'''
+			Electronic weapons have 10% reduced damage, but 50% increased playing speed
+			15% increased symphonic damage for weapons that are not Electronic
+			10% increased symphonic critical chance
+			Increases maximum inspiration by 4
+			Symphonic damage has a 10% chance to increase the level of one of your active empowerments
+			This effect can only trigger once every 2.5 seconds
+			'''
+	}
+
+	RedglassMonocle: {
+		DisplayName: Redglass Monocle
+		Tooltip:
+			'''
+			Once worn by an infamous underworld native
+			25% increased symphonic damage
+			Flat Damage empowerment is twice as effective on you
+			Reduces the inspiration cost of Radio Mic by 2
+			Increases the Damage empowerment level from Radio Mic by 1
+			Radio Mic now inflicts Charmed for 5 seconds
+			'''
+	}
+
+	RelicOfConvergenceOverride: {
+		Tooltip:
+			'''
+			Creates a profaned crystal at the cursor that channels a healing aura before shattering
+			All players within the area of effect are healed for {0} + 4x healing bonus HP
+			Allies gain 50% extra healing
+			Holding out the crystal decreases defense and increases incoming damage
+			[c/FF8C00:Never once had I known kindness. Neither my peers or family had a shred of compassion for me.]
+			[c/FF8C00:I wished for someone I could confide. A presence that cleansed me of anxiety.]
+			[c/FF8C00:And when I saw Her radiant smile when we met, I knew I had finally found it.]
+			'''
+		DisplayName: Relic of Convergence
+	}
+
+	CorroslimeBass: {
+		Tooltip:
+			'''
+			Sends out bouncing corroslime balls
+			Right Click to split balls into {0} smaller balls
+			This process can be done {1} times
+			'''
+		DisplayName: Corroslime Bass
+	}
+
+	CrimslimeOboe: {
+		DisplayName: Crimslime Oboe
+		Tooltip:
+			'''
+			Shoots sticky crimslime darts
+			After {0} seconds the darts will explode
+			'''
+	}
+
+	StringsofOblivion: {
+		DisplayName: Stringsof Oblivion
+		Tooltip: ""
+	}
+
+	WulfrumGuitar: {
+		Tooltip:
+			'''
+			Shoots bouncing sound waves
+			Right Click to return the waves
+			Returning waves will ignore tiles
+			'''
+		DisplayName: Wulfrum Guitar
+	}
+
+	MenuMusicBox: {
+		DisplayName: Music Box (Ragnarok Title)
+		Tooltip: Plays 'Menu Theme' by CrafterDaemon
+	}
+
+	GoldenBatDroppings: {
+		DisplayName: Golden Bat Droppings
+		Tooltip: ""
+	}
+}
+
+Projectiles: {
+	MelterAmpOverride.DisplayName: Melter Amp Override
+	BlazingDrumBeatFireSlash.DisplayName: Blazing Drum Beat Fire Slash
+	CalamityBellPro.DisplayName: Calamity Bell Pro
+	CalamityBellPro2.DisplayName: Calamity Bell Pro2
+	TendrilStrike.DisplayName: Tendril Strike
+	GuardianHealer.DisplayName: Guardian Healer
+	GuardianHealerBeam.DisplayName: Guardian Healer Beam
+	CorrosiveFluxPro.DisplayName: Corrosive Flux Pro
+	FractalPro1.DisplayName: Fractal Pro1
+	FractalPro2.DisplayName: Fractal Pro2
+	MarbleScythePro.DisplayName: Marble Scythe Pro
+	PrismaPro1.DisplayName: Prisma Pro1
+	PrismaPro2.DisplayName: Prisma Pro2
+	ProfanedScythePro.DisplayName: Profaned Scythe Pro
+	ScoriaDualscythePro.DisplayName: Scoria Dualscythe Pro
+	WindReaverPro.DisplayName: Wind Reaver Pro
+	WindSlashPro.DisplayName: Wind Slash Pro
+	NoProj.DisplayName: No Proj
+	SteampipesPro.DisplayName: Steampipes Pro
+	ElysianSongPro.DisplayName: Elysian Song Pro
+	FractalOrb.DisplayName: Fractal Orb
+	ExecutionerMark05Pro.DisplayName: Executioner Mark05 Pro
+	ExecutionerMark05ThrowPro.DisplayName: Executioner Mark05 Throw Pro
+	WapBamBoom.DisplayName: Wap Bam Boom
+	GelScythePro1.DisplayName: Gel Scythe Pro1
+	GelScythePro2.DisplayName: Gel Scythe Pro2
+	AstralRipperPro.DisplayName: Astral Ripper Pro
+	AstralRipperStarPro.DisplayName: Astral Ripper Star Pro
+	Splattershot.DisplayName: Splattershot
+	BloodOrb.DisplayName: Blood Orb
+	ProfaneBellBlast.DisplayName: Profane Bell Blast
+	ProfanedBellBlast.DisplayName: Profaned Bell Blast
+	BellBlastBoom.DisplayName: Bell Blast Boom
+	AuricDamruShock.DisplayName: Auric Damru Shock
+	AuricDamruFlareBombBoom.DisplayName: Auric Damru Flare Bomb Boom
+	AuricDamruFlareBomb.DisplayName: Auric Damru Flare Bomb
+	VerdurantBloomPro.DisplayName: Verdurant Bloom Pro
+	VerdurantBloomPro2.DisplayName: Verdurant Bloom Pro2
+	VerdurantBloomPro3.DisplayName: Verdurant Bloom Pro3
+	CosmicInjectorPro1.DisplayName: Cosmic Injector Pro1
+	CosmicInjectorPro2.DisplayName: Cosmic Injector Pro2
+	KorobeinikiPro1.DisplayName: Korobeiniki Pro1
+	KorobeinikiPro2.DisplayName: Korobeiniki Pro2
+	KorobeinikiPro3.DisplayName: Korobeiniki Pro3
+	KorobeinikiPro4.DisplayName: Korobeiniki Pro4
+	KorobeinikiPro5.DisplayName: Korobeiniki Pro5
+	KorobeinikiPro6.DisplayName: Korobeiniki Pro6
+	KorobeinikiPro7.DisplayName: Korobeiniki Pro7
+	GraspofVoidPro1.DisplayName: Grasp of Void Pro1
+	GraspofVoidPro2.DisplayName: Grasp of Void Pro2
+	PhantasmalEdgePro1.DisplayName: Phantasmal Edge Pro1
+	PhantasmalEdgeBombs.DisplayName: Phantasmal Edge Bombs
+	PhantasmalEdgeHook.DisplayName: Phantasmal Edge Hook
+	ArpeggiatorPro1.DisplayName: Arpeggiator Pro1
+	ArpeggiatorPro2.DisplayName: Arpeggiator Pro2
+	ElementalReaperPro.DisplayName: Elemental Reaper Pro
+	ElementalReaperPro2.DisplayName: Elemental Reaper Pro2
+	UnbreakableCombatUkulelePro1.DisplayName: Unbreakable Combat Ukulele Pro1
+	UnbreakableCombatUkulelePro2.DisplayName: Unbreakable Combat Ukulele Pro2
+	UnbreakableCombatUkulelePro3.DisplayName: Unbreakable Combat Ukulele Pro3
+	NightmareFreezerPro.DisplayName: Nightmare Freezer Pro
+	NightmareFreezerPro2.DisplayName: Nightmare Freezer Pro2
+	NightmareFreezerPro3.DisplayName: Nightmare Freezer Pro3
+	ElementalBuff.DisplayName: Elemental Buff
+	DragonForcePro1.DisplayName: Dragon Force Pro1
+	DragonForcePro2.DisplayName: Dragon Force Pro2
+	SupremeBellPro.DisplayName: Supreme Bell Pro
+	LamentationBoom.DisplayName: Lamentation Boom
+	LamentationPro.DisplayName: Lamentation Pro
+	VirusprayerPro1.DisplayName: Virusprayer Pro1
+	VirusprayerPro2.DisplayName: Virusprayer Pro2
+	KellyPetProjectile.DisplayName: Kelly Pet Projectile
+	GodSlayersReapPro1.DisplayName: God Slayer's Reap Pro1
+	MiniDoGHead.DisplayName: Mini DoG Head
+	MiniDoGExplosion.DisplayName: Mini DoG Explosion
+	MiniDoGDeathRenderer.DisplayName: Mini DoG Death Renderer
+	LeviathanHeartBubbleProj.DisplayName: Leviathan Heart Bubble Proj
+	BrimScytheFirePro.DisplayName: Brim Scythe Fire Pro
+	BrimScythePro.DisplayName: Brim Scythe Pro
+	AnahitaWaterNote.DisplayName: Anahita Water Note
+	MiniAnahitaCompanion.DisplayName: Mini Anahita Companion
+	AuricGreatscythePro.DisplayName: Auric Greatscythe Pro
+	ScourgesFretsPro.DisplayName: Scourge's Frets Pro
+	IrradiantBlue.DisplayName: Irradiant Blue
+	IrradiantExplosion.DisplayName: Irradiant Explosion
+	IrradiantPurple.DisplayName: Irradiant Purple
+	IrradiantRed.DisplayName: Irradiant Red
+	AuricGreatscytheBolt.DisplayName: Auric Greatscythe Bolt
+	AuricGreatscytheSwing.DisplayName: Auric Greatscythe Swing
+	RadioMicPro.DisplayName: Radio Mic Pro
+	RadioMicShadowBurst.DisplayName: Radio Mic Shadow Burst
+	PlayerBrimstoneBarrage.DisplayName: Player Brimstone Barrage
+	DevourerRiffSine.DisplayName: Devourer Riff Sine
+	ScourgesFretsWorm.DisplayName: Scourges Frets Worm
+	DevourerSineBeam.DisplayName: Devourer Sine Beam
+	EctambourinePro.DisplayName: Ectambourine Projectile
+	EctambourineProJingle.DisplayName: Ectambourine Jingle
+	InfectedOcarinaPro.DisplayName: Infected Ocarina Pro
+	VileSpitFriendly.DisplayName: Vile Spit Friendly
+	ShredderTendrils.DisplayName: Shredder Tendrils
+	ShredderPro.DisplayName: Shredder Pro
+	StellarRiffPro.DisplayName: Stellar Riff Pro
+	StellarAurora.DisplayName: Stellar Aurora
+	StellarShootingStar.DisplayName: Stellar Shooting Star
+	DragonForceRiffBeam.DisplayName: Dragon Force Riff Beam
+	InfectedPustule.DisplayName: Infected Pustule
+	InfectedSporeCloud.DisplayName: Infected Spore Cloud
+	InfectedSporeFire.DisplayName: Infected Spore Fire
+	RelicOfConvergenceCrystalOverride.DisplayName: Relic Of Convergence Crystal Override
+	CorroslimeBassPro.DisplayName: Corroslime Bass Pro
+	CrimslimeOboePro.DisplayName: Crimslime Oboe Pro
+	WulfrumGuitarPro.DisplayName: Wulfrum Guitar Pro
+	AcidicSaxBubbleOverride.DisplayName: Acidic Sax Bubble Override
+	AcidicReedOverride.DisplayName: Acidic Reed Override
+}
+
+Configs: {
+	BossProgressionConfig: {
+		DisplayName: Boss Progression Config
+		Headers.BossProgressionChanges: Boss Progression Changes
+
+		GrandFlareGun: {
+			Label: Grand Thunder Bird Recipe Change
+			Tooltip: Changes Grand Flare Gun and Storm Flare to require Stormlion Mandibles rather than Vulture Feathers. Defaults to True
+		}
+
+		DesertMedallion: {
+			Label: Desert Scourge Recipe Change
+			Tooltip: Changes Desert Medallion to use Storm Feathers from the Grand Thunder Bird. Defaults to True
+		}
+
+		DecapoditaSprout: {
+			Label: Crabulon Recipe Change
+			Tooltip: Changes Decapodita Sprout to use Pearl Shards, Storm Feathers, and Queen Jelly. Defaults to True
+		}
+
+		MarbleGranite: {
+			Label: Granite Energy Core and Buried Champion Recipe Changes
+			Tooltip: Changes Ancient Blade and Unstable Core to require Aerialite Bars and Dracula Fangs. Defaults to True
+		}
+
+		OverloadedSludge: {
+			Label: Slime God Recipe Change
+			Tooltip: Changes Overloaded Sludge to use Enchanted Marble and Empowered Granite. Defaults to True
+		}
+
+		StarCaller: {
+			Label: Star Scouter Recipe Change
+			Tooltip: Changes Star Caller to use Aerialite Bars. Defaults to True
+		}
+
+		CryoKey: {
+			Label: Cryogen Recipe Change
+			Tooltip: Changes Cryo Key to use Strider Fangs. Defaults to True
+		}
+
+		MechBosses: {
+			Label: Mech Bosses Recipe Change
+			Tooltip: Changes Mechanical Eye, Worm, and Skull to each require a Strange Alien Motherboard. Defaults to True
+		}
+
+		Lich: {
+			Label: Lich Summon Change
+			Tooltip: Changes the Ancient Phylactory to require Essence of Havoc to summon the Lich rather than pumpkins. Defaults to True
+		}
+
+		CharredIdol: {
+			Label: Brimstone Elemental Recipe Change
+			Tooltip: Changes Charred Idol to require a Void Heart. Defaults to True
+		}
+
+		Seafood: {
+			Label: Aquatic Scourge Recipe Change
+			Tooltip: Changes Seafood to require Queen Jelly. Defaults to True
+		}
+
+		EyeOfDesolation: {
+			Label: Calamitas Clone Recipe Change
+			Tooltip: Changes Eye of Desolation to require Voidseer's Pearl. Defaults to True
+		}
+
+		DeathWhistle: {
+			Label: Ravager Recipe Change
+			Tooltip: Changes Death Whistle to require Cursed Cloth. Defaults to True
+		}
+
+		DoomSayerCoin: {
+			Label: Primordials Recipe Change
+			Tooltip: Changes Doom Sayer's Coin to require Eldritch Shell Fragments and Ashes of Calamity. Defaults to True
+		}
+
+		RuneOfKos: {
+			Label: Providence Spawning Changes
+			Tooltip: Changes Rune of Kos recipe to require Divine Geodes and Primordials Essences, and makes it no longer drop from Providence. Defaults to True
+		}
+	}
+
+	OtherConfig: {
+		DisplayName: Other Config
+		Headers.Other: Other Header
+
+		wip: {
+			Label: wip
+			Tooltip: ""
+		}
+	}
+
+	ClassBalancerConfig: {
+		DisplayName: Class Balancer Config
+
+		Headers: {
+			ClassBalanceChanges: Class Balance Changes Header
+			ClassMechanicChanges: Class Mechanic Changes Header
+		}
+
+		HealerDamageModifier: {
+			Label: Healer Damage Modifier
+			Tooltip: Multiplier for Healer damage. Multiplier applies after all other changes have been applied.
+		}
+
+		BardDamageModifier: {
+			Label: Bard Damage Modifier
+			Tooltip: Multiplier for Bard damage. Multiplier applies after all other changes have been applied.
+		}
+
+		RogueDamageModifier: {
+			Label: Rogue Damage Modifier
+			Tooltip: Multiplier for Rogue/Throwing damage. Multiplier applies after all other changes have been applied.
+		}
+
+		RangedDamageModifier: {
+			Label: Ranged Damage Modifier
+			Tooltip: Multiplier for Ranged damage. Multiplier applies after all other changes have been applied.
+		}
+
+		MagicDamageModifier: {
+			Label: Magic Damage Modifier
+			Tooltip: Multiplier for Magic damage. Multiplier applies after all other changes have been applied.
+		}
+
+		SummonDamageModifier: {
+			Label: Summon Damage Modifier
+			Tooltip: Multiplier for Summon damage. Multiplier applies after all other changes have been applied.
+		}
+
+		MeleeDamageModifier: {
+			Label: Melee Damage Modifier
+			Tooltip: Multiplier for Melee damage. Multiplier applies after all other changes have been applied.
+		}
+
+		HealingBonusModifier: {
+			Label: Healing Bonus Modifier
+			Tooltip: ""
+		}
+
+		RiffsRequireRiffInstrumentToBeHeld: {
+			Label: Riffs Require Riff Instrument To Be Held
+			Tooltip: ""
+		}
+	}
+
+	ItemBalancerConfig: {
+		DisplayName: Item Balancer Config
+		Headers.ItemBalanceChanges: Item Balance Changes Header
+
+		OmegaCore: {
+			Label: Omega Core
+			Tooltip: Nerfs the movement speed bonus of Omega Core to keep it more balanced for the further progression in the game.
+		}
+
+		genericweaponchanges: {
+			Label: Generic Weapon Tweaks
+			Tooltip: Applies general weapon rebalances.
+		}
+	}
+
+	UIConfig: {
+		DisplayName: UI Config
+
+		Headers: {
+			UITweaks: UI Tweaks Header
+			Debug: Debug Header
+		}
+
+		BardEmpowermentBarOffsetX: {
+			Label: Bard Empowerment Bar Offset X
+			Tooltip: X offset of the bard empowerment bar. Default value should already fix the overlap with Calamity item cooldowns.
+		}
+
+		BardEmpowermentBarOffsetY: {
+			Label: Bard Empowerment Bar Offset Y
+			Tooltip: Y offset of the bard empowerment bar. Default value should already fix the overlap with Calamity item cooldowns.
+		}
+
+		ShowItemHitboxes: {
+			Label: Show Item Hitboxes
+			Tooltip: ""
+		}
+	}
+
+	ModCompatConfig: {
+		DisplayName: Mod Compatibility Config
+		Headers.ModCompat: Mod Compat Header
+
+		item_deduplication_mode: {
+			Label: Calamity Bard & Healer item deduplication
+			Tooltip: Select which item recipes of duplicate items are loaded. Off enables both mod versions.
+		}
+	}
+
+	CalamityBardHealer_selection_mode: {
+		Tooltip: ""
+
+		Off: {
+			Label: Off
+			Tooltip: ""
+		}
+
+		Ragnarok: {
+			Label: Ragnarok Mod
+			Tooltip: ""
+		}
+
+		CalamityBardHealer: {
+			Label: Calamity Bard Healer
+			Tooltip: ""
+		}
+	}
+
+	BossConfig: {
+		DisplayName: Boss Config
+		Headers.BossChanges: Boss Changes
+
+		bird: {
+			Label: Grand Thunderbird AI
+			Tooltip: Select which AI rework should be used. Off for default behaviour.
+		}
+
+		jelly: {
+			Label: Queen Jellyfish AI
+			Tooltip: Select which AI rework should be used. Off for default behaviour.
+		}
+
+		bossstatstweak: {
+			Label: Boss Stat Tweak
+			Tooltip: Select if Thorium bosses receive stat tweaks (attack damage, health, defense, damage reduction) for Calamity scaling.
+		}
+
+		bossrush: {
+			Label: Thorium Boss Rush
+			Tooltip: Select which boss rush mode should be used. Off disables boss rush.
+		}
+
+		viscount: {
+			Label: Viscount AI
+			Tooltip: Select which AI rework should be used. Off for vanilla behaviour. Auto uses Ragnarok AI if no other rework is detected.
+		}
+
+		granite: {
+			Label: Granite Energy Storm AI
+			Tooltip: Select which AI rework should be used. Off for vanilla behaviour. Auto uses Ragnarok AI if no other rework is detected.
+		}
+
+		champion: {
+			Label: Buried Champion AI
+			Tooltip: Select which AI rework should be used. Off for vanilla behaviour. Auto uses Ragnarok AI if no other rework is detected.
+		}
+
+		scouter: {
+			Label: Star Scouter AI
+			Tooltip: Select which AI rework should be used. Off for vanilla behaviour. Auto uses Ragnarok AI if no other rework is detected.
+		}
+
+		strider: {
+			Label: Borean Strider AI
+			Tooltip: Select which AI rework should be used. Off for vanilla behaviour. Auto uses Ragnarok AI if no other rework is detected.
+		}
+
+		beholder: {
+			Label: Fallen Beholder AI
+			Tooltip: Select which AI rework should be used. Off for vanilla behaviour. Auto uses Ragnarok AI if no other rework is detected.
+		}
+	}
+
+	ThoriumBossRework_selection_mode: {
+		Tooltip: ""
+
+		Off: {
+			Label: Off
+			Tooltip: ""
+		}
+
+		Ragnarok: {
+			Label: Ragnarok
+			Tooltip: ""
+		}
+
+		ThoriumBossRework: {
+			Label: Thorium Boss Rework
+			Tooltip: ""
+		}
+
+		Auto: {
+			Label: Auto
+			Tooltip: ""
+		}
+	}
+
+	ClientConfig: {
+		DisplayName: Client Config
+
+		Headers: {
+			Audio: Audio
+			UITweaks: UI Tweaks
+			WelcomeText: Welcome Text Header
+			Visual: Visual Header
+		}
+
+		BardEmpowermentBarOffsetX: {
+			Label: Bard Empowerment Bar Offset X
+			Tooltip: ""
+		}
+
+		BardEmpowermentBarOffsetY: {
+			Label: Bard Empowerment Bar Offset Y
+			Tooltip: ""
+		}
+
+		RiffMusicVolume: {
+			Label: Riff Music Volume
+			Tooltip: ""
+		}
+
+		StartText: {
+			Label: Start Text
+			Tooltip: ""
+		}
+
+		RiffScreenEffectIntensity: {
+			Label: Riff Screen Effect Intensity
+			Tooltip: ""
+		}
+	}
+
+	DebugConfig: {
+		DisplayName: Debug Config
+		Headers.Debugging: Debugging Header
+
+		ItemHoldOffsetX: {
+			Label: Item Hold Offset X
+			Tooltip: ""
+		}
+
+		ItemHoldOffsetY: {
+			Label: Item Hold Offset Y
+			Tooltip: ""
+		}
+
+		ItemUseStylePerpendicular: {
+			Label: Item Use Style Perpendicular
+			Tooltip: ""
+		}
+
+		ShootOffsetForward: {
+			Label: Shoot Offset Forward
+			Tooltip: ""
+		}
+
+		ShootOffsetPerpendicular: {
+			Label: Shoot Offset Perpendicular
+			Tooltip: ""
+		}
+
+		ItemHoldPerpendicular: {
+			Label: Item Hold Perpendicular
+			Tooltip: ""
+		}
+	}
+}
+
+WikiMessage: "[i:RagnarokMod/EquivalentExchange][c/FF2929:Help us complete the official ][c/B428FF:Ragnarok Mod][c/FF2929: wiki at ][c/3898FF:ragnarokmod.wiki.gg][c/FF2929:!][i:RagnarokMod/CorrosiveFlux]"
+FandomWarning: "[i:GolfCupFlagRed][c/B428FF:Ragnarok Mod ][c/FF2929:has never had a Fandom wiki. Any information from Fandom may be inaccurate!][i:GolfCupFlagRed]"
+DiscordInvite: "[i:WireKite][c/9696FF:Join the official ][c/B428FF:Ragnarok Mod][c/9696FF: Discord! ][c/3898FF:discord.gg/UBAQwtKCbf][i:WireKite]"
+PatreonAd: "[i:LuckyCoin][c/96FF96:If you enjoy the mod, consider supporting us on Patreon: ][c/3898FF:patreon.com/c/DevTeamRagnarok][i:LuckyCoin]"
+DisableMe: "[i:Wrench][c/FFFF0A:If you would like to stop getting these messages, you can disable them in the config in your pause menu!][i:Wrench]"
+Riffs.Cooldown: Riff Cooldown
+DamageClasses.ThoriumRogueClass.DisplayName: rogue damage
+Tiles.MenuMusicBoxTile.MapEntry: Menu Music Box Tile

@@ -204,7 +204,7 @@ namespace RagnarokMod
                 foreach (Recipe item in getter.Search())
                 {
                     RecipeHelper helper = new(item);
-                    helper.Add(ModContent.ItemType<VoidseerPearl>(), 1);
+                    helper.Add(ModContent.ItemType<VoidHeart>(), 1);
                 }
             }
             if (ModContent.GetInstance<BossProgressionConfig>().DeathWhistle)

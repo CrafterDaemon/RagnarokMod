@@ -1,13 +1,5 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
-using Microsoft.Xna.Framework;
-using RagnarokMod.Dusts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria.DataStructures;
 using ThoriumMod;
 using ThoriumMod.Projectiles.Scythe;
 
@@ -33,7 +25,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             Projectile.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
             rotationSpeed = 0.25f;
             scytheCount = 2;
-            base.Projectile.Size = new Vector2(320, 320);
+            Projectile.Size = new Vector2(320, 320);
 
             dustCount = 2;
             dustType = 60;

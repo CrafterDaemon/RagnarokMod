@@ -48,27 +48,27 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                     switch (elementIndex)
                     {
                         case 0: // Sand
-                            ApplyBuffWithParticles(player, ModContent.BuffType<ScytheSandBuff>(), 900, DustID.Sandstorm, Color.SandyBrown);
+                            ApplyBuffWithParticles(player, ModContent.BuffType<ScytheSandBuff>(), 900, DustID.Sand, Color.White);
                             ragnarokPlayer.elementalReaperIndex++;
                             break;
 
                         case 1: // Water
-                            ApplyBuffWithParticles(player, ModContent.BuffType<ScytheWaterBuff>(), 900, DustID.Water, Color.CornflowerBlue);
+                            ApplyBuffWithParticles(player, ModContent.BuffType<ScytheWaterBuff>(), 900, DustID.Water, Color.White);
                             ragnarokPlayer.elementalReaperIndex++;
                             break;
 
                         case 2: // Air
-                            ApplyBuffWithParticles(player, ModContent.BuffType<ScytheAirBuff>(), 900, DustID.Cloud, Color.LightGray);
+                            ApplyBuffWithParticles(player, ModContent.BuffType<ScytheAirBuff>(), 900, DustID.Cloud, Color.White);
                             ragnarokPlayer.elementalReaperIndex++;
                             break;
 
                         case 3: // Earth
-                            ApplyBuffWithParticles(player, ModContent.BuffType<ScytheEarthBuff>(), 900, DustID.Stone, Color.SaddleBrown);
+                            ApplyBuffWithParticles(player, ModContent.BuffType<ScytheEarthBuff>(), 900, DustID.Dirt, Color.White);
                             ragnarokPlayer.elementalReaperIndex++;
                             break;
 
                         case 4: // Brimstone
-                            ApplyBuffWithParticles(player, ModContent.BuffType<ScytheBrimstoneBuff>(), 900, DustID.RedTorch, Color.OrangeRed);
+                            ApplyBuffWithParticles(player, ModContent.BuffType<ScytheBrimstoneBuff>(), 900, DustID.RedTorch, Color.White);
                             ragnarokPlayer.elementalReaperIndex++;
                             break;
 

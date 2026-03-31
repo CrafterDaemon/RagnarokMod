@@ -1,8 +1,11 @@
 ﻿
 
+using System.Reflection;
+using System;
 using CalamityMod;
 using CalamityMod.Balancing;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 using ThoriumMod;
 
@@ -81,6 +84,34 @@ namespace RagnarokMod.Utils
                 result = ThoriumDamageBase<HealerDamage>.Instance;
             }
             return result;
+        }
+
+        public static void ClearAllEmpowerments(Player player)
+        {
+            try
+            {
+                var thoriumPlayer = player.GetModPlayer<ThoriumPlayer>();
+                if (thoriumPlayer == null) return;
+
+                var empField = typeof(ThoriumPlayer)
+                    .GetField("Empowerments", BindingFlags.Instance | BindingFlags.NonPublic);
+                var data = empField?.GetValue(thoriumPlayer);
+                if (data == null) return;
+
+                var clearMI = typeof(ThoriumMod.Empowerments.EmpowermentLoader)
+                    .GetMethod("UpdateDeadEmpowerments", BindingFlags.Static | BindingFlags.NonPublic);
+                if (clearMI != null)
+                    clearMI.Invoke(null, new object[] { data });
+
+                // Nudge the cache right away (optional but helps UI/state feel instant)
+                var updateMI = data.GetType().GetMethod("Update", BindingFlags.Instance | BindingFlags.Public);
+                updateMI?.Invoke(data, null);
+            }
+            catch (Exception e)
+            {
+                if (Main.netMode != NetmodeID.Server)
+                    Main.NewText($"[RagnarokMod:PlayerHelper] Failed to clear empowerments: {e.Message}");
+            }
         }
     }
 }

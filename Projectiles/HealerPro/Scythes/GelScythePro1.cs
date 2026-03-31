@@ -42,7 +42,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
 
             dustOffset = new Vector2(-15f, 15f);
             dustCount = 4;
-            dustType = DustID.Shadowflame;
+            dustType = DustID.t_Slime;
         }
 
         public override void SafeAI()
@@ -54,6 +54,10 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             }
         }
 
+        public override void ModifyDust(Dust dust, Vector2 position, int scytheIndex)
+        {
+            dust.color = new Color(255, 105, 180, 40);
+        }
 
         public override bool PreDraw(ref Color lightColor)
         {

@@ -1,13 +1,8 @@
-using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using System;
 using Terraria;
-using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using Terraria.DataStructures;
-using CalamityMod;
-using ThoriumMod;
 using RagnarokMod.ILEditing;
 
 namespace RagnarokMod.Common.GlobalItems
@@ -17,7 +12,9 @@ namespace RagnarokMod.Common.GlobalItems
         private static Mod calamity = ModLoader.GetMod("CalamityMod");
         public override bool AppliesToEntity(Item item, bool lateInstantiation)
         {
-            return item.type == calamity.Find<ModItem>("TheCommunity").Type;
+            return (item.type == calamity.Find<ModItem>("TheCommunity").Type
+			|| item.type == calamity.Find<ModItem>("EldritchSoulArtifact").Type
+			);
         }
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
@@ -36,6 +33,17 @@ namespace RagnarokMod.Common.GlobalItems
                     }
                 }
             }
+			
+            if (item.type == calamity.Find<ModItem>("EldritchSoulArtifact").Type)
+            {
+				for (int i = 0; i < tooltips.Count; i++)
+                {
+                    if (tooltips[i].Text.Contains("Boosts"))
+                    {
+                        tooltips[i].Text = "Boosts melee speed by 10%, ranged velocity by 25%, rogue stealth regen by 15%, max minions by 1, reduces mana cost by 25% and increases maximum inspiration by 2";
+                    }
+                }
+			}
         }
     }
 }

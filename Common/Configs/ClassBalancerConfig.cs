@@ -5,6 +5,7 @@ namespace RagnarokMod.Common.Configs
 {
     public class ClassBalancerConfig : ModConfig
     {
+        public static ClassBalancerConfig Instance;
         public override ConfigScope Mode => ConfigScope.ServerSide;
 
         [Header("ClassBalanceChanges")]
@@ -64,5 +65,12 @@ namespace RagnarokMod.Common.Configs
         [Increment(0.05f)]
         [DrawTicks]
         public float HealingBonusModifier { get; set; }
+
+        [Header("ClassMechanicChanges")]
+
+        [DefaultValue(true)]
+        [BackgroundColor(255, 160, 0, 170)]
+        public bool RiffsRequireRiffInstrumentToBeHeld { get; set; }
+
     }
 }

@@ -1,6 +1,4 @@
-﻿using CalamityMod.Items;
-using CalamityMod.NPCs.TownNPCs;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.GameContent;
@@ -16,8 +14,8 @@ namespace RagnarokMod.Items.Materials
             Item.width = 32;
             Item.height = 32;
             Item.maxStack = 9999;
-            Item.value = CalamityGlobalItem.RarityLightRedBuyPrice;
-            Item.rare = ItemRarityID.LightRed;
+            Item.value = Item.sellPrice(0, 50);
+            Item.rare = ItemRarityID.Pink;
         }
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
         {

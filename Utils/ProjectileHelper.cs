@@ -1,4 +1,5 @@
 using System;
+using CalamityMod;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -309,22 +310,109 @@ namespace RagnarokMod.Utils
             }
             return false;
         }
+		
+		public static void StickyProjAI(this Projectile projectile, int timeLeft, bool findNewNPC = false){
+			if (projectile.ai[0] == 1f){
+				bool killProj = false;
+				bool spawnDust = false;
+				projectile.tileCollide = false;
+				projectile.localAI[0] += 1f;
+				if (projectile.localAI[0] % 30f == 0f){
+					spawnDust = true;
+				}
+				int npcIndex = (int)projectile.ai[1];
+				NPC npc = Main.npc[npcIndex];
+				if (projectile.localAI[0] >= (float)(60 * timeLeft)){
+					killProj = true;
+				}
+				else if (!npcIndex.WithinBounds(Main.maxNPCs)){
+					killProj = true;
+				}
+				else if (npc.active && !npc.dontTakeDamage){
+					projectile.Center = npc.Center - projectile.velocity * 2f;
+					projectile.gfxOffY = npc.gfxOffY;
+					if (spawnDust){
+						npc.HitEffect(0, 1.0, null);
+					}
+				}
+				else{
+					killProj = true;
+				}
+				if (killProj){
+					if (findNewNPC){
+						projectile.ai[0] = 0f;
+						return;
+					}
+					projectile.Kill();
+				}
+			}
+		}
+		
+		public static void ModifyHitNPCSticky(this Projectile projectile, int maxStick){
+			Player player = Main.player[projectile.owner];
+			Rectangle myRect = projectile.Hitbox;
+			if (projectile.owner == Main.myPlayer){
+				for (int npcIndex = 0; npcIndex < Main.maxNPCs; npcIndex++){
+					NPC npc = Main.npc[npcIndex];
+					if (npc.active && !npc.dontTakeDamage && ((projectile.friendly && (!npc.friendly || (npc.type == 22 && projectile.owner < 255 && player.killGuide) || (npc.type == 54 && projectile.owner < 255 && player.killClothier))) || (projectile.hostile && npc.friendly && !npc.dontTakeDamageFromHostiles)) && (projectile.owner < 0 || npc.immune[projectile.owner] == 0 || projectile.maxPenetrate == 1) && (npc.noTileCollide || !projectile.ownerHitCheck)){
+						bool stickingToNPC;
+						if (npc.type == 414){
+							Rectangle rect = npc.Hitbox;
+							int crawltipedeHitboxMod = 8;
+							rect.X -= crawltipedeHitboxMod;
+							rect.Y -= crawltipedeHitboxMod;
+							rect.Width += crawltipedeHitboxMod * 2;
+							rect.Height += crawltipedeHitboxMod * 2;
+							stickingToNPC = projectile.Colliding(myRect, rect);
+						}
+						else{
+							stickingToNPC = projectile.Colliding(myRect, npc.Hitbox);
+						}
+						if (stickingToNPC){
+							if (npc.reflectsProjectiles && projectile.CanBeReflected()){
+								npc.ReflectProjectile(projectile);
+								return;
+							}
+							projectile.ai[0] = 1f;
+							projectile.ai[1] = (float)npcIndex;
+							projectile.velocity = npc.Center - projectile.Center;
+							projectile.netUpdate = true;
+							Point[] array2 = new Point[maxStick];
+							int projCount = 0;
+							for (int projIndex = 0; projIndex < Main.maxProjectiles; projIndex++){
+								Projectile proj = Main.projectile[projIndex];
+								if (projIndex != projectile.whoAmI && proj.active && proj.owner == Main.myPlayer && proj.type == projectile.type && proj.ai[0] == 1f && proj.ai[1] == (float)npcIndex){
+									array2[projCount++] = new Point(projIndex, proj.timeLeft);
+									if (projCount >= array2.Length){
+										break;
+									}
+								}
+							}
+							if (projCount >= array2.Length){
+								int stuckProjAmt = 0;
+								for (int i = 1; i < array2.Length; i++){
+									if (array2[i].Y < array2[stuckProjAmt].Y){
+										stuckProjAmt = i;
+									}
+								}
+								Main.projectile[array2[stuckProjAmt].X].Kill();
+							}
+						}
+					}
+				}
+			}
+		}
 
-        public static bool HandleChaining(this Projectile projectile, ICollection<int> hitTargets, ICollection<int> foundTargets, int max, Func<NPC, bool> condition = null)
-        {
-            foreach (int f in foundTargets)
-            {
-                if (!hitTargets.Contains(f))
-                {
+        public static bool HandleChaining(this Projectile projectile, ICollection<int> hitTargets, ICollection<int> foundTargets, int max, Func<NPC, bool> condition = null){
+            foreach (int f in foundTargets){
+                if (!hitTargets.Contains(f)){
                     hitTargets.Add(f);
                 }
             }
             foundTargets.Clear();
-            for (int i = 0; i < Main.maxNPCs; i++)
-            {
+            for (int i = 0; i < Main.maxNPCs; i++){
                 NPC npc = Main.npc[i];
-                if (npc.active && !npc.dontTakeDamage && (!projectile.friendly || !npc.townNPC))
-                {
+                if (npc.active && !npc.dontTakeDamage && (!projectile.friendly || !npc.townNPC)){
                     Rectangle hitbox = new Rectangle(
                     Convert.ToInt32(projectile.position.X + projectile.velocity.X),
                     Convert.ToInt32(projectile.position.Y + projectile.velocity.Y),
@@ -332,22 +420,19 @@ namespace RagnarokMod.Utils
                     projectile.height
                     );
                     ProjectileLoader.ModifyDamageHitbox(projectile, ref hitbox);
-                    if (projectile.Colliding(hitbox, npc.Hitbox) && (condition == null || condition(npc)))
-                    {
+                    if (projectile.Colliding(hitbox, npc.Hitbox) && (condition == null || condition(npc))){
                         foundTargets.Add(i);
                     }
                 }
             }
-            if (hitTargets.Count >= max)
-            {
+            if (hitTargets.Count >= max){
                 projectile.Kill();
                 return true;
             }
             return false;
         }
 
-        public static bool MagicMissileAI(this Projectile projectile, ref bool homing, float channelSpeed, float releaseSpeed)
-        {
+        public static bool MagicMissileAI(this Projectile projectile, ref bool homing, float channelSpeed, float releaseSpeed){
             Player player = Main.player[projectile.owner];
             Vector2 mousePosition;
             if (homing && player.TryGetMousePosition(out mousePosition))

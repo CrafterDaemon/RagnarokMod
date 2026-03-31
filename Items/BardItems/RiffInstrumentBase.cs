@@ -149,6 +149,7 @@ namespace RagnarokMod.Items.BardItems
                     );
                     ragnarokPlayer.riffPlaying = true;
                     ragnarokPlayer.activeRiffType = RiffType;
+                    ragnarokPlayer.riffItemType = Type;
                 }
             }
             else
@@ -157,6 +158,7 @@ namespace RagnarokMod.Items.BardItems
                     sound.Stop();
                 ragnarokPlayer.riffPlaying = false;
                 ragnarokPlayer.activeRiffType = 0;
+                ragnarokPlayer.riffItemType = -1;
             }
             if (Main.netMode == NetmodeID.MultiplayerClient)
             {
