@@ -24,11 +24,25 @@ namespace RagnarokMod.ILEditing
 			{
 				Player player = Main.LocalPlayer;
 				if (player.active && scareCooldown <= 0){
-					foreach (Item item in player.inventory){
-						if (item.type == ModContent.ItemType<PrimalTerror>() && item.favorited && Main.rand.NextBool(10000)){
-							SoundStyle scareStyle = new SoundStyle("CalamityMod/Sounds/Custom/Scare");
-							scareCooldown = 600;
-							return orig(ref scareStyle, position, callback);
+					if (DateTime.Now.Month == 4 && DateTime.Now.Day == 1)
+                    {
+                        if (Main.rand.NextBool(5000))
+                        {
+                            SoundStyle scareStyle = new SoundStyle("CalamityMod/Sounds/Custom/Scare");
+                            scareCooldown = 600;
+                            return orig(ref scareStyle, position, callback);
+                        }
+                    }
+					else 
+					{
+						foreach (Item item in player.inventory)
+						{
+							if (item.type == ModContent.ItemType<PrimalTerror>() && item.favorited && Main.rand.NextBool(10000))
+							{
+								SoundStyle scareStyle = new SoundStyle("CalamityMod/Sounds/Custom/Scare");
+								scareCooldown = 600;
+								return orig(ref scareStyle, position, callback);
+							}
 						}
 					}
 				}

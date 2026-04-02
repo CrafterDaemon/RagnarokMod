@@ -1,5 +1,6 @@
 using CalamityMod.Buffs.DamageOverTime;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -87,6 +88,54 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                 }
 
                 SpawnDust(Projectile);
+
+                // Increment localAI counter
+                Projectile.localAI[1]++;
+
+                // Spawn MoltenBlob every 4 ticks
+                if (Projectile.localAI[1] >= 4f)
+                {
+                    for (int i = 0; i < 2; i++)
+                    {
+                        float speed = 24f;
+
+                        float randomAngle = Main.rand.NextFloat(0f, MathHelper.TwoPi);
+
+                        Vector2 randomDirection = new Vector2((float)Math.Cos(randomAngle), (float)Math.Sin(randomAngle));
+
+                        Vector2 randomVelocity = randomDirection * speed;
+
+                        if (Projectile.owner == Main.myPlayer)
+                        {
+                            int proj = Projectile.NewProjectile(
+                                Projectile.GetSource_FromThis(),
+                                Projectile.Center,
+                                randomVelocity,
+                                ModContent.ProjectileType<CalamityMod.Projectiles.Boss.MoltenBlob>(),
+                                (int)(Projectile.damage * 0.25f),
+                                1f,
+                                Projectile.owner
+                            );
+
+                            if (proj >= 0 && Main.projectile.IndexInRange(proj))
+                            {
+                                Main.projectile[proj].DamageType = ThoriumDamageBase<HealerDamage>.Instance;
+                                Main.projectile[proj].friendly = true;
+                                Main.projectile[proj].hostile = false;
+                                Main.projectile[proj].tileCollide = true;
+                                Main.projectile[proj].timeLeft = 90;
+
+                                Main.projectile[proj].usesLocalNPCImmunity = true;
+                                Main.projectile[proj].localNPCHitCooldown = 20;
+
+                                Main.projectile[proj].usesIDStaticNPCImmunity = false;
+                            }
+                        }
+                    }
+
+                    // Reset the counter
+                    Projectile.localAI[1] = 0f;
+                }
 
                 return false; // Skip normal scythe AI
             }

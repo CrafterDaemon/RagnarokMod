@@ -12,12 +12,13 @@ using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
 using ThoriumMod;
+using RagnarokMod.Projectiles.HealerPro.Scythes;
 
 namespace RagnarokMod.Projectiles.HealerPro.Other
 {
     public class IrradiantRed : ModProjectile
     {
-        private int trail = 8;
+        private int trail = 12;
         private const float CollisionRadius = 60f;
         private bool hasHit = false;
 
@@ -128,25 +129,46 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
                 DepthStencilState.None, Main.Rasterizer, null, Main.GameViewMatrix.TransformationMatrix);
             // STATE: BEGUN (additive)
 
+            Texture2D glow = TextureAssets.Projectile[ModContent.ProjectileType<AuricGreatscytheBolt>()].Value;
+            Vector2 glowOrigin = glow.Size() * 0.5f;
+            float glowW = glow.Width;
+
             // Pulsing glow
             float pulse = 1f + MathF.Sin(time * 7f) * 0.15f;
-            sb.Draw(pixel, Projectile.Center - Main.screenPosition, PixelRect,
-                new Color(200, 30, 20) * 0.18f,
-                0f, PixelOriginCenter, new Vector2(Projectile.width * 1.4f * pulse), SpriteEffects.None, 0f);
+            sb.Draw(glow, Projectile.Center - Main.screenPosition, null,
+                new Color(200, 30, 20) * 0.5f,
+                0f, glowOrigin, Projectile.width * 1.4f * pulse / glowW, SpriteEffects.None, 0f);
 
-            // Sprite afterimages with glow halo at each position
-            for (int k = 0; k < Projectile.oldPos.Length; k++)
+            // Constant-size circles with alpha-only fade.
+            // Keeping size fixed makes the trail direction-independent -- circles are symmetric
+            // so a trail of equal-size circles looks the same width at any angle.
+            // Only alpha decreases toward the tail.
+            Vector2 half = new Vector2(Projectile.width, Projectile.height) / 2f;
+            float glowH = glow.Height;
+            float trailWidth = Projectile.width * 0.85f;
+
+            // Precompute scales once, they don't change per-step
+            Vector2 outerScale = new Vector2(trailWidth / glowW, trailWidth / glowH);
+            Vector2 innerScale = new Vector2(trailWidth * 0.4f / glowW, trailWidth * 0.4f / glowH);
+
+            const int interp = 4;
+            for (int k = 0; k < Projectile.oldPos.Length - 1; k++)
             {
-                if (Projectile.oldPos[k] == Vector2.Zero) continue;
-                float t = 1f - (float)k / Projectile.oldPos.Length;
-                Vector2 trailPos = Projectile.oldPos[k] + new Vector2(Projectile.width, Projectile.height) / 2f - Main.screenPosition;
+                if (Projectile.oldPos[k] == Vector2.Zero || Projectile.oldPos[k + 1] == Vector2.Zero) continue;
+                for (int sub = 0; sub < interp; sub++)
+                {
+                    float lerpT = sub / (float)interp;
+                    float t = 1f - (k + lerpT) / Projectile.oldPos.Length;
+                    Vector2 pos = Vector2.Lerp(Projectile.oldPos[k], Projectile.oldPos[k + 1], lerpT)
+                                + half - Main.screenPosition;
 
-                sb.Draw(pixel, trailPos, PixelRect,
-                    new Color(200, 20, 10) * 0.3f * t,
-                    0f, PixelOriginCenter, new Vector2(Projectile.width * t), SpriteEffects.None, 0f);
-                sb.Draw(pixel, trailPos, PixelRect,
-                    new Color(255, 80, 40) * 0.5f * t,
-                    0f, PixelOriginCenter, new Vector2(Projectile.width * 0.4f * t), SpriteEffects.None, 0f);
+                    sb.Draw(glow, pos, null,
+                        new Color(200, 20, 10) * t * 0.7f,
+                        0f, glowOrigin, outerScale, SpriteEffects.None, 0f);
+                    sb.Draw(glow, pos, null,
+                        new Color(255, 80, 40) * t * 0.8f,
+                        0f, glowOrigin, innerScale, SpriteEffects.None, 0f);
+                }
             }
 
 
@@ -177,7 +199,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
             }
 
             sb.ExitShaderRegion();
-            // STATE: BEGUN (normal) — correct for vanilla
+            // STATE: BEGUN (normal) correct for vanilla
 
             return false;
         }

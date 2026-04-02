@@ -553,7 +553,12 @@ Items: {
 
 	ProfanedScythe: {
 		DisplayName: Profaned Scythe
-		Tooltip: A holy inferno of a scythe
+		Tooltip:
+			'''
+			A holy inferno of a scythe
+			Right Click to throw the scythe, which will curve on it's way back
+			The scythe deals 20% more damage when thrown and flings molten blobs during flight
+			'''
 	}
 
 	MarbleScythe: {
@@ -567,7 +572,7 @@ Items: {
 			'''
 			The scoria allows you to spin the scythe much faster by constantly expelling steam
 			Right Click to throw the scythe, which will curve on it's way back
-				The scythe deals 20% more damage when thrown
+			The scythe deals 20% more damage when thrown
 			'''
 	}
 
@@ -1605,6 +1610,73 @@ Configs: {
 			Tooltip: ""
 		}
 	}
+
+	AprilChaos: {
+		DisplayName: April Chaos
+
+		Headers: {
+			AprilChaos: April Chaos
+			RadiantMage: Radiant Mage
+			MeleeSummoner: Melee Summoner
+			RogueRanger: Rogue Ranger
+			ObnoxiousBard: Obnoxious Bard
+		}
+
+		MasterToggle: {
+			Label: Master Toggle
+			Tooltip: Disables/Enables all options below.
+		}
+
+		RadMage: {
+			Label: Radiant Mage
+			Tooltip:
+				'''
+				Healer just felt like an extension of mage.
+				So we fixed that.
+				By replacing Mage with Healer.
+				All magic is healing if you believe hard enough. 
+				Or hit hard enough.
+				'''
+		}
+
+		MelSum: {
+			Label: Melee Summoner
+			Tooltip:
+				'''
+				Summoner had some unfortunate progression gaps.
+				So we fixed that.
+				By giving all of Melee to Summoner.
+				Your minions now respect you. 
+				Your sword does not.
+				'''
+		}
+
+		RogRan: {
+			Label: Rogue Ranger
+			Tooltip:
+				'''
+				Rogue is taking back its roots.
+				By absorbing Ranger.
+				They were always the same person. 
+				One just had better shoes.
+				'''
+		}
+
+		ObBard: {
+			Label: Obnoxious Bard
+			Tooltip: Makes your riffs... less riffin
+		}
+
+		OwnRiffWeight: {
+			Label: Own Riff Weight
+			Tooltip: ""
+		}
+
+		RiffWeights: {
+			Label: Riff Weights
+			Tooltip: ""
+		}
+	}
 }
 
 WikiMessage: "[i:RagnarokMod/EquivalentExchange][c/FF2929:Help us complete the official ][c/B428FF:Ragnarok Mod][c/FF2929: wiki at ][c/3898FF:ragnarokmod.wiki.gg][c/FF2929:!][i:RagnarokMod/CorrosiveFlux]"
@@ -1613,5 +1685,12 @@ DiscordInvite: "[i:WireKite][c/9696FF:Join the official ][c/B428FF:Ragnarok Mod]
 PatreonAd: "[i:LuckyCoin][c/96FF96:If you enjoy the mod, consider supporting us on Patreon: ][c/3898FF:patreon.com/c/DevTeamRagnarok][i:LuckyCoin]"
 DisableMe: "[i:Wrench][c/FFFF0A:If you would like to stop getting these messages, you can disable them in the config in your pause menu!][i:Wrench]"
 Riffs.Cooldown: Riff Cooldown
-DamageClasses.ThoriumRogueClass.DisplayName: rogue damage
+
+DamageClasses: {
+	ThoriumRogueClass.DisplayName: rogue damage
+	MeleeSummoner.DisplayName: summelee damage
+	RadiantMagic.DisplayName: radiagic damage
+	RogueRanger.DisplayName: roganged damage
+}
+
 Tiles.MenuMusicBoxTile.MapEntry: Menu Music Box Tile

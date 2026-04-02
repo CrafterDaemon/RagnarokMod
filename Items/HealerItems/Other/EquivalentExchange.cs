@@ -22,7 +22,7 @@ namespace RagnarokMod.Items.HealerItems.Other
             base.Item.damage = 34;
             this.isHealer = true;
             this.healDisplay = true;
-            this.radiantLifeCost = 2;
+            this.radiantLifeCost = 4;
             this.healType = HealType.LifeSteal;
             this.healAmount = 4;
             base.Item.width = 30;
