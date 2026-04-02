@@ -123,7 +123,7 @@ namespace RagnarokMod.Common.GlobalNPCs
             if (npc.type == ModContent.NPCType<BoreanStrider>())
             {
                 LeadingConditionRule notExpert = new LeadingConditionRule(new Conditions.NotExpert());
-                notExpert.OnSuccess(ItemDropRule.Common(ModContent.ItemType<StriderFang>(), 1, 1, 4));
+                notExpert.OnSuccess(ItemDropRule.Common(ModContent.ItemType<StriderFang>(), 1, 5));
                 npcLoot.Add(notExpert);
             }
 

@@ -80,7 +80,7 @@ namespace RagnarokMod.Common.GlobalItems
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<EnchantedMarble>(), 1, 1, 10));
 
             if (item.type == ModContent.ItemType<BoreanStriderTreasureBag>())
-                itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<StriderFang>(), 1, 1, 10));
+                itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<StriderFang>(), 1, 5, 10));
 
             if (item.type == ModContent.ItemType<FallenBeholderTreasureBag>())
                 itemLoot.Add(ModContent.ItemType<VoidseerPearl>());
