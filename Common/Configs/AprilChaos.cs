@@ -10,13 +10,13 @@ namespace RagnarokMod.Common.Configs
 
         [Header("AprilChaos")]
         [ReloadRequired]
-        [DefaultValue(true)]
+        [DefaultValue(false)]
         public bool MasterToggle { get; set; }
 
         private bool _radmage;
         [Header("RadiantMage")]
         [ReloadRequired]
-        [DefaultValue(true)]
+        [DefaultValue(false)]
         public bool RadMage
         {
             get => MasterToggle && _radmage;
@@ -26,7 +26,7 @@ namespace RagnarokMod.Common.Configs
         private bool _melsum;
         [Header("MeleeSummoner")]
         [ReloadRequired]
-        [DefaultValue(true)]
+        [DefaultValue(false)]
         public bool MelSum
         {
             get => MasterToggle && _melsum;
@@ -36,7 +36,7 @@ namespace RagnarokMod.Common.Configs
         private bool _rogran;
         [Header("RogueRanger")]
         [ReloadRequired]
-        [DefaultValue(true)]
+        [DefaultValue(false)]
         public bool RogRan
         {
             get => MasterToggle && _rogran;
@@ -45,7 +45,7 @@ namespace RagnarokMod.Common.Configs
 
         private bool _obbard;
         [Header("ObnoxiousBard")]
-        [DefaultValue(true)]
+        [DefaultValue(false)]
         public bool ObBard
         {
             get => MasterToggle && _obbard;
