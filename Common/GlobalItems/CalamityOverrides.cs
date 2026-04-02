@@ -44,6 +44,7 @@ namespace RagnarokMod.Common.GlobalItems
 			if (item.type == ModContent.ItemType<EldritchSoulArtifact>()){
 				ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
 				thoriumPlayer.bardResourceMax2 += 2;
+                thoriumPlayer.healBonus += 2;
 			}
 		}
 

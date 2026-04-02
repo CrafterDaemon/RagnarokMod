@@ -89,9 +89,7 @@ namespace RagnarokMod.Common.GlobalNPCs
             // Thorium Bosses
             if (npc.type == ModContent.NPCType<TheGrandThunderBird>())
             {
-                LeadingConditionRule notExpert = new LeadingConditionRule(new Conditions.NotExpert());
-                notExpert.OnSuccess(ItemDropRule.Common(ModContent.ItemType<StormFeather>()));
-                npcLoot.Add(notExpert);
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<StormFeather>()));
             }
 
             if (npc.type == ModContent.NPCType<QueenJellyfish>())

@@ -59,8 +59,10 @@ namespace RagnarokMod.Common.GlobalItems
         public override void ModifyItemLoot(Item item, ItemLoot itemLoot)
         {
             // Thorium Bags - Materials
+            /*
             if (item.type == ModContent.ItemType<TheGrandThunderBirdTreasureBag>())
-                itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<StormFeather>(), 1, 1, 4));
+                itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<StormFeather>(), 1));
+            */
 
             if (item.type == ModContent.ItemType<QueenJellyfishTreasureBag>())
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<QueenJelly>(), 1, 4, 16));

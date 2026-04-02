@@ -20,7 +20,7 @@ namespace RagnarokMod.Items.Materials
             Item.height = 10;
             Item.scale = 0.75f;
             Item.maxStack = 9999;
-            Item.value = CalamityGlobalItem.RarityBlueBuyPrice;
+            Item.value = Item.sellPrice(0, 5);
             Item.rare = ItemRarityID.Blue;
         }
     }

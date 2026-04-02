@@ -4,6 +4,8 @@ using Terraria;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using RagnarokMod.ILEditing;
+using ThoriumMod.Buffs;
+using ThoriumMod.NPCs;
 
 namespace RagnarokMod.Common.GlobalItems
 {
@@ -40,7 +42,10 @@ namespace RagnarokMod.Common.GlobalItems
                 {
                     if (tooltips[i].Text.Contains("Boosts"))
                     {
-                        tooltips[i].Text = "Boosts melee speed by 10%, ranged velocity by 25%, rogue stealth regen by 15%, max minions by 1, reduces mana cost by 25% and increases maximum inspiration by 2";
+                        tooltips[i].Text = "Boosts melee speed by 10%, ranged velocity by 25%, rogue stealth regen by 15%, max minions by 1 and reduces mana cost by 25%\n" +
+                                           "Increases maximum inspiration by 2 and heal bonus by 2\n" +
+                                           "Grants immunity to Whispering Death\n" +
+                                           "Knowledge";
                     }
                 }
 			}

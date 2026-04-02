@@ -17,9 +17,11 @@ namespace RagnarokMod.Common.Configs
         [ReloadRequired]
         public bool DesertMedallion;
 
+        /*
         [DefaultValue(true)]
         [ReloadRequired]
         public bool DecapoditaSprout;
+        */
 
         [DefaultValue(true)]
         [ReloadRequired]

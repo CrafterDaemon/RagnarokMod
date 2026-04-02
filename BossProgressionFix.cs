@@ -27,6 +27,7 @@ using ThoriumMod.Items.Bronze;
 using ThoriumMod.Items.Granite;
 using ThoriumMod.Items.NPCItems;
 using ThoriumMod.Tiles;
+using ThoriumMod.Items.Sandstone;
 
 namespace RagnarokMod
 {
@@ -70,9 +71,11 @@ namespace RagnarokMod
                 foreach (Recipe item in getter.Search())
                 {
                     RecipeHelper helper = new(item);
-                    helper.Add(ModContent.ItemType<StormFeather>(), 2);
+                    helper.Add(ModContent.ItemType<SandstoneIngot>(), 5);
                 }
             }
+
+            /*
             if (ModContent.GetInstance<BossProgressionConfig>().DecapoditaSprout)
             {
                 getter.LookFor(ModContent.ItemType<DecapoditaSprout>(), 1);
@@ -83,6 +86,7 @@ namespace RagnarokMod
                     helper.Add(ModContent.ItemType<PearlShard>(), 8);
                 }
             }
+            */
 
             if (ModContent.GetInstance<BossProgressionConfig>().MarbleGranite)
             {
