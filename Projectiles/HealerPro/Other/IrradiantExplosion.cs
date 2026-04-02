@@ -111,30 +111,34 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
                 DepthStencilState.None, Main.Rasterizer, null, Main.GameViewMatrix.TransformationMatrix);
             // STATE: BEGUN (additive)
 
+            Texture2D glow = TextureAssets.Extra[ExtrasID.ThePerfectGlow].Value;
+            Vector2 glowOrigin = glow.Size() * 0.5f;
+            float glowW = glow.Width;
+
             // Massive expanding outer glow
             float outerSize = Projectile.width * Projectile.scale * 2.5f;
-            sb.Draw(pixel, Projectile.Center - Main.screenPosition, PixelRect,
+            sb.Draw(glow, Projectile.Center - Main.screenPosition, null,
                 new Color(80, 20, 140) * 0.12f * alpha,
-                0f, PixelOriginCenter, new Vector2(outerSize), SpriteEffects.None, 0f);
+                0f, glowOrigin, outerSize / glowW, SpriteEffects.None, 0f);
 
             // Mid glow
             float midSize = Projectile.width * Projectile.scale * 1.4f;
-            sb.Draw(pixel, Projectile.Center - Main.screenPosition, PixelRect,
+            sb.Draw(glow, Projectile.Center - Main.screenPosition, null,
                 new Color(160, 40, 220) * 0.18f * alpha,
-                0f, PixelOriginCenter, new Vector2(midSize), SpriteEffects.None, 0f);
+                0f, glowOrigin, midSize / glowW, SpriteEffects.None, 0f);
 
             // Hot core
             float coreAlpha = MathF.Pow(alpha, 2f);
             float coreSize = Projectile.width * Projectile.scale * 0.5f;
-            sb.Draw(pixel, Projectile.Center - Main.screenPosition, PixelRect,
+            sb.Draw(glow, Projectile.Center - Main.screenPosition, null,
                 new Color(220, 160, 255) * 0.3f * coreAlpha,
-                0f, PixelOriginCenter, new Vector2(coreSize), SpriteEffects.None, 0f);
+                0f, glowOrigin, coreSize / glowW, SpriteEffects.None, 0f);
 
             // Expanding ring edge
             float ringSize = Projectile.width * Projectile.scale * 1.8f + 30f * alpha;
-            sb.Draw(pixel, Projectile.Center - Main.screenPosition, PixelRect,
+            sb.Draw(glow, Projectile.Center - Main.screenPosition, null,
                 new Color(200, 80, 255) * 0.25f * alpha,
-                0f, PixelOriginCenter, new Vector2(ringSize), SpriteEffects.None, 0f);
+                0f, glowOrigin, ringSize / glowW, SpriteEffects.None, 0f);
 
             // Main sprite fading
             Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, sourceRect,
@@ -192,7 +196,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
             }
 
             sb.ExitShaderRegion();
-            // STATE: BEGUN (normal) — correct for vanilla
+            // STATE: BEGUN (normal) correct for vanilla
 
             return false;
         }

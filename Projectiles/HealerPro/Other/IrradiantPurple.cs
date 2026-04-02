@@ -202,23 +202,26 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
 
             float pulse = 1f + MathF.Sin(time * 4f) * 0.1f;
 
+            Texture2D glow = TextureAssets.Extra[ExtrasID.ThePerfectGlow].Value;
+            Vector2 glowOrigin = glow.Size() * 0.5f;
+            float glowW = glow.Width;
+
             // Wide ambient glow
             Color outerColor = Color.Lerp(new Color(60, 15, 120), new Color(120, 20, 80), lifeProgress);
-            sb.Draw(pixel, Projectile.Center - Main.screenPosition, PixelRect,
+            sb.Draw(glow, Projectile.Center - Main.screenPosition, null,
                 outerColor * 0.1f * vi,
-                0f, PixelOriginCenter, new Vector2(Projectile.width * 2f * pulse), SpriteEffects.None, 0f);
+                0f, glowOrigin, Projectile.width * 2f * pulse / glowW, SpriteEffects.None, 0f);
 
             // Inner glow
-            sb.Draw(pixel, Projectile.Center - Main.screenPosition, PixelRect,
+            sb.Draw(glow, Projectile.Center - Main.screenPosition, null,
                 new Color(140, 40, 200) * 0.15f * vi,
-                0f, PixelOriginCenter, new Vector2(Projectile.width * 1f * pulse), SpriteEffects.None, 0f);
+                0f, glowOrigin, Projectile.width * 1f * pulse / glowW, SpriteEffects.None, 0f);
 
-            // Hot core
-
+            // Hot core 
             Color coreColor = Color.Lerp(new Color(180, 80, 255), new Color(255, 200, 255), collapseProgress);
-            sb.Draw(pixel, Projectile.Center - Main.screenPosition, PixelRect,
+            sb.Draw(glow, Projectile.Center - Main.screenPosition, null,
                 coreColor * 0.2f * vi * coreBoost,
-                0f, PixelOriginCenter, new Vector2(Projectile.width * 0.4f * pulse), SpriteEffects.None, 0f);
+                0f, glowOrigin, Projectile.width * 0.4f * pulse / glowW, SpriteEffects.None, 0f);
 
             // Afterimage trail
             for (int k = 0; k < Projectile.oldPos.Length; k++)
@@ -227,12 +230,12 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
                 float t = 1f - (float)k / Projectile.oldPos.Length;
                 Vector2 trailPos = Projectile.oldPos[k] + new Vector2(Projectile.width, Projectile.height) / 2f - Main.screenPosition;
 
-                sb.Draw(pixel, trailPos, PixelRect,
+                sb.Draw(glow, trailPos, null,
                     new Color(80, 15, 140) * 0.3f * t * vi,
-                    0f, PixelOriginCenter, new Vector2(Projectile.width * t), SpriteEffects.None, 0f);
-                sb.Draw(pixel, trailPos, PixelRect,
+                    0f, glowOrigin, Projectile.width * t / glowW, SpriteEffects.None, 0f);
+                sb.Draw(glow, trailPos, null,
                     new Color(180, 60, 255) * 0.5f * t * vi,
-                    0f, PixelOriginCenter, new Vector2(Projectile.width * 0.4f * t), SpriteEffects.None, 0f);
+                    0f, glowOrigin, Projectile.width * 0.4f * t / glowW, SpriteEffects.None, 0f);
             }
 
             // STATE: BEGUN (additive)
@@ -242,7 +245,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
                 DepthStencilState.None, Main.Rasterizer, null, Main.GameViewMatrix.TransformationMatrix);
             // STATE: BEGUN (normal)
 
-            // === PRIMARY VORTEX — Purple ===
+            // === PRIMARY VORTEX Purple ===
             sb.EnterShaderRegion();
             // STATE: BEGUN (shader)
 
@@ -265,7 +268,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
             sb.ExitShaderRegion();
             // STATE: BEGUN (normal)
 
-            // === SECONDARY VORTEX — Red, counter-rotating ===
+            // === SECONDARY VORTEX Red, counter-rotating ===
             sb.EnterShaderRegion();
             // STATE: BEGUN (shader)
 
@@ -285,7 +288,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
             }
 
             sb.ExitShaderRegion();
-            // STATE: BEGUN (normal) — correct for vanilla
+            // STATE: BEGUN (normal) correct for vanilla
 
             return false;
         }

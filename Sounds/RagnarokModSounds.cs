@@ -54,5 +54,32 @@ namespace RagnarokMod.Sounds
         public static readonly SoundStyle tycoon = new("RagnarokMod/Sounds/Music/Riffs/Memes/tycoon") { Volume = 1f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
         public static readonly SoundStyle worldrevolving = new("RagnarokMod/Sounds/Music/Riffs/Memes/worldrevolving") { Volume = 1f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
         public static readonly SoundStyle rickroll = new("RagnarokMod/Sounds/Music/Riffs/Memes/rickroll") { Volume = 1f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
+        public static readonly SoundStyle werehog = new("RagnarokMod/Sounds/Music/Riffs/Memes/werehog") { Volume = 1f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
+        public static readonly SoundStyle slide = new("RagnarokMod/Sounds/Music/Riffs/Memes/slide") { Volume = 1f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
+        public static readonly SoundStyle pizza = new("RagnarokMod/Sounds/Music/Riffs/Memes/pizza") { Volume = 1f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
+        public static readonly SoundStyle driftveil = new("RagnarokMod/Sounds/Music/Riffs/Memes/driftveil") { Volume = 1f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
+        public static readonly SoundStyle malo = new("RagnarokMod/Sounds/Music/Riffs/Memes/malo") { Volume = 1f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
+        public static readonly SoundStyle giorno = new("RagnarokMod/Sounds/Music/Riffs/Memes/giorno") { Volume = 1f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
+        public static readonly SoundStyle slaughter = new("RagnarokMod/Sounds/Music/Riffs/Memes/slaughter") { Volume = 1f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
+        public static readonly SoundStyle coconut = new("RagnarokMod/Sounds/Music/Riffs/Memes/coconut") { Volume = 1f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
+        public static readonly SoundStyle cheese = new("RagnarokMod/Sounds/Music/Riffs/Memes/cheese") { Volume = 1f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
+        public static readonly SoundStyle piggies = new("RagnarokMod/Sounds/Music/Riffs/Memes/piggies") { Volume = 1f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
+        public static readonly SoundStyle coda = new("RagnarokMod/Sounds/Music/Riffs/Memes/coda") { Volume = 1f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
+        public static readonly SoundStyle whisper = new("RagnarokMod/Sounds/Music/Riffs/Memes/whisper") { Volume = 1f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
+        public static readonly SoundStyle homer = new("RagnarokMod/Sounds/Music/Riffs/Memes/homer") { Volume = 1f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
+        public static readonly SoundStyle surprise = new("RagnarokMod/Sounds/Music/Riffs/Memes/surprise") { Volume = 1f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
+        public static readonly SoundStyle numberone = new("RagnarokMod/Sounds/Music/Riffs/Memes/numberone") { Volume = 1f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
+        public static readonly SoundStyle gas = new("RagnarokMod/Sounds/Music/Riffs/Memes/gas") { Volume = 1f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
+        public static readonly SoundStyle rockefeller = new("RagnarokMod/Sounds/Music/Riffs/Memes/rockefeller") { Volume = 1f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
+        public static readonly SoundStyle nineties = new("RagnarokMod/Sounds/Music/Riffs/Memes/nineties") { Volume = 1f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
+        public static readonly SoundStyle scatman = new("RagnarokMod/Sounds/Music/Riffs/Memes/scatman") { Volume = 1f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
+        public static readonly SoundStyle oiia = new("RagnarokMod/Sounds/Music/Riffs/Memes/oiia") { Volume = 1f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
+        public static readonly SoundStyle alia = new("RagnarokMod/Sounds/Music/Riffs/Memes/alia") { Volume = 1f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
+        public static readonly SoundStyle badapple = new("RagnarokMod/Sounds/Music/Riffs/Memes/badapple") { Volume = 1f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
+        public static readonly SoundStyle delirious = new("RagnarokMod/Sounds/Music/Riffs/Memes/delirious") { Volume = 1f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
+        public static readonly SoundStyle kingdom = new("RagnarokMod/Sounds/Music/Riffs/Memes/kingdom") { Volume = 1f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
+        public static readonly SoundStyle hollowpurple = new("RagnarokMod/Sounds/Music/Riffs/Memes/hollowpurple") { Volume = 1f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
+        public static readonly SoundStyle shrine = new("RagnarokMod/Sounds/Music/Riffs/Memes/shrine") { Volume = 1f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
+        public static readonly SoundStyle tf2 = new("RagnarokMod/Sounds/Music/Riffs/Memes/tf2") { Volume = 1f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
     }
 }

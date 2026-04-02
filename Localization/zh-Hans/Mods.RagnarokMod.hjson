@@ -1612,9 +1612,8 @@ Configs: {
 				Healer just felt like an extension of mage.
 				So we fixed that.
 				By replacing Mage with Healer.
-				Setting to 1 enables this.
-				Setting to 0 disables this.
-				Setting to -1 inverts this.
+				All magic is healing if you believe hard enough. 
+				Or hit hard enough.
 				''' */
 		}
 
@@ -1625,9 +1624,8 @@ Configs: {
 				Summoner had some unfortunate progression gaps.
 				So we fixed that.
 				By giving all of Melee to Summoner.
-				Setting to 1 enables this.
-				Setting to 0 disables this.
-				Setting to -1 inverts this.
+				Your minions now respect you. 
+				Your sword does not.
 				''' */
 		}
 
@@ -1637,15 +1635,24 @@ Configs: {
 				'''
 				Rogue is taking back its roots.
 				By absorbing Ranger.
-				Setting to 1 enables this.
-				Setting to 0 disables this.
-				Setting to -1 inverts this.
+				They were always the same person. 
+				One just had better shoes.
 				''' */
 		}
 
 		ObBard: {
 			// Label: Obnoxious Bard
 			// Tooltip: Makes your riffs... less riffin
+		}
+
+		OwnRiffWeight: {
+			// Label: Own Riff Weight
+			// Tooltip: ""
+		}
+
+		RiffWeights: {
+			// Label: Riff Weights
+			// Tooltip: ""
 		}
 	}
 }
@@ -1656,5 +1663,12 @@ DiscordInvite: "[i:WireKite][c/9696FF:欢迎加入][c/B428FF:诸神的黄昏][c/
 PatreonAd: "[i:LuckyCoin][c/96FF96:如果你喜欢本模组，欢迎考虑在Patreon上支持我们：][c/3898FF:patreon.com/c/DevTeamRagnarok][i:LuckyCoin]"
 DisableMe: "[i:Wrench][c/FFFF0A:如果你不想再看到这些消息，可以在暂停菜单的配置中将其关闭！][i:Wrench]"
 Riffs.Cooldown: 即兴演奏冷却
-DamageClasses.ThoriumRogueClass.DisplayName: 盗贼伤害
+
+DamageClasses: {
+	ThoriumRogueClass.DisplayName: 盗贼伤害
+	// MeleeSummoner.DisplayName: summelee damage
+	// RadiantMagic.DisplayName: radiagic damage
+	// RogueRanger.DisplayName: roganged damage
+}
+
 // Tiles.MenuMusicBoxTile.MapEntry: Menu Music Box Tile

@@ -2,8 +2,10 @@ using CalamityMod;
 using CalamityMod.Items;
 using CalamityMod.Items.Materials;
 using CalamityMod.Rarities;
+using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using RagnarokMod.Items.HealerItems.Armor;
 using RagnarokMod.Projectiles;
 using RagnarokMod.Projectiles.HealerPro.Other;
 using RagnarokMod.Projectiles.HealerPro.Scythes;
@@ -12,7 +14,9 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using ThoriumMod.Items.BossThePrimordials.Dream;
 using ThoriumMod.Items.HealerItems;
+using ThoriumMod.Items.Tracker;
 
 namespace RagnarokMod.Items.HealerItems.Scythes
 {
@@ -93,6 +97,12 @@ namespace RagnarokMod.Items.HealerItems.Scythes
         }
         public override void AddRecipes()
         {
+            CreateRecipe().
+                AddIngredient<MarbleScythe>().
+                AddIngredient<TheBlackScythe>().
+                AddIngredient<AuricBar>(5).
+                AddTile<CosmicAnvil>().
+                Register();
         }
     }
 }

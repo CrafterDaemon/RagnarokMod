@@ -1630,9 +1630,8 @@ Configs: {
 				Healer just felt like an extension of mage.
 				So we fixed that.
 				By replacing Mage with Healer.
-				Setting to 1 enables this.
-				Setting to 0 disables this.
-				Setting to -1 inverts this.
+				All magic is healing if you believe hard enough. 
+				Or hit hard enough.
 				'''
 		}
 
@@ -1643,9 +1642,8 @@ Configs: {
 				Summoner had some unfortunate progression gaps.
 				So we fixed that.
 				By giving all of Melee to Summoner.
-				Setting to 1 enables this.
-				Setting to 0 disables this.
-				Setting to -1 inverts this.
+				Your minions now respect you. 
+				Your sword does not.
 				'''
 		}
 
@@ -1655,15 +1653,24 @@ Configs: {
 				'''
 				Rogue is taking back its roots.
 				By absorbing Ranger.
-				Setting to 1 enables this.
-				Setting to 0 disables this.
-				Setting to -1 inverts this.
+				They were always the same person. 
+				One just had better shoes.
 				'''
 		}
 
 		ObBard: {
 			Label: Obnoxious Bard
 			Tooltip: Makes your riffs... less riffin
+		}
+
+		OwnRiffWeight: {
+			Label: Own Riff Weight
+			Tooltip: ""
+		}
+
+		RiffWeights: {
+			Label: Riff Weights
+			Tooltip: ""
 		}
 	}
 }
@@ -1674,5 +1681,12 @@ DiscordInvite: "[i:WireKite][c/9696FF:Join the official ][c/B428FF:Ragnarok Mod]
 PatreonAd: "[i:LuckyCoin][c/96FF96:If you enjoy the mod, consider supporting us on Patreon: ][c/3898FF:patreon.com/c/DevTeamRagnarok][i:LuckyCoin]"
 DisableMe: "[i:Wrench][c/FFFF0A:If you would like to stop getting these messages, you can disable them in the config in your pause menu!][i:Wrench]"
 Riffs.Cooldown: Riff Cooldown
-DamageClasses.ThoriumRogueClass.DisplayName: rogue damage
+
+DamageClasses: {
+	ThoriumRogueClass.DisplayName: rogue damage
+	MeleeSummoner.DisplayName: summelee damage
+	RadiantMagic.DisplayName: radiagic damage
+	RogueRanger.DisplayName: roganged damage
+}
+
 Tiles.MenuMusicBoxTile.MapEntry: Menu Music Box Tile

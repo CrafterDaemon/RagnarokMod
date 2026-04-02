@@ -1,99 +1,112 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using RagnarokMod.Common.Configs;
 using RagnarokMod.Sounds;
 using Terraria;
 using Terraria.Audio;
+using Terraria.ModLoader;
 
 namespace RagnarokMod.Items.BardItems
 {
-    public abstract partial class BigRiffInstrumentBase
+    /// <summary>
+    /// Shared weighted-random riff sound picker for all riff instrument bases.
+    /// Reads weights from the AprilChaos config at call time so changes take effect
+    /// immediately without a reload.
+    /// </summary>
+    internal static class ObnoxiousBardHelper
     {
-        private static SoundStyle GetRandomRiffSound(SoundStyle riff)
+        // Maps config dictionary keys to their actual SoundStyle.
+        // Add new entries here when adding new joke riffs.
+        private static readonly Dictionary<string, SoundStyle> SoundMap = new()
         {
-            // (sound, weight) pairs -- higher weight = more likely
-            (SoundStyle sound, int weight)[] riffSounds = {
-                (riff, 100),
-                (RagnarokModSounds.rotjdriff,   10),
-                (RagnarokModSounds.calcloneriff, 10),
-                (RagnarokModSounds.slimeriff,   10),
-                (RagnarokModSounds.aureusriff, 10),
-                (RagnarokModSounds.shredderriff,   10),
-                (RagnarokModSounds.HiveMindRiff, 10),
-                (RagnarokModSounds.devourerriff,   10),
-                (RagnarokModSounds.fretsriff, 10),
-                (RagnarokModSounds.nfl, 2),
-                (RagnarokModSounds.lavachicken, 2),
-                (RagnarokModSounds.cortisol, 2),
-                (RagnarokModSounds.crabrave, 2),
-                (RagnarokModSounds.meow, 2),
-                (RagnarokModSounds.outro, 2),
-                (RagnarokModSounds.sans, 2),
-                (RagnarokModSounds.tycoon, 2),
-                (RagnarokModSounds.worldrevolving, 2),
-                (RagnarokModSounds.rickroll, 2)
+            ["RotJD"] = RagnarokModSounds.rotjdriff,
+            ["CalClone"] = RagnarokModSounds.calcloneriff,
+            ["Slime"] = RagnarokModSounds.slimeriff,
+            ["Aureus"] = RagnarokModSounds.aureusriff,
+            ["Shredder"] = RagnarokModSounds.shredderriff,
+            ["HiveMind"] = RagnarokModSounds.HiveMindRiff,
+            ["Devourer"] = RagnarokModSounds.devourerriff,
+            ["Frets"] = RagnarokModSounds.fretsriff,
+            ["NFL"] = RagnarokModSounds.nfl,
+            ["LavaChicken"] = RagnarokModSounds.lavachicken,
+            ["Cortisol"] = RagnarokModSounds.cortisol,
+            ["CrabRave"] = RagnarokModSounds.crabrave,
+            ["Meow"] = RagnarokModSounds.meow,
+            ["Outro"] = RagnarokModSounds.outro,
+            ["Sans"] = RagnarokModSounds.sans,
+            ["Tycoon"] = RagnarokModSounds.tycoon,
+            ["WorldRevolving"] = RagnarokModSounds.worldrevolving,
+            ["RickRoll"] = RagnarokModSounds.rickroll,
+            ["Werehog"] = RagnarokModSounds.werehog,
+            ["Slide"] = RagnarokModSounds.slide,
+            ["Pizza"] = RagnarokModSounds.pizza,
+            ["Driftveil"] = RagnarokModSounds.driftveil,
+            ["Malo"] = RagnarokModSounds.malo,
+            ["Giorno"] = RagnarokModSounds.giorno,
+            ["Slaughter"] = RagnarokModSounds.slaughter,
+            ["Coconut"] = RagnarokModSounds.coconut,
+            ["Cheese"] = RagnarokModSounds.cheese,
+            ["Piggies"] = RagnarokModSounds.piggies,
+            ["Coda"] = RagnarokModSounds.coda,
+            ["Whisper"] = RagnarokModSounds.whisper,
+            ["Homer"] = RagnarokModSounds.homer,
+            ["Surprise"] = RagnarokModSounds.surprise,
+            ["NumberOne"] = RagnarokModSounds.numberone,
+            ["Gas"] = RagnarokModSounds.gas,
+            ["Rockefeller"] = RagnarokModSounds.rockefeller,
+            ["Nineties"] = RagnarokModSounds.nineties,
+            ["Scatman"] = RagnarokModSounds.scatman,
+            ["Oiia"] = RagnarokModSounds.oiia,
+            ["Alia"] = RagnarokModSounds.alia,
+            ["BadApple"] = RagnarokModSounds.badapple,
+            ["Delirious"] = RagnarokModSounds.delirious,
+            ["Kingdom"] = RagnarokModSounds.kingdom,
+            ["HollowPurple"] = RagnarokModSounds.hollowpurple,
+            ["Shrine"] = RagnarokModSounds.shrine,
+            ["TF2"] = RagnarokModSounds.tf2,
+        };
+
+        internal static SoundStyle GetRandomRiffSound(SoundStyle ownRiff)
+        {
+            var config = ModContent.GetInstance<AprilChaos>();
+
+            // Build the weighted list at call time from config
+            var pool = new List<(SoundStyle sound, int weight)>
+            {
+                (ownRiff, config.OwnRiffWeight)
             };
 
-            int totalWeight = 0;
-            foreach (var (_, weight) in riffSounds)
-                totalWeight += weight;
-
-            int roll = Main.rand.Next(totalWeight);
-            int cumulative = 0;
-            foreach (var (sound, weight) in riffSounds)
+            foreach (var (key, weight) in config.RiffWeights)
             {
-                cumulative += weight;
+                if (weight > 0 && SoundMap.TryGetValue(key, out SoundStyle sound))
+                    pool.Add((sound, weight));
+            }
+
+            int total = 0;
+            foreach (var (_, w) in pool) total += w;
+            if (total <= 0) return ownRiff;
+
+            int roll = Main.rand.Next(total);
+            int cumulative = 0;
+            foreach (var (sound, w) in pool)
+            {
+                cumulative += w;
                 if (roll < cumulative)
                     return sound;
             }
 
-            return riffSounds[0].sound; // fallback
+            return ownRiff;
         }
+    }
+
+    public abstract partial class BigRiffInstrumentBase
+    {
+        private static SoundStyle GetRandomRiffSound(SoundStyle riff)
+            => ObnoxiousBardHelper.GetRandomRiffSound(riff);
     }
 
     public abstract partial class RiffInstrumentBase
     {
         private static SoundStyle GetRandomRiffSound(SoundStyle riff)
-        {
-            // (sound, weight) pairs -- higher weight = more likely
-            (SoundStyle sound, int weight)[] riffSounds = {
-                (riff, 100),
-                (RagnarokModSounds.rotjdriff,   10),
-                (RagnarokModSounds.calcloneriff, 10),
-                (RagnarokModSounds.slimeriff,   10),
-                (RagnarokModSounds.aureusriff, 10),
-                (RagnarokModSounds.shredderriff,   10),
-                (RagnarokModSounds.HiveMindRiff, 10),
-                (RagnarokModSounds.devourerriff,   10),
-                (RagnarokModSounds.fretsriff, 10),
-                (RagnarokModSounds.nfl, 2),
-                (RagnarokModSounds.lavachicken, 2),
-                (RagnarokModSounds.cortisol, 2),
-                (RagnarokModSounds.crabrave, 2),
-                (RagnarokModSounds.meow, 2),
-                (RagnarokModSounds.outro, 2),
-                (RagnarokModSounds.sans, 2),
-                (RagnarokModSounds.tycoon, 2),
-                (RagnarokModSounds.worldrevolving, 2),
-                (RagnarokModSounds.rickroll, 2)
-            };
-
-            int totalWeight = 0;
-            foreach (var (_, weight) in riffSounds)
-                totalWeight += weight;
-
-            int roll = Main.rand.Next(totalWeight);
-            int cumulative = 0;
-            foreach (var (sound, weight) in riffSounds)
-            {
-                cumulative += weight;
-                if (roll < cumulative)
-                    return sound;
-            }
-
-            return riffSounds[0].sound; // fallback
-        }
+            => ObnoxiousBardHelper.GetRandomRiffSound(riff);
     }
 }

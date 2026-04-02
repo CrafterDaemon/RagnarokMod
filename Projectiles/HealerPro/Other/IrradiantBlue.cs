@@ -210,25 +210,34 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
 
             float pulse = 1f + MathF.Sin(time * 5f) * 0.12f;
 
-            sb.Draw(pixel, Projectile.Center - Main.screenPosition, PixelRect,
-                new Color(20, 60, 180) * 0.15f * alpha,
-                0f, PixelOriginCenter, new Vector2(Projectile.width * 1.6f * pulse), SpriteEffects.None, 0f);
+            // Circular soft glow -- ThePerfectGlow is a radial gradient, no hard square edges
+            Texture2D glow = TextureAssets.Extra[ExtrasID.ThePerfectGlow].Value;
+            Vector2 glowOrigin = glow.Size() * 0.5f;
+            float glowW = glow.Width;
 
-            sb.Draw(pixel, Projectile.Center - Main.screenPosition, PixelRect,
+            // Outer ambient glow
+            sb.Draw(glow, Projectile.Center - Main.screenPosition, null,
+                new Color(20, 60, 180) * 0.15f * alpha,
+                0f, glowOrigin, Projectile.width * 1.6f * pulse / glowW, SpriteEffects.None, 0f);
+
+            // Inner glow
+            sb.Draw(glow, Projectile.Center - Main.screenPosition, null,
                 new Color(60, 140, 255) * 0.2f * alpha,
-                0f, PixelOriginCenter, new Vector2(Projectile.width * 0.8f * pulse), SpriteEffects.None, 0f);
+                0f, glowOrigin, Projectile.width * 0.8f * pulse / glowW, SpriteEffects.None, 0f);
+
+            // Trail afterimages
             for (int k = 0; k < Projectile.oldPos.Length; k++)
             {
                 if (Projectile.oldPos[k] == Vector2.Zero) continue;
                 float t = 1f - (float)k / Projectile.oldPos.Length;
                 Vector2 trailPos = Projectile.oldPos[k] + new Vector2(Projectile.width, Projectile.height) / 2f - Main.screenPosition;
 
-                sb.Draw(pixel, trailPos, PixelRect,
+                sb.Draw(glow, trailPos, null,
                     new Color(15, 40, 180) * 0.3f * t * alpha,
-                    0f, PixelOriginCenter, new Vector2(Projectile.width * t), SpriteEffects.None, 0f);
-                sb.Draw(pixel, trailPos, PixelRect,
+                    0f, glowOrigin, Projectile.width * t / glowW, SpriteEffects.None, 0f);
+                sb.Draw(glow, trailPos, null,
                     new Color(60, 140, 255) * 0.5f * t * alpha,
-                    0f, PixelOriginCenter, new Vector2(Projectile.width * 0.4f * t), SpriteEffects.None, 0f);
+                    0f, glowOrigin, Projectile.width * 0.4f * t / glowW, SpriteEffects.None, 0f);
             }
 
             // STATE: BEGUN (additive)

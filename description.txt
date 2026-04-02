@@ -3,6 +3,59 @@ Adds more content for Thorium classes, Merges Thrower + Rogue, and creates a mor
 
 ────────────────────────────────────────
 
+UPDATE 1.5.2.1
+Ragnarok: The April Chaos Update
+
+────────────────────────────────────────
+
+BALANCE
+
+  - Decreased the rarity of the Voidseer Pearl from Light Red to Pink
+  - Increased the sell price of the Voidseer Pearl to 50 gold
+  - Charred Idol is now crafted with a Void Heart rather than the Voidseer Pearl
+  - The Eldritch Soul Artifact now requires an Eldritch Shell Fragment to craft
+  - Reduced the max Bloodlust of the Bloodflare armor sets to 100
+  - Added the Calamity life steal cooldown to the Bloodflare Grim Visage set bonus' life steal
+  - Bloodlust from the Bloodflare armor sets now resets when a boss is spawned
+  - Readjusted many of the numbers on the Nightfallen armor set
+  - The Nightfallen armor set is now a Corrupted Healer armor set
+  - Increased Scoria Dualscythe damage (80 → 100)
+  - Auric Greatscythe: Increased damage (450 → 600), reduced right-click damage multiplier (x20 → x10), the multiplier no longer applies to the right-click swing, right-click now has longer iframes to prevent hitting the same enemy twice, right-click bolt now correctly aims toward the cursor
+  - Moved Unbreakable Combat Ukulele to pre-Devourer of Gods
+  - Ectambourine no longer animates on right-click
+
+RECIPES
+
+  - Auric Greatscythe: Marble Scythe + The Black Scythe + 5 Auric Bars
+
+BUG FIXES
+
+  - Fixed a bug that caused the Leviathan Heart to not always be correctly classed as a Healer item
+  - Fixed the Leviathan Heart tooltip incorrectly listing the amount of attack speed it provides
+  - Fixed a bug that caused the set bonus for Tarragon helmets to not load properly
+  - Removed the random squares from Irradiant Infinity projectiles, Red now renders properly
+
+APRIL CHAOS
+
+  - There is now a 1/5,000 chance for ||any sound to be replaced with the Primordial Wyrm spawn sound|| on April 1st only.
+
+  - Added the April Chaos config, featuring the following toggleable options:
+      - Obnoxious Bard: Riffs play a random track (37 secret riffs!)
+      - Summelee: Melee and Summoner damage classes are merged
+            Summoner class was still hungry for content, so we fixed that.
+            By giving all of Melee to Summoner.
+            Your minions now respect you. Your sword does not.
+      - Radiagic: Healer and Mage damage classes are merged
+            Healer just felt like an extension of Mage, so we fixed that.
+            By replacing Mage with Healer.
+            All magic is healing if you believe hard enough. Or hit hard enough.
+      - Roganger: Rogue and Ranger damage classes are merged
+            Rogue is taking back its roots.
+            By absorbing Ranger.
+            They were always the same person. One just had better shoes.
+
+────────────────────────────────────────
+
 UPDATE 1.5
 Ragnarok: Riffs & Recalibration
 
