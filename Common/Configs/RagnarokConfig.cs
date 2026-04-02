@@ -9,9 +9,11 @@ namespace RagnarokMod.Common.Configs
 
         [Header("BossProgressionChanges")]
 
+        /*
         [DefaultValue(true)]
         [ReloadRequired]
         public bool GrandFlareGun;
+        */
 
         [DefaultValue(true)]
         [ReloadRequired]

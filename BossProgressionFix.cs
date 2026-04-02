@@ -36,6 +36,8 @@ namespace RagnarokMod
         public override void AddRecipes()
         {
             GetRecipe getter = new();
+            
+            /*
             if (ModContent.GetInstance<BossProgressionConfig>().GrandFlareGun)
             {
                 getter.LookFor(ModContent.ItemType<GrandFlareGun>(), 1);
@@ -64,6 +66,7 @@ namespace RagnarokMod
                     .AddTile(TileID.Anvils)
                     .Register();
             }
+            */
 
             if (ModContent.GetInstance<BossProgressionConfig>().DesertMedallion)
             {
