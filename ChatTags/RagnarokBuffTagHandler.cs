@@ -33,7 +33,7 @@ namespace RagnarokMod.ChatTags
                 [ModContent.BuffType<Buffs.LeviathanHeartBubbleCorrupted>()] = new Color(255, 105, 237),
                 [ModContent.BuffType<Buffs.ScytheAirBuff>()] = new Color(180, 230, 255),
                 [ModContent.BuffType<Buffs.ScytheBrimstoneBuff>()] = new Color(255, 80, 30), 
-                [ModContent.BuffType<Buffs.ScytheEarthBuff>()] = new Color(120, 185, 80),
+                [ModContent.BuffType<Buffs.ScytheEarthBuff>()] = new Color(79, 55, 39),
                 [ModContent.BuffType<Buffs.ScytheOasisBuff>()] = new Color(80, 210, 150),
                 [ModContent.BuffType<Buffs.ScytheSandBuff>()] = new Color(230, 190, 90), 
                 [ModContent.BuffType<Buffs.ScytheWaterBuff>()] = new Color(90, 160, 255),
