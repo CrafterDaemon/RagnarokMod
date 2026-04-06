@@ -581,7 +581,11 @@ Items: {
 
 	TrueSquirrelScarf: {
 		// DisplayName: True Squirrel Scarf
-		// Tooltip: The true, original form of the squirrel scarf.\nGrants +999 Sentry Slots
+		/* Tooltip:
+			'''
+			The true, original form of the squirrel scarf.
+			Grants +999 Sentry Slots
+			''' */
 	}
 
 	Prisma: {
@@ -941,6 +945,7 @@ Items: {
 	PrimalTerror: {
 		DisplayName: 始源恐惧
 		Tooltip: 一定要收藏我，嘻嘻
+		// HasAwoken: The Primordial Wyrm has awoken!
 	}
 
 	DevourerOfSines: {
@@ -1016,6 +1021,10 @@ Items: {
 			这幅画的大小无法容纳整个团队
 			长按SHIFT键可以查看以前和当前的开发者
 			'''
+		// Donors: Donors
+		// Artists: Artists
+		// Programmers: Programmers
+		// OtherDevelopers: Other Developers
 	}
 
 	ProfanityFilter: {
@@ -1106,6 +1115,13 @@ Items: {
 			“你不是贪婪……你是彻头彻尾的疯子！”
 			复仇模式专属
 			'''
+	}
+
+	// InspirationSingularity.DisplayName: Inspiration Singularity
+
+	Asterion: {
+		// DisplayName: Asterion
+		// Tooltip: ""
 	}
 }
 
@@ -1224,6 +1240,7 @@ Projectiles: {
 	// WulfrumGuitarPro.DisplayName: Wulfrum Guitar Pro
 	// AcidicSaxBubbleOverride.DisplayName: Acidic Sax Bubble Override
 	// AcidicReedOverride.DisplayName: Acidic Reed Override
+	// AsterionConstellation.DisplayName: Asterion Constellation
 }
 
 Configs: {
@@ -1322,7 +1339,7 @@ Configs: {
 
 		Headers: {
 			ClassBalanceChanges: 职业平衡设置页
-			// ClassMechanicChanges: Class Mechanic Changes Header
+			// ClassMechanicChanges: Class Mechanic Changes
 		}
 
 		HealerDamageModifier: {
@@ -1367,7 +1384,7 @@ Configs: {
 
 		RiffsRequireRiffInstrumentToBeHeld: {
 			// Label: Riffs Require Riff Instrument To Be Held
-			// Tooltip: ""
+			// Tooltip: Riffs end automatically when the weapon is no longer held.
 		}
 	}
 
@@ -1662,7 +1679,11 @@ FandomWarning: "[i:GolfCupFlagRed][c/B428FF:诸神的黄昏][c/FF2929:没有Fand
 DiscordInvite: "[i:WireKite][c/9696FF:欢迎加入][c/B428FF:诸神的黄昏][c/9696FF: Discord频道！][c/3898FF:discord.gg/UBAQwtKCbf][i:WireKite]"
 PatreonAd: "[i:LuckyCoin][c/96FF96:如果你喜欢本模组，欢迎考虑在Patreon上支持我们：][c/3898FF:patreon.com/c/DevTeamRagnarok][i:LuckyCoin]"
 DisableMe: "[i:Wrench][c/FFFF0A:如果你不想再看到这些消息，可以在暂停菜单的配置中将其关闭！][i:Wrench]"
-Riffs.Cooldown: 即兴演奏冷却
+
+Riffs: {
+	Cooldown: 即兴演奏冷却
+	// EmpowermentsHeader: Riff Empowerments:
+}
 
 DamageClasses: {
 	ThoriumRogueClass.DisplayName: 盗贼伤害

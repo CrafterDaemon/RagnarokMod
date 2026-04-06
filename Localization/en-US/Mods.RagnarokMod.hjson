@@ -1122,6 +1122,13 @@ Items: {
 		DisplayName: Golden Bat Droppings
 		Tooltip: ""
 	}
+
+	InspirationSingularity.DisplayName: Inspiration Singularity
+
+	Asterion: {
+		DisplayName: Asterion
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -1239,6 +1246,7 @@ Projectiles: {
 	WulfrumGuitarPro.DisplayName: Wulfrum Guitar Pro
 	AcidicSaxBubbleOverride.DisplayName: Acidic Sax Bubble Override
 	AcidicReedOverride.DisplayName: Acidic Reed Override
+	AsterionConstellation.DisplayName: Asterion Constellation
 }
 
 Configs: {
@@ -1382,7 +1390,7 @@ Configs: {
 
 		RiffsRequireRiffInstrumentToBeHeld: {
 			Label: Riffs Require Riff Instrument To Be Held
-			Tooltip: "Riffs end automatically when the weapon is no longer held."
+			Tooltip: Riffs end automatically when the weapon is no longer held.
 		}
 	}
 
@@ -1677,9 +1685,10 @@ FandomWarning: "[i:GolfCupFlagRed][c/B428FF:Ragnarok Mod ][c/FF2929:has never ha
 DiscordInvite: "[i:WireKite][c/9696FF:Join the official ][c/B428FF:Ragnarok Mod][c/9696FF: Discord! ][c/3898FF:discord.gg/UBAQwtKCbf][i:WireKite]"
 PatreonAd: "[i:LuckyCoin][c/96FF96:If you enjoy the mod, consider supporting us on Patreon: ][c/3898FF:patreon.com/c/DevTeamRagnarok][i:LuckyCoin]"
 DisableMe: "[i:Wrench][c/FFFF0A:If you would like to stop getting these messages, you can disable them in the config in your pause menu!][i:Wrench]"
+
 Riffs: {
 	Cooldown: Riff Cooldown
-	EmpowermentsHeader: "Riff Empowerments:"
+	EmpowermentsHeader: Riff Empowerments:
 }
 
 DamageClasses: {

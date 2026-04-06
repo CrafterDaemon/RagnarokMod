@@ -70,7 +70,7 @@ namespace RagnarokMod.ILEditing
         private static MethodInfo onHealEffects = null;
         private static ILHook onHealHook = null;
         private short timer = 0;
-        public int maxInsp = 50;
+        public int maxInsp = 60;
         public override void OnModLoad()
         {
             bool loadCaught = false;

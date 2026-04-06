@@ -43,14 +43,9 @@ namespace RagnarokMod.Common.Configs
             set => _rogran = value;
         }
 
-        private bool _obbard;
         [Header("ObnoxiousBard")]
         [DefaultValue(false)]
-        public bool ObBard
-        {
-            get => MasterToggle && _obbard;
-            set => _obbard = value;
-        }
+        public bool ObBard { get; set; }
 
         // Weight for playing the instrument's actual correct riff sound.
         // Set to 0 to never play the real riff, higher = more likely.

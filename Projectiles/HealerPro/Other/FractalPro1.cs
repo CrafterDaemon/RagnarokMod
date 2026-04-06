@@ -22,7 +22,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
             Projectile.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
             Projectile.tileCollide = false;
             Projectile.penetrate = 1;
-            Projectile.timeLeft = 41;
+            Projectile.timeLeft = 81;
             Projectile.ignoreWater = true;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = -1;
@@ -44,11 +44,11 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
                 dustTimer = 0;
                 Dust.NewDust(Projectile.Center, 0, 0, DustID.BlueFairy);
             }
-            if (timerthing >= 40)
+            if (timerthing >= 16)
             {
                 timerthing = 0;
                 Vector2 launchVelocity1 = Projectile.velocity;
-                launchVelocity1 = Vector2.Normalize(launchVelocity1) * 8f;
+                launchVelocity1 = Vector2.Normalize(launchVelocity1) * 16f;
                 Vector2 launchVelocity2 = launchVelocity1.RotatedBy(MathHelper.ToRadians(72));
                 Vector2 launchVelocity3 = launchVelocity1.RotatedBy(MathHelper.ToRadians(144));
                 Vector2 launchVelocity4 = launchVelocity1.RotatedBy(MathHelper.ToRadians(216));

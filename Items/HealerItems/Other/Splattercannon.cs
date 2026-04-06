@@ -31,7 +31,7 @@ namespace RagnarokMod.Items.HealerItems.Other
         public static int maxProj = 64;
         public static int perLoad = 8;
 
-        public int NumProjectiles = 0;
+        public int NumProjectiles = 8;
         public override void SetDefaults()
         {
             Item.damage = 85;
@@ -102,7 +102,7 @@ namespace RagnarokMod.Items.HealerItems.Other
                     player.KillMe(pdr, 1000.0, 0, false);
                     return false;
                 }
-                NumProjectiles = 0;
+                NumProjectiles = 8;
                 return false;
             }
         }
@@ -191,9 +191,7 @@ namespace RagnarokMod.Items.HealerItems.Other
         public override void AddRecipes()
         {
             base.CreateRecipe(1)
-                .AddIngredient<BloodstoneCore>(10)
-                .AddIngredient<RuinousSoul>(8)
-                .AddIngredient<CalamityMod.Items.Materials.BloodOrb>(100)
+                .AddIngredient<BloodstoneCore>(5)
                 .AddTile(TileID.LunarCraftingStation)
                 .Register();
         }

@@ -46,11 +46,11 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
 
             Projectile.rotation = Projectile.velocity.ToRotation();
 
-            NPC npc = Projectile.FindNearestNPCIgnoreTiles(2000);
+            NPC npc = Projectile.FindNearestNPCIgnoreTiles(3600);
             if (npc != null)
             {
                 timer = 0;
-                Projectile.HomeInOnTarget(npc, 15f, 0.15f);
+                Projectile.HomeInOnTarget(npc, 32f, 0.15f);
             }
 
             if (timer >= 36 && npc == null) { Projectile.Kill(); }

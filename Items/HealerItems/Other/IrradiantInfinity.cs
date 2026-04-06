@@ -1,4 +1,5 @@
 using CalamityMod.Items.Materials;
+using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RagnarokMod.Projectiles.HealerPro.Other;
@@ -123,7 +124,8 @@ namespace RagnarokMod.Items.HealerItems.Other
             CreateRecipe()
                 .AddIngredient(ModContent.ItemType<RuinousSoul>(), 15)
                 .AddIngredient(ModContent.ItemType<Necroplasm>(), 15)
-                .AddTile(TileID.LunarCraftingStation)
+                .AddIngredient(ModContent.ItemType<CosmiliteBar>(), 5)
+                .AddTile(ModContent.TileType<CosmicAnvil>())
                 .Register();
         }
     }
