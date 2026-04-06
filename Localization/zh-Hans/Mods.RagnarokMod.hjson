@@ -2,11 +2,13 @@ Buffs: {
 	AntarcticCreativityBuff: {
 		DisplayName: 极地创想
 		Description: 灵感值恢复速度提高15%和增加10%音波演奏速度
+		// ItemTooltip: +15% inspiration regeneration rate and +10% increased symphonic playing speed
 	}
 
 	AntarcticReinforcementBuff: {
 		DisplayName: 极地援护
 		Description: 防御力增加8, 治疗法术会额外治疗2点生命值
+		// ItemTooltip: +8 defense and +2 bonus healing
 	}
 
 	AntarcticExhaustionDebuff: {
@@ -17,6 +19,7 @@ Buffs: {
 	GuardianHealerBeamBuff: {
 		DisplayName: 圣晶守卫的祝福
 		Description: 额外降低10%伤害减免和5点生命恢复并持续20秒
+		// ItemTooltip: +10% damage reduction and +5 hp/s life regen
 	}
 
 	ElementalScytheCooldown: {
@@ -27,37 +30,37 @@ Buffs: {
 	ScytheAirBuff: {
 		DisplayName: 空气的祝福
 		Description: 增加20%移动速度和飞行时间
-		// ItemTooltip: Grants an additional 20% move speed and wing time
+		// ItemTooltip: +20% movement speed and wing time
 	}
 
 	ScytheBrimstoneBuff: {
 		DisplayName: 硫磺火的祝福
 		Description: 所有攻击都造成硫磺火
-		// ItemTooltip: Grants the ability to apply Brimstone Flames on hit
+		// ItemTooltip: Inflict [cbuff:CalamityMod/BrimstoneFlames] on hit
 	}
 
 	ScytheEarthBuff: {
 		DisplayName: 大地的祝福
 		Description: 防御力增加10
-		// ItemTooltip: Grants an additional 10 defense
+		// ItemTooltip: +10 defense
 	}
 
 	ScytheOasisBuff: {
 		DisplayName: 绿洲的祝福
 		Description: 自然回复提高15点生命值/秒
-		// ItemTooltip: Increases natural regen by 15 hp per second
+		// ItemTooltip: +15 hp/s life regen
 	}
 
 	ScytheSandBuff: {
 		DisplayName: 沙的祝福
 		Description: 增加5%攻击伤害
-		// ItemTooltip: Increases all damage dealt by 5%
+		// ItemTooltip: +5% attack damage
 	}
 
 	ScytheWaterBuff: {
 		DisplayName: 水的祝福
 		Description: 增加5%攻击速度
-		// ItemTooltip: Increases all attack speed by 5%
+		// ItemTooltip: +5% all attack speed
 	}
 
 	AuricSurge: {
@@ -76,14 +79,14 @@ Buffs: {
 		/* ItemTooltip:
 			'''
 			Typeless - 100 DPS
-			10% increased damage taken
+			+10% damage taken from all sources
 			''' */
 	}
 
 	LeviathanHeartBubble: {
 		DisplayName: 利维坦泡泡心
 		Description: 利维坦的泡泡给予你5%伤害减免
-		// ItemTooltip: Grants 5% damage reduction
+		// ItemTooltip: +5% damage reduction
 	}
 
 	LeviathanHeartBubbleCorrupted: {
@@ -93,7 +96,7 @@ Buffs: {
 			腐坏的利维坦泡泡增加你10%的伤害
 			但你受到的伤害提升5%
 			'''
-		// ItemTooltip: Deal 10% more damage, but take 5% more damage
+		// ItemTooltip: +10% attack damage, +5% damage taken from all sources
 	}
 }
 
@@ -442,7 +445,7 @@ Items: {
 			'''
 			A Guardian healer will assist you in healing your allies
 			Heals ally life equal to your bonus healing + 5 health
-			and grants them the Guardian Healers Blessing for 20 seconds
+			and grants them [rbuff:RagnarokMod/GuardianHealerBeamBuff] for 20 seconds
 			{$CalamityMod.Items.Armor.PostMoonLord.TarragonBreastplate.CommonSetBonus}
 			''' */
 	}
@@ -600,11 +603,6 @@ Items: {
 		Tooltip: 释放海棱之星，然后碎裂成五个尖刺
 	}
 
-	Fractal: {
-		DisplayName: 晶变流形
-		Tooltip: 发射一个不断迸射的神圣魔力星
-	}
-
 	VoidseerPearl: {
 		DisplayName: 虚兆珠
 		Tooltip:
@@ -718,16 +716,15 @@ Items: {
 			'''
 	}
 
-	GoldenxBatDroppings: {
-		// DisplayName: Golden Bat Droppings
-		/* Tooltip:
+	GoldenBatDroppings: {
+		DisplayName: 金蝙蝠粪便
+		Tooltip:
 			'''
-			+25% coins from enemies (50% while in rage mode)
-			Increases damage based on held coins (coinslots only)
-			This bonus is increased by 50% while in adrenaline mode.
-			You will lose 25% of your coins permanently upon death (50% on death or master mode)
-			"You're not greedy... you're batshit insane!"
-			''' */
+			增加30%来自敌人的金币
+			基于持有的钱币增加伤害(仅限钱币栏)
+			“你不是贪婪……你是彻头彻尾的疯子！”
+			复仇模式专属
+			'''
 	}
 
 	VerdurantBloom: {
@@ -834,15 +831,6 @@ Items: {
 			“在万圣节和圣诞节中间的某个时间点找到的”
 			“嘿，你可以把它拍成电影！”
 			'''
-	}
-
-	Armor: {
-		PostMoonLord: {
-			SilvaHeadHealer: {
-				DisplayName: 始源林海帽
-				Tooltip: ""
-			}
-		}
 	}
 
 	DragonForce: {
@@ -1078,7 +1066,7 @@ Items: {
 		/* Tooltip:
 			'''
 			Sends out bouncing corroslime balls
-			Right Click to split balls into {0} smaller balls
+			Press <right> to split balls into {0} smaller balls
 			This process can be done {1} times
 			''' */
 		// DisplayName: Corroslime Bass
@@ -1102,7 +1090,7 @@ Items: {
 		/* Tooltip:
 			'''
 			Shoots bouncing sound waves
-			Right Click to return the waves
+			Press <right> to return the waves
 			Returning waves will ignore tiles
 			''' */
 		// DisplayName: Wulfrum Guitar
@@ -1113,22 +1101,19 @@ Items: {
 		// Tooltip: Plays 'Menu Theme' by CrafterDaemon
 	}
 
-	GoldenBatDroppings: {
-		DisplayName: 金蝙蝠粪便
-		Tooltip:
-			'''
-			增加30%来自敌人的金币
-			基于持有的钱币增加伤害(仅限钱币栏)
-			“你不是贪婪……你是彻头彻尾的疯子！”
-			复仇模式专属
-			'''
-	}
-
 	// InspirationSingularity.DisplayName: Inspiration Singularity
 
 	Asterion: {
 		// DisplayName: Asterion
-		// Tooltip: ""
+		/* Tooltip:
+			'''
+			Creates a branching fractal of starlight around you
+			This starlight occasionally grants you Starbursts on successful enemy hits
+			Press <right> with enough Starbursts to create Asterion
+			Asterion consumes Starburts quickly, but releases constant stellar pulses
+			These pulses heal you and allies in range, and inflict [cbuff:CalamityMod/Voidfrost] on enemies
+			'As loyal as a hound'
+			''' */
 	}
 }
 

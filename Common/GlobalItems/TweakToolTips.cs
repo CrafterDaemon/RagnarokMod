@@ -68,7 +68,7 @@ namespace RagnarokMod.Common.GlobalItems
             {
                 var key = PlayerInput.CurrentProfile.InputModes[InputMode.Keyboard]
                     .KeyStatus["SmartCursor"].First().ToString();
-                var hint = new TooltipLine(Mod, "RagnarokMod:AltHint", $"Hold {key} for debuff info");
+                var hint = new TooltipLine(Mod, "RagnarokMod:AltHint", $"Hold {key} to see buff information");
                 hint.OverrideColor = new Color(170, 170, 170);
                 tooltips.Add(hint);
             }

@@ -691,11 +691,11 @@ Items: {
 
 	EldritchShellFragment: {
 		DisplayName: Eldritch Shell Fragment
-		Tooltip: 
-		'''
-		Fetches quite a fortune on the market
-		'An enchanted shard from the prison of an ancient god'
-		'''
+		Tooltip:
+			'''
+			Fetches quite a fortune on the market
+			'An enchanted shard from the prison of an ancient god'
+			'''
 	}
 
 	SigilOfACruelWorld: {
@@ -793,7 +793,7 @@ Items: {
 		DisplayName: Elemental Reaper
 		Tooltip:
 			'''
-			Spinning this scythe creates homing projectiles that inflict [cbuff:CalamityMod/ElementalMix]
+			Spinning this scythe creates homing projectiles that inflict [rbuff:CalamityMod/ElementalMix]
 			Press <right> to grant you and all allies one of the following Elemental Blessings for 10 seconds:
 			[rbuff:RagnarokMod/ScytheAirBuff]
 			[rbuff:RagnarokMod/ScytheBrimstoneBuff]
@@ -1114,14 +1114,14 @@ Items: {
 	Asterion: {
 		DisplayName: Asterion
 		Tooltip:
-		'''
-		Creates a branching fractal of starlight around you
-		This starlight occasionally grants you Starbursts on successful enemy hits
-		Press <right> with enough Starbursts to create Asterion
-		Asterion consumes Starburts quickly, but releases constant stellar pulses
-		These pulses heal you and allies in range, and inflict [cbuff:CalamityMod/Voidfrost] on enemies
-		'As loyal as a hound'
-		'''
+			'''
+			Creates a branching fractal of starlight around you
+			This starlight occasionally grants you Starbursts on successful enemy hits
+			Press <right> with enough Starbursts to create Asterion
+			Asterion consumes Starburts quickly, but releases constant stellar pulses
+			These pulses heal you and allies in range, and inflict [cbuff:CalamityMod/Voidfrost] on enemies
+			'As loyal as a hound'
+			'''
 	}
 }
 
