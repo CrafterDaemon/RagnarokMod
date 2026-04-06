@@ -85,6 +85,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
                 return;
             }
             Projectile.ai[1] = 1f;
+            _pulseFade = MathHelper.Max(_pulseFade - 1f / PulseInterval, 0f);
             bool dismissed = Projectile.ai[0] == 1f;
             if (dismissed)
             {
@@ -107,7 +108,6 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
                 owner.Calamity().StratusStarburstResetTimer = (int)MathHelper.Max(
                     owner.Calamity().StratusStarburstResetTimer, 240);
             }
-            _pulseFade = MathHelper.Max(_pulseFade - 1f / PulseInterval, 0f);
 
             if (++_pulseTimer >= PulseInterval)
             {
@@ -173,15 +173,18 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
 
             CalamityUtils.DrawLineBetter(Main.spriteBatch, Segments[0].Center, Segments[1].Center, connectionColor, 2f);
             CalamityUtils.DrawLineBetter(Main.spriteBatch, Segments[1].Center, Segments[2].Center, connectionColor, 2f);
-
-            foreach (var seg in Segments)
+            for (int i = 0; i < Segments.Count; i++)
             {
+                var seg = Segments[i];
+                float phase = i * MathHelper.TwoPi / Segments.Count;
+                float starTwinkle = 0.8f + 0.2f * System.MathF.Sin(Main.GlobalTimeWrappedHourly * 6f + phase);
+
                 Main.spriteBatch.Draw(glowTex, seg.Center - Main.screenPosition,
-                    null, starColor, 0f, glowTex.Size() * 0.5f,
-                    0.2f * totalFade, SpriteEffects.None, 0f);
+                    null, starColor * starTwinkle, 0f, glowTex.Size() * 0.5f,
+                    0.2f * totalFade * starTwinkle, SpriteEffects.None, 0f);
                 Main.spriteBatch.Draw(tex, seg.Center - Main.screenPosition,
-                    null, Color.White * totalFade, 0f, tex.Size() * 0.5f,
-                    0.75f * totalFade, SpriteEffects.None, 0f);
+                    null, Color.White * totalFade * starTwinkle, 0f, tex.Size() * 0.5f,
+                    0.75f * totalFade * starTwinkle, SpriteEffects.None, 0f);
             }
 
             if (_pulseFade > 0f)

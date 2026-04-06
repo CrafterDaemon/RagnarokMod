@@ -19,11 +19,6 @@ Buffs: {
 		Description: 额外降低10%伤害减免和5点生命恢复并持续20秒
 	}
 
-	UniversalBlessing: {
-		DisplayName: 至上祝福
-		Description: Mods.RagnarokMod.Buffs.UniversalBlessing.Description
-	}
-
 	ElementalScytheCooldown: {
 		DisplayName: 元素收割者
 		Description: 元素收割者右键冷却时间！
@@ -32,31 +27,37 @@ Buffs: {
 	ScytheAirBuff: {
 		DisplayName: 空气的祝福
 		Description: 增加20%移动速度和飞行时间
+		// ItemTooltip: Grants an additional 20% move speed and wing time
 	}
 
 	ScytheBrimstoneBuff: {
 		DisplayName: 硫磺火的祝福
 		Description: 所有攻击都造成硫磺火
+		// ItemTooltip: Grants the ability to apply Brimstone Flames on hit
 	}
 
 	ScytheEarthBuff: {
 		DisplayName: 大地的祝福
 		Description: 防御力增加10
+		// ItemTooltip: Grants an additional 10 defense
 	}
 
 	ScytheOasisBuff: {
 		DisplayName: 绿洲的祝福
 		Description: 自然回复提高15点生命值/秒
+		// ItemTooltip: Increases natural regen by 15 hp per second
 	}
 
 	ScytheSandBuff: {
 		DisplayName: 沙的祝福
 		Description: 增加5%攻击伤害
+		// ItemTooltip: Increases all damage dealt by 5%
 	}
 
 	ScytheWaterBuff: {
 		DisplayName: 水的祝福
 		Description: 增加5%攻击速度
+		// ItemTooltip: Increases all attack speed by 5%
 	}
 
 	AuricSurge: {
@@ -72,11 +73,17 @@ Buffs: {
 	NightfallenDebuff: {
 		DisplayName: 苍帷减益
 		Description: Mods.RagnarokMod.Buffs.NightfallenDebuff.Description
+		/* ItemTooltip:
+			'''
+			Typeless - 100 DPS
+			10% increased damage taken
+			''' */
 	}
 
 	LeviathanHeartBubble: {
 		DisplayName: 利维坦泡泡心
 		Description: 利维坦的泡泡给予你5%伤害减免
+		// ItemTooltip: Grants 5% damage reduction
 	}
 
 	LeviathanHeartBubbleCorrupted: {
@@ -86,6 +93,7 @@ Buffs: {
 			腐坏的利维坦泡泡增加你10%的伤害
 			但你受到的伤害提升5%
 			'''
+		// ItemTooltip: Deal 10% more damage, but take 5% more damage
 	}
 }
 
@@ -452,9 +460,8 @@ Items: {
 			'''
 		/* SetBonus:
 			'''
-			A Guardian healer will assist you in healing your allies
-			Heals ally life equal to your bonus healing + 5 health
-			and grants them the Guardian Healers Blessing for 20 seconds
+			Symphonic critical strikes cause a random active empowerment to increase by one level
+			Your empowerments last 50% longer
 			{$CalamityMod.Items.Armor.PostMoonLord.TarragonBreastplate.CommonSetBonus}
 			''' */
 	}

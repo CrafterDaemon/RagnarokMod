@@ -1,67 +1,71 @@
 Buffs: {
 	AntarcticCreativityBuff: {
 		DisplayName: Antarctic Creativity
-		Description: +15% inspiration regeneration rate and +10% increased symphonic playing speed
+		Description: The cold brings great inspiration
+		ItemTooltip: +15% inspiration regeneration rate and +10% increased symphonic playing speed
 	}
 
 	AntarcticReinforcementBuff: {
 		DisplayName: Antarctic Reinforcement
-		Description: +8 defense, your healing spells will heal for an additional 2 life
+		Description: The cold protects you
+		ItemTooltip: +8 defense and +2 bonus healing
 	}
 
 	AntarcticExhaustionDebuff: {
 		DisplayName: Antarctic Exhaustion
-		Description: You can not buff again
+		Description: The cold settles into your bones
 	}
 
 	GuardianHealerBeamBuff: {
 		DisplayName: Guardian Healer's Blessing
-		Description: Additional 10% damage reduction and 5 life recovery for 20 seconds
-	}
-
-	UniversalBlessing: {
-		DisplayName: Universal Blessing
-		Description: Mods.RagnarokMod.Buffs.UniversalBlessing.Description
+		Description: You are under a profane blessing
+		ItemTooltip: +10% damage reduction and +5 hp/s life regen
 	}
 
 	ElementalScytheCooldown: {
 		DisplayName: Elemental Reaper Cooldown
-		Description: Elemental Reaper right-click is on cooldown!
+		Description: Elemental Reaper is on cooldown!
 	}
 
 	ScytheAirBuff: {
 		DisplayName: Blessing of the Air
-		Description: +20% move speed and wing time
+		Description: You always have a tailwind
+		ItemTooltip: +20% movement speed and wing time
 	}
 
 	ScytheBrimstoneBuff: {
 		DisplayName: Blessing of the Brimstone
-		Description: Apply Brimstone Flames on hit
+		Description: Your enemies erupt into accursed flames
+		ItemTooltip: Inflict [cbuff:CalamityMod/BrimstoneFlames] on hit
 	}
 
 	ScytheEarthBuff: {
 		DisplayName: Blessing of the Earth
-		Description: +10 defense
+		Description: The earth protects you
+		ItemTooltip: +10 defense
 	}
 
 	ScytheOasisBuff: {
 		DisplayName: Blessing of the Oasis
-		Description: Natural regen increased by 15 hp per second
+		Description: You feel rejuvenated from the desert oasis
+		ItemTooltip: +15 hp/s life regen
 	}
 
 	ScytheSandBuff: {
 		DisplayName: Blessing of the Sand
-		Description: All damage dealt increased by 5%
+		Description: The sands strengthen you
+		ItemTooltip: +5% attack damage
 	}
 
 	ScytheWaterBuff: {
 		DisplayName: Blessing of the Water
-		Description: All attack speed increased by 5%
+		Description: The water guides your hand
+		ItemTooltip: +5% all attack speed
 	}
 
 	AuricSurge: {
 		DisplayName: Auric Surge
-		Description: Mods.RagnarokMod.Buffs.AuricSurge.Description
+		Description: You are being smited from within.
 	}
 
 	KellyPetBuff: {
@@ -70,22 +74,29 @@ Buffs: {
 	}
 
 	NightfallenDebuff: {
-		DisplayName: Nightfallen Debuff
-		Description: Mods.RagnarokMod.Buffs.NightfallenDebuff.Description
+		DisplayName: Nightfallen
+		Description: The darkness consumes.
+		ItemTooltip:
+			'''
+			Typeless - 100 DPS
+			+10% damage taken from all sources
+			'''
 	}
 
 	LeviathanHeartBubble: {
-		DisplayName: Leviathan Heart Bubble
+		DisplayName: Leviathan Bubble
 		Description: The Leviathan's Bubble grants you +5% damage reduction
+		ItemTooltip: +5% damage reduction
 	}
 
 	LeviathanHeartBubbleCorrupted: {
-		DisplayName: Corrupted Leviathan Heart Bubble
+		DisplayName: Corrupted Leviathan Bubble
 		Description:
 			'''
 			The Corrupted Leviathan's Bubble grants you +10% damage
 			But you take 5% more damage
 			'''
+		ItemTooltip: +10% attack damage, +5% damage taken from all sources
 	}
 }
 
@@ -101,16 +112,13 @@ Tooltips: {
 		NormalTooltip:
 			'''
 			Healing spells heal 25% more hp
-			Healing spells apply a protective bubble to their target,
-			granting +5% damage reduction for 5 seconds
-			10% increased radiant attack speed
+			Healing spells apply [rbuff:RagnarokMod/LeviathanHeartBubble] to their target.
 			'''
 		CorruptTooltip:
 			'''
 			The Leviathan's Bubble reacts to your dark energy!
 			All health costs are reduced by 1
-			Spending health envelopes you in a corrupted bubble,
-			granting +10% damage, but you take 5% more damage
+			Spending health grants you [rbuff:RagnarokMod/LeviathanHeartBubbleCorrupted]
 			10% increased radiant attack speed
 			'''
 	}
@@ -213,7 +221,7 @@ Items: {
 			Mistiming hits will decrease these bonuses greatly and cost 9 inspiration
 			These bonuses will stay between weapon swaps, but gradually fade while not your active weapon
 			Chaining two or more successes will let out a large flaming slash
-			Flaming slashes inflict all enemies in range with Holy Inferno
+			Flaming slashes inflict all enemies in range with [cbuff:CalamityMod/HolyFlames]
 			'''
 	}
 
@@ -262,7 +270,7 @@ Items: {
 
 	CalamityBell: {
 		DisplayName: Calamity Bell
-		Tooltip: Shoots homing brimstone fireblasts that inflict brimstone flames on hit
+		Tooltip: Shoots homing brimstone fireblasts that inflict [cbuff:CalamityMod/BrimstoneFlames] on hit
 	}
 
 	CelestialManaCost: 20% decreased mana cost
@@ -277,9 +285,7 @@ Items: {
 		SetBonus:
 			'''
 			+10% increased inspiration regeneration speed
-			Pressing the '{$ThoriumMod.Keybinds.ArmorAbility.DisplayName}' key will grant you and your allies attack speed and damage I for 15 seconds
-			You also will be granted the Antarctic Creativity buff
-			While buffed you will be granted +15% inspiration speed and 10% increased symphonic playing speed
+			Pressing the '{$ThoriumMod.Keybinds.ArmorAbility.DisplayName}' key will grant you [rbuff:RagnarokMod/AntarcticCreativityBuff] for 15 seconds.
 			Costs 12 inspiration
 			'''
 	}
@@ -296,8 +302,7 @@ Items: {
 		SetBonus:
 			'''
 			Healing spells heal an additional 3 life
-			Pressing the '{$ThoriumMod.Keybinds.ArmorAbility.DisplayName}' key will shield you for 50 life and grants you the Antarctic Reinforcement buff for 15 seconds
-			While buffed you will be granted +8 defense and your healing spells will heal for an additional 2 life
+			Pressing the '{$ThoriumMod.Keybinds.ArmorAbility.DisplayName}' key will shield you for 50 life and grants you [rbuff:RagnarokMod/AntarcticReinforcementBuff] for 15 seconds
 			Costs 100 mana
 			'''
 	}
@@ -437,7 +442,7 @@ Items: {
 			'''
 			A Guardian healer will assist you in healing your allies
 			Heals ally life equal to your bonus healing + 5 health
-			and grants them the Guardian Healers Blessing for 20 seconds
+			and grants them [rbuff:RagnarokMod/GuardianHealerBeamBuff] for 20 seconds
 			{$CalamityMod.Items.Armor.PostMoonLord.TarragonBreastplate.CommonSetBonus}
 			'''
 	}
@@ -455,9 +460,8 @@ Items: {
 			'''
 		SetBonus:
 			'''
-			A Guardian healer will assist you in healing your allies
-			Heals ally life equal to your bonus healing + 5 health
-			and grants them the Guardian Healers Blessing for 20 seconds
+			Symphonic critical strikes cause a random active empowerment to increase by one level
+			Your empowerments last 50% longer
 			{$CalamityMod.Items.Armor.PostMoonLord.TarragonBreastplate.CommonSetBonus}
 			'''
 	}
@@ -486,8 +490,7 @@ Items: {
 		SetBonus:
 			'''
 			Healing spells will heal an additional 4 life
-			All attacks inflict Nightfallen
-			Nightfallen deals 100 damage per second
+			All attacks inflict [rbuff:RagnarokMod/NightfallenDebuff]
 			Nightfallen increases all damage taken by the target by 10%
 			'''
 	}
@@ -530,7 +533,7 @@ Items: {
 		Tooltip:
 			'''
 			Fires a life stealing bolt
-			Right Click to fire fast moving healing bolts instead
+			Press <right> to fire fast moving healing bolts instead
 			'You must follow the law of equivalent exchange'
 			'You can only get out equal to what you put in'
 			'''
@@ -541,7 +544,7 @@ Items: {
 		Tooltip:
 			'''
 			A holy inferno of a scythe
-			Right Click to throw the scythe, which will curve on it's way back
+			Press <right> to throw the scythe in a returning arc
 			The scythe deals 20% more damage when thrown and flings molten blobs during flight
 			'''
 	}
@@ -556,7 +559,7 @@ Items: {
 		Tooltip:
 			'''
 			The scoria allows you to spin the scythe much faster by constantly expelling steam
-			Right Click to throw the scythe, which will curve on it's way back
+			Press <right> to throw the scythe, which will curve on it's way back
 			The scythe deals 20% more damage when thrown
 			'''
 	}
@@ -573,9 +576,9 @@ Items: {
 		Tooltip:
 			'''
 			Sing a song that creates a spread of shadowflame sound waves
-			The centre sound wave will instead be cursed
+			The central sound wave will instead be cursed
 			The cursed sound will summon a tendril to attack the first enemy hit
-			'The microphone of a long-dead demon'
+			'The microphone of a famous demon'
 			'''
 	}
 
@@ -601,11 +604,6 @@ Items: {
 	Prisma: {
 		DisplayName: Prisma
 		Tooltip: Fire a holy water sea star that shatters into 5 spikes
-	}
-
-	Fractal: {
-		DisplayName: Fractal
-		Tooltip: Fire a ball of holy magic that splits, and splits, and splits
 	}
 
 	VoidseerPearl: {
@@ -657,12 +655,12 @@ Items: {
 		DisplayName: Splattercannon
 		Tooltip:
 			'''
-			Right-click to add 4 rounds into the chamber
-			Can hold a maximum of 24 rounds in the chamber
-			Left-click to release all rounds at once
-			Hits have a chance to release homing healing blood splatters
-			Shots have increased chance to release blood splatters on enemy kill
-			Bonus healing is only 50% effective while held
+			Press <right> to add 8 rounds into the chamber
+			Can hold a maximum of 64 rounds in the chamber
+			Press <left> to release all rounds at once
+			Will always have 8 rounds in the chamber
+			Spews blood orbs upon enemy hits
+			Picking up these blood orbs reduces the duration of [rbuff:PotionSickness]
 			'BLOOD IS FUEL'
 			'''
 	}
@@ -672,7 +670,7 @@ Items: {
 		Tooltip:
 			'''
 			Shoots holy flame blasts
-			Hit enemies are afflicted by Holy Flames for 3 seconds
+			Hit enemies are afflicted with [cbuff:HolyFlames] for 3 seconds
 			'''
 	}
 
@@ -680,10 +678,9 @@ Items: {
 		DisplayName: Auric Damru
 		Tooltip:
 			'''
-			Bangs the bongos, dealing damage to all nearby enemies
-			Right-click to shoot a Flare Bomb
-			Flare Bombs apply Dragon Fire on enemies for 3 seconds
-			(Credit to Aeolus)
+			Play the bongos, dealing damage to all nearby enemies
+			Press <right> to shoot a Flare Bomb
+			Flare Bombs afflict enemies with [cbuff:CalamityMod/DragonFire] for 3 seconds
 			'''
 	}
 
@@ -694,7 +691,11 @@ Items: {
 
 	EldritchShellFragment: {
 		DisplayName: Eldritch Shell Fragment
-		Tooltip: "'An enchanted shard from the prison of an ancient god'"
+		Tooltip: 
+		'''
+		Fetches quite a fortune on the market
+		'An enchanted shard from the prison of an ancient god'
+		'''
 	}
 
 	SigilOfACruelWorld: {
@@ -721,7 +722,7 @@ Items: {
 			'''
 	}
 
-	GoldenxBatDroppings: {
+	GoldenBatDroppings: {
 		DisplayName: Golden Bat Droppings
 		Tooltip:
 			'''
@@ -729,7 +730,7 @@ Items: {
 			Increases damage based on held coins (coinslots only)
 			This bonus is increased by 50% while in adrenaline mode.
 			You will lose 25% of your coins permanently upon death (50% on death or master mode)
-			"You're not greedy... you're batshit insane!"
+			"You're not greedy, you're just batshit crazy!"
 			'''
 	}
 
@@ -743,7 +744,7 @@ Items: {
 		Tooltip:
 			'''
 			Rapid fires both healing and damaging needles
-			Inflicts God Slayer's Inferno on hit
+			Inflicts [cbuff:CalamityMod/GodSlayerInferno] on hit
 			Uses Syringes as ammo
 			'''
 	}
@@ -759,7 +760,7 @@ Items: {
 
 	GraspofVoid: {
 		DisplayName: Grasp of Void
-		Tooltip: Fires a shard of void essence, inflicting shadowflame on hit
+		Tooltip: Fires a shard of void essence, inflicting [rbuff:ShadowFlame] on hit
 	}
 
 	PhantasmalEdge: {
@@ -769,8 +770,8 @@ Items: {
 			Spinning this scythe creates many miniature fireballs that follow as you continue to spin the scythe
 			Once you stop spinning the scythe, the fireballs immediately seek out the nearest target and explode
 
-			Right-click to launch the scythe like a hook, pulling enemies towards you
-			This does not work on bosses, and you are instead pulled towards the boss
+			Press <right> to launch the scythe like a hook, pulling enemies towards you
+			However, the strongest of enemies will pull you instead!
 			'''
 	}
 
@@ -779,7 +780,7 @@ Items: {
 		Tooltip:
 			'''
 			Creates a small hologram resembling the Devourer of Gods at the very edge of your scythe spin
-			Enemies hit by this take significantly more damage and are inflicted with God Slayer's Inferno
+			Enemies hit by this take significantly more damage and are inflicted with [cbuff:CalamityMod/GodSlayerInferno]
 			'''
 	}
 
@@ -792,15 +793,14 @@ Items: {
 		DisplayName: Elemental Reaper
 		Tooltip:
 			'''
-			Spinning this scythe creates homing projectiles that inflict Elemental Inferno
-			Right-click grants you and all allies an Elemental Blessing for 10 seconds, with a 30 second cooldown
-			Elemental Blessings are as follows:
-			Sand: +5% attack damage
-			Water: +5% attack speed
-			Air: +20% movement speed and flight time
-			Earth: +10 defense
-			Brimstone: All attacks inflict Brimstone Flames
-			Oasis: Regenerate 50 hp over 10 seconds
+			Spinning this scythe creates homing projectiles that inflict [cbuff:CalamityMod/ElementalMix]
+			Press <right> to grant you and all allies one of the following Elemental Blessings for 10 seconds:
+			[rbuff:RagnarokMod/ScytheAirBuff]
+			[rbuff:RagnarokMod/ScytheBrimstoneBuff]
+			[rbuff:RagnarokMod/ScytheEarthBuff]
+			[rbuff:RagnarokMod/ScytheOasisBuff]
+			[rbuff:RagnarokMod/ScytheSandBuff]
+			[rbuff:RagnarokMod/ScytheWaterBuff]
 			'''
 	}
 
@@ -809,7 +809,7 @@ Items: {
 		Tooltip:
 			'''
 			While spinning, you are surrounded in a circle of Brimstone Flames that deals constant damage
-			Enemies hit by the circle are also afflicted by Brimstone Flames for 5 seconds
+			Enemies hit by the circle are also afflicted by [cbuff:CalamityMod/BrimstoneFlames] for 5 seconds
 			While below 25% hp, killing an enemy with the fire circle will heal you for 3 + 5% of the enemy maximum health
 			'''
 	}
@@ -823,8 +823,8 @@ Items: {
 		DisplayName: Unbreakable Combat Ukulele
 		Tooltip:
 			'''
-			Left-click to play the ukulele
-			Right-click to throw the ukulele
+			Press <left> to play the ukulele
+			Press <right> to throw the ukulele
 			'Does not make for a good apology'
 			'''
 	}
@@ -839,28 +839,19 @@ Items: {
 			'''
 	}
 
-	Armor: {
-		PostMoonLord: {
-			SilvaHeadHealer: {
-				DisplayName: Silva Head Healer
-				Tooltip: ""
-			}
-		}
-	}
-
 	DragonForce: {
 		DisplayName: Dragon Force
 		Tooltip:
 			'''
 			Consumes inspiration rapidly as you channel an inferno to your cursor
-			Right-click to play the [c/FF4500:Roar of the Jungle Dragon] riff!
+			Press <right> to play the [c/FF4500:Roar of the Jungle Dragon] riff!
 			While the riff is active, the inferno this weapon unleases is amplified
 			'''
 	}
 
 	Lamentation: {
 		DisplayName: Lamentation
-		Tooltip: Shoots homing brimstone gigablasts that inflict brimstone flames on hit
+		Tooltip: Shoots homing brimstone gigablasts that inflict [cbuff:CalamityMod/BrimstoneFlames] on hit
 	}
 
 	Virusprayer: {
@@ -898,8 +889,8 @@ Items: {
 		Tooltip:
 			'''
 			Summons Kelly to follow you
-			Donor Item by HayWire799
-			Sprites by Zenovia
+			'Donor Item by HayWire799'
+			'Sprites by Zenovia'
 			'''
 	}
 
@@ -924,7 +915,7 @@ Items: {
 		Tooltip:
 			'''
 			Sends out bouncing sound waves that appear to be made out of sand
-			Right-click to play the [c/34C9EB:Guardian of the Former Seas] riff!
+			Press <right> to play the [c/34C9EB:Guardian of the Former Seas] riff!
 			While the riff is active, attacks from this guitar are twice as large and deal 25% more damage
 			Time your attacks during the riff to reduce the cooldown
 			'''
@@ -936,7 +927,7 @@ Items: {
 			'''
 			This scythe charges up the longer you spin it,
 			accelerating to unbelievable speeds
-			Right-click hurls a bolt of lightning
+			Press <right> to hurl a bolt of lightning
 			'''
 	}
 
@@ -944,8 +935,8 @@ Items: {
 		DisplayName: Irradiant Infinity
 		Tooltip:
 			'''
-			Left-click fires an [c/FF5555:Irradiant Red] orb with massive knockback
-			Right-click summons an [c/55AAFF:Irradiant Blue] orb that follows your cursor
+			Press <left> to fire an [c/FF5555:Irradiant Red] orb with massive knockback
+			Press <right> to summon an [c/55AAFF:Irradiant Blue] orb that follows your cursor
 			[c/55AAFF:Irradiant Blue] pulls in nearby enemies and grows larger with each hit
 			Once it reaches critical mass, strike it with [c/FF5555:Irradiant Red] to unleash [c/CC44FF:Irradiant Purple]
 			'''
@@ -962,7 +953,7 @@ Items: {
 		Tooltip:
 			'''
 			Channel this weapon to create a massive sine wave
-			Right-click to play the [c/501eb4:Universal Collapse] riff!
+			Press <right> to play the [c/501eb4:Universal Collapse] riff!
 			While the riff is active, all players in range have unlimited flight
 			'''
 	}
@@ -972,7 +963,7 @@ Items: {
 		Tooltip:
 			'''
 			Throw an endless amount of ghostly tambourines
-			Right Click to jingle the thrown tambourines, damaging nearby enemies
+			Press <right> to jingle the thrown tambourines, damaging nearby enemies
 			'''
 	}
 
@@ -982,7 +973,7 @@ Items: {
 			'''
 			Whistles out a cursed burst of noise
 			Has a chance to shoot vile spit
-			Right-click to play the [c/50477e:Filthy Mind] riff!
+			Press <right> to play the [c/50477e:Filthy Mind] riff!
 			While the riff is active, infected pustules spawn around you
 			Infected pustules will spew cursed fire at the nearest enemy
 			'''
@@ -993,7 +984,7 @@ Items: {
 		Tooltip:
 			'''
 			Sends out bloody shockwaves
-			Right-click to play the [c/AA1111:Blood Coagulant] riff!
+			Press <right> to play the [c/AA1111:Blood Coagulant] riff!
 			While the riff is active, all players in range have life steal
 			'''
 	}
@@ -1018,7 +1009,7 @@ Items: {
 			'''
 			Sends out homing stars, that split into homing shards
 			Playing success will increase the number of shards
-			Right-click to play the [c/00FFC8:Interstellar Stomper] riff!
+			Press <right> to play the [c/00FFC8:Interstellar Stomper] riff!
 			While the riff is active, stars rain down from above
 			Homings shard count is doubled while the riff is active
 			Time your attacks during the riff to reduce the cooldown
@@ -1031,7 +1022,7 @@ Items: {
 			'''
 			Thanks to the entire team, everyone who supported, and those who all play the mod and keep it alive!
 			The confines of this painting is not enough to fit the entire team
-			Hold "Left Shift" to see a list of past and current developers
+			[c/999999:Hold Left Shift to see a list of past and current developers]
 			'''
 		Donors: Donors
 		Artists: Artists
@@ -1056,7 +1047,7 @@ Items: {
 		DisplayName: Redglass Monocle
 		Tooltip:
 			'''
-			Once worn by an infamous underworld native
+			Once worn by an infamous underworld star
 			25% increased symphonic damage
 			Flat Damage empowerment is twice as effective on you
 			Reduces the inspiration cost of Radio Mic by 2
@@ -1083,7 +1074,7 @@ Items: {
 		Tooltip:
 			'''
 			Sends out bouncing corroslime balls
-			Right Click to split balls into {0} smaller balls
+			Press <right> to split balls into {0} smaller balls
 			This process can be done {1} times
 			'''
 		DisplayName: Corroslime Bass
@@ -1107,7 +1098,7 @@ Items: {
 		Tooltip:
 			'''
 			Shoots bouncing sound waves
-			Right Click to return the waves
+			Press <right> to return the waves
 			Returning waves will ignore tiles
 			'''
 		DisplayName: Wulfrum Guitar
@@ -1118,16 +1109,19 @@ Items: {
 		Tooltip: Plays 'Menu Theme' by CrafterDaemon
 	}
 
-	GoldenBatDroppings: {
-		DisplayName: Golden Bat Droppings
-		Tooltip: ""
-	}
-
 	InspirationSingularity.DisplayName: Inspiration Singularity
 
 	Asterion: {
 		DisplayName: Asterion
-		Tooltip: ""
+		Tooltip:
+		'''
+		Creates a branching fractal of starlight around you
+		This starlight occasionally grants you Starbursts on successful enemy hits
+		Press <right> with enough Starbursts to create Asterion
+		Asterion consumes Starburts quickly, but releases constant stellar pulses
+		These pulses heal you and allies in range, and inflict [cbuff:CalamityMod/Voidfrost] on enemies
+		'As loyal as a hound'
+		'''
 	}
 }
 

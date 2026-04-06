@@ -110,7 +110,6 @@ namespace RagnarokMod.Items.HealerItems.Other
                 }
                 else if(!ConstellationActive(player))
                 {
-                    // Spawn constellation slightly above and to the side of the player
                     Projectile.NewProjectile(source,
                         player.Center + new Vector2(-125, -100), Vector2.Zero,
                         ModContent.ProjectileType<AsterionConstellation>(),

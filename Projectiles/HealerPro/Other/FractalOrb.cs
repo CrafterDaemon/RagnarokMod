@@ -17,7 +17,6 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
     /// Single-projectile fractal laser pattern.
     /// The entire visual (two tiers of 5 rays each) is drawn in PreDraw.
     /// Damage is dealt by checking NPC intersections against each line segment in AI().
-    /// No child projectiles are spawned at any point.
     /// </summary>
     public class FractalOrb : ModProjectile, ILocalizedModType
     {
@@ -40,7 +39,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
         // 5 arms -> 5*5*3 = 75 segments instead of 5*5*5 = 125.
         private const int Tier3Arms = 3;
 
-        // Maximum possible radius of the pattern -- used to pre-filter NPCs
+        // Maximum possible radius of the pattern, used to pre-filter NPCs
         private const float MaxPatternRadius = MaxTier1Length + MaxTier2Length + MaxTier3Length;
 
         // Only run intersection checks every N frames to reduce CPU load.
@@ -103,7 +102,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
                     _hitCooldowns.Remove(k);
             }
 
-            // Only run intersection checks every IntersectCheckInterval frames --
+            // Only run intersection checks every IntersectCheckInterval frames
             // _hitCooldowns gate actual damage so throttling this doesn't affect hit feel
             _intersectTimer++;
             if (_intersectTimer >= IntersectCheckInterval)
@@ -134,8 +133,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
                                 hitInfo.HitDirection, hitInfo.Crit);
                             npc.AddBuff(ModContent.BuffType<Nightwither>(), 180);
 
-                            // 33% chance to generate a Stratus Starburst -- must be here since
-                            // ApplyDamageToNPC does not trigger OnHitNPC
+                            // 33% chance to generate a Stratus Starburst must be here since ApplyDamageToNPC does not trigger OnHitNPC
                             if (Main.rand.NextFloat() <= 0.33f)
                             {
                                 owner.Calamity().StratusStarburst++;
@@ -248,7 +246,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
                 float baseAngle = _spin + ArmAngle * i;
                 Vector2 tip1 = Projectile.Center + baseAngle.ToRotationVector2() * Tier1Length;
 
-                // Tier 1 laser -- brightest
+                // Tier 1 laser
                 DrawLaser(sb, glow, glowOrig, glowW, glowH,
                     Projectile.Center, tip1,
                     new Color(40, 120, 255) * alpha,
@@ -264,7 +262,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
                     float subAngle = baseAngle + ArmAngle * j;
                     Vector2 tip2 = tip1 + subAngle.ToRotationVector2() * Tier2Length;
 
-                    // Tier 2 laser -- slightly dimmer
+                    // Tier 2 laser
                     DrawLaser(sb, glow, glowOrig, glowW, glowH,
                         tip1, tip2,
                         new Color(20, 80, 220) * alpha,
@@ -275,7 +273,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
                         tip2 - Main.screenPosition,
                         new Color(80, 150, 255) * 0.7f * alpha, 16f);
 
-                    // Tier 3 uses Tier3Arms to reduce draw calls (75 segments vs 125)
+                    // Tier 3 uses Tier3Arms to reduce draw calls (my poor frames)
                     float t3AngleStep = MathHelper.TwoPi / Tier3Arms;
                     for (int k = 0; k < Tier3Arms; k++)
                     {
@@ -304,7 +302,6 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
 
         /// <summary>
         /// Draws a laser between two world-space points as two overlapping glow ribbons
-        /// (wide soft outer + narrow bright inner).
         /// </summary>
         private static void DrawLaser(SpriteBatch sb, Texture2D glow, Vector2 glowOrig,
             float glowW, float glowH,
