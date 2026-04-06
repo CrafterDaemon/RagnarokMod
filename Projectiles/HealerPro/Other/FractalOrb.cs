@@ -120,14 +120,13 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
 
                     if (IntersectsPattern(npc))
                     {
-                        _hitCooldowns[npc.whoAmI] = 20; // frames between hits on the same NPC
+                        _hitCooldowns[npc.whoAmI] = 10; // frames between hits on the same NPC
 
                         if (Main.myPlayer == Projectile.owner)
                         {
                             // Route through player.ApplyDamageToNPC so hits register on the DPS counter
                             Player owner = Main.player[Projectile.owner];
-                            int dmg = (int)(Projectile.damage * 0.6f);
-                            NPC.HitInfo hitInfo = npc.CalculateHitInfo(dmg, 1, false,
+                            NPC.HitInfo hitInfo = npc.CalculateHitInfo(Projectile.damage, 1, false,
                                 Projectile.knockBack, Projectile.DamageType, false);
                             owner.ApplyDamageToNPC(npc, hitInfo.Damage, hitInfo.Knockback,
                                 hitInfo.HitDirection, hitInfo.Crit);
