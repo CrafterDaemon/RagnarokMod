@@ -1241,6 +1241,8 @@ Projectiles: {
 	AcidicSaxBubbleOverride.DisplayName: Acidic Sax Bubble Override
 	AcidicReedOverride.DisplayName: Acidic Reed Override
 	AsterionConstellation.DisplayName: Asterion Constellation
+	AstralRipperChargeSwing.DisplayName: Astral Ripper Charge Swing
+	AstralRipperStarfall.DisplayName: Astral Ripper Starfall
 }
 
 Configs: {
