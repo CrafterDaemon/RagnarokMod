@@ -10,29 +10,29 @@ using ThoriumMod.Items.BossQueenJellyfish;
 using ThoriumMod.Items.BossForgottenOne;
 using ThoriumMod.Items.BossThePrimordials;
 using System.Linq;
-using RagnarokMod.Common.Configs;
-using Terraria.ID;
 
 namespace RagnarokMod.Common.GlobalItems
 {
     public class TweakBossSummonsConsumable : GlobalItem
     {
         public override bool InstancePerEntity => true;
-        ModItem[] bossSummons =
+
+        private static int[] bossSummons =
         [
-            new StormFlare(),
-            new JellyfishResonator(),
-            new UnstableCore(),
-            new AncientBlade(),
-            new StarCaller(),
-            new StriderTear(),
-            new VoidLens(),
-            new AbyssalShadow2(),
-            new DoomSayersCoin()
+            ModContent.ItemType<StormFlare>(),
+            ModContent.ItemType<JellyfishResonator>(),
+            ModContent.ItemType<UnstableCore>(),
+            ModContent.ItemType<AncientBlade>(),
+            ModContent.ItemType<StarCaller>(),
+            ModContent.ItemType<StriderTear>(),
+            ModContent.ItemType<VoidLens>(),
+            ModContent.ItemType<AbyssalShadow2>(),
+            ModContent.ItemType<DoomSayersCoin>()
         ];
+
         public override bool AppliesToEntity(Item item, bool lateInstantiation)
         {
-            return bossSummons.Contains(item.ModItem);
+            return bossSummons.Contains(item.type);
         }
 
         public override void SetDefaults(Item item)
