@@ -108,12 +108,13 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
 
             owner.direction = toMouse.X >= 0f ? 1 : -1;
 
-            // Windup visual snaps to held position quickly (~20 frames), independent of the
-            // charge timer so the blade locks into place fast while stars keep accumulating.
-            float windupVisual = MathHelper.Clamp(Projectile.ai[0] / 20f, 0f, 1f);
-            float mouseAngle = toMouse.ToRotation();
-            float windupPull = windupVisual * MathHelper.PiOver2 * owner.direction;
-            float holdAngle = mouseAngle - windupPull;
+            // Windup: quickly lerp from a neutral forward angle to a fixed cocked-back position.
+            // Does not follow the cursor — the hold position is always raised up behind the player.
+            float windupVisual = MathHelper.Clamp(Projectile.ai[0] / 80f, 0f, 1f);
+            float neutralAngle = owner.direction == 1 ? 0f : MathHelper.Pi;
+            float cockedAngle = -(MathHelper.PiOver2 + (MathHelper.PiOver4 * 1.5f) * owner.direction);
+            float easedWindup = 1f - (1f - windupVisual) * (1f - windupVisual) * (1f - windupVisual);
+            float holdAngle = neutralAngle + MathHelper.WrapAngle(cockedAngle - neutralAngle) * easedWindup;
 
             Projectile.Center = owner.Center + holdAngle.ToRotationVector2() * ArmLength;
             Projectile.velocity = Vector2.Zero;
@@ -141,6 +142,28 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                 d.velocity = angle.ToRotationVector2() * (0.8f + chargeRatio * 2.2f);
             }
 
+            // Rain stars at cursor while charging — interval shrinks as charge builds
+            if (mouseHeld && owner.whoAmI == Main.myPlayer)
+            {
+                Projectile.ai[1]++;
+                int rainInterval = (int)MathHelper.Lerp(30f, 8f, chargeRatio);
+                if (Projectile.ai[1] >= rainInterval)
+                {
+                    Projectile.ai[1] = 0f;
+                    Vector2 cursorPos = Main.MouseWorld;
+                    float xOffset = Main.rand.NextFloat(-600f, 600f);
+                    Vector2 spawnPos = cursorPos + new Vector2(xOffset, -600f);
+                    Vector2 aimPoint = cursorPos - new Vector2(0f, 160f);
+                    Vector2 toTarget = (aimPoint - spawnPos).SafeNormalize(Vector2.UnitY);
+                    Vector2 vel = toTarget * Main.rand.NextFloat(16f, 22f);
+                    Projectile.NewProjectile(
+                        Projectile.GetSource_FromThis(), spawnPos, vel,
+                        ModContent.ProjectileType<AstralRipperStarfall>(),
+                        Projectile.damage / 4, Projectile.knockBack, owner.whoAmI);
+                    Projectile.netUpdate = true;
+                }
+            }
+
             if (!mouseHeld)
                 BeginSwing(owner);
         }
@@ -148,11 +171,8 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
         private void BeginSwing(Player owner)
         {
             Projectile.damage = (int)(Projectile.damage * (1f + PercentCharge * 2));
-            Vector2 toMouse = owner.whoAmI == Main.myPlayer
-                ? (Main.MouseWorld - owner.Center).SafeNormalize(Vector2.UnitX)
-                : Vector2.UnitX * owner.direction;
 
-            Projectile.ai[2] = toMouse.ToRotation();
+            Projectile.ai[2] = -(MathHelper.PiOver2 + (MathHelper.PiOver4 * 1.5f) * owner.direction);
             Projectile.ai[1] = 0f;
             Projectile.localAI[0] = 1f;
             Projectile.netUpdate = true;
@@ -180,10 +200,11 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             float progress = Projectile.ai[1] / effectiveDuration;
             float easedT = MathHelper.SmoothStep(0f, 1f, progress);
 
-            float baseAngle = Projectile.ai[2];
-            float pullBack = MathHelper.PiOver2 * owner.direction;
-            float startAngle = baseAngle - pullBack;
-            float endAngle = baseAngle + (SweepArc * owner.direction - pullBack);
+            // ai[2] is the cocked angle; direction is encoded in its sign
+            // negative cocked angle = facing right, positive = facing left
+
+            float startAngle = Projectile.ai[2];
+            float endAngle = startAngle + SweepArc * owner.direction;
             float curAngle = MathHelper.Lerp(startAngle, endAngle, easedT);
 
             Projectile.Center = owner.Center + curAngle.ToRotationVector2() * ArmLength;
@@ -191,7 +212,6 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                 ? curAngle + MathHelper.PiOver4
                 : curAngle - MathHelper.PiOver4 - MathHelper.Pi;
 
-            owner.direction = Projectile.ai[2].ToRotationVector2().X >= 0f ? 1 : -1;
             owner.itemRotation = (Projectile.Center - owner.MountedCenter).ToRotation();
             if (owner.direction == -1) owner.itemRotation += MathHelper.Pi;
             owner.itemTime = 2;
@@ -228,7 +248,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
         {
             target.AddBuff(ModContent.BuffType<AstralInfectionDebuff>(), 240);
             if (Main.netMode != NetmodeID.Server)
-                SoundEngine.PlaySound(SoundID.Item62 with { Volume = 1f + Projectile.ai[0]/MaxCharge, Pitch = -0.6f }, Projectile.Center);
+                SoundEngine.PlaySound(SoundID.Item62 with { Volume = 1f + Projectile.ai[0] / MaxCharge, Pitch = -0.6f }, Projectile.Center);
             RainStars(target.Center);
         }
 

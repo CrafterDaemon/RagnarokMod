@@ -34,6 +34,8 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             Projectile.timeLeft = 300;
             Projectile.ignoreWater = true;
             Projectile.extraUpdates = 1;
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = -1;
         }
 
         public override void AI()
