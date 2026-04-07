@@ -28,7 +28,7 @@ namespace RagnarokMod.Items.HealerItems.Scythes
             scytheSoulCharge = 6;
             Item.autoReuse = false;
             Item.channel = true;
-            Item.damage = 1700;
+            Item.damage = 1100;
             Item.width = 67;
             Item.height = 86;
             Item.value = CalamityGlobalItem.RarityVioletBuyPrice;

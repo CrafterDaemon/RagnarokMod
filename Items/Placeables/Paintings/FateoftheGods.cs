@@ -15,7 +15,7 @@ namespace RagnarokMod.Items.Placeables.Paintings
         public override string Texture => "RagnarokMod/icon";
         
         private readonly string[] donors = { "FireFlameJoe", "TheUnknownNerd", "HayWire799", "Aeolus" };
-        private readonly string[] artists = { "Ochette", "Kyou", "Delly", "e³", "Bence", "TheStormQueen", "Imonthatgudkush" };
+        private readonly string[] artists = { "Ochette", "Kyou", "Delly", "e³", "Bence", "TheStormQueen", "Imonthatgudkush", "Pixus" };
         private readonly string[] programmers = { "CrafterDaemon", "Patrick1234", "Frogleader", "Akira", "WardrobeHummus", "Ropro0923" };
         private readonly string[] otherDevelopers = { "TelosRyu", "Deeno", "Moon_Ditch" };
 

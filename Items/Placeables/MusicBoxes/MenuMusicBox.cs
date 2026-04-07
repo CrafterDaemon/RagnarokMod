@@ -10,8 +10,6 @@ namespace RagnarokMod.Items.Placeables.MusicBoxes
     {
         public override void SetStaticDefaults()
         {
-            if (Main.dedServ)
-                return;
             Item.ResearchUnlockCount = 1;
             ItemID.Sets.CanGetPrefixes[Type] = false;
             ItemID.Sets.ShimmerTransformToItem[Type] = 576;

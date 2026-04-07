@@ -42,6 +42,7 @@ namespace RagnarokMod.Sounds
         public static readonly SoundStyle rotjdriff = new("RagnarokMod/Sounds/Music/Riffs/rotjdriff") { Volume = 0.6f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
         public static readonly SoundStyle slimeriff = new("RagnarokMod/Sounds/Music/Riffs/SlimeRiff") { Volume = 0.6f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
         public static readonly SoundStyle calcloneriff = new("RagnarokMod/Sounds/Music/Riffs/CalamitasCloneRiff") { Volume = 0.6f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
+        public static readonly SoundStyle ToxicWisdomRiff = new("RagnarokMod/Sounds/Music/Riffs/ToxicWisdomRiff") { Volume = 0.6f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
 
         //memes
         public static readonly SoundStyle nfl = new("RagnarokMod/Sounds/Music/Riffs/Memes/nfl") { Volume = 1f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };

@@ -72,7 +72,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
                     {
                         Projectile.NewProjectile(Projectile.GetSource_FromThis(), spawnPos, cursorDir,
                             ModContent.ProjectileType<IrradiantPurple>(),
-                            Projectile.damage + other.damage, Projectile.knockBack, Projectile.owner);
+                            (Projectile.damage/2) + other.damage, Projectile.knockBack, Projectile.owner);
                         SoundEngine.PlaySound(RagnarokModSounds.PurpleCharge, spawnPos);
                     }
                     other.Kill();

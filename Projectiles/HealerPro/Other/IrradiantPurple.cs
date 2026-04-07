@@ -1,6 +1,7 @@
 using CalamityMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using RagnarokMod.Items.HealerItems.Other;
 using RagnarokMod.Projectiles.HealerPro.Other;
 using RagnarokMod.Sounds;
 using RagnarokMod.Utils;
@@ -52,6 +53,8 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
 
         public override void AI()
         {
+            if (!Main.player[Projectile.owner].active || Main.player[Projectile.owner].dead || Main.player[Projectile.owner].HeldItem.type != ModContent.ItemType<IrradiantInfinity>())
+                Projectile.Kill();
             if (++healTimer >= 30)
             {
                 healTimer = 0;
@@ -300,7 +303,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
                 SoundEngine.PlaySound(RagnarokModSounds.PurpleExplode, Projectile.Center);
                 Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero,
                     ModContent.ProjectileType<IrradiantExplosion>(),
-                    Projectile.damage * 3, 10f, Projectile.owner);
+                    Projectile.damage, 10f, Projectile.owner);
             }
         }
     }

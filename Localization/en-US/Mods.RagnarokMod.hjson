@@ -1401,6 +1401,11 @@ Configs: {
 			Label: Generic Weapon Tweaks
 			Tooltip: Applies general weapon rebalances.
 		}
+
+		NonconsumableEvents: {
+			Label: Nonconsumable Events
+			Tooltip: ""
+		}
 	}
 
 	UIConfig: {

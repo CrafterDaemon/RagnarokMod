@@ -1393,6 +1393,11 @@ Configs: {
 			Label: 通用武器调整
 			Tooltip: 进行通用武器平衡调整
 		}
+
+		NonconsumableEvents: {
+			// Label: Nonconsumable Events
+			// Tooltip: ""
+		}
 	}
 
 	UIConfig: {
