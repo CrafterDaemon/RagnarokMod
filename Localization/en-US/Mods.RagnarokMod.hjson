@@ -491,7 +491,6 @@ Items: {
 			'''
 			Healing spells will heal an additional 4 life
 			All attacks inflict [rbuff:RagnarokMod/NightfallenDebuff]
-			Nightfallen increases all damage taken by the target by 10%
 			'''
 	}
 
@@ -568,7 +567,16 @@ Items: {
 
 	AstralRipper: {
 		DisplayName: Astral Ripper
-		Tooltip: Use the infection among the stars to rain hell upon your foes!
+		Tooltip:
+		'''
+		Spinning this scythe creates stars that orbit you. 
+		After completing a full circle, they pulsate once before exploding.
+		Holding <right> will start charging the scythe.
+		While charging, stars will begin to rapidly fall towards your cursor.
+		Release the charge to swing the scythe in a massive arc.
+		Landing the swing causes a large group of stars to crash down on the target.
+		All hits from this weapon inflict [cbuff:CalamityMod/AstralInfectionDebuff].
+		'''
 	}
 
 	RadioMic: {

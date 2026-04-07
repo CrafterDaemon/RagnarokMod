@@ -148,14 +148,14 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             if (mouseHeld && owner.whoAmI == Main.myPlayer)
             {
                 Projectile.ai[1]++;
-                int rainInterval = (int)MathHelper.Lerp(30f, 8f, chargeRatio);
+                int rainInterval = (int)MathHelper.Lerp(30f, 5f, chargeRatio);
                 if (Projectile.ai[1] >= rainInterval)
                 {
                     Projectile.ai[1] = 0f;
                     Vector2 cursorPos = Main.MouseWorld;
                     float xOffset = Main.rand.NextFloat(-600f, 600f);
-                    Vector2 spawnPos = cursorPos + new Vector2(xOffset, -600f);
-                    Vector2 aimPoint = cursorPos - new Vector2(0f, 160f);
+                    Vector2 spawnPos = cursorPos + new Vector2(xOffset, -1200f);
+                    Vector2 aimPoint = cursorPos - new Vector2(0f, 330f);
                     Vector2 toTarget = (aimPoint - spawnPos).SafeNormalize(Vector2.UnitY);
                     Vector2 vel = toTarget * Main.rand.NextFloat(16f, 22f);
                     Projectile.NewProjectile(
@@ -172,7 +172,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
 
         private void BeginSwing(Player owner)
         {
-            Projectile.damage = (int)(Projectile.damage * (1f + PercentCharge * 2));
+            Projectile.damage = (int)(Projectile.damage * (1f + PercentCharge));
 
             Projectile.ai[2] = -(MathHelper.PiOver2 + (MathHelper.PiOver4 * 1.5f) * owner.direction);
             Projectile.ai[1] = 0f;
@@ -251,7 +251,8 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             target.AddBuff(ModContent.BuffType<AstralInfectionDebuff>(), 240);
             if (Main.netMode != NetmodeID.Server)
                 SoundEngine.PlaySound(SoundID.Item62 with { Volume = 1f + Projectile.ai[0] / MaxCharge, Pitch = -0.6f }, Projectile.Center);
-            RainStars(target.Center);
+            if (Projectile.numHits == 0)
+                RainStars(target.Center);
         }
 
         private void RainStars(Vector2 targetCenter)
@@ -262,10 +263,10 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             for (int i = 0; i < count; i++)
             {
                 float xOffset = Main.rand.NextFloat(-600f, 600f) * (i + 1) / count;
-                Vector2 spawnPos = targetCenter + new Vector2(xOffset, -600f);
+                Vector2 spawnPos = targetCenter + new Vector2(xOffset, -1200f);
                 // Aim above the target to compensate for gravity accumulating over the fall.
                 // extraUpdates=1 means 2 AI ticks/frame; ~23 frames of fall produces ~160px overshoot.
-                Vector2 aimPoint = targetCenter - new Vector2(0f, 160f);
+                Vector2 aimPoint = targetCenter - new Vector2(0f, 320f);
                 Vector2 toTarget = (aimPoint - spawnPos).SafeNormalize(Vector2.UnitY);
                 Vector2 vel = toTarget * Main.rand.NextFloat(16f, 22f);
                 Projectile.NewProjectile(
@@ -342,8 +343,12 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                     DepthStencilState.None, Main.Rasterizer, null, Main.GameViewMatrix.TransformationMatrix);
 
                 Vector2 glowOrigin = tex2.Size() / 2f;
-                Vector2 tipOffset = Projectile.rotation.ToRotationVector2() * 65f;
-                Vector2 tipPos = drawPos + tipOffset;
+                // Use direction from player to projectile center — correct regardless of facing direction,
+                // since Projectile.rotation includes sprite correction offsets that skew ToRotationVector2()
+                Vector2 playerDrawPos = owner.Center - Main.screenPosition + new Vector2(0f, owner.gfxOffY);
+                Vector2 bladeDir = (drawPos - playerDrawPos).SafeNormalize(Vector2.Zero);
+                Vector2 tipPos = drawPos + bladeDir * 10f;
+                tipPos.Y -= 60f;
                 float pulse = (MathF.Sin(Main.GlobalTimeWrappedHourly * 8f) + 1f) / 2f;
                 float twinkleScale = 0.3f + pulse * 0.4f;
                 float spinAngle = Main.GlobalTimeWrappedHourly * 3f;
