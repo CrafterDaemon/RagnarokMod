@@ -46,6 +46,7 @@ namespace RagnarokMod.Items.HealerItems.Armor
             CalamityPlayer calamityPlayer = player.Calamity();
             calamityPlayer.silvaSet = true;
             player.GetRagnarokModPlayer().silvaHealer = true;
+            player.setBonus = this.GetLocalizedValue("SetBonus");
         }
 
         public override void UpdateEquip(Player player)
