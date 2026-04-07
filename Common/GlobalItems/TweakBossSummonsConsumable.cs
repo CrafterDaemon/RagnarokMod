@@ -9,34 +9,35 @@ using ThoriumMod.Items.BossFallenBeholder;
 using ThoriumMod.Items.BossQueenJellyfish;
 using ThoriumMod.Items.BossForgottenOne;
 using ThoriumMod.Items.BossThePrimordials;
+using System.Linq;
+using RagnarokMod.Common.Configs;
+using Terraria.ID;
 
 namespace RagnarokMod.Common.GlobalItems
 {
     public class TweakBossSummonsConsumable : GlobalItem
     {
+        public override bool InstancePerEntity => true;
+        ModItem[] bossSummons =
+        [
+            new StormFlare(),
+            new JellyfishResonator(),
+            new UnstableCore(),
+            new AncientBlade(),
+            new StarCaller(),
+            new StriderTear(),
+            new VoidLens(),
+            new AbyssalShadow2(),
+            new DoomSayersCoin()
+        ];
         public override bool AppliesToEntity(Item item, bool lateInstantiation)
         {
-            return (
-            item.type == ModContent.ItemType<StormFlare>()
-            || item.type == ModContent.ItemType<JellyfishResonator>()
-            || item.type == ModContent.ItemType<UnstableCore>()
-            || item.type == ModContent.ItemType<AncientBlade>()
-            || item.type == ModContent.ItemType<StarCaller>()
-            || item.type == ModContent.ItemType<StriderTear>()
-            || item.type == ModContent.ItemType<VoidLens>()
-            || item.type == ModContent.ItemType<AbyssalShadow2>()
-            || item.type == ModContent.ItemType<DoomSayersCoin>()
-            );
+            return bossSummons.Contains(item.ModItem);
         }
 
         public override void SetDefaults(Item item)
         {
-            if (item.type == ModContent.ItemType<StormFlare>() || item.type == ModContent.ItemType<JellyfishResonator>() || item.type == ModContent.ItemType<UnstableCore>() ||
-            item.type == ModContent.ItemType<AncientBlade>() || item.type == ModContent.ItemType<StarCaller>() || item.type == ModContent.ItemType<StriderTear>() ||
-            item.type == ModContent.ItemType<VoidLens>() || item.type == ModContent.ItemType<AbyssalShadow2>() || item.type == ModContent.ItemType<DoomSayersCoin>())
-            {
-                item.consumable = false;
-            }
+            item.consumable = false;
         }
     }
 }

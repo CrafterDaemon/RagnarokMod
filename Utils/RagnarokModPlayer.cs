@@ -258,7 +258,6 @@ namespace RagnarokMod.Utils
                 ThoriumPlayer thoriumPlayer = ThoriumMod.Utilities.PlayerHelper.GetThoriumPlayer(base.Player);
                 thoriumPlayer.setBlooming = true;
                 thoriumPlayer.setLifeBinder = true;
-                Random rnd = new Random();
                 int triggerchance = 400;
                 if (base.Player.statLife >= 0.8 * base.Player.statLifeMax2 && base.Player.statLife < 0.9 * base.Player.statLifeMax2){
                     triggerchance = 360;
@@ -272,7 +271,7 @@ namespace RagnarokMod.Utils
                 else if (base.Player.statLife < 0.2 * base.Player.statLifeMax2){
                     triggerchance = 80;
                 }
-                int num = rnd.Next(triggerchance);
+                int num = Main.rand.Next(triggerchance);
                 if (num == 1){
                     if (thoriumPlayer.shieldHealth + 7 <= 50){
                         thoriumPlayer.shieldHealth += 7;

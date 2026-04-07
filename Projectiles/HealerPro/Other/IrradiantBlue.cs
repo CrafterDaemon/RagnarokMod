@@ -1,6 +1,7 @@
 using CalamityMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using RagnarokMod.Items.HealerItems.Other;
 using RagnarokMod.Sounds;
 using RagnarokMod.Utils;
 using ReLogic.Utilities;
@@ -68,6 +69,12 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
 
         public override void AI()
         {
+            bool dying = !Main.player[Projectile.owner].active || Main.player[Projectile.owner].dead || Main.player[Projectile.owner].HeldItem.type != ModContent.ItemType<IrradiantInfinity>();
+            if (dying)
+            { 
+                followTimer = Math.Max(followTimer, MaxFollowTime - 120); 
+                Projectile.damage = 0; 
+            }
             if (++healTimer >= 30)
             {
                 healTimer = 0;
@@ -95,7 +102,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
                 Projectile.frame = (Projectile.frame + 1) % Main.projFrames[Type];
             }
 
-            if (!IsStationary)
+            if (!IsStationary && !dying)
             {
                 Vector2 target = Main.player[Projectile.owner].Center + (Main.MouseWorld - Main.player[Projectile.owner].Center);
                 Projectile.velocity = Vector2.Lerp(Projectile.velocity, (target - Projectile.Center) * 0.08f, 0.15f);
@@ -129,11 +136,16 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
             }
             else
             {
+                if (dying)
+                {
+                    Projectile.ai[2] = Math.Max(Projectile.ai[2], StationaryLifetime - 60);
+                    Projectile.damage = 0;
+                }
                 Vector2 target = Main.player[Projectile.owner].Center + (Main.MouseWorld - Main.player[Projectile.owner].Center);
                 Projectile.velocity = Vector2.Lerp(Projectile.velocity, (target - Projectile.Center) * 0.08f, 0.05f);
                 Projectile.ai[2]++;
 
-                if (Main.netMode != NetmodeID.MultiplayerClient)
+                if (Main.netMode != NetmodeID.MultiplayerClient && !dying)
                 {
                     for (int i = 0; i < Main.maxNPCs; i++)
                     {
