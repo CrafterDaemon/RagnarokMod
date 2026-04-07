@@ -4,8 +4,10 @@ using CalamityMod.Dusts;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
+using System;
 using Terraria;
 using Terraria.Audio;
+using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 using ThoriumMod;
@@ -278,6 +280,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             Player owner = Owner;
             SpriteBatch sb = Main.spriteBatch;
             Texture2D tex = ModContent.Request<Texture2D>(Texture).Value;
+            Texture2D tex2 = TextureAssets.Extra[ExtrasID.ThePerfectGlow].Value;
 
             float chargeRatio = Projectile.ai[0] / (float)MaxCharge;
             Color astralCyan = new Color(66, 189, 181);
@@ -323,7 +326,6 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                         Projectile.rotation, origin, scale, fx, 0f);
                 }
             }
-
             sb.End();
             sb.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState,
                 DepthStencilState.None, Main.Rasterizer, null, Main.GameViewMatrix.TransformationMatrix);
@@ -331,6 +333,30 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             // Normal sprite — tints toward charge color as charge builds
             Color drawColor = Color.Lerp(lightColor, chargeColor, chargeRatio * 0.5f);
             sb.Draw(tex, drawPos, null, drawColor, Projectile.rotation, origin, scale, fx, 0f);
+
+            // Sparkle drawn in a final additive pass so it renders on top of the sprite
+            if (chargedSwing)
+            {
+                sb.End();
+                sb.Begin(SpriteSortMode.Deferred, BlendState.Additive, Main.DefaultSamplerState,
+                    DepthStencilState.None, Main.Rasterizer, null, Main.GameViewMatrix.TransformationMatrix);
+
+                Vector2 glowOrigin = tex2.Size() / 2f;
+                Vector2 tipOffset = Projectile.rotation.ToRotationVector2() * 65f;
+                Vector2 tipPos = drawPos + tipOffset;
+                float pulse = (MathF.Sin(Main.GlobalTimeWrappedHourly * 8f) + 1f) / 2f;
+                float twinkleScale = 0.3f + pulse * 0.4f;
+                float spinAngle = Main.GlobalTimeWrappedHourly * 3f;
+
+                sb.Draw(tex2, tipPos, null, Color.White * (0.8f + pulse * 0.6f), spinAngle, glowOrigin, twinkleScale, SpriteEffects.None, 0f);
+                sb.Draw(tex2, tipPos, null, Color.White * (0.8f + pulse * 0.6f), spinAngle + MathHelper.PiOver2, glowOrigin, twinkleScale, SpriteEffects.None, 0f);
+                sb.Draw(tex2, tipPos, null, astralRed * (0.75f + pulse * 0.75f), spinAngle + MathHelper.PiOver4, glowOrigin, twinkleScale * 0.6f, SpriteEffects.None, 0f);
+                sb.Draw(tex2, tipPos, null, astralCyan * (0.75f + pulse * 0.75f), spinAngle - MathHelper.PiOver4, glowOrigin, twinkleScale * 0.6f, SpriteEffects.None, 0f);
+
+                sb.End();
+                sb.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState,
+                    DepthStencilState.None, Main.Rasterizer, null, Main.GameViewMatrix.TransformationMatrix);
+            }
 
             return false;
         }
