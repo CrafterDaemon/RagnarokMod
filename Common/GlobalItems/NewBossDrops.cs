@@ -53,6 +53,7 @@ namespace RagnarokMod.Common.GlobalItems
             || item.type == ModContent.ItemType<HiveMindBag>()
             || item.type == ModContent.ItemType<AstrumAureusBag>()
 			|| item.type == ModContent.ItemType<SlimeGodBag>()
+            || item.type == ModContent.ItemType<RavagerBag>()
             );
         }
 
@@ -194,6 +195,14 @@ namespace RagnarokMod.Common.GlobalItems
                 {
                     ModContent.ItemType<CorroslimeBass>(),
 					ModContent.ItemType<CrimslimeOboe>()
+                }));
+            }
+
+            if (item.type == ModContent.ItemType<RavagerBag>())
+            {
+                itemLoot.Add(DropHelper.CalamityStyle(DropHelper.BagWeaponDropRateFraction, new int[]
+                {
+                    ModContent.ItemType<Splattercannon>()
                 }));
             }
         }

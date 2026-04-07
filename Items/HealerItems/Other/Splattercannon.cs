@@ -38,10 +38,10 @@ namespace RagnarokMod.Items.HealerItems.Other
             Item.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
             Item.width = 60;
             Item.height = 40;
-            Item.useTime = 30;
-            Item.useAnimation = 30;
+            Item.useTime = 45;
+            Item.useAnimation = 45;
             Item.autoReuse = true;
-            Item.reuseDelay = 4;
+            Item.reuseDelay = 8;
             isHealer = true;
             healDisplay = true;
             Item.holdStyle = ItemHoldStyleID.HoldFront;
@@ -49,8 +49,8 @@ namespace RagnarokMod.Items.HealerItems.Other
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.knockBack = 4f;
-            Item.value = CalamityGlobalItem.RarityPureGreenBuyPrice;
-            Item.rare = ModContent.RarityType<PureGreen>();
+            Item.value = CalamityGlobalItem.RarityYellowBuyPrice;
+            Item.rare = ItemRarityID.Yellow;
             Item.shootSpeed = 5f;
             Item.shoot = ModContent.ProjectileType<Splattershot>();
             radiantLifeCost = 8;
@@ -185,14 +185,6 @@ namespace RagnarokMod.Items.HealerItems.Other
                 rotation += -0.45f * (float)Math.Pow((0.4f - animProgress) / 0.4f, 2) * player.direction;
 
             player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, rotation);
-        }
-
-        public override void AddRecipes()
-        {
-            base.CreateRecipe(1)
-                .AddIngredient<BloodstoneCore>(5)
-                .AddTile(TileID.LunarCraftingStation)
-                .Register();
         }
     }
 }

@@ -49,6 +49,7 @@ using ThoriumMod.NPCs.BossQueenJellyfish;
 using ThoriumMod.NPCs.BossStarScouter;
 using ThoriumMod.NPCs.BossTheGrandThunderBird;
 using ThoriumMod.NPCs.BossViscount;
+using CalamityMod.NPCs.Ravager;
 
 namespace RagnarokMod.Common.GlobalNPCs
 {
@@ -81,6 +82,7 @@ namespace RagnarokMod.Common.GlobalNPCs
             || npc.type == ModContent.NPCType<Leviathan>()
 			|| npc.type == ModContent.NPCType<ProfanedGuardianHealer>()
 			|| npc.type == ModContent.NPCType<SlimeGodCore>()
+            || npc.type == ModContent.NPCType<RavagerBody>()
             );
         }
 
@@ -210,6 +212,13 @@ namespace RagnarokMod.Common.GlobalNPCs
             {
                 LeadingConditionRule notExpert = new LeadingConditionRule(new Conditions.NotExpert());
                 notExpert.OnSuccess(ItemDropRule.Common(ModContent.ItemType<StellarRiff>(), 4));
+                npcLoot.Add(notExpert);
+            }
+
+            if (npc.type == ModContent.NPCType<RavagerBody>())
+            {
+                LeadingConditionRule notExpert = new LeadingConditionRule(new Conditions.NotExpert());
+                notExpert.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Splattercannon>(), 4));
                 npcLoot.Add(notExpert);
             }
 

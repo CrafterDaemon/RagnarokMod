@@ -55,7 +55,7 @@ namespace RagnarokMod.Items.HealerItems.Other
 
         public override bool CanConsumeAmmo(Item ammo, Player player)
         {
-            if (Main.rand.Next(0, 100) < 50)
+            if (Main.rand.Next(0, 100) < 80)
                 return false;
             return true;
         }
