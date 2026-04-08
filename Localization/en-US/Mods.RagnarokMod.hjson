@@ -179,6 +179,7 @@ Items: {
 
 	AuricTeslaFrilledHelmet: {
 		DisplayName: Auric Tesla Frilled Helmet
+		DisplayNameEclipse: Primordial Tesla Frilled Helmet
 		Tooltip:
 			'''
 			20% increased symphonic damage, critical strike chance, and wind instrument homing speed
@@ -189,15 +190,18 @@ Items: {
 			'''
 		SetBonus:
 			'''
-			Tarragon, Bloodflare, God Slayer, and Rhapsodist armor effects
+			Bloodflare, God Slayer, and Rhapsodist armor effects
 			Pressing the '{$ThoriumMod.Keybinds.ArmorAbility.DisplayName}' key will trigger both Rhapsodist armor abilities
 			'''
+		SetBonusHelheim: Tarragon, Bloodflare, and God Slayer armor effects
 	}
 
 	AuricTeslaHealerHead: {
 		DisplayName: Auric Tesla Irradiant Visage
+		DisplayNameEclipse: Primordial Tesla Irradiant Visage
 		Tooltip:
 			'''
+			Corrupts your radiant powers
 			100% increased radiant damage but 80% decreased non-radiant damage
 			25% increased radiant critical strike chance
 			5% increased movement speed
@@ -205,10 +209,16 @@ Items: {
 			Healing spells heal an additional 10 life
 			+100 maximum mana
 			'''
+		ToggleTooltip: "[c/aaaaaa:Shift-Right Click this item in your inventory to toggle] [c/CC44FF:corrupted radiant powers]"
 		SetBonus:
 			'''
-			Tarragon, Bloodflare, Silva, Nightfallen, and Dreamweaver armor effects
+			Bloodflare, Silva, and Dreamweaver armor effects
 			Pressing the '{$ThoriumMod.Keybinds.ArmorAbility.DisplayName}' key will trigger both Dreamweaver armor abilities
+			50% increased radiant damage
+			'''
+		SetBonusHelheim:
+			'''
+			Tarragon, Bloodflare, and Silva armor effects
 			50% increased radiant damage
 			'''
 	}
@@ -568,15 +578,15 @@ Items: {
 	AstralRipper: {
 		DisplayName: Astral Ripper
 		Tooltip:
-		'''
-		Spinning this scythe creates stars that orbit you. 
-		After completing a full circle, they pulsate once before exploding.
-		Holding <right> will start charging the scythe.
-		While charging, stars will begin to rapidly fall towards your cursor.
-		Release the charge to swing the scythe in a massive arc.
-		Landing the swing causes a large group of stars to crash down on the target.
-		All hits from this weapon inflict [cbuff:CalamityMod/AstralInfectionDebuff].
-		'''
+			'''
+			Spinning this scythe creates stars that orbit you. 
+			After completing a full circle, they pulsate once before exploding.
+			Holding <right> will start charging the scythe.
+			While charging, stars will begin to rapidly fall towards your cursor.
+			Release the charge to swing the scythe in a massive arc.
+			Landing the swing causes a large group of stars to crash down on the target.
+			All hits from this weapon inflict [cbuff:CalamityMod/AstralInfectionDebuff].
+			'''
 	}
 
 	RadioMic: {
@@ -1325,7 +1335,7 @@ Configs: {
 
 		DoomSayerCoin: {
 			Label: Primordials Recipe Change
-			Tooltip: Changes Doom Sayer's Coin to require Eldritch Shell Fragments and Ashes of Calamity. Defaults to True
+			Tooltip: Changes Doom Sayer's Coin to require Ashes of Calamity. Defaults to True
 		}
 
 		RuneOfKos: {

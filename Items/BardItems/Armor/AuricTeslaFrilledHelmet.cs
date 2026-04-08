@@ -2,7 +2,6 @@
 using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Terraria;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using CalamityMod.Items.Armor.Auric;
 using CalamityMod.CalPlayer.Dashes;
@@ -12,13 +11,9 @@ using ThoriumMod;
 using ThoriumMod.Items;
 using ThoriumMod.Utilities;
 using ThoriumMod.Items.BossThePrimordials.Rhapsodist;
-using System;
-using ThoriumMod.Empowerments;
-using Microsoft.Xna.Framework;
 using Terraria.ID;
-using CalamityMod.Buffs.StatDebuffs;
-using ThoriumMod.Buffs.Bard;
 using RagnarokMod.Utils;
+using Terraria.Localization;
 
 namespace RagnarokMod.Items.BardItems.Armor
 {
@@ -33,6 +28,7 @@ namespace RagnarokMod.Items.BardItems.Armor
         public static readonly int InspirationRegen = 30;
 
         public static readonly int WindHomingSpeed = 20;
+        public override LocalizedText DisplayName => ModLoader.HasMod("InfernalEclipseAPI") || ModLoader.HasMod("WHummusMultiModBalancing") ? this.GetLocalization("DisplayNameEclipse") : base.DisplayName;
 
         public override void SetStaticDefaults()
         {
@@ -59,17 +55,28 @@ namespace RagnarokMod.Items.BardItems.Armor
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = this.GetLocalizedValue("SetBonus");
+            if (!ModLoader.HasMod("ThoriumRework") || ModLoader.HasMod("InfernalEclipseAPI") || ModLoader.HasMod("WHummusMultiModBalancing"))
+                player.setBonus = this.GetLocalizedValue("SetBonus");
+            else
+                player.setBonus = this.GetLocalizedValue("SetBonusHelheim");
+
             var modPlayer = player.Calamity();
-            modPlayer.tarraSet = true;
+
+            if (ModLoader.HasMod("ThoriumRework"))
+                modPlayer.tarraSet = true;
+
             modPlayer.bloodflareSet = true;
             modPlayer.godSlayer = true;
             modPlayer.auricSet = true;
             player.thorns += 3f;
             player.ignoreWater = true;
             player.crimsonRegen = true;
-            player.GetRagnarokModPlayer().auricBardSet = true;
-            player.GetRagnarokModPlayer().tarraBard = true;
+
+            if (!ModLoader.HasMod("ThoriumRework") || ModLoader.HasMod("InfernalEclipseAPI") || ModLoader.HasMod("WHummusMultiModBalancing"))
+                player.GetRagnarokModPlayer().auricBardSet = true;
+            else
+                player.GetRagnarokModPlayer().tarraBard = true;
+
             player.GetRagnarokModPlayer().godslayerBard = true;
             player.GetRagnarokModPlayer().bloodflareBard = true;
 
@@ -98,15 +105,28 @@ namespace RagnarokMod.Items.BardItems.Armor
 
         public override void AddRecipes()
         {
-            CreateRecipe().
-                AddIngredient<SoloistHat>().
-                AddIngredient<InspiratorsHelmet>().
-                AddIngredient<GodSlayerHeadBard>().
-                AddIngredient<BloodflareHeadBard>().
-                AddIngredient<TarragonShroud>().
-                AddIngredient<AuricBar>(12).
-                AddTile<CosmicAnvil>().
-                Register();
+            Recipe recipe = CreateRecipe();
+
+            if (!ModLoader.HasMod("ThoriumRework") || ModLoader.HasMod("InfernalEclipseAPI") || ModLoader.HasMod("WHummusMultiModBalancing"))
+            {
+                recipe.AddIngredient<SoloistHat>();
+                recipe.AddIngredient<InspiratorsHelmet>();
+            }
+            else
+            {
+                recipe.AddIngredient<TarragonShroud>();
+            }
+
+            recipe.AddIngredient<BloodflareHeadBard>();
+            recipe.AddIngredient<GodSlayerHeadBard>();
+
+            if (ModLoader.HasMod("InfernalEclipseAPI") || ModLoader.HasMod("WHummusMultiModBalancing"))
+                recipe.AddIngredient<ShadowspecBar>(12);
+            else
+                recipe.AddIngredient<AuricBar>(12);
+
+            recipe.AddTile<CosmicAnvil>();
+            recipe.Register();
         }
     }
 }

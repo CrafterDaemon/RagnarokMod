@@ -2,23 +2,23 @@
 using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Terraria;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using CalamityMod.Items.Armor.Auric;
-using CalamityMod.CalPlayer.Dashes;
 using CalamityMod;
 using CalamityMod.Items;
 using ThoriumMod;
 using ThoriumMod.Items;
 using ThoriumMod.Utilities;
 using ThoriumMod.Items.BossThePrimordials.Dream;
-using System;
-using ThoriumMod.Empowerments;
 using Microsoft.Xna.Framework;
 using Terraria.ID;
-using CalamityMod.Buffs.StatDebuffs;
 using RagnarokMod.Utils;
 using RagnarokMod.Projectiles;
+using Terraria.Localization;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework.Graphics;
+using System.IO;
+using Terraria.ModLoader.IO;
 
 namespace RagnarokMod.Items.HealerItems.Armor
 {
@@ -26,6 +26,8 @@ namespace RagnarokMod.Items.HealerItems.Armor
     [AutoloadEquip(EquipType.Head)]
     public class AuricTeslaHealerHead : ThoriumItem
     {
+        private bool darkAura;
+        public override LocalizedText DisplayName => ModLoader.HasMod("InfernalEclipseAPI") || ModLoader.HasMod("WHummusMultiModBalancing") ? this.GetLocalization("DisplayNameEclipse") : base.DisplayName;
 
         public override void SetStaticDefaults()
         {
@@ -38,7 +40,69 @@ namespace RagnarokMod.Items.HealerItems.Armor
             Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
             Item.defense = 27; //132
             Item.rare = ModContent.RarityType<BurnishedAuric>();
+            isHealer = true;
         }
+
+        #region Toggleable Dark Aura
+        bool toggleEnabled
+        {
+            get 
+            {
+                return darkAura && (!ModLoader.HasMod("ThoriumRework") || ModLoader.HasMod("InfernalEclipseAPI") || ModLoader.HasMod("WHummusMultiModBalancing")); 
+            }
+            set
+            {
+                darkAura = value;
+            }
+        }
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            if (!toggleEnabled)
+            {
+                tooltips.RemoveAll(x => x.Name == "Tooltip0");
+                isDarkHealer = false;
+            }
+            else
+            {
+                isDarkHealer = true;
+            }
+            tooltips.Add(new(Mod, "Toggle", this.GetLocalizedValue("ToggleTooltip")));
+            base.ModifyTooltips(tooltips);
+        }
+        public override bool CanRightClick() => Main.keyState.PressingShift() && (!ModLoader.HasMod("ThoriumRework") || ModLoader.HasMod("InfernalEclipseAPI") || ModLoader.HasMod("WHummusMultiModBalancing"));
+        public override void RightClick(Player player)
+        {
+            toggleEnabled = !toggleEnabled;
+            Item.NetStateChanged();
+        }
+        public override bool ConsumeItem(Player player) => false;
+        public override void SaveData(TagCompound tag)
+        {
+            tag.Add("toggleEffect", toggleEnabled);
+        }
+        public override void LoadData(TagCompound tag)
+        {
+            toggleEnabled = tag.GetBool("toggleEffect");
+        }
+        public override void NetSend(BinaryWriter writer)
+        {
+            writer.Write(toggleEnabled);
+        }
+        public override void NetReceive(BinaryReader reader)
+        {
+            toggleEnabled = reader.ReadBoolean();
+        }
+        public override void PostDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
+        {
+            if (!ModLoader.HasMod("ThoriumRework") || ModLoader.HasMod("InfernalEclipseAPI") || ModLoader.HasMod("WHummusMultiModBalancing"))
+            {
+                CalamityUtils.DrawInventoryDot(spriteBatch, position, new Vector2(16, 16) * Main.inventoryScale, toggleEnabled);
+            }
+        }
+        public override void UpdateInventory(Player player)
+        {
+        }
+        #endregion
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
         {
@@ -52,22 +116,38 @@ namespace RagnarokMod.Items.HealerItems.Armor
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = this.GetLocalizedValue("SetBonus");
+            if (!ModLoader.HasMod("ThoriumRework") || ModLoader.HasMod("InfernalEclipseAPI") || ModLoader.HasMod("WHummusMultiModBalancing"))
+                player.setBonus = this.GetLocalizedValue("SetBonus");
+            else
+                player.setBonus = this.GetLocalizedValue("SetBonusHelheim");
+
             var modPlayer = player.Calamity();
-            modPlayer.tarraSet = true;
+
+            if (ModLoader.HasMod("ThoriumRework"))
+                modPlayer.tarraSet = true;
+
             modPlayer.bloodflareSet = true;
             modPlayer.silvaSet = true;
             modPlayer.auricSet = true;
             player.thorns += 3f;
             player.ignoreWater = true;
             player.crimsonRegen = true;
-            player.GetRagnarokModPlayer().auricHealerSet = true;
-            player.GetRagnarokModPlayer().tarraHealer = true;
+
+            if (!ModLoader.HasMod("ThoriumRework") || ModLoader.HasMod("InfernalEclipseAPI") || ModLoader.HasMod("WHummusMultiModBalancing"))
+            {
+                player.GetRagnarokModPlayer().auricHealerSet = true;
+                player.GetThoriumPlayer().darkAura = darkAura;
+            }
+            else
+                player.GetRagnarokModPlayer().tarraHealer = true;
+
             player.GetRagnarokModPlayer().silvaHealer = true;
             player.GetRagnarokModPlayer().bloodflareHealer = true;
-            player.GetRagnarokModPlayer().nightfallen = true;
+            //player.GetRagnarokModPlayer().nightfallen = true;
+
             player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) += 0.5f;
-            if (Main.myPlayer == player.whoAmI)
+
+            if (Main.myPlayer == player.whoAmI && ModLoader.HasMod("ThoriumRework"))
             {
                 int type = ModContent.ProjectileType<GuardianHealer>();
                 if (player.whoAmI == Main.myPlayer && player.ownedProjectileCounts[type] < 1)
@@ -93,16 +173,29 @@ namespace RagnarokMod.Items.HealerItems.Armor
 
         public override void AddRecipes()
         {
-            CreateRecipe().
-                AddIngredient<DreamWeaversHood>().
-                AddIngredient<DreamWeaversHelmet>().
-                AddIngredient<SilvaHeadHealer>().
-                AddIngredient<BloodflareHeadHealer>().
-                AddIngredient<TarragonCowl>().
-                AddIngredient<NightfallenHelmet>().
-                AddIngredient<AuricBar>(12).
-                AddTile<CosmicAnvil>().
-                Register();
+            Recipe recipe = CreateRecipe();
+
+            if (!ModLoader.HasMod("ThoriumRework") || ModLoader.HasMod("InfernalEclipseAPI") || ModLoader.HasMod("WHummusMultiModBalancing"))
+            {
+                recipe.AddIngredient<DreamWeaversHood>();
+                recipe.AddIngredient<DreamWeaversHelmet>();
+            }
+            else
+            {
+                recipe.AddIngredient<TarragonCowl>();
+            }
+
+            recipe.AddIngredient<BloodflareHeadHealer>();
+            recipe.AddIngredient<SilvaHeadHealer>();
+            //recipe.AddIngredient<NightfallenHelmet>();
+
+            if (ModLoader.HasMod("InfernalEclipseAPI") || ModLoader.HasMod("WHummusMultiModBalancing"))
+                recipe.AddIngredient<ShadowspecBar>(12);
+            else
+                recipe.AddIngredient<AuricBar>(12);
+
+            recipe.AddTile<CosmicAnvil>();
+            recipe.Register();
         }
     }
 }

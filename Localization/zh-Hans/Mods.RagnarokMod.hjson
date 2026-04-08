@@ -182,6 +182,7 @@ Items: {
 
 	AuricTeslaFrilledHelmet: {
 		DisplayName: 金缀韵灵盔
+		// DisplayNameEclipse: Primordial Tesla Frilled Helmet
 		Tooltip:
 			'''
 			增加20%音波伤害、音波暴击率和音波追踪速度
@@ -195,10 +196,12 @@ Items: {
 			拥有狂想独奏帽/狂想启迪盔, 弑神者兜帽, 血嚎尖芒盔, 龙蒿魂罩的套装效果
 			按下“盔甲能力”键将触发两个狂想套装效果
 			'''
+		// SetBonusHelheim: Tarragon, Bloodflare, and God Slayer armor effects
 	}
 
 	AuricTeslaHealerHead: {
 		DisplayName: 金煌圣祗盔
+		// DisplayNameEclipse: Primordial Tesla Irradiant Visage
 		Tooltip:
 			'''
 			增加100%光辉伤害，降低80%非光辉伤害
@@ -208,12 +211,18 @@ Items: {
 			治疗法术会额外治疗10生命值
 			最大魔力值增加100
 			'''
+		// ToggleTooltip: "[c/aaaaaa:Shift-<right> this item in your inventory to toggle] [c/CC44FF:corrupted radiant powers]"
 		SetBonus:
 			'''
 			拥有梦境编织者兜帽/梦境编织者头盔, 始源林海覆面盔, 血恸幽冥盔, 龙蒿风帽，苍帷头盔的套装效果
 			按下“盔甲能力”键将触发两个梦境编织者套装效果
 			增加50%光辉伤害
 			'''
+		/* SetBonusHelheim:
+			'''
+			Tarragon, Bloodflare, and Silva armor effects
+			50% increased radiant damage
+			''' */
 	}
 
 	BlazingDrumBeat: {

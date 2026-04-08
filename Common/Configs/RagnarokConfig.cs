@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using Terraria.ModLoader;
 using Terraria.ModLoader.Config;
 
 namespace RagnarokMod.Common.Configs
@@ -61,8 +62,13 @@ namespace RagnarokMod.Common.Configs
         [ReloadRequired]
         public bool DoomSayerCoin;
 
+        private bool _runeOfKos;
         [DefaultValue(true)]
         [ReloadRequired]
-        public bool RuneOfKos;
+        public bool RuneOfKos
+        {
+            get => !ModLoader.HasMod("ThoriumRework") && _runeOfKos;
+            set => _runeOfKos = value;
+        }
     }
 }

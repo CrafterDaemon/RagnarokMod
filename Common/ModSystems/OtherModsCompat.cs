@@ -53,8 +53,11 @@ namespace RagnarokMod.Common.ModSystems
                 {
                     RemoveOtherModRecipe(CalamityBardHealer, "AerospecHeadphones");
                     RemoveOtherModRecipe(CalamityBardHealer, "AerospecBiretta");
-                    RemoveOtherModRecipe(CalamityBardHealer, "AuricTeslaFeatheredHeadwear");
-                    RemoveOtherModRecipe(CalamityBardHealer, "AuricTeslaValkyrieVisage");
+                    if (!ModLoader.HasMod("InfernalEclipseAPI") && !ModLoader.HasMod("WHummusMultiModBalancing"))
+                    {
+                        RemoveOtherModRecipe(CalamityBardHealer, "AuricTeslaFeatheredHeadwear");
+                        RemoveOtherModRecipe(CalamityBardHealer, "AuricTeslaValkyrieVisage");
+                    }
                     RemoveOtherModRecipe(CalamityBardHealer, "BloodflareRitualistMask");
                     RemoveOtherModRecipe(CalamityBardHealer, "BloodflareSirenSkull");
                     RemoveOtherModRecipe(CalamityBardHealer, "DaedalusCowl");
@@ -68,8 +71,12 @@ namespace RagnarokMod.Common.ModSystems
 
                     if (ModLoader.HasMod("CatalystMod"))
                     { // Catalyst Content
-                        RemoveOtherModRecipe(CalamityBardHealer, "AugmentedAuricTeslaFeatheredHeadwear");
-                        RemoveOtherModRecipe(CalamityBardHealer, "AugmentedAuricTeslaValkyrieVisage");
+                        if (!!ModLoader.HasMod("InfernalEclipseAPI") && !ModLoader.HasMod("WHummusMultiModBalancing"))
+                        {
+                            //Ragnarok doesn't even have thier own versions of these items yet lol
+                            //RemoveOtherModRecipe(CalamityBardHealer, "AugmentedAuricTeslaFeatheredHeadwear");
+                            //RemoveOtherModRecipe(CalamityBardHealer, "AugmentedAuricTeslaValkyrieVisage");
+                        }
                         RemoveOtherModRecipe(CalamityBardHealer, "IntergelacticCloche");
                         RemoveOtherModRecipe(CalamityBardHealer, "IntergelacticProtectorHelm");
                     }
