@@ -37,10 +37,10 @@ namespace RagnarokMod.Items.BardItems.String
 
         public override void SafeSetBardDefaults()
         {
-            Item.damage = 85;
+            Item.damage = 775;
             InspirationCost = 1;
-            Item.width = 88;
-            Item.height = 88;
+            Item.width = 92;
+            Item.height = 90;
             Item.useTime = 22;
             Item.useAnimation = 22;
             Item.useStyle = ItemUseStyleID.Guitar;
