@@ -136,7 +136,8 @@ namespace RagnarokMod.Common.GlobalItems
             {
                 itemLoot.Add(DropHelper.CalamityStyle(DropHelper.BagWeaponDropRateFraction, new int[]
                 {
-                    ModContent.ItemType<Virusprayer>()
+                    ModContent.ItemType<Virusprayer>(),
+                    ModContent.ItemType<ToxicWaves>()
                 }));
             }
 

@@ -170,6 +170,7 @@ namespace RagnarokMod.Common.GlobalNPCs
             {
                 LeadingConditionRule notExpert = new LeadingConditionRule(new Conditions.NotExpert());
                 notExpert.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Virusprayer>(), 4));
+                notExpert.OnSuccess(ItemDropRule.Common(ModContent.ItemType<ToxicWaves>(), 4));
                 npcLoot.Add(notExpert);
             }
 
