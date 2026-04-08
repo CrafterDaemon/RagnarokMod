@@ -1034,6 +1034,19 @@ Items: {
 			'''
 	}
 
+	ToxicWaves: {
+		DisplayName: Toxic Waves
+		Tooltip:
+			'''
+			Launches homing toxic sharkrons that seek out enemies
+			Playing success increases the number of sharkrons fired
+			Press <right> to play the [c/37C300:Toxic Wisdom] riff!
+			While the riff is active, a sulphurous vortex summons acid sharkrons from above
+			Attacks deal 25% more damage while the riff is active
+			Time your attacks during the riff to reduce the cooldown
+			'''
+	}
+
 	FateoftheGods: {
 		DisplayName: Fate of the Gods
 		Tooltip:
@@ -1248,6 +1261,9 @@ Projectiles: {
 	StellarRiffPro.DisplayName: Stellar Riff Pro
 	StellarAurora.DisplayName: Stellar Aurora
 	StellarShootingStar.DisplayName: Stellar Shooting Star
+	ToxicWavesVortex.DisplayName: Toxic Waves Vortex
+	ToxicSharkron.DisplayName: Toxic Sharkron
+	ToxicWavesPro.DisplayName: Toxic Waves Pro
 	DragonForceRiffBeam.DisplayName: Dragon Force Riff Beam
 	InfectedPustule.DisplayName: Infected Pustule
 	InfectedSporeCloud.DisplayName: Infected Spore Cloud
@@ -1261,6 +1277,7 @@ Projectiles: {
 	AsterionConstellation.DisplayName: Asterion Constellation
 	AstralRipperChargeSwing.DisplayName: Astral Ripper Charge Swing
 	AstralRipperStarfall.DisplayName: Astral Ripper Starfall
+	ToxicSharkronGore.DisplayName: Toxic Sharkron Gore
 }
 
 Configs: {

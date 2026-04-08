@@ -32,6 +32,7 @@ namespace RagnarokMod.Sounds
         public static readonly SoundStyle shredder = new("RagnarokMod/Sounds/shredder") { Volume = 0.5f, MaxInstances = 0 };
         public static readonly SoundStyle stellarriff = new("RagnarokMod/Sounds/stellarriff") { Volume = 0.5f, MaxInstances = 0 };
         public static readonly SoundStyle dragonforce = new("RagnarokMod/Sounds/dragonforce") { Volume = 0.2f, MaxInstances = 0 };
+        public static readonly SoundStyle toxicwaves = new("RagnarokMod/Sounds/toxicwaves") { Volume = 0.5f, Pitch = 0.5f, MaxInstances = 0 };
 
         //riffs
         public static readonly SoundStyle fretsriff = new("RagnarokMod/Sounds/Music/Riffs/fretsriff") { Volume = 0.6f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
