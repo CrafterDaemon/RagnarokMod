@@ -59,6 +59,8 @@ namespace RagnarokMod.Items.BardItems.Percussion
             Item.shootSpeed = 0f;
             Item.autoReuse = true;
             Item.Calamity().donorItem = true;
+
+            ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
         }
 
         public override bool CanPlayInstrument(Player player)

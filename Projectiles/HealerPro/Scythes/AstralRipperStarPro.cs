@@ -45,7 +45,10 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             Projectile.penetrate = -1;
             Projectile.timeLeft = 600;
             Projectile.ignoreWater = true;
-            Projectile.localNPCHitCooldown = -1; // explodes on first hit
+
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 40;
+            Projectile.usesIDStaticNPCImmunity = false;
         }
 
         public override void AI()

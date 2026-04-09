@@ -10,11 +10,14 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using ThoriumMod;
 using ThoriumMod.Items;
+using ThoriumMod.Projectiles.Bard;
 
 namespace RagnarokMod.Projectiles.BardPro.Riffs
 {
-    public class ToxicSharkron : ModProjectile
+    public class ToxicSharkron : BardProjectile
     {
+        public override BardInstrumentType InstrumentType => BardInstrumentType.String;
+
         public override string Texture => "CalamityMod/NPCs/OldDuke/SulphurousSharkron";
 
         // ai[0] = phase (0 = initial, 1 = aggressive homing)
@@ -33,7 +36,7 @@ namespace RagnarokMod.Projectiles.BardPro.Riffs
             ProjectileID.Sets.TrailingMode[Type] = 1;
         }
 
-        public override void SetDefaults()
+        public override void SetBardDefaults()
         {
             Projectile.width = 24;
             Projectile.height = 24;
@@ -141,7 +144,7 @@ namespace RagnarokMod.Projectiles.BardPro.Riffs
             Lighting.AddLight(Projectile.Center, 0.3f, 0.7f, 0.2f);
         }
 
-        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        public override void BardOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             for (int i = 0; i < 16; i++)
             {
@@ -179,7 +182,7 @@ namespace RagnarokMod.Projectiles.BardPro.Riffs
             if (Main.netMode != NetmodeID.MultiplayerClient)
             {
                 int spawnRadius = Projectile.width / 2;
-                for (int i = 0; i < 6; i++)
+                for (int i = 0; i < 2; i++)
                 {
                     Projectile.NewProjectile(
                         Projectile.GetSource_FromThis(),

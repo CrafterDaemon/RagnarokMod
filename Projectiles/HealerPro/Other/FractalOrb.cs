@@ -130,7 +130,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
                                 Projectile.knockBack, Projectile.DamageType, false);
                             owner.ApplyDamageToNPC(npc, hitInfo.Damage, hitInfo.Knockback,
                                 hitInfo.HitDirection, hitInfo.Crit);
-                            npc.AddBuff(ModContent.BuffType<Nightwither>(), 180);
+                            npc.AddBuff(ModContent.BuffType<Voidfrost>(), 180);
 
                             // 33% chance to generate a Stratus Starburst must be here since ApplyDamageToNPC does not trigger OnHitNPC
                             if (Main.rand.NextFloat() <= 0.33f)

@@ -30,7 +30,7 @@ namespace RagnarokMod.Items.BardItems.Wind
         }
         public override void SetBardDefaults()
         {
-            Item.damage = 24;
+            Item.damage = 40;
             InspirationCost = 1;
             Item.width = 36;
             Item.height = 26;

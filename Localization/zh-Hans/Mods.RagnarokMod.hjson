@@ -211,7 +211,7 @@ Items: {
 			治疗法术会额外治疗10生命值
 			最大魔力值增加100
 			'''
-		// ToggleTooltip: "[c/aaaaaa:Shift-<right> this item in your inventory to toggle] [c/CC44FF:corrupted radiant powers]"
+		// ToggleTooltip: "[c/aaaaaa:Shift-Right Click this item in your inventory to toggle] [c/CC44FF:corrupted radiant powers]"
 		SetBonus:
 			'''
 			拥有梦境编织者兜帽/梦境编织者头盔, 始源林海覆面盔, 血恸幽冥盔, 龙蒿风帽，苍帷头盔的套装效果

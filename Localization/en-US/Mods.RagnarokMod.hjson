@@ -688,7 +688,7 @@ Items: {
 		Tooltip:
 			'''
 			Shoots holy flame blasts
-			Hit enemies are afflicted with [cbuff:HolyFlames] for 3 seconds
+			Hit enemies are afflicted with [cbuff:CalamityMod/HolyFlames] for 3 seconds
 			'''
 	}
 

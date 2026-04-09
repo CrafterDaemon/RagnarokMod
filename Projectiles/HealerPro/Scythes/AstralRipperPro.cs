@@ -97,7 +97,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                         owner.Center,
                         Vector2.Zero,
                         ModContent.ProjectileType<AstralRipperStarPro>(),
-                        Projectile.damage,
+                        (Projectile.damage / 2),
                         Projectile.knockBack,
                         Projectile.owner
                     );

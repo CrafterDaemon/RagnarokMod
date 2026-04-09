@@ -53,14 +53,18 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
 
         public override void AI()
         {
-            if (!Main.player[Projectile.owner].active || Main.player[Projectile.owner].dead || Main.player[Projectile.owner].HeldItem.type != ModContent.ItemType<IrradiantInfinity>())
+            Player player = Main.player[Projectile.owner];
+
+            if (!player.active || player.dead || player.HeldItem.type != ModContent.ItemType<IrradiantInfinity>())
+            {
                 Projectile.Kill();
+                return;
+            }
             if (++healTimer >= 30)
             {
                 healTimer = 0;
                 for (int i = 0; i < Main.maxPlayers; i++)
                 {
-                    Projectile.TryGetOwner(out Player player);
                     Player searchPlayer = Main.player[i];
                     if (searchPlayer.active && !searchPlayer.dead && !searchPlayer.hostile || searchPlayer == player)
                     {

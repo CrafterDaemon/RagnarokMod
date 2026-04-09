@@ -13,11 +13,14 @@ using Terraria.GameContent;
 using Terraria.ModLoader;
 using ThoriumMod;
 using ThoriumMod.Items;
+using ThoriumMod.Projectiles.Bard;
 
 namespace RagnarokMod.Projectiles.BardPro.Electronic
 {
-    public class DevourerSineBeam : ModProjectile
+    public class DevourerSineBeam : BardProjectile
     {
+        public override BardInstrumentType InstrumentType => BardInstrumentType.Electronic;
+
         public override string Texture => "Terraria/Images/Projectile_0";
         private float BeamHalfLength = (Main.screenWidth - 50) / 2;
         private float BeamThickness = 12f;
@@ -32,7 +35,7 @@ namespace RagnarokMod.Projectiles.BardPro.Electronic
         private float WaveSpeed = 0.12f;
         private int inspirationTimer;
         private SlotId soundSlot;
-        public override void SetDefaults()
+        public override void SetBardDefaults()
         {
             Projectile.width = 10;
             Projectile.height = 10;

@@ -37,7 +37,7 @@ namespace RagnarokMod.Items.HealerItems.Other
         public override void SetDefaults()
         {
             base.Item.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
-            base.Item.damage = 220;
+            base.Item.damage = 120;
             this.isHealer = true;
             this.healDisplay = true;
             base.Item.width = 60;
@@ -55,6 +55,20 @@ namespace RagnarokMod.Items.HealerItems.Other
             base.Item.UseSound = new SoundStyle?(SoundID.Item8);
             base.Item.shoot = ModContent.ProjectileType<FractalOrb>();
             base.Item.shootSpeed = 8f;
+        }
+
+        public override bool CanUseItem(Player player)
+        {
+            if (player.altFunctionUse == 2)
+            {
+                Item.useStyle = ItemUseStyleID.Shoot;
+            }
+            else
+            {
+                Item.useStyle = ItemUseStyleID.Swing;
+            }
+
+            return true;
         }
 
         private static bool ConstellationActive(Player player)
@@ -121,6 +135,17 @@ namespace RagnarokMod.Items.HealerItems.Other
             // Left-click: fire LyraOrb normally toward the cursor
             Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
             return false;
+        }
+
+        public override void AddRecipes()
+        {
+            Recipe recipe = CreateRecipe();
+            recipe.AddIngredient(ModContent.ItemType<ExodiumCluster>(), 12);
+            recipe.AddIngredient(ModContent.ItemType<Lumenyl>(), 8);
+            recipe.AddIngredient(ModContent.ItemType<RuinousSoul>(), 4);
+            recipe.AddIngredient(ModContent.ItemType<Prisma>(), 1);
+            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.Register();
         }
     }
 }
