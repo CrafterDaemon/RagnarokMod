@@ -174,7 +174,14 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
         {
             Projectile.damage = (int)(Projectile.damage * (1f + PercentCharge));
 
-            Projectile.ai[2] = -(MathHelper.PiOver2 + (MathHelper.PiOver4 * 1.5f) * owner.direction);
+            float windupVisual = MathHelper.Clamp(Projectile.ai[0] / 80f, 0f, 1f);
+            float neutralAngle = owner.direction == 1 ? 0f : MathHelper.Pi;
+            float cockedAngle = -(MathHelper.PiOver2 + (MathHelper.PiOver4 * 1.5f) * owner.direction);
+            float easedWindup = 1f - (1f - windupVisual) * (1f - windupVisual) * (1f - windupVisual);
+            float holdAngle = neutralAngle + MathHelper.WrapAngle(cockedAngle - neutralAngle) * easedWindup;
+
+            Projectile.ai[2] = cockedAngle;         // swing still starts from full cock
+            Projectile.localAI[1] = holdAngle;      // but we remember where we actually released
             Projectile.ai[1] = 0f;
             Projectile.localAI[0] = 1f;
             Projectile.netUpdate = true;
@@ -205,9 +212,23 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             // ai[2] is the cocked angle; direction is encoded in its sign
             // negative cocked angle = facing right, positive = facing left
 
-            float startAngle = Projectile.ai[2];
+            float startAngle = Projectile.ai[2];           // cocked angle
+            float releaseAngle = Projectile.localAI[1];    // where we released from
             float endAngle = startAngle + SweepArc * owner.direction;
-            float curAngle = MathHelper.Lerp(startAngle, endAngle, easedT);
+
+            float curAngle;
+            if (progress < WindupEnd)
+            {
+                // Ease from release position to fully cocked
+                float windupT = MathHelper.SmoothStep(0f, 1f, progress / WindupEnd);
+                curAngle = releaseAngle + MathHelper.WrapAngle(startAngle - releaseAngle) * windupT;
+            }
+            else
+            {
+                // Sweep the full arc from cocked position
+                float sweepT = MathHelper.SmoothStep(0f, 1f, (progress - WindupEnd) / (1f - WindupEnd));
+                curAngle = MathHelper.Lerp(startAngle, endAngle, sweepT);
+            }
 
             Projectile.Center = owner.Center + curAngle.ToRotationVector2() * ArmLength;
             Projectile.rotation = owner.direction == 1

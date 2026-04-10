@@ -17,13 +17,9 @@ namespace RagnarokMod.Projectiles.BardPro.String
 {
     public class ScourgesFretsPro : BardProjectile, ILocalizedModType
     {
-        public override BardInstrumentType InstrumentType
-        {
-            get
-            {
-                return BardInstrumentType.String;
-            }
-        }
+        public override BardInstrumentType InstrumentType => BardInstrumentType.String;
+        public int collide;
+        public int collideMax = 1;
         public override void SetBardDefaults()
         {
             Projectile.width = 30;
@@ -88,9 +84,6 @@ namespace RagnarokMod.Projectiles.BardPro.String
                 Dust.NewDustDirect(base.Projectile.position, base.Projectile.width, base.Projectile.height, DustID.Sand, (float)Main.rand.Next(-4, 5), (float)Main.rand.Next(-4, 5), 0, default(Color), 1.5f).noGravity = true;
             }
         }
-
-        public int collide;
-        public int collideMax = 1;
 
         public override bool PreDraw(ref Color lightColor)
         {

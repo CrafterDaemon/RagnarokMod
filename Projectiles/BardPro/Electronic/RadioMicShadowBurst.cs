@@ -30,7 +30,7 @@ namespace RagnarokMod.Projectiles.BardPro.Electronic
             Projectile.width = 12;
             Projectile.height = 12;
             Projectile.friendly = true;
-            Projectile.penetrate = -1;
+            Projectile.penetrate = 8;
             Projectile.timeLeft = 30;
             Projectile.ignoreWater = true;
             Projectile.tileCollide = true;

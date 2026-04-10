@@ -21,7 +21,7 @@ namespace RagnarokMod.Projectiles.BardPro.Percussion
             base.Projectile.timeLeft = 240;
             Projectile.width = 38;
             Projectile.height = 40;
-            Projectile.penetrate = 3;
+            Projectile.penetrate = 4;
             Projectile.tileCollide = false;
             Projectile.usesIDStaticNPCImmunity = true;
             Projectile.idStaticNPCHitCooldown = 10;
@@ -42,7 +42,6 @@ namespace RagnarokMod.Projectiles.BardPro.Percussion
 
             if (Projectile.ai[0] > returnTime || distToOwner > maxDistance || Projectile.penetrate <= 2)
             {
-                Projectile.penetrate = -1;
                 Vector2 direction = owner.Center - Projectile.Center;
                 direction.Normalize();
                 Vector2 targetVelocity = direction * 16f;
@@ -64,11 +63,12 @@ namespace RagnarokMod.Projectiles.BardPro.Percussion
             Projectile.width = 38;
             Projectile.height = 40;
             fadeOutTime = 30;
+            Projectile.penetrate = 8;
         }
 
         public override void BardOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            Projectile.damage -= (Projectile.damage / 20);
+            Projectile.damage -= (Projectile.damage / 10);
         }
     }
 }

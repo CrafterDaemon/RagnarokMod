@@ -37,12 +37,12 @@ namespace RagnarokMod.Items.BardItems.String
 
         public override void SafeSetBardDefaults()
         {
-            Item.damage = 775;
+            Item.damage = 150 ;
             InspirationCost = 1;
             Item.width = 92;
             Item.height = 90;
-            Item.useTime = 22;
-            Item.useAnimation = 22;
+            Item.useTime = 26;
+            Item.useAnimation = 26;
             Item.useStyle = ItemUseStyleID.Guitar;
             Item.holdStyle = 5;
             Item.noMelee = true;
@@ -51,7 +51,7 @@ namespace RagnarokMod.Items.BardItems.String
             Item.value = CalamityGlobalItem.RarityTurquoiseBuyPrice;
             Item.rare = ItemRarityID.Cyan;
             Item.shoot = ModContent.ProjectileType<ToxicWavesPro>();
-            Item.shootSpeed = 14f;
+            Item.shootSpeed = 32f;
         }
 
         public override void ModifyRiffInstDamage(ThoriumPlayer bard, ref StatModifier damage)
@@ -63,16 +63,23 @@ namespace RagnarokMod.Items.BardItems.String
 
         public override void SafeRiffBardShoot(int success, int level, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            int projectileCount = 1;
-            if (success >= 25)
-                projectileCount = 3;
-            else if (success >= 15)
-                projectileCount = 2;
-
-            for (int i = 0; i < projectileCount; i++)
+            if (player.GetRagnarokModPlayer().activeRiffType == RiffType)
             {
-                Vector2 perturbedVelocity = velocity.RotatedByRandom(MathHelper.ToRadians(10f * (projectileCount - 1)));
-                Projectile.NewProjectile(source, position, perturbedVelocity, type, damage, knockback, player.whoAmI);
+                float spread = MathHelper.ToRadians(8f);
+                for (int i = -2; i <= 2; i++)
+                {
+                    Vector2 dir = velocity.RotatedBy(spread * i);
+                    Projectile.NewProjectile(source, position, dir, type, damage, knockback, player.whoAmI);
+                }
+            }
+            else
+            {
+                float spread = MathHelper.ToRadians(15f);
+                for (int i = -1; i <= 1; i++)
+                {
+                    Vector2 dir = velocity.RotatedBy(spread * i);
+                    Projectile.NewProjectile(source, position, dir, type, damage, knockback, player.whoAmI);
+                }
             }
         }
 

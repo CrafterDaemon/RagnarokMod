@@ -29,7 +29,7 @@ namespace RagnarokMod.Projectiles.BardPro.Electronic
             Projectile.aiStyle = 0;
             Projectile.scale = 1f;
             Projectile.alpha = 255;
-            Projectile.penetrate = -1;
+            Projectile.penetrate = 8;
             Projectile.timeLeft = 120;
             Projectile.friendly = true;
             Projectile.DamageType = ThoriumDamageBase<BardDamage>.Instance;

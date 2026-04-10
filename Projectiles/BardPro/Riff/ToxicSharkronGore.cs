@@ -1,4 +1,6 @@
 ﻿using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.Buffs.StatDebuffs;
 using CalamityMod.NPCs.OldDuke;
 using CalamityMod.Particles;
 using Microsoft.Xna.Framework;
@@ -74,6 +76,12 @@ namespace RagnarokMod.Projectiles.BardPro.Riff
             {
                 GeneralParticleHandler.SpawnParticle(new PointParticle(Projectile.Center + (Projectile.velocity * 2f), Projectile.velocity.RotatedBy(MathHelper.ToRadians(Main.rand.NextFloat(-20, 20))) * Main.rand.NextFloat(3f), true, 8, Main.rand.NextFloat(1f, 2f), Color.DarkRed.MultiplyRGBA(new Color(0.3f, 0.3f, 0.3f, 0.3f)), false, true));
             }
+        }
+
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            target.AddBuff(ModContent.BuffType<SulphuricPoisoning>(), 300);
+            target.AddBuff(ModContent.BuffType<Irradiated>(), 300);
         }
 
         public override void OnKill(int timeLeft)

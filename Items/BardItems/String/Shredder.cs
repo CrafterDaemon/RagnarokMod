@@ -24,6 +24,12 @@ namespace RagnarokMod.Items.BardItems.String
         public override SoundStyle RiffSound => RagnarokModSounds.shredderriff;
         public override SoundStyle NormalSound => RagnarokModSounds.shredder;
         public override byte RiffType => RiffLoader.RiffType<ShredderRiff>();
+        public Player myPlayer = Main.LocalPlayer;
+        public RagnarokModPlayer myRagnaPlayer => Main.LocalPlayer != null ? Main.LocalPlayer.GetRagnarokModPlayer() : null;
+        public bool riffin => myRagnaPlayer != null ? (myRagnaPlayer.activeRiffType == RiffType ? true : false) : false;
+        public override float DamageDecreaseOnFail => riffin ? 0f : 0.4f;
+        public override int SuccessDecreaseOnFail => riffin ? 0 : 3;
+        public override float DamageIncreasePerSuccess => 0.025f;
 
         public override void SafeSetStaticDefaults()
         {
@@ -37,8 +43,8 @@ namespace RagnarokMod.Items.BardItems.String
             InspirationCost = 1;
             Item.width = 88;
             Item.height = 88;
-            Item.useTime = 27;
-            Item.useAnimation = 27;
+            Item.useTime = 22;
+            Item.useAnimation = 22;
             Item.useStyle = ItemUseStyleID.Guitar;
             Item.holdStyle = 5;
             Item.noMelee = true;
@@ -51,9 +57,6 @@ namespace RagnarokMod.Items.BardItems.String
         }
         public override void SafeRiffBardShoot(int success, int level, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            var ragnarokPlayer = player.GetRagnarokModPlayer();
-            if (ragnarokPlayer.activeRiffType == RiffType)
-                success++;
             Projectile newProj = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
             newProj.ai[0] = Main.MouseWorld.X;
             newProj.ai[1] = Main.MouseWorld.Y;
@@ -61,17 +64,16 @@ namespace RagnarokMod.Items.BardItems.String
 
         public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
         {
-            var ragnarokPlayer = player.GetRagnarokModPlayer();
 
-            if (ragnarokPlayer.activeRiffType == RiffType)
+            if (riffin)
             {
-                Item.useTime = 9;
-                Item.useAnimation = 9;
+                Item.useTime = 11;
+                Item.useAnimation = 11;
             }
             else
             {
-                Item.useTime = 27;
-                Item.useAnimation = 27;
+                Item.useTime = 22;
+                Item.useAnimation = 22;
             }
         }
         public override Vector2? HoldoutOffset() => new Vector2(-18, 20);
