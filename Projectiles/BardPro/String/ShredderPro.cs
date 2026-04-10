@@ -9,11 +9,15 @@ using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
+using ThoriumMod;
+using ThoriumMod.Projectiles.Bard;
 
 namespace RagnarokMod.Projectiles.BardPro.String
 {
-    public class ShredderPro : ModProjectile
+    public class ShredderPro : BardProjectile
     {
+        public override BardInstrumentType InstrumentType => BardInstrumentType.String;
+
         public override string Texture => $"Terraria/Images/Item_{ItemID.CrimstoneBlock}";
 
         private const int SegmentCount = 14;
@@ -36,7 +40,7 @@ namespace RagnarokMod.Projectiles.BardPro.String
         private int activeSegmentCount = 0;
 
         // ai[0], ai[1] = target world position (cursor pos at spawn)
-        public override void SetDefaults()
+        public override void SetBardDefaults()
         {
             Projectile.width = 2;
             Projectile.height = 2;

@@ -13,12 +13,15 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using ThoriumMod;
 using ThoriumMod.Items;
+using ThoriumMod.Projectiles.Bard;
 
 namespace RagnarokMod.Projectiles.BardPro.Riff
 {
     // Friendly version of OldDukeGore, spawned by ToxicSharkron on death.
-    public class ToxicSharkronGore : ModProjectile
+    public class ToxicSharkronGore : BardProjectile
     {
+        public override BardInstrumentType InstrumentType => BardInstrumentType.String;
+
         public override string Texture => "CalamityMod/Projectiles/Boss/OldDukeGore";
 
         public override void SetStaticDefaults()
@@ -27,7 +30,7 @@ namespace RagnarokMod.Projectiles.BardPro.Riff
             ProjectileID.Sets.TrailingMode[Type] = 0;
         }
 
-        public override void SetDefaults()
+        public override void SetBardDefaults()
         {
             Projectile.width = 20;
             Projectile.height = 20;
@@ -78,7 +81,7 @@ namespace RagnarokMod.Projectiles.BardPro.Riff
             }
         }
 
-        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        public override void BardOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.AddBuff(ModContent.BuffType<SulphuricPoisoning>(), 300);
             target.AddBuff(ModContent.BuffType<Irradiated>(), 300);

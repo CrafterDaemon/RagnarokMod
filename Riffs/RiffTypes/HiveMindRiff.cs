@@ -45,7 +45,7 @@ namespace RagnarokMod.Riffs.RiffTypes
                     bardPlayer.Center,
                     Vector2.Zero,
                     ModContent.ProjectileType<InfectedSporeCloud>(),
-                    20,
+                    15,
                     bardPlayer.HeldItem.knockBack,
                     bardPlayer.whoAmI
                 );

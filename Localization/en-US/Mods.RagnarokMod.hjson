@@ -688,7 +688,7 @@ Items: {
 		Tooltip:
 			'''
 			Shoots holy flame blasts
-			Hit enemies are afflicted with [cbuff:HolyFlames] for 3 seconds
+			Hit enemies are afflicted with [cbuff:CalamityMod/HolyFlames] for 3 seconds
 			'''
 	}
 
@@ -1004,6 +1004,8 @@ Items: {
 			Sends out bloody shockwaves
 			Press <right> to play the [c/AA1111:Blood Coagulant] riff!
 			While the riff is active, all players in range have life steal
+			Time your attacks during the riff to reduce the cooldown
+			Missed timings during the riff do not reduce the cooldown, but also do not reduce your damage
 			'''
 	}
 
@@ -1038,8 +1040,8 @@ Items: {
 		DisplayName: Toxic Waves
 		Tooltip:
 			'''
-			Launches homing toxic sharkrons that seek out enemies
-			Playing success increases the number of sharkrons fired
+			Launches floating toxic clouds that inflict [cbuff:CalamityMod/SulfuricPoisoning] and [cbuff:CalamityMod/Irradiated] on hit
+			The clouds will pierce through enemies based on your additional string weapon bounces
 			Press <right> to play the [c/37C300:Toxic Wisdom] riff!
 			While the riff is active, a sulphurous vortex summons acid sharkrons from above
 			Attacks deal 25% more damage while the riff is active
@@ -1083,7 +1085,7 @@ Items: {
 			Flat Damage empowerment is twice as effective on you
 			Reduces the inspiration cost of Radio Mic by 2
 			Increases the Damage empowerment level from Radio Mic by 1
-			Radio Mic now inflicts Charmed for 5 seconds
+			Radio Mic now inflicts [rbuff:ThoriumMod/Charmed] for 5 seconds
 			'''
 	}
 

@@ -172,7 +172,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
 
         private void BeginSwing(Player owner)
         {
-            Projectile.damage = (int)(Projectile.damage * (1f + PercentCharge));
+            Projectile.damage = (int)(Projectile.damage * (1f + (PercentCharge / 2)));
 
             float windupVisual = MathHelper.Clamp(Projectile.ai[0] / 80f, 0f, 1f);
             float neutralAngle = owner.direction == 1 ? 0f : MathHelper.Pi;

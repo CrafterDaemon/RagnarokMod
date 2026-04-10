@@ -9,11 +9,15 @@ using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
+using ThoriumMod.Projectiles.Bard;
+using ThoriumMod;
 
 namespace RagnarokMod.Projectiles.Riffs
 {
-    public class ShredderTendrils : ModProjectile
+    public class ShredderTendrils : BardProjectile
     {
+        public override BardInstrumentType InstrumentType => BardInstrumentType.String;
+
         public override string Texture => $"Terraria/Images/Item_{ItemID.CrimstoneBlock}";
         private const int TendrilCount = 6;
         private const int SegmentsPerTendril = 12;
@@ -28,7 +32,7 @@ namespace RagnarokMod.Projectiles.Riffs
         private const int RetractTime = 20; // frames to curl back before death
 
         // ai[0] = target player index
-        public override void SetDefaults()
+        public override void SetBardDefaults()
         {
             Projectile.width = 2;
             Projectile.height = 2;
