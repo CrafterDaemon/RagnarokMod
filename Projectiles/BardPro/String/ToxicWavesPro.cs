@@ -25,6 +25,7 @@ namespace RagnarokMod.Projectiles.BardPro.String
         public override BardInstrumentType InstrumentType => BardInstrumentType.String;
         public int collide;
         public int collideMax = 1;
+        public int duration = 300;
         public override void SetStaticDefaults()
         {
             Main.projFrames[Type] = 10;
@@ -43,7 +44,7 @@ namespace RagnarokMod.Projectiles.BardPro.String
             Projectile.penetrate = 1;
             Projectile.tileCollide = true;
             Projectile.ignoreWater = true;
-            Projectile.timeLeft = 480;
+            Projectile.timeLeft = duration;
             Projectile.alpha = 0;
             Projectile.DamageType = ThoriumDamageBase<BardDamage>.Instance;
         }
@@ -65,7 +66,7 @@ namespace RagnarokMod.Projectiles.BardPro.String
                 Projectile.frame++;
                 Projectile.frameCounter = 0;
             }
-            if (Projectile.ai[0] < 1620f)
+            if (Projectile.ai[0] < duration - 180)
             {
                 GeneralParticleHandler.SpawnParticle(new GlowOrbParticle(Projectile.Top + new Vector2(Main.rand.NextFloat(-12, 12), 6f), new Vector2(0, -Main.rand.NextFloat(2)), false, 20, Main.rand.NextFloat(0.5f, 1.2f), new Color(100, 255, 0)));
 
@@ -74,7 +75,7 @@ namespace RagnarokMod.Projectiles.BardPro.String
                     Projectile.frame = 0;
                 }
             }
-            if (Projectile.ai[0] > 1620f)
+            if (Projectile.ai[0] > duration - 180)
             {
                 Projectile.damage = 0;
             }
