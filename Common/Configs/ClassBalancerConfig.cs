@@ -73,7 +73,7 @@ namespace RagnarokMod.Common.Configs
         [BackgroundColor(255, 160, 0, 170)]
         public bool RiffsRequireRiffInstrumentToBeHeld { get; set; }
 
-        [DefaultValue(1f)]
+        [DefaultValue(0.6f)]
         [BackgroundColor(255, 0, 0, 170)]
         [Range(0f, 1f)]
         [Increment(0.05f)]
