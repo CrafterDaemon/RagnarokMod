@@ -57,20 +57,6 @@ namespace RagnarokMod.Items.HealerItems.Other
             base.Item.shootSpeed = 8f;
         }
 
-        public override bool CanUseItem(Player player)
-        {
-            if (player.altFunctionUse == 2)
-            {
-                Item.useStyle = ItemUseStyleID.Shoot;
-            }
-            else
-            {
-                Item.useStyle = ItemUseStyleID.Swing;
-            }
-
-            return true;
-        }
-
         private static bool ConstellationActive(Player player)
         {
             int type = ModContent.ProjectileType<AsterionConstellation>();
@@ -144,7 +130,7 @@ namespace RagnarokMod.Items.HealerItems.Other
             recipe.AddIngredient(ModContent.ItemType<Lumenyl>(), 8);
             recipe.AddIngredient(ModContent.ItemType<RuinousSoul>(), 4);
             recipe.AddIngredient(ModContent.ItemType<Prisma>(), 1);
-            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.AddTile(TileID.MythrilAnvil);
             recipe.Register();
         }
     }

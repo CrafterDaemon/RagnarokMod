@@ -1,3 +1,4 @@
+using RagnarokMod.ILEdits;
 using System.ComponentModel;
 using Terraria.ModLoader.Config;
 
@@ -72,5 +73,15 @@ namespace RagnarokMod.Common.Configs
         [BackgroundColor(255, 160, 0, 170)]
         public bool RiffsRequireRiffInstrumentToBeHeld { get; set; }
 
+        [DefaultValue(1f)]
+        [BackgroundColor(255, 0, 0, 170)]
+        [Range(0f, 1f)]
+        [Increment(0.05f)]
+        [DrawTicks]
+        public float MistimedDamagePen { get; set; }
+        public override void OnChanged()
+        {
+            BigInstrumentPatchSystem.DefaultDamageDecreaseOnFail = MistimedDamagePen;
+        }
     }
 }

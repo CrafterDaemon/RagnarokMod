@@ -1,26 +1,26 @@
-using System;
-using System.Collections.Generic;
+using CalamityMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RagnarokMod.Riffs;
 using RagnarokMod.Riffs.RiffTypes;
 using RagnarokMod.Utils;
 using ReLogic.Content;
+using System;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
+using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
 using ThoriumMod;
 using ThoriumMod.Items;
 using ThoriumMod.Utilities;
 
-namespace RagnarokMod.Projectiles.BardPro.Riffs
+namespace RagnarokMod.Projectiles.BardPro.Riff
 {
     public class ToxicWavesVortex : ModProjectile
     {
-        Vector2 cen = Vector2.Zero;
-        public override string Texture => "CalamityMod/Projectiles/Boss/OldDukeVortex";
 
 
         public byte RiffType => RiffLoader.RiffType<ToxicWavesRiff>();
@@ -30,8 +30,8 @@ namespace RagnarokMod.Projectiles.BardPro.Riffs
 
         public override void SetDefaults()
         {
-            Projectile.width = 2;
-            Projectile.height = 2;
+            Projectile.width = 416;
+            Projectile.height = 416;
             Projectile.friendly = false;
             Projectile.hostile = false;
             Projectile.penetrate = -1;
@@ -44,27 +44,24 @@ namespace RagnarokMod.Projectiles.BardPro.Riffs
 
         public override void AI()
         {
-            cen = Projectile.Center;
             Player owner = Main.player[Projectile.owner];
 
             if (owner.GetRagnarokModPlayer().activeRiffType == RiffType)
                 Projectile.timeLeft++;
-            else
-            {
-                Projectile.Kill();
-                return;
-            }
 
             // Follow behind and above the player
             Vector2 targetPos = owner.Center + new Vector2(-40f * owner.direction, -60f);
             Projectile.Center = Vector2.Lerp(Projectile.Center, targetPos, 0.15f);
+            float time = Main.GlobalTimeWrappedHourly;
+            float bob = MathF.Sin(time * 2.2f);          // 5px up/down
 
+            Projectile.Center += new Vector2(0f, bob);
             // Scale up
-            if (Projectile.scale < 0.35f)
+            if (Projectile.scale < 0.66f && Projectile.timeLeft > 19)
             {
                 Projectile.scale += 0.006f;
-                if (Projectile.scale > 0.35f)
-                    Projectile.scale = 0.35f;
+                if (Projectile.scale > 0.66f)
+                    Projectile.scale = 0.66f;
             }
 
             // Fade in
@@ -73,6 +70,11 @@ namespace RagnarokMod.Projectiles.BardPro.Riffs
                 Projectile.alpha -= 5;
                 if (Projectile.alpha < 0)
                     Projectile.alpha = 0;
+            }
+
+            if (Projectile.timeLeft < 19)
+            {
+                Projectile.scale -= 0.5f/18f;
             }
 
             // Rotation
@@ -124,7 +126,7 @@ namespace RagnarokMod.Projectiles.BardPro.Riffs
                 Player owner = Main.player[Projectile.owner];
                 int damage = 1;
                 if (owner.GetThoriumPlayer() != null)
-                    damage = (int)(owner.HeldItem.damage * owner.GetTotalDamage(ThoriumDamageBase<BardDamage>.Instance).Additive);
+                    damage = (int)((owner.HeldItem.damage * owner.GetTotalDamage(ThoriumDamageBase<BardDamage>.Instance).Additive)/2);
 
                 Projectile.NewProjectile(Projectile.GetSource_FromThis(), spawnPos, toTarget,
                     ModContent.ProjectileType<ToxicSharkron>(), damage, 3f, Projectile.owner, target.whoAmI);
@@ -143,20 +145,55 @@ namespace RagnarokMod.Projectiles.BardPro.Riffs
 
         public override bool PreDraw(ref Color lightColor)
         {
-            Asset<Texture2D> Tex = ModContent.Request<Texture2D>(Texture);
+            Texture2D tex = ModContent.Request<Texture2D>(Texture).Value;
+            Vector2 drawPos = Projectile.Center - Main.screenPosition;
+            float alphaLerp = 1f - Projectile.alpha / 255f;
+            float sc = MathHelper.Lerp(1f, 0f, Projectile.localAI[2]);
+            Player owner = Main.player[Projectile.owner];
 
-            float sc = MathHelper.Lerp(1, 0, Projectile.localAI[2]);
+            CalamityUtils.CalculatePerspectiveMatricies(out Matrix view, out Matrix projection);
 
-            float alphaLerp = MathHelper.Lerp(1f, 0f, (float)Projectile.alpha / 255f);
+            void ApplyVortexShader(Color primary, Color secondary, float opacity, float circularRot, BlendState blend)
+            {
+                Main.spriteBatch.End();
+                Main.spriteBatch.Begin(SpriteSortMode.Immediate, blend, Main.DefaultSamplerState,
+                    DepthStencilState.None, Main.Rasterizer, null, Main.GameViewMatrix.TransformationMatrix);
 
-            Main.EntitySpriteDraw(Tex.Value, cen - Main.screenPosition, Tex.Frame(), new Color(0f, 0f, 0f, 0.4f).MultiplyRGBA(new Color(alphaLerp, alphaLerp, alphaLerp, alphaLerp)), -Projectile.rotation / 2 * (4 + 1), Tex.Frame().Center(), 1.61f * Projectile.scale * sc, SpriteEffects.None);
+                var shader = GameShaders.Misc["CalamityMod:RancorMagicCircle"];
+                shader.UseColor(primary);
+                shader.UseSecondaryColor(secondary);
+                shader.UseSaturation(MathHelper.ToRadians(22.5f * owner.direction));               
+                shader.UseOpacity(opacity * alphaLerp);
+                shader.Shader.Parameters["uDirection"].SetValue((float)owner.direction);
+                shader.Shader.Parameters["uCircularRotation"].SetValue(circularRot);
+                shader.Shader.Parameters["uImageSize0"].SetValue(tex.Size());
+                shader.Shader.Parameters["overallImageSize"].SetValue(tex.Size());
+                shader.Shader.Parameters["uWorldViewProjection"].SetValue(view * projection);
+                shader.Apply();
+            }
 
+            float rot = Projectile.rotation;
+            float scale = Projectile.scale * sc;
+
+            // Three layered additive passes
             for (int i = 2; i >= 0; i--)
             {
-                float lerp = (float)i / 3f;
+                float lerp = i / 3f;
+                Color layerColor = Color.Lerp(Color.White, Color.White, lerp);
+                float layerScale = MathHelper.Lerp(1f, 1.7f, lerp) * scale;
 
-                Main.EntitySpriteDraw(Tex.Value, cen - Main.screenPosition, Tex.Frame(), Color.Lerp(new Color(5, 155, 95, 100), new Color(255, 255, 255, 55), lerp).MultiplyRGBA(new Color(alphaLerp, alphaLerp, alphaLerp, alphaLerp)), -Projectile.rotation / 2 * (i + 1), Tex.Frame().Center(), MathHelper.Lerp(1f, 1.7f, lerp) * Projectile.scale * sc, SpriteEffects.None);
+                ApplyVortexShader(
+                    Color.White,
+                    Color.White,
+                    alphaLerp * MathHelper.Lerp(0.85f, 0.35f, lerp),
+                    MathHelper.WrapAngle(-rot / 2f * (i + 1)),
+                    BlendState.AlphaBlend);
+
+                Main.EntitySpriteDraw(tex, drawPos, tex.Bounds, Color.White,
+                    0f, tex.Size() / 2f, layerScale, SpriteEffects.None, 0);
             }
+
+            Main.spriteBatch.ExitShaderRegion();
             return false;
         }
     }

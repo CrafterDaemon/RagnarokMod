@@ -802,6 +802,18 @@ Items: {
 			'''
 	}
 
+	LucentGemini: {
+		DisplayName: Lucent Gemini
+		Tooltip:
+			'''
+			Spinning this scythe surrounds you with an ethereal moonlight pulse
+			Hits generate [c/78C8FF:Soul Essence] and have a chance to generate [c/78C8FF:Stratus Starburst]
+			Press <right> with 5 or more Starburst to summon the [c/A0DCFF:Gemini] constellation
+			Each star fires piercing rays of moonlight that inflict [c/78C8FF:Voidfrost]
+			Press <right> again to dismiss the constellation
+			'''
+	}
+
 	Arpeggiator: {
 		DisplayName: Arpeggiator
 		Tooltip: Rapid-fires projectiles in an arpeggio pattern
@@ -1040,7 +1052,7 @@ Items: {
 		DisplayName: Toxic Waves
 		Tooltip:
 			'''
-			Launches floating toxic clouds that inflict [cbuff:CalamityMod/SulfuricPoisoning] and [cbuff:CalamityMod/Irradiated] on hit
+			Launches floating toxic clouds that inflict [cbuff:CalamityMod/SulphuricPoisoning] and [cbuff:CalamityMod/Irradiated] on hit
 			The clouds will pierce through enemies based on your additional string weapon bounces
 			Press <right> to play the [c/37C300:Toxic Wisdom] riff!
 			While the riff is active, a sulphurous vortex summons acid sharkrons from above
@@ -1248,6 +1260,9 @@ Projectiles: {
 	IrradiantRed.DisplayName: Irradiant Red
 	AuricGreatscytheBolt.DisplayName: Auric Greatscythe Bolt
 	AuricGreatscytheSwing.DisplayName: Auric Greatscythe Swing
+	LucentGeminiPro.DisplayName: Lucent Gemini
+	GeminiConstellation.DisplayName: Gemini Constellation
+	GeminiMoonlightRay.DisplayName: Gemini Moonlight Ray
 	RadioMicPro.DisplayName: Radio Mic Pro
 	RadioMicShadowBurst.DisplayName: Radio Mic Shadow Burst
 	PlayerBrimstoneBarrage.DisplayName: Player Brimstone Barrage
@@ -1424,6 +1439,11 @@ Configs: {
 		RiffsRequireRiffInstrumentToBeHeld: {
 			Label: Riffs Require Riff Instrument To Be Held
 			Tooltip: Riffs end automatically when the weapon is no longer held.
+		}
+
+		MistimedDamagePen: {
+			Label: Mistimed Damage Pen
+			Tooltip: ""
 		}
 	}
 
@@ -1613,6 +1633,21 @@ Configs: {
 			Label: Riff Screen Effect Intensity
 			Tooltip: ""
 		}
+
+		MissSoundPreset: {
+			Label: Miss Sound Preset
+			Tooltip: ""
+		}
+
+		CustomMissSoundPath: {
+			Label: Custom Miss Sound Path
+			Tooltip: ""
+		}
+
+		MissSoundVolume: {
+			Label: Miss Sound Volume
+			Tooltip: ""
+		}
 	}
 
 	DebugConfig: {
@@ -1713,6 +1748,30 @@ Configs: {
 
 		RiffWeights: {
 			Label: Riff Weights
+			Tooltip: ""
+		}
+	}
+
+	MissSoundPreset: {
+		Tooltip: ""
+
+		Default: {
+			Label: Default
+			Tooltip: ""
+		}
+
+		Softer: {
+			Label: Softer
+			Tooltip: ""
+		}
+
+		Percussion: {
+			Label: Percussion
+			Tooltip: ""
+		}
+
+		Custom: {
+			Label: Custom
 			Tooltip: ""
 		}
 	}

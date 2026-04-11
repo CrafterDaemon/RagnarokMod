@@ -23,6 +23,12 @@ namespace RagnarokMod.Items.BardItems.String
         public override SoundStyle RiffSound => RagnarokModSounds.aureusriff;
         public override SoundStyle NormalSound => RagnarokModSounds.stellarriff;
         public override byte RiffType => RiffLoader.RiffType<AureusRiff>();
+        public Player myPlayer = Main.LocalPlayer;
+        public RagnarokModPlayer myRagnaPlayer => Main.LocalPlayer != null ? Main.LocalPlayer.GetRagnarokModPlayer() : null;
+        public bool riffin => myRagnaPlayer != null ? (myRagnaPlayer.activeRiffType == RiffType ? true : false) : false;
+        public override float DamageDecreaseOnFail => default;
+        public override int SuccessDecreaseOnFail => riffin ? 0 : default;
+        public override float DamageIncreasePerSuccess => riffin ? 0.025f : default;
 
         public override void SafeSetStaticDefaults(){
             Empowerments.AddInfo<Defense>(1, 0);

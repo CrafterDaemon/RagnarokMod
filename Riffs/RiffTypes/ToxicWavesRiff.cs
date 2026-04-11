@@ -1,5 +1,5 @@
 using Microsoft.Xna.Framework;
-using RagnarokMod.Projectiles.BardPro.Riffs;
+using RagnarokMod.Projectiles.BardPro.Riff;
 using Terraria;
 using Terraria.ModLoader;
 using ThoriumMod.Empowerments;

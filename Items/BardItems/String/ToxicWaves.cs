@@ -21,12 +21,16 @@ namespace RagnarokMod.Items.BardItems.String
     {
         public string TextureBase => "RagnarokMod/Items/BardItems/String/ToxicWaves";
         public string TextureAlt => "RagnarokMod/Items/BardItems/String/ToxicWavesAlt";
-        public Player myPlayer = Main.LocalPlayer;
-        private bool IsRiffActive => Main.LocalPlayer.GetRagnarokModPlayer().activeRiffType == RiffLoader.RiffType<ToxicWavesRiff>();
         public override BardInstrumentType InstrumentType => BardInstrumentType.String;
         public override SoundStyle RiffSound => RagnarokModSounds.ToxicWisdomRiff;
         public override SoundStyle NormalSound => RagnarokModSounds.toxicwaves;
         public override byte RiffType => RiffLoader.RiffType<ToxicWavesRiff>();
+        public Player myPlayer = Main.LocalPlayer;
+        public RagnarokModPlayer myRagnaPlayer => Main.LocalPlayer != null ? Main.LocalPlayer.GetRagnarokModPlayer() : null;
+        public bool riffin => myRagnaPlayer != null ? (myRagnaPlayer.activeRiffType == RiffType ? true : false) : false;
+        public override float DamageDecreaseOnFail => default;
+        public override int SuccessDecreaseOnFail => riffin ? 0 : default;
+        public override float DamageIncreasePerSuccess => riffin ? 0.025f : default;
 
         public override void SafeSetStaticDefaults()
         {
@@ -37,7 +41,7 @@ namespace RagnarokMod.Items.BardItems.String
 
         public override void SafeSetBardDefaults()
         {
-            Item.damage = 150 ;
+            Item.damage = 150;
             InspirationCost = 1;
             Item.width = 92;
             Item.height = 90;
@@ -58,7 +62,7 @@ namespace RagnarokMod.Items.BardItems.String
         {
             Player player = bard.Player;
             if (player.GetRagnarokModPlayer().activeRiffType == RiffType)
-                damage += 0.25f;
+                damage -= 0.1f;
         }
 
         public override void SafeRiffBardShoot(int success, int level, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
@@ -97,7 +101,7 @@ namespace RagnarokMod.Items.BardItems.String
         public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame,
             Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
-            Texture2D tex = ModContent.Request<Texture2D>(IsRiffActive ? TextureAlt : TextureBase).Value;
+            Texture2D tex = ModContent.Request<Texture2D>(riffin ? TextureAlt : TextureBase).Value;
             Rectangle texFrame = tex.Bounds;
             Vector2 texOrigin = texFrame.Size() / 2f;
             spriteBatch.Draw(tex, position, texFrame, drawColor, 0f, texOrigin, scale, SpriteEffects.None, 0f);
@@ -107,7 +111,7 @@ namespace RagnarokMod.Items.BardItems.String
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor,
             ref float rotation, ref float scale, int whoAmI)
         {
-            Texture2D tex = ModContent.Request<Texture2D>(IsRiffActive ? TextureAlt : TextureBase).Value;
+            Texture2D tex = ModContent.Request<Texture2D>(riffin ? TextureAlt : TextureBase).Value;
             spriteBatch.Draw(tex, Item.Center - Main.screenPosition, null, lightColor,
                 rotation, tex.Size() / 2f, scale, SpriteEffects.None, 0f);
             return false;

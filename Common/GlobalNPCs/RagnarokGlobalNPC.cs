@@ -9,6 +9,7 @@ using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 using RagnarokMod.Utils;
+using RagnarokMod.Balancing;
 
 namespace RagnarokMod.Common.GlobalNPCs
 {
@@ -66,7 +67,10 @@ namespace RagnarokMod.Common.GlobalNPCs
                 hit.Damage = (int)(hit.Damage * 1.1f);
             }
         }
-
+        public override void ModifyHitByProjectile(NPC npc, Projectile projectile, ref NPC.HitModifiers modifiers)
+        {
+            BalancingChangesManager.ApplyFromProjectile(npc, ref modifiers, projectile);
+        }
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
         {
             if (npc.boss && npc.type != NPCID.TorchGod) //anything that is considered a boss from (except Torch God lol) will have a 1/100 chance to drop Ragnarok's painting directly

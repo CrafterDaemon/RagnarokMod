@@ -12,7 +12,7 @@ using ThoriumMod;
 using ThoriumMod.Items;
 using ThoriumMod.Projectiles.Bard;
 
-namespace RagnarokMod.Projectiles.BardPro.Riffs
+namespace RagnarokMod.Projectiles.BardPro.Riff
 {
     public class ToxicSharkron : BardProjectile
     {
@@ -191,7 +191,7 @@ namespace RagnarokMod.Projectiles.BardPro.Riffs
                         Main.rand.Next(-3, 4),
                         Main.rand.Next(-12, -6),
                         ModContent.ProjectileType<ToxicSharkronGore>(),
-                        Projectile.damage / 3,
+                        Projectile.damage / 2,
                         0f,
                         Projectile.owner
                     );
