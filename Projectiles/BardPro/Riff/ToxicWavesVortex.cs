@@ -179,17 +179,17 @@ namespace RagnarokMod.Projectiles.BardPro.Riff
             for (int i = 2; i >= 0; i--)
             {
                 float lerp = i / 3f;
-                Color layerColor = Color.Lerp(Color.White, Color.White, lerp);
+                Color layerColor = Color.Lerp(Color.White, Color.DarkSeaGreen, lerp);
                 float layerScale = MathHelper.Lerp(1f, 1.7f, lerp) * scale;
 
                 ApplyVortexShader(
-                    Color.White,
-                    Color.White,
-                    alphaLerp * MathHelper.Lerp(0.85f, 0.35f, lerp),
+                    i == 0 ? Color.White : layerColor,
+                    i == 0 ? Color.White * 0.75f : layerColor * 0.5f,
+                    alphaLerp * MathHelper.Lerp(0.9f, 0.7f, lerp),
                     MathHelper.WrapAngle(-rot / 2f * (i + 1)),
                     BlendState.AlphaBlend);
 
-                Main.EntitySpriteDraw(tex, drawPos, tex.Bounds, Color.White,
+                Main.EntitySpriteDraw(tex, drawPos, tex.Bounds, layerColor,
                     0f, tex.Size() / 2f, layerScale, SpriteEffects.None, 0);
             }
 
