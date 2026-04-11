@@ -52,7 +52,7 @@ namespace RagnarokMod.Projectiles.Accessories
             Projectile.ignoreWater = true;
             Projectile.penetrate = -1;
             Projectile.timeLeft = 9999;
-            Projectile.scale = 0.5f; // mini
+            Projectile.scale = 0.5f;
             Projectile.Opacity = 0.8f;
         }
 
@@ -69,8 +69,7 @@ namespace RagnarokMod.Projectiles.Accessories
             }
 
             // Smooth fade based on visibility toggle (eye icon on accessory slot)
-            float targetOpacity = ragPlayer.sirenVisualHidden ? 0f : 0.8f;
-            Projectile.Opacity = MathHelper.Lerp(Projectile.Opacity, targetOpacity, FadeSpeed);
+            Projectile.alpha = ragPlayer.sirenVisualHidden ? 0 : 255;
 
             bool isPlayingString = ragPlayer.stringInstrumentUsed;
 
@@ -86,7 +85,6 @@ namespace RagnarokMod.Projectiles.Accessories
 
 
             Projectile.spriteDirection = -player.direction;
-
 
             // Animate frames
             frameCounter++;
@@ -126,7 +124,7 @@ namespace RagnarokMod.Projectiles.Accessories
                     toMouse.Normalize();
                     toMouse *= 8f;
 
-                    int proj = Projectile.NewProjectile(
+                    Projectile.NewProjectile(
                         Projectile.GetSource_FromThis(),
                         Projectile.Center,
                         toMouse,
@@ -135,19 +133,12 @@ namespace RagnarokMod.Projectiles.Accessories
                         2f,
                         Projectile.owner
                     );
-
-                    // Hide the water note projectile too when visual is hidden
-                    if (ragPlayer.sirenVisualHidden && proj >= 0 && proj < Main.maxProjectiles)
-                        Main.projectile[proj].Opacity = 0f;
                 }
             }
         }
 
         public override bool PreDraw(ref Color lightColor)
         {
-            if (Projectile.Opacity <= 0f)
-                return false;
-
             var tex = ModContent.Request<Texture2D>(Texture).Value;
             int frameHeight = tex.Height / FrameCount;
             Rectangle sourceRect = new Rectangle(0, currentFrame * frameHeight, tex.Width, frameHeight);
@@ -160,7 +151,7 @@ namespace RagnarokMod.Projectiles.Accessories
                 tex,
                 Projectile.Center - Main.screenPosition,
                 sourceRect,
-                Color.White * Projectile.Opacity,
+                Color.White * (Projectile.alpha/255),
                 Projectile.rotation,
                 new Vector2(tex.Width / 2f, frameHeight / 2f),
                 Projectile.scale,

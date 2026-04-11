@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using RagnarokMod.Utils;
 using System;
 using Terraria;
 using Terraria.ModLoader;
@@ -26,33 +27,28 @@ namespace RagnarokMod.Projectiles.Accessories
 
         public override void AI()
         {
-            // Slight drag
             Projectile.velocity *= 0.99f;
 
-            // Leave water dust trail
-            if (Main.rand.NextBool(3))
-            {
-                Dust dust = Dust.NewDustDirect(
-                    Projectile.position, Projectile.width, Projectile.height,
-                    Terraria.ID.DustID.Water,
-                    Projectile.velocity.X * 0.2f,
-                    Projectile.velocity.Y * 0.2f,
-                    100, default, 0.8f);
-                dust.noGravity = true;
-            }
+            if (Main.player[Projectile.owner].GetRagnarokModPlayer().sirenVisualHidden)
+                Projectile.alpha = 0;
+            else
+                Projectile.alpha = 255;
         }
 
         public override void OnKill(int timeLeft)
         {
-            // Small water splash on death
-            for (int i = 0; i < 8; i++)
+            if (!Main.player[Projectile.owner].GetRagnarokModPlayer().sirenVisualHidden)
             {
-                Vector2 speed = Main.rand.NextVector2CircularEdge(3f, 3f);
-                Dust dust = Dust.NewDustDirect(
-                    Projectile.Center, 4, 4,
-                    Terraria.ID.DustID.Water,
-                    speed.X, speed.Y, 100, default, 1f);
-                dust.noGravity = true;
+                // Small water splash on death
+                for (int i = 0; i < 8; i++)
+                {
+                    Vector2 speed = Main.rand.NextVector2CircularEdge(3f, 3f);
+                    Dust dust = Dust.NewDustDirect(
+                        Projectile.Center, 4, 4,
+                        Terraria.ID.DustID.Water,
+                        speed.X, speed.Y, 100, default, 1f);
+                    dust.noGravity = true;
+                }
             }
         }
 
@@ -67,7 +63,7 @@ namespace RagnarokMod.Projectiles.Accessories
                 tex,
                 Projectile.Center - Main.screenPosition,
                 null,
-                drawColor,
+                drawColor * (Projectile.alpha / 255f),
                 Projectile.rotation,
                 tex.Size() / 2f,
                 Projectile.scale,
