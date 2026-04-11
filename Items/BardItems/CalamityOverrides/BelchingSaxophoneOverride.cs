@@ -13,6 +13,7 @@ using RagnarokMod.Projectiles.CalamityOverrides;
 
 namespace RagnarokMod.Items.BardItems.CalamityOverrides
 {
+    //TODO: Override projectiles to be Bard Projectiles
     public class BelchingSaxophoneOverride : BardItem, ILocalizedModType{
         public override string Texture => "CalamityMod/Items/Weapons/Magic/BelchingSaxophone";
         public override BardInstrumentType InstrumentType => BardInstrumentType.Wind;

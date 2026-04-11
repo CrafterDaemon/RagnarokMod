@@ -18,6 +18,7 @@ using CalamityMod.Items.Placeables.Ores;
 
 namespace RagnarokMod.Items.BardItems.String
 {
+    // TODO: Rework me, I look like I belong in PreHM
     public class UnbreakableCombatUkulele : BardItem
     {
         public override BardInstrumentType InstrumentType => BardInstrumentType.String;

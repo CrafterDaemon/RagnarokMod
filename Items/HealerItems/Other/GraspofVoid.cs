@@ -23,6 +23,7 @@ using CalamityMod.Items;
 
 namespace RagnarokMod.Items.HealerItems.Other
 {
+    // TODO: Functionally ok. Just needs some visual improvement.
     public class GraspofVoid : ThoriumItem
     {
         public override void SetStaticDefaults()

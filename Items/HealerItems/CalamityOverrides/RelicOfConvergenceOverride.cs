@@ -24,19 +24,19 @@ namespace RagnarokMod.Items.HealerItems.CalamityOverrides{
 			base.Item.width = 32;
 			base.Item.height = 46;
 			base.Item.useAnimation = (base.Item.useTime = 25);
-			base.Item.useStyle = 5;
+			base.Item.useStyle = ItemUseStyleID.Shoot;
 			base.Item.mana = 200;
 			base.Item.noMelee = true;
 			base.Item.noUseGraphic = true;
 			base.Item.channel = true;
 			base.Item.value = CalamityGlobalItem.RarityPurpleBuyPrice;
-			base.Item.rare = 11;
+			base.Item.rare = ItemRarityID.Purple;
 			base.Item.shoot = ModContent.ProjectileType<RelicOfConvergenceCrystalOverride>();
 			this.isHealer = true;
             this.healDisplay = true;
 		}
 		
-		public string LocalizationCategory{
+		public override string LocalizationCategory{
 			get{
 				return "Items";
 			}

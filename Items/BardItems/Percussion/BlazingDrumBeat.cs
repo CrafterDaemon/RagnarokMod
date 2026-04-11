@@ -1,25 +1,29 @@
-using ThoriumMod;
-using ThoriumMod.Items;
-using ThoriumMod.Empowerments;
-using Terraria;
-using Terraria.ModLoader;
-using Terraria.ID;
+using CalamityMod.Items;
 using CalamityMod.Items.Materials;
 using CalamityMod.Rarities;
-using ThoriumMod.Items.BardItems;
-using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
+using RagnarokMod.Common.Configs;
 using RagnarokMod.Projectiles;
-using ThoriumMod.Utilities;
 using RagnarokMod.Projectiles.BardPro.Percussion;
-using CalamityMod.Items;
+using Terraria;
+using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.ModLoader;
+using ThoriumMod;
+using ThoriumMod.Empowerments;
+using ThoriumMod.Items;
+using ThoriumMod.Items.BardItems;
+using ThoriumMod.Utilities;
 
 namespace RagnarokMod.Items.BardItems.Percussion;
 
 public class BlazingDrumBeat : BigInstrumentItemBase
 {
-    //flame slash go whoosh
+    // flame slash go whoosh
+    // TODO: Rework me
     public override BardInstrumentType InstrumentType => BardInstrumentType.Percussion;
+
+    public override float DamageDecreaseOnFail => ClassBalancerConfig.Instance.MistimedDamagePen;
 
     public override void SafeSetStaticDefaults()
     {

@@ -17,6 +17,7 @@ using ThoriumMod.Items.BardItems;
 
 namespace RagnarokMod.Items
 {
+    //TODO: Override projectiles to be Bard Projectiles
     public class FaceMelterOverride : BardItem, ILocalizedModType
     {
         public override string Texture => "CalamityMod/Items/Weapons/Magic/FaceMelter";

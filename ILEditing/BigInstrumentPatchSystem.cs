@@ -2,6 +2,8 @@
 using MonoMod.Cil;
 using MonoMod.RuntimeDetour;
 using RagnarokMod.Common.Configs;
+using RagnarokMod.Items.BardItems;
+using RagnarokMod.Utils;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -93,7 +95,14 @@ namespace RagnarokMod.ILEdits
 
             c.EmitDelegate<Func<bool>>(() =>
             {
-                int type = Main.LocalPlayer.HeldItem.type;
+                var item = Main.LocalPlayer.HeldItem;
+                int type = item.type;
+
+                if (item.ModItem is BigRiffInstrumentBase riffInstrument
+                    && Main.LocalPlayer.GetRagnarokModPlayer().activeRiffType == riffInstrument.RiffType
+                    && !ClientConfig.Instance.MissSoundDuringRiff)
+                    return false;
+
                 return MissSoundOverrides.TryGetValue(type, out bool val) ? val : ShouldPlayMissSound;
             });
             c.Emit(OpCodes.Brfalse, afterSound);

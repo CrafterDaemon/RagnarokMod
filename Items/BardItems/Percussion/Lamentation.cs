@@ -21,6 +21,7 @@ namespace RagnarokMod.Items.BardItems.Percussion
 {
     public class Lamentation : BardItem
     {
+        // TODO: Rework me, this is almost identical to Calamity Bell :sob:
         public override BardInstrumentType InstrumentType => BardInstrumentType.Percussion;
 
         public override void SetStaticDefaults()

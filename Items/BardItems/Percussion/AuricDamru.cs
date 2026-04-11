@@ -24,6 +24,7 @@ namespace RagnarokMod.Items.BardItems.Percussion
 {
     public class AuricDamru : BardItem
     {
+        // TODO: Rework me. This ain't it, chief.
         public override BardInstrumentType InstrumentType => BardInstrumentType.Percussion;
 
         public override void SetStaticDefaults()

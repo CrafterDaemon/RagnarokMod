@@ -8,10 +8,11 @@ using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
+using ThoriumMod.Projectiles.Bard;
 
 namespace RagnarokMod.Projectiles.BardPro.Riff
 {
-    public class DevourerRiffSine : ModProjectile
+    public class DevourerRiffSine : BardProjectile
     {
         public override string Texture => "RagnarokMod/Projectiles/NoProj";
 
@@ -19,8 +20,7 @@ namespace RagnarokMod.Projectiles.BardPro.Riff
         {
             Main.projFrames[Type] = 1;
         }
-
-        public override void SetDefaults()
+        public override void SetBardDefaults()
         {
             Projectile.width = 2;
             Projectile.height = 2;

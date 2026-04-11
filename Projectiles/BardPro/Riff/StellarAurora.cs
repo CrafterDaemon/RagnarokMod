@@ -12,11 +12,12 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 using ThoriumMod;
+using ThoriumMod.Projectiles.Bard;
 using ThoriumMod.Utilities;
 
 namespace RagnarokMod.Projectiles.BardPro.Riffs
 {
-    public class StellarAurora : ModProjectile
+    public class StellarAurora : BardProjectile
     {
         public override string Texture => "Terraria/Images/Projectile_0";
 
@@ -49,7 +50,7 @@ namespace RagnarokMod.Projectiles.BardPro.Riffs
         public byte RiffType => RiffLoader.RiffType<AureusRiff>();
 
         // ai[0] = target player index
-        public override void SetDefaults()
+        public override void SetBardDefaults()
         {
             Projectile.width = 2;
             Projectile.height = 2;

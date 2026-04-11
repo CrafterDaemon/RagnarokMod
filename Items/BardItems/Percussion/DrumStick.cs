@@ -17,6 +17,7 @@ namespace RagnarokMod.Items.BardItems.Percussion;
 public class DrumStick : BardItem
 {
     //bonk bonk bonk bonk
+    // TODO: Rework long overdo...
     public override BardInstrumentType InstrumentType => BardInstrumentType.Percussion;
 
     public override void SetStaticDefaults()

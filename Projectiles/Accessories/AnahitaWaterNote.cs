@@ -30,7 +30,7 @@ namespace RagnarokMod.Projectiles.Accessories
             Projectile.velocity *= 0.99f;
 
             if (Main.player[Projectile.owner].GetRagnarokModPlayer().sirenVisualHidden)
-                Projectile.alpha = 0;
+                Projectile.alpha = 75;
             else
                 Projectile.alpha = 255;
         }

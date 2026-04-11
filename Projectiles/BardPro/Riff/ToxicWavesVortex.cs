@@ -15,11 +15,12 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using ThoriumMod;
 using ThoriumMod.Items;
+using ThoriumMod.Projectiles.Bard;
 using ThoriumMod.Utilities;
 
 namespace RagnarokMod.Projectiles.BardPro.Riff
 {
-    public class ToxicWavesVortex : ModProjectile
+    public class ToxicWavesVortex : BardProjectile
     {
 
 
@@ -28,7 +29,7 @@ namespace RagnarokMod.Projectiles.BardPro.Riff
         private int sharkronTimer = 0;
         private int SharkronInterval = 8;
 
-        public override void SetDefaults()
+        public override void SetBardDefaults()
         {
             Projectile.width = 416;
             Projectile.height = 416;

@@ -19,6 +19,7 @@ namespace RagnarokMod.Items
     public class AnahitasArpeggioOverride : BardItem, ILocalizedModType
     {
         //Anahita's Arpeggio, but a bard weapon
+        //TODO: Override projectiles to be Bard Projectiles
         public override string Texture => "CalamityMod/Items/Weapons/Magic/AnahitasArpeggio";
         public override BardInstrumentType InstrumentType => BardInstrumentType.String;
 

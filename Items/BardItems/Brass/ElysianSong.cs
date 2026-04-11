@@ -25,6 +25,7 @@ namespace RagnarokMod.Items.BardItems.Brass
 {
     public class ElysianSong : BardItem
     {
+        // TODO: Rework me. Let it riiiiiide
         public override BardInstrumentType InstrumentType => BardInstrumentType.Brass;
 
         public override void SetStaticDefaults()

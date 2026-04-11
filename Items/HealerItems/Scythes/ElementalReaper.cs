@@ -17,6 +17,8 @@ namespace RagnarokMod.Items.HealerItems.Scythes
 {
     public class ElementalReaper : ScytheItem
     {
+        // TODO: Rework right-click to use calamity cooldown system instead of a cooldown buff.
+        // Main attack could use a little more pizzaz too.
         public override void SetStaticDefaults()
         {
             SetStaticDefaultsToScythe();

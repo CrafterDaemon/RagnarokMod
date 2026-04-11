@@ -25,6 +25,7 @@ namespace RagnarokMod.Items.BardItems.Electronic
 {
     public class RadioMic : BardItem
     {
+        // TODO: Lowkey should be reworked
         public override BardInstrumentType InstrumentType => BardInstrumentType.Electronic;
         public override void SetStaticDefaults()
         {

@@ -1755,6 +1755,21 @@ Configs: {
 			// Label: Custom
 			// Tooltip: ""
 		}
+
+		Bounce: {
+			// Label: Bounce
+			// Tooltip: ""
+		}
+
+		Meow: {
+			// Label: Meow
+			// Tooltip: ""
+		}
+
+		Clang: {
+			// Label: Clang
+			// Tooltip: ""
+		}
 	}
 }
 

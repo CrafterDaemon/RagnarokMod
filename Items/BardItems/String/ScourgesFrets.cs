@@ -1,6 +1,7 @@
 using CalamityMod.Items;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using RagnarokMod.Common.Configs;
 using RagnarokMod.Projectiles.BardPro.String;
 using RagnarokMod.Riffs;
 using RagnarokMod.Riffs.RiffTypes;
@@ -26,7 +27,6 @@ namespace RagnarokMod.Items.BardItems.String
         public Player myPlayer = Main.LocalPlayer;
         public RagnarokModPlayer myRagnaPlayer => Main.LocalPlayer != null ? Main.LocalPlayer.GetRagnarokModPlayer() : null;
         public bool riffin => myRagnaPlayer != null ? (myRagnaPlayer.activeRiffType == RiffType ? true : false) : false;
-        public override float DamageDecreaseOnFail => default;
         public override int SuccessDecreaseOnFail => riffin ? 0 : default;
         public override float DamageIncreasePerSuccess => riffin ? 0.025f : default;
 

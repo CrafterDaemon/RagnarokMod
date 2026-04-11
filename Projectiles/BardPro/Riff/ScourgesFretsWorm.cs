@@ -10,6 +10,7 @@ using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
+using ThoriumMod.Projectiles.Bard;
 
 namespace RagnarokMod.Projectiles.Riffs
 {
@@ -42,7 +43,7 @@ namespace RagnarokMod.Projectiles.Riffs
             Main.spriteBatch.End();
         }
     }
-    public class ScourgesFretsWorm : ModProjectile
+    public class ScourgesFretsWorm : BardProjectile
     {
         public override string Texture => "CalamityMod/NPCs/DesertScourge/DesertNuisanceHead";
 
@@ -79,7 +80,7 @@ namespace RagnarokMod.Projectiles.Riffs
             }
         }
 
-        public override void SetDefaults()
+        public override void SetBardDefaults()
         {
             Projectile.width = 2;
             Projectile.height = 2;

@@ -23,11 +23,39 @@ namespace RagnarokMod.Items.BardItems
 {
     public abstract partial class BigRiffInstrumentBase : BigInstrumentItemBase
     {
+        /// <summary>
+        /// The sound style used for playing a riff.
+        /// </summary>
         public abstract SoundStyle RiffSound { get; }
+        /// <summary>
+        /// The default sound style associated with the object in its normal state.
+        /// </summary>
         public abstract SoundStyle NormalSound { get; }
+        /// <summary>
+        /// The Riff associated with this weapon.
+        /// For example, Scourge's Frets uses ScourgeRiff
+        /// </summary>
         public abstract byte RiffType { get; }
+        /// <summary>
+        /// The maximum allowed range for riff effects on players.
+        /// </summary>
         public virtual float RiffRange => 1000f;
+        /// <summary>
+        /// Reduces riff cooldown in ticks on successful bard timings during the riff
+        /// Defaults to 60 ticks
+        /// </summary>
         public virtual int CooldownReduction => 60;
+
+        /// <summary>
+        /// Percentage damage change on failed bard timings
+        /// 1f is -100%
+        /// 0f is 0%
+        /// Negatives increase damage on failed timing (why would you want that?)
+        /// This is added to ClassBalancerConfig.MistimedDamagePen
+        /// Defaults to 0f
+        /// </summary>
+        public virtual float FailDamagePen => 0f;
+        public override sealed float DamageDecreaseOnFail => ClassBalancerConfig.Instance.MistimedDamagePen + FailDamagePen;
 
         public sealed override void BardTooltips(List<TooltipLine> tooltips)
         {

@@ -11,8 +11,11 @@ namespace RagnarokMod.Common.Configs
     public enum MissSoundPreset
     {
         Default,      // Item16
-        Softer,       // Item4
-        Percussion,   // Item38
+        Softer,       // Item106
+        Percussion,   // Item89
+        Bounce,   // Item150
+        Meow,   // Item57
+        Clang,   // Custom
         Custom
     }
     public class ClientConfig : ModConfig
@@ -33,6 +36,9 @@ namespace RagnarokMod.Common.Configs
         [DrawTicks]
         [Slider]
         public float RiffMusicVolume { get; set; }
+
+        [DefaultValue(false)]
+        public bool MissSoundDuringRiff { get; set; }
 
         [DefaultValue(MissSoundPreset.Default)]
         public MissSoundPreset MissSoundPreset { get; set; }
@@ -63,8 +69,11 @@ namespace RagnarokMod.Common.Configs
 
             return MissSoundPreset switch
             {
-                MissSoundPreset.Softer => SoundID.Item4.WithVolumeScale(MissSoundVolume),
-                MissSoundPreset.Percussion => SoundID.Item38.WithVolumeScale(MissSoundVolume),
+                MissSoundPreset.Softer => SoundID.Item106.WithVolumeScale(MissSoundVolume),
+                MissSoundPreset.Percussion => SoundID.Item89.WithVolumeScale(MissSoundVolume),
+                MissSoundPreset.Bounce => SoundID.Item150.WithVolumeScale(MissSoundVolume),
+                MissSoundPreset.Meow => SoundID.Item57.WithVolumeScale(MissSoundVolume),
+                MissSoundPreset.Clang => new SoundStyle("RagnarokMod/Sounds/pipe") {Volume = MissSoundVolume},
                 _ => SoundID.Item16.WithVolumeScale(MissSoundVolume)
             };
         }

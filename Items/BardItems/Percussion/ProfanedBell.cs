@@ -22,6 +22,7 @@ namespace RagnarokMod.Items.BardItems.Percussion
 {
     public class ProfanedBell : BardItem
     {
+        // TODO: Rework me, my projectiles don't even glow, im crine
         public override BardInstrumentType InstrumentType => BardInstrumentType.Percussion;
 
         public override void SetStaticDefaults()

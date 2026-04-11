@@ -7,10 +7,11 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using ThoriumMod;
 using ThoriumMod.Items;
+using ThoriumMod.Projectiles.Bard;
 
 namespace RagnarokMod.Projectiles.BardPro.Riffs
 {
-    public class StellarShootingStar : ModProjectile
+    public class StellarShootingStar : BardProjectile
     {
         public override string Texture => "Terraria/Images/Projectile_0";
 
@@ -18,7 +19,7 @@ namespace RagnarokMod.Projectiles.BardPro.Riffs
         private Color astralCyan = new Color(66, 189, 181);
 
         // ai[0] = target NPC index
-        public override void SetDefaults()
+        public override void SetBardDefaults()
         {
             Projectile.width = 24;
             Projectile.height = 24;
@@ -64,7 +65,7 @@ namespace RagnarokMod.Projectiles.BardPro.Riffs
             Projectile.rotation = Projectile.velocity.ToRotation();
         }
 
-        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        public override void BardOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             // Star burst on impact
             for (int i = 0; i < 24; i++)

@@ -20,6 +20,7 @@ namespace RagnarokMod.Items.HealerItems.Scythes
 {
     public class ExecutionerMark05 : ScytheItem
     {
+        // TODO: Rework me. Underwhelming AF for a post exos weapon
         public override void SetStaticDefaults()
         {
             SetStaticDefaultsToScythe();

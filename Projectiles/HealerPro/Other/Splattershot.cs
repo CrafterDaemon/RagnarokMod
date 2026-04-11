@@ -40,7 +40,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Other
         {
             int spawnChance = Main.rand.Next(1, 9);
             Vector2 SpawnVel = new Vector2(Main.rand.NextFloat(-1.0f, 1.0f), Main.rand.NextFloat(-1.0f, 1.0f));
-            if (spawnChance == 1 || spawnChance == 2) { Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Center, SpawnVel, ModContent.ProjectileType<BloodstoneHealOrb>(), 20 + Main.player[Projectile.owner].GetThoriumPlayer().healBonus, 0f); }
+            if (spawnChance == 1 || spawnChance == 2) { Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Center, SpawnVel, ModContent.ProjectileType<BloodstoneHealOrb>(), 20 + (Main.player[Projectile.owner].GetThoriumPlayer().healBonus * 3), 0f); }
         }
     }
 }

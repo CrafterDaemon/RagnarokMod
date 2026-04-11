@@ -24,6 +24,7 @@ using CalamityMod.Rarities;
 
 namespace RagnarokMod.Items.HealerItems.Other
 {
+    // TODO: Rework me
     public class Virusprayer : ThoriumItem
     {
         int numProjectiles = 0;
