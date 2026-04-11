@@ -32,6 +32,7 @@ namespace RagnarokMod.Items.BardItems.Accessories
 
             var ragPlayer = player.GetRagnarokModPlayer();
             ragPlayer.sirenScale = true;
+            ragPlayer.sirenVisualHidden = hideVisual;
         }
     }
 }

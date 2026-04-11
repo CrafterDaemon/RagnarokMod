@@ -69,6 +69,7 @@ namespace RagnarokMod.Utils
         public bool WhiteDwarf = false;
         public bool leviathanHeart = false;
         public bool sirenScale = false;
+        public bool sirenVisualHidden = false;
         public ThoriumItem lastHeldItem;
         public int origLifeCost = 0;
         public int godslayerBardcurrentemp = 0;
@@ -769,6 +770,7 @@ namespace RagnarokMod.Utils
             auricBoost = false;
             leviathanHeart = false;
             sirenScale = false;
+            sirenVisualHidden = false;
             shredderLifesteal = false;
             this.redglassMonocle = false;
         }

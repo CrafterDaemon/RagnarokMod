@@ -68,6 +68,10 @@ namespace RagnarokMod.Projectiles.Accessories
                 return;
             }
 
+            // Smooth fade based on visibility toggle (eye icon on accessory slot)
+            float targetOpacity = ragPlayer.sirenVisualHidden ? 0f : 0.8f;
+            Projectile.Opacity = MathHelper.Lerp(Projectile.Opacity, targetOpacity, FadeSpeed);
+
             bool isPlayingString = ragPlayer.stringInstrumentUsed;
 
             // Determine target offset behind the player based on facing direction
@@ -101,13 +105,19 @@ namespace RagnarokMod.Projectiles.Accessories
             if (isPlayingString && FireTimer <= 0 && Projectile.owner == Main.myPlayer)
             {
                 Vector2 toMouse = Main.MouseWorld - Projectile.Center;
-                SoundStyle sound = new("CalamityMod/Sounds/Item/HarpEnd");
-                float pitch = 0f;
-                ModifyPitch(player.Center, Main.MouseWorld, ref pitch);
-                sound.Pitch = pitch;
-                sound.Volume = 0.5f;
-                sound.MaxInstances = 9;
-                SoundEngine.PlaySound(sound, Projectile.Center);
+
+                // Only play sound when not hidden
+                if (!ragPlayer.sirenVisualHidden)
+                {
+                    SoundStyle sound = new("CalamityMod/Sounds/Item/HarpEnd");
+                    float pitch = 0f;
+                    ModifyPitch(player.Center, Main.MouseWorld, ref pitch);
+                    sound.Pitch = pitch;
+                    sound.Volume = 0.5f;
+                    sound.MaxInstances = 9;
+                    SoundEngine.PlaySound(sound, Projectile.Center);
+                }
+
                 FireTimer = FireCooldown;
                 ragPlayer.stringInstrumentUsed = false;
 
@@ -116,7 +126,7 @@ namespace RagnarokMod.Projectiles.Accessories
                     toMouse.Normalize();
                     toMouse *= 8f;
 
-                    Projectile.NewProjectile(
+                    int proj = Projectile.NewProjectile(
                         Projectile.GetSource_FromThis(),
                         Projectile.Center,
                         toMouse,
@@ -125,6 +135,10 @@ namespace RagnarokMod.Projectiles.Accessories
                         2f,
                         Projectile.owner
                     );
+
+                    // Hide the water note projectile too when visual is hidden
+                    if (ragPlayer.sirenVisualHidden && proj >= 0 && proj < Main.maxProjectiles)
+                        Main.projectile[proj].Opacity = 0f;
                 }
             }
         }
