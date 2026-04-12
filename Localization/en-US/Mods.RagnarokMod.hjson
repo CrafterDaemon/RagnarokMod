@@ -698,7 +698,7 @@ Items: {
 			'''
 			Play the bongos, dealing damage to all nearby enemies
 			Press <right> to shoot a Flare Bomb
-			Flare Bombs afflict enemies with [cbuff:CalamityMod/DragonFire] for 3 seconds
+			Flare Bombs afflict enemies with [cbuff:CalamityMod/Dragonfire] for 3 seconds
 			'''
 	}
 
@@ -809,7 +809,7 @@ Items: {
 			Spinning this scythe surrounds you with an ethereal moonlight pulse
 			Hits generate [c/78C8FF:Soul Essence] and have a chance to generate [c/78C8FF:Stratus Starburst]
 			Press <right> with 5 or more Starburst to summon the [c/A0DCFF:Gemini] constellation
-			Each star fires piercing rays of moonlight that inflict [c/78C8FF:Voidfrost]
+			Each star fires piercing rays of moonlight that inflict [cbuff:CalamityMod/Voidfrost]
 			Press <right> again to dismiss the constellation
 			'''
 	}
@@ -1646,6 +1646,11 @@ Configs: {
 
 		MissSoundVolume: {
 			Label: Miss Sound Volume
+			Tooltip: ""
+		}
+
+		MissSoundDuringRiff: {
+			Label: Miss Sound During Riff
 			Tooltip: ""
 		}
 	}

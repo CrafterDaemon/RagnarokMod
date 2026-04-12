@@ -1629,6 +1629,11 @@ Configs: {
 			// Label: Miss Sound Volume
 			// Tooltip: ""
 		}
+
+		MissSoundDuringRiff: {
+			// Label: Miss Sound During Riff
+			// Tooltip: ""
+		}
 	}
 
 	DebugConfig: {
