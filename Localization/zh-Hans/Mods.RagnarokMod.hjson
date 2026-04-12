@@ -793,7 +793,7 @@ Items: {
 			Spinning this scythe surrounds you with an ethereal moonlight pulse
 			Hits generate [c/78C8FF:Soul Essence] and have a chance to generate [c/78C8FF:Stratus Starburst]
 			Press <right> with 5 or more Starburst to summon the [c/A0DCFF:Gemini] constellation
-			Each star fires piercing rays of moonlight that inflict [c/78C8FF:Voidfrost]
+			Each star fires piercing rays of moonlight that inflict [cbuff:CalamityMod/Voidfrost]
 			Press <right> again to dismiss the constellation
 			''' */
 	}
@@ -1037,7 +1037,6 @@ Items: {
 			The clouds will pierce through enemies based on your additional string weapon bounces
 			Press <right> to play the [c/37C300:Toxic Wisdom] riff!
 			While the riff is active, a sulphurous vortex summons acid sharkrons from above
-			Attacks deal 25% more damage while the riff is active
 			Time your attacks during the riff to reduce the cooldown
 			''' */
 	}
@@ -1155,16 +1154,15 @@ Items: {
 		/* Tooltip:
 			'''
 			Alternating castanet clicks spray lingering fungal spores
-			Press <right> to play the Infestation Riff
-			During the riff, your castanets become Crabulon's claws
-			A mushroom grows on your head, raining spores from above
-			'Click-clack, click-clack... the fungus spreads'
+			Press <right> to play the [c/00FFFF:Infestation Riff]
+			During the riff, your castanets become Crabulon's claws while spores rain from above
+			'Sounds like crab claws!'
 			''' */
 	}
 
 	CantStopWontStop: {
 		// DisplayName: Cant Stop Wont Stop
-		// Tooltip: ""
+		// Tooltip: This is the song that never ends...!
 	}
 }
 
@@ -1295,8 +1293,8 @@ Projectiles: {
 	// ToxicSharkronGore.DisplayName: Toxic Sharkron Gore
 	// FungalCastanetClick.DisplayName: Fungal Castanet Click
 	// FungalSpore.DisplayName: Fungal Spore
-	// InfestationMushroomHat.DisplayName: Infestation Mushroom
-	// InfestationMushroomRain.DisplayName: Infestation Mushroom
+	// InfestationMushroomHat.DisplayName: Infestation Mushroom Rain Controller
+	// InfestationMushroomRain.DisplayName: Infestation Mushroom Rain Spores
 }
 
 Configs: {
@@ -1380,16 +1378,6 @@ Configs: {
 		}
 	}
 
-	OtherConfig: {
-		DisplayName: 其他配置
-		Headers.Other: 其他
-
-		wip: {
-			Label: 未完工
-			Tooltip: ""
-		}
-	}
-
 	ClassBalancerConfig: {
 		DisplayName: 职业平衡设置
 
@@ -1444,8 +1432,13 @@ Configs: {
 		}
 
 		MistimedDamagePen: {
-			// Label: Mistimed Damage Pen
-			// Tooltip: ""
+			// Label: Mistimed Damage Penanlty
+			/* Tooltip:
+				'''
+				Thorium's damage penalty for mistimed big instrument attacks.
+				Thorium's default is 0.75, meaning mistimed attacks deal 75% less damage.
+				Ragnarok's default is 0.6, meaning mistimed attacks deal 60% less damage.
+				''' */
 		}
 	}
 
@@ -1461,11 +1454,6 @@ Configs: {
 		genericweaponchanges: {
 			Label: 通用武器调整
 			Tooltip: 进行通用武器平衡调整
-		}
-
-		NonconsumableEvents: {
-			// Label: Nonconsumable Events
-			// Tooltip: ""
 		}
 	}
 
@@ -1485,11 +1473,6 @@ Configs: {
 		BardEmpowermentBarOffsetY: {
 			Label: 吟游诗人咒音增幅条向 Y 轴偏移
 			Tooltip: 吟游诗人咒音增幅条向 Y 轴偏移，默认值应该可以解决和灾厄物品冷却条的问题
-		}
-
-		ShowItemHitboxes: {
-			Label: 显示Hitbox
-			Tooltip: ""
 		}
 	}
 
@@ -1638,28 +1621,44 @@ Configs: {
 
 		MissSoundPreset: {
 			// Label: Miss Sound Preset
-			// Tooltip: ""
+			// Tooltip: Choose a preset sound style for your missed timing sounds.
 		}
 
 		CustomMissSoundPath: {
 			// Label: Custom Miss Sound Path
-			// Tooltip: ""
+			/* Tooltip:
+				'''
+				Type in a mod sound path for the custom missed timing sound you would like to use.
+				For example, 'RagnarokMod/Sounds/bonk'.
+				Must have a corresponding .ogg file in the mod's Sounds folder, otherwise it might cause crashes or just not work.
+				Does not do anything unless the Miss Sound Preset is set to Custom.
+				''' */
 		}
 
 		MissSoundVolume: {
 			// Label: Miss Sound Volume
-			// Tooltip: ""
+			// Tooltip: Set the volume for the missed timing sound.
 		}
 
 		MissSoundDuringRiff: {
 			// Label: Miss Sound During Riff
+			/* Tooltip:
+				'''
+				Determines whether the missed timing sound will play during an active riff.
+				Set to 1 to always play the sound during riffs, -1 to never play the sound during riffs.
+				0 will only play the sound during riffs for intended specific items, such as the Fungal Castanets.
+				''' */
+		}
+
+		PlaySoundDuringRiff: {
+			// Label: Play Sound During Riff
 			// Tooltip: ""
 		}
 	}
 
 	DebugConfig: {
 		// DisplayName: Debug Config
-		// Headers.Debugging: Debugging Header
+		// Headers.Debugging: Debugging
 
 		ItemHoldOffsetX: {
 			// Label: Item Hold Offset X

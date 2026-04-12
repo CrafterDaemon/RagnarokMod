@@ -1174,7 +1174,7 @@ Items: {
 		Tooltip:
 			'''
 			Alternating castanet clicks spray lingering fungal spores
-			Press <right> to play the [c/00FFFF:Infestation Riff]
+			Press <right> to play the [c/00FFFF:1NF3S+@+!0N Riff!]
 			During the riff, your castanets become Crabulon's claws while spores rain from above
 			'Sounds like crab claws!'
 			'''
@@ -1182,7 +1182,7 @@ Items: {
 
 	CantStopWontStop: {
 		DisplayName: Cant Stop Wont Stop
-		Tooltip: "This is the song that never ends...!"
+		Tooltip: This is the song that never ends...!
 	}
 }
 
@@ -1453,12 +1453,12 @@ Configs: {
 
 		MistimedDamagePen: {
 			Label: Mistimed Damage Penanlty
-			Tooltip: 
-			'''
-			Thorium's damage penalty for mistimed big instrument attacks.
-			Thorium's default is 0.75, meaning mistimed attacks deal 75% less damage.
-			Ragnarok's default is 0.6, meaning mistimed attacks deal 60% less damage.
-			'''
+			Tooltip:
+				'''
+				Thorium's damage penalty for mistimed big instrument attacks.
+				Thorium's default is 0.75, meaning mistimed attacks deal 75% less damage.
+				Ragnarok's default is 0.6, meaning mistimed attacks deal 60% less damage.
+				'''
 		}
 	}
 
@@ -1626,49 +1626,57 @@ Configs: {
 
 		RiffMusicVolume: {
 			Label: Riff Music Volume
-			Tooltip: 
-			'''
-			Set the volume for the Riff music.
-			Setting to 0 will disable Riff music, and won't fade out playing music when a riff starts.
-			'''
+			Tooltip:
+				'''
+				Set the volume for the Riff music.
+				Setting to 0 will disable Riff music, and won't fade out playing music when a riff starts.
+				'''
 		}
 
 		StartText: {
 			Label: Start Text
-			Tooltip: "Enable or Disable welcome text on world entry."
+			Tooltip: Enable or Disable welcome text on world entry.
 		}
 
 		RiffScreenEffectIntensity: {
 			Label: Riff Screen Effect Intensity
-			Tooltip: "Controls the intensity of Riff Screen Effects. Set to 0 to disable."
+			Tooltip: Controls the intensity of Riff Screen Effects. Set to 0 to disable.
 		}
 
 		MissSoundPreset: {
 			Label: Miss Sound Preset
-			Tooltip: "Choose a preset sound style for your missed timing sounds."
+			Tooltip: Choose a preset sound style for your missed timing sounds.
 		}
 
 		CustomMissSoundPath: {
 			Label: Custom Miss Sound Path
-			Tooltip: 
-			'''
-			Type in a mod sound path for the custom missed timing sound you would like to use.
-			For example, 'RagnarokMod/Sounds/bonk'.
-			Must have a corresponding .ogg file in the mod's Sounds folder, otherwise it might cause crashes or just not work.
-			Does not do anything unless the Miss Sound Preset is set to Custom.
-			'''
+			Tooltip:
+				'''
+				Type in a mod sound path for the custom missed timing sound you would like to use.
+				For example, 'RagnarokMod/Sounds/bonk'.
+				Must have a corresponding .ogg file in the mod's Sounds folder, otherwise it might cause crashes or just not work.
+				Does not do anything unless the Miss Sound Preset is set to Custom.
+				'''
 		}
 
 		MissSoundVolume: {
 			Label: Miss Sound Volume
-			Tooltip: "Set the volume for the missed timing sound."
+			Tooltip: Set the volume for the missed timing sound.
 		}
 
 		MissSoundDuringRiff: {
 			Label: Miss Sound During Riff
-			Tooltip: 
+			Tooltip:
+				'''
+				Determines whether the missed timing sound will play during an active riff.
+				'''
+		}
+
+		PlaySoundDuringRiff: {
+			Label: Play Sound During Riff
+			Tooltip:
 			'''
-			Determines whether the missed timing sound will play during an active riff.
+			Determines whether the instrument sound plays during riffs.
 			Set to 1 to always play the sound during riffs, -1 to never play the sound during riffs.
 			0 will only play the sound during riffs for intended specific items, such as the Fungal Castanets.
 			'''
