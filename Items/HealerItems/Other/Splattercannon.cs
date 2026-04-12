@@ -86,7 +86,7 @@ namespace RagnarokMod.Items.HealerItems.Other
             }
             else
             {
-                PunchCameraModifier modifier = new PunchCameraModifier(player.Center, new Vector2(-player.direction), 15f, 12f, 20);
+                PunchCameraModifier modifier = new PunchCameraModifier(player.Center, new Vector2(-player.direction), NumProjectiles/4, 12f, 20);
                 Main.instance.CameraModifiers.Add(modifier);
 
                 for (int i = 0; i < NumProjectiles; i++)

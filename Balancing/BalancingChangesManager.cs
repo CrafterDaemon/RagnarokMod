@@ -3,9 +3,11 @@ using CalamityMod.Projectiles.DraedonsArsenal;
 using CalamityMod.Systems.Collections;
 using RagnarokMod.Projectiles.BardPro.Electronic;
 using RagnarokMod.Projectiles.BardPro.Percussion;
+using RagnarokMod.Projectiles.BardPro.Riff;
 using System.Collections.Generic;
 using System.Linq;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
@@ -13,6 +15,7 @@ namespace RagnarokMod.Balancing
 {
     public sealed class BalancingChangesManager : ModSystem
     {
+        public static IEnumerable<int> BrainOfCthulu = new List<int> { NPCID.BrainofCthulhu, NPCID.Creeper };
         internal static List<NPCBalancingChange> NPCSpecificBalancingChanges = null;
 
         private static IBalancingRule[] Do(params IBalancingRule[] rules) => rules;
@@ -28,6 +31,11 @@ namespace RagnarokMod.Balancing
         public override void SetStaticDefaults()
         {
             NPCSpecificBalancingChanges = new List<NPCBalancingChange>();
+            // EoW
+            Bundle(CalamityNPCTypeSets.EaterOfWorlds, Do(new ProjectileResistBalancingRule(0.5f, ProjectileType<FungalSpore>())));
+            Bundle(CalamityNPCTypeSets.EaterOfWorlds, Do(new ProjectileResistBalancingRule(0.5f, ProjectileType<InfestationMushroomRain>())));
+
+            // DoG
             Bundle(CalamityNPCTypeSets.DevourerOfGods, Do(new ProjectileResistBalancingRule(0.5f, ProjectileType<RadioMicPro>())));
             Bundle(CalamityNPCTypeSets.DevourerOfGods, Do(new ProjectileResistBalancingRule(0.5f, ProjectileType<RadioMicShadowBurst>())));
             Bundle(CalamityNPCTypeSets.DevourerOfGods, Do(new ProjectileResistBalancingRule(0.5f, ProjectileType<EctambourinePro>())));

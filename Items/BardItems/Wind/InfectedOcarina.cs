@@ -48,13 +48,14 @@ namespace RagnarokMod.Items.BardItems.Wind
             Item.value = CalamityGlobalItem.RarityOrangeBuyPrice;
             Item.rare = ItemRarityID.Orange;
         }
-        public override void SafeRiffBardShoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        public override bool SafeRiffBardShoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             if (Main.rand.NextBool(6))
             {
                 Vector2 velocityOffset = velocity.RotatedByRandom(MathHelper.ToRadians(5));
                 Projectile.NewProjectile(source, position, velocityOffset, ModContent.ProjectileType<VileSpitFriendly>(), damage / 2, knockback, player.whoAmI, 1f);
             }
+            return true;
         }
         public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
         {

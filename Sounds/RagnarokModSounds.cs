@@ -32,7 +32,9 @@ namespace RagnarokMod.Sounds
         public static readonly SoundStyle shredder = new("RagnarokMod/Sounds/shredder") { Volume = 0.5f, MaxInstances = 0 };
         public static readonly SoundStyle stellarriff = new("RagnarokMod/Sounds/stellarriff") { Volume = 0.5f, MaxInstances = 0 };
         public static readonly SoundStyle dragonforce = new("RagnarokMod/Sounds/dragonforce") { Volume = 0.2f, MaxInstances = 0 };
-        public static readonly SoundStyle toxicwaves = new("RagnarokMod/Sounds/toxicwaves") { Volume = 0.5f, Pitch = 0.5f, MaxInstances = 0 };
+        public static readonly SoundStyle toxicwaves = new("RagnarokMod/Sounds/toxicwaves") { Volume = 0.5f, MaxInstances = 0 };
+        public static readonly SoundStyle castanetRhythm = new("RagnarokMod/Sounds/fungalcastanetsrhythm") { Volume = 0.75f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
+        public static readonly SoundStyle castanetClick = new("RagnarokMod/Sounds/fungalcastanetclick") { Volume = 0.75f, MaxInstances = 0};
 
         //riffs
         public static readonly SoundStyle fretsriff = new("RagnarokMod/Sounds/Music/Riffs/fretsriff") { Volume = 0.6f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
@@ -44,6 +46,7 @@ namespace RagnarokMod.Sounds
         public static readonly SoundStyle slimeriff = new("RagnarokMod/Sounds/Music/Riffs/SlimeRiff") { Volume = 0.6f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
         public static readonly SoundStyle calcloneriff = new("RagnarokMod/Sounds/Music/Riffs/CalamitasCloneRiff") { Volume = 0.6f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
         public static readonly SoundStyle ToxicWisdomRiff = new("RagnarokMod/Sounds/Music/Riffs/ToxicWisdomRiff") { Volume = 0.6f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
+        public static readonly SoundStyle InfestationRiff = new("RagnarokMod/Sounds/Music/Riffs/InfestationRiff") { Volume = 0.9f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };
 
         //memes
         public static readonly SoundStyle nfl = new("RagnarokMod/Sounds/Music/Riffs/Memes/nfl") { Volume = 1f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew };

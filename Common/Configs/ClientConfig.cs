@@ -37,6 +37,13 @@ namespace RagnarokMod.Common.Configs
         [Slider]
         public float RiffMusicVolume { get; set; }
 
+        [DefaultValue(0)]
+        [Range(-1,1)]
+        [Increment(1)]
+        [DrawTicks]
+        [Slider]
+        public int PlaySoundDuringRiff { get; set; }
+
         [DefaultValue(false)]
         public bool MissSoundDuringRiff { get; set; }
 

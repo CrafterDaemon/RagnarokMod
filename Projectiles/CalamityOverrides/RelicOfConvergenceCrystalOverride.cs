@@ -63,12 +63,12 @@ namespace RagnarokMod.Projectiles.CalamityOverrides{
 				SoundStyle soundStyle = SoundID.DD2_WitherBeastCrystalImpact;
 				soundStyle.Volume = 0.5f * (float)((this.time >= (float)this.CrystalsDrawTime) ? 1 : 2);
 				soundStyle.Pitch = 0.5f * this.completion;
-				SoundEngine.PlaySound(ref soundStyle, new Vector2?(base.Projectile.Center), null);
+				SoundEngine.PlaySound(in soundStyle, new Vector2?(base.Projectile.Center), null);
 				if (this.time >= (float)this.CrystalsDrawTime){
 					soundStyle = new SoundStyle("CalamityMod/Sounds/Item/NullHit", 0);
 					soundStyle.Volume = 0.4f;
 					soundStyle.Pitch = -0.3f + 0.7f * this.completion;
-					SoundEngine.PlaySound(ref soundStyle, new Vector2?(base.Projectile.Center), null);
+					SoundEngine.PlaySound(in soundStyle, new Vector2?(base.Projectile.Center), null);
 					float numberOfDusts = 10f;
 					int i = 0;
 					while ((float)i < numberOfDusts){
@@ -91,7 +91,7 @@ namespace RagnarokMod.Projectiles.CalamityOverrides{
 							SoundStyle soundStyle = new SoundStyle("CalamityMod/Sounds/Custom/ProfanedGuardians/GuardianHeal", 0);
 							soundStyle.Volume = 1f;
 							soundStyle.MaxInstances = -1;
-							SoundEngine.PlaySound(ref soundStyle, new Vector2?(base.Projectile.Center), null);
+							SoundEngine.PlaySound(in soundStyle, new Vector2?(base.Projectile.Center), null);
 							this.playSound = false;
 						}
 						for (int j = 0; j < 5; j++){

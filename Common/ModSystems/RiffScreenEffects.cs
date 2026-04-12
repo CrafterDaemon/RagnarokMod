@@ -95,6 +95,15 @@ namespace RagnarokMod.Common.ModSystems
                     FadeSpeed = 0.006f,
                     CustomDraw = DrawToxicWavesTint
                 },
+
+                // Infestation
+                new RiffTint
+                {
+                    RiffType = RiffLoader.RiffType<InfestationRiff>(),
+                    MaxIntensity = 0.25f,
+                    FadeSpeed = 0.006f,
+                    CustomDraw = DrawInfestationTint
+                },
             };
         }
 
@@ -226,6 +235,40 @@ namespace RagnarokMod.Common.ModSystems
             float breathe = MathF.Sin(time * 2f) * 0.5f + 0.5f;
             sb.Draw(pixel, screen, src, new Color(50, 60, 10) * intensity * breathe * 0.5f);
 
+            return true;
+        }
+
+        private static bool DrawInfestationTint(float intensity, SpriteBatch sb, Texture2D pixel, Rectangle screen, Rectangle src, float time)
+        {
+            // Sickly green base tint
+            sb.Draw(pixel, screen, src, new Color(0, 200, 200) * intensity * 0.4f);
+
+            // Scrolling toxic cloud layers using Perlin noise (same technique as ScourgeStorm)
+            Texture2D noise = ModContent.Request<Texture2D>(
+                "CalamityMod/ExtraTextures/GreyscaleGradients/Perlin",
+                ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+
+            for (int layer = 0; layer < 3; layer++)
+            {
+                float scrollSpeed = (layer + 1) * 0.4f;
+                float scrollX = time * scrollSpeed * 180f % noise.Width;
+                float scrollY = MathF.Sin(time * 0.6f + layer * 1.2f) * 25f;
+                float layerAlpha = intensity * (0.3f - layer * 0.07f);
+
+                Color toxicColor = new Color(0, 200, 200) * layerAlpha;
+
+                float scaleX = 1.5f + layer * 0.5f;
+                float scaleY = (float)Main.screenHeight / noise.Height * 1.3f;
+                float yPos = -Main.screenHeight * 0.15f + scrollY + layer * 50f;
+
+                for (int x = -(int)scrollX - noise.Width; x < Main.screenWidth + noise.Width * 2; x += (int)(noise.Width * scaleX))
+                {
+                    sb.Draw(noise,
+                        new Vector2(x, yPos),
+                        null, toxicColor, 0f, Vector2.Zero, new Vector2(scaleX, scaleY),
+                        SpriteEffects.None, 0f);
+                }
+            }
             return true;
         }
 

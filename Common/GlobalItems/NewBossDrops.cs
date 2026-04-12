@@ -51,6 +51,7 @@ namespace RagnarokMod.Common.GlobalItems
             || item.type == ModContent.ItemType<LeviathanBag>()
             || item.type == ModContent.ItemType<DesertScourgeBag>()
             || item.type == ModContent.ItemType<HiveMindBag>()
+            || item.type == ModContent.ItemType<CrabulonBag>()
             || item.type == ModContent.ItemType<AstrumAureusBag>()
 			|| item.type == ModContent.ItemType<SlimeGodBag>()
             || item.type == ModContent.ItemType<RavagerBag>()
@@ -179,6 +180,14 @@ namespace RagnarokMod.Common.GlobalItems
                 itemLoot.Add(DropHelper.CalamityStyle(DropHelper.BagWeaponDropRateFraction, new int[]
                 {
                     ModContent.ItemType<InfectedOcarina>()
+                }));
+            }
+
+            if (item.type == ModContent.ItemType<CrabulonBag>())
+            {
+                itemLoot.Add(DropHelper.CalamityStyle(DropHelper.BagWeaponDropRateFraction, new int[]
+                {
+                    ModContent.ItemType<FungalCastanets>()
                 }));
             }
 

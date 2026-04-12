@@ -9,6 +9,7 @@ using CalamityMod.NPCs.BrimstoneElemental;
 using CalamityMod.NPCs.CalClone;
 using CalamityMod.NPCs.DesertScourge;
 using CalamityMod.NPCs.DevourerofGods;
+using CalamityMod.NPCs.Crabulon;
 using CalamityMod.NPCs.HiveMind;
 using CalamityMod.NPCs.Leviathan;
 using CalamityMod.NPCs.OldDuke;
@@ -83,6 +84,7 @@ namespace RagnarokMod.Common.GlobalNPCs
 			|| npc.type == ModContent.NPCType<ProfanedGuardianHealer>()
 			|| npc.type == ModContent.NPCType<SlimeGodCore>()
             || npc.type == ModContent.NPCType<RavagerBody>()
+            || npc.type == ModContent.NPCType<Crabulon>()
             );
         }
 
@@ -206,6 +208,13 @@ namespace RagnarokMod.Common.GlobalNPCs
             {
                 LeadingConditionRule notExpert = new LeadingConditionRule(new Conditions.NotExpert());
                 notExpert.OnSuccess(ItemDropRule.Common(ModContent.ItemType<InfectedOcarina>(), 4));
+                npcLoot.Add(notExpert);
+            }
+
+            if (npc.type == ModContent.NPCType<Crabulon>())
+            {
+                LeadingConditionRule notExpert = new LeadingConditionRule(new Conditions.NotExpert());
+                notExpert.OnSuccess(ItemDropRule.Common(ModContent.ItemType<FungalCastanets>(), 4));
                 npcLoot.Add(notExpert);
             }
 

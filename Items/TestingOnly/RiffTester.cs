@@ -13,13 +13,14 @@ using Terraria.Chat;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using ThoriumMod.Items;
 
 namespace RagnarokMod.Items
 {
-    public class RiffTester : ModItem
+    public class RiffTester : BardItem
     {
         public override string Texture => "RagnarokMod/Items/BardItems/Consumable/InspirationEssence";
-        public override void SetDefaults()
+        public override void SetBardDefaults()
         {
             Item.width = 20;
             Item.height = 20;
@@ -30,7 +31,7 @@ namespace RagnarokMod.Items
             Item.noMelee = true;
         }
 
-        public override bool? UseItem(Player player)
+        public override bool? BardUseItem(Player player)
         {
             if (player.Calamity().cooldowns.TryGetValue(RiffLoader.Cooldown.ID, out var cooldown))
                 cooldown.timeLeft = 0;

@@ -75,13 +75,14 @@ namespace RagnarokMod.Items.BardItems.String
             return player.ownedProjectileCounts[ModContent.ProjectileType<DragonForcePro1>()] <= 0;
         }
 
-        public override void SafeRiffBardShoot(Player player, EntitySource_ItemUse_WithAmmo source,
+        public override bool SafeRiffBardShoot(Player player, EntitySource_ItemUse_WithAmmo source,
             Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             if (player.GetRagnarokModPlayer().activeRiffType == RiffLoader.RiffType<DragonRiff>())
                 type = ModContent.ProjectileType<DragonForceRiffBeam>();
 
             Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
+            return true;
         }
     }
 }

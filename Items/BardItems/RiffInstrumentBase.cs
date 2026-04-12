@@ -22,6 +22,7 @@ namespace RagnarokMod.Items.BardItems
 {
     public abstract partial class RiffInstrumentBase : BardItem
     {
+        public virtual bool PlayDuringRiff => false;
         public abstract SoundStyle RiffSound { get; }
         public abstract SoundStyle NormalSound { get; }
         public abstract byte RiffType { get; }
@@ -88,12 +89,13 @@ namespace RagnarokMod.Items.BardItems
             if (player.altFunctionUse == 2 && !ragnarokPlayer.riffPlaying)
             {
                 SyncRiffSound(player, true);
+                return false;
             }
             else if (player.altFunctionUse != 2)
             {
-                SafeRiffBardShoot(player, source, position, velocity, type, damage, knockback);
+                return SafeRiffBardShoot(player, source, position, velocity, type, damage, knockback);
             }
-            return true;
+            else return false;
         }
 
         public sealed override void BardHoldItem(Player player)
@@ -119,7 +121,7 @@ namespace RagnarokMod.Items.BardItems
 
         // Safe overrides for subclasses
         public virtual bool SafeCanPlayInstrument(Player player) => true;
-        public virtual void SafeRiffBardShoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) { }
+        public virtual bool SafeRiffBardShoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) => true;
         public virtual void SafeBardHoldItem(Player player) { }
 
         public virtual void ModifyRiffInstDamage(ThoriumPlayer bard, ref StatModifier damage) { }
@@ -133,7 +135,13 @@ namespace RagnarokMod.Items.BardItems
         private void SoundHandler(Player player)
         {
             var ragnarokPlayer = player.GetRagnarokModPlayer();
-            Item.UseSound = (player.altFunctionUse == 2 || ragnarokPlayer.riffPlaying)
+            if (ClientConfig.Instance.PlaySoundDuringRiff == 1)
+                Item.UseSound = NormalSound;
+            else if (ClientConfig.Instance.PlaySoundDuringRiff == 0)
+                Item.UseSound = !PlayDuringRiff ? ((player.altFunctionUse == 2 || ragnarokPlayer.riffPlaying)
+                ? RagnarokModSounds.none
+                : NormalSound) : NormalSound;
+            else Item.UseSound = (player.altFunctionUse == 2 || ragnarokPlayer.riffPlaying)
                 ? RagnarokModSounds.none
                 : NormalSound;
         }

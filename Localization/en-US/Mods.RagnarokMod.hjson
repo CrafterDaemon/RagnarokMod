@@ -1168,6 +1168,23 @@ Items: {
 			'As loyal as a hound'
 			'''
 	}
+
+	FungalCastanets: {
+		DisplayName: Fungal Castanets
+		Tooltip:
+			'''
+			Alternating castanet clicks spray lingering fungal spores
+			Press <right> to play the Infestation Riff
+			During the riff, your castanets become Crabulon's claws
+			A mushroom grows on your head, raining spores from above
+			'Click-clack, click-clack... the fungus spreads'
+			'''
+	}
+
+	CantStopWontStop: {
+		DisplayName: Cant Stop Wont Stop
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -1295,6 +1312,10 @@ Projectiles: {
 	AstralRipperChargeSwing.DisplayName: Astral Ripper Charge Swing
 	AstralRipperStarfall.DisplayName: Astral Ripper Starfall
 	ToxicSharkronGore.DisplayName: Toxic Sharkron Gore
+	FungalCastanetClick.DisplayName: Fungal Castanet Click
+	FungalSpore.DisplayName: Fungal Spore
+	InfestationMushroomHat.DisplayName: Infestation Mushroom
+	InfestationMushroomRain.DisplayName: Infestation Mushroom
 }
 
 Configs: {
@@ -1646,6 +1667,11 @@ Configs: {
 
 		MissSoundVolume: {
 			Label: Miss Sound Volume
+			Tooltip: ""
+		}
+
+		MissSoundDuringRiff: {
+			Label: Miss Sound During Riff
 			Tooltip: ""
 		}
 	}
