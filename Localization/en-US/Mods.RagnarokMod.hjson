@@ -1056,7 +1056,6 @@ Items: {
 			The clouds will pierce through enemies based on your additional string weapon bounces
 			Press <right> to play the [c/37C300:Toxic Wisdom] riff!
 			While the riff is active, a sulphurous vortex summons acid sharkrons from above
-			Attacks deal 25% more damage while the riff is active
 			Time your attacks during the riff to reduce the cooldown
 			'''
 	}
@@ -1095,9 +1094,10 @@ Items: {
 			Once worn by an infamous underworld star
 			25% increased symphonic damage
 			Flat Damage empowerment is twice as effective on you
-			Reduces the inspiration cost of Radio Mic by 2
-			Increases the Damage empowerment level from Radio Mic by 1
-			Radio Mic now inflicts [rbuff:ThoriumMod/Charmed] for 5 seconds
+			While worn, Radio Mic gets the following bonuses:
+			Inspiration cost reduced by 2
+			Increases the Damage empowerment level by 1
+			Inflicts [rbuff:ThoriumMod/Charmed] for 5 seconds
 			'''
 	}
 
@@ -1174,16 +1174,15 @@ Items: {
 		Tooltip:
 			'''
 			Alternating castanet clicks spray lingering fungal spores
-			Press <right> to play the Infestation Riff
-			During the riff, your castanets become Crabulon's claws
-			A mushroom grows on your head, raining spores from above
-			'Click-clack, click-clack... the fungus spreads'
+			Press <right> to play the [c/00FFFF:Infestation Riff]
+			During the riff, your castanets become Crabulon's claws while spores rain from above
+			'Sounds like crab claws!'
 			'''
 	}
 
 	CantStopWontStop: {
 		DisplayName: Cant Stop Wont Stop
-		Tooltip: ""
+		Tooltip: "This is the song that never ends...!"
 	}
 }
 
@@ -1314,8 +1313,8 @@ Projectiles: {
 	ToxicSharkronGore.DisplayName: Toxic Sharkron Gore
 	FungalCastanetClick.DisplayName: Fungal Castanet Click
 	FungalSpore.DisplayName: Fungal Spore
-	InfestationMushroomHat.DisplayName: Infestation Mushroom
-	InfestationMushroomRain.DisplayName: Infestation Mushroom
+	InfestationMushroomHat.DisplayName: Infestation Mushroom Rain Controller
+	InfestationMushroomRain.DisplayName: Infestation Mushroom Rain Spores
 }
 
 Configs: {
@@ -1399,16 +1398,6 @@ Configs: {
 		}
 	}
 
-	OtherConfig: {
-		DisplayName: Other Config
-		Headers.Other: Other Header
-
-		wip: {
-			Label: wip
-			Tooltip: ""
-		}
-	}
-
 	ClassBalancerConfig: {
 		DisplayName: Class Balancer Config
 
@@ -1454,7 +1443,7 @@ Configs: {
 
 		HealingBonusModifier: {
 			Label: Healing Bonus Modifier
-			Tooltip: ""
+			Tooltip: Multiplier for healing bonuses. Multiplier applies after all other changes have been applied.
 		}
 
 		RiffsRequireRiffInstrumentToBeHeld: {
@@ -1463,8 +1452,13 @@ Configs: {
 		}
 
 		MistimedDamagePen: {
-			Label: Mistimed Damage Pen
-			Tooltip: ""
+			Label: Mistimed Damage Penanlty
+			Tooltip: 
+			'''
+			Thorium's damage penalty for mistimed big instrument attacks.
+			Thorium's default is 0.75, meaning mistimed attacks deal 75% less damage.
+			Ragnarok's default is 0.6, meaning mistimed attacks deal 60% less damage.
+			'''
 		}
 	}
 
@@ -1480,11 +1474,6 @@ Configs: {
 		genericweaponchanges: {
 			Label: Generic Weapon Tweaks
 			Tooltip: Applies general weapon rebalances.
-		}
-
-		NonconsumableEvents: {
-			Label: Nonconsumable Events
-			Tooltip: ""
 		}
 	}
 
@@ -1505,16 +1494,11 @@ Configs: {
 			Label: Bard Empowerment Bar Offset Y
 			Tooltip: Y offset of the bard empowerment bar. Default value should already fix the overlap with Calamity item cooldowns.
 		}
-
-		ShowItemHitboxes: {
-			Label: Show Item Hitboxes
-			Tooltip: ""
-		}
 	}
 
 	ModCompatConfig: {
 		DisplayName: Mod Compatibility Config
-		Headers.ModCompat: Mod Compat Header
+		Headers.ModCompat: Mod Compat
 
 		item_deduplication_mode: {
 			Label: Calamity Bard & Healer item deduplication
@@ -1626,8 +1610,8 @@ Configs: {
 		Headers: {
 			Audio: Audio
 			UITweaks: UI Tweaks
-			WelcomeText: Welcome Text Header
-			Visual: Visual Header
+			WelcomeText: Welcome Text
+			Visual: Visuals
 		}
 
 		BardEmpowermentBarOffsetX: {
@@ -1642,43 +1626,58 @@ Configs: {
 
 		RiffMusicVolume: {
 			Label: Riff Music Volume
-			Tooltip: ""
+			Tooltip: 
+			'''
+			Set the volume for the Riff music.
+			Setting to 0 will disable Riff music, and won't fade out playing music when a riff starts.
+			'''
 		}
 
 		StartText: {
 			Label: Start Text
-			Tooltip: ""
+			Tooltip: "Enable or Disable welcome text on world entry."
 		}
 
 		RiffScreenEffectIntensity: {
 			Label: Riff Screen Effect Intensity
-			Tooltip: ""
+			Tooltip: "Controls the intensity of Riff Screen Effects. Set to 0 to disable."
 		}
 
 		MissSoundPreset: {
 			Label: Miss Sound Preset
-			Tooltip: ""
+			Tooltip: "Choose a preset sound style for your missed timing sounds."
 		}
 
 		CustomMissSoundPath: {
 			Label: Custom Miss Sound Path
-			Tooltip: ""
+			Tooltip: 
+			'''
+			Type in a mod sound path for the custom missed timing sound you would like to use.
+			For example, 'RagnarokMod/Sounds/bonk'.
+			Must have a corresponding .ogg file in the mod's Sounds folder, otherwise it might cause crashes or just not work.
+			Does not do anything unless the Miss Sound Preset is set to Custom.
+			'''
 		}
 
 		MissSoundVolume: {
 			Label: Miss Sound Volume
-			Tooltip: ""
+			Tooltip: "Set the volume for the missed timing sound."
 		}
 
 		MissSoundDuringRiff: {
 			Label: Miss Sound During Riff
-			Tooltip: ""
+			Tooltip: 
+			'''
+			Determines whether the missed timing sound will play during an active riff.
+			Set to 1 to always play the sound during riffs, -1 to never play the sound during riffs.
+			0 will only play the sound during riffs for intended specific items, such as the Fungal Castanets.
+			'''
 		}
 	}
 
 	DebugConfig: {
 		DisplayName: Debug Config
-		Headers.Debugging: Debugging Header
+		Headers.Debugging: Debugging
 
 		ItemHoldOffsetX: {
 			Label: Item Hold Offset X
