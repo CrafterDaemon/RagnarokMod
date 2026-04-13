@@ -1154,7 +1154,7 @@ Items: {
 		/* Tooltip:
 			'''
 			Alternating castanet clicks spray lingering fungal spores
-			Press <right> to play the [c/00FFFF:Infestation Riff]
+			Press <right> to play the [c/00FFFF:1NF3S+@+!0N Riff!]
 			During the riff, your castanets become Crabulon's claws while spores rain from above
 			'Sounds like crab claws!'
 			''' */
@@ -1163,6 +1163,11 @@ Items: {
 	CantStopWontStop: {
 		// DisplayName: Cant Stop Wont Stop
 		// Tooltip: This is the song that never ends...!
+	}
+
+	GlacialHarvester: {
+		// DisplayName: Glacial Harvester
+		// Tooltip: ""
 	}
 }
 
@@ -1295,6 +1300,9 @@ Projectiles: {
 	// FungalSpore.DisplayName: Fungal Spore
 	// InfestationMushroomHat.DisplayName: Infestation Mushroom Rain Controller
 	// InfestationMushroomRain.DisplayName: Infestation Mushroom Rain Spores
+	// GlacialSlam.DisplayName: Glacial Slam
+	// GlacialHarvesterPro.DisplayName: Glacial Harvester Pro
+	// GlacialWave.DisplayName: Glacial Wave
 }
 
 Configs: {
@@ -1642,17 +1650,17 @@ Configs: {
 
 		MissSoundDuringRiff: {
 			// Label: Miss Sound During Riff
-			/* Tooltip:
-				'''
-				Determines whether the missed timing sound will play during an active riff.
-				Set to 1 to always play the sound during riffs, -1 to never play the sound during riffs.
-				0 will only play the sound during riffs for intended specific items, such as the Fungal Castanets.
-				''' */
+			// Tooltip: Determines whether the missed timing sound will play during an active riff.
 		}
 
 		PlaySoundDuringRiff: {
 			// Label: Play Sound During Riff
-			// Tooltip: ""
+			/* Tooltip:
+				'''
+				Determines whether the instrument sound plays during riffs.
+				Set to 1 to always play the sound during riffs, -1 to never play the sound during riffs.
+				0 will only play the sound during riffs for intended specific items, such as the Fungal Castanets.
+				''' */
 		}
 	}
 

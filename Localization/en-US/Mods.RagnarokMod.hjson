@@ -1184,6 +1184,11 @@ Items: {
 		DisplayName: Cant Stop Wont Stop
 		Tooltip: This is the song that never ends...!
 	}
+
+	GlacialHarvester: {
+		DisplayName: Glacial Harvester
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -1315,6 +1320,9 @@ Projectiles: {
 	FungalSpore.DisplayName: Fungal Spore
 	InfestationMushroomHat.DisplayName: Infestation Mushroom Rain Controller
 	InfestationMushroomRain.DisplayName: Infestation Mushroom Rain Spores
+	GlacialSlam.DisplayName: Glacial Slam
+	GlacialHarvesterPro.DisplayName: Glacial Harvester Pro
+	GlacialWave.DisplayName: Glacial Wave
 }
 
 Configs: {
@@ -1666,20 +1674,17 @@ Configs: {
 
 		MissSoundDuringRiff: {
 			Label: Miss Sound During Riff
-			Tooltip:
-				'''
-				Determines whether the missed timing sound will play during an active riff.
-				'''
+			Tooltip: Determines whether the missed timing sound will play during an active riff.
 		}
 
 		PlaySoundDuringRiff: {
 			Label: Play Sound During Riff
 			Tooltip:
-			'''
-			Determines whether the instrument sound plays during riffs.
-			Set to 1 to always play the sound during riffs, -1 to never play the sound during riffs.
-			0 will only play the sound during riffs for intended specific items, such as the Fungal Castanets.
-			'''
+				'''
+				Determines whether the instrument sound plays during riffs.
+				Set to 1 to always play the sound during riffs, -1 to never play the sound during riffs.
+				0 will only play the sound during riffs for intended specific items, such as the Fungal Castanets.
+				'''
 		}
 	}
 
