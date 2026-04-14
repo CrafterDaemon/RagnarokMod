@@ -4,6 +4,7 @@ using CalamityMod.Systems.Collections;
 using RagnarokMod.Projectiles.BardPro.Electronic;
 using RagnarokMod.Projectiles.BardPro.Percussion;
 using RagnarokMod.Projectiles.BardPro.Riff;
+using RagnarokMod.Projectiles.HealerPro.Scythes;
 using System.Collections.Generic;
 using System.Linq;
 using Terraria;
@@ -34,6 +35,9 @@ namespace RagnarokMod.Balancing
             // EoW
             Bundle(CalamityNPCTypeSets.EaterOfWorlds, Do(new ProjectileResistBalancingRule(0.5f, ProjectileType<FungalSpore>())));
             Bundle(CalamityNPCTypeSets.EaterOfWorlds, Do(new ProjectileResistBalancingRule(0.5f, ProjectileType<InfestationMushroomRain>())));
+
+            // Destroyer
+            Bundle(CalamityNPCTypeSets.Destroyer, Do(new ProjectileResistBalancingRule(0.25f, ProjectileType<GlacialWave>())));
 
             // DoG
             Bundle(CalamityNPCTypeSets.DevourerOfGods, Do(new ProjectileResistBalancingRule(0.5f, ProjectileType<RadioMicPro>())));

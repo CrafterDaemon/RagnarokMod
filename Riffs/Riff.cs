@@ -24,7 +24,7 @@ namespace RagnarokMod.Riffs
 
         public void OnStart(Player bardPlayer, Player target)
         {
-            bardPlayer.AddCooldown(RiffLoader.Cooldown.ID, CooldownTicks);
+            bardPlayer.AddCooldown(RiffLoader.RiffCooldown.ID, CooldownTicks);
             SafeOnStart(bardPlayer, target);
         }
 

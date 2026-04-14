@@ -98,7 +98,7 @@ namespace RagnarokMod.Items.BardItems
             {
                 var ragnarokPlayer = player.GetRagnarokModPlayer();
 
-                if (player.Calamity().cooldowns.ContainsKey(RiffLoader.Cooldown.ID))
+                if (player.Calamity().cooldowns.ContainsKey(RiffLoader.RiffCooldown.ID))
                     return false;
 
                 if (SoundEngine.TryGetActiveSound(ragnarokPlayer.riffSlot, out var sound) && sound.IsPlaying)
@@ -125,7 +125,7 @@ namespace RagnarokMod.Items.BardItems
                 // Reduce riff cooldown on successful timing
                 if (success == 1 && ragnarokPlayer.riffPlaying)
                 {
-                    if (player.Calamity().cooldowns.TryGetValue(RiffLoader.Cooldown.ID, out var cooldown))
+                    if (player.Calamity().cooldowns.TryGetValue(RiffLoader.RiffCooldown.ID, out var cooldown))
                     {
                         if (cooldown.timeLeft - CooldownReduction <= 0) cooldown.timeLeft = 1;
                         else cooldown.timeLeft -= CooldownReduction;

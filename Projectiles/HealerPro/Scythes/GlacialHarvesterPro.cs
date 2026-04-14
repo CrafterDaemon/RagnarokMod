@@ -71,7 +71,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                 Projectile.rotation,
                 origin,
                 myScale,
-                SpriteEffects.None,
+                player.direction == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally,
                 0
             );
 

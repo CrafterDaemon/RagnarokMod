@@ -33,7 +33,7 @@ namespace RagnarokMod.Items
 
         public override bool? BardUseItem(Player player)
         {
-            if (player.Calamity().cooldowns.TryGetValue(RiffLoader.Cooldown.ID, out var cooldown))
+            if (player.Calamity().cooldowns.TryGetValue(RiffLoader.RiffCooldown.ID, out var cooldown))
                 cooldown.timeLeft = 0;
             return true;
         }

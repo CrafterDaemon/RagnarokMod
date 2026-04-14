@@ -69,7 +69,7 @@ namespace RagnarokMod.Items.BardItems
             {
                 var ragnarokPlayer = player.GetRagnarokModPlayer();
 
-                if (player.Calamity().cooldowns.ContainsKey(RiffLoader.Cooldown.ID))
+                if (player.Calamity().cooldowns.ContainsKey(RiffLoader.RiffCooldown.ID))
                     return false;
 
                 if (SoundEngine.TryGetActiveSound(ragnarokPlayer.riffSlot, out var sound) && sound.IsPlaying)

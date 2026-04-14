@@ -15,7 +15,7 @@ namespace RagnarokMod.Riffs
 {
     public class RiffLoader : ModSystem
     {
-        public class Cooldown : CooldownHandler
+        public class RiffCooldown : CooldownHandler
         {
             public static new string ID => "RiffCooldown";
             public override bool ShouldDisplay => true;

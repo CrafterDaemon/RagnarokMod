@@ -1187,7 +1187,13 @@ Items: {
 
 	GlacialHarvester: {
 		DisplayName: Glacial Harvester
-		Tooltip: ""
+		Tooltip:
+		'''
+		Hold <left> to spin the scythe.
+		Press <right> to slam the scythe, sending out a massive wave of ice.
+		Inflicts [rbuff:Frostburn]
+		'''
+		Cooldown: "Glacial Slam is on cooldown." 
 	}
 }
 

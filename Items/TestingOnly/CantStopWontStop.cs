@@ -20,7 +20,7 @@ namespace RagnarokMod.Items.TestingOnly
         public override void UpdateAccessory(Player player, bool isvis)
         {
             player.GetThoriumPlayer().bardResource = player.GetThoriumPlayer().bardResourceMax;
-            if (player.Calamity().cooldowns.TryGetValue(RiffLoader.Cooldown.ID, out var cooldown))
+            if (player.Calamity().cooldowns.TryGetValue(RiffLoader.RiffCooldown.ID, out var cooldown))
                 cooldown.timeLeft = 0;
         }
     }
