@@ -1188,12 +1188,17 @@ Items: {
 	GlacialHarvester: {
 		DisplayName: Glacial Harvester
 		Tooltip:
-		'''
-		Hold <left> to spin the scythe.
-		Press <right> to slam the scythe, sending out a massive wave of ice.
-		Inflicts [rbuff:Frostburn]
-		'''
-		Cooldown: "Glacial Slam is on cooldown." 
+			'''
+			Hold <left> to spin the scythe.
+			Press <right> to slam the scythe, sending out a massive wave of ice.
+			Inflicts [rbuff:Frostburn]
+			'''
+		Cooldown: Glacial Slam is on cooldown.
+	}
+
+	Aphelion: {
+		DisplayName: Aphelion
+		Tooltip: ""
 	}
 }
 
@@ -1329,6 +1334,9 @@ Projectiles: {
 	GlacialSlam.DisplayName: Glacial Slam
 	GlacialHarvesterPro.DisplayName: Glacial Harvester Pro
 	GlacialWave.DisplayName: Glacial Wave
+	AphelionPro.DisplayName: Aphelion Pro
+	AphelionSun.DisplayName: Aphelion Sun
+	AphelionVortex.DisplayName: Aphelion Vortex
 }
 
 Configs: {

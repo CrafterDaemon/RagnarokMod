@@ -6,6 +6,10 @@
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
+    <AdditionalFiles Remove="Effects\AphelionSmear.fx" />
+    <AdditionalFiles Remove="Effects\AphelionSun.fx" />
+  </ItemGroup>
+  <ItemGroup>
     <None Remove="Items\AuricTeslaFrilledHelmet.png" />
     <None Remove="Items\AuricTeslaFrilledHelmet_Head.png" />
     <None Remove="Items\BardItems\hi_to_anyone_reading_this.png" />
