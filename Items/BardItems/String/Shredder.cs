@@ -68,8 +68,8 @@ namespace RagnarokMod.Items.BardItems.String
 
             if (riffin)
             {
-                Item.useTime = 11;
-                Item.useAnimation = 11;
+                Item.useTime = 15;
+                Item.useAnimation = 15;
             }
             else
             {

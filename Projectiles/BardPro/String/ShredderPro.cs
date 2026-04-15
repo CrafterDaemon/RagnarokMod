@@ -42,11 +42,11 @@ namespace RagnarokMod.Projectiles.BardPro.String
         // ai[0], ai[1] = target world position (cursor pos at spawn)
         public override void SetBardDefaults()
         {
-            Projectile.width = 2;
-            Projectile.height = 2;
+            Projectile.width = 6;
+            Projectile.height = 6;
             Projectile.friendly = true;
             Projectile.hostile = false;
-            Projectile.DamageType = DamageClass.Melee;
+            Projectile.DamageType = ThoriumDamageBase<BardDamage>.Instance;
             Projectile.penetrate = -1;
             Projectile.tileCollide = false;
             Projectile.ignoreWater = true;
