@@ -44,7 +44,8 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
         private static Texture2D NoiseTexture =>
             ModContent.Request<Texture2D>(NoisePath,
                 AssetRequestMode.ImmediateLoad).Value;
-
+        private int _fadeTimer;
+        private const int FadeOutFrames = 40;
         // Parent accessor
         private int ParentID => (int)Projectile.ai[0];
         private Player owner => Main.player[Projectile.owner];
@@ -81,6 +82,17 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
 
         public override void AI()
         {
+            if (Projectile.ai[1] == 1f)
+            {
+                _fadeTimer++;
+                Projectile.timeLeft = 3;
+                Projectile.Center = Main.player[Projectile.owner].Center;
+                _chargeProgress = Math.Max(_chargeProgress - 1f / FadeOutFrames, 0f);
+                if (_fadeTimer >= FadeOutFrames)
+                    Projectile.Kill();
+                return;
+            }
+
             if (!TryGetParent(out Projectile raw))
             {
                 Projectile.Kill();

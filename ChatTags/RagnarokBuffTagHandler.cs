@@ -1,4 +1,5 @@
 ﻿using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.ChatTags;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -23,24 +24,37 @@ namespace RagnarokMod.ChatTags
 
             public bool DrawIcon => true;
 
+            private static Dictionary<int, Color> BuildColorOverrides()
+            {
+                var d = new Dictionary<int, Color>
+                {
+                    [ModContent.BuffType<Buffs.AuricSurge>()] = new Color(159, 230, 252),
+                    [ModContent.BuffType<Buffs.LeviathanHeartBubble>()] = new Color(46, 139, 87),
+                    [ModContent.BuffType<Buffs.LeviathanHeartBubbleCorrupted>()] = new Color(255, 105, 237),
+                    [ModContent.BuffType<Buffs.ScytheAirBuff>()] = new Color(180, 230, 255),
+                    [ModContent.BuffType<Buffs.ScytheBrimstoneBuff>()] = new Color(255, 80, 30),
+                    [ModContent.BuffType<Buffs.ScytheEarthBuff>()] = new Color(79, 55, 39),
+                    [ModContent.BuffType<Buffs.ScytheOasisBuff>()] = new Color(80, 210, 150),
+                    [ModContent.BuffType<Buffs.ScytheSandBuff>()] = new Color(230, 190, 90),
+                    [ModContent.BuffType<Buffs.ScytheWaterBuff>()] = new Color(90, 160, 255),
+                    [ModContent.BuffType<Buffs.AntarcticCreativityBuff>()] = new Color(151, 193, 230),
+                    [ModContent.BuffType<Buffs.AntarcticReinforcementBuff>()] = new Color(151, 193, 230),
+                    [ModContent.BuffType<Buffs.GuardianHealerBeamBuff>()] = new Color(46, 139, 87),
+                };
+
+                if (ModLoader.TryGetMod("CalamityMod", out Mod calamity))
+                {
+                    if (calamity.TryFind<ModBuff>("GodSlayerInferno", out var gsInferno))
+                        d[gsInferno.Type] = Color.MediumPurple;
+                    if (calamity.TryFind<ModBuff>("Daybroken", out var daybroken))
+                        d[daybroken.Type] = Color.Gold;
+                }
+
+                return d;
+            }
 
             private static Dictionary<int, Color> _buffColorOverrides;
-
-            private static Dictionary<int, Color> BuffColorOverrides => _buffColorOverrides ??= new()
-            {
-                [ModContent.BuffType<Buffs.AuricSurge>()] = new Color(159, 230, 252),
-                [ModContent.BuffType<Buffs.LeviathanHeartBubble>()] = new Color(46, 139, 87),
-                [ModContent.BuffType<Buffs.LeviathanHeartBubbleCorrupted>()] = new Color(255, 105, 237),
-                [ModContent.BuffType<Buffs.ScytheAirBuff>()] = new Color(180, 230, 255),
-                [ModContent.BuffType<Buffs.ScytheBrimstoneBuff>()] = new Color(255, 80, 30), 
-                [ModContent.BuffType<Buffs.ScytheEarthBuff>()] = new Color(79, 55, 39),
-                [ModContent.BuffType<Buffs.ScytheOasisBuff>()] = new Color(80, 210, 150),
-                [ModContent.BuffType<Buffs.ScytheSandBuff>()] = new Color(230, 190, 90), 
-                [ModContent.BuffType<Buffs.ScytheWaterBuff>()] = new Color(90, 160, 255),
-                [ModContent.BuffType<Buffs.AntarcticCreativityBuff>()] = new Color(151, 193, 230),
-                [ModContent.BuffType<Buffs.AntarcticReinforcementBuff>()] = new Color(151, 193, 230),
-                [ModContent.BuffType<Buffs.GuardianHealerBeamBuff>()] = new Color(46, 139, 87)
-            };
+            private static Dictionary<int, Color> BuffColorOverrides => _buffColorOverrides ??= BuildColorOverrides();
 
             public override bool UniqueDraw(bool justCheckingString, out Vector2 size, SpriteBatch spriteBatch, Vector2 position = new Vector2(), Color color = new Color(), float scale = 1)
             {

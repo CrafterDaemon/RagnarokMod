@@ -1,6 +1,9 @@
 ﻿using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using RagnarokMod.Core;
+using RagnarokMod.Sounds;
 using System;
 using Terraria;
 using Terraria.Audio;
@@ -8,8 +11,6 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using ThoriumMod;
 using ThoriumMod.Projectiles.Scythe;
-using RagnarokMod.Core;
-using RagnarokMod.Sounds;
 
 namespace RagnarokMod.Projectiles.HealerPro.Scythes
 {
@@ -132,13 +133,8 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
 
             if (IsSunsUp && _collapsing)
             {
-                bool sun0Dead = _sun0 < 0 || _sun0 >= Main.maxProjectiles
-                             || !Main.projectile[_sun0].active;
-                bool sun1Dead = _sun1 < 0 || _sun1 >= Main.maxProjectiles
-                             || !Main.projectile[_sun1].active;
-
-                if (sun0Dead && sun1Dead)
-                    SpawnSupernova(owner);
+                if (Projectile.localAI[2] >= 2f)
+                    Projectile.Kill();
             }
         }
 
@@ -169,37 +165,22 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
 
         private void SpawnSupernova(Player owner)
         {
-            // Massive screen flash
-            if (Main.LocalPlayer.Distance(owner.Center) < 2000f)
-                Main.LocalPlayer.Calamity().GeneralScreenShakePower = 15f;
-
-            SoundEngine.PlaySound(SoundID.Item62 with
-            {
-                Pitch = -0.25f,
-                Volume = 2f
-            }, owner.Center);
-            if (Main.netMode != NetmodeID.MultiplayerClient)
-            {
-                Projectile.NewProjectile(
-                    Projectile.GetSource_FromThis(),
-                    owner.Center,
-                    Vector2.Zero,
-                    ModContent.ProjectileType<AphelionSupernova>(),
-                    Projectile.damage * 5,
-                    10f,
-                    Projectile.owner);
-            }
-
             KillChild((int)VortexWhoAmI);
             VortexWhoAmI = -1f;
-
             ChargeTimer = 0f;
             State = 0f;
             _collapsing = false;
             _sun0 = -1;
             _sun1 = -1;
         }
-
+        public override void OnKill(int timeLeft)
+        {
+            SpawnSupernova(Main.player[Projectile.owner]);
+        }
+        public override void SafeOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            target.AddBuff(ModContent.BuffType<MiracleBlight>(), 300, false);
+        }
         private void TransitionToVortex(Player owner)
         {
             State = 1f;
@@ -224,6 +205,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
 
         private void TransitionToSuns(Player owner)
         {
+            Projectile.localAI[2] = 0f;
             State = 2f;
             _sun0 = SpawnSun(owner, 0f);
             _sun1 = SpawnSun(owner, MathHelper.Pi);
@@ -245,7 +227,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                 owner.Center,
                 Vector2.Zero,
                 ModContent.ProjectileType<AphelionSun>(),
-                Projectile.damage,
+                (int)(Projectile.damage * 1.75f),
                 Projectile.knockBack,
                 Projectile.owner,
                 Projectile.whoAmI,   // ai[0] = parent whoAmI
@@ -254,9 +236,12 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
 
         private void OnRelease()
         {
-            KillChild((int)VortexWhoAmI);
-            KillChild(_sun0);
-            KillChild(_sun1);
+            if (VortexWhoAmI >= 0 && VortexWhoAmI < Main.maxProjectiles)
+            {
+                Projectile vortex = Main.projectile[(int)VortexWhoAmI];
+                if (vortex.active && vortex.type == ModContent.ProjectileType<AphelionVortex>())
+                    vortex.ai[1] = 1f; // fade-out signal, handled in AphelionVortex.AI
+            }
         }
 
         private static void KillChild(int whoAmI)

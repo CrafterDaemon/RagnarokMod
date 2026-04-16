@@ -1189,16 +1189,23 @@ Items: {
 		DisplayName: Glacial Harvester
 		Tooltip:
 			'''
-			Hold <left> to spin the scythe.
-			Press <right> to slam the scythe, sending out a massive wave of ice.
+			Hold <left> to spin the scythe
+			Press <right> to slam the scythe, sending out a massive wave of ice
 			Inflicts [rbuff:Frostburn]
 			'''
-		Cooldown: Glacial Slam is on cooldown.
+		Cooldown: Glacial Slam is on cooldown
 	}
 
 	Aphelion: {
 		DisplayName: Aphelion
-		Tooltip: ""
+		Tooltip:
+			'''
+			Hold <left> to spin the scythe, pulling nearby enemies into its vortex
+			Spin long enough to summon two orbiting [c/DDEEFF:S][c/D2E3FA:t][c/C7D8F5:e][c/BCCDEF:l][c/B2C2EA:l][c/A7B7E5:a][c/9CACE0:r] [c/8697D5:M][c/7B8CD0:a][c/7181CB:s][c/6676C5:s][c/5B6BC0:e][c/5060BB:s]
+			When both are active, press <right> to collapse their orbit into a supernova
+			Inflicts [rbuff:CalamityMod/MiracleBlight] on hit
+			[c/DDEEFF:S][c/D2E3FA:t][c/C7D8F5:e][c/BCCDEF:l][c/B2C2EA:l][c/A7B7E5:a][c/9CACE0:r] [c/8697D5:M][c/7B8CD0:a][c/7181CB:s][c/6676C5:s][c/5B6BC0:e][c/5060BB:s] inflict [rbuff:CalamityMod/Dragonfire], [rbuff:CalamityMod/GodSlayerInferno], and [rbuff:CalamityMod/Daybroken] on contact
+			'''
 	}
 }
 

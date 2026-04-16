@@ -1,4 +1,5 @@
 ﻿using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RagnarokMod.Core;
@@ -9,6 +10,7 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using ThoriumMod;
+using ThoriumMod.Buffs.Healer;
 
 namespace RagnarokMod.Projectiles.HealerPro.Scythes
 {
@@ -61,7 +63,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
         private float SpawnProgress => Math.Min(SpawnTimer / SpawnInFrames, 1f);
         private bool _dying;
         private int _dyingTimer;
-
+        private bool _supernovaReady;
         // Independent spin time advances proportional to orbital speed so the surface appears to rotate with the orbit rather than at a fixed real-time rate.
         private float _spinTime;
         private float CurrentOrbitRadius => _dying
@@ -83,7 +85,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             Projectile.timeLeft = 3;
             Projectile.ignoreWater = true;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 10;
+            Projectile.localNPCHitCooldown = 16;
         }
         public override void AI()
         {
@@ -105,8 +107,71 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                                     + orbitAngle.ToRotationVector2() * CurrentOrbitRadius;
                 Projectile.rotation = orbitAngle;
                 _spinTime += BaseOrbitSpeed * 0.2f;
+                if (Projectile.owner == Main.myPlayer && Main.mouseRight)
+                {
+                    _dying = false;
+                    Projectile.ai[2] = 1f;
+                }
                 if (_dyingTimer >= LingerFrames + ShrinkFrames)
                     Projectile.Kill();
+                return;
+            }
+
+            if (Collapsing)
+            {
+                _collapseTimer++;
+                Projectile.timeLeft = 3;
+                float t = Math.Min(_collapseTimer / 180f, 1f);
+
+                float spiralSpeed = MathHelper.Lerp(BaseOrbitSpeed * 3f, 1f, MathF.Pow(t, 2f)) * owner.direction;
+                float inwardT = MathF.Pow(t, 4f);
+                float spiralRadius = MathHelper.Lerp(OrbitRadius, 0f, inwardT);
+
+                PhaseAngle += spiralSpeed;
+                _spinTime += spiralSpeed * 0.5f;
+
+                float orbitAngle = PhaseAngle + Projectile.ai[1]
+                                 + (Main.screenPosition - owner.Center).ToRotation();
+                Projectile.Center = owner.Center + orbitAngle.ToRotationVector2() * spiralRadius;
+                Projectile.rotation = orbitAngle;
+
+                Lighting.AddLight(Projectile.Center, new Vector3(1.5f, 0.9f, 0.2f));
+
+                if (spiralRadius < 20f || _collapseTimer >= 180f)
+                {
+                    bool isPrimary = Projectile.ai[1] == 0f;
+
+                    if (isPrimary && Main.netMode != NetmodeID.MultiplayerClient)
+                    {
+                        if (Main.LocalPlayer.Distance(owner.Center) < 2000f)
+                            Main.LocalPlayer.Calamity().GeneralScreenShakePower = 15f;
+
+                        SoundEngine.PlaySound(SoundID.Item62 with
+                        {
+                            Pitch = -0.25f,
+                            Volume = 2f
+                        }, owner.Center);
+
+                        Projectile.NewProjectile(
+                            Projectile.GetSource_FromThis(),
+                            owner.Center,
+                            Vector2.Zero,
+                            ModContent.ProjectileType<AphelionSupernova>(),
+                            Projectile.damage * 5,
+                            10f,
+                            Projectile.owner);
+                    }
+
+                    // Still signal parent if alive, so it can clean up vortex etc.
+                    if (pid >= 0 && pid < Main.maxProjectiles)
+                    {
+                        Projectile parent = Main.projectile[pid];
+                        if (parent.active && parent.type == ModContent.ProjectileType<AphelionPro>())
+                            parent.localAI[2] += 1f;
+                    }
+
+                    Projectile.Kill();
+                }
                 return;
             }
 
@@ -115,32 +180,6 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             Projectile.timeLeft = 3;
             SpawnTimer = Math.Min(SpawnTimer + 1f, SpawnInFrames);
 
-            if (Collapsing)
-            {
-                _collapseTimer++;
-                float t = Math.Min(_collapseTimer / 180f, 1f);
-
-                float spiralSpeed = MathHelper.Lerp(BaseOrbitSpeed * 3f, 1f, MathF.Pow(t, 2f)) * owner.direction;
-
-                float inwardT = MathF.Pow(t, 4f);
-                float spiralRadius = MathHelper.Lerp(OrbitRadius, 0f, inwardT);
-
-                PhaseAngle += spiralSpeed;
-                _spinTime += spiralSpeed * 0.5f;
-
-                float orbitAngle = (PhaseAngle + Projectile.ai[1]
-                                    + (Main.screenPosition - owner.Center).ToRotation());
-                Projectile.Center = owner.Center
-                                    + orbitAngle.ToRotationVector2() * spiralRadius;
-                Projectile.rotation = orbitAngle;
-
-                Lighting.AddLight(Projectile.Center, new Vector3(1.5f, 0.9f, 0.2f));
-
-                if (spiralRadius < 20f || _collapseTimer >= 180f)
-                    Projectile.Kill();
-                return;
-            }
-
             PhaseAngle += BaseOrbitSpeed * owner.direction;
             _spinTime += BaseOrbitSpeed * 0.2f;
             float cursor = (Main.screenPosition - owner.Center).ToRotation();
@@ -148,6 +187,12 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             Projectile.Center = owner.Center + orbit.ToRotationVector2() * OrbitRadius;
             Projectile.rotation = orbit;
             Lighting.AddLight(Projectile.Center, new Vector3(1.3f, 0.8f, 0.15f) * SpawnProgress);
+        }
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            target.AddBuff(ModContent.BuffType<Dragonfire>(), 600, false);
+            target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 600, false);
+            target.AddBuff(ModContent.BuffType<Daybroken>(), 600, false);
         }
         public override bool PreDraw(ref Color lightColor)
         {
@@ -159,12 +204,12 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             Texture2D heat = HeatMap;
 
             // Sun colors
-            Vector3 mainCol = new Color(220, 235, 255).ToVector3();
-            Vector3 darkCol = new Color(100, 120, 180).ToVector3();
-            Vector3 subtractAccent = new Color(60, 80, 140).ToVector3();
+            Vector3 mainCol = new Color(180, 225, 255).ToVector3();
+            Vector3 darkCol = new Color(150, 185, 255).ToVector3();
+            Vector3 subtractAccent = new Color(100, 120, 255).ToVector3();
 
-            float pulse = 0.5f + 0.5f * MathF.Sin(Main.GameUpdateCount * 0.04f);
-            float coronaIntensity = 1f;
+            float pulse = 0.1f * MathF.Sin(Main.GameUpdateCount * 0.04f);
+            float coronaIntensity = 0.3f + Math.Abs(pulse);
 
             effect.Parameters["globalTime"].SetValue(Main.GlobalTimeWrappedHourly);
             effect.Parameters["spinTime"].SetValue(_spinTime % MathHelper.TwoPi);
@@ -180,7 +225,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
 
             Vector2 drawPos = Projectile.Center - Main.screenPosition;
             Vector2 origin = heat.Size() * 0.5f;
-            float scale = QuadHalfSize / heat.Width;
+            Vector2 scale = new Vector2(QuadHalfSize / heat.Width, QuadHalfSize / heat.Height);
 
             // Pass 1: AlphaBlend opaque disc + corona shape
             sb.End();
@@ -190,7 +235,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                 Main.GameViewMatrix.TransformationMatrix);
 
             effect.CurrentTechnique.Passes[0].Apply();
-            sb.Draw(heat, drawPos, null, Color.White * SpawnProgress,
+            sb.Draw(heat, drawPos, null, Color.Blue * SpawnProgress,
                 0f, origin, scale * 3, SpriteEffects.None, 0f);
 
             // Pass 2: Additive corona bloom overdrawn at larger scale
@@ -205,7 +250,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
 
             effect.Parameters["coronaIntensityFactor"].SetValue(coronaIntensity * 1.4f);
             effect.CurrentTechnique.Passes[0].Apply();
-            sb.Draw(heat, drawPos, null, Color.White * (SpawnProgress * 0.5f),
+            sb.Draw(heat, drawPos, null, Color.Blue * (SpawnProgress * 0.5f),
                 0f, origin, scale * 3f, SpriteEffects.None, 0f);
 
             sb.End();
