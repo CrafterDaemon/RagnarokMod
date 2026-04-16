@@ -1,16 +1,17 @@
+using CalamityMod;
 using CalamityMod.Items;
 using CalamityMod.Items.Materials;
+using CalamityMod.Rarities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RagnarokMod.Projectiles.HealerPro.Scythes;
-using ThoriumMod;
 using RagnarokMod.Utils;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using ThoriumMod;
 using ThoriumMod.Items.HealerItems;
-using CalamityMod.Rarities;
 
 namespace RagnarokMod.Items.HealerItems.Scythes
 {
@@ -32,6 +33,13 @@ namespace RagnarokMod.Items.HealerItems.Scythes
             base.Item.rare = ModContent.RarityType<BurnishedAuric>();
             base.Item.shoot = ModContent.ProjectileType<AphelionPro>();
             base.Item.channel = true; // hold to channel
+        }
+
+        public override bool AltFunctionUse(Player player) => true;
+
+        public override void HoldItem(Player player)
+        {
+            player.Calamity().rightClickListener = true;
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source,

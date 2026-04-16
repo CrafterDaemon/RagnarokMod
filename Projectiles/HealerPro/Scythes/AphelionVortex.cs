@@ -1,13 +1,14 @@
 ﻿using CalamityMod.Graphics.Primitives;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using RagnarokMod.Core;
+using ReLogic.Content;
 using System;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.Graphics.Shaders;
+using Terraria.ID;
 using Terraria.ModLoader;
-using RagnarokMod.Core;
-using ReLogic.Content;
 
 namespace RagnarokMod.Projectiles.HealerPro.Scythes
 {
@@ -38,7 +39,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
         public override string Texture =>
             "RagnarokMod/Projectiles/NoProj";
         private const string NoisePath =
-            "RagnarokMod/Effects/Assets/MiscNoise";
+            "CalamityMod/ExtraTextures/GreyscaleGradients/EternityStreak";
 
         private static Texture2D NoiseTexture =>
             ModContent.Request<Texture2D>(NoisePath,
@@ -46,7 +47,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
 
         // Parent accessor
         private int ParentID => (int)Projectile.ai[0];
-
+        private Player owner => Main.player[Projectile.owner];
         private bool TryGetParent(out Projectile parent)
         {
             int id = ParentID;
@@ -74,6 +75,10 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             Projectile.timeLeft = 3;
             Projectile.ignoreWater = true;
         }
+        // Pull radius and force for enemy attraction
+        private const float PullRadius = 400f;
+        private const float PullForce = 0.8f;
+
         public override void AI()
         {
             if (!TryGetParent(out Projectile raw))
@@ -88,9 +93,33 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             _chargeProgress = Math.Min(
                 raw.ai[0] / AphelionPro.MaxChargeFrames, 1f);
 
-            float lum = _chargeProgress * 0.5f;
+            float lum = _chargeProgress * 0.8f;
             Lighting.AddLight(Projectile.Center,
-                new Vector3(lum * 0.35f, lum * 0.15f, lum));
+                new Vector3(lum * 0.5f, lum * 0.2f, lum * 1.2f));
+
+            if (Main.netMode != NetmodeID.MultiplayerClient && _chargeProgress > 0.4f)
+            {
+                float pullStrength = MathHelper.Lerp(0f, PullForce,
+                    (_chargeProgress - 0.4f) / 0.6f);
+
+                foreach (NPC npc in Main.ActiveNPCs)
+                {
+                    if (!npc.active || npc.boss || npc.friendly) continue;
+
+                    float dist = Vector2.Distance(npc.Center, Projectile.Center);
+                    if (dist > PullRadius || dist < 5f) continue;
+
+                    // Pull toward center, weakens at close range so enemies
+                    // orbit at the edge rather than collapsing into the player.
+                    float edgeFactor = MathHelper.Clamp(dist / PullRadius, 0.1f, 1f);
+                    Vector2 pullDir = (Projectile.Center - npc.Center).SafeNormalize(Vector2.Zero);
+                    npc.velocity += pullDir * pullStrength * edgeFactor;
+
+                    // Cap velocity so enemies don't rocket into the player.
+                    if (npc.velocity.Length() > 8f)
+                        npc.velocity = npc.velocity.SafeNormalize(Vector2.Zero) * 8f;
+                }
+            }
         }
         public override bool PreDraw(ref Color lightColor)
         {
@@ -134,41 +163,42 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             Vector2 origin = noise.Size() * 0.5f;
 
             // Outer ring
-            float outerScale = 2.8f * appear * _chargeProgress;
+            float outerScale = 2f * appear * _chargeProgress;
             var outerData = new DrawData(noise, center, null,
-                primaryCol * 0.5f, 0f, origin, outerScale,
-                SpriteEffects.None, 0);
+                primaryCol * 0.8f, 0f, origin, outerScale,
+                owner.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0);
 
             Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.LinearWrap;
             shader.UseColor(primaryCol)
                   .UseSecondaryColor(secondaryCol)
-                  .UseOpacity(appear * 0.85f)
+                  .UseOpacity(appear * 0.95f)
                   .Apply(outerData);
 
-            sb.Draw(noise, center, null, primaryCol * 0.5f,
-                0f, origin, outerScale, SpriteEffects.None, 0f);
+            sb.Draw(noise, center, null, primaryCol * 0.8f,
+                0f, origin, outerScale, owner.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
 
             // Mid ring
-            float midScale = 1.6f * appear
+            float midScale = 1.5f * appear
                            * MathHelper.SmoothStep(0.45f, 1.0f, _chargeProgress);
             var midData = new DrawData(noise, center, null,
-                primaryCol * 0.7f, 0f, origin, midScale,
-                SpriteEffects.None, 0);
+                primaryCol * 0.9f, 0f, origin, midScale,
+                owner.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0);
 
             Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.LinearWrap;
-            shader.UseOpacity(appear * 0.95f)
+            shader.UseOpacity(appear * 1.0f)
                   .Apply(midData);
 
-            sb.Draw(noise, center, null, primaryCol * 0.7f,
-                0f, origin, midScale, SpriteEffects.None, 0f);
+            sb.Draw(noise, center, null, primaryCol * 0.9f,
+                0f, origin, midScale,
+                owner.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
 
             // Inner core
-            float innerScale = 0.7f * appear
+            float innerScale = 1f * appear
                              * MathHelper.SmoothStep(0.55f, 1.0f, _chargeProgress);
             Color coreCol = Color.Lerp(primaryCol, Color.White * appear, 0.3f);
             var innerData = new DrawData(noise, center, null,
                 coreCol, 0f, origin, innerScale,
-                SpriteEffects.None, 0);
+                owner.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0);
 
             Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.LinearWrap;
             shader.UseColor(coreCol)
@@ -176,8 +206,8 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                   .Apply(innerData);
 
             sb.Draw(noise, center, null, coreCol,
-                0f, origin, innerScale, SpriteEffects.None, 0f);
-
+                0f, origin, innerScale, owner.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+                
             // Full-charge
             if (_chargeProgress >= 0.95f)
             {
@@ -187,7 +217,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
 
                 var flashData = new DrawData(noise, center, null,
                     flashCol, 0f, origin, flashScale,
-                    SpriteEffects.None, 0);
+                    owner.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0);
 
                 Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.LinearWrap;
                 shader.UseColor(flashCol)
@@ -195,7 +225,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                       .Apply(flashData);
 
                 sb.Draw(noise, center, null, flashCol,
-                    0f, origin, flashScale, SpriteEffects.None, 0f);
+                    0f, origin, flashScale, owner.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
             }
 
             // Restore

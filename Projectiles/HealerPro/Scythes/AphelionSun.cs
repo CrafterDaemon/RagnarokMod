@@ -30,7 +30,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
         public override string Texture =>
             "RagnarokMod/Projectiles/NoProj";
         private const string HeatMapPath =
-            "RagnarokMod/Effects/Assets/MiscNoise";
+            "CalamityMod/ExtraTextures/GreyscaleGradients/Neurons2";
 
         private static Texture2D HeatMap =>
             ModContent.Request<Texture2D>(HeatMapPath,
@@ -38,10 +38,13 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
 
         private static Effect SunEffect => RagnarokShaders.AphelionSun.Value;
 
-        private const float OrbitRadius = 300f;
+        private const float OrbitRadius = 250f;
         private const float SpawnInFrames = 30f;
 
-        private const float QuadHalfSize = 90f;
+        private const float QuadHalfSize = 90f; 
+        private const float BaseOrbitSpeed = 0.012f;
+        private const int LingerFrames = 60;
+        private const int ShrinkFrames = 90;
 
         private float PhaseAngle
         {
@@ -53,10 +56,21 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             get => Projectile.localAI[1];
             set => Projectile.localAI[1] = value;
         }
+        private bool Collapsing => Projectile.ai[2] == 1f;
+        private float _collapseTimer;
         private float SpawnProgress => Math.Min(SpawnTimer / SpawnInFrames, 1f);
+        private bool _dying;
+        private int _dyingTimer;
 
         // Independent spin time advances proportional to orbital speed so the surface appears to rotate with the orbit rather than at a fixed real-time rate.
         private float _spinTime;
+        private float CurrentOrbitRadius => _dying
+            ? MathHelper.Lerp(OrbitRadius, OrbitRadius * 0.6f,
+            MathHelper.Clamp((_dyingTimer - LingerFrames) / (float)ShrinkFrames, 0f, 1f))
+            : OrbitRadius;
+
+        private float LingerShrinkAlpha => _dyingTimer < LingerFrames ? 1f
+            : 1f - MathHelper.Clamp((_dyingTimer - LingerFrames) / (float)ShrinkFrames, 0f, 1f);
 
         public override void SetDefaults()
         {
@@ -71,68 +85,69 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 10;
         }
-
         public override void AI()
         {
-            // Parent check
             int pid = (int)Projectile.ai[0];
-            bool parentAlive = pid >= 0
-                            && pid < Main.maxProjectiles
+            bool parentAlive = pid >= 0 && pid < Main.maxProjectiles
                             && Main.projectile[pid].active
-                            && Main.projectile[pid].type ==
-                               ModContent.ProjectileType<AphelionPro>();
+                            && Main.projectile[pid].type == ModContent.ProjectileType<AphelionPro>();
 
-            if (!parentAlive) { Projectile.Kill(); return; }
-
-            Projectile parent = Main.projectile[pid];
             Player owner = Main.player[Projectile.owner];
+
+            if (_dying)
+            {
+                _dyingTimer++;
+                Projectile.timeLeft = 3;
+                PhaseAngle += BaseOrbitSpeed;
+                float orbitAngle = (PhaseAngle + Projectile.ai[1]
+                                    + (Main.screenPosition - owner.Center).ToRotation()) * owner.direction;
+                Projectile.Center = owner.Center
+                                    + orbitAngle.ToRotationVector2() * CurrentOrbitRadius;
+                Projectile.rotation = orbitAngle;
+                _spinTime += BaseOrbitSpeed * 0.2f;
+                if (_dyingTimer >= LingerFrames + ShrinkFrames)
+                    Projectile.Kill();
+                return;
+            }
+
+            if (!parentAlive) { _dying = true; return; }
 
             Projectile.timeLeft = 3;
             SpawnTimer = Math.Min(SpawnTimer + 1f, SpawnInFrames);
 
-            // Orbital speed from parent charge
-            float chargeT = Math.Min(
-                parent.ai[0] / AphelionPro.MaxChargeFrames, 0.01f);
-            float radsPerFrame = MathHelper.Lerp(0.08f, 0.55f,
-                MathF.Pow(chargeT, 0.55f));
-
-            PhaseAngle += radsPerFrame;
-            // Spin time advances slower than the orbit so the surface texture doesn't streak.
-            _spinTime += radsPerFrame * 0.35f;
-
-            // Orbit position
-            float cursorAngle = (Main.MouseWorld - owner.Center).ToRotation();
-            float orbitAngle = PhaseAngle + Projectile.ai[1] + cursorAngle;
-
-            Projectile.Center = owner.Center
-                                + orbitAngle.ToRotationVector2() * OrbitRadius;
-            Projectile.rotation = orbitAngle;
-
-            // Lighting
-            float lum = SpawnProgress;
-            Lighting.AddLight(Projectile.Center,
-                new Vector3(lum * 1.3f, lum * 0.8f, lum * 0.15f));
-
-            // Surface dust
-            if (Main.rand.NextBool(3) && SpawnProgress > 0.5f)
+            if (Collapsing)
             {
-                float a = Main.rand.NextFloat(MathHelper.TwoPi);
-                float spd = Main.rand.NextFloat(1.5f, 4f);
-                Vector2 vel = a.ToRotationVector2() * spd;
-                int d = Dust.NewDust(Projectile.position,
-                    Projectile.width, Projectile.height,
-                    DustID.Torch, vel.X, vel.Y);
-                if (d >= 0 && d < Main.maxDust)
-                {
-                    Main.dust[d].noGravity = true;
-                    Main.dust[d].scale = Main.rand.NextFloat(0.9f, 1.8f)
-                                          * SpawnProgress;
-                    Main.dust[d].color = Color.Lerp(
-                        new Color(255, 180, 50),
-                        new Color(255, 255, 200),
-                        Main.rand.NextFloat());
-                }
+                _collapseTimer++;
+                float t = Math.Min(_collapseTimer / 180f, 1f);
+
+                float spiralSpeed = MathHelper.Lerp(BaseOrbitSpeed * 3f, 1f, MathF.Pow(t, 2f));
+
+                float inwardT = MathF.Pow(t, 4f);
+                float spiralRadius = MathHelper.Lerp(OrbitRadius, 0f, inwardT);
+
+                PhaseAngle += spiralSpeed;
+                _spinTime += spiralSpeed * 0.5f;
+
+                float orbitAngle = (PhaseAngle + Projectile.ai[1]
+                                    + (Main.screenPosition - owner.Center).ToRotation()) * owner.direction;
+                Projectile.Center = owner.Center
+                                    + orbitAngle.ToRotationVector2() * spiralRadius;
+                Projectile.rotation = orbitAngle;
+
+                Lighting.AddLight(Projectile.Center, new Vector3(1.5f, 0.9f, 0.2f));
+
+                if (spiralRadius < 20f || _collapseTimer >= 180f)
+                    Projectile.Kill();
+                return;
             }
+
+            PhaseAngle += BaseOrbitSpeed * owner.direction;
+            _spinTime += BaseOrbitSpeed * 0.2f;
+            float cursor = (Main.screenPosition - owner.Center).ToRotation();
+            float orbit = PhaseAngle + Projectile.ai[1] + cursor;
+            Projectile.Center = owner.Center + orbit.ToRotationVector2() * OrbitRadius;
+            Projectile.rotation = orbit;
+            Lighting.AddLight(Projectile.Center, new Vector3(1.3f, 0.8f, 0.15f) * SpawnProgress);
         }
         public override bool PreDraw(ref Color lightColor)
         {
@@ -144,16 +159,15 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             Texture2D heat = HeatMap;
 
             // Sun colors
-            Vector3 mainCol = new Color(255, 215, 100).ToVector3();
-            Vector3 darkCol = new Color(200, 80, 20).ToVector3();
-            Vector3 subtractAccent = new Color(180, 0, 0).ToVector3();
+            Vector3 mainCol = new Color(225, 190, 95).ToVector3();
+            Vector3 darkCol = new Color(120, 40, 20).ToVector3();
+            Vector3 subtractAccent = new Color(120, 0, 0).ToVector3();
 
             float pulse = 0.5f + 0.5f * MathF.Sin(Main.GameUpdateCount * 0.04f);
-            float coronaIntensity = SpawnProgress * (0.05f + pulse * 0.08f);
+            float coronaIntensity = 1f;
 
             effect.Parameters["globalTime"].SetValue(Main.GlobalTimeWrappedHourly);
-            effect.Parameters["sphereSpinTime"].SetValue(_spinTime);
-            effect.Parameters["spawnProgress"].SetValue(SpawnProgress);
+            effect.Parameters["spinTime"].SetValue(_spinTime % MathHelper.TwoPi);
             effect.Parameters["coronaIntensityFactor"].SetValue(coronaIntensity);
             effect.Parameters["mainColor"].SetValue(mainCol);
             effect.Parameters["darkerColor"].SetValue(darkCol);
@@ -166,7 +180,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
 
             Vector2 drawPos = Projectile.Center - Main.screenPosition;
             Vector2 origin = heat.Size() * 0.5f;
-            float scale = QuadHalfSize / (heat.Width * 0.5f);
+            float scale = QuadHalfSize / heat.Width;
 
             // Pass 1: AlphaBlend opaque disc + corona shape
             sb.End();
@@ -177,7 +191,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
 
             effect.CurrentTechnique.Passes[0].Apply();
             sb.Draw(heat, drawPos, null, Color.White * SpawnProgress,
-                0f, origin, scale*3, SpriteEffects.None, 0f);
+                0f, origin, scale * 3, SpriteEffects.None, 0f);
 
             // Pass 2: Additive corona bloom overdrawn at larger scale
             // Only the corona region (outside the disc) matters here;
@@ -190,7 +204,6 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                 Main.GameViewMatrix.TransformationMatrix);
 
             effect.Parameters["coronaIntensityFactor"].SetValue(coronaIntensity * 1.4f);
-            effect.Parameters["spawnProgress"].SetValue(SpawnProgress * 0.5f);
             effect.CurrentTechnique.Passes[0].Apply();
             sb.Draw(heat, drawPos, null, Color.White * (SpawnProgress * 0.5f),
                 0f, origin, scale * 3f, SpriteEffects.None, 0f);
@@ -206,20 +219,6 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
         public override void OnKill(int timeLeft)
         {
             if (Main.netMode == NetmodeID.Server) return;
-            for (int i = 0; i < 24; i++)
-            {
-                float a = Main.rand.NextFloat(MathHelper.TwoPi);
-                float spd = Main.rand.NextFloat(2f, 9f);
-                Vector2 vel = a.ToRotationVector2() * spd;
-                int d = Dust.NewDust(Projectile.position,
-                    Projectile.width, Projectile.height,
-                    DustID.Torch, vel.X, vel.Y);
-                if (d >= 0 && d < Main.maxDust)
-                {
-                    Main.dust[d].noGravity = true;
-                    Main.dust[d].scale = Main.rand.NextFloat(1.4f, 2.8f);
-                }
-            }
         }
     }
 }

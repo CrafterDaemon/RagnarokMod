@@ -34,6 +34,12 @@ namespace RagnarokMod.Core
         /// <summary>AphelionSun.xnb procedural sun shader for the orbiting suns.</summary>
         public static Asset<Effect> AphelionSun { get; private set; }
 
+        /// <summary>AphelionNovaCore.xnb — destabilizing stellar core for the supernova.</summary>
+        public static Asset<Effect> AphelionNovaCore { get; private set; }
+
+        /// <summary>AphelionNovaRing.xnb — expanding shockwave ring for the supernova.</summary>
+        public static Asset<Effect> AphelionNovaRing { get; private set; }
+
         // Helpers
 
         private Asset<Effect> LoadShader(string name) =>
@@ -52,12 +58,16 @@ namespace RagnarokMod.Core
             AphelionSmear = LoadShader("AphelionSmear");
 
             AphelionSun = LoadShader("AphelionSun");
+            AphelionNovaCore = LoadShader("AphelionNovaCore");
+            AphelionNovaRing = LoadShader("AphelionNovaRing");
         }
 
         public override void Unload()
         {
             AphelionSmear = null;
             AphelionSun = null;
+            AphelionNovaCore = null;
+            AphelionNovaRing = null;
         }
     }
 }

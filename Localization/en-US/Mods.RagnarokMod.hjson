@@ -1337,6 +1337,7 @@ Projectiles: {
 	AphelionPro.DisplayName: Aphelion Pro
 	AphelionSun.DisplayName: Aphelion Sun
 	AphelionVortex.DisplayName: Aphelion Vortex
+	AphelionSupernova.DisplayName: Aphelion Supernova
 }
 
 Configs: {

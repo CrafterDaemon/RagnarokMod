@@ -9,6 +9,7 @@ using Terraria.ModLoader;
 using ThoriumMod;
 using ThoriumMod.Projectiles.Scythe;
 using RagnarokMod.Core;
+using RagnarokMod.Sounds;
 
 namespace RagnarokMod.Projectiles.HealerPro.Scythes
 {
@@ -32,8 +33,8 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
         private const float VortexThreshold = 0.40f;
         private const float SunsThreshold = 1.00f;
 
-        private const float MinRotSpeed = 0.08f;   
-        private const float MaxRotSpeed = 0.35f;   
+        private const float MinRotSpeed = 0.08f;
+        private const float MaxRotSpeed = 0.35f;
         private const float SpinCurve = 0.55f;
 
         private float ChargeTimer
@@ -85,8 +86,8 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             Projectile.usesIDStaticNPCImmunity = false;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 12;
-            Projectile.height = 442;
-            Projectile.width = 546;
+            Projectile.height = 221;
+            Projectile.width = 273;
 
             scytheCount = 1;
             dustCount = 2;
@@ -111,7 +112,6 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             }
 
             Projectile.timeLeft = 3;
-
             rotationSpeed = CurrentRotSpeed;
 
             if (!IsSunsUp)
@@ -122,8 +122,82 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
 
             if (!IsSunsUp && ChargeProgress >= SunsThreshold)
                 TransitionToSuns(owner);
+            
+            if (IsSunsUp && !_collapsing
+    && Projectile.owner == Main.myPlayer
+    && Main.mouseRight)
+            {
+                SignalCollapse(owner);
+            }
 
-            float g = ChargeProgress;
+            if (IsSunsUp && _collapsing)
+            {
+                bool sun0Dead = _sun0 < 0 || _sun0 >= Main.maxProjectiles
+                             || !Main.projectile[_sun0].active;
+                bool sun1Dead = _sun1 < 0 || _sun1 >= Main.maxProjectiles
+                             || !Main.projectile[_sun1].active;
+
+                if (sun0Dead && sun1Dead)
+                    SpawnSupernova(owner);
+            }
+        }
+
+        private bool _collapsing;
+
+        private void SignalCollapse(Player owner)
+        {
+            if (_collapsing) return;
+            _collapsing = true;
+
+            // Set collapse flag on both sun projectiles via localAI[2]
+            SetSunCollapse(_sun0, owner);
+            SetSunCollapse(_sun1, owner);
+        }
+
+        private static void SetSunCollapse(int whoAmI, Player owner)
+        {
+            if (whoAmI < 0 || whoAmI >= Main.maxProjectiles) return;
+            Projectile p = Main.projectile[whoAmI];
+            if (p.active && p.type == ModContent.ProjectileType<AphelionSun>())
+                p.ai[2] = 1f;
+            SoundEngine.PlaySound(SoundID.DD2_BetsyFireballShot with
+            {
+                Pitch = -1f,
+                Volume = 1.5f
+            }, owner.Center);
+        }
+
+        private void SpawnSupernova(Player owner)
+        {
+            // Massive screen flash
+            if (Main.LocalPlayer.Distance(owner.Center) < 2000f)
+                Main.LocalPlayer.Calamity().GeneralScreenShakePower = 15f;
+
+            SoundEngine.PlaySound(SoundID.Item62 with
+            {
+                Pitch = -0.25f,
+                Volume = 2f
+            }, owner.Center);
+            if (Main.netMode != NetmodeID.MultiplayerClient)
+            {
+                Projectile.NewProjectile(
+                    Projectile.GetSource_FromThis(),
+                    owner.Center,
+                    Vector2.Zero,
+                    ModContent.ProjectileType<AphelionSupernova>(),
+                    Projectile.damage * 5,
+                    10f,
+                    Projectile.owner);
+            }
+
+            KillChild((int)VortexWhoAmI);
+            VortexWhoAmI = -1f;
+
+            ChargeTimer = 0f;
+            State = 0f;
+            _collapsing = false;
+            _sun0 = -1;
+            _sun1 = -1;
         }
 
         private void TransitionToVortex(Player owner)
@@ -206,14 +280,11 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             if (delta > MathHelper.Pi) delta -= MathHelper.TwoPi;
             if (delta < -MathHelper.Pi) delta += MathHelper.TwoPi;
 
-            float blurAngle = MathHelper.Clamp(MathF.Abs(delta) * 4f, 0f, MathHelper.Pi);
+            float blurAngle = -MathHelper.Clamp(MathF.Abs(delta) * 8f, 0f, MathHelper.Pi);
 
-            Color tint = Color.Lerp(
-                Color.Lerp(lightColor, new Color(180, 220, 255), 0.6f),
-                Color.Lerp(lightColor, new Color(255, 200, 80), 0.8f),
-                ChargeProgress);
+            Color tint = Color.White;
 
-            float trailFade = MathHelper.Lerp(0.25f, 0.04f, ChargeProgress);
+            float trailFade = MathHelper.Lerp(0.04f, 1f, ChargeProgress);
 
             effect.Parameters["blurAngle"].SetValue(blurAngle);
             effect.Parameters["trailFade"].SetValue(trailFade);
@@ -235,7 +306,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                             + new Vector2(0f, owner.gfxOffY);
 
             sb.Draw(tex, drawPos, null, Color.White, currRot,
-                tex.Size() * 0.5f, Projectile.scale, fx, 0f);
+                tex.Size() * 0.5f, Projectile.scale/2, fx, 0f);
 
             sb.End();
             sb.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend,
@@ -243,8 +314,8 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                 Main.Rasterizer, null,
                 Main.GameViewMatrix.TransformationMatrix);
 
-            sb.Draw(tex, drawPos, null, lightColor, currRot,
-                tex.Size() * 0.5f, Projectile.scale, fx, 0f);
+            sb.Draw(tex, drawPos, null, Color.White, currRot,
+                tex.Size() * 0.5f, Projectile.scale/2, fx, 0f);
 
             _prevRotation = currRot;
             return false;
