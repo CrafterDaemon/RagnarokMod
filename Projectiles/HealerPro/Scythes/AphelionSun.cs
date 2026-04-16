@@ -30,7 +30,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
         public override string Texture =>
             "RagnarokMod/Projectiles/NoProj";
         private const string HeatMapPath =
-            "CalamityMod/ExtraTextures/GreyscaleGradients/Neurons2";
+            "CalamityMod/ExtraTextures/GreyscaleGradients/Neurons";
 
         private static Texture2D HeatMap =>
             ModContent.Request<Texture2D>(HeatMapPath,
@@ -100,7 +100,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                 Projectile.timeLeft = 3;
                 PhaseAngle += BaseOrbitSpeed;
                 float orbitAngle = (PhaseAngle + Projectile.ai[1]
-                                    + (Main.screenPosition - owner.Center).ToRotation()) * owner.direction;
+                                    + (Main.screenPosition - owner.Center).ToRotation());
                 Projectile.Center = owner.Center
                                     + orbitAngle.ToRotationVector2() * CurrentOrbitRadius;
                 Projectile.rotation = orbitAngle;
@@ -120,7 +120,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                 _collapseTimer++;
                 float t = Math.Min(_collapseTimer / 180f, 1f);
 
-                float spiralSpeed = MathHelper.Lerp(BaseOrbitSpeed * 3f, 1f, MathF.Pow(t, 2f));
+                float spiralSpeed = MathHelper.Lerp(BaseOrbitSpeed * 3f, 1f, MathF.Pow(t, 2f)) * owner.direction;
 
                 float inwardT = MathF.Pow(t, 4f);
                 float spiralRadius = MathHelper.Lerp(OrbitRadius, 0f, inwardT);
@@ -129,7 +129,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                 _spinTime += spiralSpeed * 0.5f;
 
                 float orbitAngle = (PhaseAngle + Projectile.ai[1]
-                                    + (Main.screenPosition - owner.Center).ToRotation()) * owner.direction;
+                                    + (Main.screenPosition - owner.Center).ToRotation());
                 Projectile.Center = owner.Center
                                     + orbitAngle.ToRotationVector2() * spiralRadius;
                 Projectile.rotation = orbitAngle;
@@ -159,9 +159,9 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             Texture2D heat = HeatMap;
 
             // Sun colors
-            Vector3 mainCol = new Color(225, 190, 95).ToVector3();
-            Vector3 darkCol = new Color(120, 40, 20).ToVector3();
-            Vector3 subtractAccent = new Color(120, 0, 0).ToVector3();
+            Vector3 mainCol = new Color(220, 235, 255).ToVector3();
+            Vector3 darkCol = new Color(100, 120, 180).ToVector3();
+            Vector3 subtractAccent = new Color(60, 80, 140).ToVector3();
 
             float pulse = 0.5f + 0.5f * MathF.Sin(Main.GameUpdateCount * 0.04f);
             float coronaIntensity = 1f;

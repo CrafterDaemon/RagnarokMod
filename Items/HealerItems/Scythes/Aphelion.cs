@@ -25,7 +25,7 @@ namespace RagnarokMod.Items.HealerItems.Scythes
         public override void SetDefaults()
         {
             SetDefaultsToScythe();
-            base.Item.damage = 900;
+            base.Item.damage = 1280;
             scytheSoulCharge = 5;
             base.Item.width = 224;
             base.Item.height = 282;
@@ -35,7 +35,7 @@ namespace RagnarokMod.Items.HealerItems.Scythes
             base.Item.channel = true; // hold to channel
         }
 
-        public override bool AltFunctionUse(Player player) => true;
+        public override bool AltFunctionUse(Player player) => false;
 
         public override void HoldItem(Player player)
         {
