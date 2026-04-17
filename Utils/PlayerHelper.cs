@@ -8,6 +8,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using ThoriumMod;
+using RagnarokMod.ILEditing;
 
 namespace RagnarokMod.Utils
 {

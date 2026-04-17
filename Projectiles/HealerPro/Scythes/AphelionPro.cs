@@ -165,7 +165,6 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
 
         private void SpawnSupernova(Player owner)
         {
-            KillChild((int)VortexWhoAmI);
             VortexWhoAmI = -1f;
             ChargeTimer = 0f;
             State = 0f;
@@ -242,13 +241,6 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                 if (vortex.active && vortex.type == ModContent.ProjectileType<AphelionVortex>())
                     vortex.ai[1] = 1f; // fade-out signal, handled in AphelionVortex.AI
             }
-        }
-
-        private static void KillChild(int whoAmI)
-        {
-            if (whoAmI < 0 || whoAmI >= Main.maxProjectiles) return;
-            Projectile p = Main.projectile[whoAmI];
-            if (p.active) p.Kill();
         }
         public override bool PreDraw(ref Color lightColor)
         {

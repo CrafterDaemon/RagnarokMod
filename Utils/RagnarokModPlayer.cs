@@ -380,9 +380,6 @@ namespace RagnarokMod.Utils
                 }
             });
 
-            // Fixes the RogueUseTime problem, that occurs, because Thorium implements features like buffs that can effect item use times, which is incompatible with the Calamity Rogue usetime / attackspeed check.
-            ApplyRogueUseTimeFix();
-
             // Fixes problems with thorium thrower accessories by disablng the thoriumplayer flags for the setbonuses and reimplementing it
             ThoriumPlayer thoriumPlayer2 = ThoriumMod.Utilities.PlayerHelper.GetThoriumPlayer(base.Player);
             if (thoriumPlayer2.accShinobiSigil){
@@ -437,42 +434,6 @@ namespace RagnarokMod.Utils
 
             // Apply Healing Multiplier
             thoriumPlayer2.healBonus = (int)Math.Round(thoriumPlayer2.healBonus * ModContent.GetInstance<ClassBalancerConfig>().HealingBonusModifier);
-        }
-
-        // Fixes the RogueUseTime problem, that occurs, because Thorium implements features like buffs that can effect item use times, which is incompatible with the Calamity Rogue Stealthmode usetime / attackspeed check.
-        private void ApplyRogueUseTimeFix(){
-            var calamityPlayer = base.Player.Calamity();
-            Item it = !Main.mouseItem.IsAir ? Main.mouseItem : Player.HeldItem;
-            if (!calamityPlayer.wearingRogueArmor || it.useAnimation == it.useTime) // When the player does not wear a rogue armor or the item animation and usetime is the same, the fix does not have to be applied.
-            {
-                return;
-            }
-            bool flag = it.damage > 0;
-            bool hasHitboxes = !it.noMelee || it.shoot > ProjectileID.None;
-            bool flag2 = it.pick > 0;
-            bool isAxe = it.axe > 0;
-            bool isHammer = it.hammer > 0;
-            bool isPlaced = it.createTile != -1;
-            bool isChannelable = it.channel;
-            bool hasNonWeaponFunction = flag2 || isAxe || isHammer || isPlaced || isChannelable;
-            bool playerUsingWeapon = flag && hasHitboxes && !hasNonWeaponFunction;
-            if ((it.IsAir || !it.CountsAsClass<RogueDamageClass>()) && calamityPlayer.GemTechSet && calamityPlayer.GemTechState.IsRedGemActive)
-            {
-                return;
-            }
-
-            // Besides Rogue attackspeed, Thoriums own attack speed changes for throwing and general class have to be calculated into the attackspeed.
-            float attackSpeed = base.Player.GetAttackSpeed<RogueDamageClass>() * base.Player.GetAttackSpeed(DamageClass.Throwing) * base.Player.GetAttackSpeed(DamageClass.Generic);
-            int adjustedUseTime = (int)(it.useTime / attackSpeed); // Calculates the effective use time
-
-            bool animationCheck = (base.Player.itemTime == adjustedUseTime);
-            if (!calamityPlayer.stealthStrikeThisFrame && animationCheck){
-                if (calamityPlayer.StealthStrikeAvailable()){
-                    calamityPlayer.ConsumeStealthByAttacking();
-                    return;
-                }
-                calamityPlayer.rogueStealth = 0f;
-            }
         }
 
         public override void PostUpdateEquips(){
