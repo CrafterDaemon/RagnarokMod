@@ -503,14 +503,17 @@ namespace RagnarokMod.Utils
 
         public override void PostUpdate(){
             // If the riff sound has stopped, the riff is over
-            if (!riffPlaying){
+            if (!riffPlaying)
+            {
                 activeRiffType = 0;
                 activeRiffTargets.Clear();
             }
-            else if (SoundEngine.TryGetActiveSound(riffSlot, out var sound)){
+            else if (SoundEngine.TryGetActiveSound(riffSlot, out var sound)) 
+            {
                 sound.Position = Player.Center;
             }
-            else{
+            else
+            {
                 riffPlaying = false;
                 activeRiffType = 0;
                 activeRiffTargets.Clear();
@@ -519,14 +522,18 @@ namespace RagnarokMod.Utils
             if (shredderLifestealCooldown > 0)
                 shredderLifestealCooldown--;
 			
-			if (this.Player.ownedProjectileCounts[ModContent.ProjectileType<RelicOfConvergenceCrystalOverride>()] > 0 && this.Player.HeldItem.type == ModContent.ItemType<RelicOfConvergenceOverride>()){
+			if (this.Player.ownedProjectileCounts[ModContent.ProjectileType<RelicOfConvergenceCrystalOverride>()] > 0 && this.Player.HeldItem.type == ModContent.ItemType<RelicOfConvergenceOverride>())
+            {
 				Player player = this.Player;
 				player.statDefense *= RelicOfConvergenceOverride.DefenseMultiplier;
 			}
 			
-			if(bloodflareHealer || bloodflareBard) {
-				if(bloodflarebloodlust >= 100){
-					if (Main.rand.NextBool(4)){
+			if (bloodflareHealer || bloodflareBard) 
+            {
+				if (bloodflarebloodlust >= 100)
+                {
+					if (Main.rand.NextBool(4))
+                    {
 						Vector2 pos = Player.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), -Player.height * 0.45f - 25f);
 						Dust dust = Dust.NewDustDirect(pos, 4, 4, DustID.Blood);
 						dust.velocity.X = Main.rand.NextFloat(-0.6f, 0.6f);
@@ -535,10 +542,21 @@ namespace RagnarokMod.Utils
 						dust.noGravity = false;
 					}
 				}
-				if(bloodflareonhitcooldown > 0) {
+				if (bloodflareonhitcooldown > 0) 
+                {
 					bloodflareonhitcooldown--;
 				}
 			}
+
+            //keep this last just in case we edit the attack speed before this
+            float currentStealth = calamity.Call("GetCurrentStealth", Player) is float f ? f : 1f;
+            bool stealthStrike = currentStealth > 0f && Player.HeldItem.CountsAsClass<RogueDamageClass>();
+
+            if (stealthStrike)
+            {
+                Player.GetAttackSpeed(DamageClass.Generic) *= 0f;
+                Player.GetAttackSpeed(DamageClass.Throwing) *= 0f;
+            }
         }
 		
         // Function to add stealth to thorium throwing armors
