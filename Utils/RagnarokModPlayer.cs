@@ -434,6 +434,16 @@ namespace RagnarokMod.Utils
 
             // Apply Healing Multiplier
             thoriumPlayer2.healBonus = (int)Math.Round(thoriumPlayer2.healBonus * ModContent.GetInstance<ClassBalancerConfig>().HealingBonusModifier);
+
+            //keep this last just in case we edit the attack speed before this
+            float currentStealth = calamity.Call("GetCurrentStealth", Player) is float f ? f : 1f;
+            bool stealthStrike = currentStealth > 0f && (Player.HeldItem.CountsAsClass<RogueDamageClass>() || Player.HeldItem.CountsAsClass<ThrowingDamageClass>() || Player.HeldItem.CountsAsClass<ThoriumRogueClass>());
+
+            if (stealthStrike)
+            {
+                Player.GetAttackSpeed(DamageClass.Generic) = 1f;
+                Player.GetAttackSpeed(DamageClass.Throwing) = 1f;
+            }
         }
 
         public override void PostUpdateEquips(){
@@ -547,16 +557,6 @@ namespace RagnarokMod.Utils
 					bloodflareonhitcooldown--;
 				}
 			}
-
-            //keep this last just in case we edit the attack speed before this
-            float currentStealth = calamity.Call("GetCurrentStealth", Player) is float f ? f : 1f;
-            bool stealthStrike = currentStealth > 0f && Player.HeldItem.CountsAsClass<RogueDamageClass>();
-
-            if (stealthStrike)
-            {
-                Player.GetAttackSpeed(DamageClass.Generic) *= 0f;
-                Player.GetAttackSpeed(DamageClass.Throwing) *= 0f;
-            }
         }
 		
         // Function to add stealth to thorium throwing armors
