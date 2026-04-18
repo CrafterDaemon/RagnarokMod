@@ -1,4 +1,5 @@
 using CalamityMod;
+using CalamityMod.Particles;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RagnarokMod.Core;
@@ -51,8 +52,8 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
         private const int EjectaEndFrame = 80;
         private const int RemnantEndFrame = 180;
 
-        private const float MaxRingRadius = 600f;
-        private const float CoreMaxRadius = 120f;
+        private float MaxRingRadius = 540f;
+        private float CoreMaxRadius = 180f;
 
         private float Timer
         {
@@ -110,7 +111,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                 Projectile.height = 32;
             }
 
-            Projectile.Center = _spawnCenter; 
+            Projectile.Center = _spawnCenter;
 
             float brightness = Timer < RingEndFrame
                 ? MathHelper.Lerp(0.5f, 2.5f, Timer / (float)RingEndFrame)
@@ -118,10 +119,229 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                     (Timer - RingEndFrame) / (float)(TotalDuration - RingEndFrame));
 
             Lighting.AddLight(Projectile.Center,
-                new Vector3(brightness * 1.2f, brightness * 0.8f, brightness * 0.1f));
+                new Vector3(brightness * 0.6f, brightness * 0.8f, brightness * 1.5f));
+
+            SpawnParticles();
 
             if (Timer >= TotalDuration)
                 Projectile.Kill();
+        }
+
+        private void SpawnParticles()
+        {
+            bool photosen = CalamityClientConfig.Instance.Photosensitivity;
+
+            // Compression phase
+            if (Timer <= RingStartFrame)
+            {
+                float compressionT = Timer / (float)RingStartFrame;
+                float orbScale = MathHelper.Lerp(1.2f, 0.1f, compressionT);
+
+                // Inward-streaming energy particles
+                for (int i = 0; i < 2; i++)
+                {
+                    Vector2 spawnOffset = Main.rand.NextVector2CircularEdge(180f, 180f)
+                                        * MathHelper.Lerp(1f, 0.3f, compressionT);
+                    Vector2 vel = (_spawnCenter - (_spawnCenter + spawnOffset))
+                        .SafeNormalize(Vector2.Zero) * Main.rand.NextFloat(6f, 14f);
+
+                    SquishyLightParticle energy = new(
+                        _spawnCenter + spawnOffset, vel,
+                        Main.rand.NextFloat(0.2f, 0.4f) * orbScale,
+                        Color.Lerp(new Color(180, 220, 255), Color.White, Main.rand.NextFloat()),
+                        6);
+                    GeneralParticleHandler.SpawnParticle(energy);
+                }
+
+                // Core bloom
+                if (!photosen)
+                {
+                    Particle bloom = new CustomPulse(
+                        _spawnCenter, Vector2.Zero,
+                        new Color(160, 200, 255) * (0.3f + 0.7f * compressionT),
+                        "CalamityMod/Particles/LargeBloom",
+                        new Vector2(1f, 1f), Main.rand.NextFloat(-5f, 5f),
+                        orbScale * 1.2f, orbScale * 1.2f, 3);
+                    GeneralParticleHandler.SpawnParticle(bloom);
+                }
+            }
+
+            // Ring burst frame
+            if ((int)Timer == RingStartFrame)
+            {
+                // white flash
+                if (!photosen)
+                {
+                    Particle flash = new CustomPulse(
+                        _spawnCenter, Vector2.Zero, Color.White,
+                        "CalamityMod/Particles/LargeBloom",
+                        new Vector2(1f, 1f), 0f, 4f, 3f, 18);
+                    GeneralParticleHandler.SpawnParticle(flash);
+
+                    Particle flashBlue = new CustomPulse(
+                        _spawnCenter, Vector2.Zero, new Color(180, 210, 255),
+                        "CalamityMod/Particles/LargeBloom",
+                        new Vector2(1f, 1f), 0f, 3.5f, 2.5f, 18);
+                    GeneralParticleHandler.SpawnParticle(flashBlue);
+                }
+
+                for (int i = 0; i < 10; i++)
+                {
+                    Color ringCol = Color.Lerp(
+                        new Color(180, 220, 255),
+                        Color.White,
+                        Main.rand.NextFloat());
+
+                    Particle pulse2 = new CustomPulse(
+                        _spawnCenter, Vector2.Zero,
+                        ringCol * 0.7f,
+                        "CalamityMod/Particles/FlameExplosion",
+                        new Vector2(1f, 1f),
+                        Main.rand.NextFloat(-20f, 20f),
+                        0f, 1f - i * 0.07f, 50);
+                    GeneralParticleHandler.SpawnParticle(pulse2);
+                }
+
+                // Directional cross-spark ejecta
+                Vector2 dirX = Vector2.UnitX * 5f;
+                Vector2 dirY = Vector2.UnitY * 5f;
+
+                if (!photosen)
+                {
+                    for (int i = 0; i < 6; i++)
+                    {
+                        float sparkScale = 0.12f + i * 0.025f;
+                        Color sparkCol = Color.Lerp(Color.White, new Color(140, 190, 255), i / 6f);
+
+                        GeneralParticleHandler.SpawnParticle(new GlowSparkParticle(
+                            _spawnCenter, dirX * (i + 1f), false, 14, sparkScale * 1.5f,
+                            sparkCol, new Vector2(2.5f, 1.2f), true));
+                        GeneralParticleHandler.SpawnParticle(new GlowSparkParticle(
+                            _spawnCenter, -dirX * (i + 1f), false, 14, sparkScale * 1.5f,
+                            sparkCol, new Vector2(2.5f, 1.2f), true));
+                        GeneralParticleHandler.SpawnParticle(new GlowSparkParticle(
+                            _spawnCenter, dirY * (i + 1f), false, 14, sparkScale * 1.5f,
+                            sparkCol, new Vector2(2.5f, 1.2f), true));
+                        GeneralParticleHandler.SpawnParticle(new GlowSparkParticle(
+                            _spawnCenter, -dirY * (i + 1f), false, 14, sparkScale * 1.5f,
+                            sparkCol, new Vector2(2.5f, 1.2f), true));
+                    }
+                }
+
+                // Scattered radial sparks
+                for (int i = 0; i < 20; i++)
+                {
+                    Vector2 vel = Main.rand.NextVector2Circular(18f, 18f);
+                    Color sparkCol = Main.rand.NextBool()
+                        ? new Color(200, 230, 255)
+                        : Color.White;
+                    GeneralParticleHandler.SpawnParticle(new GlowSparkParticle(
+                        _spawnCenter + Main.rand.NextVector2Circular(20f, 20f),
+                        vel, false, Main.rand.Next(35, 50),
+                        Main.rand.NextFloat(0.04f, 0.09f),
+                        sparkCol, new Vector2(0.3f, 1.5f)));
+                }
+
+                // Heavy smoke for the dissipating cloud
+                for (int i = 0; i < 30; i++)
+                {
+                    Vector2 vel = Main.rand.NextVector2Circular(25f, 25f)
+                                * Main.rand.NextFloat(0.3f, 1f);
+                    GeneralParticleHandler.SpawnParticle(new HeavySmokeParticle(
+                        _spawnCenter + vel,
+                        vel * 0.4f,
+                        new Color(60, 80, 140) * 0.7f,
+                        Main.rand.Next(20, 32),
+                        Main.rand.NextFloat(0.8f, 1.8f),
+                        0.4f));
+                }
+
+                // Screen shake
+                if (Main.LocalPlayer.Distance(_spawnCenter) < 1800f)
+                    Main.LocalPlayer.Calamity().GeneralScreenShakePower = 10f;
+            }
+
+            // Ejecta phase
+            // Debris streaming outward as the ring expands.
+            if (Timer > RingStartFrame && Timer <= EjectaEndFrame)
+            {
+                float ejectaT = (Timer - RingStartFrame) / (float)(EjectaEndFrame - RingStartFrame);
+                float spawnRate = MathHelper.Lerp(4f, 1f, ejectaT); // fewer as it fades
+
+                if (Main.rand.NextFloat() < 1f / spawnRate)
+                {
+                    Vector2 vel = Main.rand.NextVector2Circular(1f, 1f).SafeNormalize(Vector2.Zero)
+                                * Main.rand.NextFloat(8f, 22f)
+                                * MathHelper.Lerp(1f, 0.4f, ejectaT);
+
+                    Color ejectaCol = Color.Lerp(
+                        new Color(200, 230, 255),
+                        new Color(120, 160, 255),
+                        Main.rand.NextFloat());
+
+                    SquishyLightParticle debris = new(
+                        _spawnCenter + vel * 2f, vel * 0.3f,
+                        Main.rand.NextFloat(0.15f, 0.35f) * (1f - ejectaT * 0.5f),
+                        ejectaCol,
+                        Main.rand.Next(8, 16));
+                    GeneralParticleHandler.SpawnParticle(debris);
+                }
+
+                // sparkle bursts along the ring edge
+                if (Main.rand.NextFloat() < 0.3f && !photosen)
+                {
+                    float ringRadius = (Timer - RingStartFrame)
+                        / (float)(RingEndFrame - RingStartFrame) * MaxRingRadius;
+                    Vector2 ringEdge = _spawnCenter
+                        + Main.rand.NextVector2CircularEdge(ringRadius, ringRadius);
+                    GeneralParticleHandler.SpawnParticle(new GenericSparkle(
+                        ringEdge, Vector2.Zero,
+                        Color.White, new Color(160, 200, 255),
+                        Main.rand.NextFloat(0.5f, 1.2f), 8,
+                        Main.rand.NextBool() ? 1.5f : -1.5f, 2));
+                }
+            }
+
+            // Mid-ring pulse rings
+            if ((int)Timer == 35)
+            {
+                GeneralParticleHandler.SpawnParticle(new StaticPulseRing(
+                    _spawnCenter, Vector2.Zero, new Color(160, 200, 255) * 0.35f,
+                    new Vector2(1f, 1f), 0.1f, 0.6f, 0f, 30));
+            }
+            if ((int)Timer == 50)
+            {
+                GeneralParticleHandler.SpawnParticle(new StaticPulseRing(
+                    _spawnCenter, Vector2.Zero, new Color(180, 220, 255) * 0.25f,
+                    new Vector2(1f, 1f), 0.1f, 0.5f, 0f, 22));
+            }
+
+            // Remnant phase
+            // ember drift as the core glows down.
+            if (Timer > RingEndFrame && Timer <= RemnantEndFrame)
+            {
+                float remnantT = (Timer - RingEndFrame) / (float)(RemnantEndFrame - RingEndFrame);
+
+                if (Main.rand.NextFloat() < MathHelper.Lerp(0.5f, 0.05f, remnantT))
+                {
+                    Vector2 vel = new Vector2(
+                        Main.rand.NextFloat(-1.2f, 1.2f),
+                        Main.rand.NextFloat(-2f, -0.5f)); // drift upward like embers
+
+                    Color emberCol = Color.Lerp(
+                        new Color(180, 210, 255),
+                        new Color(220, 240, 255),
+                        Main.rand.NextFloat()) * (1f - remnantT * 0.7f);
+
+                    SquishyLightParticle ember = new(
+                        _spawnCenter + Main.rand.NextVector2Circular(30f, 30f),
+                        vel,
+                        Main.rand.NextFloat(0.08f, 0.2f),
+                        emberCol,
+                        Main.rand.Next(20, 40));
+                    GeneralParticleHandler.SpawnParticle(ember);
+                }
+            }
         }
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
         {
@@ -191,7 +411,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                 coreEffect.Parameters["darkerColor"].SetValue(
                     new Color(150, 70, 20).ToVector3());
 
-                float coreDrawScale = 400f / (noise.Width * 0.5f);
+                float coreDrawScale = (CoreMaxRadius * coreScale) / (noise.Width * 0.5f);
 
                 sb.End();
                 sb.Begin(SpriteSortMode.Immediate, BlendState.Additive,
