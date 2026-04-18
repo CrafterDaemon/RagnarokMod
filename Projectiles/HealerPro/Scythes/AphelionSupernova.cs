@@ -1,4 +1,5 @@
 using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Particles;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -18,18 +19,16 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
     ///
     /// Timeline (frames at 60fps):
     ///   0  –  20  Compression  — core shrinks to point, instability ramps to 1
-    ///   20 –  60  Ring burst   — shockwave expands 0→600px, single hit window
+    ///   20 –  60  Ring burst   — shockwave expands 0→MaxRingRadius, single hit window
     ///   20 –  80  Ejecta       — dust erupts outward
     ///   60 – 180  Remnant      — glowing core fades
     ///   180– 240  Fade         — full fadeout
     ///
     /// Shaders:
-    ///   AphelionNovaCore — PackedA(globalTime,spinTime,instability,remnantFade)
-    ///                      PackedB(coreScale,0,0,0)
-    ///                      mainColor, darkerColor (float4)
+    ///   AphelionNovaCore — globalTime, spinTime, instability, remnantFade, coreScale,
+    ///                      mainColor, darkerColor
     ///
-    ///   AphelionNovaRing — PackedA(progress,opacity,noiseStrength,spinTime)
-    ///                      PackedB(ringColor.r,ringColor.g,ringColor.b,0)
+    ///   AphelionNovaRing — progress, opacity, noiseStrength, spinTime, ringColor
     /// </summary>
     public class AphelionSupernova : ModProjectile
     {
@@ -52,8 +51,15 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
         private const int EjectaEndFrame = 80;
         private const int RemnantEndFrame = 180;
 
-        private float MaxRingRadius = 540f;
-        private float CoreMaxRadius = 180f;
+        private const float MaxRingRadius = 900f;
+        private const float CoreMaxRadius = 180f;
+
+        private static readonly Color CoreFlash = new Color(220, 235, 255);
+        private static readonly Color BrightCol = new Color(100, 195, 255);
+        private static readonly Color DeepCol = new Color(60, 120, 255);
+
+        private static readonly Vector3 MainColV3 = new Color(100, 195, 255).ToVector3();
+        private static readonly Vector3 DarkColV3 = new Color(60, 120, 255).ToVector3();
 
         private float Timer
         {
@@ -75,7 +81,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             Projectile.timeLeft = TotalDuration + 5;
             Projectile.ignoreWater = true;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = TotalDuration * 2;
+            Projectile.localNPCHitCooldown = -1;
         }
 
         private Vector2 _spawnCenter;
@@ -95,11 +101,9 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             Projectile.timeLeft = Math.Max(Projectile.timeLeft,
                 TotalDuration - (int)Timer + 2);
 
-            bool ringActive = Timer >= RingStartFrame && Timer <= RingEndFrame;
-            if (ringActive)
+            if (Timer >= RingStartFrame && Timer <= RingEndFrame)
             {
-                float ringT = (Timer - RingStartFrame)
-                                 / (float)(RingEndFrame - RingStartFrame);
+                float ringT = (Timer - RingStartFrame) / (float)(RingEndFrame - RingStartFrame);
                 float ringRadius = ringT * MaxRingRadius;
                 int size = (int)(ringRadius * 2f);
                 Projectile.width = size;
@@ -119,9 +123,10 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                     (Timer - RingEndFrame) / (float)(TotalDuration - RingEndFrame));
 
             Lighting.AddLight(Projectile.Center,
-                new Vector3(brightness * 0.6f, brightness * 0.8f, brightness * 1.5f));
+                new Vector3(brightness * 0.4f, brightness * 0.75f, brightness * 1.5f));
 
-            SpawnParticles();
+            if (Main.netMode != NetmodeID.Server)
+                SpawnParticles();
 
             if (Timer >= TotalDuration)
                 Projectile.Kill();
@@ -131,163 +136,137 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
         {
             bool photosen = CalamityClientConfig.Instance.Photosensitivity;
 
-            // Compression phase
             if (Timer <= RingStartFrame)
             {
                 float compressionT = Timer / (float)RingStartFrame;
                 float orbScale = MathHelper.Lerp(1.2f, 0.1f, compressionT);
 
-                // Inward-streaming energy particles
+                float inwardRadius = MaxRingRadius * 0.2f * MathHelper.Lerp(1f, 0.3f, compressionT);
                 for (int i = 0; i < 2; i++)
                 {
-                    Vector2 spawnOffset = Main.rand.NextVector2CircularEdge(180f, 180f)
-                                        * MathHelper.Lerp(1f, 0.3f, compressionT);
-                    Vector2 vel = (_spawnCenter - (_spawnCenter + spawnOffset))
-                        .SafeNormalize(Vector2.Zero) * Main.rand.NextFloat(6f, 14f);
+                    Vector2 spawnOffset = Main.rand.NextVector2CircularEdge(inwardRadius, inwardRadius);
+                    Vector2 vel = -spawnOffset.SafeNormalize(Vector2.Zero)
+                                * Main.rand.NextFloat(MaxRingRadius * 0.007f, MaxRingRadius * 0.016f);
 
-                    SquishyLightParticle energy = new(
+                    GeneralParticleHandler.SpawnParticle(new SquishyLightParticle(
                         _spawnCenter + spawnOffset, vel,
                         Main.rand.NextFloat(0.2f, 0.4f) * orbScale,
-                        Color.Lerp(new Color(180, 220, 255), Color.White, Main.rand.NextFloat()),
-                        6);
-                    GeneralParticleHandler.SpawnParticle(energy);
+                        Color.Lerp(BrightCol, CoreFlash, Main.rand.NextFloat()),
+                        6));
                 }
 
-                // Core bloom
                 if (!photosen)
                 {
-                    Particle bloom = new CustomPulse(
+                    GeneralParticleHandler.SpawnParticle(new CustomPulse(
                         _spawnCenter, Vector2.Zero,
-                        new Color(160, 200, 255) * (0.3f + 0.7f * compressionT),
+                        BrightCol * (0.3f + 0.7f * compressionT),
                         "CalamityMod/Particles/LargeBloom",
                         new Vector2(1f, 1f), Main.rand.NextFloat(-5f, 5f),
-                        orbScale * 1.2f, orbScale * 1.2f, 3);
-                    GeneralParticleHandler.SpawnParticle(bloom);
+                        orbScale * 1.2f, orbScale * 1.2f, 3));
                 }
             }
 
-            // Ring burst frame
             if ((int)Timer == RingStartFrame)
             {
-                // white flash
                 if (!photosen)
                 {
-                    Particle flash = new CustomPulse(
-                        _spawnCenter, Vector2.Zero, Color.White,
+                    GeneralParticleHandler.SpawnParticle(new CustomPulse(
+                        _spawnCenter, Vector2.Zero, CoreFlash,
                         "CalamityMod/Particles/LargeBloom",
-                        new Vector2(1f, 1f), 0f, 4f, 3f, 18);
-                    GeneralParticleHandler.SpawnParticle(flash);
+                        new Vector2(1f, 1f), 0f, 4f, 3f, 18));
 
-                    Particle flashBlue = new CustomPulse(
-                        _spawnCenter, Vector2.Zero, new Color(180, 210, 255),
+                    GeneralParticleHandler.SpawnParticle(new CustomPulse(
+                        _spawnCenter, Vector2.Zero, BrightCol,
                         "CalamityMod/Particles/LargeBloom",
-                        new Vector2(1f, 1f), 0f, 3.5f, 2.5f, 18);
-                    GeneralParticleHandler.SpawnParticle(flashBlue);
+                        new Vector2(1f, 1f), 0f, 3.5f, 2.5f, 18));
                 }
 
+                float ringScale = MaxRingRadius / 600f;
                 for (int i = 0; i < 10; i++)
                 {
-                    Color ringCol = Color.Lerp(
-                        new Color(180, 220, 255),
-                        Color.White,
-                        Main.rand.NextFloat());
-
-                    Particle pulse2 = new CustomPulse(
+                    Color ringCol = Color.Lerp(BrightCol, CoreFlash, Main.rand.NextFloat());
+                    GeneralParticleHandler.SpawnParticle(new CustomPulse(
                         _spawnCenter, Vector2.Zero,
                         ringCol * 0.7f,
                         "CalamityMod/Particles/FlameExplosion",
                         new Vector2(1f, 1f),
                         Main.rand.NextFloat(-20f, 20f),
-                        0f, 1f - i * 0.07f, 50);
-                    GeneralParticleHandler.SpawnParticle(pulse2);
+                        0f, (4f - i * 0.28f) * ringScale, 50));
                 }
 
-                // Directional cross-spark ejecta
-                Vector2 dirX = Vector2.UnitX * 5f;
-                Vector2 dirY = Vector2.UnitY * 5f;
+                float sparkSpeed = MaxRingRadius * 0.007f;
+                Vector2 dirX = Vector2.UnitX * sparkSpeed;
+                Vector2 dirY = Vector2.UnitY * sparkSpeed;
 
                 if (!photosen)
                 {
                     for (int i = 0; i < 6; i++)
                     {
                         float sparkScale = 0.12f + i * 0.025f;
-                        Color sparkCol = Color.Lerp(Color.White, new Color(140, 190, 255), i / 6f);
+                        Color sparkCol = Color.Lerp(CoreFlash, BrightCol, i / 6f);
 
                         GeneralParticleHandler.SpawnParticle(new GlowSparkParticle(
-                            _spawnCenter, dirX * (i + 1f), false, 14, sparkScale * 1.5f,
-                            sparkCol, new Vector2(2.5f, 1.2f), true));
+                            _spawnCenter, dirX * (i + 1f), false, 14, sparkScale, sparkCol, new Vector2(2.5f, 1.2f), true));
                         GeneralParticleHandler.SpawnParticle(new GlowSparkParticle(
-                            _spawnCenter, -dirX * (i + 1f), false, 14, sparkScale * 1.5f,
-                            sparkCol, new Vector2(2.5f, 1.2f), true));
+                            _spawnCenter, -dirX * (i + 1f), false, 14, sparkScale, sparkCol, new Vector2(2.5f, 1.2f), true));
                         GeneralParticleHandler.SpawnParticle(new GlowSparkParticle(
-                            _spawnCenter, dirY * (i + 1f), false, 14, sparkScale * 1.5f,
-                            sparkCol, new Vector2(2.5f, 1.2f), true));
+                            _spawnCenter, dirY * (i + 1f), false, 14, sparkScale, sparkCol, new Vector2(2.5f, 1.2f), true));
                         GeneralParticleHandler.SpawnParticle(new GlowSparkParticle(
-                            _spawnCenter, -dirY * (i + 1f), false, 14, sparkScale * 1.5f,
-                            sparkCol, new Vector2(2.5f, 1.2f), true));
+                            _spawnCenter, -dirY * (i + 1f), false, 14, sparkScale, sparkCol, new Vector2(2.5f, 1.2f), true));
                     }
                 }
 
-                // Scattered radial sparks
+                float sparkRadius = MaxRingRadius * 0.025f;
+                float sparkVel = MaxRingRadius * 0.022f;
                 for (int i = 0; i < 20; i++)
                 {
-                    Vector2 vel = Main.rand.NextVector2Circular(18f, 18f);
-                    Color sparkCol = Main.rand.NextBool()
-                        ? new Color(200, 230, 255)
-                        : Color.White;
+                    Vector2 vel = Main.rand.NextVector2Circular(sparkVel, sparkVel);
+                    Color sparkCol = Main.rand.NextBool() ? BrightCol : CoreFlash;
                     GeneralParticleHandler.SpawnParticle(new GlowSparkParticle(
-                        _spawnCenter + Main.rand.NextVector2Circular(20f, 20f),
+                        _spawnCenter + Main.rand.NextVector2Circular(sparkRadius, sparkRadius),
                         vel, false, Main.rand.Next(35, 50),
                         Main.rand.NextFloat(0.04f, 0.09f),
                         sparkCol, new Vector2(0.3f, 1.5f)));
                 }
 
-                // Heavy smoke for the dissipating cloud
+                float smokeSpread = MaxRingRadius * 0.06f;
                 for (int i = 0; i < 30; i++)
                 {
-                    Vector2 vel = Main.rand.NextVector2Circular(25f, 25f)
+                    Vector2 vel = Main.rand.NextVector2Circular(smokeSpread, smokeSpread)
                                 * Main.rand.NextFloat(0.3f, 1f);
                     GeneralParticleHandler.SpawnParticle(new HeavySmokeParticle(
                         _spawnCenter + vel,
                         vel * 0.4f,
-                        new Color(60, 80, 140) * 0.7f,
+                        DeepCol * 0.7f,
                         Main.rand.Next(20, 32),
                         Main.rand.NextFloat(0.8f, 1.8f),
                         0.4f));
                 }
 
-                // Screen shake
                 if (Main.LocalPlayer.Distance(_spawnCenter) < 1800f)
                     Main.LocalPlayer.Calamity().GeneralScreenShakePower = 10f;
             }
 
-            // Ejecta phase
-            // Debris streaming outward as the ring expands.
             if (Timer > RingStartFrame && Timer <= EjectaEndFrame)
             {
                 float ejectaT = (Timer - RingStartFrame) / (float)(EjectaEndFrame - RingStartFrame);
-                float spawnRate = MathHelper.Lerp(4f, 1f, ejectaT); // fewer as it fades
+                float spawnRate = MathHelper.Lerp(4f, 1f, ejectaT);
 
                 if (Main.rand.NextFloat() < 1f / spawnRate)
                 {
                     Vector2 vel = Main.rand.NextVector2Circular(1f, 1f).SafeNormalize(Vector2.Zero)
-                                * Main.rand.NextFloat(8f, 22f)
+                                * Main.rand.NextFloat(MaxRingRadius * 0.01f, MaxRingRadius * 0.03f)
                                 * MathHelper.Lerp(1f, 0.4f, ejectaT);
 
-                    Color ejectaCol = Color.Lerp(
-                        new Color(200, 230, 255),
-                        new Color(120, 160, 255),
-                        Main.rand.NextFloat());
+                    Color ejectaCol = Color.Lerp(CoreFlash, BrightCol, Main.rand.NextFloat());
 
-                    SquishyLightParticle debris = new(
+                    GeneralParticleHandler.SpawnParticle(new SquishyLightParticle(
                         _spawnCenter + vel * 2f, vel * 0.3f,
                         Main.rand.NextFloat(0.15f, 0.35f) * (1f - ejectaT * 0.5f),
                         ejectaCol,
-                        Main.rand.Next(8, 16));
-                    GeneralParticleHandler.SpawnParticle(debris);
+                        Main.rand.Next(25, 45)));
                 }
 
-                // sparkle bursts along the ring edge
                 if (Main.rand.NextFloat() < 0.3f && !photosen)
                 {
                     float ringRadius = (Timer - RingStartFrame)
@@ -296,71 +275,65 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                         + Main.rand.NextVector2CircularEdge(ringRadius, ringRadius);
                     GeneralParticleHandler.SpawnParticle(new GenericSparkle(
                         ringEdge, Vector2.Zero,
-                        Color.White, new Color(160, 200, 255),
+                        CoreFlash, BrightCol,
                         Main.rand.NextFloat(0.5f, 1.2f), 8,
                         Main.rand.NextBool() ? 1.5f : -1.5f, 2));
                 }
             }
 
-            // Mid-ring pulse rings
             if ((int)Timer == 35)
             {
                 GeneralParticleHandler.SpawnParticle(new StaticPulseRing(
-                    _spawnCenter, Vector2.Zero, new Color(160, 200, 255) * 0.35f,
+                    _spawnCenter, Vector2.Zero, BrightCol * 0.35f,
                     new Vector2(1f, 1f), 0.1f, 0.6f, 0f, 30));
             }
             if ((int)Timer == 50)
             {
                 GeneralParticleHandler.SpawnParticle(new StaticPulseRing(
-                    _spawnCenter, Vector2.Zero, new Color(180, 220, 255) * 0.25f,
+                    _spawnCenter, Vector2.Zero, BrightCol * 0.25f,
                     new Vector2(1f, 1f), 0.1f, 0.5f, 0f, 22));
             }
 
-            // Remnant phase
-            // ember drift as the core glows down.
             if (Timer > RingEndFrame && Timer <= RemnantEndFrame)
             {
                 float remnantT = (Timer - RingEndFrame) / (float)(RemnantEndFrame - RingEndFrame);
 
                 if (Main.rand.NextFloat() < MathHelper.Lerp(0.5f, 0.05f, remnantT))
                 {
+                    // Embers drift upward from around the core radius
                     Vector2 vel = new Vector2(
                         Main.rand.NextFloat(-1.2f, 1.2f),
-                        Main.rand.NextFloat(-2f, -0.5f)); // drift upward like embers
+                        Main.rand.NextFloat(-2f, -0.5f));
 
-                    Color emberCol = Color.Lerp(
-                        new Color(180, 210, 255),
-                        new Color(220, 240, 255),
-                        Main.rand.NextFloat()) * (1f - remnantT * 0.7f);
+                    Color emberCol = Color.Lerp(BrightCol, CoreFlash, Main.rand.NextFloat())
+                                   * (1f - remnantT * 0.7f);
 
-                    SquishyLightParticle ember = new(
-                        _spawnCenter + Main.rand.NextVector2Circular(30f, 30f),
+                    GeneralParticleHandler.SpawnParticle(new SquishyLightParticle(
+                        _spawnCenter + Main.rand.NextVector2Circular(CoreMaxRadius * 0.5f, CoreMaxRadius * 0.5f),
                         vel,
                         Main.rand.NextFloat(0.08f, 0.2f),
                         emberCol,
-                        Main.rand.Next(20, 40));
-                    GeneralParticleHandler.SpawnParticle(ember);
+                        Main.rand.Next(20, 40)));
                 }
             }
         }
+
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
         {
-            if (Timer < RingStartFrame || Timer > RingEndFrame || _hasDamaged)
+            if (Timer < RingStartFrame || Timer > RingEndFrame)
                 return false;
 
-            float ringT = (Timer - RingStartFrame)
-                             / (float)(RingEndFrame - RingStartFrame);
+            float ringT = (Timer - RingStartFrame) / (float)(RingEndFrame - RingStartFrame);
             float ringRadius = ringT * MaxRingRadius;
-            float ringWidth = (0.08f + ringT * 0.04f) * MaxRingRadius;
-            float dist = Vector2.Distance(
-                targetHitbox.Center.ToVector2(), Projectile.Center);
 
-            return dist >= ringRadius - ringWidth && dist <= ringRadius + ringWidth * 0.5f;
+            return CalamityUtils.CircularHitboxCollision(_spawnCenter, ringRadius, targetHitbox);
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            _hasDamaged = true;
+            target.AddBuff(ModContent.BuffType<MiracleBlight>(), 300);
+            target.AddBuff(ModContent.BuffType<Dragonfire>(), 300);
+            target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 300);
         }
 
         public override bool PreDraw(ref Color lightColor)
@@ -383,21 +356,19 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
 
             float instability = MathHelper.Clamp(Timer / (float)RingStartFrame, 0f, 1f);
             float remnantFade = Timer < RemnantEndFrame ? 1f : 1f - fadeT;
-            float compressionT = instability;
             float remnantT = MathHelper.Clamp(
                 (Timer - RingEndFrame) / (float)(RemnantEndFrame - RingEndFrame), 0f, 1f);
 
             float coreScale = Timer < RingStartFrame
-                ? MathHelper.Lerp(1f, 0.08f, compressionT * compressionT)
+                ? MathHelper.Lerp(1f, 0.08f, instability * instability)
                 : MathHelper.Lerp(0.08f, 2f, remnantT) * (1f - fadeT * 0.8f);
 
             float pulse = 0.5f + 0.5f * MathF.Sin(Main.GameUpdateCount * 0.15f);
-            float pulsedFade = remnantFade * (0.7f + 0.3f * pulse);
             float coreFade = Timer < RingStartFrame ? 1f
-                : 1f - MathHelper.Clamp((Timer - RingStartFrame) / (float)(RingEndFrame - RingStartFrame), 0f, 1f);
-            bool drawCore = Timer < RingEndFrame;
+                : 1f - MathHelper.Clamp(
+                    (Timer - RingStartFrame) / (float)(RingEndFrame - RingStartFrame), 0f, 1f);
 
-            if (drawCore)
+            if (Timer < RingEndFrame)
             {
                 Effect coreEffect = CoreEffect;
 
@@ -406,10 +377,8 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                 coreEffect.Parameters["instability"].SetValue(instability);
                 coreEffect.Parameters["remnantFade"].SetValue(coreFade);
                 coreEffect.Parameters["coreScale"].SetValue(coreScale);
-                coreEffect.Parameters["mainColor"].SetValue(
-                    new Color(200, 180, 100).ToVector3());
-                coreEffect.Parameters["darkerColor"].SetValue(
-                    new Color(150, 70, 20).ToVector3());
+                coreEffect.Parameters["mainColor"].SetValue(MainColV3);
+                coreEffect.Parameters["darkerColor"].SetValue(DarkColV3);
 
                 float coreDrawScale = (CoreMaxRadius * coreScale) / (noise.Width * 0.5f);
 
@@ -426,15 +395,10 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
 
             if (Timer >= RingStartFrame && Timer <= RingEndFrame + 10f)
             {
-                float ringOpacity = MathHelper.SmoothStep(0f, 1f,
-                        Math.Min(ringT * 4f, 1f))
-                    * MathHelper.SmoothStep(1f, 0f,
-                        Math.Max(0f, ringT - 0.7f) / 0.3f);
+                float ringOpacity = MathHelper.SmoothStep(0f, 1f, Math.Min(ringT * 4f, 1f))
+                                  * MathHelper.SmoothStep(1f, 0f, Math.Max(0f, ringT - 0.7f) / 0.3f);
 
-                Color ringCol = Color.Lerp(
-                    new Color(255, 240, 180),
-                    new Color(180, 120, 255),
-                    ringT);
+                Color ringCol = Color.Lerp(CoreFlash, BrightCol, ringT);
 
                 Effect ringEffect = RingEffect;
 
@@ -444,7 +408,10 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                 ringEffect.Parameters["spinTime"].SetValue(_spinTime);
                 ringEffect.Parameters["ringColor"].SetValue(ringCol.ToVector3());
 
-                float ringDrawScale = MaxRingRadius / (noise.Width * 0.33f);
+                // Quad half-width = noise.Width * 0.5f * ringDrawScale.
+                // We want that to equal MaxRingRadius so the shader's progress=1
+                // ring edge lands exactly at MaxRingRadius pixels from center.
+                float ringDrawScale = MaxRingRadius / (noise.Width * 0.5f);
 
                 sb.End();
                 sb.Begin(SpriteSortMode.Immediate, BlendState.Additive,
@@ -457,6 +424,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                     0f, origin, ringDrawScale, SpriteEffects.None, 0f);
             }
 
+            // Restore SpriteBatch state
             sb.End();
             sb.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend,
                 Main.DefaultSamplerState, DepthStencilState.None,
