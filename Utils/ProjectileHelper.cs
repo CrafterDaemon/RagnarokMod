@@ -205,7 +205,7 @@ namespace RagnarokMod.Utils
         }
         public static bool IsThrown(this Projectile projectile)
         {
-            return projectile.CountsAsClass(DamageClass.Throwing);
+            return projectile.CountsAsClass(DamageClass.Throwing) || projectile.CountsAsClass(ModContent.GetInstance<RogueDamageClass>()) || projectile.CountsAsClass(ModContent.GetInstance<ThoriumRogueClass>());
         }
 
         public static void SineWaveMovement(this Projectile projectile, float timer, float amplitude, float waveStep, bool firstTick, Action<Projectile> changeDirection = null, bool reverseWave = false)

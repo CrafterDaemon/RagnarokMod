@@ -616,19 +616,25 @@ namespace RagnarokMod.Utils
                     }
                 }
             }
-            if (projectile.IsThrown()){
-                if (accShinobiSigilFix){
+            if (projectile.IsThrown())
+            {
+                if (accShinobiSigilFix)
+                {
                     ThoriumPlayer thoriumplayer = ThoriumMod.Utilities.PlayerHelper.GetThoriumPlayer(base.Player);
-                    if (hit.Crit){
+                    if (hit.Crit)
+                    {
                         int shinobi = ModContent.ProjectileType<ShinobiSigilPro>();
-                        if (projectile.type != shinobi){
+                        if (projectile.type != shinobi)
+                        {
                             thoriumplayer.accShinobiSigilCrit++;
-                            if (thoriumplayer.accShinobiSigilCrit >= 2){
+                            if (thoriumplayer.accShinobiSigilCrit >= 2)
+                            {
                                 thoriumplayer.accShinobiSigilCrit = 0;
                                 SoundEngine.PlaySound(SoundID.Item103, new Vector2?(projectile.Center), null);
                                 this.Player.AddBuff(ModContent.BuffType<ThrowingSpeed>(), 300, true, false);
                                 int shinobiDamage = (int)((float)projectile.damage * 0.25f);
-                                if (shinobiDamage > 500){
+                                if (shinobiDamage > 500)
+                                {
                                     shinobiDamage = 500;
                                 }
                                 IEntitySource source = projectile.GetSource_OnHit(target, null);
@@ -640,44 +646,48 @@ namespace RagnarokMod.Utils
                             }
                         }
                     }
-                    else{
+                    else
+                    {
                         thoriumplayer.accShinobiSigilCrit = 0;
                     }
                 }
                 int guideDamage = 0;
-                if (throwGuide3Fix){
+                if (throwGuide3Fix)
+                {
                     guideDamage = (int)((double)projectile.damage * 0.175);
-                    if (guideDamage > 200){
+                    if (guideDamage > 200)
+                    {
                         guideDamage = 200;
                     }
                 }
-                else if (throwGuide2Fix){
+                else if (throwGuide2Fix)
+                {
                     guideDamage = (int)((double)projectile.damage * 0.15);
-                    if (guideDamage > 100){
+                    if (guideDamage > 100)
+                    {
                         guideDamage = 100;
                     }
                 }
-                else if (throwGuideFix){
+                else if (throwGuideFix)
+                {
                     guideDamage = (int)((double)projectile.damage * 0.125);
-                    if (guideDamage > 50){
+                    if (guideDamage > 50)
+                    {
                         guideDamage = 50;
                     }
                 }
-                if (guideDamage > 0){
+                if (guideDamage > 0)
+                {
                     IEntitySource source = projectile.GetSource_OnHit(target, null);
                     Projectile.NewProjectile(source, target.Center, Vector2.Zero, ModContent.ProjectileType<ThrowingGuideFollowup>(), guideDamage, 0f, projectile.owner, (float)target.whoAmI, 0f, 0f);
                 }
             }
-            if (WhiteDwarf && hit.Crit){
-                int damage;
-                if (Player.GetWeaponDamage(Player.HeldItem) > target.damage){
-                    damage = Player.GetWeaponDamage(Player.HeldItem);
-                }
-                else{
-                    damage = target.damage;
-                }
+            if (WhiteDwarf && Main.rand.Next(20) == 0 && projectile.IsThrown())
+            {
+                int damage = (int)(hit.SourceDamage * 1.75);
+                target.AddBuff(ModContent.BuffType<Daybroken>(), 300);
                 SoundEngine.PlaySound(SoundID.Item92, target.position);
-                Projectile.NewProjectile(projectile.GetSource_OnHit(target), target.Center, Vector2.Zero, ModContent.ProjectileType<WhiteFlare>(), damage, 0.0f, Main.myPlayer, 0.0f, 0.0f, 0.0f);
+                Projectile result = Projectile.NewProjectileDirect(projectile.GetSource_OnHit(target), target.Center, Vector2.Zero, ModContent.ProjectileType<WhiteFlare>(), damage, 0.0f, Main.myPlayer, 0.0f, 0.0f, 0.0f);
             }
             OnHitNPCWithAny(target, hit, damageDone);
         }

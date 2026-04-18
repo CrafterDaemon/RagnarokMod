@@ -103,9 +103,8 @@ Buffs: {
 Tooltips: {
 	WhiteDwarfSetBonus:
 		'''
-		Critical strikes will unleash ivory flares from the cosmos
-		Ivory flares inflict the target's contact damage back at them,
-		if it is less than your base weapon damage, it will deal that instead
+		Rogue attacks have a 5% chance unleash an ivory flare from the cosmos for 1.75x damage
+		The flare's damage is based on non-crit damage, but itself can crit
 		'''
 
 	LeviathanHeart: {
