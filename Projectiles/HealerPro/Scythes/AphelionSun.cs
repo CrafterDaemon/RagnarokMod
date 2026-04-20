@@ -95,10 +95,18 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                             && Main.projectile[pid].type == ModContent.ProjectileType<AphelionPro>();
 
             Player owner = Main.player[Projectile.owner];
+            SpawnTimer = Math.Min(SpawnTimer + 1f, SpawnInFrames);
 
             if (_dying)
             {
                 _dyingTimer++;
+
+                Projectile.scale -= 0.1f;
+                if (Projectile.scale <= 0)
+                {
+                    Projectile.Kill();
+                }
+
                 Projectile.timeLeft = 3;
                 PhaseAngle += BaseOrbitSpeed;
                 float orbitAngle = (PhaseAngle + Projectile.ai[1]
@@ -178,7 +186,6 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             if (!parentAlive) { _dying = true; return; }
 
             Projectile.timeLeft = 3;
-            SpawnTimer = Math.Min(SpawnTimer + 1f, SpawnInFrames);
 
             PhaseAngle += BaseOrbitSpeed * owner.direction;
             _spinTime += BaseOrbitSpeed * 0.2f;
@@ -225,7 +232,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
 
             Vector2 drawPos = Projectile.Center - Main.screenPosition;
             Vector2 origin = heat.Size() * 0.5f;
-            Vector2 scale = new Vector2(QuadHalfSize / heat.Width, QuadHalfSize / heat.Height);
+            Vector2 scale = new Vector2((QuadHalfSize / heat.Width) * Projectile.scale, (QuadHalfSize / heat.Height) * Projectile.scale);
 
             // Pass 1: AlphaBlend opaque disc + corona shape
             sb.End();
