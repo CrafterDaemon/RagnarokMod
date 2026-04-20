@@ -797,7 +797,9 @@ Items: {
 		Tooltip:
 			'''
 			Creates a small hologram resembling the Devourer of Gods at the very edge of your scythe spin
-			Enemies hit by this take significantly more damage and are inflicted with [cbuff:CalamityMod/GodSlayerInferno]
+			This hologram will grow in damage over time to a cap and inflict [cbuff:CalamityMod/GodSlayerInferno] on hit
+			Stopping use of the scythe while a hologram is active will release it to attack the nearest enemy 
+			The released hologram will deal increased damage and inflict [cbuff:CalamityMod/WhisperingDeath]
 			'''
 	}
 

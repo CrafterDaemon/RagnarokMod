@@ -67,7 +67,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                     Projectile.position,
                     Vector2.Zero,
                     ModContent.ProjectileType<MiniDoGHead>(),
-                    Projectile.damage,
+                    Projectile.damage / 3,
                     Projectile.knockBack,
                     Projectile.owner
                 );
