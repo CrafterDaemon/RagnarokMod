@@ -119,13 +119,13 @@ namespace RagnarokMod.Common.Configs
         [Header("VisFluxMeter")]
 
         [Range(0, 4000)]
-        [DefaultValue(20)]
+        [DefaultValue(970)]
         [Increment(1)]
         [DrawTicks]
         public int MeterOffsetX { get; set; } = 20;
 
         [Range(0, 4000)]
-        [DefaultValue(80)]
+        [DefaultValue(815)]
         [Increment(1)]
         [DrawTicks]
         public int MeterOffsetY { get; set; } = 80;
