@@ -1,4 +1,7 @@
 ﻿using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.Buffs.StatDebuffs;
+using CalamityMod.Items.Potions.Alcohol;
 using CalamityMod.Projectiles.BaseProjectiles;
 using CalamityMod.Sounds;
 using Microsoft.Xna.Framework;
@@ -54,6 +57,8 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
         private Asset<Texture2D> JawGlowAsset;
         private Asset<Texture2D> GlowTexAsset;
 
+        private bool reachedMaxPower = false;
+
         public override void SetDefaults()
         {
             base.SetDefaults();
@@ -102,6 +107,13 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
         private void HandleOrbit(Player player)
         {
             orbitTime++;
+
+            if (!reachedMaxPower && orbitTime >= 300)
+            {
+                reachedMaxPower = true;
+                OnMaxChargeReached();
+            }
+
             fadeInTimer = Math.Min(fadeInTimer + 1f, 90f);
             Projectile.Opacity = fadeInTimer / 180f;
             foreach (var seg in Segments)
@@ -122,6 +134,17 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             JawOpeningAmount = MathHelper.Lerp(JawOpeningAmount, 0f, 0.1f);
         }
 
+        private void OnMaxChargeReached()
+        {
+            // Sound cue
+            SoundEngine.PlaySound(new SoundStyle("CalamityMod/Sounds/Custom/DevourerAttack")
+            {
+                Volume = 0.3f,
+                PitchVariance = 0.4f
+            }, Projectile.Center);
+
+            SpawnExplosionDust(Projectile.Center);
+        }
 
         private void HandleHoming()
         {
@@ -145,8 +168,15 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
         {
             if (State == STATE_HOMING)
             {
+                target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 300);
+                target.AddBuff(ModContent.BuffType<WhisperingDeath>(), 300);
+
                 TriggerDeathSequence();
                 Projectile.Kill();
+            }
+            else
+            {
+                target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 180);
             }
         }
 

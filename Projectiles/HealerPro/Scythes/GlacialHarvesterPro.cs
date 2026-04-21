@@ -39,7 +39,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             scytheCount = 2;
             Projectile.Size = new Vector2(100f, 100f);
             Projectile.scale = 2f;
-            dustOffset = new Vector2(0f, 10f);
+            dustOffset = new Vector2(0f, 50f);
             dustCount = 4;
             dustType = DustID.SnowBlock;
         }

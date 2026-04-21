@@ -90,12 +90,13 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             Projectile.height = 221;
             Projectile.width = 273;
 
-            scytheCount = 1;
-            dustCount = 2;
+            scytheCount = 2;
+            dustCount = 0;
             dustType = DustID.UnusedWhiteBluePurple;
             dustScale = 1.2f;
             dustNoGravity = true;
-            dustVel = new Vector2(0f, -1f);
+            dustVel = new Vector2(0f, 0f);
+            dustOffset = new Vector2(0f, 80f);
 
             VortexWhoAmI = -1f;
             rotationSpeed = MinRotSpeed;
@@ -115,8 +116,11 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             Projectile.timeLeft = 3;
             rotationSpeed = CurrentRotSpeed;
 
-            if (!IsSunsUp)
+
+
+            if (!IsSunsUp && owner.ownedProjectileCounts[ModContent.ProjectileType<AphelionSun>()] < 1)
                 ChargeTimer = Math.Min(ChargeTimer + 1f, MaxChargeFrames);
+
 
             if (!IsVortex && ChargeProgress >= VortexThreshold)
                 TransitionToVortex(owner);
@@ -295,6 +299,41 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                 tex.Size() * 0.5f, Projectile.scale/2, fx, 0f);
 
             _prevRotation = currRot;
+
+            // afterimage
+            float opacity = MathHelper.Lerp(0f, 0.1f, ChargeProgress);
+
+            Color scytheColor = Color.LightGreen * opacity;
+            scytheColor.A = 0;
+
+            Texture2D slashTexture = (Texture2D)ModContent.Request<Texture2D>("RagnarokMod/Effects/Assets/Slash_3");
+            float slashScale = 3.5f;
+            float rotationOffset = 40;
+
+            if (Main.player[Projectile.owner].direction != 1)
+            {
+                rotationOffset *= -1;
+            }
+
+
+            // Two forward-facing afterimages
+            Main.EntitySpriteDraw(slashTexture, Projectile.Center - Main.screenPosition, null, scytheColor,
+                Projectile.rotation + rotationOffset, slashTexture.Size() / 2f, Projectile.scale * slashScale,
+                Projectile.spriteDirection < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
+
+            Main.EntitySpriteDraw(slashTexture, Projectile.Center - Main.screenPosition, null, scytheColor,
+                Projectile.rotation + rotationOffset, slashTexture.Size() / 2f, Projectile.scale * slashScale,
+                Projectile.spriteDirection < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
+
+            // Two mirrored afterimages (rotated by 180)
+            Main.EntitySpriteDraw(slashTexture, Projectile.Center - Main.screenPosition, null, scytheColor,
+                Projectile.rotation + MathHelper.Pi + rotationOffset, slashTexture.Size() / 2f, Projectile.scale * slashScale,
+                Projectile.spriteDirection < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
+
+            Main.EntitySpriteDraw(slashTexture, Projectile.Center - Main.screenPosition, null, scytheColor,
+                Projectile.rotation + MathHelper.Pi + rotationOffset, slashTexture.Size() / 2f, Projectile.scale * slashScale,
+                Projectile.spriteDirection < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
+
             return false;
         }
     }

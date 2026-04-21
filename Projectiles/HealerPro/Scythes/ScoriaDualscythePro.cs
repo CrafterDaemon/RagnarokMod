@@ -14,7 +14,7 @@ using Terraria.Audio;
 
 namespace RagnarokMod.Projectiles.HealerPro.Scythes
 {
-    public class ScoriaDualscythePro : ScythePro
+    public class ScoriaDualscythePro : ScythePro2
     {
         public override void SafeSetStaticDefaults()
         {

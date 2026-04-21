@@ -35,13 +35,16 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             Projectile.Size = new Vector2(304f, 304f);
             Projectile.timeLeft = 20;
             Projectile.idStaticNPCHitCooldown = 21;
-            rotationSpeed = 0.15f;
+            rotationSpeed = 0.4f;
         }
 
         public override void AI()
         {
             Projectile.timeLeft++;
             timeSpinning++;
+
+            rotationSpeed = Math.Max(rotationSpeed - 0.001f, 0.15f);
+
             Projectile.spriteDirection = Projectile.direction = player.direction;
             Lighting.AddLight(Projectile.Center, 0.9f, 0.2f, 0.9f);
             player.heldProj = Projectile.whoAmI;
@@ -64,7 +67,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                     Projectile.position,
                     Vector2.Zero,
                     ModContent.ProjectileType<MiniDoGHead>(),
-                    Projectile.damage,
+                    Projectile.damage / 3,
                     Projectile.knockBack,
                     Projectile.owner
                 );
@@ -140,6 +143,41 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                 effects,
                 0
             );
+
+            // afterimage
+            float fadeDuration = 300f;
+            float fade = MathHelper.Clamp(1f - timeSpinning / fadeDuration, 0f, 1f);
+
+            Color scytheColor = Color.Purple * fade * 0.15f;
+            scytheColor.A = 0;
+
+            Texture2D slashTexture = (Texture2D)ModContent.Request<Texture2D>("RagnarokMod/Effects/Assets/Slash_3");
+            float slashScale = 3.9f;
+            float rotationOffset = 40;
+
+            if (player.direction != 1)
+            {
+                rotationOffset *= -1;
+            }
+
+
+            // Two forward-facing afterimages
+            Main.EntitySpriteDraw(slashTexture, Projectile.Center - Main.screenPosition, null, scytheColor,
+                Projectile.rotation + rotationOffset, slashTexture.Size() / 2f, Projectile.scale * slashScale,
+                Projectile.spriteDirection < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
+
+            Main.EntitySpriteDraw(slashTexture, Projectile.Center - Main.screenPosition, null, scytheColor,
+                Projectile.rotation + rotationOffset, slashTexture.Size() / 2f, Projectile.scale * slashScale,
+                Projectile.spriteDirection < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
+
+            // Two mirrored afterimages (rotated by 180)
+            Main.EntitySpriteDraw(slashTexture, Projectile.Center - Main.screenPosition, null, scytheColor,
+                Projectile.rotation + MathHelper.Pi + rotationOffset, slashTexture.Size() / 2f, Projectile.scale * slashScale,
+                Projectile.spriteDirection < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
+
+            Main.EntitySpriteDraw(slashTexture, Projectile.Center - Main.screenPosition, null, scytheColor,
+                Projectile.rotation + MathHelper.Pi + rotationOffset, slashTexture.Size() / 2f, Projectile.scale * slashScale,
+                Projectile.spriteDirection < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
 
             return false; // prevent vanilla draw
         }

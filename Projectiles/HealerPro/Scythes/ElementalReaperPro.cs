@@ -11,10 +11,11 @@ using Terraria.ModLoader;
 using ThoriumMod;
 using ThoriumMod.Projectiles.Scythe;
 using CalamityMod.Buffs.DamageOverTime;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace RagnarokMod.Projectiles.HealerPro.Scythes
 {
-    public class ElementalReaperPro : ScythePro
+    public class ElementalReaperPro : ScythePro2
     {
         public override void SafeSetStaticDefaults()
         {
@@ -46,6 +47,54 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
         public override void SafeModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
             target.AddBuff(ModContent.BuffType<ElementalMix>(), 360);
+        }
+
+        public override bool PreDraw(ref Color lightColor)
+        {
+            // Fade with projectile alpha
+            lightColor *= MathHelper.Lerp(1f, 0f, Projectile.alpha / 255f);
+
+            // Main scythe texture
+            Texture2D texture = (Texture2D)ModContent.Request<Texture2D>(Texture);
+            Main.EntitySpriteDraw(
+                texture,
+                Projectile.Center - Main.screenPosition,
+                null,
+                lightColor,
+                Projectile.rotation + MathHelper.PiOver4 * Projectile.spriteDirection,
+                texture.Size() / 2f,
+                Projectile.scale,
+                Projectile.spriteDirection < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None,
+                0f
+            );
+
+            // afterimage
+            Color scytheColor = Color.OrangeRed *
+                                MathHelper.Lerp(0.15f, 0f, Projectile.alpha / 255f);
+            scytheColor.A = 0;
+
+            Texture2D slashTexture = (Texture2D)ModContent.Request<Texture2D>("RagnarokMod/Effects/Assets/Slash_3");
+            float slashScale = 4f;
+
+            // Two forward-facing afterimages
+            Main.EntitySpriteDraw(slashTexture, Projectile.Center - Main.screenPosition, null, scytheColor,
+                Projectile.rotation, slashTexture.Size() / 2f, Projectile.scale * slashScale,
+                Projectile.spriteDirection < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
+
+            Main.EntitySpriteDraw(slashTexture, Projectile.Center - Main.screenPosition, null, scytheColor,
+                Projectile.rotation, slashTexture.Size() / 2f, Projectile.scale * slashScale,
+                Projectile.spriteDirection < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
+
+            // Two mirrored afterimages (rotated by 180)
+            Main.EntitySpriteDraw(slashTexture, Projectile.Center - Main.screenPosition, null, scytheColor,
+                Projectile.rotation + MathHelper.Pi, slashTexture.Size() / 2f, Projectile.scale * slashScale,
+                Projectile.spriteDirection < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
+
+            Main.EntitySpriteDraw(slashTexture, Projectile.Center - Main.screenPosition, null, scytheColor,
+                Projectile.rotation + MathHelper.Pi, slashTexture.Size() / 2f, Projectile.scale * slashScale,
+                Projectile.spriteDirection < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
+
+            return false;
         }
     }
 }

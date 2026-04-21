@@ -10,7 +10,7 @@ using Terraria.ID;
 
 namespace RagnarokMod.Projectiles.HealerPro.Scythes
 {
-    public class MarbleScythePro : ScythePro
+    public class MarbleScythePro : ScythePro2
     {
         public override void SafeSetStaticDefaults()
         {
@@ -69,7 +69,22 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
 
             Color drawColor = Projectile.GetAlpha(lightColor);
 
-            Main.EntitySpriteDraw(
+            if (Main.player[Projectile.owner].direction != 1)
+            {
+                Main.EntitySpriteDraw(
+                texture,
+                Projectile.Center - Main.screenPosition,
+                null,
+                drawColor,
+                Projectile.rotation,
+                origin,
+                Projectile.scale,
+                SpriteEffects.FlipHorizontally,
+                0);
+            }
+            else
+            {
+                Main.EntitySpriteDraw(
                 texture,
                 Projectile.Center - Main.screenPosition,
                 null,
@@ -78,8 +93,8 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                 origin,
                 Projectile.scale,
                 SpriteEffects.None,
-                0
-            );
+                0);
+            }
 
             return false;
         }

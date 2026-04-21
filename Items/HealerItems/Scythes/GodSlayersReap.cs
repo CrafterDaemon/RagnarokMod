@@ -25,10 +25,10 @@ namespace RagnarokMod.Items.HealerItems.Scythes
         public override void SetDefaults()
         {
             SetDefaultsToScythe();
-            scytheSoulCharge = 6;
+            scytheSoulCharge = 5;
             Item.autoReuse = false;
             Item.channel = true;
-            Item.damage = 1100;
+            Item.damage = 1500;
             Item.width = 67;
             Item.height = 86;
             Item.value = CalamityGlobalItem.RarityVioletBuyPrice;

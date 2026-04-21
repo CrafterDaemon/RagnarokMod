@@ -29,7 +29,7 @@ namespace RagnarokMod.Items.HealerItems.Scythes
             scytheSoulCharge = 3;
             base.Item.width = 55;
             base.Item.height = 47;
-            base.Item.useTime = 20;
+            base.Item.useTime = 22;
 
             base.Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
             base.Item.rare = ModContent.RarityType<CosmicPurple>();

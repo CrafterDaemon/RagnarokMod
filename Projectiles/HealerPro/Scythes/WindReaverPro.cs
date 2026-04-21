@@ -12,7 +12,7 @@ using ThoriumMod.Projectiles.Scythe;
 
 namespace RagnarokMod.Projectiles.HealerPro.Scythes
 {
-    public class WindReaverPro : ScythePro
+    public class WindReaverPro : ScythePro2
     {
         public override void SafeSetStaticDefaults()
         {
