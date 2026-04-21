@@ -1206,6 +1206,11 @@ Items: {
 			[c/DDEEFF:S][c/D2E3FA:t][c/C7D8F5:e][c/BCCDEF:l][c/B2C2EA:l][c/A7B7E5:a][c/9CACE0:r] [c/8697D5:M][c/7B8CD0:a][c/7181CB:s][c/6676C5:s][c/5B6BC0:e][c/5060BB:s] inflict [rbuff:CalamityMod/Dragonfire], [rbuff:CalamityMod/GodSlayerInferno], and [rbuff:CalamityMod/Daybroken] on contact
 			'''
 	}
+
+	Thaumonomicon: {
+		DisplayName: Thaumonomicon
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -1641,6 +1646,7 @@ Configs: {
 			UITweaks: UI Tweaks
 			WelcomeText: Welcome Text
 			Visual: Visuals
+			VisFluxMeter: Vis Flux Meter Header
 		}
 
 		BardEmpowermentBarOffsetX: {
@@ -1706,6 +1712,16 @@ Configs: {
 				Set to 1 to always play the sound during riffs, -1 to never play the sound during riffs.
 				0 will only play the sound during riffs for intended specific items, such as the Fungal Castanets.
 				'''
+		}
+
+		MeterOffsetX: {
+			Label: Meter Offset X
+			Tooltip: ""
+		}
+
+		MeterOffsetY: {
+			Label: Meter Offset Y
+			Tooltip: ""
 		}
 	}
 

@@ -1,24 +1,28 @@
 ﻿using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.CalPlayer;
+using CalamityMod.Items.Potions.Alcohol;
 using Microsoft.Xna.Framework;
 using RagnarokMod.Buffs;
 using RagnarokMod.Common.Configs;
 using RagnarokMod.Items.BardItems.Accessories;
 using RagnarokMod.Items.BardItems.Armor;
-using RagnarokMod.Projectiles.Accessories;
-using RagnarokMod.Riffs;
-using RagnarokMod.Projectiles.CalamityOverrides;
 using RagnarokMod.Items.HealerItems.CalamityOverrides;
+using RagnarokMod.Projectiles.Accessories;
+using RagnarokMod.Projectiles.CalamityOverrides;
+using RagnarokMod.Riffs;
 using ReLogic.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.Pkcs;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.GameInput;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
+using Terraria.WorldBuilding;
 using ThoriumMod;
 using ThoriumMod.Buffs;
 using ThoriumMod.Buffs.Bard;
@@ -31,9 +35,8 @@ using ThoriumMod.Projectiles.Healer;
 using ThoriumMod.Projectiles.Thrower;
 using ThoriumMod.Sounds;
 using ThoriumMod.Utilities;
-using System.Security.Cryptography.Pkcs;
 using static RagnarokMod.RagnarokMod;
-using CalamityMod.Items.Potions.Alcohol;
+using static RagnarokMod.Utils.RConsts;
 
 namespace RagnarokMod.Utils
 {
@@ -80,7 +83,6 @@ namespace RagnarokMod.Utils
         public int bloodflarebloodlust = 0;
         private int bloodflarepointreductiontimer = 0;
 		private int bloodflarelastonhittimer = 0;
-        private const int maxbloodlustpoints = 100;
 		private int bloodflareonhitcooldown = 0;
 		public int elementalReaperCD = 0;
         public int elementalReaperIndex = 0;
@@ -97,28 +99,12 @@ namespace RagnarokMod.Utils
         public SlotId riffSlot;
         public bool riffPlaying;
         public int riffItemType = -1;
+        public float Vis { get; private set; } = MaxVis;
+        public float Flux { get; private set; } = 0f;
 
-        public void EnsureMiniAnahita(){
-            if (Player.whoAmI != Main.myPlayer)
-                return;
-            int type = ModContent.ProjectileType<MiniAnahitaCompanion>();
-            for (int i = 0; i < Main.maxProjectiles; i++){
-                Projectile p = Main.projectile[i];
-                if (p.active && p.owner == Player.whoAmI && p.type == type){
-                    return; // already exists
-                }
-            }
-            Item scale = null;
-            foreach (Item item in Player.armor){
-                if (item.type == ModContent.ItemType<SirenScale>()){
-                    scale = item;
-                    break;
-                }
-            }
-            if (scale == null)
-                return;
-            int index = Projectile.NewProjectile(Player.GetSource_Accessory(scale),Player.Center,Microsoft.Xna.Framework.Vector2.Zero,type,(int)(Player.HeldItem.damage),2f,Player.whoAmI);
-        }
+        public bool HasThaumonomicon = false;
+
+        private int _dotTimer = 0;
         public override void OnEnterWorld(){
             if (ModContent.GetInstance<ClientConfig>().StartText)
                 startMessageDisplayDelay = Main.rand.Next(15*60, 60*60 + 1);
@@ -445,7 +431,10 @@ namespace RagnarokMod.Utils
                 Player.GetAttackSpeed(DamageClass.Throwing) = 1f;
             }
         }
-
+        public override void UpdateEquips()
+        {
+            UpdateThaumonomicon();
+        }
         public override void PostUpdateEquips(){
             RiffLoader.UpdateRiffs(Player);
             if (base.Player.armor[0].type == thorium.Find<ModItem>("SandStoneHelmet").Type
@@ -762,6 +751,7 @@ namespace RagnarokMod.Utils
             sirenVisualHidden = false;
             shredderLifesteal = false;
             this.redglassMonocle = false;
+            HasThaumonomicon = false;
         }
         public override void ResetEffects(){
             if (lastHeldItem != null){
@@ -806,11 +796,14 @@ namespace RagnarokMod.Utils
             if (auricBoost)
                 knockback.Flat += item.knockBack * 0.5f;
         }
-        public void OnHitNPCWithAny(NPC npc, NPC.HitInfo hit, int damageDone){
-            if (nightfallen){
+        public void OnHitNPCWithAny(NPC npc, NPC.HitInfo hit, int damageDone)
+        {
+            if (nightfallen)
+            {
                 npc.AddBuff(ModContent.BuffType<NightfallenDebuff>(), 240);
             }
-            if (shredderLifesteal && shredderLifestealCooldown <= 0){
+            if (shredderLifesteal && shredderLifestealCooldown <= 0)
+            {
                 Player.statLife += 1;
                 Player.HealEffect(1);
                 if (Player.statLife > Player.statLifeMax2)
@@ -818,18 +811,30 @@ namespace RagnarokMod.Utils
                 shredderLifestealCooldown = 6;
             }
         }
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
+        {
+            if (HasThaumonomicon && Player.manaRegenDelay > 0 && Player.HeldItem.mana > 0)
+            {
+                ApplyFluxBonus(Player, target, ref modifiers);
+            }
+        }
+
         public override void Unload(){
             OnHealEffects?.Clear();
             OnHealEffects = null;
             base.Unload();
         }
-        private void HandleTextChatMessages(){
+        private void HandleTextChatMessages()
+        {
             if (Player.whoAmI != Main.myPlayer || Main.dedServ)
                 return;
 
-            if (startMessageDisplayDelay >= 0){
-                if (startMessageDisplayDelay == 0){
-                    if (ModContent.GetInstance<ClientConfig>().StartText){
+            if (startMessageDisplayDelay >= 0)
+            {
+                if (startMessageDisplayDelay == 0)
+                {
+                    if (ModContent.GetInstance<ClientConfig>().StartText)
+                    {
                         CalamityUtils.BroadcastLocalizedText("Mods.RagnarokMod.FandomWarning");
                         CalamityUtils.BroadcastLocalizedText("Mods.RagnarokMod.WikiMessage");
                         CalamityUtils.BroadcastLocalizedText("Mods.RagnarokMod.DiscordInvite");
@@ -839,6 +844,131 @@ namespace RagnarokMod.Utils
                 }
                 --startMessageDisplayDelay;
             }
+        }
+        public void UpdateThaumonomicon()
+        {
+            if (!HasThaumonomicon) return;
+
+            // player.manaRegenDelay > 0 means mana was consumed this tick —
+            // vanilla sets it whenever the player pays a mana cost.
+            bool spendingMana = Player.manaRegenDelay > 0;
+
+            float visFraction = Vis / MaxVis;
+            float fluxFraction = Flux / MaxFlux;
+            float total = Vis + Flux;
+            if (total > 100f)
+            {
+                Flux -= total - 100f;
+            }
+            if (spendingMana)
+            {
+                // Vis drains, accelerating as it empties
+                float accel = 1f + (1f - visFraction) * (1f - visFraction) * VisConsumeAccel;
+                Vis -= VisConsumeBase * accel;
+                Vis = MathHelper.Clamp(Vis, 0f, MaxVis);
+
+                // Flux builds while mana is being spent
+                Flux += FluxGainRate;
+                Flux = MathHelper.Clamp(Flux, 0f, MaxFlux);
+            }
+            else
+            {
+                // Vis refills steadily
+                Vis += VisRegenRate;
+                Vis = MathHelper.Clamp(Vis, 0f, MaxVis);
+
+                // Flux bleeds off — faster the more Vis is present
+                float dissipate = FluxDissipateBase * (1f + visFraction * FluxDissipateVisMultiplier);
+                Flux -= dissipate;
+                Flux = MathHelper.Clamp(Flux, 0f, MaxFlux);
+            }
+
+            // Apply mana cost multiplier directly to the player stat
+            Player.manaCost *= GetManaCostMultiplier();
+
+            // DoT when Flux exceeds 75%
+            fluxFraction = Flux / MaxFlux; // recalc after update
+            if (fluxFraction > FluxDotThreshold)
+            {
+                _dotTimer++;
+                if (_dotTimer >= FluxDotTickRate)
+                {
+                    _dotTimer = 0;
+                    Player.Hurt(
+                        PlayerDeathReason.ByCustomReason(NetworkText.FromLiteral(Player.name.ToString() + " " + Language.GetTextValue("Mods.RagnarokMod.Compat.TurnedToAmmo"))),
+                        FluxDotDamage, 0);
+                }
+            }
+            else
+            {
+                _dotTimer = 0;
+            }
+        }
+        private static void ApplyFluxBonus(Player player, NPC target, ref NPC.HitModifiers modifiers)
+        {
+            var vfp = player.GetRagnarokModPlayer();
+            if (!vfp.HasThaumonomicon) return;
+
+            modifiers.SourceDamage *= vfp.GetFluxBonus();
+        }
+        public float GetFluxBonus()
+        {
+            if (!HasThaumonomicon) return 0;
+            float bonus = 1f + ((Flux / MaxFlux) * FluxDamageBonusMax);
+            return bonus;
+        }
+
+        private float GetManaCostMultiplier()
+        {
+            float visFraction = Vis / MaxVis;
+
+            if (visFraction < VisManaDiscountThreshold)
+            {
+                float t = 1f - (visFraction / VisManaDiscountThreshold);
+                return 1f + t * VisMaxSurcharge;
+            }
+            else
+            {
+                float t = (visFraction - VisManaDiscountThreshold) / (1f - VisManaDiscountThreshold);
+                return 1f - t * VisMaxDiscount;
+            }
+        }
+        public override void SaveData(Terraria.ModLoader.IO.TagCompound tag)
+        {
+            tag["Vis"] = Vis;
+            tag["Flux"] = Flux;
+        }
+
+        public override void LoadData(Terraria.ModLoader.IO.TagCompound tag)
+        {
+            Vis = tag.GetFloat("Vis");
+            Flux = tag.GetFloat("Flux");
+        }
+        public void EnsureMiniAnahita()
+        {
+            if (Player.whoAmI != Main.myPlayer)
+                return;
+            int type = ModContent.ProjectileType<MiniAnahitaCompanion>();
+            for (int i = 0; i < Main.maxProjectiles; i++)
+            {
+                Projectile p = Main.projectile[i];
+                if (p.active && p.owner == Player.whoAmI && p.type == type)
+                {
+                    return; // already exists
+                }
+            }
+            Item scale = null;
+            foreach (Item item in Player.armor)
+            {
+                if (item.type == ModContent.ItemType<SirenScale>())
+                {
+                    scale = item;
+                    break;
+                }
+            }
+            if (scale == null)
+                return;
+            int index = Projectile.NewProjectile(Player.GetSource_Accessory(scale), Player.Center, Microsoft.Xna.Framework.Vector2.Zero, type, (int)(Player.HeldItem.damage), 2f, Player.whoAmI);
         }
     }
 }

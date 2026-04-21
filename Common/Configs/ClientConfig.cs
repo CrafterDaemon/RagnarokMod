@@ -115,5 +115,20 @@ namespace RagnarokMod.Common.Configs
         [Increment(1)]
         [DrawTicks]
         public int BardEmpowermentBarOffsetY { get; set; }
+
+        [Header("VisFluxMeter")]
+
+        [Range(0, 4000)]
+        [DefaultValue(20)]
+        [Increment(1)]
+        [DrawTicks]
+        public int MeterOffsetX { get; set; } = 20;
+
+        [Range(0, 4000)]
+        [DefaultValue(80)]
+        [Increment(1)]
+        [DrawTicks]
+        public int MeterOffsetY { get; set; } = 80;
+
     }
 }
