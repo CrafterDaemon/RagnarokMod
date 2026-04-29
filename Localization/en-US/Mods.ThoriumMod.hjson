@@ -105,7 +105,7 @@ Items: {
 		DisplayName: The Ring
 		Tooltip:
 			'''
-			Increases all damage by 4%
+			4% increased damage
 			Increases armor penetration by 3
 			Increases critical strike chance by 4%
 			'''
@@ -113,7 +113,7 @@ Items: {
 
 	TopazRing: {
 		DisplayName: Topaz Ring
-		Tooltip: Increases rogue damage by 3%
+		Tooltip: 3% increased rogue damage
 	}
 
 	FlightMail: {
