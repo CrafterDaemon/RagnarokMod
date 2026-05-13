@@ -1,9 +1,8 @@
 displayName = Ragnarok Mod
 author = CrafterDaemon & The Ragnarok Team
-icon = icon_small.png
 version = 1.6
 modReferences = ThoriumMod, CalamityMod
-homepage = https://ragnarokmod.wiki.gg
+homepage = https://discord.com/invite/UBAQwtKCbf
 sortAfter = ThoriumMod, CalamityMod
 hideCode = false
 hideResources = false

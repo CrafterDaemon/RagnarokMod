@@ -18,6 +18,7 @@ using ThoriumMod.Empowerments;
 using ThoriumMod.Items;
 using ThoriumMod.Items.BardItems;
 using tModPorter;
+using CalamityMod.CalPlayer;
 
 namespace RagnarokMod.Items.BardItems
 {
@@ -178,17 +179,20 @@ namespace RagnarokMod.Items.BardItems
                 : NormalSound;
         }
 
-        private static bool ObBard => ModContent.GetInstance<Common.Configs.AprilChaos>().ObBard;
+        //private static bool ObBard => ModContent.GetInstance<Common.Configs.AprilChaos>().ObBard;
         protected void SyncRiffSound(Player player, bool start)
         {
-            SoundStyle soundToPlay = ObBard ? GetRandomRiffSound(RiffSound) : RiffSound;
+            SoundStyle soundToPlay = RiffSound;
             var ragnarokPlayer = player.GetModPlayer<RagnarokModPlayer>();
             if (start)
             {
                 if (!SoundEngine.TryGetActiveSound(ragnarokPlayer.riffSlot, out var sound) || !sound.IsPlaying)
                 {
+                    bool canOverrideMusicWithEvent = CalamityPlayer.areThereAnyDamnEvents ? ModContent.GetInstance<ClientConfig>().RiffsOverrideEventMusic : true;
+                    bool canOverrideMusicWithBoss = CalamityPlayer.areThereAnyDamnBosses ? ModContent.GetInstance<ClientConfig>().RiffsOverrideBossMusic : true;
+
                     ragnarokPlayer.riffSlot = SoundEngine.PlaySound(
-                        soundToPlay.WithVolumeScale(ModContent.GetInstance<ClientConfig>().RiffMusicVolume),
+                        soundToPlay.WithVolumeScale(canOverrideMusicWithBoss ? canOverrideMusicWithEvent ? ModContent.GetInstance<ClientConfig>().RiffMusicVolume : 0f : 0f),
                         player.Center
                     );
                     ragnarokPlayer.riffPlaying = true;

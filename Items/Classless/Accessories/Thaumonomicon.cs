@@ -6,6 +6,8 @@ namespace RagnarokMod.Items.Classless.Accessories
 {
     public class Thaumonomicon : ModItem
     {
+        public override bool IsLoadingEnabled(Mod mod) => false;
+
         public override void SetDefaults()
         {
             Item.width = 28;

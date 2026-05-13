@@ -13,19 +13,13 @@ namespace RagnarokMod.Items.HealerItems.Armor
     [AutoloadEquip(EquipType.Head)]
     public class AerospecHealer : ModItem
     {
-        private readonly Mod calamity = ModLoader.GetMod("CalamityMod");
-        public override void SetStaticDefaults()
-        {
-
-        }
-
         public override void SetDefaults()
         {
-            base.Item.width = 18;
-            base.Item.height = 18;
-            base.Item.value = CalamityGlobalItem.RarityOrangeBuyPrice;
-            base.Item.rare = ItemRarityID.Orange;
-            base.Item.defense = 4;
+            Item.width = 18;
+            Item.height = 18;
+            Item.value = CalamityGlobalItem.RarityOrangeBuyPrice;
+            Item.rare = ItemRarityID.Orange;
+            Item.defense = 4;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -46,19 +40,22 @@ namespace RagnarokMod.Items.HealerItems.Armor
             player.noFallDmg = true;
             player.moveSpeed += 0.1f;
             thoriumPlayer.healBonus += 2;
+            player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) += 0.1f;
         }
 
         public override void UpdateEquip(Player player)
         {
             ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
-            player.GetDamage(DamageClass.Generic) -= 0.2f;
-            player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) += 0.4f;
+            player.GetDamage(DamageClass.Generic) -= 0.1f;
+            player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) += 0.2f;
             player.statManaMax2 += 20;
         }
 
         public override void AddRecipes()
         {
-            base.CreateRecipe(1).AddIngredient<AerialiteBar>(5).AddIngredient(ItemID.SunplateBlock, 3)
+            CreateRecipe()
+            .AddIngredient<AerialiteBar>(5)
+            .AddIngredient(ItemID.SunplateBlock, 3)
             .AddIngredient(ItemID.Feather, 1)
             .AddTile(TileID.Anvils)
             .Register();

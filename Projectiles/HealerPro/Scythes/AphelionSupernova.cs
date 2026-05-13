@@ -68,7 +68,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
         }
 
         private float _spinTime;
-        private bool _hasDamaged;
+        //private bool _hasDamaged;
 
         public override void SetDefaults()
         {

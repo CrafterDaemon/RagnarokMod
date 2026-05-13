@@ -63,7 +63,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
         private float SpawnProgress => Math.Min(SpawnTimer / SpawnInFrames, 1f);
         private bool _dying;
         private int _dyingTimer;
-        private bool _supernovaReady;
+        //private bool _supernovaReady;
         // Independent spin time advances proportional to orbital speed so the surface appears to rotate with the orbit rather than at a fixed real-time rate.
         private float _spinTime;
         private float CurrentOrbitRadius => _dying

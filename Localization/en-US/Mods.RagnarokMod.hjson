@@ -163,12 +163,14 @@ Items: {
 		DisplayName: Aerospec Hood
 		Tooltip:
 			'''
-			20% decreased non-radiant damage
-			20% increased radiant damage
+			10% decreased non-radiant damage
+			10% increased radiant damage
 			+20 maximum mana
 			'''
 		SetBonus:
 			'''
+			10% decreased non-radiant damage
+			10% increased radiant damage
 			Taking over 25 damage in one hit will cause a spread of homing feathers to fall
 			Allows you to fall more quickly and disables fall damage
 			Healing spells heal an additional 2 life
@@ -1494,6 +1496,7 @@ Configs: {
 				Thorium's damage penalty for mistimed big instrument attacks.
 				Thorium's default is 0.75, meaning mistimed attacks deal 75% less damage.
 				Ragnarok's default is 0.6, meaning mistimed attacks deal 60% less damage.
+				[c/7C0A02:Some mods may force this value to another value for their own balance, however.]
 				'''
 		}
 	}
@@ -1724,6 +1727,16 @@ Configs: {
 		MeterOffsetY: {
 			Label: Meter Offset Y
 			Tooltip: ""
+		}
+
+		RiffsOverrideEventMusic: {
+			Label: Riffs Override Event Music
+			Tooltip: Toggles if Riff Music overrides Event music
+		}
+
+		RiffsOverrideBossMusic: {
+			Label: Riffs Override Boss Music
+			Tooltip: Toggles if Riff Music overrides Boss music
 		}
 	}
 

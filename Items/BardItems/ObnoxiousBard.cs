@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿/*
+using System.Collections.Generic;
 using RagnarokMod.Common.Configs;
 using RagnarokMod.Sounds;
 using Terraria;
@@ -109,4 +110,6 @@ namespace RagnarokMod.Items.BardItems
         private static SoundStyle GetRandomRiffSound(SoundStyle riff)
             => ObnoxiousBardHelper.GetRandomRiffSound(riff);
     }
+   
 }
+*/

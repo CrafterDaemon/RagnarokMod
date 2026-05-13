@@ -37,6 +37,12 @@ namespace RagnarokMod.Common.Configs
         [Slider]
         public float RiffMusicVolume { get; set; }
 
+        [DefaultValue(true)]
+        public bool RiffsOverrideEventMusic { get; set; }
+
+        [DefaultValue(true)]
+        public bool RiffsOverrideBossMusic { get; set; }
+
         [DefaultValue(0)]
         [Range(-1,1)]
         [Increment(1)]
@@ -116,6 +122,7 @@ namespace RagnarokMod.Common.Configs
         [DrawTicks]
         public int BardEmpowermentBarOffsetY { get; set; }
 
+        /*
         [Header("VisFluxMeter")]
 
         [Range(0, 4000)]
@@ -129,6 +136,6 @@ namespace RagnarokMod.Common.Configs
         [Increment(1)]
         [DrawTicks]
         public int MeterOffsetY { get; set; } = 80;
-
+        */
     }
 }

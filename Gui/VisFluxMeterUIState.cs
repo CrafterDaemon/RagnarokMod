@@ -63,8 +63,8 @@ namespace RagnarokMod.Common.UI
         private void RefreshPosition()
         {
             var cfg = ClientConfig.Instance;
-            Left = new StyleDimension(-(cfg.MeterOffsetX + SpriteW), 0f);
-            Top = new StyleDimension(-(cfg.MeterOffsetY + SpriteH), 0f);
+            //Left = new StyleDimension(-(cfg.MeterOffsetX + SpriteW), 0f);
+            //Top = new StyleDimension(-(cfg.MeterOffsetY + SpriteH), 0f);
             Recalculate();
         }
 

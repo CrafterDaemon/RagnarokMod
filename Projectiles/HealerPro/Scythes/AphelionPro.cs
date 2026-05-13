@@ -64,7 +64,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
         private bool IsVortex => State >= 1f;
         private bool IsSunsUp => State >= 2f;
 
-        private float _prevAngle;
+        //private float _prevAngle;
 
         private int _sun0 = -1;
         private int _sun1 = -1;

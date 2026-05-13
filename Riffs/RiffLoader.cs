@@ -1,4 +1,8 @@
-﻿using CalamityMod.Cooldowns;
+﻿using CalamityMod;
+using CalamityMod.CalPlayer;
+using CalamityMod.Cooldowns;
+using CalamityMod.NPCs;
+using CalamityMod.Systems;
 using Microsoft.Xna.Framework;
 using RagnarokMod.Common.Configs;
 using RagnarokMod.Utils;
@@ -55,8 +59,12 @@ namespace RagnarokMod.Riffs
         {
             var ragnarokPlayer = player.GetRagnarokModPlayer();
 
+            bool canOverrideMusicWithEvent = CalamityPlayer.areThereAnyDamnEvents ? ModContent.GetInstance<ClientConfig>().RiffsOverrideEventMusic : true;
+
+            bool canOverrideMusicWithBoss = CalamityPlayer.areThereAnyDamnBosses ? ModContent.GetInstance<ClientConfig>().RiffsOverrideBossMusic : true;
+
             // Fade out music while riff is active (only if riff volume > 0)
-            if (ragnarokPlayer.riffPlaying && ModContent.GetInstance<ClientConfig>().RiffMusicVolume > 0f)
+            if (ragnarokPlayer.riffPlaying && ModContent.GetInstance<ClientConfig>().RiffMusicVolume > 0f && canOverrideMusicWithEvent && canOverrideMusicWithBoss)
             {
                 if (Main.musicFade[Main.curMusic] > 0.1f)
                     Main.musicFade[Main.curMusic] = Math.Max(0.1f, Main.musicFade[Main.curMusic] - 0.02f);
