@@ -1,71 +1,71 @@
 Buffs: {
 	AntarcticCreativityBuff: {
 		DisplayName: 极地创想
-		Description: 灵感值恢复速度提高15%和增加10%音波演奏速度
-		// ItemTooltip: +15% inspiration regeneration rate and +10% increased symphonic playing speed
+		Description: 寒冷带来了杰出的灵感
+		ItemTooltip: 灵感值恢复速度提高和增加10%音波演奏速度
 	}
 
 	AntarcticReinforcementBuff: {
 		DisplayName: 极地援护
-		Description: 防御力增加8, 治疗法术会额外治疗2点生命值
-		// ItemTooltip: +8 defense and +2 bonus healing
+		Description: 寒冷保护着你
+		ItemTooltip: 防御力增加8, 治疗法术会额外治疗2点生命值
 	}
 
 	AntarcticExhaustionDebuff: {
 		DisplayName: 极地竭尽
-		Description: 你不能再次使用此增益了
+		Description: 寒冷刺骨
 	}
 
 	GuardianHealerBeamBuff: {
 		DisplayName: 圣晶守卫的祝福
-		Description: 额外降低10%伤害减免和5点生命恢复并持续20秒
-		// ItemTooltip: +10% damage reduction and +5 hp/s life regen
+		Description: 你受到亵渎之力的祝福
+		ItemTooltip: 伤害减免增加10%，生命恢复增加5点
 	}
 
 	ElementalScytheCooldown: {
 		DisplayName: 元素收割者
-		Description: 元素收割者右键冷却时间！
+		Description: 元素收割者冷却时间！
 	}
 
 	ScytheAirBuff: {
 		DisplayName: 空气的祝福
-		Description: 增加20%移动速度和飞行时间
-		// ItemTooltip: +20% movement speed and wing time
+		Description: 你总是乘风破浪
+		ItemTooltip: 增加20%移动速度和飞行时间
 	}
 
 	ScytheBrimstoneBuff: {
 		DisplayName: 硫磺火的祝福
-		Description: 所有攻击都造成硫磺火
-		// ItemTooltip: Inflict [cbuff:CalamityMod/BrimstoneFlames] on hit
+		Description: 你的敌人被炼化为诅咒之火
+		ItemTooltip: 所有攻击都造成硫磺火
 	}
 
 	ScytheEarthBuff: {
 		DisplayName: 大地的祝福
-		Description: 防御力增加10
-		// ItemTooltip: +10 defense
+		Description: 大地保护着你
+		ItemTooltip: 防御力增加10
 	}
 
 	ScytheOasisBuff: {
 		DisplayName: 绿洲的祝福
-		Description: 自然回复提高15点生命值/秒
-		// ItemTooltip: +15 hp/s life regen
+		Description: 沙漠绿洲让你如获新生
+		ItemTooltip: 自然回复提高15点生命值/秒
 	}
 
 	ScytheSandBuff: {
 		DisplayName: 沙的祝福
-		Description: 增加5%攻击伤害
-		// ItemTooltip: +5% attack damage
+		Description: 黄沙百战穿金甲
+		ItemTooltip: 增加5%攻击伤害
 	}
 
 	ScytheWaterBuff: {
 		DisplayName: 水的祝福
-		Description: 增加5%攻击速度
-		// ItemTooltip: +5% all attack speed
+		Description: 水流引导着你的手
+		ItemTooltip: 增加5%攻击速度
 	}
 
 	AuricSurge: {
 		DisplayName: 金源浪涌
-		Description: Mods.RagnarokMod.Buffs.AuricSurge.Description
+		Description: 你正受到来自内心的打击。
 	}
 
 	KellyPetBuff: {
@@ -74,55 +74,51 @@ Buffs: {
 	}
 
 	NightfallenDebuff: {
-		DisplayName: 苍帷减益
-		Description: Mods.RagnarokMod.Buffs.NightfallenDebuff.Description
-		/* ItemTooltip:
+		DisplayName: 堕夜
+		Description: 黑暗吞噬一切。
+		ItemTooltip:
 			'''
-			Typeless - 100 DPS
-			+10% damage taken from all sources
-			''' */
+			无类型 - 100 DPS
+			增加10%受到的所有来源伤害
+			'''
 	}
 
 	LeviathanHeartBubble: {
-		DisplayName: 利维坦泡泡心
+		DisplayName: 利维坦泡泡
 		Description: 利维坦的泡泡给予你5%伤害减免
-		// ItemTooltip: +5% damage reduction
+		ItemTooltip: 增加5%伤害减免
 	}
 
 	LeviathanHeartBubbleCorrupted: {
-		DisplayName: 利维坦的腐坏泡泡心
+		DisplayName: 利维坦的腐坏泡泡
 		Description:
 			'''
 			腐坏的利维坦泡泡增加你10%的伤害
 			但你受到的伤害提升5%
 			'''
-		// ItemTooltip: +10% attack damage, +5% damage taken from all sources
+		ItemTooltip: 增加10%伤害，受到的伤害增加5%
 	}
 }
 
 Tooltips: {
 	WhiteDwarfSetBonus:
 		'''
-		暴击会从星宇释放象牙状火焰
-		象牙状火焰会将目标的接触伤害反弹给其自身，
-		若该数值低于你的基础武器伤害，则改为造成你的基础武器伤害
+		盗贼攻击有5%概率从星宇释放象牙状火焰，造成1.75倍伤害
+		火焰的伤害基于非暴击伤害，但火焰本身可以暴击
 		'''
 
 	LeviathanHeart: {
 		NormalTooltip:
 			'''
 			治疗法术的治疗量提升25%
-			治疗法术会为目标施加一层防护气泡
-			使其+5%伤害减免，持续5秒
-			光辉攻击速度提升25%
+			治疗法术对目标施加[rbuff:RagnarokMod/LeviathanHeartBubble]增益
 			'''
 		CorruptTooltip:
 			'''
 			利维坦泡泡回应了你的暗能量！
 			所有生命值消耗减少1点
-			消耗生命值时会将你包裹于腐化气泡之中
-			获得+10%伤害，但受到的伤害提高5%
-			光辉攻击速度提升25%
+			消耗生命值会给予你[rbuff:RagnarokMod/LeviathanHeartBubbleCorrupted]增益
+			增加10%光辉攻击速度
 			'''
 	}
 }
@@ -167,12 +163,14 @@ Items: {
 		DisplayName: 天蓝风帽
 		Tooltip:
 			'''
-			降低20%非光辉伤害
-			增加20%光辉伤害
+			降低10%非光辉伤害
+			增加10%光辉伤害
 			最大魔力值增加20
 			'''
 		SetBonus:
 			'''
+			降低10%非光辉伤害
+			增加10%光辉伤害
 			一次受到超过25点伤害会召唤追踪羽毛从天而降
 			提高下落速度并免疫摔落伤害
 			治疗法术会额外治疗2点生命值
@@ -182,10 +180,10 @@ Items: {
 
 	AuricTeslaFrilledHelmet: {
 		DisplayName: 金缀韵灵盔
-		// DisplayNameEclipse: Primordial Tesla Frilled Helmet
+		DisplayNameEclipse: 始生金缀韵灵盔
 		Tooltip:
 			'''
-			增加20%音波伤害、音波暴击率和音波追踪速度
+			增加20%音波伤害、音波暴击率和管乐器弹幕追踪速度
 			增加5%移动速度
 			增加30%灵感值恢复速度
 			最大灵感值增加15
@@ -193,17 +191,18 @@ Items: {
 			'''
 		SetBonus:
 			'''
-			拥有狂想独奏帽/狂想启迪盔, 弑神者兜帽, 血嚎尖芒盔, 龙蒿魂罩的套装效果
-			按下“盔甲能力”键将触发两个狂想套装效果
+			拥有血嚎尖芒盔、弑神者兜帽，和狂想独奏帽/狂想启迪盔的套装效果
+			按下'{$ThoriumMod.Keybinds.ArmorAbility.DisplayName}'键将触发两套狂想者套装的效果
 			'''
-		// SetBonusHelheim: Tarragon, Bloodflare, and God Slayer armor effects
+		SetBonusHelheim: 龙蒿、血炎与弑神者套装奖励
 	}
 
 	AuricTeslaHealerHead: {
 		DisplayName: 金煌圣祗盔
-		// DisplayNameEclipse: Primordial Tesla Irradiant Visage
+		DisplayNameEclipse: 始生金煌圣祗盔
 		Tooltip:
 			'''
+			腐化你的光辉能量
 			增加100%光辉伤害，降低80%非光辉伤害
 			增加25%光辉暴击率
 			增加5%移动速度
@@ -211,29 +210,29 @@ Items: {
 			治疗法术会额外治疗10生命值
 			最大魔力值增加100
 			'''
-		// ToggleTooltip: "[c/aaaaaa:Shift-Right Click this item in your inventory to toggle] [c/CC44FF:corrupted radiant powers]"
+		ToggleTooltip: "[c/aaaaaa:在物品栏中按住Shift并右键点击以切换][c/CC44FF:腐化光辉力量]"
 		SetBonus:
 			'''
-			拥有梦境编织者兜帽/梦境编织者头盔, 始源林海覆面盔, 血恸幽冥盔, 龙蒿风帽，苍帷头盔的套装效果
-			按下“盔甲能力”键将触发两个梦境编织者套装效果
+			拥有血恸幽冥盔、始源林海覆面，和梦境编织者兜帽/梦境编织者头盔的套装效果
+			按下'{$ThoriumMod.Keybinds.ArmorAbility.DisplayName}'键将触发两套梦境编织者套装的效果
 			增加50%光辉伤害
 			'''
-		/* SetBonusHelheim:
+		SetBonusHelheim:
 			'''
-			Tarragon, Bloodflare, and Silva armor effects
-			50% increased radiant damage
-			''' */
+			龙蒿、血炎与始源林海套装奖励
+			增加50%光辉伤害
+			'''
 	}
 
 	BlazingDrumBeat: {
-		DisplayName: 亵渎鼓棒
+		DisplayName: 华饰鼓槌
 		Tooltip:
 			'''
 			成功在计时区域击中时，会增加咒音增幅等级和伤害
 			错失节拍会大幅降低这些加成并消耗9点灵感值
-			这些加成在切换武器后仍会保留，但若不是你激活的武器，加成会逐渐消散
+			这些加成在切换武器后仍会保留，但若此武器不是你的手持武器，加成会逐渐消散
 			连续两次或更多次的成功攻击会释放出一道巨大的燃烧斩击
-			燃烧斩击会将范围内的所有敌人都施加圣域神火减益
+			燃烧斩击会将范围内的所有敌人都施加[cbuff:CalamityMod/HolyFlames]
 			'''
 	}
 
@@ -248,10 +247,12 @@ Items: {
 		SetBonus:
 			'''
 			音波伤害会对敌人造成血液沸腾减益
-			创造嗜血领域，每秒回复2点，最多150点
-			达到100点时: 增加20%的音波伤害和音波暴击率，增加25%的移动速度
+			创造嗜血领域，每次命中敌人获得2点血液，每秒最多获得3次
+			血液达到100点时: 增加20%的音波伤害和音波暴击率，增加25%的移动速度
 			咒音增幅额外延长3秒，灵感值恢复速度提高10%
-			被击中将失去25点
+			按下“套装奖励”键会消耗20点血液，并补充10点灵感
+			被击中将失去25点血液，5秒内未命中敌人会快速失去血液
+			每当Boss生成时，你的血液点数会被重置
 			'''
 	}
 
@@ -259,32 +260,34 @@ Items: {
 		DisplayName: 血恸幽冥盔
 		Tooltip:
 			'''
-			降低70%非光辉伤害
-			增加50%光辉伤害
 			魔力消耗减少20%
+			降低70%非光辉伤害，并增加50%光辉伤害
 			增加20%光辉暴击率
 			治疗法术会额外治疗7生命值
 			最大魔力值增加60
 			'''
 		SetBonus:
 			'''
-			音波伤害会对敌人造成血液沸腾减益
-			创造嗜血领域，每秒回复2点，最多150点
-			达到100点时: 增加20%的光辉伤害和光辉暴击率，增加25%的移动速度和治疗法术会额外治疗3生命值
-			造成小部分伤害获得治疗
-			被击中将失去25点
+			光辉伤害会对敌人造成血液沸腾减益
+			创造嗜血领域，每次命中敌人获得2点血液，每秒最多获得3次
+			达到100点时: 增加20%的光辉伤害和光辉暴击率，增加20%的移动速度
+			并且你的治疗法术会额外治疗3生命值
+			此外，你还会获得相当于造成伤害的一小部分的治疗
+			按下“套装奖励”键会消耗20点血液，并获得25点额外治疗量
+			被击中将失去25点血液，5秒内未命中敌人会快速失去血液
+			每当Boss生成时，你的血液点数会被重置
 			'''
 	}
 
 	CalamityBell: {
 		DisplayName: 灾厄之铃
-		Tooltip: 发射追踪的无际裂变弹幕，被击中的敌人会被硫磺火灼烧
+		Tooltip: 发射追踪的无际裂变弹幕，被击中的敌人会被[cbuff:CalamityMod/BrimstoneFlames]灼烧
 	}
 
-	// CelestialManaCost: 20% decreased mana cost
+	CelestialManaCost: 魔力消耗减少20%
 
 	DaedalusHeadBard: {
-		DisplayName: 代达罗斯风帽
+		DisplayName: 代达罗斯头饰
 		Tooltip:
 			'''
 			增加12%音波伤害和5%音波暴击率
@@ -293,15 +296,13 @@ Items: {
 		SetBonus:
 			'''
 			增加10%灵感值恢复速度
-			按下'盔甲能力'键将赋予你和你的队友攻速I和伤害I
-			你将获得极地创想
-			在极地创意增幅下，增加15%灵感恢复速度和10%音波演奏速度
+			按下“{$ThoriumMod.Keybinds.ArmorAbility.DisplayName}”键会给予你15秒的[rbuff:RagnarokMod/AntarcticCreativityBuff]增益
 			消耗12点灵感值
 			'''
 	}
 
 	DaedalusHeadHealer: {
-		DisplayName: 代达罗斯面具
+		DisplayName: 代达罗斯之面
 		Tooltip:
 			'''
 			魔力消耗减少10%
@@ -312,14 +313,13 @@ Items: {
 		SetBonus:
 			'''
 			治疗法术会额外治疗3生命值
-			按下'盔甲能力'键将为你提供50点护盾，并赋予你15秒的极地援护
-			极地援护期间你将获得8点防御且你的治疗法术将额外治疗2点生命
+			按住“{$ThoriumMod.Keybinds.ArmorAbility.DisplayName}”键会给予你15秒的[rbuff:RagnarokMod/AntarcticReinforcementBuff]并回复50生命值
 			消耗100点魔力值
 			'''
 	}
 
 	GodSlayerHeadBard: {
-		DisplayName: 弑神者兜帽
+		DisplayName: 弑神者锥帽
 		Tooltip:
 			'''
 			增加25%音波伤害和15%音波暴击率
@@ -331,7 +331,7 @@ Items: {
 	}
 
 	SilvaHeadHealer: {
-		DisplayName: 始源林海覆面
+		DisplayName: 始源林海花盔
 		Tooltip:
 			'''
 			魔力消耗减少25%
@@ -346,12 +346,20 @@ Items: {
 			在治疗队友的同时提高50点最大生命值
 			有概率获得治疗或者生命护盾的祝福
 			血量越低，触发概率越高
+			获得+3HP/s生命再生
+			增加5%的最大速度和最大加速度上限
+			受到致命伤害会使你复活，并在5秒内免疫所有伤害
+			这个效果有5分钟冷却时间，冷却时间不会在Boss存在或事件时期计时
 			'''
 	}
 
 	StormFeather: {
 		DisplayName: 风暴之羽
-		Tooltip: 从惊雷王鹰身上掉落下来的羽毛，闪烁着电火花。
+		Tooltip: 
+			'''
+			可以在商店卖出非常理想的价格
+			“从惊雷王鹰身上掉落下来的羽毛，闪烁着电火花”
+			'''
 	}
 
 	StrangeAlienMotherBoard: {
@@ -359,42 +367,33 @@ Items: {
 		Tooltip:
 			'''
 			从星际监察者身上掉落下来的主板
-			这个物品蕴含的科技超出了你的认知。
+			“这个物品蕴含的科技超出了你的认知”
 			'''
 	}
 
 	BelchingSaxophoneOverride: {
-		DisplayName: 喷嗝萨克斯
-		Tooltip:
-			'''
-			发射一串哨片、音符和硫磺气泡
-			“嘟嘟”
-			'''
+		DisplayName: "{$CalamityMod.Items.Weapons.Magic.BelchingSaxophone.DisplayName}"
+		Tooltip: "{$CalamityMod.Items.Weapons.Magic.BelchingSaxophone.Tooltip}"
 	}
 
 	AnahitasArpeggioOverride: {
-		DisplayName: 阿娜希塔琶音
+		DisplayName: "{$CalamityMod.Items.Weapons.Magic.AnahitasArpeggio.DisplayName}"
 		Tooltip: 发射缓慢移动的高音音符诱惑敌人
 	}
 
 	FaceMelterOverride: {
 		DisplayName: 变脸熔炉
-		Tooltip:
-			'''
-			奏响音符
-			右键召唤一个会向光标位置发射音波的扩音器
-			“喔哦哦！幻想世界！！！”
-			'''
+		Tooltip: "{$CalamityMod.Items.Weapons.Magic.FaceMelter.Tooltip}"
 	}
 
 	EmpoweredGranite: {
 		DisplayName: 赋能花岗岩
-		Tooltip: 充斥着风暴能量的花岗岩块。
+		Tooltip: “充斥着风暴能量的花岗岩块”
 	}
 
 	EnchantedMarble: {
-		DisplayName: 魔能大理岩
-		Tooltip: 盈满了古代神圣魔法的特殊大理岩
+		DisplayName: 魔能大理石
+		Tooltip: “盈满了古代神圣魔法的特殊大理石”
 	}
 
 	StatigelHeadBard: {
@@ -406,10 +405,10 @@ Items: {
 			'''
 		SetBonus:
 			'''
-			当你收到超过100点伤害的攻击时，获得一段较长时间的无敌。
+			当你收到超过100点伤害的攻击时，获得一段较长时间的无敌
 			增加跳跃高度，并获得一段额外的跳跃
 			增加12%跳跃速度
-			增加15%的灵感音符掉率
+			增加10%的灵感音符掉率
 			增加5%灵感值恢复速度
 			咒音增幅将延长2秒
 			'''
@@ -436,7 +435,7 @@ Items: {
 
 	StriderFang: {
 		DisplayName: 遁蛛冰牙
-		Tooltip: 从极地遁蛛嘴里拔下来的寒冰獠牙
+		Tooltip: “从极地遁蛛嘴里拔下来的寒冰獠牙”
 	}
 
 	TarragonCowl: {
@@ -446,21 +445,21 @@ Items: {
 			增加5%伤害减免
 			降低60%非光辉伤害
 			增加40%光辉伤害，15%光辉暴击率
-			治疗法术会额外治疗6生命值
+			治疗法术会额外治疗7生命值
 			最大魔力值增加60
-			魔力消耗减少15%
+			魔力消耗减少20%
 			'''
-		/* SetBonus:
+		SetBonus:
 			'''
-			A Guardian healer will assist you in healing your allies
-			Heals ally life equal to your bonus healing + 5 health
-			and grants them [rbuff:RagnarokMod/GuardianHealerBeamBuff] for 20 seconds
+			一位治疗守卫会协助你治疗队友
+			为队友恢复等同于你的额外治疗量+5点的生命值
+			并赋予其[rbuff:RagnarokMod/GuardianHealerBeamBuff]持续20秒
 			{$CalamityMod.Items.Armor.PostMoonLord.TarragonBreastplate.CommonSetBonus}
-			''' */
+			'''
 	}
 
 	TarragonShroud: {
-		DisplayName: 龙蒿魂罩
+		DisplayName: 龙蒿头冠
 		Tooltip:
 			'''
 			增加5%伤害减免
@@ -470,12 +469,12 @@ Items: {
 			增加15%的灵感音符掉率
 			最大灵感值增加4
 			'''
-		/* SetBonus:
+		SetBonus:
 			'''
-			Symphonic critical strikes cause a random active empowerment to increase by one level
-			Your empowerments last 50% longer
+			音波暴击会使你一个已激活的咒音增幅提升一级
+			你的咒音增幅持续时间增加50%
 			{$CalamityMod.Items.Armor.PostMoonLord.TarragonBreastplate.CommonSetBonus}
-			''' */
+			'''
 	}
 
 	VictideHeadHealer: {
@@ -485,46 +484,47 @@ Items: {
 			'''
 			敌人将不太可能以你为目标
 			浸泡在液体中，增加3点生命再生，增加10%光辉伤害，降低10%非光辉伤害
-			使用任何武器时都有 10% 的几率投掷回旋贝壳弹幕
-			贝壳造成真实伤害，不受任何职业伤害加成影响
-			提供更高的水下机动性，稍微减缓深渊中呼吸条消耗速度
 			'''
 	}
 
 	NightfallenHelmet: {
-		DisplayName: 苍帷头盔
+		DisplayName: 堕夜头盔
 		Tooltip:
 			'''
-			降低35%非光辉伤害
-			增加60%光辉伤害和16%光辉暴击率
+			用暗能量增幅一些光辉攻击
+			降低33%非光辉伤害
+			增加33%光辉伤害
+			增加16%光辉暴击率
+			魔力消耗减少25%
 			最大魔力值增加60
 			'''
 		SetBonus:
 			'''
 			治疗法术会额外治疗4生命值
-			增加33%光辉伤害
-			你的所有攻击都会施加苍帷减益
-			苍帷减益每秒造成100伤害
-			苍帷减益会使得目标受到的所有伤害提高10%
+			所有攻击会施加[rbuff:RagnarokMod/NightfallenDebuff]减益
 			'''
 	}
 
 	NightfallenBreastplate: {
-		DisplayName: 苍帷胸甲
+		DisplayName: 堕夜胸甲
 		Tooltip:
 			'''
-			降低45%非光辉伤害
-			增加50%光辉伤害和12%光辉暴击率
+			降低25%非光辉伤害
+			增加25%光辉伤害
+			增加16%光辉暴击率
+			魔力消耗减少20%
 			'''
 	}
 
 	NightfallenGreaves: {
-		DisplayName: 苍帷护胫
+		DisplayName: 堕夜护胫
 		Tooltip:
 			'''
-			降低35%非光辉伤害
-			增加45%光辉伤害和8%光辉暴击率
+			降低20%非光辉伤害
+			增加20%光辉伤害
+			增加12%光辉暴击率
 			魔力消耗减少20%
+			移动速度增加20%
 			'''
 	}
 
@@ -535,9 +535,6 @@ Items: {
 			'''
 			敌人将不太可能以你为目标
 			浸泡在液体中，增加3点生命再生，增加10%音波伤害
-			使用任何武器时都有 10% 的几率投掷回旋贝壳弹幕
-			贝壳造成真实伤害，不受任何职业伤害加成影响
-			提供更高的水下机动性，稍微减缓深渊中呼吸条消耗速度
 			'''
 	}
 
@@ -545,6 +542,8 @@ Items: {
 		DisplayName: 等价交换
 		Tooltip:
 			'''
+			发射可以汲取生命值的弹幕
+			右键以发射速度更快的弹幕
 			“你必须遵守等价交换的规则”
 			“你得到的只能等于你投入的”
 			'''
@@ -552,7 +551,12 @@ Items: {
 
 	ProfanedScythe: {
 		DisplayName: 亵渎之镰
-		Tooltip: 一把神圣即地狱的镰刀
+		Tooltip: 
+			'''
+			被神圣狱火灼燃的镰刀
+			右键以弧线轨迹投掷镰刀
+			投掷时，镰刀造成的伤害提高20%并抛射熔岩团块
+			'''
 	}
 
 	MarbleScythe: {
@@ -565,8 +569,8 @@ Items: {
 		Tooltip:
 			'''
 			熔渣通过排出的蒸汽使镰刀旋转得更快
-			右键投掷巨镰，回程时会划出弧线折返
-			投掷时，巨镰造成的伤害提高20%
+			右键以弧线轨迹投掷镰刀
+			投掷时，镰刀造成的伤害提高20%
 			'''
 	}
 
@@ -574,7 +578,16 @@ Items: {
 
 	AstralRipper: {
 		DisplayName: 幻星镰刃
-		Tooltip: 利用星辉瘟疫向你的敌人释放地狱之雨!
+		Tooltip:
+			'''
+			旋转镰刀会创造出围绕你旋转的星星
+			完成一个完整的循环后，星星会沿轨道跳动并爆炸
+			按住右键会为镰刀充能
+			充能期间，星星会开始迅速向你的光标坠落
+			释放右键，挥舞镰刀划出一道巨大的弧线
+			此时命中目标会召唤一大群星星
+			所有攻击造成[cbuff:CalamityMod/AstralInfectionDebuff]减益
+			'''
 	}
 
 	RadioMic: {
@@ -599,16 +612,16 @@ Items: {
 	}
 
 	TrueSquirrelScarf: {
-		// DisplayName: True Squirrel Scarf
-		/* Tooltip:
+		DisplayName: 真松鼠围巾
+		Tooltip:
 			'''
-			The true, original form of the squirrel scarf.
-			Grants +999 Sentry Slots
-			''' */
+			松鼠围巾的真正原初形态
+			增加999哨兵槽
+			'''
 	}
 
 	Prisma: {
-		DisplayName: 海棱杖
+		DisplayName: 海棱镜
 		Tooltip: 释放海棱之星，然后碎裂成五个尖刺
 	}
 
@@ -616,13 +629,13 @@ Items: {
 		DisplayName: 虚兆珠
 		Tooltip:
 			'''
-			“他们说真正的美丽在虚空注视者的眼球之中”
-			“我不认为是字面意思”
+			可在商店卖出很好的价格
+			“他们说真正的美丽在虚空注视者的眼球之中……我不认为是字面意思”
 			'''
 	}
 
 	QueenJelly: {
-		DisplayName: 水母皇后胶体
+		DisplayName: 皇后胶体
 		Tooltip:
 			'''
 			恢复 100 生命值
@@ -658,15 +671,15 @@ Items: {
 	}
 
 	Splattercannon: {
-		DisplayName: 飞溅加农
+		DisplayName: 血爆加农炮
 		Tooltip:
 			'''
 			右键填充8发子弹
 			最多填充64发子弹
 			左键释放所有子弹
-			命中有几率释放追踪的治疗血弹
-			射击会增加击杀敌人时释放鲜血飞溅的几率
-			手持时治疗只有 50% 的效果
+			枪膛里总是会有8发子弹
+			击中敌人时生成血球
+			拾取这些血球会减少[rbuff:PotionSickness]的持续时间
 			“血 液 即 弹 药！”
 			'''
 	}
@@ -676,18 +689,17 @@ Items: {
 		Tooltip:
 			'''
 			释放圣之爆焱
-			对击中的敌人施加持续3秒的神圣之火减益
+			对击中的敌人施加持续3秒的[cbuff:CalamityMod/HolyFlames]减益
 			'''
 	}
 
 	AuricDamru: {
-		DisplayName: 金源双头鼓
+		DisplayName: 金源手摇鼓
 		Tooltip:
 			'''
 			敲打双头鼓并对附近敌人造成伤害
 			右键释放耀斑弹
-			耀斑弹对敌人施加龙焰减益，持续3秒
-			(Aeolus的功劳)
+			耀斑弹对敌人施加3秒的[cbuff:CalamityMod/Dragonfire]减益
 			'''
 	}
 
@@ -698,7 +710,11 @@ Items: {
 
 	EldritchShellFragment: {
 		DisplayName: 诡异的贝壳碎片
-		Tooltip: 从旧潮汐神的监狱里取出的魔法碎片
+		Tooltip:
+			'''
+			在市场上能卖个好价钱
+			“一块来自上古之神监狱的注魔碎片”
+			'''
 	}
 
 	SigilOfACruelWorld: {
@@ -729,15 +745,16 @@ Items: {
 		DisplayName: 金蝙蝠粪便
 		Tooltip:
 			'''
-			增加30%来自敌人的金币
-			基于持有的钱币增加伤害(仅限钱币栏)
-			“你不是贪婪……你是彻头彻尾的疯子！”
-			复仇模式专属
+			增加25%来自敌人的金币（怒气模式下为50%）
+			基于持有的钱币增加伤害（仅限钱币栏）
+			这个加成在肾上腺素模式下增加50%
+			死亡时，你会永久损失25%的钱币（大师或死亡模式下为50%）
+			“你不是贪婪，你只是疯了！”
 			'''
 	}
 
 	VerdurantBloom: {
-		DisplayName: 常春之瓣
+		DisplayName: 苍翠绽放
 		Tooltip: 发射一串多样的花瓣
 	}
 
@@ -746,13 +763,13 @@ Items: {
 		Tooltip:
 			'''
 			注射器可以治愈也可以造成伤害
-			攻击时造成弑神怒焰减益
+			攻击时造成[cbuff:CalamityMod/GodSlayerInferno]减益
 			使用注射器作为弹药
 			'''
 	}
 
 	Korobeiniki: {
-		DisplayName: 俄罗斯方块
+		DisplayName: 货郎游戏机
 		Tooltip:
 			'''
 			四格拼板从天而落
@@ -762,7 +779,7 @@ Items: {
 
 	GraspofVoid: {
 		DisplayName: 虚空之握
-		Tooltip: 发射虚空精华，命中时造成暗影焰减益
+		Tooltip: 发射虚空精华，命中时造成[rbuff:ShadowFlame]减益
 	}
 
 	PhantasmalEdge: {
@@ -773,7 +790,7 @@ Items: {
 			停止旋转镰刀火球立即攻击最近的目标
 
 			右键释放钩子把敌人拉向你。
-			对BOSS不起作用，反而会把你拉向BOSS
+			但是，强大的敌人反而会把你拉向他们！
 			'''
 	}
 
@@ -781,21 +798,23 @@ Items: {
 		DisplayName: 弑神收割
 		Tooltip:
 			'''
-			镰刀旋转时在边缘生成一个类似于小神明吞噬者的全息图
-			受到此攻击的敌人会受到更多伤害，并受到弑神怒焰减益
+			镰刀旋转时在边缘生成一个类似于小神明吞噬者的投影
+			这个投影会随时间逐渐累积伤害，达到上限后会对命中目标造成[cbuff:CalamityMod/GodSlayerInferno]减益
+			在投影激活时停止使用镰刀，将释放投影攻击最近的敌人
+			释放的投影将造成更高伤害，并施加[cbuff:CalamityMod/WhisperingDeath]减益
 			'''
 	}
 
 	LucentGemini: {
-		// DisplayName: Lucent Gemini
-		/* Tooltip:
+		DisplayName: 流明双星
+		Tooltip:
 			'''
-			Spinning this scythe surrounds you with an ethereal moonlight pulse
-			Hits generate [c/78C8FF:Soul Essence] and have a chance to generate [c/78C8FF:Stratus Starburst]
-			Press <right> with 5 or more Starburst to summon the [c/A0DCFF:Gemini] constellation
-			Each star fires piercing rays of moonlight that inflict [cbuff:CalamityMod/Voidfrost]
-			Press <right> again to dismiss the constellation
-			''' */
+			旋转镰刀时会被一股缥缈的月光包围
+			击中敌人会生成[c/78C8FF:灵魂精华]，并且有概率生成[c/78C8FF:幻云星芒]
+			当拥有五个或更多幻云星芒时，按住右键可以召唤[c/A0DCFF:双子]星座
+			每颗星星都会释放穿透月光，造成[cbuff:CalamityMod/Voidfrost]减益
+			再次按住右键可以取消星座
+			'''
 	}
 
 	Arpeggiator: {
@@ -807,15 +826,14 @@ Items: {
 		DisplayName: 元素收割者
 		Tooltip:
 			'''
-			旋转这把镰刀可生成追踪敌人的弹幕并造成元素谐鸣减益
-			右键给予你和你的队友一个元素祝福，持续10秒并有30秒冷却时间。
-			元素祝福如下：
-			沙: 增加5%攻击伤害
-			水: 增加5%攻击速度
-			空气: 增加20%移动速度和飞行时间
-			大地: 防御力增加10
-			绿洲: 在10秒内回复150点生命值。
-			硫磺火: 所有攻击都造成硫磺火
+			旋转这把镰刀可生成追踪敌人的弹幕并造成[rbuff:CalamityMod/ElementalMix]减益
+			右键给予你和你的队友以下元素祝福之一，持续10秒：
+			[rbuff:RagnarokMod/ScytheAirBuff]
+			[rbuff:RagnarokMod/ScytheBrimstoneBuff]
+			[rbuff:RagnarokMod/ScytheEarthBuff]
+			[rbuff:RagnarokMod/ScytheOasisBuff]
+			[rbuff:RagnarokMod/ScytheSandBuff]
+			[rbuff:RagnarokMod/ScytheWaterBuff]
 			'''
 	}
 
@@ -824,14 +842,14 @@ Items: {
 		Tooltip:
 			'''
 			旋转时，你会被一圈硫火环绕，对周围持续造成伤害
-			被火圈命中的敌人将受到硫磺火减益，持续5秒
+			被火圈命中的敌人将受到[cbuff:CalamityMod/BrimstoneFlames]减益，持续5秒
 			当生命值低于25%时，若以火圈击杀敌人，将回复3点生命值，并额外回复该敌人最大生命值的5%
 			'''
 	}
 
 	MaxEmpowermentTester: {
 		DisplayName: 最大咒音增幅测试仪
-		Tooltip: 在物品源码中指定的级别授予所有咒音增幅嘻嘻
+		Tooltip: 在物品源码中指定的级别授予所有咒音增幅，嘻嘻
 	}
 
 	UnbreakableCombatUkulele: {
@@ -845,12 +863,12 @@ Items: {
 	}
 
 	NightmareFreezer: {
-		DisplayName: 噩梦制冷工
+		DisplayName: 极寒梦魇
 		Tooltip:
 			'''
 			镰刀旋转时周期性地释放出一连串冰冷的飞镖
-			“在万圣节和圣诞节中间的某个时间点找到的”
-			“嘿，你可以把它拍成电影！”
+			“在万圣节和圣诞节中间的某个时间点找到的”、
+			嘿，你可以把它拍成电影！”
 			'''
 	}
 
@@ -866,7 +884,7 @@ Items: {
 
 	Lamentation: {
 		DisplayName: 嗟叹
-		Tooltip: 发射追踪的深渊炙炎，命中时造成硫磺火减益
+		Tooltip: 发射追踪的深渊炙炎，命中时造成[cbuff:CalamityMod/BrimstoneFlames]减益
 	}
 
 	Virusprayer: {
@@ -875,7 +893,7 @@ Items: {
 	}
 
 	IntergelacticRobohelm: {
-		DisplayName: 异宇星凝机冠
+		DisplayName: 异宇星凝机盔
 		Tooltip:
 			'''
 			增加20%的音波伤害，暴击率和演奏速度
@@ -887,7 +905,7 @@ Items: {
 	}
 
 	IntergelacticRamhelm: {
-		DisplayName: 异宇星凝角铠
+		DisplayName: 异宇星凝战盔
 		Tooltip:
 			'''
 			降低40%非光辉伤害
@@ -904,8 +922,8 @@ Items: {
 		Tooltip:
 			'''
 			召唤凯莉跟随你
-			HayWire799的捐赠者物品
-			由Zenovia绘制
+			“HayWire799的捐赠者物品”
+			“由Zenovia绘制”
 			'''
 	}
 
@@ -919,7 +937,6 @@ Items: {
 		Tooltip:
 			'''
 			人鱼的歌喉为你的旋律附上魔法
-
 			增加15%音波伤害
 			增加20%灵感恢复速度
 			阿娜希塔会随你的弦乐器一同吟唱，额外发射水流弹幕
@@ -927,7 +944,7 @@ Items: {
 	}
 
 	ScourgesFrets: {
-		DisplayName: 祸弦灾品
+		DisplayName: 灾虫之琴
 		Tooltip:
 			'''
 			发射会反弹的沙尘声波
@@ -951,21 +968,21 @@ Items: {
 		DisplayName: 辐辉无量
 		Tooltip:
 			'''
-			左键发射一枚[c/FF5555:辉光赫]光球，拥有极强击退力
-			右键召唤一枚跟随光标移动的[c/55AAFF:辉光苍]光球
-			[c/55AAFF:辉光苍]会牵引附近敌人，并在每次命中后逐渐变大
-			当其达到临界质量时，用[c/FF5555:辉光赫]击中它以释放[c/CC44FF:辉光茈]
+			左键发射一枚[c/FF5555:红辉光]球，拥有极强击退力
+			右键召唤一枚跟随光标移动的[c/55AAFF:蓝辉光]球
+			[c/55AAFF:蓝辉光]会牵引附近敌人，并在每次命中后逐渐变大
+			当其达到临界质量时，用[c/FF5555:红辉光]击中它以释放[c/CC44FF:紫辉光]
 			'''
 	}
 
 	PrimalTerror: {
 		DisplayName: 始源恐惧
 		Tooltip: 一定要收藏我，嘻嘻
-		// HasAwoken: The Primordial Wyrm has awoken!
+		HasAwoken: 始源妖龙已苏醒！
 	}
 
 	DevourerOfSines: {
-		DisplayName: 正弦噬音
+		DisplayName: 正弦吞噬者
 		Tooltip:
 			'''
 			持续引导此武器，创造一道巨大的正弦波
@@ -975,7 +992,7 @@ Items: {
 	}
 
 	Ectambourine: {
-		DisplayName: 幽界铃鼓
+		DisplayName: 魂质铃鼓
 		Tooltip:
 			'''
 			投掷无穷无尽的幽灵铃鼓
@@ -1002,6 +1019,8 @@ Items: {
 			释放血腥冲击波
 			右键即兴演奏[c/AA1111:血肉凝聚剂]！
 			即兴演奏期间，范围内所有玩家获得生命汲取效果
+			在连击期间把握攻击时机可以冷却时间
+			在连击期间错失时机不会减少冷却时间，但也不会降低你的伤害
 			'''
 	}
 
@@ -1009,8 +1028,8 @@ Items: {
 		DisplayName: 松鼠围巾
 		Tooltip:
 			'''
-			“如松鼠尾巴般蓬松柔软”
 			哨兵数量上限+1
+			“如松鼠尾巴般蓬松柔软”
 			'''
 	}
 
@@ -1020,25 +1039,28 @@ Items: {
 	}
 
 	StellarRiff: {
-		DisplayName: 星界狂想
+		DisplayName: 恒星即兴曲
 		Tooltip:
 			'''
 			发射会自动追踪的星辰，命中后分裂为追踪碎星
+			成功在计时区域击中会增加碎星的数量
 			右键即兴演奏[c/00FFC8:星际践踏者]！
 			即兴演奏期间，群星自天穹坠落
+			即兴演奏持续时间内碎星的数量翻倍
+			在即兴演奏期间成功在计时区域击中，会缩短冷却时间
 			'''
 	}
 
 	ToxicWaves: {
-		// DisplayName: Toxic Waves
-		/* Tooltip:
+		DisplayName: 剧毒狂澜
+		Tooltip:
 			'''
-			Launches floating toxic clouds that inflict [cbuff:CalamityMod/SulphuricPoisoning] and [cbuff:CalamityMod/Irradiated] on hit
-			The clouds will pierce through enemies based on your additional string weapon bounces
-			Press <right> to play the [c/37C300:Toxic Wisdom] riff!
-			While the riff is active, a sulphurous vortex summons acid sharkrons from above
-			Time your attacks during the riff to reduce the cooldown
-			''' */
+			发射漂浮的毒云，造成[cbuff:CalamityMod/SulphuricPoisoning]与[cbuff:CalamityMod/Irradiated]减益
+			毒云会根据你额外的弦乐器反弹次数穿透敌人
+			右键即兴演奏[c/37C300:毒海智者]！
+			当即兴演奏处于激活状态时，一个硫磺漩涡会从上方召唤出酸液鲨鱼
+			在即兴演奏期间成功在计时区域击中，会缩短冷却时间
+			'''
 	}
 
 	FateoftheGods: {
@@ -1046,17 +1068,17 @@ Items: {
 		Tooltip:
 			'''
 			感谢整个团队、所有支持者，以及每一位游玩并让本模组延续至今的玩家！
-			这幅画的大小无法容纳整个团队
-			长按SHIFT键可以查看以前和当前的开发者
+			这幅画的大小无法容纳整个团队	
+			[c/999999:长按SHIFT键可以查看以前和当前的开发者]
 			'''
-		// Donors: Donors
-		// Artists: Artists
-		// Programmers: Programmers
-		// OtherDevelopers: Other Developers
+		Donors: 捐献者
+		Artists: 画师
+		Programmers: 程序
+		OtherDevelopers: 其他开发者
 	}
 
 	ProfanityFilter: {
-		DisplayName: 亵渎话语过滤器
+		DisplayName: 亵渎言论过滤器
 		Tooltip:
 			'''
 			电子乐器伤害降低10%，但演奏速度提升50%
@@ -1072,125 +1094,126 @@ Items: {
 		DisplayName: 熔晶单片镜
 		Tooltip:
 			'''
-			曾为一位臭名昭著的地狱原住民所佩戴
+			曾为一位臭名昭著的地狱明星所佩戴
 			增加25%音波伤害
 			基础伤害咒音增幅对你的效果提升至两倍
-			无线电麦克风的灵感值消耗减少2点
-			无线电麦克风赋予的伤害咒音增幅提升1级
-			无线电麦克风现在会施加魅惑减益，持续5秒
+			佩戴时，无线电麦克风获得以下加成：
+			灵感消耗降低2点
+			伤害咒音增幅增加1级
+			造成5秒[rbuff:ThoriumMod/Charmed]减益
 			'''
 	}
 
 	RelicOfConvergenceOverride: {
-		/* Tooltip:
+		Tooltip:
 			'''
-			Creates a profaned crystal at the cursor that channels a healing aura before shattering
-			All players within the area of effect are healed for {0} + 4x healing bonus HP
-			Allies gain 50% extra healing
-			Holding out the crystal decreases defense and increases incoming damage
-			[c/FF8C00:Never once had I known kindness. Neither my peers or family had a shred of compassion for me.]
-			[c/FF8C00:I wished for someone I could confide. A presence that cleansed me of anxiety.]
-			[c/FF8C00:And when I saw Her radiant smile when we met, I knew I had finally found it.]
-			''' */
-		// DisplayName: Relic of Convergence
+			在光标位置产生一块亵渎水晶，不断使用此物品后，水晶会释放治愈光环并破碎
+			所有在作用范围内的玩家会被治疗{0}+4倍额外治疗量的生命值 
+			队友会获得50%额外治疗
+			举起这块水晶会降低防御并增加受到的伤害
+			[c/FF8C00:我未曾知晓善意。我的同辈和家庭未曾向我报以同情。]
+			[c/FF8C00:我寻觅一个足以信赖之人。一个能洗净我焦虑的存在。]
+			[c/FF8C00:我遇见她时，看到她光耀的笑容，方知寻觅终有结果。]
+			'''
+		DisplayName: 聚魂圣物
 	}
 
 	CorroslimeBass: {
-		/* Tooltip:
+		Tooltip:
 			'''
-			Sends out bouncing corroslime balls
-			Press <right> to split balls into {0} smaller balls
-			This process can be done {1} times
-			''' */
-		// DisplayName: Corroslime Bass
+			发射会弹跳的腐泥球
+			右键可将泥球分裂为{0}个更小的泥球
+			此过程可进行{1}次
+			'''
+		DisplayName: 腐泥贝斯琴
 	}
 
 	CrimslimeOboe: {
-		// DisplayName: Crimslime Oboe
-		/* Tooltip:
+		DisplayName: 血泥双簧管
+		Tooltip:
 			'''
-			Shoots sticky crimslime darts
-			After {0} seconds the darts will explode
-			''' */
+			发射黏糊糊的血泥镖
+			血泥镖会在{0}秒后爆炸
+			'''
 	}
 
 	StringsofOblivion: {
-		// DisplayName: Stringsof Oblivion
-		// Tooltip: ""
+		DisplayName: 遗忘之弦
+		Tooltip: ""
 	}
 
 	WulfrumGuitar: {
-		/* Tooltip:
+		Tooltip:
 			'''
-			Shoots bouncing sound waves
-			Press <right> to return the waves
-			Returning waves will ignore tiles
-			''' */
-		// DisplayName: Wulfrum Guitar
+			发射会反弹的音波
+			右键可使音波返回
+			返回的音波会无视物块
+			'''
+		DisplayName: 钨钢吉他
 	}
 
 	MenuMusicBox: {
-		// DisplayName: Music Box (Ragnarok Title)
-		// Tooltip: Plays 'Menu Theme' by CrafterDaemon
+		DisplayName: 音乐盒（诸神的黄昏主题曲）
+		Tooltip: 播放“Menu Theme” 作者：CrafterDaemon
 	}
 
-	// InspirationSingularity.DisplayName: Inspiration Singularity
+	InspirationSingularity.DisplayName: 灵感奇点
 
 	Asterion: {
-		// DisplayName: Asterion
-		/* Tooltip:
+		DisplayName: 猎犬座α
+		Tooltip:
 			'''
-			Creates a branching fractal of starlight around you
-			This starlight occasionally grants you Starbursts on successful enemy hits
-			Press <right> with enough Starbursts to create Asterion
-			Asterion consumes Starburts quickly, but releases constant stellar pulses
-			These pulses heal you and allies in range, and inflict [cbuff:CalamityMod/Voidfrost] on enemies
-			'As loyal as a hound'
-			''' */
+			在你周围创造分形星光
+			星光击中敌人时有概率给予你星芒
+			拥有足够的星芒时，右键创造猎犬座
+			猎犬座会迅速消耗星芒，并迅速释放恒星脉冲
+			脉冲会治疗你和队友，并对敌人施加[cbuff:CalamityMod/Voidfrost]减益
+			“如猎犬般忠诚”
+			'''
 	}
 
 	FungalCastanets: {
-		// DisplayName: Fungal Castanets
-		/* Tooltip:
+		DisplayName: 真菌响板
+		Tooltip:
 			'''
-			Alternating castanet clicks spray lingering fungal spores
-			Press <right> to play the [c/00FFFF:1NF3S+@+!0N Riff!]
-			During the riff, your castanets become Crabulon's claws while spores rain from above
-			'Sounds like crab claws!'
-			''' */
+			响板有节奏地演奏，喷出缓慢消失的真菌孢子
+			右键演奏[c/00FFFF:侵染]！
+			当即兴演奏处于激活状态时，你的响板会变成菌生蟹的巨钳，同时召唤孢子倾泻而下
+			“听着像是蟹爪的声音！”
+			'''
 	}
 
 	CantStopWontStop: {
-		// DisplayName: Cant Stop Wont Stop
-		// Tooltip: This is the song that never ends...!
+		DisplayName: 根本停不下来
+		Tooltip: 这是一首永不停歇的歌……！
 	}
 
 	GlacialHarvester: {
-		// DisplayName: Glacial Harvester
-		/* Tooltip:
+		DisplayName: 冰川收割者
+		Tooltip:
 			'''
-			Hold <left> to spin the scythe
-			Press <right> to slam the scythe, sending out a massive wave of ice
-			Inflicts [rbuff:Frostburn]
-			''' */
-		// Cooldown: Glacial Slam is on cooldown
+			左键旋转镰刀
+			右键挥舞镰刀，释放一阵巨大的冰浪
+			施加[rbuff:Frostburn]减益
+			'''
+		Cooldown: 冰川斩正在冷却
 	}
 
 	Aphelion: {
-		// DisplayName: Aphelion
-		/* Tooltip:
+		DisplayName: 远日点
+		Tooltip:
 			'''
-			Hold <left> to spin the scythe, pulling nearby enemies into its vortex
-			Spin long enough to summon two orbiting [c/DDEEFF:S][c/D2E3FA:t][c/C7D8F5:e][c/BCCDEF:l][c/B2C2EA:l][c/A7B7E5:a][c/9CACE0:r] [c/8697D5:M][c/7B8CD0:a][c/7181CB:s][c/6676C5:s][c/5B6BC0:e][c/5060BB:s]
-			When both are active, press <right> to collapse their orbit into a supernova
-			Inflicts [rbuff:CalamityMod/MiracleBlight] on hit
-			[c/DDEEFF:S][c/D2E3FA:t][c/C7D8F5:e][c/BCCDEF:l][c/B2C2EA:l][c/A7B7E5:a][c/9CACE0:r] [c/8697D5:M][c/7B8CD0:a][c/7181CB:s][c/6676C5:s][c/5B6BC0:e][c/5060BB:s] inflict [rbuff:CalamityMod/Dragonfire], [rbuff:CalamityMod/GodSlayerInferno], and [rbuff:CalamityMod/Daybroken] on contact
-			''' */
+			左键旋转镰刀，将附近的敌人拉入旋涡之中
+			旋转足够长的时间会召唤出两个绕轨道运行的[c/DDEEFF:恒][c/BCCDEF:星][c/9CACE0:质][c/7B8CD0:量][c/5060BB:体]
+			恒星质量体存在时，右键可以把他们的轨道坍缩成超新星
+			击中敌人施加[rbuff:CalamityMod/MiracleBlight]减益
+			[c/DDEEFF:恒][c/BCCDEF:星][c/9CACE0:质][c/7B8CD0:量][c/5060BB:体]施加[rbuff:CalamityMod/Dragonfire]、[rbuff:CalamityMod/GodSlayerInferno]与[rbuff:CalamityMod/Daybroken]减益
+			'''
 	}
 
 	Thaumonomicon: {
-		// DisplayName: Thaumonomicon
-		// Tooltip: ""
+		DisplayName: 奇迹秘典
+		Tooltip: ""
 	}
 }
 
@@ -1243,8 +1266,8 @@ Projectiles: {
 	KorobeinikiPro5.DisplayName: Korobeiniki Pro5
 	KorobeinikiPro6.DisplayName: Korobeiniki Pro6
 	KorobeinikiPro7.DisplayName: Korobeiniki Pro7
-	GraspofVoidPro1.DisplayName: Graspof Void Pro1
-	GraspofVoidPro2.DisplayName: Graspof Void Pro2
+	GraspofVoidPro1.DisplayName: Grasp of Void Pro1
+	GraspofVoidPro2.DisplayName: Grasp of Void Pro2
 	PhantasmalEdgePro1.DisplayName: Phantasmal Edge Pro1
 	PhantasmalEdgeBombs.DisplayName: Phantasmal Edge Bombs
 	PhantasmalEdgeHook.DisplayName: Phantasmal Edge Hook
@@ -1284,9 +1307,9 @@ Projectiles: {
 	IrradiantRed.DisplayName: Irradiant Red
 	AuricGreatscytheBolt.DisplayName: Auric Greatscythe Bolt
 	AuricGreatscytheSwing.DisplayName: Auric Greatscythe Swing
-	// LucentGeminiPro.DisplayName: Lucent Gemini
-	// GeminiConstellation.DisplayName: Gemini Constellation
-	// GeminiMoonlightRay.DisplayName: Gemini Moonlight Ray
+	LucentGeminiPro.DisplayName: Lucent Gemini
+	GeminiConstellation.DisplayName: Gemini Constellation
+	GeminiMoonlightRay.DisplayName: Gemini Moonlight Ray
 	RadioMicPro.DisplayName: Radio Mic Pro
 	RadioMicShadowBurst.DisplayName: Radio Mic Shadow Burst
 	PlayerBrimstoneBarrage.DisplayName: Player Brimstone Barrage
@@ -1302,34 +1325,34 @@ Projectiles: {
 	StellarRiffPro.DisplayName: Stellar Riff Pro
 	StellarAurora.DisplayName: Stellar Aurora
 	StellarShootingStar.DisplayName: Stellar Shooting Star
-	// ToxicWavesVortex.DisplayName: Toxic Waves Vortex
-	// ToxicSharkron.DisplayName: Toxic Sharkron
-	// ToxicWavesPro.DisplayName: Toxic Waves Pro
+	ToxicWavesVortex.DisplayName: Toxic Waves Vortex
+	ToxicSharkron.DisplayName: Toxic Sharkron
+	ToxicWavesPro.DisplayName: Toxic Waves Pro
 	DragonForceRiffBeam.DisplayName: Dragon Force Riff Beam
 	InfectedPustule.DisplayName: Infected Pustule
 	InfectedSporeCloud.DisplayName: Infected Spore Cloud
 	InfectedSporeFire.DisplayName: Infected Spore Fire
-	// RelicOfConvergenceCrystalOverride.DisplayName: Relic Of Convergence Crystal Override
-	// CorroslimeBassPro.DisplayName: Corroslime Bass Pro
-	// CrimslimeOboePro.DisplayName: Crimslime Oboe Pro
-	// WulfrumGuitarPro.DisplayName: Wulfrum Guitar Pro
-	// AcidicSaxBubbleOverride.DisplayName: Acidic Sax Bubble Override
-	// AcidicReedOverride.DisplayName: Acidic Reed Override
-	// AsterionConstellation.DisplayName: Asterion Constellation
-	// AstralRipperChargeSwing.DisplayName: Astral Ripper Charge Swing
-	// AstralRipperStarfall.DisplayName: Astral Ripper Starfall
-	// ToxicSharkronGore.DisplayName: Toxic Sharkron Gore
-	// FungalCastanetClick.DisplayName: Fungal Castanet Click
-	// FungalSpore.DisplayName: Fungal Spore
-	// InfestationMushroomHat.DisplayName: Infestation Mushroom Rain Controller
-	// InfestationMushroomRain.DisplayName: Infestation Mushroom Rain Spores
-	// GlacialSlam.DisplayName: Glacial Slam
-	// GlacialHarvesterPro.DisplayName: Glacial Harvester Pro
-	// GlacialWave.DisplayName: Glacial Wave
-	// AphelionPro.DisplayName: Aphelion Pro
-	// AphelionSun.DisplayName: Aphelion Sun
-	// AphelionVortex.DisplayName: Aphelion Vortex
-	// AphelionSupernova.DisplayName: Aphelion Supernova
+	RelicOfConvergenceCrystalOverride.DisplayName: Relic Of Convergence Crystal Override
+	CorroslimeBassPro.DisplayName: Corroslime Bass Pro
+	CrimslimeOboePro.DisplayName: Crimslime Oboe Pro
+	WulfrumGuitarPro.DisplayName: Wulfrum Guitar Pro
+	AcidicSaxBubbleOverride.DisplayName: Acidic Sax Bubble Override
+	AcidicReedOverride.DisplayName: Acidic Reed Override
+	AsterionConstellation.DisplayName: Asterion Constellation
+	AstralRipperChargeSwing.DisplayName: Astral Ripper Charge Swing
+	AstralRipperStarfall.DisplayName: Astral Ripper Starfall
+	ToxicSharkronGore.DisplayName: Toxic Sharkron Gore
+	FungalCastanetClick.DisplayName: Fungal Castanet Click
+	FungalSpore.DisplayName: Fungal Spore
+	InfestationMushroomHat.DisplayName: Infestation Mushroom Rain Controller
+	InfestationMushroomRain.DisplayName: Infestation Mushroom Rain Spores
+	GlacialSlam.DisplayName: Glacial Slam
+	GlacialHarvesterPro.DisplayName: Glacial Harvester Pro
+	GlacialWave.DisplayName: Glacial Wave
+	AphelionPro.DisplayName: Aphelion Pro
+	AphelionSun.DisplayName: Aphelion Sun
+	AphelionVortex.DisplayName: Aphelion Vortex
+	AphelionSupernova.DisplayName: Aphelion Supernova
 }
 
 Configs: {
@@ -1344,12 +1367,12 @@ Configs: {
 
 		DesertMedallion: {
 			Label: 荒漠灾虫召唤物配方改变
-			Tooltip: 在荒漠吊坠的配方增加惊雷王鹰掉落的风暴之羽，默认为是
+			Tooltip: 在荒漠吊坠的配方增加惊雷王鹰掉落的砂石锭，默认为是
 		}
 
 		DecapoditaSprout: {
 			Label: 菌生蟹召唤物配方改变
-			Tooltip: 在节肢动物芽孢的配方增加惊雷王鹰掉落的风暴之羽，默认为是
+			Tooltip: 在节肢动物芽孢的配方增加珍珠碎片和风暴之羽，默认为是
 		}
 
 		MarbleGranite: {
@@ -1384,7 +1407,7 @@ Configs: {
 
 		CharredIdol: {
 			Label: 硫磺火元素召唤物配方改变
-			Tooltip: 在焦炭玩偶的配方增加虚兆珠. 默认为是
+			Tooltip: 在焦炭玩偶的配方增加虚空之心. 默认为是
 		}
 
 		Seafood: {
@@ -1404,12 +1427,12 @@ Configs: {
 
 		DoomSayerCoin: {
 			Label: 始生灾灵召唤物配方改变
-			Tooltip: 在末日预言者的硬币的配方增加诡异的贝壳碎片和灾厄尘. 默认为是
+			Tooltip: 在末日预言者的硬币的配方增加灾厄尘. 默认为是
 		}
 
 		RuneOfKos: {
 			Label: 宇宙符文获取改变
-			Tooltip: 将宇宙符文改为需要神圣晶石、狱火精华、海洋精华、死亡精华合成，并不再由亵渎神掉落. 默认为是
+			Tooltip: 将普罗维登斯神印改为需要神圣晶石与始生灾灵精华并不再由亵渎天神掉落。默认为是。
 		}
 	}
 
@@ -1418,7 +1441,7 @@ Configs: {
 
 		Headers: {
 			ClassBalanceChanges: 职业平衡设置页
-			// ClassMechanicChanges: Class Mechanic Changes
+			ClassMechanicChanges: 职业机制切换
 		}
 
 		HealerDamageModifier: {
@@ -1458,23 +1481,23 @@ Configs: {
 
 		HealingBonusModifier: {
 			Label: 额外治疗量倍率
-			Tooltip: ""
+			Tooltip: 额外治疗量倍率。该倍数在所有其他改动应用后生效。
 		}
 
 		RiffsRequireRiffInstrumentToBeHeld: {
-			// Label: Riffs Require Riff Instrument To Be Held
-			// Tooltip: Riffs end automatically when the weapon is no longer held.
+			Label: 即兴演奏要求玩家持续手持对应乐器
+			Tooltip: 玩家切换武器时，即兴演奏自动停止。
 		}
 
 		MistimedDamagePen: {
-			// Label: Mistimed Damage Penanlty
-			/* Tooltip:
+			Label: 错失时机的伤害惩罚
+			Tooltip:
 				'''
-				Thorium's damage penalty for mistimed big instrument attacks.
-				Thorium's default is 0.75, meaning mistimed attacks deal 75% less damage.
-				Ragnarok's default is 0.6, meaning mistimed attacks deal 60% less damage.
-				[c/7C0A02:Some mods may force this value to another value for their own balance, however.]
-				''' */
+				瑟银MOD中大型乐器因错失时机而造成的伤害惩罚。
+				瑟银MOD的默认值为0.75，这意味着时机不当的攻击造成的伤害会减少75%。
+				诸神黄昏MOD的默认值为0.6，这意味着时机不当的攻击造成的伤害会减少60%。
+				[c/7C0A02:但是部分模组会强制修改该值以适配他们自己的平衡]
+				'''
 		}
 	}
 
@@ -1547,12 +1570,12 @@ Configs: {
 
 		bird: {
 			Label: 惊雷王鹰AI
-			Tooltip: 选择使用哪个模组的AI，关闭为原版状态. 如果未检测到其他重做模组，则自动使用诸神的黄昏AI。
+			Tooltip: 选择使用哪个模组的AI，关闭为原版状态。如果未检测到其他重做模组，则自动使用诸神的黄昏AI。
 		}
 
 		jelly: {
 			Label: 水母皇后AI
-			Tooltip: 选择使用哪个模组的AI，关闭为原版状态. 如果未检测到其他重做模组，则自动使用诸神的黄昏AI。
+			Tooltip: 选择使用哪个模组的AI，关闭为原版状态。如果未检测到其他重做模组，则自动使用诸神的黄昏AI。
 		}
 
 		bossstatstweak: {
@@ -1562,37 +1585,37 @@ Configs: {
 
 		bossrush: {
 			Label: 瑟银BOSS RUSH
-			Tooltip: 选择使用哪个模组的BOSS RUSH,关闭则禁用BOSS RUSH
+			Tooltip: 选择使用哪个模组的BOSS RUSH，关闭则禁用BOSS RUSH
 		}
 
 		viscount: {
 			Label: 蝙蝠子爵AI
-			Tooltip: 选择使用哪个模组的AI，关闭为原版状态. 如果未检测到其他重做模组，则自动使用诸神的黄昏AI。
+			Tooltip: 选择使用哪个模组的AI，关闭为原版状态。如果未检测到其他重做模组，则自动使用诸神的黄昏AI。
 		}
 
 		granite: {
 			Label: 花岗岩流能风暴AI
-			Tooltip: 选择使用哪个模组的AI，关闭为原版状态. 如果未检测到其他重做模组，则自动使用诸神的黄昏AI。
+			Tooltip: 选择使用哪个模组的AI，关闭为原版状态。如果未检测到其他重做模组，则自动使用诸神的黄昏AI。
 		}
 
 		champion: {
 			Label: 英灵遗骸AI
-			Tooltip: 选择使用哪个模组的AI，关闭为原版状态. 如果未检测到其他重做模组，则自动使用诸神的黄昏AI。
+			Tooltip: 选择使用哪个模组的AI，关闭为原版状态。如果未检测到其他重做模组，则自动使用诸神的黄昏AI。
 		}
 
 		scouter: {
 			Label: 星际监察者AI
-			Tooltip: 选择使用哪个模组的AI，关闭为原版状态. 如果未检测到其他重做模组，则自动使用诸神的黄昏AI。
+			Tooltip: 选择使用哪个模组的AI，关闭为原版状态。如果未检测到其他重做模组，则自动使用诸神的黄昏AI。
 		}
 
 		strider: {
 			Label: 极地遁蛛AI
-			Tooltip: 选择使用哪个模组的AI，关闭为原版状态. 如果未检测到其他重做模组，则自动使用诸神的黄昏AI。
+			Tooltip: 选择使用哪个模组的AI，关闭为原版状态。如果未检测到其他重做模组，则自动使用诸神的黄昏AI。
 		}
 
 		beholder: {
 			Label: 堕落注视者AI
-			Tooltip: 选择使用哪个模组的AI，关闭为原版状态. 如果未检测到其他重做模组，则自动使用诸神的黄昏AI。
+			Tooltip: 选择使用哪个模组的AI，关闭为原版状态。如果未检测到其他重做模组，则自动使用诸神的黄昏AI。
 		}
 	}
 
@@ -1628,7 +1651,7 @@ Configs: {
 			UITweaks: UI 设置
 			WelcomeText: 进入世界讯息
 			Visual: 视效
-			// VisFluxMeter: Vis Flux Meter Header
+			VisFluxMeter: Vis Flux Meter Header
 		}
 
 		BardEmpowermentBarOffsetX: {
@@ -1643,214 +1666,218 @@ Configs: {
 
 		RiffMusicVolume: {
 			Label: 即兴演奏音乐音量
-			Tooltip: ""
+			Tooltip:
+				'''
+				为即兴演奏设置音量。
+				设置为0将禁用即兴演奏，并且在即兴演奏开始时，播放中的音乐也不会逐渐淡出。
+				'''
 		}
 
 		StartText: {
 			Label: 起始讯息
-			Tooltip: ""
+			Tooltip: 启用或禁用世界进入时的欢迎文本。
 		}
 
 		RiffScreenEffectIntensity: {
 			Label: 即兴演奏视觉效果强度
-			Tooltip: ""
+			Tooltip: 控制即兴演奏视觉效果强度。设置为0可禁用。
 		}
 
 		MissSoundPreset: {
-			// Label: Miss Sound Preset
-			// Tooltip: Choose a preset sound style for your missed timing sounds.
+			Label: 错失时机音效设置
+			Tooltip: 为你错失时机的演奏选择一个音效。
 		}
 
 		CustomMissSoundPath: {
-			// Label: Custom Miss Sound Path
-			/* Tooltip:
+			Label: 自定义错失时机音效设置路径
+			Tooltip:
 				'''
-				Type in a mod sound path for the custom missed timing sound you would like to use.
-				For example, 'RagnarokMod/Sounds/bonk'.
-				Must have a corresponding .ogg file in the mod's Sounds folder, otherwise it might cause crashes or just not work.
-				Does not do anything unless the Miss Sound Preset is set to Custom.
-				''' */
+				请输入您想要使用的自定义错失时机音效的模组声音路径。
+				如，'RagnarokMod/Sounds/bonk'。
+				必须在模组的声音文件夹中有一个对应的.ogg文件，否则可能会导致崩溃或无法正常工作
+				除非将“声音预设”设置为“自定义”，否则不会执行任何操作。
+				'''
 		}
 
 		MissSoundVolume: {
-			// Label: Miss Sound Volume
-			// Tooltip: Set the volume for the missed timing sound.
+			Label: 错失时机音效音量设置
+			Tooltip: 为错失时机音效设置音量。
 		}
 
 		MissSoundDuringRiff: {
-			// Label: Miss Sound During Riff
-			// Tooltip: Determines whether the missed timing sound will play during an active riff.
+			Label: 即兴演奏中的错失时机音效
+			Tooltip: 在即兴演奏时是否播放错失时机音效。
 		}
 
 		PlaySoundDuringRiff: {
-			// Label: Play Sound During Riff
-			/* Tooltip:
+			Label: 即兴演奏中的乐器音效
+			Tooltip:
 				'''
-				Determines whether the instrument sound plays during riffs.
-				Set to 1 to always play the sound during riffs, -1 to never play the sound during riffs.
-				0 will only play the sound during riffs for intended specific items, such as the Fungal Castanets.
-				''' */
+				确定在即兴演奏期间是否播放乐器声音。
+				设置为1表示在即兴演奏期间始终播放乐器声音，设置为-1表示在即兴演奏期间不播放声音。
+				0表示仅会在特定物品（如真菌响板）的即兴演奏期间播放声音。
+				'''
 		}
 
 		MeterOffsetX: {
-			// Label: Meter Offset X
-			// Tooltip: ""
+			Label: X轴仪表设置
+			Tooltip: ""
 		}
 
 		MeterOffsetY: {
-			// Label: Meter Offset Y
-			// Tooltip: ""
+			Label: Y轴仪表设置
+			Tooltip: ""
 		}
 
 		RiffsOverrideEventMusic: {
-			// Label: Riffs Override Event Music
-			// Tooltip: Toggles if Riff Music overrides Event music
+			Label: 即兴演奏覆盖事件音乐
+			Tooltip: 切换启用是否让即兴演奏的音乐覆盖事件的音乐
 		}
 
 		RiffsOverrideBossMusic: {
-			// Label: Riffs Override Boss Music
-			// Tooltip: Toggles if Riff Music overrides Boss music
+			Label: 即兴演奏覆盖Boss音乐
+			Tooltip: 切换启用是否让即兴演奏的音乐覆盖Boss的音乐
 		}
 	}
 
 	DebugConfig: {
-		// DisplayName: Debug Config
-		// Headers.Debugging: Debugging
+		DisplayName: 调试选项
+		Headers.Debugging: 调试页
 
 		ItemHoldOffsetX: {
-			// Label: Item Hold Offset X
-			// Tooltip: ""
+			Label: 物品手持X偏移
+			Tooltip: ""
 		}
 
 		ItemHoldOffsetY: {
-			// Label: Item Hold Offset Y
-			// Tooltip: ""
+			Label: 物品手持Y偏移
+			Tooltip: ""
 		}
 
 		ItemUseStylePerpendicular: {
-			// Label: Item Use Style Perpendicular
-			// Tooltip: ""
+			Label: 物品竖直使用
+			Tooltip: ""
 		}
 
 		ShootOffsetForward: {
-			// Label: Shoot Offset Forward
-			// Tooltip: ""
+			Label: Shoot Offset Forward
+			Tooltip: ""
 		}
 
 		ShootOffsetPerpendicular: {
-			// Label: Shoot Offset Perpendicular
-			// Tooltip: ""
+			Label: 发射竖直偏移
+			Tooltip: ""
 		}
 
 		ItemHoldPerpendicular: {
-			// Label: Item Hold Perpendicular
-			// Tooltip: ""
+			Label: 物品手持竖直
+			Tooltip: ""
 		}
 	}
 
 	AprilChaos: {
-		// DisplayName: April Chaos
+		DisplayName: 愚人四月
 
 		Headers: {
-			// AprilChaos: April Chaos
-			// RadiantMage: Radiant Mage
-			// MeleeSummoner: Melee Summoner
-			// RogueRanger: Rogue Ranger
-			// ObnoxiousBard: Obnoxious Bard
+			AprilChaos: 愚人四月
+			RadiantMage: 光辉法师
+			MeleeSummoner: 近战召唤
+			RogueRanger: 盗贼射手
+			ObnoxiousBard: 没人喜欢吟游诗人
 		}
 
 		MasterToggle: {
-			// Label: Master Toggle
-			// Tooltip: Disables/Enables all options below.
+			Label: 主开关
+			Tooltip: 开启/关闭以下的所有选项
 		}
 
 		RadMage: {
-			// Label: Radiant Mage
-			/* Tooltip:
+			Label: 光辉法师
+			Tooltip:
 				'''
-				Healer just felt like an extension of mage.
-				So we fixed that.
-				By replacing Mage with Healer.
-				All magic is healing if you believe hard enough. 
-				Or hit hard enough.
-				''' */
+				牧师总让人觉得只是另一种法师
+				所以我们修正了这一点
+				办法就是用牧师取代法师
+				只要你信念够坚定，一切魔法都能成为治疗
+				或者下手够狠也行。
+				'''
 		}
 
 		MelSum: {
-			// Label: Melee Summoner
-			/* Tooltip:
+			Label: 近战召唤
+			Tooltip:
 				'''
-				Summoner had some unfortunate progression gaps.
-				So we fixed that.
-				By giving all of Melee to Summoner.
-				Your minions now respect you. 
-				Your sword does not.
-				''' */
+				召唤师的成长路线原本有些尴尬的断档
+				所以我们修正了这一点
+				办法就是把整个战士都塞给召唤师
+				你的召唤物现在会尊敬你
+				你的剑不会。
+				'''
 		}
 
 		RogRan: {
-			// Label: Rogue Ranger
-			/* Tooltip:
+			Label: 盗贼射手
+			Tooltip:
 				'''
-				Rogue is taking back its roots.
-				By absorbing Ranger.
-				They were always the same person. 
-				One just had better shoes.
-				''' */
+				盗贼正在夺回自己的大本营
+				办法就是吞并射手
+				反正他们本来就是同一个人
+				其中一个只是行头更好一点。
+				'''
 		}
 
 		ObBard: {
-			// Label: Obnoxious Bard
-			// Tooltip: Makes your riffs... less riffin
+			Label: 没人喜欢吟游诗人
+			Tooltip: 使你的即兴演奏……没那么即兴
 		}
 
 		OwnRiffWeight: {
-			// Label: Own Riff Weight
-			// Tooltip: ""
+			Label: 自带即兴演奏权重
+			Tooltip: ""
 		}
 
 		RiffWeights: {
-			// Label: Riff Weights
-			// Tooltip: ""
+			Label: 即兴演奏权重
+			Tooltip: ""
 		}
 	}
 
 	MissSoundPreset: {
-		// Tooltip: ""
+		Tooltip: ""
 
 		Default: {
-			// Label: Default
-			// Tooltip: ""
+			Label: 默认
+			Tooltip: ""
 		}
 
 		Softer: {
-			// Label: Softer
-			// Tooltip: ""
+			Label: 柔和
+			Tooltip: ""
 		}
 
 		Percussion: {
-			// Label: Percussion
-			// Tooltip: ""
+			Label: 打击感
+			Tooltip: ""
 		}
 
 		Custom: {
-			// Label: Custom
-			// Tooltip: ""
+			Label: 自定义
+			Tooltip: ""
 		}
 
 		Bounce: {
-			// Label: Bounce
-			// Tooltip: ""
+			Label: 弹跳
+			Tooltip: ""
 		}
 
 		Meow: {
-			// Label: Meow
-			// Tooltip: ""
+			Label: 猫叫
+			Tooltip: ""
 		}
 
 		Clang: {
-			// Label: Clang
-			// Tooltip: ""
+			Label: 叮当
+			Tooltip: ""
 		}
 	}
 }
@@ -1863,14 +1890,14 @@ DisableMe: "[i:Wrench][c/FFFF0A:如果你不想再看到这些消息，可以在
 
 Riffs: {
 	Cooldown: 即兴演奏冷却
-	// EmpowermentsHeader: Riff Empowerments:
+	EmpowermentsHeader: 即兴演奏增幅：
 }
 
 DamageClasses: {
 	ThoriumRogueClass.DisplayName: 盗贼伤害
-	// MeleeSummoner.DisplayName: summelee damage
-	// RadiantMagic.DisplayName: radiagic damage
-	// RogueRanger.DisplayName: roganged damage
+	MeleeSummoner.DisplayName: 召战伤害
+	RadiantMagic.DisplayName: 音法伤害
+	RogueRanger.DisplayName: 贼射伤害
 }
 
-// Tiles.MenuMusicBoxTile.MapEntry: Menu Music Box Tile
+Tiles.MenuMusicBoxTile.MapEntry: 主题曲音乐盒
