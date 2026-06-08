@@ -29,8 +29,11 @@ namespace RagnarokMod.Common.ModSystems
                 {
                     ExchangeRecipe(CalamityBardHealer, ModContent.ItemType<AerospecBard>(), "AerospecHeadphones");
                     ExchangeRecipe(CalamityBardHealer, ModContent.ItemType<AerospecHealer>(), "AerospecBiretta");
-                    ExchangeRecipe(CalamityBardHealer, ModContent.ItemType<AuricTeslaFrilledHelmet>(), "AuricTeslaFeatheredHeadwear");
-                    ExchangeRecipe(CalamityBardHealer, ModContent.ItemType<AuricTeslaHealerHead>(), "AuricTeslaValkyrieVisage");
+                    if (!ModLoader.HasMod("InfernalEclipseAPI") && !ModLoader.HasMod("WHummusMultiModBalancing"))
+                    {
+                        ExchangeRecipe(CalamityBardHealer, ModContent.ItemType<AuricTeslaFrilledHelmet>(), "AuricTeslaFeatheredHeadwear");
+                        ExchangeRecipe(CalamityBardHealer, ModContent.ItemType<AuricTeslaHealerHead>(), "AuricTeslaValkyrieVisage");
+                    }
                     ExchangeRecipe(CalamityBardHealer, ModContent.ItemType<BloodflareHeadHealer>(), "BloodflareRitualistMask");
                     ExchangeRecipe(CalamityBardHealer, ModContent.ItemType<BloodflareHeadBard>(), "BloodflareSirenSkull");
                     ExchangeRecipe(CalamityBardHealer, ModContent.ItemType<DaedalusHeadHealer>(), "DaedalusCowl");
@@ -85,8 +88,11 @@ namespace RagnarokMod.Common.ModSystems
                 {
                     RemoveOwnRecipe(ModContent.ItemType<AerospecBard>());
                     RemoveOwnRecipe(ModContent.ItemType<AerospecHealer>());
-                    RemoveOwnRecipe(ModContent.ItemType<AuricTeslaFrilledHelmet>());
-                    RemoveOwnRecipe(ModContent.ItemType<AuricTeslaHealerHead>());
+                    if (!ModLoader.HasMod("InfernalEclipseAPI") && !ModLoader.HasMod("WHummusMultiModBalancing"))
+                    {
+                        RemoveOwnRecipe(ModContent.ItemType<AuricTeslaFrilledHelmet>());
+                        RemoveOwnRecipe(ModContent.ItemType<AuricTeslaHealerHead>());
+                    }
                     RemoveOwnRecipe(ModContent.ItemType<BloodflareHeadHealer>());
                     RemoveOwnRecipe(ModContent.ItemType<BloodflareHeadBard>());
                     RemoveOwnRecipe(ModContent.ItemType<DaedalusHeadHealer>());
