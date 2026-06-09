@@ -1,6 +1,5 @@
 ﻿using CalamityMod;
 using CalamityMod.Items.TreasureBags;
-using CalamityMod.NPCs.CalClone;
 using CalamityMod.World;
 using RagnarokMod.Items.BardItems.Accessories;
 using RagnarokMod.Items.BardItems.Percussion;
@@ -11,7 +10,6 @@ using RagnarokMod.Items.HealerItems.Other;
 using RagnarokMod.Items.HealerItems.Scythes;
 using RagnarokMod.Items.Materials;
 using RagnarokMod.Items.RevItems;
-using RagnarokMod.Utils;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ModLoader;
@@ -24,6 +22,7 @@ using ThoriumMod.Items.BossQueenJellyfish;
 using ThoriumMod.Items.BossStarScouter;
 using ThoriumMod.Items.BossTheGrandThunderBird;
 using ThoriumMod.Items.BossViscount;
+
 
 namespace RagnarokMod.Common.GlobalItems
 {
@@ -55,6 +54,7 @@ namespace RagnarokMod.Common.GlobalItems
             || item.type == ModContent.ItemType<AstrumAureusBag>()
 			|| item.type == ModContent.ItemType<SlimeGodBag>()
             || item.type == ModContent.ItemType<RavagerBag>()
+            || item.type == ModContent.ItemType<ViscountTreasureBag>()
             );
         }
 
@@ -70,7 +70,7 @@ namespace RagnarokMod.Common.GlobalItems
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<QueenJelly>(), 1, 4, 16));
 
             if (item.type == ModContent.ItemType<ViscountTreasureBag>())
-                itemLoot.AddIf(() => CalamityWorld.revenge || CalamityWorld.death, ModContent.ItemType<GoldenBatDroppings>(), 10);
+                itemLoot.AddBatDroppings();
 
             if (item.type == ModContent.ItemType<StarScouterTreasureBag>())
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<StrangeAlienMotherBoard>(), 1, 4, 6));
@@ -215,6 +215,16 @@ namespace RagnarokMod.Common.GlobalItems
                     ModContent.ItemType<Splattercannon>()
                 }));
             }
+        }
+    }
+
+    public static class AddRevAccessories
+    {
+        public static void AddBatDroppings(this ILoot loot)
+        {
+            var lcr = new LeadingConditionRule(DropHelper.If(() => CalamityWorld.revenge));
+            lcr.Add(new CommonDrop(ModContent.ItemType<GoldenBatDroppings>(), 10));
+            loot.Add(lcr);
         }
     }
 }

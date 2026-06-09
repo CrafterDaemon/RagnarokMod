@@ -6,13 +6,11 @@ using ThoriumMod;
 using ThoriumMod.Utilities;
 using CalamityMod.Items;
 using CalamityMod;
-using CalamityMod.CalPlayer;
 
 namespace RagnarokMod.Items.RevItems
 {
     public class GoldenBatDroppings : ModItem
     {
-
         public override void SetDefaults()
         {
             Item.width = 26;
@@ -26,12 +24,12 @@ namespace RagnarokMod.Items.RevItems
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
+
             thoriumPlayer.statCoinDrops += 0.25f;
             player.GetRagnarokModPlayer().batpoop = true;
-			CalamityPlayer calamityPlayer = player.Calamity();
-            if(calamityPlayer.rageModeActive) {
+
+            if (player.Calamity().rageModeActive)
 				thoriumPlayer.statCoinDrops += 0.25f;
-			}
         }
     }
 }

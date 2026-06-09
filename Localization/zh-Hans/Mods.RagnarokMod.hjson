@@ -355,7 +355,7 @@ Items: {
 
 	StormFeather: {
 		DisplayName: 风暴之羽
-		Tooltip: 
+		Tooltip:
 			'''
 			可以在商店卖出非常理想的价格
 			“从惊雷王鹰身上掉落下来的羽毛，闪烁着电火花”
@@ -551,7 +551,7 @@ Items: {
 
 	ProfanedScythe: {
 		DisplayName: 亵渎之镰
-		Tooltip: 
+		Tooltip:
 			'''
 			被神圣狱火灼燃的镰刀
 			右键以弧线轨迹投掷镰刀
