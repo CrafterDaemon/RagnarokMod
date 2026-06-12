@@ -23,7 +23,7 @@ namespace RagnarokMod.Buffs
                     dustPos,
                     0,
                     0,
-                    60,
+                    DustID.RedTorch,
                     Main.rand.NextFloat(-1f, 1f),
                     Main.rand.NextFloat(-0.5f, 0.5f)
                 );

@@ -82,7 +82,7 @@ namespace RagnarokMod.Projectiles.BardPro.Wind
 					Projectile.position,
 					Projectile.width,
 					Projectile.height,
-					117,
+					DustID.Crimstone,
 					offset.X,
 					offset.Y,
 					150,
@@ -112,7 +112,7 @@ namespace RagnarokMod.Projectiles.BardPro.Wind
 				Vector2 velocity = Main.rand.NextVector2Circular(4f, 4f);
 				Dust dust = Dust.NewDustPerfect(
 					Projectile.Center,
-					117,
+                    DustID.Crimstone,
 					velocity,
 					0,
 					default,
@@ -137,7 +137,7 @@ namespace RagnarokMod.Projectiles.BardPro.Wind
 					Projectile.position,
 					Projectile.width,
 					Projectile.height,
-					117,
+					DustID.Crimstone,
 					velocity.X,
 					velocity.Y,
 					100,
@@ -150,7 +150,7 @@ namespace RagnarokMod.Projectiles.BardPro.Wind
 		
         public override void OnKill(int timeLeft){
             for (int i = 0; i < 8; i++){
-                Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, 117 , Main.rand.Next(-2, 3), Main.rand.Next(-2, 3), 0, default, 1.5f).noGravity = true;
+                Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Crimstone , Main.rand.Next(-2, 3), Main.rand.Next(-2, 3), 0, default, 1.5f).noGravity = true;
             }
         }
     }

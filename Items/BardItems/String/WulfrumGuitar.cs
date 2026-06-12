@@ -35,12 +35,12 @@ namespace RagnarokMod.Items.BardItems.String
 			base.Item.useTime = 22;
 			base.Item.useAnimation = 22;
 			base.Item.autoReuse = true;
-			base.Item.useStyle = 5;
+			base.Item.useStyle = ItemUseStyleID.Shoot;
 			base.Item.noMelee = true;
 			base.Item.knockBack = 4f;
 			Item.useStyle = ItemUseStyleID.Guitar;
 			base.Item.value = CalamityGlobalItem.RarityBlueBuyPrice;
-			base.Item.rare = 1;
+			base.Item.rare = ItemRarityID.Blue;
 			base.Item.UseSound = new SoundStyle?(ThoriumSounds.String_Sound);
 			base.Item.shoot = ModContent.ProjectileType<WulfrumGuitarPro>();
 			base.Item.shootSpeed = 6f;
@@ -80,7 +80,10 @@ namespace RagnarokMod.Items.BardItems.String
         }
 		
         public override void AddRecipes(){
-           base.CreateRecipe(1).AddIngredient<WulfrumMetalScrap>(10).AddTile(16).Register();
+           CreateRecipe()
+				.AddIngredient<WulfrumMetalScrap>(10)
+				.AddTile(TileID.Anvils)
+				.Register();
         }
     }
 }

@@ -43,7 +43,7 @@ namespace RagnarokMod.Projectiles.BardPro.String
 
         public override bool OnTileCollide(Vector2 oldVelocity){
             for (int i = 0; i < 10; i++){
-                Dust.NewDustDirect(base.Projectile.position, base.Projectile.width, base.Projectile.height, 49, (float)Main.rand.Next(-3, 3), (float)Main.rand.Next(-3, 3), 0, default(Color), 1.25f).noGravity = true;
+                Dust.NewDustDirect(base.Projectile.position, base.Projectile.width, base.Projectile.height, DustID.Mythril, (float)Main.rand.Next(-3, 3), (float)Main.rand.Next(-3, 3), 0, default(Color), 1.25f).noGravity = true;
             }
             return base.Projectile.Bounce(oldVelocity, this.collideMax + Main.player[base.Projectile.owner].GetThoriumPlayer().bardBounceBonus, ref this.collide, 1f);
         }
@@ -53,7 +53,7 @@ namespace RagnarokMod.Projectiles.BardPro.String
 			return;
 			returning = true;
 			Projectile.aiStyle = 0;
-			AIType = 0;
+			AIType = ProjectileID.None;
 			storedRotation = Projectile.rotation;
 			base.Projectile.tileCollide = false;
 			base.Projectile.penetrate = -1; 
@@ -64,7 +64,7 @@ namespace RagnarokMod.Projectiles.BardPro.String
 
         public override void AI(){
             for (int i = 0; i < 3; i++){
-                Dust dust = Dust.NewDustDirect(base.Projectile.position - base.Projectile.velocity, base.Projectile.width, base.Projectile.height, 49, 0f, 0f, 0, default(Color), 1f);
+                Dust dust = Dust.NewDustDirect(base.Projectile.position - base.Projectile.velocity, base.Projectile.width, base.Projectile.height, DustID.Mythril, 0f, 0f, 0, default(Color), 1f);
                 dust.alpha = 125;
                 dust.velocity *= 0.3f;
                 dust.noGravity = true;
@@ -99,7 +99,7 @@ namespace RagnarokMod.Projectiles.BardPro.String
 
         public override void OnKill(int timeLeft){
             for (int i = 0; i < 15; i++){
-                Dust.NewDustDirect(base.Projectile.position, base.Projectile.width, base.Projectile.height, 49, (float)Main.rand.Next(-4, 5), (float)Main.rand.Next(-4, 5), 0, default(Color), 1.5f).noGravity = true;
+                Dust.NewDustDirect(base.Projectile.position, base.Projectile.width, base.Projectile.height, DustID.Mythril, (float)Main.rand.Next(-4, 5), (float)Main.rand.Next(-4, 5), 0, default(Color), 1.5f).noGravity = true;
             }
         }
 

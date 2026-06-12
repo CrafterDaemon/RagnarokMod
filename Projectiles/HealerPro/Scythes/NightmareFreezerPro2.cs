@@ -57,7 +57,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.AddBuff(ModContent.BuffType<Voidfrost>(), 60);
-            target.AddBuff(ModContent.BuffType<GlacialState>(), 30);
+            target.AddBuff(BuffID.Frozen, 30);
             target.AddBuff(BuffID.Frostburn2, 300);
         }
         public override bool PreDraw(ref Color lightColor)

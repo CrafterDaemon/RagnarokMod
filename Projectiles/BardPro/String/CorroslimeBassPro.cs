@@ -86,7 +86,7 @@ namespace RagnarokMod.Projectiles.BardPro.String
 					Projectile.position,
 					Projectile.width,
 					Projectile.height,
-					14,
+					DustID.Demonite,
 					velocity.X,
 					velocity.Y,
 					100,
@@ -116,7 +116,7 @@ namespace RagnarokMod.Projectiles.BardPro.String
 					Projectile.position,
 					Projectile.width,
 					Projectile.height,
-					14,
+                    DustID.Demonite,
 					offset.X,
 					offset.Y,
 					150,
@@ -130,7 +130,7 @@ namespace RagnarokMod.Projectiles.BardPro.String
 
         public override void OnKill(int timeLeft){
             for (int i = 0; i < 8; i++){
-                Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, 14, Main.rand.Next(-2, 3), Main.rand.Next(-2, 3), 0, default, 1.5f).noGravity = true;
+                Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Demonite, Main.rand.Next(-2, 3), Main.rand.Next(-2, 3), 0, default, 1.5f).noGravity = true;
             }
         }
     }

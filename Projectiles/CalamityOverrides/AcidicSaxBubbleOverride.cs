@@ -130,14 +130,14 @@ namespace RagnarokMod.Projectiles.CalamityOverrides{
 		public override void BardOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone){
 			target.AddBuff(ModContent.BuffType<Irradiated>(), 180, false);
 			if (base.Projectile.ai[2] == 1f){
-				target.AddBuff(20, 180, false);
+				target.AddBuff(BuffID.Poisoned, 180, false);
 			}
 		}
 
 		public override void OnHitPlayer(Player target, Player.HurtInfo info){
 			target.AddBuff(ModContent.BuffType<Irradiated>(), 180, true, false);
 			if (base.Projectile.ai[2] == 1f){
-				target.AddBuff(20, 180, true, false);
+				target.AddBuff(BuffID.Poisoned, 180, true, false);
 			}
 		}
 
@@ -149,7 +149,7 @@ namespace RagnarokMod.Projectiles.CalamityOverrides{
 			SoundEngine.PlaySound(SoundID.Item54, new Vector2?(base.Projectile.Center), null);
 			int inc;
 			for (int i = 0; i < 25; i = inc + 1){
-				int toxicDust = Dust.NewDust(base.Projectile.position, base.Projectile.width, base.Projectile.height, 75, 0f, 0f, 0, default(Color), 1f);
+				int toxicDust = Dust.NewDust(base.Projectile.position, base.Projectile.width, base.Projectile.height, DustID.CursedTorch, 0f, 0f, 0, default(Color), 1f);
 				Main.dust[toxicDust].position = (Main.dust[toxicDust].position + base.Projectile.position) / 2f;
 				Main.dust[toxicDust].velocity = new Vector2((float)Main.rand.Next(-100, 101), (float)Main.rand.Next(-100, 101));
 				Main.dust[toxicDust].velocity.Normalize();

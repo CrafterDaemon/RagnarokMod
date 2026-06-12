@@ -50,7 +50,7 @@ namespace RagnarokMod.Items.BardItems.Wind
             Item.autoReuse = true;
             Item.knockBack = 4f;
             Item.value = CalamityGlobalItem.RarityLightRedBuyPrice;
-            Item.rare = 4;
+            Item.rare = ItemRarityID.LightRed;
             Item.UseSound = RagnarokModSounds.crimslimeoboe;
             Item.shoot = ModContent.ProjectileType<CrimslimeOboePro>();
             Item.shootSpeed = 17;

@@ -51,7 +51,7 @@ namespace RagnarokMod.Items.BardItems.String
             Item.autoReuse = true;
             Item.knockBack = 4f;
             Item.value = CalamityGlobalItem.RarityLightRedBuyPrice;
-            Item.rare = 4;
+            Item.rare = ItemRarityID.LightRed;
             Item.UseSound = RagnarokModSounds.corroslimebass;
             Item.shoot = ModContent.ProjectileType<CorroslimeBassPro>();
             Item.shootSpeed = 20;

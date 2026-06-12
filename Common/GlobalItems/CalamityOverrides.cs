@@ -37,11 +37,11 @@ namespace RagnarokMod.Common.GlobalItems
         public override bool AppliesToEntity(Item item, bool lateInstantiation)
         {
             //fetch me their SOULS
-            return item.ModItem is FaceMelter or AnahitasArpeggio or BelchingSaxophone or DragonRage or EldritchSoulArtifact;
+            return item.ModItem is FaceMelter or AnahitasArpeggio or BelchingSaxophone or DragonRage or FragmentsOfAnotherWorld;
         }
 		
 		public override void UpdateAccessory(Item item,Player player, bool hideVisual) {
-			if (item.type == ModContent.ItemType<EldritchSoulArtifact>()){
+			if (item.type == ModContent.ItemType<FragmentsOfAnotherWorld>()){
 				ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
 				thoriumPlayer.bardResourceMax2 += 2;
                 thoriumPlayer.healBonus += 2;
@@ -124,7 +124,7 @@ namespace RagnarokMod.Common.GlobalItems
                 RecipeHelper helper = new(item);
                 helper.Add(ModContent.ItemType<LivingShard>(), 12);
             }
-            finder.LookFor(ModContent.ItemType<EldritchSoulArtifact>(), 1);
+            finder.LookFor(ModContent.ItemType<FragmentsOfAnotherWorld>(), 1);
             foreach (Recipe item in finder.Search())
             {
                 RecipeHelper helper = new(item);

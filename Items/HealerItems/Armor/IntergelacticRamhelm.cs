@@ -98,7 +98,7 @@ namespace RagnarokMod.Items.HealerItems.Armor
                     player.buffImmune[156] = true;
                     player.buffImmune[31] = true;
                     player.buffImmune[197] = true;
-                    player.buffImmune[ModContent.BuffType<GlacialState>()] = true;
+                    player.buffImmune[BuffID.Frozen] = true;
                     player.buffImmune[CatalystMod.Find<ModBuff>("AstralBlight").Type] = true;
                     player.GetRagnarokModPlayer().intergelacticHealer = true;
                 }

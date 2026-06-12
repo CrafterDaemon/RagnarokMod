@@ -42,7 +42,7 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
         public override void SafeOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.AddBuff(ModContent.BuffType<Voidfrost>(), 180);
-            target.AddBuff(ModContent.BuffType<GlacialState>(), 60);
+            target.AddBuff(BuffID.Frozen, 60);
             target.AddBuff(BuffID.Frostburn2, 300);
         }
 

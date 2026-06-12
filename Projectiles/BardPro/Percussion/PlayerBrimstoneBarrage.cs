@@ -89,7 +89,7 @@ namespace RagnarokMod.Projectiles.BardPro.Percussion
             for (int i = 0; i < 8; i++)
             {
                 Vector2 velocity = Main.rand.NextVector2Circular(3f, 3f);
-                Dust d = Dust.NewDustPerfect(Projectile.Center, 60);
+                Dust d = Dust.NewDustPerfect(Projectile.Center, DustID.RedTorch);
                 d.noGravity = true;
                 d.velocity = velocity;
                 d.scale = 1f;

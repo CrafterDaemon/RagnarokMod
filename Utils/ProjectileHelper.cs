@@ -354,9 +354,9 @@ namespace RagnarokMod.Utils
 			if (projectile.owner == Main.myPlayer){
 				for (int npcIndex = 0; npcIndex < Main.maxNPCs; npcIndex++){
 					NPC npc = Main.npc[npcIndex];
-					if (npc.active && !npc.dontTakeDamage && ((projectile.friendly && (!npc.friendly || (npc.type == 22 && projectile.owner < 255 && player.killGuide) || (npc.type == 54 && projectile.owner < 255 && player.killClothier))) || (projectile.hostile && npc.friendly && !npc.dontTakeDamageFromHostiles)) && (projectile.owner < 0 || npc.immune[projectile.owner] == 0 || projectile.maxPenetrate == 1) && (npc.noTileCollide || !projectile.ownerHitCheck)){
+					if (npc.active && !npc.dontTakeDamage && ((projectile.friendly && (!npc.friendly || (npc.type == NPCID.Guide && projectile.owner < 255 && player.killGuide) || (npc.type == NPCID.Clothier && projectile.owner < 255 && player.killClothier))) || (projectile.hostile && npc.friendly && !npc.dontTakeDamageFromHostiles)) && (projectile.owner < 0 || npc.immune[projectile.owner] == 0 || projectile.maxPenetrate == 1) && (npc.noTileCollide || !projectile.ownerHitCheck)){
 						bool stickingToNPC;
-						if (npc.type == 414){
+						if (npc.type == NPCID.SolarCrawltipedeTail){
 							Rectangle rect = npc.Hitbox;
 							int crawltipedeHitboxMod = 8;
 							rect.X -= crawltipedeHitboxMod;

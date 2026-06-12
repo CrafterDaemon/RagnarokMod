@@ -11,7 +11,9 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using ThoriumMod.Items.BardItems;
 using ThoriumMod.Items.HealerItems;
+using ThoriumMod.Items.ThrownItems;
 
 namespace RagnarokMod.Items.HealerItems.Scythes
 {
@@ -79,9 +81,23 @@ namespace RagnarokMod.Items.HealerItems.Scythes
             recipe.AddIngredient(ModContent.ItemType<TerraScythe>());
             recipe.AddIngredient(ItemID.LunarBar, 5);
             recipe.AddIngredient(ModContent.ItemType<LifeAlloy>(), 5);
-            recipe.AddIngredient(ModContent.ItemType<GalacticaSingularity>(), 5);
+            recipe.AddIngredient(ItemID.FragmentSolar, 5);
+            recipe.AddIngredient(ItemID.FragmentNebula, 5);
+            recipe.AddIngredient(ItemID.FragmentStardust, 5);
+            recipe.AddIngredient(ItemID.FragmentVortex, 5);
             recipe.AddTile(TileID.LunarCraftingStation);
             recipe.Register();
+
+            CreateRecipe()
+                .AddIngredient(ModContent.ItemType<TerraScythe>())
+                .AddIngredient(ItemID.LunarBar, 5)
+                .AddIngredient(ModContent.ItemType<LifeAlloy>(), 5)
+                .AddIngredient(ModContent.ItemType<ShootingStarFragment>(), 5)
+                .AddIngredient(ModContent.ItemType<CelestialFragment>(), 5)
+                .AddIngredient(ModContent.ItemType<WhiteDwarfFragment>(), 5)
+                .AddIngredient(ModContent.ItemType<MeldBlob>(), 5)
+                .AddTile(TileID.LunarCraftingStation)
+                .Register();
         }
     }
 }

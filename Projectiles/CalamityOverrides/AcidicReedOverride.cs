@@ -8,6 +8,7 @@ using Terraria.Audio;
 using Terraria.ModLoader;
 using ThoriumMod;
 using ThoriumMod.Projectiles.Bard;
+using Terraria.ID;
 
 namespace RagnarokMod.Projectiles.CalamityOverrides
 {
@@ -48,10 +49,10 @@ namespace RagnarokMod.Projectiles.CalamityOverrides
 
 		public override void OnKill(int timeLeft){
 			for (int i = 0; i <= 2; i++){
-				int idx = Dust.NewDust(base.Projectile.position, 8, 8, 75, 0f, 0f, 0, default(Color), 0.75f);
+				int idx = Dust.NewDust(base.Projectile.position, 8, 8, DustID.CursedTorch, 0f, 0f, 0, default(Color), 0.75f);
 				Main.dust[idx].noGravity = true;
 				Main.dust[idx].velocity *= 3f;
-				idx = Dust.NewDust(base.Projectile.position, 8, 8, 75, 0f, 0f, 0, default(Color), 0.75f);
+				idx = Dust.NewDust(base.Projectile.position, 8, 8, DustID.CursedTorch, 0f, 0f, 0, default(Color), 0.75f);
 				Main.dust[idx].noGravity = true;
 				Main.dust[idx].velocity *= 3f;
 			}
