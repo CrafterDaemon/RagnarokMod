@@ -1376,8 +1376,8 @@ Configs: {
 		}
 
 		MarbleGranite: {
-			Label: Granite Energy Core and Buried Champion Recipe Changes
-			Tooltip: Changes Ancient Blade and Unstable Core to require Aerialite Bars and Dracula Fangs. Defaults to True
+			Label: Granite Energy Storms and Buried Champion Recipe Changes
+			Tooltip: Changes Ancient Blade and Unstable Core to require Aerialite Bars. Defaults to True
 		}
 
 		OverloadedSludge: {
@@ -1387,7 +1387,7 @@ Configs: {
 
 		StarCaller: {
 			Label: Star Scouter Recipe Change
-			Tooltip: Changes Star Caller to use Aerialite Bars. Defaults to True
+			Tooltip: Changes Star Caller to use Aerialite Bars and the evil boss material. Defaults to True
 		}
 
 		CryoKey: {

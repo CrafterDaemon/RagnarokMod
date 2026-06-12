@@ -97,47 +97,17 @@ namespace RagnarokMod
                 foreach (Recipe item in getter.Search())
                 {
                     RecipeHelper helper = new(item);
-                    helper.Disable();
+                    helper.Add(ModContent.ItemType<AerialiteBar>(), 5);
                 }
-                Recipe.Create(ModContent.ItemType<UnstableCore>())
-                    .AddIngredient(ItemID.GraniteBlock, 25)
-                    .AddIngredient<GraniteEnergyCore>(4)
-                    .AddIngredient<AerialiteBar>(5)
-                    .AddIngredient(ItemID.ShadowScale, 8)
-                    .AddIngredient<DraculaFang>(100)
-                    .AddTile(TileID.Anvils)
-                    .Register();
-                Recipe.Create(ModContent.ItemType<UnstableCore>())
-                    .AddIngredient(ItemID.GraniteBlock, 25)
-                    .AddIngredient<GraniteEnergyCore>(4)
-                    .AddIngredient<AerialiteBar>(5)
-                    .AddIngredient(ItemID.TissueSample, 8)
-                    .AddIngredient<DraculaFang>(100)
-                    .AddTile(TileID.Anvils)
-                    .Register();
+
                 getter.LookFor(ModContent.ItemType<AncientBlade>(), 1);
                 foreach (Recipe item in getter.Search())
                 {
                     RecipeHelper helper = new(item);
-                    helper.Disable();
+                    helper.Add(ModContent.ItemType<AerialiteBar>(), 5);
                 }
-                Recipe.Create(ModContent.ItemType<AncientBlade>())
-                    .AddIngredient(ItemID.MarbleBlock, 25)
-                    .AddIngredient<BronzeAlloyFragments>(4)
-                    .AddIngredient<AerialiteBar>(5)
-                    .AddIngredient(ItemID.ShadowScale, 8)
-                    .AddIngredient<DraculaFang>(100)
-                    .AddTile(TileID.Anvils)
-                    .Register();
-                Recipe.Create(ModContent.ItemType<AncientBlade>())
-                    .AddIngredient(ItemID.MarbleBlock, 25)
-                    .AddIngredient<BronzeAlloyFragments>(4)
-                    .AddIngredient<AerialiteBar>(5)
-                    .AddIngredient(ItemID.TissueSample, 8)
-                    .AddIngredient<DraculaFang>(100)
-                    .AddTile(TileID.Anvils)
-                    .Register();
             }
+
             if (ModContent.GetInstance<BossProgressionConfig>().OverloadedSludge)
             {
                 getter.LookFor(ModContent.ItemType<OverloadedSludge>(), 1);

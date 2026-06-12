@@ -1,5 +1,6 @@
 Ragnarok. A great calamity in norse mythology, Is now a mod that intends to allow Thorium and Calamity to be used together with minimal issues. 
 Adds more content for Thorium classes, Merges Thrower + Rogue, and creates a more coherent experience throughout all stages of the game.
+
 [hr][/hr]
 [h1][b]Links[/b][/h1]
 

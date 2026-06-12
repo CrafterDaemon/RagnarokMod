@@ -1,6 +1,6 @@
 displayName = Ragnarok Mod
 author = CrafterDaemon & The Ragnarok Team
-version = 1.6.0.1
+version = 1.6.0.2
 modReferences = ThoriumMod, CalamityMod
 homepage = https://discord.com/invite/UBAQwtKCbf
 sortAfter = ThoriumMod, CalamityMod
