@@ -44,8 +44,11 @@ namespace RagnarokMod.Common.ModSystems
                     ExchangeRecipe(CalamityBardHealer, ModContent.ItemType<StatigelHeadHealer>(), "StatigelFoxMask");
                     ExchangeRecipe(CalamityBardHealer, ModContent.ItemType<TarragonShroud>(), "TarragonChapeau");
                     ExchangeRecipe(CalamityBardHealer, ModContent.ItemType<TarragonCowl>(), "TarragonParagonCrown");
-                    ExchangeRecipe(CalamityBardHealer, ModContent.ItemType<IntergelacticRobohelm>(), "IntergelacticCloche");
-                    ExchangeRecipe(CalamityBardHealer, ModContent.ItemType<IntergelacticRamhelm>(), "IntergelacticProtectorHelm");
+                    if (ModLoader.HasMod("CatalystMod"))
+                    {
+                        ExchangeRecipe(CalamityBardHealer, ModContent.ItemType<IntergelacticRobohelm>(), "IntergelacticCloche");
+                        ExchangeRecipe(CalamityBardHealer, ModContent.ItemType<IntergelacticRamhelm>(), "IntergelacticProtectorHelm");
+                    }
 
                     //Weapons
                     ExchangeRecipe(CalamityBardHealer, ModContent.ItemType<AnahitasArpeggioOverride>(), "AnahitasArpeggio");
