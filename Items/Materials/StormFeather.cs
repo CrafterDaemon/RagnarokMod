@@ -2,7 +2,6 @@
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
-using CalamityMod.Items;
 
 namespace RagnarokMod.Items.Materials
 {
