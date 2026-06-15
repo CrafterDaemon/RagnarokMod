@@ -1,4 +1,7 @@
+using CalamityMod.Items;
 using CalamityMod.Items.Materials;
+using CalamityMod.Items.Pets;
+using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -33,7 +36,8 @@ namespace RagnarokMod.Items.HealerItems.Other
             Item.noMelee = true;
             Item.autoReuse = true;
             Item.knockBack = 2f;
-            Item.rare = ItemRarityID.Pink;
+            Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
+            Item.rare = ModContent.RarityType<CosmicPurple>();
             Item.shoot = ModContent.ProjectileType<IrradiantRed>();
             Item.shootSpeed = 18f;
             Item.DamageType = ThoriumDamageBase<HealerDamage>.Instance;

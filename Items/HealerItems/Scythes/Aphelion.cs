@@ -33,8 +33,8 @@ namespace RagnarokMod.Items.HealerItems.Scythes
             scytheSoulCharge = 5;
             base.Item.width = 224;
             base.Item.height = 282;
-            base.Item.value = CalamityGlobalItem.RarityHotPinkBuyPrice;
-            base.Item.rare = ModContent.RarityType<BurnishedAuric>();
+            base.Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
+            base.Item.rare = ModContent.RarityType<ExoticRainbow>();
             base.Item.shoot = ModContent.ProjectileType<AphelionPro>();
             base.Item.channel = true; // hold to channel
         }

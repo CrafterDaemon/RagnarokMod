@@ -22,8 +22,8 @@ namespace RagnarokMod.Items.BardItems.Consumable
         public override void SetBardDefaults()
         {
             base.SetBardDefaults();
-            Item.value = CalamityGlobalItem.RarityPurpleBuyPrice;
-            Item.rare = ModContent.RarityType<BurnishedAuric>();
+            Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
+            Item.rare = ModContent.RarityType<CalamityRed>();
         }
 
         public override void AddRecipes()

@@ -51,6 +51,9 @@ using ThoriumMod.NPCs.BossStarScouter;
 using ThoriumMod.NPCs.BossTheGrandThunderBird;
 using ThoriumMod.NPCs.BossViscount;
 using CalamityMod.NPCs.Ravager;
+using CalamityMod.NPCs.ExoMechs.Thanatos;
+using CalamityMod.NPCs.ExoMechs.Ares;
+using CalamityMod.NPCs.ExoMechs.Apollo;
 
 namespace RagnarokMod.Common.GlobalNPCs
 {
@@ -81,10 +84,13 @@ namespace RagnarokMod.Common.GlobalNPCs
             || npc.type == ModContent.NPCType<DesertScourgeHead>()
             || npc.type == ModContent.NPCType<Anahita>()
             || npc.type == ModContent.NPCType<Leviathan>()
-			|| npc.type == ModContent.NPCType<ProfanedGuardianHealer>()
-			|| npc.type == ModContent.NPCType<SlimeGodCore>()
+            || npc.type == ModContent.NPCType<ProfanedGuardianHealer>()
+            || npc.type == ModContent.NPCType<SlimeGodCore>()
             || npc.type == ModContent.NPCType<RavagerBody>()
             || npc.type == ModContent.NPCType<Crabulon>()
+            || npc.type == ModContent.NPCType<ThanatosHead>()
+            || npc.type == ModContent.NPCType<AresBody>()
+            || npc.type == ModContent.NPCType<Apollo>()
             );
         }
 
@@ -274,9 +280,10 @@ namespace RagnarokMod.Common.GlobalNPCs
                 lastWorm.OnSuccess(DropHelper.NormalVsExpertQuantity(ModContent.ItemType<WhiteDwarfFragment>(), 1, 16, 24, 20, 32));
             }
 
-			if (npc.type == ModContent.NPCType<ProfanedGuardianHealer>()){
+            if (npc.type == ModContent.NPCType<ProfanedGuardianHealer>())
+            {
                 npcLoot.RemoveWhere(rule => rule is CommonDrop drop && drop.itemId == ModContent.ItemType<RelicOfConvergence>());
-				npcLoot.Add(ModContent.ItemType<RelicOfConvergenceOverride>(), 4, 1, 1);
+                npcLoot.Add(ModContent.ItemType<RelicOfConvergenceOverride>(), 4, 1, 1);
             }
 
 
@@ -313,12 +320,46 @@ namespace RagnarokMod.Common.GlobalNPCs
                 lastAlive.OnSuccess(ItemDropRule.Common(ModContent.ItemType<SirenScale>(), 4));
                 npcLoot.Add(notExpert);
             }
-			if (npc.type == ModContent.NPCType<SlimeGodCore>())
+            if (npc.type == ModContent.NPCType<SlimeGodCore>())
             {
                 LeadingConditionRule notExpert = new LeadingConditionRule(new Conditions.NotExpert());
                 notExpert.OnSuccess(ItemDropRule.Common(ModContent.ItemType<CorroslimeBass>(), 4));
-				notExpert.OnSuccess(ItemDropRule.Common(ModContent.ItemType<CrimslimeOboe>(), 4));
+                notExpert.OnSuccess(ItemDropRule.Common(ModContent.ItemType<CrimslimeOboe>(), 4));
                 npcLoot.Add(notExpert);
+            }
+
+            if (npc.type == ModContent.NPCType<AresBody>())
+            {
+                DefineRagnarokExoMechLoot(npc, npcLoot, (int)AresBody.MechType.Ares);
+            }
+            if (npc.type == ModContent.NPCType<ThanatosHead>())
+            {
+                DefineRagnarokExoMechLoot(npc, npcLoot, (int)AresBody.MechType.Thanatos);
+            }
+            if (npc.type == ModContent.NPCType<Apollo>())
+            {
+                DefineRagnarokExoMechLoot(npc, npcLoot, (int)AresBody.MechType.ArtemisAndApollo);
+            }
+        }
+
+        public static void DefineRagnarokExoMechLoot(NPC npc, NPCLoot npcLoot, int mechType)
+        {
+            var mainDrops = npcLoot.DefineConditionalDropSet(AresBody.CanDropLoot);
+            LeadingConditionRule normalOnly = new LeadingConditionRule(new Conditions.NotExpert());
+            mainDrops.Add(normalOnly);
+
+            bool ThanatosLoot(DropAttemptInfo info) => info.npc.type == ModContent.NPCType<ThanatosHead>() || DownedBossSystem.downedThanatos;
+            bool AresLoot(DropAttemptInfo info) => info.npc.type == ModContent.NPCType<AresBody>() || DownedBossSystem.downedAres;
+            bool ApolloLoot(DropAttemptInfo info) => info.npc.type == ModContent.NPCType<Apollo>() || DownedBossSystem.downedArtemisAndApollo;
+
+            if (!Main.expertMode)
+            {
+                //Thano
+                normalOnly.Add(ItemDropRule.ByCondition(DropHelper.If(ThanatosLoot), ModContent.ItemType<ExecutionerMark05>()));
+
+                //Ares
+
+                //Twins
             }
         }
     }

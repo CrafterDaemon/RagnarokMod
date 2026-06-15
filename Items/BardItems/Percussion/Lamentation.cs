@@ -44,7 +44,7 @@ namespace RagnarokMod.Items.BardItems.Percussion
             Item.autoReuse = true;
             Item.knockBack = 2f;
             Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
-            Item.rare = ModContent.RarityType<BurnishedAuric>();
+            Item.rare = ModContent.RarityType<CalamityRed>();
             Item.UseSound = RagnarokModSounds.calamitybell;
             Item.shoot = ModContent.ProjectileType<LamentationPro>();
             Item.shootSpeed = 24f;

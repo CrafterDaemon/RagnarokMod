@@ -1,4 +1,5 @@
 using CalamityMod.Items;
+using CalamityMod.Rarities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RagnarokMod.Projectiles.BardPro.String;
@@ -51,8 +52,8 @@ namespace RagnarokMod.Items.BardItems.String
             Item.noMelee = true;
             Item.autoReuse = true;
             Item.knockBack = 4f;
-            Item.value = CalamityGlobalItem.RarityTurquoiseBuyPrice;
-            Item.rare = ItemRarityID.Cyan;
+            Item.value = CalamityGlobalItem.RarityPureGreenBuyPrice;
+            Item.rare = ModContent.RarityType<PureGreen>();
             Item.shoot = ModContent.ProjectileType<ToxicWavesPro>();
             Item.shootSpeed = 32f;
         }

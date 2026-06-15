@@ -55,6 +55,7 @@ namespace RagnarokMod.Common.GlobalItems
 			|| item.type == ModContent.ItemType<SlimeGodBag>()
             || item.type == ModContent.ItemType<RavagerBag>()
             || item.type == ModContent.ItemType<ViscountTreasureBag>()
+            || item.type == ModContent.ItemType<DraedonBag>()
             );
         }
 
@@ -214,6 +215,12 @@ namespace RagnarokMod.Common.GlobalItems
                 {
                     ModContent.ItemType<Splattercannon>()
                 }));
+            }
+
+            if (item.type == ModContent.ItemType<DraedonBag>())
+            {
+                var thanatos = itemLoot.DefineConditionalDropSet(() => DownedBossSystem.downedThanatos);
+                thanatos.Add(ModContent.ItemType<ExecutionerMark05>());
             }
         }
     }

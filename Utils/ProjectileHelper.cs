@@ -8,7 +8,6 @@ using ThoriumMod;
 using ThoriumMod.Utilities;
 using ThoriumMod.Buffs.Healer;
 using ThoriumMod.NPCs;
-using ThoriumMod.Projectiles;
 using ThoriumMod.Projectiles.Healer;
 using RagnarokMod.Buffs;
 using Terraria.ID;
@@ -77,31 +76,25 @@ namespace RagnarokMod.Utils
                     thoriumPlayer.HandleCoralSetTransfer(thoriumTarget, coralShieldCounter, true);
                     coralShieldCounter = 0;
                 }
-                if (!self && thoriumPlayer.accBeltoftheQuickResponse)
-                {
-                    player.AddBuff(ModContent.BuffType<BeltoftheQuickResponseBuff>(), 180, false, false);
-                }
+                /* idk what this is
                 if (!self && thoriumPlayer.prydwen)
                 {
                     selfHeals += 4;
                 }
+                */
                 if (!self && thoriumPlayer.innerFlame.Active && thoriumPlayer.LowestPlayer != player.whoAmI)
                 {
                     Projectile.NewProjectile(player.GetSource_Accessory(thoriumPlayer.innerFlame.Item, null), player.Center.X, player.Center.Y - 50f, 0f, 0f, ModContent.ProjectileType<InnerFlamePro>(), 0, 0f, player.whoAmI, 0f, 0f, 0f);
                 }
-                if (!self && thoriumPlayer.accDewCollector.Active)
-                {
-                    Projectile.NewProjectile(player.GetSource_Accessory(thoriumPlayer.accDewCollector.Item, null), target.Center.X, target.Center.Y, Terraria.Utils.NextFloat(Main.rand, -1f, 1f), Terraria.Utils.NextFloat(Main.rand, -3f, -1f), ModContent.ProjectileType<DewCollectorPro>(), 0, 0f, player.whoAmI, 0f, 0f, 0f);
-                }
-                if (thoriumPlayer.aloePlant)
+                if (thoriumPlayer.accAloeLeaf)
                 {
                     thoriumTarget.SetLifeRecoveryEffect(LifeRecoveryEffectType.AloeLeaf, 600, true);
                 }
-                if (thoriumPlayer.medicalAcc && !thoriumTarget.OutOfCombat)
+                if (thoriumPlayer.accMedicalBag && !thoriumTarget.OutOfCombat)
                 {
                     thoriumTarget.SetLifeRecoveryEffect(LifeRecoveryEffectType.MedicalBag, 300, true);
                 }
-                if (!self && thoriumPlayer.equilibrium)
+                if (!self && thoriumPlayer.accEqualizer)
                 {
                     ((player.statLife > target.statLife) ? thoriumTarget : thoriumPlayer).SetLifeRecoveryEffect(LifeRecoveryEffectType.Equalizer, 300, true);
                 }

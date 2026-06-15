@@ -1,19 +1,11 @@
-using Microsoft.Xna.Framework;
-using System.Collections.Generic;
 using Terraria;
-using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using RagnarokMod.Utils;
-using ThoriumMod.Buffs.Mount;
 using CalamityMod;
-using ThoriumMod;
 using ThoriumMod.Utilities;
-using ThoriumMod.NPCs;
 using ThoriumMod.Mounts;
 using ThoriumMod.Buffs;
 using System;
-using System.IO;
+using ThoriumMod.Buffs.Mounts;
 
 namespace RagnarokMod.Common.GlobalBuffs
 {
