@@ -191,7 +191,7 @@ namespace RagnarokMod.Projectiles.BardPro.Riff
                         Main.rand.Next(-3, 4),
                         Main.rand.Next(-12, -6),
                         ModContent.ProjectileType<ToxicSharkronGore>(),
-                        Projectile.damage / 2,
+                        Projectile.damage / 3,
                         0f,
                         Projectile.owner
                     );

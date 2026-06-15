@@ -41,7 +41,7 @@ namespace RagnarokMod.Items.BardItems.String
 
         public override void SafeSetBardDefaults()
         {
-            Item.damage = 625;
+            Item.damage = 150;
             InspirationCost = 1;
             Item.width = 92;
             Item.height = 90;
@@ -73,7 +73,7 @@ namespace RagnarokMod.Items.BardItems.String
                 for (int i = -2; i <= 2; i++)
                 {
                     Vector2 dir = velocity.RotatedBy(spread * i);
-                    Projectile.NewProjectile(source, position, dir, type, damage, knockback, player.whoAmI);
+                    Projectile.NewProjectile(source, position, dir, type, (int)(damage * 0.8f), knockback, player.whoAmI);
                 }
             }
             else

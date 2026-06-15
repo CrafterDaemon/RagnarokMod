@@ -127,7 +127,7 @@ namespace RagnarokMod.Projectiles.BardPro.Riff
                 Player owner = Main.player[Projectile.owner];
                 int damage = 1;
                 if (owner.GetThoriumPlayer() != null)
-                    damage = 100;
+                    damage = 75;
 
                 Projectile.NewProjectile(Projectile.GetSource_FromThis(), spawnPos, toTarget,
                     ModContent.ProjectileType<ToxicSharkron>(), damage, 3f, Projectile.owner, target.whoAmI);
