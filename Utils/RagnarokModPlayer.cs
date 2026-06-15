@@ -421,6 +421,7 @@ namespace RagnarokMod.Utils
             // Apply Healing Multiplier
             thoriumPlayer2.healBonus = (int)Math.Round(thoriumPlayer2.healBonus * ModContent.GetInstance<ClassBalancerConfig>().HealingBonusModifier);
 
+            /* fixed in calamity 2.2.1
             //keep this last just in case we edit the attack speed before this
             float currentStealth = calamity.Call("GetCurrentStealth", Player) is float f ? f : 1f;
             bool stealthStrike = currentStealth > 0f && (Player.HeldItem.CountsAsClass<RogueDamageClass>() || Player.HeldItem.CountsAsClass<ThrowingDamageClass>() || Player.HeldItem.CountsAsClass<ThoriumRogueClass>());
@@ -430,6 +431,7 @@ namespace RagnarokMod.Utils
                 Player.GetAttackSpeed(DamageClass.Generic) = 1f;
                 Player.GetAttackSpeed(DamageClass.Throwing) = 1f;
             }
+            */
         }
         public override void UpdateEquips()
         {
