@@ -667,7 +667,7 @@ Items: {
 
 	JellySlicer: {
 		DisplayName: Jelly Slicer
-		Tooltip: Shoots a bouncing slime projectile when swung
+		Tooltip: Shoots a fan of bouncing slime projectiles when swung
 	}
 
 	Splattercannon: {
