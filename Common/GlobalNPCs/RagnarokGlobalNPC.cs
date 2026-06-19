@@ -37,36 +37,14 @@ namespace RagnarokMod.Common.GlobalNPCs
             }
         }
 
-        public override void UpdateLifeRegen(NPC npc, ref int damage)
+        public override void ModifyIncomingHit(NPC npc, ref NPC.HitModifiers modifiers)
         {
             if (debuffNightfallen)
             {
-                if (npc.lifeRegen > 0)
-                {
-                    npc.lifeRegen = 0;
-                    npc.lifeRegen -= 200;
-                }
+                modifiers.SourceDamage += 0.1f;
             }
         }
 
-        public override void OnHitByProjectile(NPC npc, Projectile projectile, NPC.HitInfo hit, int damageDone)
-        {
-            Player player = Main.player[projectile.owner];
-            OnHitAny(npc, player, hit, damageDone);
-        }
-
-        public override void OnHitByItem(NPC npc, Player player, Item item, NPC.HitInfo hit, int damageDone)
-        {
-            OnHitAny(npc, player, hit, damageDone);
-        }
-
-        private void OnHitAny(NPC npc, Player player, NPC.HitInfo hit, int damageDone)
-        {
-            if (debuffNightfallen)
-            {
-                hit.Damage = (int)(hit.Damage * 1.1f);
-            }
-        }
         public override void ModifyHitByProjectile(NPC npc, Projectile projectile, ref NPC.HitModifiers modifiers)
         {
             BalancingChangesManager.ApplyFromProjectile(npc, ref modifiers, projectile);

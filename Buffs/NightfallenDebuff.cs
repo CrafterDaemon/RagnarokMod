@@ -10,17 +10,26 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using ThoriumMod.Empowerments;
+using CalamityMod.Systems.Collections;
+using CalamityMod.DataStructures;
 
 namespace RagnarokMod.Buffs
 {
     public class NightfallenDebuff : ModBuff
     {
+        public static DebuffData debuffData = new DebuffData
+        {
+            EnemyLostRegen = 200f,
+            DrawAboveNPC = true
+        };
         public override void SetStaticDefaults()
         {
             Main.debuff[base.Type] = true;
             Main.pvpBuff[base.Type] = true;
             Main.buffNoSave[base.Type] = false;
             BuffID.Sets.NurseCannotRemoveDebuff[base.Type] = true;
+
+            CalamityBuffSets.DebuffDataset[Type] = debuffData;
         }
         public override void Update(NPC npc, ref int buffIndex)
         {
