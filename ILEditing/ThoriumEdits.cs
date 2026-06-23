@@ -33,6 +33,8 @@ namespace RagnarokMod.ILEditing
         private static Type phyl = null;
         private static MethodInfo phylrc = null;
         private static ILHook phylhook = null;
+        private static MethodInfo phylMouseOver = null;
+        private static ILHook phylMouseOverHook = null;
         private static Type midi = null;
         private static MethodInfo midihit = null;
         private static ILHook midihook = null;
@@ -114,6 +116,14 @@ namespace RagnarokMod.ILEditing
                     phylhook = new ILHook(phylrc, HavocPhylactory);
                     phylhook.Apply();
 
+                    phylMouseOver = phyl.GetMethod("MouseOver", BindingFlags.Public | BindingFlags.Instance, null, new Type[] { typeof(int), typeof(int) }, null);
+                    if (phylMouseOver == null)
+                    {
+                        Mod.Logger.Warn("Could not find AncientPhylactery.MouseOver method");
+                        return;
+                    }
+                    phylMouseOverHook = new ILHook(phylMouseOver, HavocPhylactory);
+                    phylMouseOverHook.Apply();
 
                     foreach (Type type in ThoriumAssembly.GetTypes())
                     {
@@ -259,6 +269,7 @@ namespace RagnarokMod.ILEditing
             {
                 tlkhook.Dispose();
                 phylhook.Dispose();
+                phylMouseOverHook?.Dispose();
                 midihook.Dispose();
                 solohook.Dispose();
                 rhaphook.Dispose();
@@ -308,13 +319,33 @@ namespace RagnarokMod.ILEditing
         {
             if (ModContent.GetInstance<BossProgressionConfig>().Lich)
             {
-                var c = new ILCursor(il);
-                if (!c.TryGotoNext(MoveType.Before, i => i.MatchLdcI4(1725)))
+                ILCursor c = new(il);
+                MethodInfo getItemConsumeType = phyl.GetProperty("ItemConsumeType", BindingFlags.Public | BindingFlags.Static)?.GetGetMethod();
+
+                if (getItemConsumeType == null)
+                {
+                    Mod.Logger.Warn("[Ragnarok]: Could not find AncientPhylactery.ItemConsumeType getter");
                     return;
-                c.Next.Operand = ModContent.ItemType<EssenceofHavoc>();
-                if (!c.TryGotoNext(MoveType.Before, i => i.MatchLdcI4(30)))
+                }
+
+                // Replace CountInventoryItemIdxWithStack(ItemConsumeType, 30)
+                if (!c.TryGotoNext(MoveType.After, i => i.MatchCall(getItemConsumeType)))
+                {
+                    Mod.Logger.Warn("[Ragnarok]: Could not find AncientPhylactery.ItemConsumeType call in RightClick");
                     return;
-                c.Next.Operand = 3;
+                }
+
+                c.Emit(OpCodes.Pop);
+                c.Emit(OpCodes.Ldc_I4, ModContent.ItemType<EssenceofHavoc>());
+
+                if (!c.TryGotoNext(MoveType.After, i => i.MatchLdcI4(30)))
+                {
+                    Mod.Logger.Warn("[Ragnarok]: Could not find AncientPhylactery consume amount 30");
+                    return;
+                }
+
+                c.Emit(OpCodes.Pop);
+                c.Emit(OpCodes.Ldc_I4_3);
             }
         }
         private void NewLifestealMath(ILContext il)
