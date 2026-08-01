@@ -1,4 +1,5 @@
 displayName = Ragnarok Mod
+displayName.zh-Hans = 诸神的黄昏
 author = CrafterDaemon & The Ragnarok Team
 version = 1.6.0.7
 modReferences = ThoriumMod, CalamityMod
