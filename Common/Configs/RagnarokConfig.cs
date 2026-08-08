@@ -46,11 +46,9 @@ namespace RagnarokMod.Common.Configs
         [ReloadRequired]
         public bool MechBosses;
 
-        /*
         [DefaultValue(true)]
         [ReloadRequired]
         public bool Lich;
-        */
 
         [DefaultValue(true)]
         [ReloadRequired]

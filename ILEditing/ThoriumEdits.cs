@@ -92,10 +92,9 @@ namespace RagnarokMod.ILEditing
                     tlkhook = new ILHook(tlkonhit, NewLifestealMath);
                     tlkhook.Apply();
 
-                    /*
                     foreach (Type type in ThoriumAssembly.GetTypes())
                     {
-                        if (type.Name == "AncientPhylactery")
+                        if (type.Name == "AncientPhylactery" && type.BaseType.Name == "ModTile")
                         {
                             phyl = type;
                             break;
@@ -125,7 +124,6 @@ namespace RagnarokMod.ILEditing
                     }
                     phylMouseOverHook = new ILHook(phylMouseOver, HavocPhylactory);
                     phylMouseOverHook.Apply();
-                    */
 
                     foreach (Type type in ThoriumAssembly.GetTypes())
                     {
@@ -270,7 +268,7 @@ namespace RagnarokMod.ILEditing
             if (Thorium != null)
             {
                 tlkhook.Dispose();
-                //phylhook.Dispose();
+                phylhook.Dispose();
                 phylMouseOverHook?.Dispose();
                 midihook.Dispose();
                 solohook.Dispose();
@@ -317,7 +315,6 @@ namespace RagnarokMod.ILEditing
             timer++;
         }
 
-        /*
         private void HavocPhylactory(ILContext il)
         {
             if (ModContent.GetInstance<BossProgressionConfig>().Lich)
@@ -351,7 +348,6 @@ namespace RagnarokMod.ILEditing
                 c.Emit(OpCodes.Ldc_I4_3);
             }
         }
-        */
 
         private void NewLifestealMath(ILContext il)
         {
