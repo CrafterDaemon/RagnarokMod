@@ -52,7 +52,7 @@ namespace RagnarokMod.Items.HealerItems.Armor
         public override void AddRecipes()
         {
             CreateRecipe()
-                .AddIngredient<PurifiedGel>(5)
+                .AddIngredient<PurifiedGel>(8)
                 .AddIngredient<BlightedGel>(5)
                 .AddTile(TileID.Solidifier)
                 .Register();

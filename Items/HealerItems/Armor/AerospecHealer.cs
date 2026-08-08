@@ -54,7 +54,7 @@ namespace RagnarokMod.Items.HealerItems.Armor
         public override void AddRecipes()
         {
             CreateRecipe()
-            .AddIngredient<AerialiteBar>(5)
+            .AddIngredient<AerialiteBar>(10)
             .AddIngredient(ItemID.SunplateBlock, 3)
             .AddIngredient(ItemID.Feather, 1)
             .AddTile(TileID.Anvils)

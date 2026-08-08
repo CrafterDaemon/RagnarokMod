@@ -60,7 +60,9 @@ namespace RagnarokMod.Items.BardItems.Armor
 
         public override void AddRecipes()
         {
-            CreateRecipe(1).AddIngredient<PurifiedGel>(5).AddIngredient<BlightedGel>(5)
+            CreateRecipe()
+                .AddIngredient<PurifiedGel>(8)
+                .AddIngredient<BlightedGel>(5)
                 .AddTile(TileID.Solidifier)
                 .Register();
         }

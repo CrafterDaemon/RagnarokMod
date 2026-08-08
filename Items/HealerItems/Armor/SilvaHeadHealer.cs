@@ -62,7 +62,9 @@ namespace RagnarokMod.Items.HealerItems.Armor
 
         public override void AddRecipes()
         {
-            base.CreateRecipe(1).AddIngredient<PlantyMush>(6).AddIngredient<EffulgentFeather>(5)
+            CreateRecipe()
+                .AddIngredient<PlantyMush>(30)
+                .AddIngredient<EffulgentFeather>(8)
                 .AddIngredient<AscendantSpiritEssence>(2)
                 .AddTile<CosmicAnvil>()
                 .Register();
