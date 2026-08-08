@@ -65,7 +65,9 @@ namespace RagnarokMod.Items.HealerItems.Armor
 
         public override void AddRecipes()
         {
-            base.CreateRecipe(1).AddIngredient<BloodstoneCore>(11).AddIngredient<RuinousSoul>(2)
+            CreateRecipe()
+                .AddIngredient<Bloodstone>(25)
+                .AddIngredient<RuinousSoul>(2)
                 .AddTile(TileID.LunarCraftingStation)
                 .Register();
         }

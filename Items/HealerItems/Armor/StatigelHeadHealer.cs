@@ -27,10 +27,9 @@ namespace RagnarokMod.Items.HealerItems.Armor
         public override void UpdateArmorSet(Player player)
         {
             player.setBonus = this.GetLocalizedValue("SetBonus");
-            player.Calamity().statigelSet = true;
             player.GetJumpState<StatigelJump>().Enable();
-            Player.jumpHeight += 5;
-            player.jumpSpeedBoost += 0.6f;
+            Player.jumpHeight += (int)(StatigelArmor.SetBonusJumpHeightPercentBoost * 15);
+            player.jumpSpeedBoost += StatigelArmor.SetBonusJumpSpeedBoost;
             ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
             player.statManaMax2 += 20;
             player.manaCost *= 0.95f;

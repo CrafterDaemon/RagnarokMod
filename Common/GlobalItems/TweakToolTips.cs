@@ -1,7 +1,9 @@
+using CalamityMod.Items.Accessories;
 using Microsoft.Xna.Framework;
 using RagnarokMod.ChatTags;
 using RagnarokMod.ILEditing;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Terraria;
@@ -80,16 +82,22 @@ namespace RagnarokMod.Common.GlobalItems
             }
             if (item.type == calamity.Find<ModItem>("TheCommunity").Type)
             {
+                float power = CalamityEdits.CalculatePower();
+                string statList = item.ModItem.GetLocalization("StatsList").Format(
+                    (TheCommunity.DamageMultiplier * power * 100).ToString("N1"),
+                    (int)(TheCommunity.CritMultiplier * power),
+                    (int)(TheCommunity.HealthMultiplier * power),
+                    (TheCommunity.DRMultiplier * power * 100).ToString("N2"),
+                    (int)(TheCommunity.DefenseMultiplier * power),
+                    (0.5f * (1f + (int)(TheCommunity.RegenMultiplier * power))).ToString("n1"),
+                    (TheCommunity.SpeedMultiplier * power * 100).ToString("N1"),
+                    (TheCommunity.FlightMultiplier * power * 100).ToString("N1"),
+                    (CalamityEdits.CalculatePower(true) * 100).ToString("N0"));
+
                 for (int i = 0; i < tooltips.Count; i++)
                 {
-                    if (tooltips[i].Text.Contains("Power"))
-                    {
-                        tooltips[i].Text = System.Text.RegularExpressions.Regex.Replace(
-                        tooltips[i].Text,
-                        @"\d+% Power",
-                        $"{Math.Round(CalamityEdits.calculateCommunityPower() * 100)}" + Language.GetTextValue("Mods.RagnarokMod.Compat.Power")
-                        );
-                    }
+                    if (tooltips[i].Mod == "Terraria" && tooltips[i].Name == "Tooltip0")
+                        tooltips[i].Text = statList;
                 }
             }
 			

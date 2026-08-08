@@ -429,3 +429,4 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+/lib/CalamityMod.dll
