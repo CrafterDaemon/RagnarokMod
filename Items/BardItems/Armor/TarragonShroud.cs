@@ -65,7 +65,7 @@ namespace RagnarokMod.Items.BardItems.Armor
         public override void AddRecipes()
         {
             Recipe recipe = Recipe.Create(Item.type);
-            recipe.AddIngredient(ModContent.ItemType<UelibloomBar>(), 7);
+            recipe.AddIngredient(ModContent.ItemType<UelibloomBar>(), 12);
             recipe.AddIngredient(ModContent.ItemType<DivineGeode>(), 6);
             recipe.AddTile(TileID.LunarCraftingStation);
             recipe.Register();

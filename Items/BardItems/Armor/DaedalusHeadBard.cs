@@ -69,7 +69,9 @@ namespace RagnarokMod.Items.BardItems.Armor
 
         public override void AddRecipes()
         {
-            CreateRecipe(1).AddIngredient<CryonicBar>(7).AddIngredient<EssenceofEleum>(1)
+            CreateRecipe()
+                .AddIngredient<CryonicBar>(12)
+                .AddIngredient<EssenceofEleum>(1)
                 .AddTile(TileID.MythrilAnvil)
                 .Register();
         }

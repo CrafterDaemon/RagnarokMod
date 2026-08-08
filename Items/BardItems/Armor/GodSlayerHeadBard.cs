@@ -136,7 +136,9 @@ namespace RagnarokMod.Items.BardItems.Armor
 
         public override void AddRecipes()
         {
-            CreateRecipe(1).AddIngredient<CosmiliteBar>(7).AddIngredient<AscendantSpiritEssence>(2)
+            CreateRecipe()
+                .AddIngredient<CosmiliteBar>(10)
+                .AddIngredient<AscendantSpiritEssence>(2)
                 .AddTile<CosmicAnvil>()
                 .Register();
         }

@@ -1,17 +1,12 @@
-using System;
 using CalamityMod.Rarities;
-using CalamityMod.Tiles.Furniture.CraftingStations;
 using Terraria;
 using Terraria.ModLoader;
-using RagnarokMod;
 using RagnarokMod.Utils;
 using CalamityMod;
 using CalamityMod.Items;
-using CalamityMod.Items.Armor;
 using CalamityMod.Items.Materials;
 using CalamityMod.CalPlayer;
 using CalamityMod.Items.Armor.Bloodflare;
-using CalamityMod.Items.Placeables;
 using ThoriumMod;
 using ThoriumMod.Items;
 using ThoriumMod.Utilities;
@@ -65,7 +60,10 @@ namespace RagnarokMod.Items.HealerItems.Armor
 
         public override void AddRecipes()
         {
-            base.CreateRecipe(1).AddIngredient<BloodstoneCore>(11).AddIngredient<RuinousSoul>(2)
+            CreateRecipe()
+                .AddIngredient<Bloodstone>(25)
+                .AddIngredient<BloodOrb>(10)
+                .AddIngredient<RuinousSoul>(2)
                 .AddTile(TileID.LunarCraftingStation)
                 .Register();
         }

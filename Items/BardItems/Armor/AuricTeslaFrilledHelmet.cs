@@ -123,7 +123,7 @@ namespace RagnarokMod.Items.BardItems.Armor
             if (ModLoader.HasMod("InfernalEclipseAPI") || ModLoader.HasMod("WHummusMultiModBalancing"))
                 recipe.AddIngredient<ShadowspecBar>(12);
             else
-                recipe.AddIngredient<AuricBar>(12);
+                recipe.AddIngredient<AuricBar>(10);
 
             recipe.AddTile<CosmicAnvil>();
             recipe.Register();

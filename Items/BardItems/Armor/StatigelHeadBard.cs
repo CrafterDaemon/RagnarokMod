@@ -37,10 +37,9 @@ namespace RagnarokMod.Items.BardItems.Armor
         public override void UpdateArmorSet(Player player)
         {
             player.setBonus = this.GetLocalizedValue("SetBonus");
-            player.Calamity().statigelSet = true;
             player.GetJumpState<StatigelJump>().Enable();
-            Player.jumpHeight += 5;
-            player.jumpSpeedBoost += 0.6f;
+            Player.jumpHeight += (int)(StatigelArmor.SetBonusJumpHeightPercentBoost * 15);
+            player.jumpSpeedBoost += StatigelArmor.SetBonusJumpSpeedBoost;
             ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
             thoriumPlayer.inspirationRegenBonus += 0.05f;
             thoriumPlayer.bardBuffDuration += 120;
@@ -61,7 +60,9 @@ namespace RagnarokMod.Items.BardItems.Armor
 
         public override void AddRecipes()
         {
-            CreateRecipe(1).AddIngredient<PurifiedGel>(5).AddIngredient<BlightedGel>(5)
+            CreateRecipe()
+                .AddIngredient<PurifiedGel>(8)
+                .AddIngredient<BlightedGel>(5)
                 .AddTile(TileID.Solidifier)
                 .Register();
         }

@@ -118,7 +118,7 @@ namespace RagnarokMod.Items.BardItems.Electronic
             Recipe recipe = Recipe.Create(Item.type);
             recipe.AddIngredient(ModContent.ItemType<CosmiliteBar>(), 12);
             recipe.AddIngredient(ModContent.ItemType<GrandPiano>(), 1);
-            recipe.AddIngredient(ModContent.ItemType<BloodstoneCore>(), 8);
+            recipe.AddIngredient(ModContent.ItemType<Bloodstone>(), 40);
             recipe.AddIngredient(ModContent.ItemType<ExodiumCluster>(), 30);
             recipe.AddTile<CosmicAnvil>();
             recipe.Register();

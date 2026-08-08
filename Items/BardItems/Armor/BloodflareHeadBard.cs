@@ -67,7 +67,10 @@ namespace RagnarokMod.Items.BardItems.Armor
 
         public override void AddRecipes()
         {
-            CreateRecipe(1).AddIngredient<BloodstoneCore>(11).AddIngredient<RuinousSoul>(2)
+            CreateRecipe()
+                .AddIngredient<Bloodstone>(25)
+                .AddIngredient<BloodOrb>(10)
+                .AddIngredient<RuinousSoul>(2)
                 .AddTile(TileID.LunarCraftingStation)
                 .Register();
         }
