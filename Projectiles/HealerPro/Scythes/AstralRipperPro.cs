@@ -1,6 +1,7 @@
 ﻿using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Dusts;
 using Microsoft.Xna.Framework;
+using RagnarokMod.Items.HealerItems.Scythes;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -107,6 +108,12 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
                     Projectile.ai[0]++;
                     Projectile.netUpdate = true;
                 }
+            }
+
+            if (owner.HeldItem.type != ModContent.ItemType<AstralRipper>())
+            {
+                Projectile.Kill();
+                return;
             }
         }
 

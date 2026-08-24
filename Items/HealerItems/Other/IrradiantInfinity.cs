@@ -5,6 +5,7 @@ using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using RagnarokMod.Items.HealerItems.Scythes;
 using RagnarokMod.Projectiles.HealerPro.Other;
 using RagnarokMod.Sounds;
 using Terraria;
@@ -50,6 +51,11 @@ namespace RagnarokMod.Items.HealerItems.Other
 
         public override bool CanUseItem(Player player)
         {
+            if (player.HeldItem.type != ModContent.ItemType<IrradiantInfinity>())
+            {
+                return false;
+            }
+
             if (player.altFunctionUse == 2)
             {
                 // Block Blue spawn if Blue or Purple already exists

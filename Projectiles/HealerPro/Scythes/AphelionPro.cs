@@ -3,6 +3,7 @@ using CalamityMod.Buffs.DamageOverTime;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RagnarokMod.Core;
+using RagnarokMod.Items.HealerItems.Scythes;
 using RagnarokMod.Sounds;
 using System;
 using Terraria;
@@ -139,6 +140,12 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             {
                 if (Projectile.localAI[2] >= 2f)
                     Projectile.Kill();
+            }
+
+            if (owner.HeldItem.type != ModContent.ItemType<Aphelion>())
+            {
+                Projectile.Kill();
+                return;
             }
         }
 

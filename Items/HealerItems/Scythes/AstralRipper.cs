@@ -32,6 +32,7 @@ namespace RagnarokMod.Items.HealerItems.Scythes
             base.Item.shoot = ModContent.ProjectileType<AstralRipperPro>();
             base.Item.shootSpeed = 0.1f;
             base.Item.channel = true; // hold to channel
+            base.Item.autoReuse = true;
         }
 
         public override bool AltFunctionUse(Player player) => true;

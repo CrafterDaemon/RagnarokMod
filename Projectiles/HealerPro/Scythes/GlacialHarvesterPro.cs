@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using RagnarokMod.Items.HealerItems.Scythes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,6 +51,12 @@ namespace RagnarokMod.Projectiles.HealerPro.Scythes
             if (player.dead || !player.channel)
             {
                 Projectile.Kill();
+            }
+
+            if (player.HeldItem.type != ModContent.ItemType<GlacialHarvester>())
+            {
+                Projectile.Kill();
+                return;
             }
         }
         public override void SafeOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
