@@ -79,6 +79,7 @@ namespace RagnarokMod.Items.HealerItems.Scythes
             base.Item.shootSpeed = 0f;
             base.Item.channel = true; // hold to channel
             Item.knockBack = 4f;
+            Item.autoReuse = true;
         }
 
         public override bool AltFunctionUse(Player player) => true;
