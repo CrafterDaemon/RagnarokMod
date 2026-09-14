@@ -61,11 +61,9 @@ namespace RagnarokMod.Common.GlobalItems
 
         public override void ModifyItemLoot(Item item, ItemLoot itemLoot)
         {
-            // Thorium Bags - Materials
-            /*
+            
             if (item.type == ModContent.ItemType<TheGrandThunderBirdTreasureBag>())
-                itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<StormFeather>(), 1));
-            */
+                itemLoot.AddStormFeather();
 
             if (item.type == ModContent.ItemType<QueenJellyfishTreasureBag>())
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<QueenJelly>(), 1, 4, 16));
@@ -230,7 +228,13 @@ namespace RagnarokMod.Common.GlobalItems
         public static void AddBatDroppings(this ILoot loot)
         {
             var lcr = new LeadingConditionRule(DropHelper.If(() => CalamityWorld.revenge));
-            lcr.Add(new CommonDrop(ModContent.ItemType<GoldenBatDroppings>(), 10));
+            lcr.Add(new CommonDrop(ModContent.ItemType<StormFeather>(), 2));
+            loot.Add(lcr);
+        }
+		public static void AddStormFeather(this ILoot loot)
+        {
+            var lcr = new LeadingConditionRule(DropHelper.If(() => CalamityWorld.revenge));
+            lcr.Add(new CommonDrop(ModContent.ItemType<StormFeather>(), 2));
             loot.Add(lcr);
         }
     }

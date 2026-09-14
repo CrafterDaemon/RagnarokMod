@@ -337,14 +337,9 @@ namespace RagnarokMod.Common.GlobalNPCs
 
         public override void SetDefaults(NPC npc)
         {
-            if (!ModContent.GetInstance<BossConfig>().bossstatstweak)
-            {
+            if (!ModContent.GetInstance<BossConfig>().bossstatstweak){
                 return;
             }
-            // Get Calamity-Config Health Boost
-            double CalamityHPBoost = CalamityServerConfig.Instance.BossHealthBoost * 0.01;
-
-            // Total HP Modifier without the CalamityHPBoost;
             double TotalHPModifier = 1;
 
             // DeathMode has to be checked first
@@ -370,7 +365,7 @@ namespace RagnarokMod.Common.GlobalNPCs
             {
                 if (npc.type == thorium.Find<ModNPC>(boss.Key).Type)
                 {
-                    npc.life = npc.lifeMax = (int)((npc.lifeMax * TotalHPModifier * boss.Value) * (1 + CalamityHPBoost));
+                    npc.life = npc.lifeMax = (int)((npc.lifeMax * TotalHPModifier * boss.Value));
                     break;
                 }
             }
