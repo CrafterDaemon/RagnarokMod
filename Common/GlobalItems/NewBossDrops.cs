@@ -228,7 +228,7 @@ namespace RagnarokMod.Common.GlobalItems
         public static void AddBatDroppings(this ILoot loot)
         {
             var lcr = new LeadingConditionRule(DropHelper.If(() => CalamityWorld.revenge));
-            lcr.Add(new CommonDrop(ModContent.ItemType<StormFeather>(), 2));
+            lcr.Add(new CommonDrop(ModContent.ItemType<GoldenBatDroppings>(), 2));
             loot.Add(lcr);
         }
 		public static void AddStormFeather(this ILoot loot)

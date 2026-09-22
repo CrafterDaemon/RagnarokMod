@@ -304,7 +304,7 @@ namespace RagnarokMod.Common.GlobalItems
                     {
                         item.damage = (int)Math.Round(item.damage * 1.3f);
                     }
-
+					
                     // Special damage tweaks
                     if (WeaponItemTypeToInteger.TryGetValue(item.type, out int newDamage))
                     {
@@ -318,13 +318,123 @@ namespace RagnarokMod.Common.GlobalItems
                         item.scale = 1.7f;
                     }
                 }
-
+				
+				// config Multipliers
+				if(item.ModItem.Mod.Name == "CalamityBardHealer"){
+						if(item.DamageType == ThoriumDamageBase<BardDamage>.Instance){
+							item.damage = (int)Math.Round(item.damage * ModContent.GetInstance<ItemBalancerConfig>().UnofficialBardDamageModifier);
+						}else if(item.DamageType == ThoriumDamageBase<HealerDamage>.Instance){
+							item.damage = (int)Math.Round(item.damage * ModContent.GetInstance<ItemBalancerConfig>().UnofficialHealerDamageModifier);
+						}
+						else if(item.DamageType.CountsAsClass(DamageClass.Generic) || item.DamageType == DamageClass.Generic){
+							item.damage = (int)Math.Round(item.damage * ModContent.GetInstance<ItemBalancerConfig>().UnofficialGenericDamageModifier);
+						}
+				}
+				else if(item.ModItem.Mod.Name == "RagnarokMod") {
+					if(item.DamageType == ThoriumDamageBase<BardDamage>.Instance){
+							item.damage = (int)Math.Round(item.damage * ModContent.GetInstance<ItemBalancerConfig>().RagnarokBardDamageModifier);
+						}
+						else if(item.DamageType == ThoriumDamageBase<HealerDamage>.Instance){
+							item.damage = (int)Math.Round(item.damage * ModContent.GetInstance<ItemBalancerConfig>().RagnarokHealerDamageModifier);
+						}
+						else if(item.DamageType.CountsAsClass(DamageClass.Generic) || item.DamageType == DamageClass.Generic){
+							item.damage = (int)Math.Round(item.damage * ModContent.GetInstance<ItemBalancerConfig>().RagnarokGenericDamageModifier);
+						}
+				}
+				else if(item.ModItem.Mod.Name == "ThoriumMod") {
+					if(item.DamageType == ThoriumDamageBase<BardDamage>.Instance){
+							item.damage = (int)Math.Round(item.damage * ModContent.GetInstance<ItemBalancerConfig>().ThoriumBardDamageModifier);
+					}
+					else if(item.DamageType == ThoriumDamageBase<HealerDamage>.Instance){
+							item.damage = (int)Math.Round(item.damage * ModContent.GetInstance<ItemBalancerConfig>().ThoriumHealerDamageModifier);
+					}
+					else if(item.DamageType.CountsAsClass(DamageClass.Melee) || item.DamageType == DamageClass.Melee){
+							item.damage = (int)Math.Round(item.damage * ModContent.GetInstance<ItemBalancerConfig>().ThoriumMeleeDamageModifier);
+					}
+					else if(item.DamageType == DamageClass.Summon){
+							item.damage = (int)Math.Round(item.damage * ModContent.GetInstance<ItemBalancerConfig>().ThoriumSummonDamageModifier);
+					}
+					else if(item.DamageType == DamageClass.Ranged){
+							item.damage = (int)Math.Round(item.damage * ModContent.GetInstance<ItemBalancerConfig>().ThoriumRangedDamageModifier);
+					}
+					else if(item.DamageType == DamageClass.Magic){
+							item.damage = (int)Math.Round(item.damage * ModContent.GetInstance<ItemBalancerConfig>().ThoriumMagicDamageModifier);
+					}
+					else if(item.DamageType == DamageClass.Throwing){
+							item.damage = (int)Math.Round(item.damage * ModContent.GetInstance<ItemBalancerConfig>().ThoriumRogueDamageModifier);
+					}
+					else if(item.DamageType.CountsAsClass(DamageClass.Generic) || item.DamageType == DamageClass.Generic){
+							item.damage = (int)Math.Round(item.damage * ModContent.GetInstance<ItemBalancerConfig>().ThoriumGenericDamageModifier);
+					}
+				}
+				else if(item.ModItem.Mod.Name == "CalamityMod") {
+					if(item.DamageType.CountsAsClass(DamageClass.Melee) || item.DamageType == DamageClass.Melee){
+							item.damage = (int)Math.Round(item.damage * ModContent.GetInstance<ItemBalancerConfig>().CalamityMeleeDamageModifier);
+					}
+					else if(item.DamageType == DamageClass.Summon){
+							item.damage = (int)Math.Round(item.damage * ModContent.GetInstance<ItemBalancerConfig>().CalamitySummonDamageModifier);
+					}
+					else if(item.DamageType == DamageClass.Ranged){
+							item.damage = (int)Math.Round(item.damage * ModContent.GetInstance<ItemBalancerConfig>().CalamityRangedDamageModifier);
+					}
+					else if(item.DamageType == DamageClass.Magic){
+							item.damage = (int)Math.Round(item.damage * ModContent.GetInstance<ItemBalancerConfig>().CalamityMagicDamageModifier);
+					}
+					else if(item.DamageType == DamageClass.Throwing){
+							item.damage = (int)Math.Round(item.damage * ModContent.GetInstance<ItemBalancerConfig>().CalamityRogueDamageModifier);
+					}
+					else if(item.DamageType.CountsAsClass(DamageClass.Generic) || item.DamageType == DamageClass.Generic){
+							item.damage = (int)Math.Round(item.damage * ModContent.GetInstance<ItemBalancerConfig>().CalamityGenericDamageModifier);
+					}
+				}
+				else { // Every other mod
+					if(item.DamageType.CountsAsClass(DamageClass.Melee) || item.DamageType == DamageClass.Melee){
+							item.damage = (int)Math.Round(item.damage * ModContent.GetInstance<ItemBalancerConfig>().OtherMeleeDamageModifier);
+					}
+					else if(item.DamageType == DamageClass.Summon){
+							item.damage = (int)Math.Round(item.damage * ModContent.GetInstance<ItemBalancerConfig>().OtherSummonDamageModifier);
+					}
+					else if(item.DamageType == DamageClass.Ranged){
+							item.damage = (int)Math.Round(item.damage * ModContent.GetInstance<ItemBalancerConfig>().OtherRangedDamageModifier);
+					}
+					else if(item.DamageType == DamageClass.Magic){
+							item.damage = (int)Math.Round(item.damage * ModContent.GetInstance<ItemBalancerConfig>().OtherMagicDamageModifier);
+					}
+					else if(item.DamageType == DamageClass.Throwing){
+							item.damage = (int)Math.Round(item.damage * ModContent.GetInstance<ItemBalancerConfig>().OtherRogueDamageModifier);
+					}
+					else if(item.DamageType.CountsAsClass(DamageClass.Generic) || item.DamageType == DamageClass.Generic){
+							item.damage = (int)Math.Round(item.damage * ModContent.GetInstance<ItemBalancerConfig>().OtherGenericDamageModifier);
+					}
+					else { // Unknown Class detected
+						item.damage = (int)Math.Round(item.damage * ModContent.GetInstance<ItemBalancerConfig>().OtherUnknownClassDamageModifier);
+					}
+				}
                 // Tool power overrides
                 if (ToolPowerOverrides.TryGetValue(item.type, out var toolAction))
                 {
                     toolAction(item);
                 }
-            }
+            } else if(item.damage > 0 && item.ModItem == null){ // Vanilla weapon detected
+				if(item.DamageType.CountsAsClass(DamageClass.Melee) || item.DamageType == DamageClass.Melee){
+						item.damage = (int)Math.Round(item.damage * ModContent.GetInstance<ItemBalancerConfig>().VanillaMeleeDamageModifier);
+				}
+				else if(item.DamageType == DamageClass.Summon){
+						item.damage = (int)Math.Round(item.damage * ModContent.GetInstance<ItemBalancerConfig>().VanillaSummonDamageModifier);
+				}
+				else if(item.DamageType == DamageClass.Ranged){
+						item.damage = (int)Math.Round(item.damage * ModContent.GetInstance<ItemBalancerConfig>().VanillaRangedDamageModifier);
+				}
+				else if(item.DamageType == DamageClass.Magic){
+						item.damage = (int)Math.Round(item.damage * ModContent.GetInstance<ItemBalancerConfig>().VanillaMagicDamageModifier);
+				}
+				else if(item.DamageType == DamageClass.Throwing){
+						item.damage = (int)Math.Round(item.damage * ModContent.GetInstance<ItemBalancerConfig>().VanillaRogueDamageModifier);
+				}
+				else if(item.DamageType.CountsAsClass(DamageClass.Generic) || item.DamageType == DamageClass.Generic){
+						item.damage = (int)Math.Round(item.damage * ModContent.GetInstance<ItemBalancerConfig>().VanillaGenericDamageModifier);
+				}	
+			}
         }
 
         public override void UpdateEquip(Item item, Player player)

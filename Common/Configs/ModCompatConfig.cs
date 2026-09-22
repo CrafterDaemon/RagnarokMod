@@ -19,6 +19,20 @@ namespace RagnarokMod.Common.Configs
         [DefaultValue(CalamityBardHealer_selection_mode.Ragnarok)]
         [ReloadRequired]
         public CalamityBardHealer_selection_mode item_deduplication_mode;
+		
+		[DefaultValue(1f)]
+        [BackgroundColor(255, 0, 0, 170)]
+        [Range(0f, 3f)]
+        [Increment(0.05f)]
+        [DrawTicks]
+        public float UnofficialBardDamageModifier { get; set; }
+		
+		[DefaultValue(1f)]
+        [BackgroundColor(255, 255, 0, 170)]
+        [Range(0f, 3f)]
+        [Increment(0.05f)]
+        [DrawTicks]
+        public float UnofficialHealerDamageModifier { get; set; }
 
     }
 }

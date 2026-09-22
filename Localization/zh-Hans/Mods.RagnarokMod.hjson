@@ -1503,7 +1503,11 @@ Configs: {
 
 	ItemBalancerConfig: {
 		DisplayName: 物品平衡设置
-		Headers.ItemBalanceChanges: 物品平衡更改页
+
+		Headers: {
+			// ItemDamageMultiplier: Item Damage Multiplier
+			// SpecificItems: Specific Items
+		}
 
 		OmegaCore: {
 			Label: 欧米伽核心
@@ -1513,6 +1517,181 @@ Configs: {
 		genericweaponchanges: {
 			Label: 通用武器调整
 			Tooltip: 进行通用武器平衡调整
+		}
+
+		UnofficialBardDamageModifier: {
+			// Label: Unofficial Bard Damage Modifier
+			// Tooltip: Multiplier for bard damage of Unofficial Bard and Healer items
+		}
+
+		UnofficialHealerDamageModifier: {
+			// Label: Unofficial Healer Damage Modifier
+			// Tooltip: Multiplier for radiant damage of Unofficial Bard and Healer items
+		}
+
+		RagnarokBardDamageModifier: {
+			// Label: Ragnarok Bard Damage Modifier
+			// Tooltip: Multiplier for bard damage of Ragnarok items
+		}
+
+		RagnarokHealerDamageModifier: {
+			// Label: Ragnarok Healer Damage Modifier
+			// Tooltip: Multiplier for radiant damage of Ragnarok items
+		}
+
+		ThoriumBardDamageModifier: {
+			// Label: Thorium Bard Damage Modifier
+			// Tooltip: Multiplier for bard damage of Thorium items
+		}
+
+		ThoriumMeleeDamageModifier: {
+			// Label: Thorium Melee Damage Modifier
+			// Tooltip: Multiplier for melee damage of Thorium items
+		}
+
+		ThoriumHealerDamageModifier: {
+			// Label: Thorium Healer Damage Modifier
+			// Tooltip: Multiplier for radiant damage of Thorium items
+		}
+
+		ThoriumRogueDamageModifier: {
+			// Label: Thorium Rogue Damage Modifier
+			// Tooltip: Multiplier for rogue damage of Thorium items
+		}
+
+		ThoriumRangedDamageModifier: {
+			// Label: Thorium Ranged Damage Modifier
+			// Tooltip: Multiplier for ranged damage of Thorium items
+		}
+
+		ThoriumSummonDamageModifier: {
+			// Label: Thorium Summon Damage Modifier
+			// Tooltip: Multiplier for summon damage of Thorium items
+		}
+
+		ThoriumMagicDamageModifier: {
+			// Label: Thorium Magic Damage Modifier
+			// Tooltip: Multiplier for magic damage of Thorium items
+		}
+
+		ThoriumGenericDamageModifier: {
+			// Label: Thorium Generic Damage Modifier
+			// Tooltip: Multiplier for generic damage of Thorium items
+		}
+
+		RagnarokGenericDamageModifier: {
+			// Tooltip: Multiplier for generic damage of Ragnarok items
+			// Label: Ragnarok Generic Damage Modifier
+		}
+
+		UnofficialGenericDamageModifier: {
+			// Tooltip: Multiplier for generic damage of Unofficial Bard and Healer items
+			// Label: Unofficial Generic Damage Modifier
+		}
+
+		CalamityMeleeDamageModifier: {
+			// Label: Calamity Melee Damage Modifier
+			// Tooltip: Multiplier for melee damage of Calamity items
+		}
+
+		CalamityRogueDamageModifier: {
+			// Label: Calamity Rogue Damage Modifier
+			// Tooltip: Multiplier for rogue damage of Calamity items
+		}
+
+		CalamityRangedDamageModifier: {
+			// Label: Calamity Ranged Damage Modifier
+			// Tooltip: Multiplier for ranged damage of Calamity items
+		}
+
+		CalamitySummonDamageModifier: {
+			// Label: Calamity Summon Damage Modifier
+			// Tooltip: Multiplier for summon damage of Calamity items
+		}
+
+		CalamityMagicDamageModifier: {
+			// Label: Calamity Magic Damage Modifier
+			// Tooltip: Multiplier for magic damage of Calamity items
+		}
+
+		CalamityGenericDamageModifier: {
+			// Label: Calamity Generic Damage Modifier
+			// Tooltip: Multiplier for generic damage of Calamity items
+		}
+
+		VanillaMeleeDamageModifier: {
+			// Label: Vanilla Melee Damage Modifier
+			// Tooltip: Multiplier for melee damage of Vanilla items
+		}
+
+		VanillaRogueDamageModifier: {
+			// Label: Vanilla Rogue Damage Modifier
+			// Tooltip: Multiplier for rogue damage of Vanilla items
+		}
+
+		VanillaRangedDamageModifier: {
+			// Label: Vanilla Ranged Damage Modifier
+			// Tooltip: Multiplier for ranged damage of Vanilla items
+		}
+
+		VanillaSummonDamageModifier: {
+			// Label: Vanilla Summon Damage Modifier
+			// Tooltip: Multiplier for summon damage of Vanilla items
+		}
+
+		VanillaMagicDamageModifier: {
+			// Label: Vanilla Magic Damage Modifier
+			// Tooltip: Multiplier for magic damage of Vanilla items
+		}
+
+		VanillaGenericDamageModifier: {
+			// Label: Vanilla Generic Damage Modifier
+			// Tooltip: Multiplier for generic damage of Vanilla items
+		}
+
+		OtherBardDamageModifier: {
+			// Label: Other Bard Damage Modifier
+			// Tooltip: Multiplier for bard damage of other mod items
+		}
+
+		OtherMeleeDamageModifier: {
+			// Label: Other Melee Damage Modifier
+			// Tooltip: Multiplier for melee damage of other mod items
+		}
+
+		OtherHealerDamageModifier: {
+			// Label: Other Healer Damage Modifier
+			// Tooltip: Multiplier for healer damage of other mod items
+		}
+
+		OtherRogueDamageModifier: {
+			// Label: Other Rogue Damage Modifier
+			// Tooltip: Multiplier for rogue damage of other mod items
+		}
+
+		OtherRangedDamageModifier: {
+			// Label: Other Ranged Damage Modifier
+			// Tooltip: Multiplier for ranged damage of other mod items
+		}
+
+		OtherSummonDamageModifier: {
+			// Label: Other Summon Damage Modifier
+			// Tooltip: Multiplier for summon damage of other mod items
+		}
+
+		OtherMagicDamageModifier: {
+			// Label: Other Magic Damage Modifier
+			// Tooltip: Multiplier for magic damage of other mod items
+		}
+
+		OtherGenericDamageModifier: {
+			// Label: Other Generic Damage Modifier
+			// Tooltip: Multiplier for generic damage of other mod items
+		}
+
+		OtherUnknownClassDamageModifier: {
+			// Label: Other Unknown Class Damage Modifier
+			// Tooltip: Multiplier for unknown class damage of other mod items
 		}
 	}
 
@@ -1542,6 +1721,16 @@ Configs: {
 		item_deduplication_mode: {
 			Label: 非灾厄官方吟游诗人，牧师武器武器重复项目
 			Tooltip: 选择加载哪个模组的物品项目，关闭则同时加载两个模组项目
+		}
+
+		UnofficialBardDamageModifier: {
+			// Label: Unofficial Bard Damage Modifier
+			// Tooltip: ""
+		}
+
+		UnofficialHealerDamageModifier: {
+			// Label: Unofficial Healer Damage Modifier
+			// Tooltip: ""
 		}
 	}
 

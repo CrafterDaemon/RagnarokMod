@@ -610,13 +610,12 @@ namespace RagnarokMod.Utils
                 ApplyBloodFlareOnHit(target, damageDone);
             }
 			if(stormfeather && stormfeathercharge >= 10000) {
-				target.SimpleStrikeNPC((int)(damageDone * 0.2f), Player.direction);
 				SoundEngine.PlaySound(ThoriumSounds.GrandZapNoise, (Vector2?)null, (SoundUpdateCallback)null);
-				target.AddBuff(ModContent.BuffType<StaticDischarge>(), 300);
 				hitNPCs.Clear();
 				hitNPCs.Add(target.whoAmI);
 				stormfeathercharge = 0;
-				ChainAttack(target, (int)(damageDone * 0.2f));			
+				int damage = ((base.Player.moveSpeed -1f) > 0.0 ? (int)(50 * (base.Player.moveSpeed -1f)) : 1);
+				ChainAttack(target, damage);					
 			}
             if (this.intergelacticBard){
                 ModProjectile modProjectile = projectile.ModProjectile;
@@ -733,13 +732,12 @@ namespace RagnarokMod.Utils
                 ApplyBloodFlareOnHit(target, damageDone);
             }
 			if(stormfeather && stormfeathercharge >= 10000) {
-				target.SimpleStrikeNPC((int)(damageDone * 0.2f), Player.direction);
 				SoundEngine.PlaySound(ThoriumSounds.GrandZapNoise, (Vector2?)null, (SoundUpdateCallback)null);
-				target.AddBuff(ModContent.BuffType<StaticDischarge>(), 300);
 				hitNPCs.Clear();
 				hitNPCs.Add(target.whoAmI);
-				stormfeathercharge = 0;
-				ChainAttack(target, (int)(damageDone * 0.2f));	
+				stormfeathercharge = 0;	
+				int damage = ((base.Player.moveSpeed -1f) > 0.0 ? (int)(50 * (base.Player.moveSpeed -1f)) : 1);
+				ChainAttack(target, damage);
 			}
             OnHitNPCWithAny(target, hit, damageDone);
         }
@@ -759,6 +757,9 @@ namespace RagnarokMod.Utils
         }
 		
 		private void ChainAttack(NPC source, int damage){
+			source.AddBuff(ModContent.BuffType<StaticDischarge>(), 300);
+			source.SimpleStrikeNPC(damage, Player.direction);
+			int nextdamage = (int)(damage * 0.8f);
 			NPC nextTarget = null;
 			float closestDistance = 250f;
 			foreach (NPC npc in Main.ActiveNPCs){
@@ -774,9 +775,9 @@ namespace RagnarokMod.Utils
 				return;
 			hitNPCs.Add(nextTarget.whoAmI);
 			SpawnLightning(source.Center, nextTarget.Center);
-			nextTarget.AddBuff(ModContent.BuffType<StaticDischarge>(), 300);
-			nextTarget.SimpleStrikeNPC(damage, Player.direction);	
-			ChainAttack(nextTarget, damage);			
+			//nextTarget.AddBuff(ModContent.BuffType<StaticDischarge>(), 300);
+			//nextTarget.SimpleStrikeNPC(damage, Player.direction);	
+			ChainAttack(nextTarget, nextdamage);			
 		}
 		
 		private void SpawnLightning(Vector2 start, Vector2 end){
