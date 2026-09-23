@@ -1725,16 +1725,6 @@ Configs: {
 			Label: Calamity Bard & Healer item deduplication
 			Tooltip: Select which item recipes of duplicate items are loaded. Off enables both mod versions.
 		}
-
-		UnofficialBardDamageModifier: {
-			Label: Unofficial Bard Damage Modifier
-			Tooltip: ""
-		}
-
-		UnofficialHealerDamageModifier: {
-			Label: Unofficial Healer Damage Modifier
-			Tooltip: ""
-		}
 	}
 
 	CalamityBardHealer_selection_mode: {
