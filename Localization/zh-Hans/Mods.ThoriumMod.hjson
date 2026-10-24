@@ -111,6 +111,11 @@ Items: {
 			'''
 	}
 
+	DiamondRing: {
+		// DisplayName: Diamond Ring
+		// Tooltip: Increases critical strike chance by 3%
+	}
+
 	TopazRing: {
 		DisplayName: 黄玉戒指
 		Tooltip: 增加1点盗贼伤害
