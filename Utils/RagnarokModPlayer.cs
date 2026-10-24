@@ -45,11 +45,6 @@ namespace RagnarokMod.Utils
         private static Mod thorium = ModLoader.GetMod("ThoriumMod");
         private static Mod calamity = ModLoader.GetMod("CalamityMod");
 
-		// Used for calculating Player position and travel distances
-		private Vector2 lastPosition;
-		private float distance;
-		private HashSet<int> hitNPCs = new();
-
         private static int startMessageDisplayDelay = -1;
         public float oneTimeDamageReduction = 0;
         public bool brimstoneFlamesOnHit = false;
@@ -58,8 +53,6 @@ namespace RagnarokMod.Utils
         public HashSet<int> activeRiffTargets = new HashSet<int>();
         public static List<Action<Player, Player>> OnHealEffects = [];
         public bool stringInstrumentUsed = false;
-		public bool stormfeather = false;
-		public int stormfeathercharge = 0;
         public bool batpoop = false;
         public bool redglassMonocle = false;
 
@@ -309,9 +302,6 @@ namespace RagnarokMod.Utils
                     thoriumPlayer.bardBuffDuration += 180;
                 }
             }
-			if(stormfeather){
-				base.Player.moveSpeed += 0.05f;
-			}
             if (intergelacticBard || intergelacticHealer)
             {
                 if (asteroidexhaustioncounter > 0)
@@ -530,25 +520,6 @@ namespace RagnarokMod.Utils
                 activeRiffTargets.Clear();
             }
 
-			// Charging Stormfeather
-			if(stormfeather){
-				if(stormfeathercharge < 10000){
-					int chargegained = (int)(Vector2.Distance(base.Player.position, lastPosition) * (base.Player.Calamity().rageModeActive ? 2 : 1));
-					if(chargegained > 100) {
-						chargegained = 100;
-					}
-					if(stormfeathercharge + chargegained >= 10000) {
-						stormfeathercharge = 10000;
-						SoundEngine.PlaySound(ThoriumSounds.GrandCloudSpawn, (Vector2?)null, (SoundUpdateCallback)null);
-					}
-					else{
-						stormfeathercharge += chargegained;
-					}
-				}else { // Charged and visible on character
-					LightningEffect();
-				}
-			}
-
             if (shredderLifestealCooldown > 0)
                 shredderLifestealCooldown--;
 			
@@ -577,8 +548,6 @@ namespace RagnarokMod.Utils
 					bloodflareonhitcooldown--;
 				}
 			}
-			// Keep track on players last position
-			lastPosition = base.Player.position;
         }
 		
         // Function to add stealth to thorium throwing armors
@@ -609,14 +578,6 @@ namespace RagnarokMod.Utils
             if (this.bloodflareBard && projectile.DamageType == ThoriumDamageBase<BardDamage>.Instance){
                 ApplyBloodFlareOnHit(target, damageDone);
             }
-			if(stormfeather && stormfeathercharge >= 10000) {
-				SoundEngine.PlaySound(ThoriumSounds.GrandZapNoise, (Vector2?)null, (SoundUpdateCallback)null);
-				hitNPCs.Clear();
-				hitNPCs.Add(target.whoAmI);
-				stormfeathercharge = 0;
-				int damage = ((base.Player.moveSpeed -1f) > 0.0 ? (int)(50 * (base.Player.moveSpeed -1f)) : 1);
-				ChainAttack(target, damage);					
-			}
             if (this.intergelacticBard){
                 ModProjectile modProjectile = projectile.ModProjectile;
                 if (((modProjectile != null) ? modProjectile.Mod.Name : null) == "CatalystMod"){
@@ -731,14 +692,6 @@ namespace RagnarokMod.Utils
             if (this.bloodflareBard && item.DamageType == ThoriumDamageBase<BardDamage>.Instance){
                 ApplyBloodFlareOnHit(target, damageDone);
             }
-			if(stormfeather && stormfeathercharge >= 10000) {
-				SoundEngine.PlaySound(ThoriumSounds.GrandZapNoise, (Vector2?)null, (SoundUpdateCallback)null);
-				hitNPCs.Clear();
-				hitNPCs.Add(target.whoAmI);
-				stormfeathercharge = 0;	
-				int damage = ((base.Player.moveSpeed -1f) > 0.0 ? (int)(50 * (base.Player.moveSpeed -1f)) : 1);
-				ChainAttack(target, damage);
-			}
             OnHitNPCWithAny(target, hit, damageDone);
         }
         public void ApplyBloodFlareOnHit(NPC target, int damageDone){
@@ -755,63 +708,6 @@ namespace RagnarokMod.Utils
 				bloodflareonhitcooldown = 20;
 			}	
         }
-		
-		private void ChainAttack(NPC source, int damage){
-			source.AddBuff(ModContent.BuffType<StaticDischarge>(), 300);
-			source.SimpleStrikeNPC(damage, Player.direction);
-			int nextdamage = (int)(damage * 0.8f);
-			NPC nextTarget = null;
-			float closestDistance = 250f;
-			foreach (NPC npc in Main.ActiveNPCs){
-				if (hitNPCs.Contains(npc.whoAmI))
-					continue;
-				float distance = Vector2.Distance(source.Center, npc.Center);
-				if (distance <= closestDistance){
-				closestDistance = distance;
-				nextTarget = npc;
-				}
-			}
-			if (nextTarget == null)
-				return;
-			hitNPCs.Add(nextTarget.whoAmI);
-			SpawnLightning(source.Center, nextTarget.Center);
-			//nextTarget.AddBuff(ModContent.BuffType<StaticDischarge>(), 300);
-			//nextTarget.SimpleStrikeNPC(damage, Player.direction);	
-			ChainAttack(nextTarget, nextdamage);			
-		}
-		
-		private void SpawnLightning(Vector2 start, Vector2 end){
-			Vector2 direction = end - start;
-			float distance = direction.Length();
-			if (distance <= 0f)
-				return;
-			direction.Normalize();
-			for (float i = 0; i < distance; i += 8f){
-				Vector2 position = start + direction * i;
-				position += Main.rand.NextVector2Circular(4f, 4f);
-				Dust dust = Dust.NewDustPerfect(
-					position,
-					DustID.Electric,
-					Vector2.Zero
-				);
-				dust.noGravity = true;
-				dust.scale = 1.2f;
-			}
-		}
-		
-		private void LightningEffect(){
-			if (Main.rand.NextBool(3)){
-				Vector2 position = Player.Center + Main.rand.NextVector2Circular(20f, 30f);
-				Dust dust = Dust.NewDustPerfect(
-					position,
-					DustID.Electric,
-					Main.rand.NextVector2Circular(1f, 1f)
-				);
-				dust.noGravity = true;
-				dust.scale = 1.2f;
-			}
-		}
-		
         public void RemoveBloodFlareBloodlustPoints(int points){
             if (bloodflarebloodlust - points >= 0){
                 bloodflarebloodlust -= points;
@@ -843,7 +739,6 @@ namespace RagnarokMod.Utils
             this.auricHealerSet = false;
             WhiteDwarf = false;
             nightfallen = false;
-			this.stormfeather = false;
             this.batpoop = false;
             this.accShinobiSigilFix = false;
             this.blightAccFix = false;
@@ -866,12 +761,8 @@ namespace RagnarokMod.Utils
                 lastHeldItem = null;
                 origLifeCost = 0;
             }
-            if (this.bloodflareHealer == false && this.bloodflareBard == false){
+            if (this.bloodflareHealer == false && this.bloodflareBard == false)
                 bloodflarebloodlust = 0;
-			}
-			if(this.stormfeather == false){
-				stormfeathercharge = 0;
-			}
             SetFalse();
         }
 		

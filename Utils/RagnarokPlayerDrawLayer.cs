@@ -13,14 +13,11 @@ namespace RagnarokMod.Utils{
 		protected override void Draw(ref PlayerDrawSet drawInfo){
 			Player player = drawInfo.drawPlayer;
 			 var modPlayer = player.GetModPlayer<RagnarokModPlayer>();
-					
-			if(modPlayer.bloodflareBard || modPlayer.bloodflareHealer){
-				Vector2 pos = player.Top - Main.screenPosition + new Vector2(0, -20);
-				string text = modPlayer.bloodflarebloodlust.ToString();
-				Terraria.Utils.DrawBorderString(Main.spriteBatch, text, pos, Color.Red, 1f, 0.5f, 0.5f);
-			}else{
+			if ((!modPlayer.bloodflareHealer && !modPlayer.bloodflareBard ))
 				return;
-			}
+			Vector2 pos = player.Top - Main.screenPosition + new Vector2(0, -20);
+			string text = modPlayer.bloodflarebloodlust.ToString();
+			Terraria.Utils.DrawBorderString(Main.spriteBatch, text, pos, Color.Red, 1f, 0.5f, 0.5f);
 		}
 	}
 }
