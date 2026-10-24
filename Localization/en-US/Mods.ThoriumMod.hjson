@@ -138,7 +138,7 @@ Items: {
 
 	DiamondRing: {
 		DisplayName: Diamond Ring
-		Tooltip: Increases critical strike chance by 4%
+		Tooltip: Increases critical strike chance by 3%
 	}
 
 	TopazRing: {

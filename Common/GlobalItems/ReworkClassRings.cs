@@ -55,7 +55,7 @@ namespace RagnarokMod.Common.GlobalItems
             }
 			else if (item.type == ModContent.ItemType<DiamondRing>())
             {
-                player.GetCritChance(DamageClass.Generic) += 2f;
+                player.GetCritChance(DamageClass.Generic) += 1f;
             }
             else if (item.type == ModContent.ItemType<TheRing>())
             {
