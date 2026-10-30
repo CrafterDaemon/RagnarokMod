@@ -427,10 +427,7 @@ Items: {
 
 	NinjaEmblem: {
 		DisplayName: Hero Emblem
-		Tooltip:
-			'''
-			8% increased damage
-			'''
+		Tooltip: 8% increased damage
 	}
 
 	OlympicTorch: {
