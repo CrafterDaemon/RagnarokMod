@@ -21,8 +21,8 @@ namespace RagnarokMod.Common.GlobalItems
         public override void UpdateAccessory(Item item, Player player, bool hideVisual)
         {
             player.GetDamage(DamageClass.Throwing) -= 0.15f;
-            player.GetDamage(DamageClass.Generic) += 0.12f;
-            player.GetCritChance(DamageClass.Generic) += 3;
+            player.GetDamage(DamageClass.Generic) += 0.08f;
+            //player.GetCritChance(DamageClass.Generic) += 3;
         }
     }
 }
